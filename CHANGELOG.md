@@ -10,6 +10,18 @@
 
 * sdk init ([ecd9d21](https://github.com/bundleglobal/bundlesocial-node/commit/ecd9d21d0186d433df34ff132c7840de22395069))
 
+# 1.0.0 (2024-06-26)
+
+
+### Bug Fixes
+
+* wait for tests ([29c4467](https://github.com/bundleglobal/bundlesocial-node/commit/29c4467b52a576e5b90b169b31869f58be81fc06))
+
+
+### Features
+
+* sdk init ([ecd9d21](https://github.com/bundleglobal/bundlesocial-node/commit/ecd9d21d0186d433df34ff132c7840de22395069))
+
 ## [1.0.4](https://github.com/bundleglobal/bundlesocial-node/compare/v1.0.3...v1.0.4) (2024-06-26)
 
 

@@ -1,0 +1,39 @@
+name: generate
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [generate]
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install packages
+        run: npm install
+      - name: Generate client
+        run: npm run generate
+      - name: Set output variables
+        id: vars
+        run: |
+          echo ::set-output name=branch::generate-client-$(date +'%Y-%m-%d')
+          echo ::set-output name=commit_message::Generated client $(date +'%Y-%m-%d')
+          echo ::set-output name=title::Generated client $(date +'%Y-%m-%d')
+          echo ::set-output name=body::Generated client $(date +'%Y-%m-%d')
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: ${{ steps.vars.outputs.commit_message }}
+          title: ${{ steps.vars.outputs.title }}
+          body: ${{ steps.vars.outputs.body }}
+          branch: ${{ steps.vars.outputs.branch }}
+          base: main
+          labels: generate-client
+          delete-branch: true

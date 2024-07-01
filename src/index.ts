@@ -12,18 +12,16 @@ class Webhooks {
 
   /**
    * Verify the signature of a webhook request
-   * @param rawBody - The raw body of the webhook request
+   * @param body - Stringified body of the webhook request
    * @param signature - The signature passed in the `x-signature` header
    * @param secret - The webhook secret used to sign the request
    * @returns Whether the signature is valid
    */
   private verifySignature(
-    rawBody: string,
+    body: string,
     signature: string,
     secret: string,
   ): boolean {
-    const body = typeof rawBody === 'string' ? rawBody : JSON.stringify(rawBody);
-
     const sig = crypto.createHmac('sha256', secret).update(body).digest('hex');
 
     return sig === signature;
@@ -37,11 +35,13 @@ class Webhooks {
    * @returns Parsed webhook event
    */
   public constructEvent(rawBody: string, signature: string, secret: string) {
-    if (!this.verifySignature(rawBody, signature, secret)) {
-      throw new Error('Invalid signature');
-    }
+    const body = typeof rawBody === 'string' ? rawBody : JSON.stringify(rawBody);
 
-    return JSON.parse(rawBody) as WebhookEvent;
+  if (!this.verifySignature(body, signature, secret)) {
+    throw new Error('Invalid signature');
+  }
+
+  return JSON.parse(body) as WebhookEvent;
   }
 }
 

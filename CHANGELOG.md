@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bundleglobal/bundlesocial-node/compare/v1.1.0...v1.1.1) (2024-07-01)
+
+
+### Bug Fixes
+
+* stringify webhook body ([40d957a](https://github.com/bundleglobal/bundlesocial-node/commit/40d957aa04ee44bc77baf25d5f6b9a53160bf24c))
+
 # [1.1.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.0.0...v1.1.0) (2024-07-01)
 
 

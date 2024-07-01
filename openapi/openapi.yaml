@@ -309,6 +309,35 @@ paths:
                         - teamId
                         - createdAt
                         - updatedAt
+                  webhooks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        teamId:
+                          type: string
+                        url:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - teamId
+                        - url
+                        - createdAt
+                        - updatedAt
                   socialAccounts:
                     type: array
                     items:
@@ -418,6 +447,7 @@ paths:
                   - createdBy
                   - invitations
                   - bots
+                  - webhooks
                   - socialAccounts
                   - usage
         '400':
@@ -496,7 +526,7 @@ paths:
     post:
       description: Upload a file. This is the only endpoint that uses multipart/form-data.
       summary: Create upload
-      tags:
+      tags: &ref_0
         - upload
       parameters: []
       operationId: upload.create
@@ -659,8 +689,7 @@ paths:
                   - message
     get:
       summary: Get upload list
-      tags:
-        - upload
+      tags: *ref_0
       parameters: []
       operationId: upload.getList
       responses:
@@ -840,8 +869,7 @@ paths:
                   - message
     delete:
       summary: Delete many uploads
-      tags:
-        - upload
+      tags: *ref_0
       parameters: []
       operationId: upload.deleteMany
       requestBody:
@@ -1009,8 +1037,7 @@ paths:
   /api/v1/upload/{id}:
     get:
       summary: Get upload
-      tags:
-        - upload
+      tags: *ref_0
       parameters:
         - name: id
           in: path
@@ -1166,8 +1193,7 @@ paths:
                   - message
     delete:
       summary: Delete upload
-      tags:
-        - upload
+      tags: *ref_0
       parameters:
         - name: id
           in: path
@@ -1324,7 +1350,7 @@ paths:
   /api/v1/post/:
     post:
       summary: Create post
-      tags:
+      tags: &ref_1
         - post
       parameters: []
       operationId: post.create
@@ -2172,8 +2198,7 @@ paths:
                   - message
     get:
       summary: Get post list
-      tags:
-        - post
+      tags: *ref_1
       parameters:
         - name: status
           in: query
@@ -3024,8 +3049,7 @@ paths:
   /api/v1/post/{id}:
     get:
       summary: Get post
-      tags:
-        - post
+      tags: *ref_1
       parameters:
         - name: id
           in: path
@@ -3802,8 +3826,7 @@ paths:
                   - message
     put:
       summary: Update post
-      tags:
-        - post
+      tags: *ref_1
       parameters:
         - name: id
           in: path
@@ -4649,8 +4672,7 @@ paths:
                   - message
     delete:
       summary: Delete post
-      tags:
-        - post
+      tags: *ref_1
       parameters:
         - name: id
           in: path

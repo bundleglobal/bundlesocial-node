@@ -63,6 +63,14 @@ export type TeamGetTeamResponse = {
         updatedAt: string | null;
         deletedAt?: string | null;
     }>;
+    webhooks: Array<{
+        id: string;
+        teamId: string;
+        url: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
     socialAccounts: Array<{
         id: string;
         type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
@@ -1419,6 +1427,14 @@ export type $OpenApiTs = {
                         name: string;
                         avatarUrl?: string | null;
                         teamId: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                    webhooks: Array<{
+                        id: string;
+                        teamId: string;
+                        url: string;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;

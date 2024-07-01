@@ -1,8 +1,9 @@
 name: tests
 on:
   push:
+  workflow_dispatch:
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
     env:
       BUNDLE_SOCIAL_API_KEY: ${{ secrets.BUNDLE_SOCIAL_API_KEY }}

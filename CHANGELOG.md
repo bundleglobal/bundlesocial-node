@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.0.0...v1.1.0) (2024-07-02)
+
+
+### Features
+
+* tests workflow ([efbaf5f](https://github.com/bundleglobal/bundlesocial-node/commit/efbaf5f80cd03ae2bf5575be7cad44b6e6a8e476))
+
 # 1.0.0 (2024-06-27)
 
 

@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.1.0...v1.2.0) (2024-07-02)
+
+
+### Features
+
+* webhooks ([aa6fade](https://github.com/bundleglobal/bundlesocial-node/commit/aa6fade01c2b87e7c59a2915597747d6035996c5))
+
 # 1.0.0 (2024-06-26)
 
 

@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.2.0...v1.3.0) (2024-07-09)
+
+
+### Features
+
+* add field descriptions for post options ([6600c7e](https://github.com/bundleglobal/bundlesocial-node/commit/6600c7e5e5d09f7a7b547482664a9fa4558f8916))
+
 # [1.2.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.1.0...v1.2.0) (2024-07-02)
 
 

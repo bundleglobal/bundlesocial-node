@@ -258,9 +258,21 @@ export type PostCreateData = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to which the Pin will link to.
+                 */
                 link?: string | null;
+                /**
+                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                 */
                 altText?: string | null;
+                /**
+                 * A note about the Pin. This is not visible to the public.
+                 */
                 note?: string | null;
+                /**
+                 * The dominant color of the image. This is used to display the image before it's loaded.
+                 */
                 dominantColor?: string | null;
             } | null;
             FACEBOOK?: {
@@ -277,46 +289,90 @@ export type PostCreateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                /**
+                 * Set to true if the video is a paid partnership to promote a third-party business.
+                 */
+                isBrandContent?: boolean | null;
+                /**
+                 * Set to true if this video is promoting the creator's own business.
+                 */
+                isOrganicBrandContent?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make comments on this post.
+                 */
+                disableComments?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                 */
+                disableDuet?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                 */
+                disableStitch?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
-                visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                distribution?: {
-                    feedDistribution: 'NONE' | 'MAIN_FEED';
-                } | null;
-                isReshareDisabledByAuthor?: boolean | null;
+                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                /**
+                 * Set to true if the post shouldn't be displayed in the main feed.
+                 */
+                hideFromFeed?: boolean | null;
+                /**
+                 * Set to true if the post is not allowed to be reshared.
+                 */
+                disableReshare?: boolean | null;
+            } | null;
+            YOUTUBE?: {
+                type?: 'VIDEO' | 'SHORT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * Set to true if the video is made for kids.
+                 */
+                madeForKids?: boolean | null;
             } | null;
             REDDIT?: {
                 sr: string;
                 text: string;
                 description?: string | null;
                 uploadIds?: Array<(string)> | null;
-                url?: string | null;
+                /**
+                 * The URL to which the post will link to.
+                 */
+                link?: string | null;
+                /**
+                 * Set to true if the post is NSFW.
+                 */
                 nsfw?: boolean | null;
             } | null;
             DISCORD?: {
                 channelId: string;
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
                 username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
                 avatarUrl?: string | null;
             } | null;
             SLACK?: {
                 channelId: string;
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
                 username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
                 avatarUrl?: string | null;
-            } | null;
-            YOUTUBE?: {
-                type?: 'SHORT';
-                uploadIds?: Array<(string)> | null;
-                text?: string | null;
-                description?: string | null;
-                categoryId?: string | null;
-                privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                madeForKids?: boolean;
             } | null;
             TELEGRAM?: unknown;
             THREADS?: unknown;
@@ -341,9 +397,21 @@ export type PostCreateResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the Pin will link to.
+             */
             link?: string | null;
+            /**
+             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+             */
             altText?: string | null;
+            /**
+             * A note about the Pin. This is not visible to the public.
+             */
             note?: string | null;
+            /**
+             * The dominant color of the image. This is used to display the image before it's loaded.
+             */
             dominantColor?: string | null;
         } | null;
         FACEBOOK?: {
@@ -360,46 +428,90 @@ export type PostCreateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            /**
+             * Set to true if the video is a paid partnership to promote a third-party business.
+             */
+            isBrandContent?: boolean | null;
+            /**
+             * Set to true if this video is promoting the creator's own business.
+             */
+            isOrganicBrandContent?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make comments on this post.
+             */
+            disableComments?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+             */
+            disableDuet?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+             */
+            disableStitch?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
-            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-            distribution?: {
-                feedDistribution: 'NONE' | 'MAIN_FEED';
-            } | null;
-            isReshareDisabledByAuthor?: boolean | null;
+            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+            /**
+             * Set to true if the post shouldn't be displayed in the main feed.
+             */
+            hideFromFeed?: boolean | null;
+            /**
+             * Set to true if the post is not allowed to be reshared.
+             */
+            disableReshare?: boolean | null;
+        } | null;
+        YOUTUBE?: {
+            type?: 'VIDEO' | 'SHORT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * Set to true if the video is made for kids.
+             */
+            madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
             sr: string;
             text: string;
             description?: string | null;
             uploadIds?: Array<(string)> | null;
-            url?: string | null;
+            /**
+             * The URL to which the post will link to.
+             */
+            link?: string | null;
+            /**
+             * Set to true if the post is NSFW.
+             */
             nsfw?: boolean | null;
         } | null;
         DISCORD?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
         } | null;
         SLACK?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
-        } | null;
-        YOUTUBE?: {
-            type?: 'SHORT';
-            uploadIds?: Array<(string)> | null;
-            text?: string | null;
-            description?: string | null;
-            categoryId?: string | null;
-            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-            madeForKids?: boolean;
         } | null;
         TELEGRAM?: unknown;
         THREADS?: unknown;
@@ -506,9 +618,21 @@ export type PostGetListResponse = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to which the Pin will link to.
+                 */
                 link?: string | null;
+                /**
+                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                 */
                 altText?: string | null;
+                /**
+                 * A note about the Pin. This is not visible to the public.
+                 */
                 note?: string | null;
+                /**
+                 * The dominant color of the image. This is used to display the image before it's loaded.
+                 */
                 dominantColor?: string | null;
             } | null;
             FACEBOOK?: {
@@ -525,46 +649,90 @@ export type PostGetListResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                /**
+                 * Set to true if the video is a paid partnership to promote a third-party business.
+                 */
+                isBrandContent?: boolean | null;
+                /**
+                 * Set to true if this video is promoting the creator's own business.
+                 */
+                isOrganicBrandContent?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make comments on this post.
+                 */
+                disableComments?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                 */
+                disableDuet?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                 */
+                disableStitch?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
-                visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                distribution?: {
-                    feedDistribution: 'NONE' | 'MAIN_FEED';
-                } | null;
-                isReshareDisabledByAuthor?: boolean | null;
+                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                /**
+                 * Set to true if the post shouldn't be displayed in the main feed.
+                 */
+                hideFromFeed?: boolean | null;
+                /**
+                 * Set to true if the post is not allowed to be reshared.
+                 */
+                disableReshare?: boolean | null;
+            } | null;
+            YOUTUBE?: {
+                type?: 'VIDEO' | 'SHORT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * Set to true if the video is made for kids.
+                 */
+                madeForKids?: boolean | null;
             } | null;
             REDDIT?: {
                 sr: string;
                 text: string;
                 description?: string | null;
                 uploadIds?: Array<(string)> | null;
-                url?: string | null;
+                /**
+                 * The URL to which the post will link to.
+                 */
+                link?: string | null;
+                /**
+                 * Set to true if the post is NSFW.
+                 */
                 nsfw?: boolean | null;
             } | null;
             DISCORD?: {
                 channelId: string;
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
                 username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
                 avatarUrl?: string | null;
             } | null;
             SLACK?: {
                 channelId: string;
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
                 username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
                 avatarUrl?: string | null;
-            } | null;
-            YOUTUBE?: {
-                type?: 'SHORT';
-                uploadIds?: Array<(string)> | null;
-                text?: string | null;
-                description?: string | null;
-                categoryId?: string | null;
-                privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                madeForKids?: boolean;
             } | null;
             TELEGRAM?: unknown;
             THREADS?: unknown;
@@ -725,9 +893,21 @@ export type PostGetResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the Pin will link to.
+             */
             link?: string | null;
+            /**
+             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+             */
             altText?: string | null;
+            /**
+             * A note about the Pin. This is not visible to the public.
+             */
             note?: string | null;
+            /**
+             * The dominant color of the image. This is used to display the image before it's loaded.
+             */
             dominantColor?: string | null;
         } | null;
         FACEBOOK?: {
@@ -744,46 +924,90 @@ export type PostGetResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            /**
+             * Set to true if the video is a paid partnership to promote a third-party business.
+             */
+            isBrandContent?: boolean | null;
+            /**
+             * Set to true if this video is promoting the creator's own business.
+             */
+            isOrganicBrandContent?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make comments on this post.
+             */
+            disableComments?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+             */
+            disableDuet?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+             */
+            disableStitch?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
-            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-            distribution?: {
-                feedDistribution: 'NONE' | 'MAIN_FEED';
-            } | null;
-            isReshareDisabledByAuthor?: boolean | null;
+            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+            /**
+             * Set to true if the post shouldn't be displayed in the main feed.
+             */
+            hideFromFeed?: boolean | null;
+            /**
+             * Set to true if the post is not allowed to be reshared.
+             */
+            disableReshare?: boolean | null;
+        } | null;
+        YOUTUBE?: {
+            type?: 'VIDEO' | 'SHORT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * Set to true if the video is made for kids.
+             */
+            madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
             sr: string;
             text: string;
             description?: string | null;
             uploadIds?: Array<(string)> | null;
-            url?: string | null;
+            /**
+             * The URL to which the post will link to.
+             */
+            link?: string | null;
+            /**
+             * Set to true if the post is NSFW.
+             */
             nsfw?: boolean | null;
         } | null;
         DISCORD?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
         } | null;
         SLACK?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
-        } | null;
-        YOUTUBE?: {
-            type?: 'SHORT';
-            uploadIds?: Array<(string)> | null;
-            text?: string | null;
-            description?: string | null;
-            categoryId?: string | null;
-            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-            madeForKids?: boolean;
         } | null;
         TELEGRAM?: unknown;
         THREADS?: unknown;
@@ -941,9 +1165,21 @@ export type PostUpdateData = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to which the Pin will link to.
+                 */
                 link?: string | null;
+                /**
+                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                 */
                 altText?: string | null;
+                /**
+                 * A note about the Pin. This is not visible to the public.
+                 */
                 note?: string | null;
+                /**
+                 * The dominant color of the image. This is used to display the image before it's loaded.
+                 */
                 dominantColor?: string | null;
             } | null;
             FACEBOOK?: {
@@ -960,46 +1196,90 @@ export type PostUpdateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                /**
+                 * Set to true if the video is a paid partnership to promote a third-party business.
+                 */
+                isBrandContent?: boolean | null;
+                /**
+                 * Set to true if this video is promoting the creator's own business.
+                 */
+                isOrganicBrandContent?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make comments on this post.
+                 */
+                disableComments?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                 */
+                disableDuet?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                 */
+                disableStitch?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
-                visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                distribution?: {
-                    feedDistribution: 'NONE' | 'MAIN_FEED';
-                } | null;
-                isReshareDisabledByAuthor?: boolean | null;
+                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                /**
+                 * Set to true if the post shouldn't be displayed in the main feed.
+                 */
+                hideFromFeed?: boolean | null;
+                /**
+                 * Set to true if the post is not allowed to be reshared.
+                 */
+                disableReshare?: boolean | null;
+            } | null;
+            YOUTUBE?: {
+                type?: 'VIDEO' | 'SHORT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * Set to true if the video is made for kids.
+                 */
+                madeForKids?: boolean | null;
             } | null;
             REDDIT?: {
                 sr: string;
                 text: string;
                 description?: string | null;
                 uploadIds?: Array<(string)> | null;
-                url?: string | null;
+                /**
+                 * The URL to which the post will link to.
+                 */
+                link?: string | null;
+                /**
+                 * Set to true if the post is NSFW.
+                 */
                 nsfw?: boolean | null;
             } | null;
             DISCORD?: {
                 channelId: string;
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
                 username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
                 avatarUrl?: string | null;
             } | null;
             SLACK?: {
                 channelId: string;
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
                 username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
                 avatarUrl?: string | null;
-            } | null;
-            YOUTUBE?: {
-                type?: 'SHORT';
-                uploadIds?: Array<(string)> | null;
-                text?: string | null;
-                description?: string | null;
-                categoryId?: string | null;
-                privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                madeForKids?: boolean;
             } | null;
             TELEGRAM?: unknown;
             THREADS?: unknown;
@@ -1024,9 +1304,21 @@ export type PostUpdateResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the Pin will link to.
+             */
             link?: string | null;
+            /**
+             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+             */
             altText?: string | null;
+            /**
+             * A note about the Pin. This is not visible to the public.
+             */
             note?: string | null;
+            /**
+             * The dominant color of the image. This is used to display the image before it's loaded.
+             */
             dominantColor?: string | null;
         } | null;
         FACEBOOK?: {
@@ -1043,46 +1335,90 @@ export type PostUpdateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            /**
+             * Set to true if the video is a paid partnership to promote a third-party business.
+             */
+            isBrandContent?: boolean | null;
+            /**
+             * Set to true if this video is promoting the creator's own business.
+             */
+            isOrganicBrandContent?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make comments on this post.
+             */
+            disableComments?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+             */
+            disableDuet?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+             */
+            disableStitch?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
-            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-            distribution?: {
-                feedDistribution: 'NONE' | 'MAIN_FEED';
-            } | null;
-            isReshareDisabledByAuthor?: boolean | null;
+            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+            /**
+             * Set to true if the post shouldn't be displayed in the main feed.
+             */
+            hideFromFeed?: boolean | null;
+            /**
+             * Set to true if the post is not allowed to be reshared.
+             */
+            disableReshare?: boolean | null;
+        } | null;
+        YOUTUBE?: {
+            type?: 'VIDEO' | 'SHORT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * Set to true if the video is made for kids.
+             */
+            madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
             sr: string;
             text: string;
             description?: string | null;
             uploadIds?: Array<(string)> | null;
-            url?: string | null;
+            /**
+             * The URL to which the post will link to.
+             */
+            link?: string | null;
+            /**
+             * Set to true if the post is NSFW.
+             */
             nsfw?: boolean | null;
         } | null;
         DISCORD?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
         } | null;
         SLACK?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
-        } | null;
-        YOUTUBE?: {
-            type?: 'SHORT';
-            uploadIds?: Array<(string)> | null;
-            text?: string | null;
-            description?: string | null;
-            categoryId?: string | null;
-            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-            madeForKids?: boolean;
         } | null;
         TELEGRAM?: unknown;
         THREADS?: unknown;
@@ -1182,9 +1518,21 @@ export type PostDeleteResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the Pin will link to.
+             */
             link?: string | null;
+            /**
+             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+             */
             altText?: string | null;
+            /**
+             * A note about the Pin. This is not visible to the public.
+             */
             note?: string | null;
+            /**
+             * The dominant color of the image. This is used to display the image before it's loaded.
+             */
             dominantColor?: string | null;
         } | null;
         FACEBOOK?: {
@@ -1201,46 +1549,90 @@ export type PostDeleteResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            /**
+             * Set to true if the video is a paid partnership to promote a third-party business.
+             */
+            isBrandContent?: boolean | null;
+            /**
+             * Set to true if this video is promoting the creator's own business.
+             */
+            isOrganicBrandContent?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make comments on this post.
+             */
+            disableComments?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+             */
+            disableDuet?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+             */
+            disableStitch?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
-            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-            distribution?: {
-                feedDistribution: 'NONE' | 'MAIN_FEED';
-            } | null;
-            isReshareDisabledByAuthor?: boolean | null;
+            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+            /**
+             * Set to true if the post shouldn't be displayed in the main feed.
+             */
+            hideFromFeed?: boolean | null;
+            /**
+             * Set to true if the post is not allowed to be reshared.
+             */
+            disableReshare?: boolean | null;
+        } | null;
+        YOUTUBE?: {
+            type?: 'VIDEO' | 'SHORT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * Set to true if the video is made for kids.
+             */
+            madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
             sr: string;
             text: string;
             description?: string | null;
             uploadIds?: Array<(string)> | null;
-            url?: string | null;
+            /**
+             * The URL to which the post will link to.
+             */
+            link?: string | null;
+            /**
+             * Set to true if the post is NSFW.
+             */
             nsfw?: boolean | null;
         } | null;
         DISCORD?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
         } | null;
         SLACK?: {
             channelId: string;
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
             username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
             avatarUrl?: string | null;
-        } | null;
-        YOUTUBE?: {
-            type?: 'SHORT';
-            uploadIds?: Array<(string)> | null;
-            text?: string | null;
-            description?: string | null;
-            categoryId?: string | null;
-            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-            madeForKids?: boolean;
         } | null;
         TELEGRAM?: unknown;
         THREADS?: unknown;
@@ -1849,9 +2241,21 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the Pin will link to.
+                             */
                             link?: string | null;
+                            /**
+                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                             */
                             altText?: string | null;
+                            /**
+                             * A note about the Pin. This is not visible to the public.
+                             */
                             note?: string | null;
+                            /**
+                             * The dominant color of the image. This is used to display the image before it's loaded.
+                             */
                             dominantColor?: string | null;
                         } | null;
                         FACEBOOK?: {
@@ -1868,46 +2272,90 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            /**
+                             * Set to true if the video is a paid partnership to promote a third-party business.
+                             */
+                            isBrandContent?: boolean | null;
+                            /**
+                             * Set to true if this video is promoting the creator's own business.
+                             */
+                            isOrganicBrandContent?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make comments on this post.
+                             */
+                            disableComments?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                             */
+                            disableDuet?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                             */
+                            disableStitch?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
-                            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                            distribution?: {
-                                feedDistribution: 'NONE' | 'MAIN_FEED';
-                            } | null;
-                            isReshareDisabledByAuthor?: boolean | null;
+                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                            /**
+                             * Set to true if the post shouldn't be displayed in the main feed.
+                             */
+                            hideFromFeed?: boolean | null;
+                            /**
+                             * Set to true if the post is not allowed to be reshared.
+                             */
+                            disableReshare?: boolean | null;
+                        } | null;
+                        YOUTUBE?: {
+                            type?: 'VIDEO' | 'SHORT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * Set to true if the video is made for kids.
+                             */
+                            madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
                             sr: string;
                             text: string;
                             description?: string | null;
                             uploadIds?: Array<(string)> | null;
-                            url?: string | null;
+                            /**
+                             * The URL to which the post will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * Set to true if the post is NSFW.
+                             */
                             nsfw?: boolean | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
                         } | null;
                         SLACK?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
-                        } | null;
-                        YOUTUBE?: {
-                            type?: 'SHORT';
-                            uploadIds?: Array<(string)> | null;
-                            text?: string | null;
-                            description?: string | null;
-                            categoryId?: string | null;
-                            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                            madeForKids?: boolean;
                         } | null;
                         TELEGRAM?: unknown;
                         THREADS?: unknown;
@@ -2045,9 +2493,21 @@ export type $OpenApiTs = {
                                 description?: string | null;
                                 boardName: string;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to which the Pin will link to.
+                                 */
                                 link?: string | null;
+                                /**
+                                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                                 */
                                 altText?: string | null;
+                                /**
+                                 * A note about the Pin. This is not visible to the public.
+                                 */
                                 note?: string | null;
+                                /**
+                                 * The dominant color of the image. This is used to display the image before it's loaded.
+                                 */
                                 dominantColor?: string | null;
                             } | null;
                             FACEBOOK?: {
@@ -2064,46 +2524,90 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                                /**
+                                 * Set to true if the video is a paid partnership to promote a third-party business.
+                                 */
+                                isBrandContent?: boolean | null;
+                                /**
+                                 * Set to true if this video is promoting the creator's own business.
+                                 */
+                                isOrganicBrandContent?: boolean | null;
+                                /**
+                                 * If set to true, other TikTok users will not be allowed to make comments on this post.
+                                 */
+                                disableComments?: boolean | null;
+                                /**
+                                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                                 */
+                                disableDuet?: boolean | null;
+                                /**
+                                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                                 */
+                                disableStitch?: boolean | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
                                 uploadIds?: Array<(string)> | null;
-                                visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                                distribution?: {
-                                    feedDistribution: 'NONE' | 'MAIN_FEED';
-                                } | null;
-                                isReshareDisabledByAuthor?: boolean | null;
+                                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                                /**
+                                 * Set to true if the post shouldn't be displayed in the main feed.
+                                 */
+                                hideFromFeed?: boolean | null;
+                                /**
+                                 * Set to true if the post is not allowed to be reshared.
+                                 */
+                                disableReshare?: boolean | null;
+                            } | null;
+                            YOUTUBE?: {
+                                type?: 'VIDEO' | 'SHORT';
+                                uploadIds?: Array<(string)> | null;
+                                text?: string | null;
+                                description?: string | null;
+                                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                                /**
+                                 * Set to true if the video is made for kids.
+                                 */
+                                madeForKids?: boolean | null;
                             } | null;
                             REDDIT?: {
                                 sr: string;
                                 text: string;
                                 description?: string | null;
                                 uploadIds?: Array<(string)> | null;
-                                url?: string | null;
+                                /**
+                                 * The URL to which the post will link to.
+                                 */
+                                link?: string | null;
+                                /**
+                                 * Set to true if the post is NSFW.
+                                 */
                                 nsfw?: boolean | null;
                             } | null;
                             DISCORD?: {
                                 channelId: string;
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The username to display as the author of the message.
+                                 */
                                 username?: string | null;
+                                /**
+                                 * Avatar url to display as the author of the message.
+                                 */
                                 avatarUrl?: string | null;
                             } | null;
                             SLACK?: {
                                 channelId: string;
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The username to display as the author of the message.
+                                 */
                                 username?: string | null;
+                                /**
+                                 * Avatar url to display as the author of the message.
+                                 */
                                 avatarUrl?: string | null;
-                            } | null;
-                            YOUTUBE?: {
-                                type?: 'SHORT';
-                                uploadIds?: Array<(string)> | null;
-                                text?: string | null;
-                                description?: string | null;
-                                categoryId?: string | null;
-                                privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                                madeForKids?: boolean;
                             } | null;
                             TELEGRAM?: unknown;
                             THREADS?: unknown;
@@ -2303,9 +2807,21 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the Pin will link to.
+                             */
                             link?: string | null;
+                            /**
+                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                             */
                             altText?: string | null;
+                            /**
+                             * A note about the Pin. This is not visible to the public.
+                             */
                             note?: string | null;
+                            /**
+                             * The dominant color of the image. This is used to display the image before it's loaded.
+                             */
                             dominantColor?: string | null;
                         } | null;
                         FACEBOOK?: {
@@ -2322,46 +2838,90 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            /**
+                             * Set to true if the video is a paid partnership to promote a third-party business.
+                             */
+                            isBrandContent?: boolean | null;
+                            /**
+                             * Set to true if this video is promoting the creator's own business.
+                             */
+                            isOrganicBrandContent?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make comments on this post.
+                             */
+                            disableComments?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                             */
+                            disableDuet?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                             */
+                            disableStitch?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
-                            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                            distribution?: {
-                                feedDistribution: 'NONE' | 'MAIN_FEED';
-                            } | null;
-                            isReshareDisabledByAuthor?: boolean | null;
+                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                            /**
+                             * Set to true if the post shouldn't be displayed in the main feed.
+                             */
+                            hideFromFeed?: boolean | null;
+                            /**
+                             * Set to true if the post is not allowed to be reshared.
+                             */
+                            disableReshare?: boolean | null;
+                        } | null;
+                        YOUTUBE?: {
+                            type?: 'VIDEO' | 'SHORT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * Set to true if the video is made for kids.
+                             */
+                            madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
                             sr: string;
                             text: string;
                             description?: string | null;
                             uploadIds?: Array<(string)> | null;
-                            url?: string | null;
+                            /**
+                             * The URL to which the post will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * Set to true if the post is NSFW.
+                             */
                             nsfw?: boolean | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
                         } | null;
                         SLACK?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
-                        } | null;
-                        YOUTUBE?: {
-                            type?: 'SHORT';
-                            uploadIds?: Array<(string)> | null;
-                            text?: string | null;
-                            description?: string | null;
-                            categoryId?: string | null;
-                            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                            madeForKids?: boolean;
                         } | null;
                         TELEGRAM?: unknown;
                         THREADS?: unknown;
@@ -2557,9 +3117,21 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the Pin will link to.
+                             */
                             link?: string | null;
+                            /**
+                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                             */
                             altText?: string | null;
+                            /**
+                             * A note about the Pin. This is not visible to the public.
+                             */
                             note?: string | null;
+                            /**
+                             * The dominant color of the image. This is used to display the image before it's loaded.
+                             */
                             dominantColor?: string | null;
                         } | null;
                         FACEBOOK?: {
@@ -2576,46 +3148,90 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            /**
+                             * Set to true if the video is a paid partnership to promote a third-party business.
+                             */
+                            isBrandContent?: boolean | null;
+                            /**
+                             * Set to true if this video is promoting the creator's own business.
+                             */
+                            isOrganicBrandContent?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make comments on this post.
+                             */
+                            disableComments?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                             */
+                            disableDuet?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                             */
+                            disableStitch?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
-                            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                            distribution?: {
-                                feedDistribution: 'NONE' | 'MAIN_FEED';
-                            } | null;
-                            isReshareDisabledByAuthor?: boolean | null;
+                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                            /**
+                             * Set to true if the post shouldn't be displayed in the main feed.
+                             */
+                            hideFromFeed?: boolean | null;
+                            /**
+                             * Set to true if the post is not allowed to be reshared.
+                             */
+                            disableReshare?: boolean | null;
+                        } | null;
+                        YOUTUBE?: {
+                            type?: 'VIDEO' | 'SHORT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * Set to true if the video is made for kids.
+                             */
+                            madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
                             sr: string;
                             text: string;
                             description?: string | null;
                             uploadIds?: Array<(string)> | null;
-                            url?: string | null;
+                            /**
+                             * The URL to which the post will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * Set to true if the post is NSFW.
+                             */
                             nsfw?: boolean | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
                         } | null;
                         SLACK?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
-                        } | null;
-                        YOUTUBE?: {
-                            type?: 'SHORT';
-                            uploadIds?: Array<(string)> | null;
-                            text?: string | null;
-                            description?: string | null;
-                            categoryId?: string | null;
-                            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                            madeForKids?: boolean;
                         } | null;
                         TELEGRAM?: unknown;
                         THREADS?: unknown;
@@ -2752,9 +3368,21 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the Pin will link to.
+                             */
                             link?: string | null;
+                            /**
+                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                             */
                             altText?: string | null;
+                            /**
+                             * A note about the Pin. This is not visible to the public.
+                             */
                             note?: string | null;
+                            /**
+                             * The dominant color of the image. This is used to display the image before it's loaded.
+                             */
                             dominantColor?: string | null;
                         } | null;
                         FACEBOOK?: {
@@ -2771,46 +3399,90 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            /**
+                             * Set to true if the video is a paid partnership to promote a third-party business.
+                             */
+                            isBrandContent?: boolean | null;
+                            /**
+                             * Set to true if this video is promoting the creator's own business.
+                             */
+                            isOrganicBrandContent?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make comments on this post.
+                             */
+                            disableComments?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                             */
+                            disableDuet?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                             */
+                            disableStitch?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
-                            visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                            distribution?: {
-                                feedDistribution: 'NONE' | 'MAIN_FEED';
-                            } | null;
-                            isReshareDisabledByAuthor?: boolean | null;
+                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                            /**
+                             * Set to true if the post shouldn't be displayed in the main feed.
+                             */
+                            hideFromFeed?: boolean | null;
+                            /**
+                             * Set to true if the post is not allowed to be reshared.
+                             */
+                            disableReshare?: boolean | null;
+                        } | null;
+                        YOUTUBE?: {
+                            type?: 'VIDEO' | 'SHORT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * Set to true if the video is made for kids.
+                             */
+                            madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
                             sr: string;
                             text: string;
                             description?: string | null;
                             uploadIds?: Array<(string)> | null;
-                            url?: string | null;
+                            /**
+                             * The URL to which the post will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * Set to true if the post is NSFW.
+                             */
                             nsfw?: boolean | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
                         } | null;
                         SLACK?: {
                             channelId: string;
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
                             username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
                             avatarUrl?: string | null;
-                        } | null;
-                        YOUTUBE?: {
-                            type?: 'SHORT';
-                            uploadIds?: Array<(string)> | null;
-                            text?: string | null;
-                            description?: string | null;
-                            categoryId?: string | null;
-                            privacyStatus?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                            madeForKids?: boolean;
                         } | null;
                         TELEGRAM?: unknown;
                         THREADS?: unknown;

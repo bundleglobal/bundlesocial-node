@@ -1423,15 +1423,25 @@ paths:
                         link:
                           type: string
                           nullable: true
+                          description: The URL to which the Pin will link to.
                         altText:
                           type: string
                           nullable: true
+                          description: >-
+                            The alt text for the image. This is used by screen
+                            readers and when the image can't be loaded.
                         note:
                           type: string
                           nullable: true
+                          description: >-
+                            A note about the Pin. This is not visible to the
+                            public.
                         dominantColor:
                           type: string
                           nullable: true
+                          description: >-
+                            The dominant color of the image. This is used to
+                            display the image before it's loaded.
                       required:
                         - boardName
                       nullable: true
@@ -1492,6 +1502,41 @@ paths:
                             - MUTUAL_FOLLOW_FRIENDS
                             - FOLLOWER_OF_CREATOR
                           nullable: true
+                        isBrandContent:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the video is a paid partnership to
+                            promote a third-party business.
+                        isOrganicBrandContent:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if this video is promoting the creator's
+                            own business.
+                        disableComments:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            If set to true, other TikTok users will not be
+                            allowed to make comments on this post.
+                        disableDuet:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            If set to true, other TikTok users will not be
+                            allowed to make Stitches using this post.
+                        disableStitch:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            If set to true, other TikTok users will not be
+                            allowed to make Duets using this post.
                       nullable: true
                     LINKEDIN:
                       type: object
@@ -1503,7 +1548,7 @@ paths:
                           items:
                             type: string
                           nullable: true
-                        visibility:
+                        privacy:
                           type: string
                           enum:
                             - CONNECTIONS
@@ -1511,22 +1556,55 @@ paths:
                             - LOGGED_IN
                             - CONTAINER
                           nullable: true
-                        distribution:
-                          type: object
-                          properties:
-                            feedDistribution:
-                              type: string
-                              enum:
-                                - NONE
-                                - MAIN_FEED
-                          required:
-                            - feedDistribution
-                          nullable: true
-                        isReshareDisabledByAuthor:
+                        hideFromFeed:
+                          default: false
                           type: boolean
                           nullable: true
+                          description: >-
+                            Set to true if the post shouldn't be displayed in
+                            the main feed.
+                        disableReshare:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the post is not allowed to be
+                            reshared.
                       required:
                         - text
+                      nullable: true
+                    YOUTUBE:
+                      type: object
+                      properties:
+                        type:
+                          default: SHORT
+                          type: string
+                          enum:
+                            - VIDEO
+                            - SHORT
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        description:
+                          type: string
+                          nullable: true
+                        privacy:
+                          type: string
+                          enum:
+                            - PRIVATE
+                            - PUBLIC
+                            - UNLISTED
+                          nullable: true
+                        madeForKids:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: Set to true if the video is made for kids.
                       nullable: true
                     REDDIT:
                       type: object
@@ -1543,12 +1621,15 @@ paths:
                           items:
                             type: string
                           nullable: true
-                        url:
+                        link:
                           type: string
                           nullable: true
+                          description: The URL to which the post will link to.
                         nsfw:
+                          default: false
                           type: boolean
                           nullable: true
+                          description: Set to true if the post is NSFW.
                       required:
                         - sr
                         - text
@@ -1569,9 +1650,13 @@ paths:
                         username:
                           type: string
                           nullable: true
+                          description: >-
+                            The username to display as the author of the
+                            message.
                         avatarUrl:
                           type: string
                           nullable: true
+                          description: Avatar url to display as the author of the message.
                       required:
                         - channelId
                       nullable: true
@@ -1591,44 +1676,15 @@ paths:
                         username:
                           type: string
                           nullable: true
+                          description: >-
+                            The username to display as the author of the
+                            message.
                         avatarUrl:
                           type: string
                           nullable: true
+                          description: Avatar url to display as the author of the message.
                       required:
                         - channelId
-                      nullable: true
-                    YOUTUBE:
-                      type: object
-                      properties:
-                        type:
-                          default: SHORT
-                          type: string
-                          enum:
-                            - SHORT
-                        uploadIds:
-                          type: array
-                          items:
-                            type: string
-                          nullable: true
-                        text:
-                          type: string
-                          nullable: true
-                        description:
-                          type: string
-                          nullable: true
-                        categoryId:
-                          type: string
-                          nullable: true
-                        privacyStatus:
-                          type: string
-                          enum:
-                            - PRIVATE
-                            - PUBLIC
-                            - UNLISTED
-                          nullable: true
-                        madeForKids:
-                          default: false
-                          type: boolean
                       nullable: true
                     TELEGRAM:
                       type: object
@@ -1709,15 +1765,25 @@ paths:
                           link:
                             type: string
                             nullable: true
+                            description: The URL to which the Pin will link to.
                           altText:
                             type: string
                             nullable: true
+                            description: >-
+                              The alt text for the image. This is used by screen
+                              readers and when the image can't be loaded.
                           note:
                             type: string
                             nullable: true
+                            description: >-
+                              A note about the Pin. This is not visible to the
+                              public.
                           dominantColor:
                             type: string
                             nullable: true
+                            description: >-
+                              The dominant color of the image. This is used to
+                              display the image before it's loaded.
                         required:
                           - boardName
                         nullable: true
@@ -1778,6 +1844,41 @@ paths:
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
                             nullable: true
+                          isBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video is a paid partnership to
+                              promote a third-party business.
+                          isOrganicBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if this video is promoting the
+                              creator's own business.
+                          disableComments:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make comments on this post.
+                          disableDuet:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Stitches using this post.
+                          disableStitch:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Duets using this post.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -1789,7 +1890,7 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          visibility:
+                          privacy:
                             type: string
                             enum:
                               - CONNECTIONS
@@ -1797,22 +1898,55 @@ paths:
                               - LOGGED_IN
                               - CONTAINER
                             nullable: true
-                          distribution:
-                            type: object
-                            properties:
-                              feedDistribution:
-                                type: string
-                                enum:
-                                  - NONE
-                                  - MAIN_FEED
-                            required:
-                              - feedDistribution
-                            nullable: true
-                          isReshareDisabledByAuthor:
+                          hideFromFeed:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: >-
+                              Set to true if the post shouldn't be displayed in
+                              the main feed.
+                          disableReshare:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post is not allowed to be
+                              reshared.
                         required:
                           - text
+                        nullable: true
+                      YOUTUBE:
+                        type: object
+                        properties:
+                          type:
+                            default: SHORT
+                            type: string
+                            enum:
+                              - VIDEO
+                              - SHORT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PRIVATE
+                              - PUBLIC
+                              - UNLISTED
+                            nullable: true
+                          madeForKids:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if the video is made for kids.
                         nullable: true
                       REDDIT:
                         type: object
@@ -1829,12 +1963,15 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          url:
+                          link:
                             type: string
                             nullable: true
+                            description: The URL to which the post will link to.
                           nsfw:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: Set to true if the post is NSFW.
                         required:
                           - sr
                           - text
@@ -1855,9 +1992,15 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
                         nullable: true
@@ -1877,44 +2020,17 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
-                        nullable: true
-                      YOUTUBE:
-                        type: object
-                        properties:
-                          type:
-                            default: SHORT
-                            type: string
-                            enum:
-                              - SHORT
-                          uploadIds:
-                            type: array
-                            items:
-                              type: string
-                            nullable: true
-                          text:
-                            type: string
-                            nullable: true
-                          description:
-                            type: string
-                            nullable: true
-                          categoryId:
-                            type: string
-                            nullable: true
-                          privacyStatus:
-                            type: string
-                            enum:
-                              - PRIVATE
-                              - PUBLIC
-                              - UNLISTED
-                            nullable: true
-                          madeForKids:
-                            default: false
-                            type: boolean
                         nullable: true
                       TELEGRAM:
                         type: object
@@ -2339,15 +2455,27 @@ paths:
                                 link:
                                   type: string
                                   nullable: true
+                                  description: The URL to which the Pin will link to.
                                 altText:
                                   type: string
                                   nullable: true
+                                  description: >-
+                                    The alt text for the image. This is used by
+                                    screen readers and when the image can't be
+                                    loaded.
                                 note:
                                   type: string
                                   nullable: true
+                                  description: >-
+                                    A note about the Pin. This is not visible to
+                                    the public.
                                 dominantColor:
                                   type: string
                                   nullable: true
+                                  description: >-
+                                    The dominant color of the image. This is
+                                    used to display the image before it's
+                                    loaded.
                               required:
                                 - boardName
                               nullable: true
@@ -2408,6 +2536,42 @@ paths:
                                     - MUTUAL_FOLLOW_FRIENDS
                                     - FOLLOWER_OF_CREATOR
                                   nullable: true
+                                isBrandContent:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if the video is a paid
+                                    partnership to promote a third-party
+                                    business.
+                                isOrganicBrandContent:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if this video is promoting the
+                                    creator's own business.
+                                disableComments:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    If set to true, other TikTok users will not
+                                    be allowed to make comments on this post.
+                                disableDuet:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    If set to true, other TikTok users will not
+                                    be allowed to make Stitches using this post.
+                                disableStitch:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    If set to true, other TikTok users will not
+                                    be allowed to make Duets using this post.
                               nullable: true
                             LINKEDIN:
                               type: object
@@ -2419,7 +2583,7 @@ paths:
                                   items:
                                     type: string
                                   nullable: true
-                                visibility:
+                                privacy:
                                   type: string
                                   enum:
                                     - CONNECTIONS
@@ -2427,22 +2591,55 @@ paths:
                                     - LOGGED_IN
                                     - CONTAINER
                                   nullable: true
-                                distribution:
-                                  type: object
-                                  properties:
-                                    feedDistribution:
-                                      type: string
-                                      enum:
-                                        - NONE
-                                        - MAIN_FEED
-                                  required:
-                                    - feedDistribution
-                                  nullable: true
-                                isReshareDisabledByAuthor:
+                                hideFromFeed:
+                                  default: false
                                   type: boolean
                                   nullable: true
+                                  description: >-
+                                    Set to true if the post shouldn't be
+                                    displayed in the main feed.
+                                disableReshare:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if the post is not allowed to be
+                                    reshared.
                               required:
                                 - text
+                              nullable: true
+                            YOUTUBE:
+                              type: object
+                              properties:
+                                type:
+                                  default: SHORT
+                                  type: string
+                                  enum:
+                                    - VIDEO
+                                    - SHORT
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                text:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                privacy:
+                                  type: string
+                                  enum:
+                                    - PRIVATE
+                                    - PUBLIC
+                                    - UNLISTED
+                                  nullable: true
+                                madeForKids:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: Set to true if the video is made for kids.
                               nullable: true
                             REDDIT:
                               type: object
@@ -2459,12 +2656,15 @@ paths:
                                   items:
                                     type: string
                                   nullable: true
-                                url:
+                                link:
                                   type: string
                                   nullable: true
+                                  description: The URL to which the post will link to.
                                 nsfw:
+                                  default: false
                                   type: boolean
                                   nullable: true
+                                  description: Set to true if the post is NSFW.
                               required:
                                 - sr
                                 - text
@@ -2485,9 +2685,15 @@ paths:
                                 username:
                                   type: string
                                   nullable: true
+                                  description: >-
+                                    The username to display as the author of the
+                                    message.
                                 avatarUrl:
                                   type: string
                                   nullable: true
+                                  description: >-
+                                    Avatar url to display as the author of the
+                                    message.
                               required:
                                 - channelId
                               nullable: true
@@ -2507,44 +2713,17 @@ paths:
                                 username:
                                   type: string
                                   nullable: true
+                                  description: >-
+                                    The username to display as the author of the
+                                    message.
                                 avatarUrl:
                                   type: string
                                   nullable: true
+                                  description: >-
+                                    Avatar url to display as the author of the
+                                    message.
                               required:
                                 - channelId
-                              nullable: true
-                            YOUTUBE:
-                              type: object
-                              properties:
-                                type:
-                                  default: SHORT
-                                  type: string
-                                  enum:
-                                    - SHORT
-                                uploadIds:
-                                  type: array
-                                  items:
-                                    type: string
-                                  nullable: true
-                                text:
-                                  type: string
-                                  nullable: true
-                                description:
-                                  type: string
-                                  nullable: true
-                                categoryId:
-                                  type: string
-                                  nullable: true
-                                privacyStatus:
-                                  type: string
-                                  enum:
-                                    - PRIVATE
-                                    - PUBLIC
-                                    - UNLISTED
-                                  nullable: true
-                                madeForKids:
-                                  default: false
-                                  type: boolean
                               nullable: true
                             TELEGRAM:
                               type: object
@@ -3122,15 +3301,25 @@ paths:
                           link:
                             type: string
                             nullable: true
+                            description: The URL to which the Pin will link to.
                           altText:
                             type: string
                             nullable: true
+                            description: >-
+                              The alt text for the image. This is used by screen
+                              readers and when the image can't be loaded.
                           note:
                             type: string
                             nullable: true
+                            description: >-
+                              A note about the Pin. This is not visible to the
+                              public.
                           dominantColor:
                             type: string
                             nullable: true
+                            description: >-
+                              The dominant color of the image. This is used to
+                              display the image before it's loaded.
                         required:
                           - boardName
                         nullable: true
@@ -3191,6 +3380,41 @@ paths:
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
                             nullable: true
+                          isBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video is a paid partnership to
+                              promote a third-party business.
+                          isOrganicBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if this video is promoting the
+                              creator's own business.
+                          disableComments:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make comments on this post.
+                          disableDuet:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Stitches using this post.
+                          disableStitch:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Duets using this post.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -3202,7 +3426,7 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          visibility:
+                          privacy:
                             type: string
                             enum:
                               - CONNECTIONS
@@ -3210,22 +3434,55 @@ paths:
                               - LOGGED_IN
                               - CONTAINER
                             nullable: true
-                          distribution:
-                            type: object
-                            properties:
-                              feedDistribution:
-                                type: string
-                                enum:
-                                  - NONE
-                                  - MAIN_FEED
-                            required:
-                              - feedDistribution
-                            nullable: true
-                          isReshareDisabledByAuthor:
+                          hideFromFeed:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: >-
+                              Set to true if the post shouldn't be displayed in
+                              the main feed.
+                          disableReshare:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post is not allowed to be
+                              reshared.
                         required:
                           - text
+                        nullable: true
+                      YOUTUBE:
+                        type: object
+                        properties:
+                          type:
+                            default: SHORT
+                            type: string
+                            enum:
+                              - VIDEO
+                              - SHORT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PRIVATE
+                              - PUBLIC
+                              - UNLISTED
+                            nullable: true
+                          madeForKids:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if the video is made for kids.
                         nullable: true
                       REDDIT:
                         type: object
@@ -3242,12 +3499,15 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          url:
+                          link:
                             type: string
                             nullable: true
+                            description: The URL to which the post will link to.
                           nsfw:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: Set to true if the post is NSFW.
                         required:
                           - sr
                           - text
@@ -3268,9 +3528,15 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
                         nullable: true
@@ -3290,44 +3556,17 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
-                        nullable: true
-                      YOUTUBE:
-                        type: object
-                        properties:
-                          type:
-                            default: SHORT
-                            type: string
-                            enum:
-                              - SHORT
-                          uploadIds:
-                            type: array
-                            items:
-                              type: string
-                            nullable: true
-                          text:
-                            type: string
-                            nullable: true
-                          description:
-                            type: string
-                            nullable: true
-                          categoryId:
-                            type: string
-                            nullable: true
-                          privacyStatus:
-                            type: string
-                            enum:
-                              - PRIVATE
-                              - PUBLIC
-                              - UNLISTED
-                            nullable: true
-                          madeForKids:
-                            default: false
-                            type: boolean
                         nullable: true
                       TELEGRAM:
                         type: object
@@ -3903,15 +4142,25 @@ paths:
                         link:
                           type: string
                           nullable: true
+                          description: The URL to which the Pin will link to.
                         altText:
                           type: string
                           nullable: true
+                          description: >-
+                            The alt text for the image. This is used by screen
+                            readers and when the image can't be loaded.
                         note:
                           type: string
                           nullable: true
+                          description: >-
+                            A note about the Pin. This is not visible to the
+                            public.
                         dominantColor:
                           type: string
                           nullable: true
+                          description: >-
+                            The dominant color of the image. This is used to
+                            display the image before it's loaded.
                       required:
                         - boardName
                       nullable: true
@@ -3972,6 +4221,41 @@ paths:
                             - MUTUAL_FOLLOW_FRIENDS
                             - FOLLOWER_OF_CREATOR
                           nullable: true
+                        isBrandContent:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the video is a paid partnership to
+                            promote a third-party business.
+                        isOrganicBrandContent:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if this video is promoting the creator's
+                            own business.
+                        disableComments:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            If set to true, other TikTok users will not be
+                            allowed to make comments on this post.
+                        disableDuet:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            If set to true, other TikTok users will not be
+                            allowed to make Stitches using this post.
+                        disableStitch:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            If set to true, other TikTok users will not be
+                            allowed to make Duets using this post.
                       nullable: true
                     LINKEDIN:
                       type: object
@@ -3983,7 +4267,7 @@ paths:
                           items:
                             type: string
                           nullable: true
-                        visibility:
+                        privacy:
                           type: string
                           enum:
                             - CONNECTIONS
@@ -3991,22 +4275,55 @@ paths:
                             - LOGGED_IN
                             - CONTAINER
                           nullable: true
-                        distribution:
-                          type: object
-                          properties:
-                            feedDistribution:
-                              type: string
-                              enum:
-                                - NONE
-                                - MAIN_FEED
-                          required:
-                            - feedDistribution
-                          nullable: true
-                        isReshareDisabledByAuthor:
+                        hideFromFeed:
+                          default: false
                           type: boolean
                           nullable: true
+                          description: >-
+                            Set to true if the post shouldn't be displayed in
+                            the main feed.
+                        disableReshare:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the post is not allowed to be
+                            reshared.
                       required:
                         - text
+                      nullable: true
+                    YOUTUBE:
+                      type: object
+                      properties:
+                        type:
+                          default: SHORT
+                          type: string
+                          enum:
+                            - VIDEO
+                            - SHORT
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        description:
+                          type: string
+                          nullable: true
+                        privacy:
+                          type: string
+                          enum:
+                            - PRIVATE
+                            - PUBLIC
+                            - UNLISTED
+                          nullable: true
+                        madeForKids:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: Set to true if the video is made for kids.
                       nullable: true
                     REDDIT:
                       type: object
@@ -4023,12 +4340,15 @@ paths:
                           items:
                             type: string
                           nullable: true
-                        url:
+                        link:
                           type: string
                           nullable: true
+                          description: The URL to which the post will link to.
                         nsfw:
+                          default: false
                           type: boolean
                           nullable: true
+                          description: Set to true if the post is NSFW.
                       required:
                         - sr
                         - text
@@ -4049,9 +4369,13 @@ paths:
                         username:
                           type: string
                           nullable: true
+                          description: >-
+                            The username to display as the author of the
+                            message.
                         avatarUrl:
                           type: string
                           nullable: true
+                          description: Avatar url to display as the author of the message.
                       required:
                         - channelId
                       nullable: true
@@ -4071,44 +4395,15 @@ paths:
                         username:
                           type: string
                           nullable: true
+                          description: >-
+                            The username to display as the author of the
+                            message.
                         avatarUrl:
                           type: string
                           nullable: true
+                          description: Avatar url to display as the author of the message.
                       required:
                         - channelId
-                      nullable: true
-                    YOUTUBE:
-                      type: object
-                      properties:
-                        type:
-                          default: SHORT
-                          type: string
-                          enum:
-                            - SHORT
-                        uploadIds:
-                          type: array
-                          items:
-                            type: string
-                          nullable: true
-                        text:
-                          type: string
-                          nullable: true
-                        description:
-                          type: string
-                          nullable: true
-                        categoryId:
-                          type: string
-                          nullable: true
-                        privacyStatus:
-                          type: string
-                          enum:
-                            - PRIVATE
-                            - PUBLIC
-                            - UNLISTED
-                          nullable: true
-                        madeForKids:
-                          default: false
-                          type: boolean
                       nullable: true
                     TELEGRAM:
                       type: object
@@ -4183,15 +4478,25 @@ paths:
                           link:
                             type: string
                             nullable: true
+                            description: The URL to which the Pin will link to.
                           altText:
                             type: string
                             nullable: true
+                            description: >-
+                              The alt text for the image. This is used by screen
+                              readers and when the image can't be loaded.
                           note:
                             type: string
                             nullable: true
+                            description: >-
+                              A note about the Pin. This is not visible to the
+                              public.
                           dominantColor:
                             type: string
                             nullable: true
+                            description: >-
+                              The dominant color of the image. This is used to
+                              display the image before it's loaded.
                         required:
                           - boardName
                         nullable: true
@@ -4252,6 +4557,41 @@ paths:
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
                             nullable: true
+                          isBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video is a paid partnership to
+                              promote a third-party business.
+                          isOrganicBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if this video is promoting the
+                              creator's own business.
+                          disableComments:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make comments on this post.
+                          disableDuet:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Stitches using this post.
+                          disableStitch:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Duets using this post.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -4263,7 +4603,7 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          visibility:
+                          privacy:
                             type: string
                             enum:
                               - CONNECTIONS
@@ -4271,22 +4611,55 @@ paths:
                               - LOGGED_IN
                               - CONTAINER
                             nullable: true
-                          distribution:
-                            type: object
-                            properties:
-                              feedDistribution:
-                                type: string
-                                enum:
-                                  - NONE
-                                  - MAIN_FEED
-                            required:
-                              - feedDistribution
-                            nullable: true
-                          isReshareDisabledByAuthor:
+                          hideFromFeed:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: >-
+                              Set to true if the post shouldn't be displayed in
+                              the main feed.
+                          disableReshare:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post is not allowed to be
+                              reshared.
                         required:
                           - text
+                        nullable: true
+                      YOUTUBE:
+                        type: object
+                        properties:
+                          type:
+                            default: SHORT
+                            type: string
+                            enum:
+                              - VIDEO
+                              - SHORT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PRIVATE
+                              - PUBLIC
+                              - UNLISTED
+                            nullable: true
+                          madeForKids:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if the video is made for kids.
                         nullable: true
                       REDDIT:
                         type: object
@@ -4303,12 +4676,15 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          url:
+                          link:
                             type: string
                             nullable: true
+                            description: The URL to which the post will link to.
                           nsfw:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: Set to true if the post is NSFW.
                         required:
                           - sr
                           - text
@@ -4329,9 +4705,15 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
                         nullable: true
@@ -4351,44 +4733,17 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
-                        nullable: true
-                      YOUTUBE:
-                        type: object
-                        properties:
-                          type:
-                            default: SHORT
-                            type: string
-                            enum:
-                              - SHORT
-                          uploadIds:
-                            type: array
-                            items:
-                              type: string
-                            nullable: true
-                          text:
-                            type: string
-                            nullable: true
-                          description:
-                            type: string
-                            nullable: true
-                          categoryId:
-                            type: string
-                            nullable: true
-                          privacyStatus:
-                            type: string
-                            enum:
-                              - PRIVATE
-                              - PUBLIC
-                              - UNLISTED
-                            nullable: true
-                          madeForKids:
-                            default: false
-                            type: boolean
                         nullable: true
                       TELEGRAM:
                         type: object
@@ -4745,15 +5100,25 @@ paths:
                           link:
                             type: string
                             nullable: true
+                            description: The URL to which the Pin will link to.
                           altText:
                             type: string
                             nullable: true
+                            description: >-
+                              The alt text for the image. This is used by screen
+                              readers and when the image can't be loaded.
                           note:
                             type: string
                             nullable: true
+                            description: >-
+                              A note about the Pin. This is not visible to the
+                              public.
                           dominantColor:
                             type: string
                             nullable: true
+                            description: >-
+                              The dominant color of the image. This is used to
+                              display the image before it's loaded.
                         required:
                           - boardName
                         nullable: true
@@ -4814,6 +5179,41 @@ paths:
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
                             nullable: true
+                          isBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video is a paid partnership to
+                              promote a third-party business.
+                          isOrganicBrandContent:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if this video is promoting the
+                              creator's own business.
+                          disableComments:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make comments on this post.
+                          disableDuet:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Stitches using this post.
+                          disableStitch:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              If set to true, other TikTok users will not be
+                              allowed to make Duets using this post.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -4825,7 +5225,7 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          visibility:
+                          privacy:
                             type: string
                             enum:
                               - CONNECTIONS
@@ -4833,22 +5233,55 @@ paths:
                               - LOGGED_IN
                               - CONTAINER
                             nullable: true
-                          distribution:
-                            type: object
-                            properties:
-                              feedDistribution:
-                                type: string
-                                enum:
-                                  - NONE
-                                  - MAIN_FEED
-                            required:
-                              - feedDistribution
-                            nullable: true
-                          isReshareDisabledByAuthor:
+                          hideFromFeed:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: >-
+                              Set to true if the post shouldn't be displayed in
+                              the main feed.
+                          disableReshare:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post is not allowed to be
+                              reshared.
                         required:
                           - text
+                        nullable: true
+                      YOUTUBE:
+                        type: object
+                        properties:
+                          type:
+                            default: SHORT
+                            type: string
+                            enum:
+                              - VIDEO
+                              - SHORT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PRIVATE
+                              - PUBLIC
+                              - UNLISTED
+                            nullable: true
+                          madeForKids:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if the video is made for kids.
                         nullable: true
                       REDDIT:
                         type: object
@@ -4865,12 +5298,15 @@ paths:
                             items:
                               type: string
                             nullable: true
-                          url:
+                          link:
                             type: string
                             nullable: true
+                            description: The URL to which the post will link to.
                           nsfw:
+                            default: false
                             type: boolean
                             nullable: true
+                            description: Set to true if the post is NSFW.
                         required:
                           - sr
                           - text
@@ -4891,9 +5327,15 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
                         nullable: true
@@ -4913,44 +5355,17 @@ paths:
                           username:
                             type: string
                             nullable: true
+                            description: >-
+                              The username to display as the author of the
+                              message.
                           avatarUrl:
                             type: string
                             nullable: true
+                            description: >-
+                              Avatar url to display as the author of the
+                              message.
                         required:
                           - channelId
-                        nullable: true
-                      YOUTUBE:
-                        type: object
-                        properties:
-                          type:
-                            default: SHORT
-                            type: string
-                            enum:
-                              - SHORT
-                          uploadIds:
-                            type: array
-                            items:
-                              type: string
-                            nullable: true
-                          text:
-                            type: string
-                            nullable: true
-                          description:
-                            type: string
-                            nullable: true
-                          categoryId:
-                            type: string
-                            nullable: true
-                          privacyStatus:
-                            type: string
-                            enum:
-                              - PRIVATE
-                              - PUBLIC
-                              - UNLISTED
-                            nullable: true
-                          madeForKids:
-                            default: false
-                            type: boolean
                         nullable: true
                       TELEGRAM:
                         type: object

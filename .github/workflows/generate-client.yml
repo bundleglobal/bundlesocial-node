@@ -23,7 +23,7 @@ jobs:
         id: vars
         run: |
           echo ::set-output name=branch::generate-client-$(date +'%Y-%m-%d')
-          echo ::set-output name=commit_message::Generated client $(date +'%Y-%m-%d')
+          echo ::set-output name=commit_message::feat: generate client $(date +'%Y-%m-%d')
           echo ::set-output name=title::Generated client $(date +'%Y-%m-%d')
           echo ::set-output name=body::Generated client $(date +'%Y-%m-%d')
       - name: Create pull request

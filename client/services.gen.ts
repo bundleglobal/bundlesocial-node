@@ -32,7 +32,7 @@ export class TeamService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
     
     /**
-     * Get team with users, invitations, api keys, bots, and social accounts
+     * Get team
      * @returns unknown 200
      * @throws ApiError
      */

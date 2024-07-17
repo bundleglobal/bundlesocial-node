@@ -96,7 +96,7 @@ paths:
                   - message
   /api/v1/team/:
     get:
-      summary: Get team with users, invitations, api keys, bots, and social accounts
+      summary: Get team
       tags:
         - team
       parameters: []

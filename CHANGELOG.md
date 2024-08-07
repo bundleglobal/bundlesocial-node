@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.4.0...v1.5.0) (2024-08-07)
+
+
+### Features
+
+* generate client 2024-08-07 ([bfa3641](https://github.com/bundleglobal/bundlesocial-node/commit/bfa3641264b32baaff3d0e4bf1f2f577c2e8d0b4))
+
 # [1.4.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.3.0...v1.4.0) (2024-07-20)
 
 

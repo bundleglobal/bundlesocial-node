@@ -2112,10 +2112,13 @@ paths:
                           id:
                             type: string
                             nullable: true
-                          permalink:
+                          postId:
                             type: string
                             nullable: true
                           videoId:
+                            type: string
+                            nullable: true
+                          permalink:
                             type: string
                             nullable: true
                         nullable: true
@@ -2805,10 +2808,13 @@ paths:
                                 id:
                                   type: string
                                   nullable: true
-                                permalink:
+                                postId:
                                   type: string
                                   nullable: true
                                 videoId:
+                                  type: string
+                                  nullable: true
+                                permalink:
                                   type: string
                                   nullable: true
                               nullable: true
@@ -3648,10 +3654,13 @@ paths:
                           id:
                             type: string
                             nullable: true
-                          permalink:
+                          postId:
                             type: string
                             nullable: true
                           videoId:
+                            type: string
+                            nullable: true
+                          permalink:
                             type: string
                             nullable: true
                         nullable: true
@@ -4825,10 +4834,13 @@ paths:
                           id:
                             type: string
                             nullable: true
-                          permalink:
+                          postId:
                             type: string
                             nullable: true
                           videoId:
+                            type: string
+                            nullable: true
+                          permalink:
                             type: string
                             nullable: true
                         nullable: true
@@ -5447,10 +5459,13 @@ paths:
                           id:
                             type: string
                             nullable: true
-                          permalink:
+                          postId:
                             type: string
                             nullable: true
                           videoId:
+                            type: string
+                            nullable: true
+                          permalink:
                             type: string
                             nullable: true
                         nullable: true

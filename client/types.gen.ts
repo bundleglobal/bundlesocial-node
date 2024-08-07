@@ -542,8 +542,9 @@ export type PostCreateResponse = {
         } | null;
         FACEBOOK?: {
             id?: string | null;
-            permalink?: string | null;
+            postId?: string | null;
             videoId?: string | null;
+            permalink?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
@@ -763,8 +764,9 @@ export type PostGetListResponse = {
             } | null;
             FACEBOOK?: {
                 id?: string | null;
-                permalink?: string | null;
+                postId?: string | null;
                 videoId?: string | null;
+                permalink?: string | null;
             } | null;
             INSTAGRAM?: {
                 id?: string | null;
@@ -1038,8 +1040,9 @@ export type PostGetResponse = {
         } | null;
         FACEBOOK?: {
             id?: string | null;
-            permalink?: string | null;
+            postId?: string | null;
             videoId?: string | null;
+            permalink?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
@@ -1449,8 +1452,9 @@ export type PostUpdateResponse = {
         } | null;
         FACEBOOK?: {
             id?: string | null;
-            permalink?: string | null;
+            postId?: string | null;
             videoId?: string | null;
+            permalink?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
@@ -1663,8 +1667,9 @@ export type PostDeleteResponse = {
         } | null;
         FACEBOOK?: {
             id?: string | null;
-            permalink?: string | null;
+            postId?: string | null;
             videoId?: string | null;
+            permalink?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
@@ -2386,8 +2391,9 @@ export type $OpenApiTs = {
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
-                            permalink?: string | null;
+                            postId?: string | null;
                             videoId?: string | null;
+                            permalink?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
@@ -2638,8 +2644,9 @@ export type $OpenApiTs = {
                             } | null;
                             FACEBOOK?: {
                                 id?: string | null;
-                                permalink?: string | null;
+                                postId?: string | null;
                                 videoId?: string | null;
+                                permalink?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 id?: string | null;
@@ -2952,8 +2959,9 @@ export type $OpenApiTs = {
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
-                            permalink?: string | null;
+                            postId?: string | null;
                             videoId?: string | null;
+                            permalink?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
@@ -3262,8 +3270,9 @@ export type $OpenApiTs = {
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
-                            permalink?: string | null;
+                            postId?: string | null;
                             videoId?: string | null;
+                            permalink?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
@@ -3513,8 +3522,9 @@ export type $OpenApiTs = {
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
-                            permalink?: string | null;
+                            postId?: string | null;
                             videoId?: string | null;
+                            permalink?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;

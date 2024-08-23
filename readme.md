@@ -28,14 +28,14 @@ const team = await bundlesocial.team.teamGetTeam();
 ### Upload a file
 ```ts
 const video = await fs.readFile('./video.mp4');
-const createdUpload = await bundlesocial.upload.uploadCreate({
+const videoUpload = await bundlesocial.upload.uploadCreate({
   formData: {
     file: new Blob([video], { type: 'video/mp4' }),
   }
 });
 
 const jpgImage = await fs.readFile('./image.jpg');
-const createdUpload = await bundlesocial.upload.uploadCreate({
+const jpgUpload = await bundlesocial.upload.uploadCreate({
   formData: {
     file: new Blob([jpgImage], { type: 'image/jpeg' }),
   }
@@ -72,9 +72,16 @@ const createdPost = await bundlesocial.post.postCreate({
         ],
         privacy: 'PUBLIC_TO_EVERYONE',
       },
+      REDDIT: {
+        sr: 'r/bundlesocial',
+        text: 'Test Post',
+        uploadIds: [
+          jpgUpload.id
+        ],
+      },
     },
     postDate: new Date().toISOString(),
-    socialAccountTypes: ['INSTAGRAM', 'YOUTUBE', 'TIKTOK'],
+    socialAccountTypes: ['INSTAGRAM', 'YOUTUBE', 'TIKTOK', 'REDDIT'],
     status: 'SCHEDULED',
     title: 'Test Post',
   }

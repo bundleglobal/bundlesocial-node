@@ -15,8 +15,8 @@ pnpm add bundlesocial
 ```ts
 import { BundleSocial } from 'bundlesocial';
 
-const bundleSocial = new BundleSocial('YOUR_API_KEY');
 // Get the API key from the bundle.social dashboard
+const bundleSocial = new BundleSocial('YOUR_API_KEY');
 ```
 
 ## Usage
@@ -28,14 +28,14 @@ const team = await bundlesocial.team.teamGetTeam();
 ### Upload a file
 ```ts
 const video = await fs.readFile('./video.mp4');
-const createdUpload = await bundlesocial.upload.uploadCreate({
+const videoUpload = await bundlesocial.upload.uploadCreate({
   formData: {
     file: new Blob([video], { type: 'video/mp4' }),
   }
 });
 
 const jpgImage = await fs.readFile('./image.jpg');
-const createdUpload = await bundlesocial.upload.uploadCreate({
+const jpgUpload = await bundlesocial.upload.uploadCreate({
   formData: {
     file: new Blob([jpgImage], { type: 'image/jpeg' }),
   }
@@ -72,9 +72,16 @@ const createdPost = await bundlesocial.post.postCreate({
         ],
         privacy: 'PUBLIC_TO_EVERYONE',
       },
+      REDDIT: {
+        sr: 'r/bundlesocial',
+        text: 'Test Post',
+        uploadIds: [
+          jpgUpload.id
+        ],
+      },
     },
     postDate: new Date().toISOString(),
-    socialAccountTypes: ['INSTAGRAM', 'YOUTUBE', 'TIKTOK'],
+    socialAccountTypes: ['INSTAGRAM', 'YOUTUBE', 'TIKTOK', 'REDDIT'],
     status: 'SCHEDULED',
     title: 'Test Post',
   }
@@ -100,6 +107,32 @@ try {
     throw error;
   }
 }
+```
+
+## Handling webhook events
+```ts
+// this is a simple example using express
+app.post('/webhook', express.json({ type: 'application/json' }), (req, res) => {
+  const bundlesocial = new Bundlesocial(apiKey);
+  const signature = req.headers['x-signature'];
+
+  let event: WebhookEvent;
+
+  try {
+    // Verify the webhook signature and return a typed event
+    event = bundlesocial.webhooks.constructEvent(
+      req.body,
+      signature as string,
+      secret,
+    );
+    // Do something with the event
+  } catch (err) {
+    console.log(`Webhook signature verification failed.`, err);
+    return res.sendStatus(400);
+  }
+
+  return res.send();
+});
 ```
 
 ## License

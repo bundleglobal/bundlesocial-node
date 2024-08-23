@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.5.0...v1.6.0) (2024-08-23)
+
+
+### Bug Fixes
+
+* 429 error & reddit sr description ([e03d85b](https://github.com/bundleglobal/bundlesocial-node/commit/e03d85b957160b16b4443909c1815569fab99f24))
+* add reddit to create post in readme ([262d513](https://github.com/bundleglobal/bundlesocial-node/commit/262d513a3e8db1ae7fe9ef6c14bc0db68c783361))
+
+
+### Features
+
+* generate client 2024-08-21 ([cf80d66](https://github.com/bundleglobal/bundlesocial-node/commit/cf80d660f024f4f19eef039b7840a5c0d61cd457))
+* webhooks in readme ([4c9548a](https://github.com/bundleglobal/bundlesocial-node/commit/4c9548a97759dae3f107a0683d57660b4ef912fa))
+
 # [1.5.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.4.0...v1.5.0) (2024-08-07)
 
 

@@ -15,8 +15,8 @@ pnpm add bundlesocial
 ```ts
 import { BundleSocial } from 'bundlesocial';
 
-const bundleSocial = new BundleSocial('YOUR_API_KEY');
 // Get the API key from the bundle.social dashboard
+const bundleSocial = new BundleSocial('YOUR_API_KEY');
 ```
 
 ## Usage
@@ -100,6 +100,32 @@ try {
     throw error;
   }
 }
+```
+
+## Handling webhook events
+```ts
+// this is a simple example using express
+app.post('/webhook', express.json({ type: 'application/json' }), (req, res) => {
+  const bundlesocial = new Bundlesocial(apiKey);
+  const signature = req.headers['x-signature'];
+
+  let event: WebhookEvent;
+
+  try {
+    // Verify the webhook signature and return a typed event
+    event = bundlesocial.webhooks.constructEvent(
+      req.body,
+      signature as string,
+      secret,
+    );
+    // Do something with the event
+  } catch (err) {
+    console.log(`Webhook signature verification failed.`, err);
+    return res.sendStatus(400);
+  }
+
+  return res.send();
+});
 ```
 
 ## License

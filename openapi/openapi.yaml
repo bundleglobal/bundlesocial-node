@@ -83,6 +83,17 @@ paths:
                     type: string
                 required:
                   - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
         '500':
           description: '500'
           content:
@@ -511,6 +522,17 @@ paths:
                     type: string
                 required:
                   - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
         '500':
           description: '500'
           content:
@@ -667,6 +689,17 @@ paths:
                   - message
         '404':
           description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
           content:
             application/json:
               schema:
@@ -856,6 +889,17 @@ paths:
                     type: string
                 required:
                   - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
         '500':
           description: '500'
           content:
@@ -1023,6 +1067,17 @@ paths:
                     type: string
                 required:
                   - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
         '500':
           description: '500'
           content:
@@ -1180,6 +1235,17 @@ paths:
                     type: string
                 required:
                   - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
         '500':
           description: '500'
           content:
@@ -1327,6 +1393,17 @@ paths:
                   - message
         '404':
           description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
           content:
             application/json:
               schema:
@@ -1611,6 +1688,9 @@ paths:
                       properties:
                         sr:
                           type: string
+                          description: >-
+                            Subreddit name. Example: r/subredditName or
+                            u/username
                         text:
                           type: string
                         description:
@@ -1953,6 +2033,9 @@ paths:
                         properties:
                           sr:
                             type: string
+                            description: >-
+                              Subreddit name. Example: r/subredditName or
+                              u/username
                           text:
                             type: string
                           description:
@@ -2295,6 +2378,17 @@ paths:
                   - message
         '404':
           description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
           content:
             application/json:
               schema:
@@ -2649,6 +2743,9 @@ paths:
                               properties:
                                 sr:
                                   type: string
+                                  description: >-
+                                    Subreddit name. Example: r/subredditName or
+                                    u/username
                                 text:
                                   type: string
                                 description:
@@ -3220,6 +3317,17 @@ paths:
                     type: string
                 required:
                   - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
         '500':
           description: '500'
           content:
@@ -3495,6 +3603,9 @@ paths:
                         properties:
                           sr:
                             type: string
+                            description: >-
+                              Subreddit name. Example: r/subredditName or
+                              u/username
                           text:
                             type: string
                           description:
@@ -4061,6 +4172,17 @@ paths:
                     type: string
                 required:
                   - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
         '500':
           description: '500'
           content:
@@ -4339,6 +4461,9 @@ paths:
                       properties:
                         sr:
                           type: string
+                          description: >-
+                            Subreddit name. Example: r/subredditName or
+                            u/username
                         text:
                           type: string
                         description:
@@ -4675,6 +4800,9 @@ paths:
                         properties:
                           sr:
                             type: string
+                            description: >-
+                              Subreddit name. Example: r/subredditName or
+                              u/username
                           text:
                             type: string
                           description:
@@ -5017,6 +5145,17 @@ paths:
                   - message
         '404':
           description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
           content:
             application/json:
               schema:
@@ -5300,6 +5439,9 @@ paths:
                         properties:
                           sr:
                             type: string
+                            description: >-
+                              Subreddit name. Example: r/subredditName or
+                              u/username
                           text:
                             type: string
                           description:
@@ -5642,6 +5784,17 @@ paths:
                   - message
         '404':
           description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
           content:
             application/json:
               schema:

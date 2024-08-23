@@ -335,6 +335,9 @@ export type PostCreateData = {
                 madeForKids?: boolean | null;
             } | null;
             REDDIT?: {
+                /**
+                 * Subreddit name. Example: r/subredditName or u/username
+                 */
                 sr: string;
                 text: string;
                 description?: string | null;
@@ -474,6 +477,9 @@ export type PostCreateResponse = {
             madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
+            /**
+             * Subreddit name. Example: r/subredditName or u/username
+             */
             sr: string;
             text: string;
             description?: string | null;
@@ -696,6 +702,9 @@ export type PostGetListResponse = {
                 madeForKids?: boolean | null;
             } | null;
             REDDIT?: {
+                /**
+                 * Subreddit name. Example: r/subredditName or u/username
+                 */
                 sr: string;
                 text: string;
                 description?: string | null;
@@ -972,6 +981,9 @@ export type PostGetResponse = {
             madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
+            /**
+             * Subreddit name. Example: r/subredditName or u/username
+             */
             sr: string;
             text: string;
             description?: string | null;
@@ -1245,6 +1257,9 @@ export type PostUpdateData = {
                 madeForKids?: boolean | null;
             } | null;
             REDDIT?: {
+                /**
+                 * Subreddit name. Example: r/subredditName or u/username
+                 */
                 sr: string;
                 text: string;
                 description?: string | null;
@@ -1384,6 +1399,9 @@ export type PostUpdateResponse = {
             madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
+            /**
+             * Subreddit name. Example: r/subredditName or u/username
+             */
             sr: string;
             text: string;
             description?: string | null;
@@ -1599,6 +1617,9 @@ export type PostDeleteResponse = {
             madeForKids?: boolean | null;
         } | null;
         REDDIT?: {
+            /**
+             * Subreddit name. Example: r/subredditName or u/username
+             */
             sr: string;
             text: string;
             description?: string | null;
@@ -1756,6 +1777,12 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
                  * 500
                  */
                 500: {
@@ -1894,6 +1921,12 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
                  * 500
                  */
                 500: {
@@ -1955,6 +1988,12 @@ export type $OpenApiTs = {
                  * 404
                  */
                 404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
                     message: string;
                 };
                 /**
@@ -2026,6 +2065,12 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
                  * 500
                  */
                 500: {
@@ -2085,6 +2130,12 @@ export type $OpenApiTs = {
                  * 404
                  */
                 404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
                     message: string;
                 };
                 /**
@@ -2152,6 +2203,12 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
                  * 500
                  */
                 500: {
@@ -2211,6 +2268,12 @@ export type $OpenApiTs = {
                  * 404
                  */
                 404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
                     message: string;
                 };
                 /**
@@ -2323,6 +2386,9 @@ export type $OpenApiTs = {
                             madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
+                            /**
+                             * Subreddit name. Example: r/subredditName or u/username
+                             */
                             sr: string;
                             text: string;
                             description?: string | null;
@@ -2468,6 +2534,12 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
                  * 500
                  */
                 500: {
@@ -2576,6 +2648,9 @@ export type $OpenApiTs = {
                                 madeForKids?: boolean | null;
                             } | null;
                             REDDIT?: {
+                                /**
+                                 * Subreddit name. Example: r/subredditName or u/username
+                                 */
                                 sr: string;
                                 text: string;
                                 description?: string | null;
@@ -2782,6 +2857,12 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
                  * 500
                  */
                 500: {
@@ -2891,6 +2972,9 @@ export type $OpenApiTs = {
                             madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
+                            /**
+                             * Subreddit name. Example: r/subredditName or u/username
+                             */
                             sr: string;
                             text: string;
                             description?: string | null;
@@ -3095,6 +3179,12 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
                  * 500
                  */
                 500: {
@@ -3202,6 +3292,9 @@ export type $OpenApiTs = {
                             madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
+                            /**
+                             * Subreddit name. Example: r/subredditName or u/username
+                             */
                             sr: string;
                             text: string;
                             description?: string | null;
@@ -3344,6 +3437,12 @@ export type $OpenApiTs = {
                  * 404
                  */
                 404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
                     message: string;
                 };
                 /**
@@ -3454,6 +3553,9 @@ export type $OpenApiTs = {
                             madeForKids?: boolean | null;
                         } | null;
                         REDDIT?: {
+                            /**
+                             * Subreddit name. Example: r/subredditName or u/username
+                             */
                             sr: string;
                             text: string;
                             description?: string | null;
@@ -3596,6 +3698,12 @@ export type $OpenApiTs = {
                  * 404
                  */
                 404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
                     message: string;
                 };
                 /**

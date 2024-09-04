@@ -279,6 +279,8 @@ export type PostCreateData = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                likeAfterPosting?: boolean | null;
+                firstComment?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -421,6 +423,8 @@ export type PostCreateResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            likeAfterPosting?: boolean | null;
+            firstComment?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -646,6 +650,8 @@ export type PostGetListResponse = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                likeAfterPosting?: boolean | null;
+                firstComment?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -925,6 +931,8 @@ export type PostGetResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            likeAfterPosting?: boolean | null;
+            firstComment?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -1201,6 +1209,8 @@ export type PostUpdateData = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                likeAfterPosting?: boolean | null;
+                firstComment?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -1343,6 +1353,8 @@ export type PostUpdateResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            likeAfterPosting?: boolean | null;
+            firstComment?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -1561,6 +1573,8 @@ export type PostDeleteResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            likeAfterPosting?: boolean | null;
+            firstComment?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -2330,6 +2344,8 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            likeAfterPosting?: boolean | null;
+                            firstComment?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -2592,6 +2608,8 @@ export type $OpenApiTs = {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                likeAfterPosting?: boolean | null;
+                                firstComment?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -2916,6 +2934,8 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            likeAfterPosting?: boolean | null;
+                            firstComment?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -3236,6 +3256,8 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            likeAfterPosting?: boolean | null;
+                            firstComment?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -3497,6 +3519,8 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            likeAfterPosting?: boolean | null;
+                            firstComment?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';

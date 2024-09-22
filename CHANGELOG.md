@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.6.0...v2.0.0) (2024-09-22)
+
+
+* Merge pull request [#25](https://github.com/bundleglobal/bundlesocial-node/issues/25) from bundleglobal/api-v2 ([b9220f8](https://github.com/bundleglobal/bundlesocial-node/commit/b9220f8726adb840a9f3dd0938e632d4b1c4408f))
+
+
+### BREAKING CHANGES
+
+* api v2 - organization based api key
+
 # [1.6.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.5.0...v1.6.0) (2024-08-23)
 
 

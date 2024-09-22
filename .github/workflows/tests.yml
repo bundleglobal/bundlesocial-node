@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUNDLE_SOCIAL_API_KEY: ${{ secrets.BUNDLE_SOCIAL_API_KEY }}
+      BUNDLE_SOCIAL_TEAM_ID: ${{ secrets.BUNDLE_SOCIAL_TEAM_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

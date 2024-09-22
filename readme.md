@@ -9,7 +9,7 @@ yarn add bundlesocial
 pnpm add bundlesocial
 ```
 
-> !!! Make sure you have created a team on [bundle.social](https://bundle.social) and have an generated API key. !!!
+> !!! Make sure you have generated an API key on [bundle.social](https://bundle.social). !!!
 
 ## Setup
 ```ts
@@ -61,7 +61,7 @@ const response = await bundlesocial.socialAccount.socialAccountConnect({
 // After the user has connected the account, the user will be redirected to the redirectUrl
 ```
 
-#### Select page, account or channel (required for FACEBOOK, INSTAGRAM, YOUTUBE, LINKEDIN, DISCORD AND SLACK)
+#### Select page, account or channel (required for FACEBOOK, INSTAGRAM, YOUTUBE and LINKEDIN)
 After the user has connected the account and was redirected to your page, you can let the user select the page, account or channel. We unified the data for all platforms. Each social account has a `channels` field, that is an array of their channels (pages, accounts, channels depending on the platform).
 
 ```ts
@@ -69,7 +69,7 @@ const team = await bundlesocial.team.teamGetTeam({
   id: team.id,
 });
 
-const socialAccount = team?.socialAccounts?.find((account) => account.type === 'TIKTOK');
+const socialAccount = team?.socialAccounts?.find((account) => account.type === 'YOUTUBE');
 const socialAccountChannelId = socialAccount?.channels?.[0]?.id;
 
 if (socialAccountChannelId) {

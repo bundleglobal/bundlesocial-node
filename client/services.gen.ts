@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, TeamGetTeamResponse, UploadCreateData, UploadCreateResponse, UploadGetListResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, PostCreateData, PostCreateResponse, PostGetListData, PostGetListResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -29,18 +29,226 @@ export class AppService {
     
 }
 
+export class OrganizationService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Get organization
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public organizationGetOrganization(): CancelablePromise<OrganizationGetOrganizationResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/organization/',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
 export class TeamService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
     
     /**
      * Get team
+     * @param data The data for the request.
+     * @param data.id
      * @returns unknown 200
      * @throws ApiError
      */
-    public teamGetTeam(): CancelablePromise<TeamGetTeamResponse> {
+    public teamGetTeam(data: TeamGetTeamData): CancelablePromise<TeamGetTeamResponse> {
         return this.httpRequest.request({
             method: 'GET',
+            url: '/api/v1/team/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update team
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public teamUpdateTeam(data: TeamUpdateTeamData): CancelablePromise<TeamUpdateTeamResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/team/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete team
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public teamDeleteTeam(data: TeamDeleteTeamData): CancelablePromise<TeamDeleteTeamResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/team/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Create new team
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public teamCreateTeam(data: TeamCreateTeamData = {}): CancelablePromise<TeamCreateTeamResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
             url: '/api/v1/team/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class SocialAccountService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Generate OAuth URL
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountConnect(data: SocialAccountConnectData = {}): CancelablePromise<SocialAccountConnectResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/social-account/connect',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Disconnect social account from team
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountDisconnect(data: SocialAccountDisconnectData = {}): CancelablePromise<SocialAccountDisconnectResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/social-account/disconnect',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Set channel for social account
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountSetChannel(data: SocialAccountSetChannelData = {}): CancelablePromise<SocialAccountSetChannelResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/social-account/set-channel',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Refresh channels for social account
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountRefreshChannels(data: SocialAccountRefreshChannelsData = {}): CancelablePromise<SocialAccountRefreshChannelsResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/social-account/refresh-channels',
+            body: data.requestBody,
+            mediaType: 'application/json',
             errors: {
                 400: '400',
                 401: '401',
@@ -58,6 +266,31 @@ export class UploadService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
     
     /**
+     * Get upload list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public uploadGetList(data: UploadGetListData): CancelablePromise<UploadGetListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/upload/',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Create upload
      * Upload a file. This is the only endpoint that uses multipart/form-data.
      * @param data The data for the request.
@@ -71,26 +304,6 @@ export class UploadService {
             url: '/api/v1/upload/',
             formData: data.formData,
             mediaType: 'multipart/form-data',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get upload list
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public uploadGetList(): CancelablePromise<UploadGetListResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/upload/',
             errors: {
                 400: '400',
                 401: '401',
@@ -182,67 +395,6 @@ export class PostService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
     
     /**
-     * Create post
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public postCreate(data: PostCreateData = {}): CancelablePromise<PostCreateResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/post/',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get post list
-     * @param data The data for the request.
-     * @param data.status
-     * @param data.orderBy
-     * @param data.order
-     * @param data.q
-     * @param data.platforms
-     * @param data.offset
-     * @param data.limit
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public postGetList(data: PostGetListData = {}): CancelablePromise<PostGetListResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/post/',
-            query: {
-                status: data.status,
-                orderBy: data.orderBy,
-                order: data.order,
-                q: data.q,
-                platforms: data.platforms,
-                offset: data.offset,
-                limit: data.limit
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
      * Get post
      * @param data The data for the request.
      * @param data.id
@@ -277,7 +429,7 @@ export class PostService {
      */
     public postUpdate(data: PostUpdateData): CancelablePromise<PostUpdateResponse> {
         return this.httpRequest.request({
-            method: 'PUT',
+            method: 'PATCH',
             url: '/api/v1/post/{id}',
             path: {
                 id: data.id
@@ -309,6 +461,69 @@ export class PostService {
             path: {
                 id: data.id
             },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get post list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.status
+     * @param data.orderBy
+     * @param data.order
+     * @param data.q
+     * @param data.platforms
+     * @param data.offset
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public postGetList(data: PostGetListData): CancelablePromise<PostGetListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/post/',
+            query: {
+                teamId: data.teamId,
+                status: data.status,
+                orderBy: data.orderBy,
+                order: data.order,
+                q: data.q,
+                platforms: data.platforms,
+                offset: data.offset,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Create post
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public postCreate(data: PostCreateData = {}): CancelablePromise<PostCreateResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/post/',
+            body: data.requestBody,
+            mediaType: 'application/json',
             errors: {
                 400: '400',
                 401: '401',

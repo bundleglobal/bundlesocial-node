@@ -5,33 +5,26 @@ export type AppGetHealthResponse = {
     createdAt: string;
 };
 
-export type TeamGetTeamResponse = {
+export type OrganizationGetOrganizationResponse = {
     id: string;
-    name: string;
-    avatarUrl?: string | null;
     createdById: string;
+    name?: string | null;
+    avatarUrl?: string | null;
+    defaultPaymentMethodFilled?: boolean;
+    billingAddressFilled?: boolean;
+    apiAccess?: boolean;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
-    users: Array<{
-        userId: string;
-        teamId: string;
+    teams: Array<{
+        id: string;
+        name: string;
+        avatarUrl?: string | null;
+        organizationId: string;
+        createdById: string;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
-        user: {
-            id: string;
-            externalId: string;
-            email: string;
-            emailVerified?: string | null;
-            firstName?: string | null;
-            lastName?: string | null;
-            avatarUrl?: string | null;
-            role: 'ADMIN' | 'CUSTOMER';
-            createdAt: string | null;
-            updatedAt: string | null;
-            deletedAt?: string | null;
-        };
     }>;
     createdBy: {
         id: string;
@@ -46,27 +39,83 @@ export type TeamGetTeamResponse = {
         updatedAt: string | null;
         deletedAt?: string | null;
     };
-    invitations: Array<{
+    organizationSubscription?: {
         id: string;
-        email: string;
-        teamId: string;
-        createdById: string;
+        organizationId: string;
+        stripeSubscriptionId: string;
+        stripeSubscriptionItems?: Array<{
+            id: string;
+            price: string;
+            quantity: number;
+        }> | null;
+        status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
+        metadata?: unknown;
+        cancelAtPeriodEnd: boolean;
+        created: string | null;
+        currentPeriodStart: string | null;
+        currentPeriodEnd: string | null;
+        endedAt?: string | null;
+        cancelAt?: string | null;
+        canceledAt?: string | null;
+        trialStart?: string | null;
+        trialEnd?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
-    }>;
+        teamPlan?: {
+            id: string;
+            organizationSubscriptionId: string;
+            teamId: string;
+            stripePriceId: string;
+            tier: 'PRO';
+            createdAt: string | null;
+            updatedAt: string | null;
+        } | null;
+    } | null;
+};
+
+export type TeamGetTeamData = {
+    id: string;
+};
+
+export type TeamGetTeamResponse = {
+    id: string;
+    name: string;
+    avatarUrl?: string | null;
+    organizationId: string;
+    createdById: string;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    organization: {
+        id: string;
+        createdById: string;
+        name?: string | null;
+        avatarUrl?: string | null;
+        defaultPaymentMethodFilled?: boolean;
+        billingAddressFilled?: boolean;
+        apiAccess?: boolean;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+    createdBy: {
+        id: string;
+        externalId: string;
+        email: string;
+        emailVerified?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        avatarUrl?: string | null;
+        role: 'ADMIN' | 'CUSTOMER';
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
     bots: Array<{
         id: string;
         name: string;
         avatarUrl?: string | null;
         teamId: string;
-        createdAt: string | null;
-        updatedAt: string | null;
-        deletedAt?: string | null;
-    }>;
-    webhooks: Array<{
-        id: string;
-        teamId: string;
-        url: string;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -99,36 +148,228 @@ export type TeamGetTeamResponse = {
     usage: {
         monthlyPosts: number;
     };
+    teamPlan?: {
+        id: string;
+        organizationSubscriptionId: string;
+        teamId: string;
+        stripePriceId: string;
+        tier: 'PRO';
+        createdAt: string | null;
+        updatedAt: string | null;
+        organizationSubscription?: {
+            id: string;
+            organizationId: string;
+            stripeSubscriptionId: string;
+            stripeSubscriptionItems?: Array<{
+                id: string;
+                price: string;
+                quantity: number;
+            }> | null;
+            status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
+            metadata?: unknown;
+            cancelAtPeriodEnd: boolean;
+            created: string | null;
+            currentPeriodStart: string | null;
+            currentPeriodEnd: string | null;
+            endedAt?: string | null;
+            cancelAt?: string | null;
+            canceledAt?: string | null;
+            trialStart?: string | null;
+            trialEnd?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+        } | null;
+    } | null;
 };
 
-export type UploadCreateData = {
+export type TeamUpdateTeamData = {
+    id: string;
     /**
      * Body
      */
-    formData?: {
-        file?: (Blob | File) | null;
+    requestBody?: {
+        name?: string;
+        avatarUrl?: string | null;
     };
 };
 
-export type UploadCreateResponse = {
+export type TeamUpdateTeamResponse = {
     id: string;
-    teamId: string;
-    expiresAt?: string | null;
-    iconUrl?: string | null;
-    thumbnailUrl?: string | null;
-    url?: string | null;
-    iconPath?: string | null;
-    thumbnailPath?: string | null;
-    path?: string | null;
-    type: 'image' | 'video';
-    width?: number | null;
-    height?: number | null;
-    fileSize?: number | null;
-    videoLength?: number | null;
-    mime?: string | null;
-    ext?: string | null;
+    name: string;
+    avatarUrl?: string | null;
+    organizationId: string;
+    createdById: string;
     createdAt: string | null;
     updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type TeamDeleteTeamData = {
+    id: string;
+};
+
+export type TeamDeleteTeamResponse = {
+    id: string;
+    name: string;
+    avatarUrl?: string | null;
+    organizationId: string;
+    createdById: string;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type TeamCreateTeamData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        name: string;
+        tier: 'FREE' | 'PRO';
+        avatarUrl?: string | null;
+    };
+};
+
+export type TeamCreateTeamResponse = {
+    id: string;
+    name: string;
+    avatarUrl?: string | null;
+    organizationId: string;
+    createdById: string;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type SocialAccountConnectData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
+        teamId: string;
+        redirectUrl: string;
+    };
+};
+
+export type SocialAccountConnectResponse = {
+    /**
+     * OAuth URL - Redirect user to this URL to connect social account
+     */
+    url: string;
+};
+
+export type SocialAccountDisconnectData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
+        teamId: string;
+    };
+};
+
+export type SocialAccountDisconnectResponse = {
+    id: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+    teamId: string;
+    username?: string | null;
+    displayName?: string | null;
+    externalId?: string | null;
+    userUsername?: string | null;
+    userDisplayName?: string | null;
+    userId?: string | null;
+    channels?: Array<{
+        id: string;
+        name?: string | null;
+        username?: string | null;
+        webhook?: {
+            id?: string | null;
+            name?: string | null;
+            avatar?: string | null;
+            url?: string | null;
+        } | null;
+    }> | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type SocialAccountSetChannelData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE';
+        teamId: string;
+        channelId: string;
+    };
+};
+
+export type SocialAccountSetChannelResponse = {
+    id: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+    teamId: string;
+    username?: string | null;
+    displayName?: string | null;
+    externalId?: string | null;
+    userUsername?: string | null;
+    userDisplayName?: string | null;
+    userId?: string | null;
+    channels?: Array<{
+        id: string;
+        name?: string | null;
+        username?: string | null;
+        webhook?: {
+            id?: string | null;
+            name?: string | null;
+            avatar?: string | null;
+            url?: string | null;
+        } | null;
+    }> | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type SocialAccountRefreshChannelsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        type: 'DISCORD' | 'SLACK' | 'REDDIT' | 'PINTEREST';
+        teamId: string;
+    };
+};
+
+export type SocialAccountRefreshChannelsResponse = {
+    id: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+    teamId: string;
+    username?: string | null;
+    displayName?: string | null;
+    externalId?: string | null;
+    userUsername?: string | null;
+    userDisplayName?: string | null;
+    userId?: string | null;
+    channels?: Array<{
+        id: string;
+        name?: string | null;
+        username?: string | null;
+        webhook?: {
+            id?: string | null;
+            name?: string | null;
+            avatar?: string | null;
+            url?: string | null;
+        } | null;
+    }> | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type UploadGetListData = {
+    teamId: string;
 };
 
 export type UploadGetListResponse = Array<{
@@ -158,6 +399,37 @@ export type UploadGetListResponse = Array<{
         deletedAt?: string | null;
     }>;
 }>;
+
+export type UploadCreateData = {
+    /**
+     * Body
+     */
+    formData?: {
+        teamId: string;
+        file?: (Blob | File) | null;
+    };
+};
+
+export type UploadCreateResponse = {
+    id: string;
+    teamId: string;
+    expiresAt?: string | null;
+    iconUrl?: string | null;
+    thumbnailUrl?: string | null;
+    url?: string | null;
+    iconPath?: string | null;
+    thumbnailPath?: string | null;
+    path?: string | null;
+    type: 'image' | 'video';
+    width?: number | null;
+    height?: number | null;
+    fileSize?: number | null;
+    videoLength?: number | null;
+    mime?: string | null;
+    ext?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+};
 
 export type UploadDeleteManyData = {
     /**
@@ -237,650 +509,6 @@ export type UploadDeleteResponse = {
     ext?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
-};
-
-export type PostCreateData = {
-    /**
-     * Body
-     */
-    requestBody?: {
-        title: string;
-        postDate: string;
-        status: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK')>;
-        data: {
-            TWITTER?: {
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-            } | null;
-            PINTEREST?: {
-                text?: string | null;
-                description?: string | null;
-                boardName: string;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The URL to which the Pin will link to.
-                 */
-                link?: string | null;
-                /**
-                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
-                 */
-                altText?: string | null;
-                /**
-                 * A note about the Pin. This is not visible to the public.
-                 */
-                note?: string | null;
-                /**
-                 * The dominant color of the image. This is used to display the image before it's loaded.
-                 */
-                dominantColor?: string | null;
-            } | null;
-            FACEBOOK?: {
-                type?: 'POST' | 'REEL' | 'STORY';
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-            } | null;
-            INSTAGRAM?: {
-                type?: 'POST' | 'REEL' | 'STORY';
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-            } | null;
-            TIKTOK?: {
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-                privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
-                /**
-                 * Set to true if the video is a paid partnership to promote a third-party business.
-                 */
-                isBrandContent?: boolean | null;
-                /**
-                 * Set to true if this video is promoting the creator's own business.
-                 */
-                isOrganicBrandContent?: boolean | null;
-                /**
-                 * If set to true, other TikTok users will not be allowed to make comments on this post.
-                 */
-                disableComments?: boolean | null;
-                /**
-                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
-                 */
-                disableDuet?: boolean | null;
-                /**
-                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
-                 */
-                disableStitch?: boolean | null;
-            } | null;
-            LINKEDIN?: {
-                text: string;
-                uploadIds?: Array<(string)> | null;
-                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                /**
-                 * Set to true if the post shouldn't be displayed in the main feed.
-                 */
-                hideFromFeed?: boolean | null;
-                /**
-                 * Set to true if the post is not allowed to be reshared.
-                 */
-                disableReshare?: boolean | null;
-            } | null;
-            YOUTUBE?: {
-                type?: 'VIDEO' | 'SHORT';
-                uploadIds?: Array<(string)> | null;
-                text?: string | null;
-                description?: string | null;
-                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                /**
-                 * Set to true if the video is made for kids.
-                 */
-                madeForKids?: boolean | null;
-            } | null;
-            REDDIT?: {
-                /**
-                 * Subreddit name. Example: r/subredditName or u/username
-                 */
-                sr: string;
-                text: string;
-                description?: string | null;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The URL to which the post will link to.
-                 */
-                link?: string | null;
-                /**
-                 * Set to true if the post is NSFW.
-                 */
-                nsfw?: boolean | null;
-            } | null;
-            DISCORD?: {
-                channelId: string;
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The username to display as the author of the message.
-                 */
-                username?: string | null;
-                /**
-                 * Avatar url to display as the author of the message.
-                 */
-                avatarUrl?: string | null;
-            } | null;
-            SLACK?: {
-                channelId: string;
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The username to display as the author of the message.
-                 */
-                username?: string | null;
-                /**
-                 * Avatar url to display as the author of the message.
-                 */
-                avatarUrl?: string | null;
-            } | null;
-            TELEGRAM?: unknown;
-            THREADS?: unknown;
-        };
-    };
-};
-
-export type PostCreateResponse = {
-    id: string;
-    teamId: string;
-    title: string;
-    postDate: string | null;
-    postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
-    data: {
-        TWITTER?: {
-            text?: string | null;
-            uploadIds?: Array<(string)> | null;
-        } | null;
-        PINTEREST?: {
-            text?: string | null;
-            description?: string | null;
-            boardName: string;
-            uploadIds?: Array<(string)> | null;
-            /**
-             * The URL to which the Pin will link to.
-             */
-            link?: string | null;
-            /**
-             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
-             */
-            altText?: string | null;
-            /**
-             * A note about the Pin. This is not visible to the public.
-             */
-            note?: string | null;
-            /**
-             * The dominant color of the image. This is used to display the image before it's loaded.
-             */
-            dominantColor?: string | null;
-        } | null;
-        FACEBOOK?: {
-            type?: 'POST' | 'REEL' | 'STORY';
-            text?: string | null;
-            uploadIds?: Array<(string)> | null;
-        } | null;
-        INSTAGRAM?: {
-            type?: 'POST' | 'REEL' | 'STORY';
-            text?: string | null;
-            uploadIds?: Array<(string)> | null;
-        } | null;
-        TIKTOK?: {
-            text?: string | null;
-            uploadIds?: Array<(string)> | null;
-            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
-            /**
-             * Set to true if the video is a paid partnership to promote a third-party business.
-             */
-            isBrandContent?: boolean | null;
-            /**
-             * Set to true if this video is promoting the creator's own business.
-             */
-            isOrganicBrandContent?: boolean | null;
-            /**
-             * If set to true, other TikTok users will not be allowed to make comments on this post.
-             */
-            disableComments?: boolean | null;
-            /**
-             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
-             */
-            disableDuet?: boolean | null;
-            /**
-             * If set to true, other TikTok users will not be allowed to make Duets using this post.
-             */
-            disableStitch?: boolean | null;
-        } | null;
-        LINKEDIN?: {
-            text: string;
-            uploadIds?: Array<(string)> | null;
-            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-            /**
-             * Set to true if the post shouldn't be displayed in the main feed.
-             */
-            hideFromFeed?: boolean | null;
-            /**
-             * Set to true if the post is not allowed to be reshared.
-             */
-            disableReshare?: boolean | null;
-        } | null;
-        YOUTUBE?: {
-            type?: 'VIDEO' | 'SHORT';
-            uploadIds?: Array<(string)> | null;
-            text?: string | null;
-            description?: string | null;
-            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-            /**
-             * Set to true if the video is made for kids.
-             */
-            madeForKids?: boolean | null;
-        } | null;
-        REDDIT?: {
-            /**
-             * Subreddit name. Example: r/subredditName or u/username
-             */
-            sr: string;
-            text: string;
-            description?: string | null;
-            uploadIds?: Array<(string)> | null;
-            /**
-             * The URL to which the post will link to.
-             */
-            link?: string | null;
-            /**
-             * Set to true if the post is NSFW.
-             */
-            nsfw?: boolean | null;
-        } | null;
-        DISCORD?: {
-            channelId: string;
-            text?: string | null;
-            uploadIds?: Array<(string)> | null;
-            /**
-             * The username to display as the author of the message.
-             */
-            username?: string | null;
-            /**
-             * Avatar url to display as the author of the message.
-             */
-            avatarUrl?: string | null;
-        } | null;
-        SLACK?: {
-            channelId: string;
-            text?: string | null;
-            uploadIds?: Array<(string)> | null;
-            /**
-             * The username to display as the author of the message.
-             */
-            username?: string | null;
-            /**
-             * Avatar url to display as the author of the message.
-             */
-            avatarUrl?: string | null;
-        } | null;
-        TELEGRAM?: unknown;
-        THREADS?: unknown;
-    };
-    error?: string | null;
-    errors?: {
-        TWITTER?: string | null;
-        PINTEREST?: string | null;
-        FACEBOOK?: string | null;
-        INSTAGRAM?: string | null;
-        TIKTOK?: string | null;
-        LINKEDIN?: string | null;
-        REDDIT?: string | null;
-        DISCORD?: string | null;
-        SLACK?: string | null;
-        YOUTUBE?: string | null;
-        TELEGRAM?: string | null;
-        THREADS?: string | null;
-    } | null;
-    externalData?: {
-        TWITTER?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-        PINTEREST?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-        FACEBOOK?: {
-            id?: string | null;
-            postId?: string | null;
-            videoId?: string | null;
-            permalink?: string | null;
-        } | null;
-        INSTAGRAM?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-        TIKTOK?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-        LINKEDIN?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-        REDDIT?: {
-            id?: string | null;
-            permalink?: string | null;
-            subreddit_name?: string | null;
-        } | null;
-        DISCORD?: {
-            id?: string | null;
-            permalink?: string | null;
-            channelId?: string | null;
-        } | null;
-        SLACK?: {
-            id?: string | null;
-            permalink?: string | null;
-            channelId?: string | null;
-        } | null;
-        YOUTUBE?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-        TELEGRAM?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-        THREADS?: {
-            id?: string | null;
-            permalink?: string | null;
-        } | null;
-    } | null;
-    createdAt: string | null;
-    updatedAt: string | null;
-    deletedAt?: string | null;
-};
-
-export type PostGetListData = {
-    limit?: number | null;
-    offset?: number | null;
-    order?: 'ASC' | 'DESC' | null;
-    orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK')> | null;
-    q?: string | null;
-    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | null;
-};
-
-export type PostGetListResponse = {
-    items: Array<{
-        id: string;
-        teamId: string;
-        title: string;
-        postDate: string | null;
-        postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
-        data: {
-            TWITTER?: {
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-            } | null;
-            PINTEREST?: {
-                text?: string | null;
-                description?: string | null;
-                boardName: string;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The URL to which the Pin will link to.
-                 */
-                link?: string | null;
-                /**
-                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
-                 */
-                altText?: string | null;
-                /**
-                 * A note about the Pin. This is not visible to the public.
-                 */
-                note?: string | null;
-                /**
-                 * The dominant color of the image. This is used to display the image before it's loaded.
-                 */
-                dominantColor?: string | null;
-            } | null;
-            FACEBOOK?: {
-                type?: 'POST' | 'REEL' | 'STORY';
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-            } | null;
-            INSTAGRAM?: {
-                type?: 'POST' | 'REEL' | 'STORY';
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-            } | null;
-            TIKTOK?: {
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-                privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
-                /**
-                 * Set to true if the video is a paid partnership to promote a third-party business.
-                 */
-                isBrandContent?: boolean | null;
-                /**
-                 * Set to true if this video is promoting the creator's own business.
-                 */
-                isOrganicBrandContent?: boolean | null;
-                /**
-                 * If set to true, other TikTok users will not be allowed to make comments on this post.
-                 */
-                disableComments?: boolean | null;
-                /**
-                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
-                 */
-                disableDuet?: boolean | null;
-                /**
-                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
-                 */
-                disableStitch?: boolean | null;
-            } | null;
-            LINKEDIN?: {
-                text: string;
-                uploadIds?: Array<(string)> | null;
-                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                /**
-                 * Set to true if the post shouldn't be displayed in the main feed.
-                 */
-                hideFromFeed?: boolean | null;
-                /**
-                 * Set to true if the post is not allowed to be reshared.
-                 */
-                disableReshare?: boolean | null;
-            } | null;
-            YOUTUBE?: {
-                type?: 'VIDEO' | 'SHORT';
-                uploadIds?: Array<(string)> | null;
-                text?: string | null;
-                description?: string | null;
-                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                /**
-                 * Set to true if the video is made for kids.
-                 */
-                madeForKids?: boolean | null;
-            } | null;
-            REDDIT?: {
-                /**
-                 * Subreddit name. Example: r/subredditName or u/username
-                 */
-                sr: string;
-                text: string;
-                description?: string | null;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The URL to which the post will link to.
-                 */
-                link?: string | null;
-                /**
-                 * Set to true if the post is NSFW.
-                 */
-                nsfw?: boolean | null;
-            } | null;
-            DISCORD?: {
-                channelId: string;
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The username to display as the author of the message.
-                 */
-                username?: string | null;
-                /**
-                 * Avatar url to display as the author of the message.
-                 */
-                avatarUrl?: string | null;
-            } | null;
-            SLACK?: {
-                channelId: string;
-                text?: string | null;
-                uploadIds?: Array<(string)> | null;
-                /**
-                 * The username to display as the author of the message.
-                 */
-                username?: string | null;
-                /**
-                 * Avatar url to display as the author of the message.
-                 */
-                avatarUrl?: string | null;
-            } | null;
-            TELEGRAM?: unknown;
-            THREADS?: unknown;
-        };
-        error?: string | null;
-        errors?: {
-            TWITTER?: string | null;
-            PINTEREST?: string | null;
-            FACEBOOK?: string | null;
-            INSTAGRAM?: string | null;
-            TIKTOK?: string | null;
-            LINKEDIN?: string | null;
-            REDDIT?: string | null;
-            DISCORD?: string | null;
-            SLACK?: string | null;
-            YOUTUBE?: string | null;
-            TELEGRAM?: string | null;
-            THREADS?: string | null;
-        } | null;
-        externalData?: {
-            TWITTER?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-            PINTEREST?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-            FACEBOOK?: {
-                id?: string | null;
-                postId?: string | null;
-                videoId?: string | null;
-                permalink?: string | null;
-            } | null;
-            INSTAGRAM?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-            TIKTOK?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-            LINKEDIN?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-            REDDIT?: {
-                id?: string | null;
-                permalink?: string | null;
-                subreddit_name?: string | null;
-            } | null;
-            DISCORD?: {
-                id?: string | null;
-                permalink?: string | null;
-                channelId?: string | null;
-            } | null;
-            SLACK?: {
-                id?: string | null;
-                permalink?: string | null;
-                channelId?: string | null;
-            } | null;
-            YOUTUBE?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-            TELEGRAM?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-            THREADS?: {
-                id?: string | null;
-                permalink?: string | null;
-            } | null;
-        } | null;
-        createdAt: string | null;
-        updatedAt: string | null;
-        deletedAt?: string | null;
-        uploads: Array<{
-            postId: string;
-            uploadId: string;
-            createdAt: string | null;
-            updatedAt: string | null;
-            deletedAt?: string | null;
-            upload: {
-                id: string;
-                teamId: string;
-                expiresAt?: string | null;
-                iconUrl?: string | null;
-                thumbnailUrl?: string | null;
-                url?: string | null;
-                iconPath?: string | null;
-                thumbnailPath?: string | null;
-                path?: string | null;
-                type: 'image' | 'video';
-                width?: number | null;
-                height?: number | null;
-                fileSize?: number | null;
-                videoLength?: number | null;
-                mime?: string | null;
-                ext?: string | null;
-                createdAt: string | null;
-                updatedAt: string | null;
-            };
-        }>;
-        socialAccounts: Array<{
-            postId: string;
-            socialAccountId: string;
-            createdAt: string | null;
-            updatedAt: string | null;
-            deletedAt?: string | null;
-            socialAccount: {
-                id: string;
-                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
-                teamId: string;
-                username?: string | null;
-                displayName?: string | null;
-                externalId?: string | null;
-                userUsername?: string | null;
-                userDisplayName?: string | null;
-                userId?: string | null;
-                channels?: Array<{
-                    id: string;
-                    name?: string | null;
-                    username?: string | null;
-                    webhook?: {
-                        id?: string | null;
-                        name?: string | null;
-                        avatar?: string | null;
-                        url?: string | null;
-                    } | null;
-                }> | null;
-                createdAt: string | null;
-                updatedAt: string | null;
-                deletedAt?: string | null;
-            };
-        }>;
-    }>;
-    total: number;
 };
 
 export type PostGetData = {
@@ -1737,6 +1365,652 @@ export type PostDeleteResponse = {
     deletedAt?: string | null;
 };
 
+export type PostGetListData = {
+    limit?: number | null;
+    offset?: number | null;
+    order?: 'ASC' | 'DESC' | null;
+    orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK')> | null;
+    q?: string | null;
+    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | null;
+    teamId: string;
+};
+
+export type PostGetListResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        title: string;
+        postDate: string | null;
+        postedDate?: string | null;
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+        data: {
+            TWITTER?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            PINTEREST?: {
+                text?: string | null;
+                description?: string | null;
+                boardName: string;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to which the Pin will link to.
+                 */
+                link?: string | null;
+                /**
+                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                 */
+                altText?: string | null;
+                /**
+                 * A note about the Pin. This is not visible to the public.
+                 */
+                note?: string | null;
+                /**
+                 * The dominant color of the image. This is used to display the image before it's loaded.
+                 */
+                dominantColor?: string | null;
+            } | null;
+            FACEBOOK?: {
+                type?: 'POST' | 'REEL' | 'STORY';
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            INSTAGRAM?: {
+                type?: 'POST' | 'REEL' | 'STORY';
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            TIKTOK?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                /**
+                 * Set to true if the video is a paid partnership to promote a third-party business.
+                 */
+                isBrandContent?: boolean | null;
+                /**
+                 * Set to true if this video is promoting the creator's own business.
+                 */
+                isOrganicBrandContent?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make comments on this post.
+                 */
+                disableComments?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                 */
+                disableDuet?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                 */
+                disableStitch?: boolean | null;
+            } | null;
+            LINKEDIN?: {
+                text: string;
+                uploadIds?: Array<(string)> | null;
+                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                /**
+                 * Set to true if the post shouldn't be displayed in the main feed.
+                 */
+                hideFromFeed?: boolean | null;
+                /**
+                 * Set to true if the post is not allowed to be reshared.
+                 */
+                disableReshare?: boolean | null;
+            } | null;
+            YOUTUBE?: {
+                type?: 'VIDEO' | 'SHORT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * Set to true if the video is made for kids.
+                 */
+                madeForKids?: boolean | null;
+            } | null;
+            REDDIT?: {
+                /**
+                 * Subreddit name. Example: r/subredditName or u/username
+                 */
+                sr: string;
+                text: string;
+                description?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to which the post will link to.
+                 */
+                link?: string | null;
+                /**
+                 * Set to true if the post is NSFW.
+                 */
+                nsfw?: boolean | null;
+            } | null;
+            DISCORD?: {
+                channelId: string;
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
+                username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
+                avatarUrl?: string | null;
+            } | null;
+            SLACK?: {
+                channelId: string;
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
+                username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
+                avatarUrl?: string | null;
+            } | null;
+            TELEGRAM?: unknown;
+            THREADS?: unknown;
+        };
+        error?: string | null;
+        errors?: {
+            TWITTER?: string | null;
+            PINTEREST?: string | null;
+            FACEBOOK?: string | null;
+            INSTAGRAM?: string | null;
+            TIKTOK?: string | null;
+            LINKEDIN?: string | null;
+            REDDIT?: string | null;
+            DISCORD?: string | null;
+            SLACK?: string | null;
+            YOUTUBE?: string | null;
+            TELEGRAM?: string | null;
+            THREADS?: string | null;
+        } | null;
+        externalData?: {
+            TWITTER?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            PINTEREST?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            FACEBOOK?: {
+                id?: string | null;
+                postId?: string | null;
+                videoId?: string | null;
+                permalink?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            TIKTOK?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            LINKEDIN?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            REDDIT?: {
+                id?: string | null;
+                permalink?: string | null;
+                subreddit_name?: string | null;
+            } | null;
+            DISCORD?: {
+                id?: string | null;
+                permalink?: string | null;
+                channelId?: string | null;
+            } | null;
+            SLACK?: {
+                id?: string | null;
+                permalink?: string | null;
+                channelId?: string | null;
+            } | null;
+            YOUTUBE?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            TELEGRAM?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            THREADS?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        uploads: Array<{
+            postId: string;
+            uploadId: string;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+            upload: {
+                id: string;
+                teamId: string;
+                expiresAt?: string | null;
+                iconUrl?: string | null;
+                thumbnailUrl?: string | null;
+                url?: string | null;
+                iconPath?: string | null;
+                thumbnailPath?: string | null;
+                path?: string | null;
+                type: 'image' | 'video';
+                width?: number | null;
+                height?: number | null;
+                fileSize?: number | null;
+                videoLength?: number | null;
+                mime?: string | null;
+                ext?: string | null;
+                createdAt: string | null;
+                updatedAt: string | null;
+            };
+        }>;
+        socialAccounts: Array<{
+            postId: string;
+            socialAccountId: string;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+            socialAccount: {
+                id: string;
+                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                teamId: string;
+                username?: string | null;
+                displayName?: string | null;
+                externalId?: string | null;
+                userUsername?: string | null;
+                userDisplayName?: string | null;
+                userId?: string | null;
+                channels?: Array<{
+                    id: string;
+                    name?: string | null;
+                    username?: string | null;
+                    webhook?: {
+                        id?: string | null;
+                        name?: string | null;
+                        avatar?: string | null;
+                        url?: string | null;
+                    } | null;
+                }> | null;
+                createdAt: string | null;
+                updatedAt: string | null;
+                deletedAt?: string | null;
+            };
+        }>;
+    }>;
+    total: number;
+};
+
+export type PostCreateData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        title: string;
+        postDate: string;
+        status: 'DRAFT' | 'SCHEDULED';
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK')>;
+        data: {
+            TWITTER?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            PINTEREST?: {
+                text?: string | null;
+                description?: string | null;
+                boardName: string;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to which the Pin will link to.
+                 */
+                link?: string | null;
+                /**
+                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                 */
+                altText?: string | null;
+                /**
+                 * A note about the Pin. This is not visible to the public.
+                 */
+                note?: string | null;
+                /**
+                 * The dominant color of the image. This is used to display the image before it's loaded.
+                 */
+                dominantColor?: string | null;
+            } | null;
+            FACEBOOK?: {
+                type?: 'POST' | 'REEL' | 'STORY';
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            INSTAGRAM?: {
+                type?: 'POST' | 'REEL' | 'STORY';
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            TIKTOK?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                /**
+                 * Set to true if the video is a paid partnership to promote a third-party business.
+                 */
+                isBrandContent?: boolean | null;
+                /**
+                 * Set to true if this video is promoting the creator's own business.
+                 */
+                isOrganicBrandContent?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make comments on this post.
+                 */
+                disableComments?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                 */
+                disableDuet?: boolean | null;
+                /**
+                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                 */
+                disableStitch?: boolean | null;
+            } | null;
+            LINKEDIN?: {
+                text: string;
+                uploadIds?: Array<(string)> | null;
+                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                /**
+                 * Set to true if the post shouldn't be displayed in the main feed.
+                 */
+                hideFromFeed?: boolean | null;
+                /**
+                 * Set to true if the post is not allowed to be reshared.
+                 */
+                disableReshare?: boolean | null;
+            } | null;
+            YOUTUBE?: {
+                type?: 'VIDEO' | 'SHORT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * Set to true if the video is made for kids.
+                 */
+                madeForKids?: boolean | null;
+            } | null;
+            REDDIT?: {
+                /**
+                 * Subreddit name. Example: r/subredditName or u/username
+                 */
+                sr: string;
+                text: string;
+                description?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to which the post will link to.
+                 */
+                link?: string | null;
+                /**
+                 * Set to true if the post is NSFW.
+                 */
+                nsfw?: boolean | null;
+            } | null;
+            DISCORD?: {
+                channelId: string;
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
+                username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
+                avatarUrl?: string | null;
+            } | null;
+            SLACK?: {
+                channelId: string;
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * The username to display as the author of the message.
+                 */
+                username?: string | null;
+                /**
+                 * Avatar url to display as the author of the message.
+                 */
+                avatarUrl?: string | null;
+            } | null;
+            TELEGRAM?: unknown;
+            THREADS?: unknown;
+        };
+    };
+};
+
+export type PostCreateResponse = {
+    id: string;
+    teamId: string;
+    title: string;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    data: {
+        TWITTER?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
+        PINTEREST?: {
+            text?: string | null;
+            description?: string | null;
+            boardName: string;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the Pin will link to.
+             */
+            link?: string | null;
+            /**
+             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+             */
+            altText?: string | null;
+            /**
+             * A note about the Pin. This is not visible to the public.
+             */
+            note?: string | null;
+            /**
+             * The dominant color of the image. This is used to display the image before it's loaded.
+             */
+            dominantColor?: string | null;
+        } | null;
+        FACEBOOK?: {
+            type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
+        INSTAGRAM?: {
+            type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
+        TIKTOK?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            /**
+             * Set to true if the video is a paid partnership to promote a third-party business.
+             */
+            isBrandContent?: boolean | null;
+            /**
+             * Set to true if this video is promoting the creator's own business.
+             */
+            isOrganicBrandContent?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make comments on this post.
+             */
+            disableComments?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+             */
+            disableDuet?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+             */
+            disableStitch?: boolean | null;
+        } | null;
+        LINKEDIN?: {
+            text: string;
+            uploadIds?: Array<(string)> | null;
+            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+            /**
+             * Set to true if the post shouldn't be displayed in the main feed.
+             */
+            hideFromFeed?: boolean | null;
+            /**
+             * Set to true if the post is not allowed to be reshared.
+             */
+            disableReshare?: boolean | null;
+        } | null;
+        YOUTUBE?: {
+            type?: 'VIDEO' | 'SHORT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * Set to true if the video is made for kids.
+             */
+            madeForKids?: boolean | null;
+        } | null;
+        REDDIT?: {
+            /**
+             * Subreddit name. Example: r/subredditName or u/username
+             */
+            sr: string;
+            text: string;
+            description?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the post will link to.
+             */
+            link?: string | null;
+            /**
+             * Set to true if the post is NSFW.
+             */
+            nsfw?: boolean | null;
+        } | null;
+        DISCORD?: {
+            channelId: string;
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
+            username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
+            avatarUrl?: string | null;
+        } | null;
+        SLACK?: {
+            channelId: string;
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
+            username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
+            avatarUrl?: string | null;
+        } | null;
+        TELEGRAM?: unknown;
+        THREADS?: unknown;
+    };
+    error?: string | null;
+    errors?: {
+        TWITTER?: string | null;
+        PINTEREST?: string | null;
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        YOUTUBE?: string | null;
+        TELEGRAM?: string | null;
+        THREADS?: string | null;
+    } | null;
+    externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        PINTEREST?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        FACEBOOK?: {
+            id?: string | null;
+            postId?: string | null;
+            videoId?: string | null;
+            permalink?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+            subreddit_name?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+            channelId?: string | null;
+        } | null;
+        SLACK?: {
+            id?: string | null;
+            permalink?: string | null;
+            channelId?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        TELEGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
 export type $OpenApiTs = {
     '/api/v1/': {
         get: {
@@ -1791,7 +2065,7 @@ export type $OpenApiTs = {
             };
         };
     };
-    '/api/v1/team/': {
+    '/api/v1/organization/': {
         get: {
             res: {
                 /**
@@ -1799,31 +2073,24 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    name: string;
-                    avatarUrl?: string | null;
                     createdById: string;
+                    name?: string | null;
+                    avatarUrl?: string | null;
+                    defaultPaymentMethodFilled?: boolean;
+                    billingAddressFilled?: boolean;
+                    apiAccess?: boolean;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
-                    users: Array<{
-                        userId: string;
-                        teamId: string;
+                    teams: Array<{
+                        id: string;
+                        name: string;
+                        avatarUrl?: string | null;
+                        organizationId: string;
+                        createdById: string;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
-                        user: {
-                            id: string;
-                            externalId: string;
-                            email: string;
-                            emailVerified?: string | null;
-                            firstName?: string | null;
-                            lastName?: string | null;
-                            avatarUrl?: string | null;
-                            role: 'ADMIN' | 'CUSTOMER';
-                            createdAt: string | null;
-                            updatedAt: string | null;
-                            deletedAt?: string | null;
-                        };
                     }>;
                     createdBy: {
                         id: string;
@@ -1838,27 +2105,128 @@ export type $OpenApiTs = {
                         updatedAt: string | null;
                         deletedAt?: string | null;
                     };
-                    invitations: Array<{
+                    organizationSubscription?: {
                         id: string;
-                        email: string;
-                        teamId: string;
-                        createdById: string;
+                        organizationId: string;
+                        stripeSubscriptionId: string;
+                        stripeSubscriptionItems?: Array<{
+                            id: string;
+                            price: string;
+                            quantity: number;
+                        }> | null;
+                        status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
+                        metadata?: unknown;
+                        cancelAtPeriodEnd: boolean;
+                        created: string | null;
+                        currentPeriodStart: string | null;
+                        currentPeriodEnd: string | null;
+                        endedAt?: string | null;
+                        cancelAt?: string | null;
+                        canceledAt?: string | null;
+                        trialStart?: string | null;
+                        trialEnd?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
-                    }>;
+                        teamPlan?: {
+                            id: string;
+                            organizationSubscriptionId: string;
+                            teamId: string;
+                            stripePriceId: string;
+                            tier: 'PRO';
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                        } | null;
+                    } | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/team/{id}': {
+        get: {
+            req: TeamGetTeamData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    name: string;
+                    avatarUrl?: string | null;
+                    organizationId: string;
+                    createdById: string;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    organization: {
+                        id: string;
+                        createdById: string;
+                        name?: string | null;
+                        avatarUrl?: string | null;
+                        defaultPaymentMethodFilled?: boolean;
+                        billingAddressFilled?: boolean;
+                        apiAccess?: boolean;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                    createdBy: {
+                        id: string;
+                        externalId: string;
+                        email: string;
+                        emailVerified?: string | null;
+                        firstName?: string | null;
+                        lastName?: string | null;
+                        avatarUrl?: string | null;
+                        role: 'ADMIN' | 'CUSTOMER';
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
                     bots: Array<{
                         id: string;
                         name: string;
                         avatarUrl?: string | null;
                         teamId: string;
-                        createdAt: string | null;
-                        updatedAt: string | null;
-                        deletedAt?: string | null;
-                    }>;
-                    webhooks: Array<{
-                        id: string;
-                        teamId: string;
-                        url: string;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -1891,6 +2259,495 @@ export type $OpenApiTs = {
                     usage: {
                         monthlyPosts: number;
                     };
+                    teamPlan?: {
+                        id: string;
+                        organizationSubscriptionId: string;
+                        teamId: string;
+                        stripePriceId: string;
+                        tier: 'PRO';
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        organizationSubscription?: {
+                            id: string;
+                            organizationId: string;
+                            stripeSubscriptionId: string;
+                            stripeSubscriptionItems?: Array<{
+                                id: string;
+                                price: string;
+                                quantity: number;
+                            }> | null;
+                            status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
+                            metadata?: unknown;
+                            cancelAtPeriodEnd: boolean;
+                            created: string | null;
+                            currentPeriodStart: string | null;
+                            currentPeriodEnd: string | null;
+                            endedAt?: string | null;
+                            cancelAt?: string | null;
+                            canceledAt?: string | null;
+                            trialStart?: string | null;
+                            trialEnd?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                        } | null;
+                    } | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: TeamUpdateTeamData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    name: string;
+                    avatarUrl?: string | null;
+                    organizationId: string;
+                    createdById: string;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: TeamDeleteTeamData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    name: string;
+                    avatarUrl?: string | null;
+                    organizationId: string;
+                    createdById: string;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/team/': {
+        post: {
+            req: TeamCreateTeamData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    name: string;
+                    avatarUrl?: string | null;
+                    organizationId: string;
+                    createdById: string;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/connect': {
+        post: {
+            req: SocialAccountConnectData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    /**
+                     * OAuth URL - Redirect user to this URL to connect social account
+                     */
+                    url: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/disconnect': {
+        delete: {
+            req: SocialAccountDisconnectData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                    teamId: string;
+                    username?: string | null;
+                    displayName?: string | null;
+                    externalId?: string | null;
+                    userUsername?: string | null;
+                    userDisplayName?: string | null;
+                    userId?: string | null;
+                    channels?: Array<{
+                        id: string;
+                        name?: string | null;
+                        username?: string | null;
+                        webhook?: {
+                            id?: string | null;
+                            name?: string | null;
+                            avatar?: string | null;
+                            url?: string | null;
+                        } | null;
+                    }> | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/set-channel': {
+        post: {
+            req: SocialAccountSetChannelData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                    teamId: string;
+                    username?: string | null;
+                    displayName?: string | null;
+                    externalId?: string | null;
+                    userUsername?: string | null;
+                    userDisplayName?: string | null;
+                    userId?: string | null;
+                    channels?: Array<{
+                        id: string;
+                        name?: string | null;
+                        username?: string | null;
+                        webhook?: {
+                            id?: string | null;
+                            name?: string | null;
+                            avatar?: string | null;
+                            url?: string | null;
+                        } | null;
+                    }> | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/refresh-channels': {
+        post: {
+            req: SocialAccountRefreshChannelsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                    teamId: string;
+                    username?: string | null;
+                    displayName?: string | null;
+                    externalId?: string | null;
+                    userUsername?: string | null;
+                    userDisplayName?: string | null;
+                    userId?: string | null;
+                    channels?: Array<{
+                        id: string;
+                        name?: string | null;
+                        username?: string | null;
+                        webhook?: {
+                            id?: string | null;
+                            name?: string | null;
+                            avatar?: string | null;
+                            url?: string | null;
+                        } | null;
+                    }> | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
                 };
                 /**
                  * 400
@@ -1936,13 +2793,13 @@ export type $OpenApiTs = {
         };
     };
     '/api/v1/upload/': {
-        post: {
-            req: UploadCreateData;
+        get: {
+            req: UploadGetListData;
             res: {
                 /**
                  * 200
                  */
-                200: {
+                200: Array<{
                     id: string;
                     teamId: string;
                     expiresAt?: string | null;
@@ -1961,7 +2818,14 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
-                };
+                    posts: Array<{
+                        postId: string;
+                        uploadId: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                }>;
                 /**
                  * 400
                  */
@@ -2004,12 +2868,13 @@ export type $OpenApiTs = {
                 };
             };
         };
-        get: {
+        post: {
+            req: UploadCreateData;
             res: {
                 /**
                  * 200
                  */
-                200: Array<{
+                200: {
                     id: string;
                     teamId: string;
                     expiresAt?: string | null;
@@ -2028,14 +2893,7 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
-                    posts: Array<{
-                        postId: string;
-                        uploadId: string;
-                        createdAt: string | null;
-                        updatedAt: string | null;
-                        deletedAt?: string | null;
-                    }>;
-                }>;
+                };
                 /**
                  * 400
                  */
@@ -2241,592 +3099,6 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
-                };
-                /**
-                 * 400
-                 */
-                400: {
-                    message: string;
-                    issues?: Array<{
-                        message: string;
-                        path?: Array<(string | number)> | null;
-                    }> | null;
-                };
-                /**
-                 * 401
-                 */
-                401: {
-                    message: string;
-                };
-                /**
-                 * 403
-                 */
-                403: {
-                    message: string;
-                };
-                /**
-                 * 404
-                 */
-                404: {
-                    message: string;
-                };
-                /**
-                 * 429
-                 */
-                429: {
-                    message: string;
-                };
-                /**
-                 * 500
-                 */
-                500: {
-                    message: string;
-                };
-            };
-        };
-    };
-    '/api/v1/post/': {
-        post: {
-            req: PostCreateData;
-            res: {
-                /**
-                 * 200
-                 */
-                200: {
-                    id: string;
-                    teamId: string;
-                    title: string;
-                    postDate: string | null;
-                    postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
-                    data: {
-                        TWITTER?: {
-                            text?: string | null;
-                            uploadIds?: Array<(string)> | null;
-                        } | null;
-                        PINTEREST?: {
-                            text?: string | null;
-                            description?: string | null;
-                            boardName: string;
-                            uploadIds?: Array<(string)> | null;
-                            /**
-                             * The URL to which the Pin will link to.
-                             */
-                            link?: string | null;
-                            /**
-                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
-                             */
-                            altText?: string | null;
-                            /**
-                             * A note about the Pin. This is not visible to the public.
-                             */
-                            note?: string | null;
-                            /**
-                             * The dominant color of the image. This is used to display the image before it's loaded.
-                             */
-                            dominantColor?: string | null;
-                        } | null;
-                        FACEBOOK?: {
-                            type?: 'POST' | 'REEL' | 'STORY';
-                            text?: string | null;
-                            uploadIds?: Array<(string)> | null;
-                        } | null;
-                        INSTAGRAM?: {
-                            type?: 'POST' | 'REEL' | 'STORY';
-                            text?: string | null;
-                            uploadIds?: Array<(string)> | null;
-                        } | null;
-                        TIKTOK?: {
-                            text?: string | null;
-                            uploadIds?: Array<(string)> | null;
-                            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
-                            /**
-                             * Set to true if the video is a paid partnership to promote a third-party business.
-                             */
-                            isBrandContent?: boolean | null;
-                            /**
-                             * Set to true if this video is promoting the creator's own business.
-                             */
-                            isOrganicBrandContent?: boolean | null;
-                            /**
-                             * If set to true, other TikTok users will not be allowed to make comments on this post.
-                             */
-                            disableComments?: boolean | null;
-                            /**
-                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
-                             */
-                            disableDuet?: boolean | null;
-                            /**
-                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
-                             */
-                            disableStitch?: boolean | null;
-                        } | null;
-                        LINKEDIN?: {
-                            text: string;
-                            uploadIds?: Array<(string)> | null;
-                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                            /**
-                             * Set to true if the post shouldn't be displayed in the main feed.
-                             */
-                            hideFromFeed?: boolean | null;
-                            /**
-                             * Set to true if the post is not allowed to be reshared.
-                             */
-                            disableReshare?: boolean | null;
-                        } | null;
-                        YOUTUBE?: {
-                            type?: 'VIDEO' | 'SHORT';
-                            uploadIds?: Array<(string)> | null;
-                            text?: string | null;
-                            description?: string | null;
-                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                            /**
-                             * Set to true if the video is made for kids.
-                             */
-                            madeForKids?: boolean | null;
-                        } | null;
-                        REDDIT?: {
-                            /**
-                             * Subreddit name. Example: r/subredditName or u/username
-                             */
-                            sr: string;
-                            text: string;
-                            description?: string | null;
-                            uploadIds?: Array<(string)> | null;
-                            /**
-                             * The URL to which the post will link to.
-                             */
-                            link?: string | null;
-                            /**
-                             * Set to true if the post is NSFW.
-                             */
-                            nsfw?: boolean | null;
-                        } | null;
-                        DISCORD?: {
-                            channelId: string;
-                            text?: string | null;
-                            uploadIds?: Array<(string)> | null;
-                            /**
-                             * The username to display as the author of the message.
-                             */
-                            username?: string | null;
-                            /**
-                             * Avatar url to display as the author of the message.
-                             */
-                            avatarUrl?: string | null;
-                        } | null;
-                        SLACK?: {
-                            channelId: string;
-                            text?: string | null;
-                            uploadIds?: Array<(string)> | null;
-                            /**
-                             * The username to display as the author of the message.
-                             */
-                            username?: string | null;
-                            /**
-                             * Avatar url to display as the author of the message.
-                             */
-                            avatarUrl?: string | null;
-                        } | null;
-                        TELEGRAM?: unknown;
-                        THREADS?: unknown;
-                    };
-                    error?: string | null;
-                    errors?: {
-                        TWITTER?: string | null;
-                        PINTEREST?: string | null;
-                        FACEBOOK?: string | null;
-                        INSTAGRAM?: string | null;
-                        TIKTOK?: string | null;
-                        LINKEDIN?: string | null;
-                        REDDIT?: string | null;
-                        DISCORD?: string | null;
-                        SLACK?: string | null;
-                        YOUTUBE?: string | null;
-                        TELEGRAM?: string | null;
-                        THREADS?: string | null;
-                    } | null;
-                    externalData?: {
-                        TWITTER?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        PINTEREST?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        FACEBOOK?: {
-                            id?: string | null;
-                            postId?: string | null;
-                            videoId?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        INSTAGRAM?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        TIKTOK?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        LINKEDIN?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        REDDIT?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                            subreddit_name?: string | null;
-                        } | null;
-                        DISCORD?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                            channelId?: string | null;
-                        } | null;
-                        SLACK?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                            channelId?: string | null;
-                        } | null;
-                        YOUTUBE?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        TELEGRAM?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                        THREADS?: {
-                            id?: string | null;
-                            permalink?: string | null;
-                        } | null;
-                    } | null;
-                    createdAt: string | null;
-                    updatedAt: string | null;
-                    deletedAt?: string | null;
-                };
-                /**
-                 * 400
-                 */
-                400: {
-                    message: string;
-                    issues?: Array<{
-                        message: string;
-                        path?: Array<(string | number)> | null;
-                    }> | null;
-                };
-                /**
-                 * 401
-                 */
-                401: {
-                    message: string;
-                };
-                /**
-                 * 403
-                 */
-                403: {
-                    message: string;
-                };
-                /**
-                 * 404
-                 */
-                404: {
-                    message: string;
-                };
-                /**
-                 * 429
-                 */
-                429: {
-                    message: string;
-                };
-                /**
-                 * 500
-                 */
-                500: {
-                    message: string;
-                };
-            };
-        };
-        get: {
-            req: PostGetListData;
-            res: {
-                /**
-                 * 200
-                 */
-                200: {
-                    items: Array<{
-                        id: string;
-                        teamId: string;
-                        title: string;
-                        postDate: string | null;
-                        postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
-                        data: {
-                            TWITTER?: {
-                                text?: string | null;
-                                uploadIds?: Array<(string)> | null;
-                            } | null;
-                            PINTEREST?: {
-                                text?: string | null;
-                                description?: string | null;
-                                boardName: string;
-                                uploadIds?: Array<(string)> | null;
-                                /**
-                                 * The URL to which the Pin will link to.
-                                 */
-                                link?: string | null;
-                                /**
-                                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
-                                 */
-                                altText?: string | null;
-                                /**
-                                 * A note about the Pin. This is not visible to the public.
-                                 */
-                                note?: string | null;
-                                /**
-                                 * The dominant color of the image. This is used to display the image before it's loaded.
-                                 */
-                                dominantColor?: string | null;
-                            } | null;
-                            FACEBOOK?: {
-                                type?: 'POST' | 'REEL' | 'STORY';
-                                text?: string | null;
-                                uploadIds?: Array<(string)> | null;
-                            } | null;
-                            INSTAGRAM?: {
-                                type?: 'POST' | 'REEL' | 'STORY';
-                                text?: string | null;
-                                uploadIds?: Array<(string)> | null;
-                            } | null;
-                            TIKTOK?: {
-                                text?: string | null;
-                                uploadIds?: Array<(string)> | null;
-                                privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
-                                /**
-                                 * Set to true if the video is a paid partnership to promote a third-party business.
-                                 */
-                                isBrandContent?: boolean | null;
-                                /**
-                                 * Set to true if this video is promoting the creator's own business.
-                                 */
-                                isOrganicBrandContent?: boolean | null;
-                                /**
-                                 * If set to true, other TikTok users will not be allowed to make comments on this post.
-                                 */
-                                disableComments?: boolean | null;
-                                /**
-                                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
-                                 */
-                                disableDuet?: boolean | null;
-                                /**
-                                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
-                                 */
-                                disableStitch?: boolean | null;
-                            } | null;
-                            LINKEDIN?: {
-                                text: string;
-                                uploadIds?: Array<(string)> | null;
-                                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
-                                /**
-                                 * Set to true if the post shouldn't be displayed in the main feed.
-                                 */
-                                hideFromFeed?: boolean | null;
-                                /**
-                                 * Set to true if the post is not allowed to be reshared.
-                                 */
-                                disableReshare?: boolean | null;
-                            } | null;
-                            YOUTUBE?: {
-                                type?: 'VIDEO' | 'SHORT';
-                                uploadIds?: Array<(string)> | null;
-                                text?: string | null;
-                                description?: string | null;
-                                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
-                                /**
-                                 * Set to true if the video is made for kids.
-                                 */
-                                madeForKids?: boolean | null;
-                            } | null;
-                            REDDIT?: {
-                                /**
-                                 * Subreddit name. Example: r/subredditName or u/username
-                                 */
-                                sr: string;
-                                text: string;
-                                description?: string | null;
-                                uploadIds?: Array<(string)> | null;
-                                /**
-                                 * The URL to which the post will link to.
-                                 */
-                                link?: string | null;
-                                /**
-                                 * Set to true if the post is NSFW.
-                                 */
-                                nsfw?: boolean | null;
-                            } | null;
-                            DISCORD?: {
-                                channelId: string;
-                                text?: string | null;
-                                uploadIds?: Array<(string)> | null;
-                                /**
-                                 * The username to display as the author of the message.
-                                 */
-                                username?: string | null;
-                                /**
-                                 * Avatar url to display as the author of the message.
-                                 */
-                                avatarUrl?: string | null;
-                            } | null;
-                            SLACK?: {
-                                channelId: string;
-                                text?: string | null;
-                                uploadIds?: Array<(string)> | null;
-                                /**
-                                 * The username to display as the author of the message.
-                                 */
-                                username?: string | null;
-                                /**
-                                 * Avatar url to display as the author of the message.
-                                 */
-                                avatarUrl?: string | null;
-                            } | null;
-                            TELEGRAM?: unknown;
-                            THREADS?: unknown;
-                        };
-                        error?: string | null;
-                        errors?: {
-                            TWITTER?: string | null;
-                            PINTEREST?: string | null;
-                            FACEBOOK?: string | null;
-                            INSTAGRAM?: string | null;
-                            TIKTOK?: string | null;
-                            LINKEDIN?: string | null;
-                            REDDIT?: string | null;
-                            DISCORD?: string | null;
-                            SLACK?: string | null;
-                            YOUTUBE?: string | null;
-                            TELEGRAM?: string | null;
-                            THREADS?: string | null;
-                        } | null;
-                        externalData?: {
-                            TWITTER?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            PINTEREST?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            FACEBOOK?: {
-                                id?: string | null;
-                                postId?: string | null;
-                                videoId?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            INSTAGRAM?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            TIKTOK?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            LINKEDIN?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            REDDIT?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                                subreddit_name?: string | null;
-                            } | null;
-                            DISCORD?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                                channelId?: string | null;
-                            } | null;
-                            SLACK?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                                channelId?: string | null;
-                            } | null;
-                            YOUTUBE?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            TELEGRAM?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                            THREADS?: {
-                                id?: string | null;
-                                permalink?: string | null;
-                            } | null;
-                        } | null;
-                        createdAt: string | null;
-                        updatedAt: string | null;
-                        deletedAt?: string | null;
-                        uploads: Array<{
-                            postId: string;
-                            uploadId: string;
-                            createdAt: string | null;
-                            updatedAt: string | null;
-                            deletedAt?: string | null;
-                            upload: {
-                                id: string;
-                                teamId: string;
-                                expiresAt?: string | null;
-                                iconUrl?: string | null;
-                                thumbnailUrl?: string | null;
-                                url?: string | null;
-                                iconPath?: string | null;
-                                thumbnailPath?: string | null;
-                                path?: string | null;
-                                type: 'image' | 'video';
-                                width?: number | null;
-                                height?: number | null;
-                                fileSize?: number | null;
-                                videoLength?: number | null;
-                                mime?: string | null;
-                                ext?: string | null;
-                                createdAt: string | null;
-                                updatedAt: string | null;
-                            };
-                        }>;
-                        socialAccounts: Array<{
-                            postId: string;
-                            socialAccountId: string;
-                            createdAt: string | null;
-                            updatedAt: string | null;
-                            deletedAt?: string | null;
-                            socialAccount: {
-                                id: string;
-                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
-                                teamId: string;
-                                username?: string | null;
-                                displayName?: string | null;
-                                externalId?: string | null;
-                                userUsername?: string | null;
-                                userDisplayName?: string | null;
-                                userId?: string | null;
-                                channels?: Array<{
-                                    id: string;
-                                    name?: string | null;
-                                    username?: string | null;
-                                    webhook?: {
-                                        id?: string | null;
-                                        name?: string | null;
-                                        avatar?: string | null;
-                                        url?: string | null;
-                                    } | null;
-                                }> | null;
-                                createdAt: string | null;
-                                updatedAt: string | null;
-                                deletedAt?: string | null;
-                            };
-                        }>;
-                    }>;
-                    total: number;
                 };
                 /**
                  * 400
@@ -3192,7 +3464,7 @@ export type $OpenApiTs = {
                 };
             };
         };
-        put: {
+        patch: {
             req: PostUpdateData;
             res: {
                 /**
@@ -3455,6 +3727,592 @@ export type $OpenApiTs = {
         };
         delete: {
             req: PostDeleteData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    title: string;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    data: {
+                        TWITTER?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
+                        PINTEREST?: {
+                            text?: string | null;
+                            description?: string | null;
+                            boardName: string;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the Pin will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                             */
+                            altText?: string | null;
+                            /**
+                             * A note about the Pin. This is not visible to the public.
+                             */
+                            note?: string | null;
+                            /**
+                             * The dominant color of the image. This is used to display the image before it's loaded.
+                             */
+                            dominantColor?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            type?: 'POST' | 'REEL' | 'STORY';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            type?: 'POST' | 'REEL' | 'STORY';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
+                        TIKTOK?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            /**
+                             * Set to true if the video is a paid partnership to promote a third-party business.
+                             */
+                            isBrandContent?: boolean | null;
+                            /**
+                             * Set to true if this video is promoting the creator's own business.
+                             */
+                            isOrganicBrandContent?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make comments on this post.
+                             */
+                            disableComments?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                             */
+                            disableDuet?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                             */
+                            disableStitch?: boolean | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text: string;
+                            uploadIds?: Array<(string)> | null;
+                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                            /**
+                             * Set to true if the post shouldn't be displayed in the main feed.
+                             */
+                            hideFromFeed?: boolean | null;
+                            /**
+                             * Set to true if the post is not allowed to be reshared.
+                             */
+                            disableReshare?: boolean | null;
+                        } | null;
+                        YOUTUBE?: {
+                            type?: 'VIDEO' | 'SHORT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * Set to true if the video is made for kids.
+                             */
+                            madeForKids?: boolean | null;
+                        } | null;
+                        REDDIT?: {
+                            /**
+                             * Subreddit name. Example: r/subredditName or u/username
+                             */
+                            sr: string;
+                            text: string;
+                            description?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the post will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * Set to true if the post is NSFW.
+                             */
+                            nsfw?: boolean | null;
+                        } | null;
+                        DISCORD?: {
+                            channelId: string;
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
+                            username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
+                            avatarUrl?: string | null;
+                        } | null;
+                        SLACK?: {
+                            channelId: string;
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
+                            username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
+                            avatarUrl?: string | null;
+                        } | null;
+                        TELEGRAM?: unknown;
+                        THREADS?: unknown;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        TWITTER?: string | null;
+                        PINTEREST?: string | null;
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        YOUTUBE?: string | null;
+                        TELEGRAM?: string | null;
+                        THREADS?: string | null;
+                    } | null;
+                    externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            id?: string | null;
+                            postId?: string | null;
+                            videoId?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            subreddit_name?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            channelId?: string | null;
+                        } | null;
+                        SLACK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            channelId?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        TELEGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post/': {
+        get: {
+            req: PostGetListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        title: string;
+                        postDate: string | null;
+                        postedDate?: string | null;
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                        data: {
+                            TWITTER?: {
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            } | null;
+                            PINTEREST?: {
+                                text?: string | null;
+                                description?: string | null;
+                                boardName: string;
+                                uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to which the Pin will link to.
+                                 */
+                                link?: string | null;
+                                /**
+                                 * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                                 */
+                                altText?: string | null;
+                                /**
+                                 * A note about the Pin. This is not visible to the public.
+                                 */
+                                note?: string | null;
+                                /**
+                                 * The dominant color of the image. This is used to display the image before it's loaded.
+                                 */
+                                dominantColor?: string | null;
+                            } | null;
+                            FACEBOOK?: {
+                                type?: 'POST' | 'REEL' | 'STORY';
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                type?: 'POST' | 'REEL' | 'STORY';
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            } | null;
+                            TIKTOK?: {
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                                /**
+                                 * Set to true if the video is a paid partnership to promote a third-party business.
+                                 */
+                                isBrandContent?: boolean | null;
+                                /**
+                                 * Set to true if this video is promoting the creator's own business.
+                                 */
+                                isOrganicBrandContent?: boolean | null;
+                                /**
+                                 * If set to true, other TikTok users will not be allowed to make comments on this post.
+                                 */
+                                disableComments?: boolean | null;
+                                /**
+                                 * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                                 */
+                                disableDuet?: boolean | null;
+                                /**
+                                 * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                                 */
+                                disableStitch?: boolean | null;
+                            } | null;
+                            LINKEDIN?: {
+                                text: string;
+                                uploadIds?: Array<(string)> | null;
+                                privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                                /**
+                                 * Set to true if the post shouldn't be displayed in the main feed.
+                                 */
+                                hideFromFeed?: boolean | null;
+                                /**
+                                 * Set to true if the post is not allowed to be reshared.
+                                 */
+                                disableReshare?: boolean | null;
+                            } | null;
+                            YOUTUBE?: {
+                                type?: 'VIDEO' | 'SHORT';
+                                uploadIds?: Array<(string)> | null;
+                                text?: string | null;
+                                description?: string | null;
+                                privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                                /**
+                                 * Set to true if the video is made for kids.
+                                 */
+                                madeForKids?: boolean | null;
+                            } | null;
+                            REDDIT?: {
+                                /**
+                                 * Subreddit name. Example: r/subredditName or u/username
+                                 */
+                                sr: string;
+                                text: string;
+                                description?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to which the post will link to.
+                                 */
+                                link?: string | null;
+                                /**
+                                 * Set to true if the post is NSFW.
+                                 */
+                                nsfw?: boolean | null;
+                            } | null;
+                            DISCORD?: {
+                                channelId: string;
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The username to display as the author of the message.
+                                 */
+                                username?: string | null;
+                                /**
+                                 * Avatar url to display as the author of the message.
+                                 */
+                                avatarUrl?: string | null;
+                            } | null;
+                            SLACK?: {
+                                channelId: string;
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The username to display as the author of the message.
+                                 */
+                                username?: string | null;
+                                /**
+                                 * Avatar url to display as the author of the message.
+                                 */
+                                avatarUrl?: string | null;
+                            } | null;
+                            TELEGRAM?: unknown;
+                            THREADS?: unknown;
+                        };
+                        error?: string | null;
+                        errors?: {
+                            TWITTER?: string | null;
+                            PINTEREST?: string | null;
+                            FACEBOOK?: string | null;
+                            INSTAGRAM?: string | null;
+                            TIKTOK?: string | null;
+                            LINKEDIN?: string | null;
+                            REDDIT?: string | null;
+                            DISCORD?: string | null;
+                            SLACK?: string | null;
+                            YOUTUBE?: string | null;
+                            TELEGRAM?: string | null;
+                            THREADS?: string | null;
+                        } | null;
+                        externalData?: {
+                            TWITTER?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            PINTEREST?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            FACEBOOK?: {
+                                id?: string | null;
+                                postId?: string | null;
+                                videoId?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            TIKTOK?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            LINKEDIN?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            REDDIT?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                                subreddit_name?: string | null;
+                            } | null;
+                            DISCORD?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                                channelId?: string | null;
+                            } | null;
+                            SLACK?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                                channelId?: string | null;
+                            } | null;
+                            YOUTUBE?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            TELEGRAM?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            THREADS?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        uploads: Array<{
+                            postId: string;
+                            uploadId: string;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                            upload: {
+                                id: string;
+                                teamId: string;
+                                expiresAt?: string | null;
+                                iconUrl?: string | null;
+                                thumbnailUrl?: string | null;
+                                url?: string | null;
+                                iconPath?: string | null;
+                                thumbnailPath?: string | null;
+                                path?: string | null;
+                                type: 'image' | 'video';
+                                width?: number | null;
+                                height?: number | null;
+                                fileSize?: number | null;
+                                videoLength?: number | null;
+                                mime?: string | null;
+                                ext?: string | null;
+                                createdAt: string | null;
+                                updatedAt: string | null;
+                            };
+                        }>;
+                        socialAccounts: Array<{
+                            postId: string;
+                            socialAccountId: string;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                            socialAccount: {
+                                id: string;
+                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                                teamId: string;
+                                username?: string | null;
+                                displayName?: string | null;
+                                externalId?: string | null;
+                                userUsername?: string | null;
+                                userDisplayName?: string | null;
+                                userId?: string | null;
+                                channels?: Array<{
+                                    id: string;
+                                    name?: string | null;
+                                    username?: string | null;
+                                    webhook?: {
+                                        id?: string | null;
+                                        name?: string | null;
+                                        avatar?: string | null;
+                                        url?: string | null;
+                                    } | null;
+                                }> | null;
+                                createdAt: string | null;
+                                updatedAt: string | null;
+                                deletedAt?: string | null;
+                            };
+                        }>;
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        post: {
+            req: PostCreateData;
             res: {
                 /**
                  * 200

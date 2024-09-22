@@ -6,7 +6,12 @@ if (!process.env.BUNDLE_SOCIAL_API_KEY) {
   throw new Error('BUNDLE_SOCIAL_API_KEY env var is required');
 }
 
+if (!process.env.BUNDLE_SOCIAL_TEAM_ID) {
+  throw new Error('BUNDLE_SOCIAL_TEAM_ID env var is required');
+}
+
 const bundlesocial = new Bundlesocial(process.env.BUNDLE_SOCIAL_API_KEY);
+const TEAM_ID = process.env.BUNDLE_SOCIAL_TEAM_ID;
 
 // APP
 describe('App', () => {
@@ -30,26 +35,109 @@ describe('App', () => {
   });
 });
 
+// ORGANIZATION
+describe('Organization', () => {
+  describe('organizationGetOrganization', () => {
+    it('should return an organization', async () => {
+      expect.assertions(1);
+      try {
+        const response = await bundlesocial.organization.organizationGetOrganization();
+        
+        expect(response).toMatchObject({
+          id: expect.any(String),
+          name: expect.any(String),
+          createdById: expect.any(String),
+          defaultPaymentMethodFilled: expect.any(Boolean),
+          billingAddressFilled: expect.any(Boolean),
+          apiAccess: expect.any(Boolean),
+
+          teams: expect.arrayContaining([]),
+          createdBy: expect.any(Object),
+          organizationSubscription: expect.any(Object),
+        });
+      } catch (error) {
+        if (error instanceof ApiError) {
+          console.error(error);
+        }
+        throw error;
+      }
+    });
+  });
+});
+
 // TEAM
 describe('Team', () => {
   describe('teamGetTeam', () => {
     it('should return a team', async () => {
       expect.assertions(1);
       try {
-        const response = await bundlesocial.team.teamGetTeam();
+        const response = await bundlesocial.team.teamGetTeam({
+          id: TEAM_ID,
+        });
         
         expect(response).toMatchObject({
           id: expect.any(String),
           name: expect.any(String),
-          users: expect.arrayContaining([]),
+          organizationId: expect.any(String),
+          organization: expect.any(Object),
           createdById: expect.any(String),
           createdBy: expect.any(Object),
-          invitations: expect.arrayContaining([]),
           bots: expect.arrayContaining([]),
           socialAccounts: expect.arrayContaining([]),
           usage: {
             monthlyPosts: expect.any(Number),
           }
+        });
+      } catch (error) {
+        if (error instanceof ApiError) {
+          console.error(error);
+        }
+        throw error;
+      }
+    });
+  });
+
+  describe('teamGetTeams', () => {
+    it('should create a team', async () => {
+      expect.assertions(1);
+      try {
+        const response = await bundlesocial.team.teamCreateTeam({
+          requestBody: {
+            name: 'Test Team',
+            tier: 'FREE',
+          },
+        });
+        
+        expect(response).toMatchObject({
+          id: expect.any(String),
+          name: 'Test Team',
+        });
+      } catch (error) {
+        if (error instanceof ApiError) {
+          console.error(error);
+        }
+        throw error;
+      }
+    });
+  });
+});
+
+// SOCIAL ACCOUNT
+describe('Social Account', () => {
+  describe('socialAccountConnect', () => {
+    it('should return a URL', async () => {
+      expect.assertions(1);
+      try {
+        const response = await bundlesocial.socialAccount.socialAccountConnect({
+          requestBody: {
+            type: 'TIKTOK',
+            teamId: TEAM_ID,
+            redirectUrl: 'https://bundle.social/dashboard',
+          }
+        });
+
+        expect(response).toMatchObject({
+          url: expect.any(String),
         });
       } catch (error) {
         if (error instanceof ApiError) {
@@ -103,6 +191,7 @@ describe('Uploads', () => {
         const jpgImage = await fs.readFile('./src/test/jpg-square.jpg');
         const createdUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([jpgImage], { type: 'image/jpeg' }),
           }
         });
@@ -133,6 +222,7 @@ describe('Uploads', () => {
         const pngImage = await fs.readFile('./src/test/png-square.png');
         const createdUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([pngImage], { type: 'image/png' }),
           }
         });
@@ -163,6 +253,7 @@ describe('Uploads', () => {
         const video = await fs.readFile('./src/test/mp4-horizontal.mp4');
         const createdUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([video], { type: 'video/mp4' }),
           }
         });
@@ -193,6 +284,7 @@ describe('Uploads', () => {
         const jpgImage = await fs.readFile('./src/test/jpg-square.jpg');
         const createdJpgUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([jpgImage], { type: 'image/jpeg' }),
           }
         });
@@ -201,6 +293,7 @@ describe('Uploads', () => {
         const pngImage = await fs.readFile('./src/test/png-square.png');
         const createdPngUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([pngImage], { type: 'image/png' }),
           }
         });
@@ -209,12 +302,15 @@ describe('Uploads', () => {
         const video = await fs.readFile('./src/test/mp4-horizontal.mp4');
         const createdVideoUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([video], { type: 'video/mp4' }),
           }
         });
         expect(createdVideoUpload).toMatchObject(videoUploadMatcher);
 
-        const uploads = await bundlesocial.upload.uploadGetList();
+        const uploads = await bundlesocial.upload.uploadGetList({
+          teamId: TEAM_ID,
+        });
 
         expect(uploads).toEqual(expect.arrayContaining([
           expect.objectContaining(jpgUploadMatcher),
@@ -273,6 +369,7 @@ describe('Post', () => {
       try {
         const createdPost = await bundlesocial.post.postCreate({
           requestBody: {
+            teamId: TEAM_ID,
             data: {
               FACEBOOK: {
                 text: 'Hello, world!',
@@ -315,6 +412,7 @@ describe('Post', () => {
         const jpgImage = await fs.readFile('./src/test/jpg-square.jpg');
         const createdJpgUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([jpgImage], { type: 'image/jpeg' }),
           }
         });
@@ -322,6 +420,7 @@ describe('Post', () => {
 
         const createdPost = await bundlesocial.post.postCreate({
           requestBody: {
+            teamId: TEAM_ID,
             data: {
               FACEBOOK: {
                 text: 'Hello, world!',
@@ -364,6 +463,7 @@ describe('Post', () => {
         const video = await fs.readFile('./src/test/mp4-horizontal.mp4');
         const createdVideoUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([video], { type: 'video/mp4' }),
           }
         });
@@ -371,6 +471,7 @@ describe('Post', () => {
 
         const createdPost = await bundlesocial.post.postCreate({
           requestBody: {
+            teamId: TEAM_ID,
             data: {
               FACEBOOK: {
                 text: 'Hello, world!',
@@ -413,6 +514,7 @@ describe('Post', () => {
         const jpgImage = await fs.readFile('./src/test/jpg-square.jpg');
         const createdJpgUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([jpgImage], { type: 'image/jpeg' }),
           }
         });
@@ -421,6 +523,7 @@ describe('Post', () => {
         const video = await fs.readFile('./src/test/mp4-horizontal.mp4');
         const createdVideoUpload = await bundlesocial.upload.uploadCreate({
           formData: {
+            teamId: TEAM_ID,
             file: new Blob([video], { type: 'video/mp4' }),
           }
         });
@@ -428,6 +531,7 @@ describe('Post', () => {
 
         const createdPost1 = await bundlesocial.post.postCreate({
           requestBody: {
+            teamId: TEAM_ID,
             data: {
               FACEBOOK: {
                 text: 'Hello, world!',
@@ -446,6 +550,7 @@ describe('Post', () => {
 
         const createdPost2 = await bundlesocial.post.postCreate({
           requestBody: {
+            teamId: TEAM_ID,
             data: {
               FACEBOOK: {
                 text: 'Hello, world!',
@@ -463,6 +568,7 @@ describe('Post', () => {
         expect(createdPost2).toMatchObject(postMatcherWithUploads);
 
         const posts = await bundlesocial.post.postGetList({
+          teamId: TEAM_ID,
           offset: 0,
           limit: 10,
         });

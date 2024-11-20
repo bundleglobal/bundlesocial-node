@@ -13,6 +13,7 @@ export type OrganizationGetOrganizationResponse = {
     defaultPaymentMethodFilled?: boolean;
     billingAddressFilled?: boolean;
     apiAccess?: boolean;
+    ref?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -66,7 +67,9 @@ export type OrganizationGetOrganizationResponse = {
             organizationSubscriptionId: string;
             teamId: string;
             stripePriceId: string;
-            tier: 'PRO';
+            tier: 'PRO' | 'CUSTOM';
+            maxMonthlyPosts: number;
+            maxDailyPosts: number;
             createdAt: string | null;
             updatedAt: string | null;
         } | null;
@@ -94,6 +97,7 @@ export type TeamGetTeamResponse = {
         defaultPaymentMethodFilled?: boolean;
         billingAddressFilled?: boolean;
         apiAccess?: boolean;
+        ref?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -122,7 +126,7 @@ export type TeamGetTeamResponse = {
     }>;
     socialAccounts: Array<{
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
@@ -148,12 +152,51 @@ export type TeamGetTeamResponse = {
     usage: {
         monthlyPosts: number;
     };
+    bio?: {
+        id: string;
+        username: string;
+        name: string | null;
+        description: string | null;
+        avatarUrl: string | null;
+        socials: {
+            [key: string]: (string | null);
+        } | null;
+        teamId: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        items: Array<{
+            id: string;
+            bioId: string;
+            name: string;
+            link: string;
+            icon?: string | null;
+            enabled: boolean;
+            order?: number | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            analytics: Array<{
+                id: string;
+                count: number;
+                bioItemId: string;
+                deviceType: {
+                    [key: string]: (number);
+                };
+                country: {
+                    [key: string]: (number);
+                };
+                createdAt: string | null;
+                updatedAt: string | null;
+            }>;
+        }>;
+    } | null;
     teamPlan?: {
         id: string;
         organizationSubscriptionId: string;
         teamId: string;
         stripePriceId: string;
-        tier: 'PRO';
+        tier: 'PRO' | 'CUSTOM';
+        maxMonthlyPosts: number;
+        maxDailyPosts: number;
         createdAt: string | null;
         updatedAt: string | null;
         organizationSubscription?: {
@@ -225,7 +268,7 @@ export type TeamCreateTeamData = {
      */
     requestBody?: {
         name: string;
-        tier: 'FREE' | 'PRO';
+        tier: 'FREE' | 'PRO' | 'CUSTOM';
         avatarUrl?: string | null;
     };
 };
@@ -246,7 +289,7 @@ export type SocialAccountConnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
         teamId: string;
         redirectUrl: string;
     };
@@ -264,14 +307,14 @@ export type SocialAccountDisconnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
         teamId: string;
     };
 };
 
 export type SocialAccountDisconnectResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
@@ -308,7 +351,7 @@ export type SocialAccountSetChannelData = {
 
 export type SocialAccountSetChannelResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
@@ -344,7 +387,7 @@ export type SocialAccountRefreshChannelsData = {
 
 export type SocialAccountRefreshChannelsResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
@@ -559,6 +602,10 @@ export type PostGetResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
         } | null;
+        THREADS?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
         TIKTOK?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
@@ -651,8 +698,7 @@ export type PostGetResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        TELEGRAM?: unknown;
-        THREADS?: unknown;
+        MASTODON?: unknown;
     };
     error?: string | null;
     errors?: {
@@ -666,7 +712,7 @@ export type PostGetResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         YOUTUBE?: string | null;
-        TELEGRAM?: string | null;
+        MASTODON?: string | null;
         THREADS?: string | null;
     } | null;
     externalData?: {
@@ -715,7 +761,7 @@ export type PostGetResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
-        TELEGRAM?: {
+        MASTODON?: {
             id?: string | null;
             permalink?: string | null;
         } | null;
@@ -762,7 +808,7 @@ export type PostGetResponse = {
         deletedAt?: string | null;
         socialAccount: {
             id: string;
-            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
             teamId: string;
             username?: string | null;
             displayName?: string | null;
@@ -797,7 +843,7 @@ export type PostUpdateData = {
         title?: string;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
         data?: {
             TWITTER?: {
                 text?: string | null;
@@ -832,6 +878,10 @@ export type PostUpdateData = {
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            THREADS?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
             } | null;
@@ -927,8 +977,7 @@ export type PostUpdateData = {
                  */
                 avatarUrl?: string | null;
             } | null;
-            TELEGRAM?: unknown;
-            THREADS?: unknown;
+            MASTODON?: unknown;
         };
     };
 };
@@ -974,6 +1023,10 @@ export type PostUpdateResponse = {
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
+        THREADS?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
         } | null;
@@ -1069,8 +1122,7 @@ export type PostUpdateResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        TELEGRAM?: unknown;
-        THREADS?: unknown;
+        MASTODON?: unknown;
     };
     error?: string | null;
     errors?: {
@@ -1084,7 +1136,7 @@ export type PostUpdateResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         YOUTUBE?: string | null;
-        TELEGRAM?: string | null;
+        MASTODON?: string | null;
         THREADS?: string | null;
     } | null;
     externalData?: {
@@ -1133,7 +1185,7 @@ export type PostUpdateResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
-        TELEGRAM?: {
+        MASTODON?: {
             id?: string | null;
             permalink?: string | null;
         } | null;
@@ -1195,6 +1247,10 @@ export type PostDeleteResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
         } | null;
+        THREADS?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
         TIKTOK?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
@@ -1287,8 +1343,7 @@ export type PostDeleteResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        TELEGRAM?: unknown;
-        THREADS?: unknown;
+        MASTODON?: unknown;
     };
     error?: string | null;
     errors?: {
@@ -1302,7 +1357,7 @@ export type PostDeleteResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         YOUTUBE?: string | null;
-        TELEGRAM?: string | null;
+        MASTODON?: string | null;
         THREADS?: string | null;
     } | null;
     externalData?: {
@@ -1351,7 +1406,7 @@ export type PostDeleteResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
-        TELEGRAM?: {
+        MASTODON?: {
             id?: string | null;
             permalink?: string | null;
         } | null;
@@ -1370,7 +1425,7 @@ export type PostGetListData = {
     offset?: number | null;
     order?: 'ASC' | 'DESC' | null;
     orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK')> | null;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')> | null;
     q?: string | null;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | null;
     teamId: string;
@@ -1421,6 +1476,10 @@ export type PostGetListResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
             } | null;
+            THREADS?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
             TIKTOK?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
@@ -1513,8 +1572,7 @@ export type PostGetListResponse = {
                  */
                 avatarUrl?: string | null;
             } | null;
-            TELEGRAM?: unknown;
-            THREADS?: unknown;
+            MASTODON?: unknown;
         };
         error?: string | null;
         errors?: {
@@ -1528,7 +1586,7 @@ export type PostGetListResponse = {
             DISCORD?: string | null;
             SLACK?: string | null;
             YOUTUBE?: string | null;
-            TELEGRAM?: string | null;
+            MASTODON?: string | null;
             THREADS?: string | null;
         } | null;
         externalData?: {
@@ -1577,7 +1635,7 @@ export type PostGetListResponse = {
                 id?: string | null;
                 permalink?: string | null;
             } | null;
-            TELEGRAM?: {
+            MASTODON?: {
                 id?: string | null;
                 permalink?: string | null;
             } | null;
@@ -1624,7 +1682,7 @@ export type PostGetListResponse = {
             deletedAt?: string | null;
             socialAccount: {
                 id: string;
-                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
                 teamId: string;
                 username?: string | null;
                 displayName?: string | null;
@@ -1661,7 +1719,7 @@ export type PostCreateData = {
         title: string;
         postDate: string;
         status: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -1696,6 +1754,10 @@ export type PostCreateData = {
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            } | null;
+            THREADS?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
             } | null;
@@ -1791,8 +1853,7 @@ export type PostCreateData = {
                  */
                 avatarUrl?: string | null;
             } | null;
-            TELEGRAM?: unknown;
-            THREADS?: unknown;
+            MASTODON?: unknown;
         };
     };
 };
@@ -1838,6 +1899,10 @@ export type PostCreateResponse = {
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
+        THREADS?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
         } | null;
@@ -1933,8 +1998,7 @@ export type PostCreateResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        TELEGRAM?: unknown;
-        THREADS?: unknown;
+        MASTODON?: unknown;
     };
     error?: string | null;
     errors?: {
@@ -1948,7 +2012,7 @@ export type PostCreateResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         YOUTUBE?: string | null;
-        TELEGRAM?: string | null;
+        MASTODON?: string | null;
         THREADS?: string | null;
     } | null;
     externalData?: {
@@ -1997,7 +2061,7 @@ export type PostCreateResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
-        TELEGRAM?: {
+        MASTODON?: {
             id?: string | null;
             permalink?: string | null;
         } | null;
@@ -2079,6 +2143,7 @@ export type $OpenApiTs = {
                     defaultPaymentMethodFilled?: boolean;
                     billingAddressFilled?: boolean;
                     apiAccess?: boolean;
+                    ref?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -2132,7 +2197,9 @@ export type $OpenApiTs = {
                             organizationSubscriptionId: string;
                             teamId: string;
                             stripePriceId: string;
-                            tier: 'PRO';
+                            tier: 'PRO' | 'CUSTOM';
+                            maxMonthlyPosts: number;
+                            maxDailyPosts: number;
                             createdAt: string | null;
                             updatedAt: string | null;
                         } | null;
@@ -2205,6 +2272,7 @@ export type $OpenApiTs = {
                         defaultPaymentMethodFilled?: boolean;
                         billingAddressFilled?: boolean;
                         apiAccess?: boolean;
+                        ref?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -2233,7 +2301,7 @@ export type $OpenApiTs = {
                     }>;
                     socialAccounts: Array<{
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
@@ -2259,12 +2327,51 @@ export type $OpenApiTs = {
                     usage: {
                         monthlyPosts: number;
                     };
+                    bio?: {
+                        id: string;
+                        username: string;
+                        name: string | null;
+                        description: string | null;
+                        avatarUrl: string | null;
+                        socials: {
+                            [key: string]: (string | null);
+                        } | null;
+                        teamId: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        items: Array<{
+                            id: string;
+                            bioId: string;
+                            name: string;
+                            link: string;
+                            icon?: string | null;
+                            enabled: boolean;
+                            order?: number | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            analytics: Array<{
+                                id: string;
+                                count: number;
+                                bioItemId: string;
+                                deviceType: {
+                                    [key: string]: (number);
+                                };
+                                country: {
+                                    [key: string]: (number);
+                                };
+                                createdAt: string | null;
+                                updatedAt: string | null;
+                            }>;
+                        }>;
+                    } | null;
                     teamPlan?: {
                         id: string;
                         organizationSubscriptionId: string;
                         teamId: string;
                         stripePriceId: string;
-                        tier: 'PRO';
+                        tier: 'PRO' | 'CUSTOM';
+                        maxMonthlyPosts: number;
+                        maxDailyPosts: number;
                         createdAt: string | null;
                         updatedAt: string | null;
                         organizationSubscription?: {
@@ -2576,7 +2683,7 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
@@ -2651,7 +2758,7 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
@@ -2726,7 +2833,7 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
@@ -3194,6 +3301,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                         } | null;
+                        THREADS?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
                         TIKTOK?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
@@ -3286,8 +3397,7 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        TELEGRAM?: unknown;
-                        THREADS?: unknown;
+                        MASTODON?: unknown;
                     };
                     error?: string | null;
                     errors?: {
@@ -3301,7 +3411,7 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         YOUTUBE?: string | null;
-                        TELEGRAM?: string | null;
+                        MASTODON?: string | null;
                         THREADS?: string | null;
                     } | null;
                     externalData?: {
@@ -3350,7 +3460,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;
-                        TELEGRAM?: {
+                        MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;
@@ -3397,7 +3507,7 @@ export type $OpenApiTs = {
                         deletedAt?: string | null;
                         socialAccount: {
                             id: string;
-                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
@@ -3514,6 +3624,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                         } | null;
+                        THREADS?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
                         TIKTOK?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
@@ -3606,8 +3720,7 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        TELEGRAM?: unknown;
-                        THREADS?: unknown;
+                        MASTODON?: unknown;
                     };
                     error?: string | null;
                     errors?: {
@@ -3621,7 +3734,7 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         YOUTUBE?: string | null;
-                        TELEGRAM?: string | null;
+                        MASTODON?: string | null;
                         THREADS?: string | null;
                     } | null;
                     externalData?: {
@@ -3670,7 +3783,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;
-                        TELEGRAM?: {
+                        MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;
@@ -3775,6 +3888,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                         } | null;
+                        THREADS?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
                         TIKTOK?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
@@ -3867,8 +3984,7 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        TELEGRAM?: unknown;
-                        THREADS?: unknown;
+                        MASTODON?: unknown;
                     };
                     error?: string | null;
                     errors?: {
@@ -3882,7 +3998,7 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         YOUTUBE?: string | null;
-                        TELEGRAM?: string | null;
+                        MASTODON?: string | null;
                         THREADS?: string | null;
                     } | null;
                     externalData?: {
@@ -3931,7 +4047,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;
-                        TELEGRAM?: {
+                        MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;
@@ -4039,6 +4155,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                             } | null;
+                            THREADS?: {
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            } | null;
                             TIKTOK?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
@@ -4131,8 +4251,7 @@ export type $OpenApiTs = {
                                  */
                                 avatarUrl?: string | null;
                             } | null;
-                            TELEGRAM?: unknown;
-                            THREADS?: unknown;
+                            MASTODON?: unknown;
                         };
                         error?: string | null;
                         errors?: {
@@ -4146,7 +4265,7 @@ export type $OpenApiTs = {
                             DISCORD?: string | null;
                             SLACK?: string | null;
                             YOUTUBE?: string | null;
-                            TELEGRAM?: string | null;
+                            MASTODON?: string | null;
                             THREADS?: string | null;
                         } | null;
                         externalData?: {
@@ -4195,7 +4314,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                             } | null;
-                            TELEGRAM?: {
+                            MASTODON?: {
                                 id?: string | null;
                                 permalink?: string | null;
                             } | null;
@@ -4242,7 +4361,7 @@ export type $OpenApiTs = {
                             deletedAt?: string | null;
                             socialAccount: {
                                 id: string;
-                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'TELEGRAM' | 'DISCORD' | 'SLACK';
+                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
                                 teamId: string;
                                 username?: string | null;
                                 displayName?: string | null;
@@ -4361,6 +4480,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                         } | null;
+                        THREADS?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
                         TIKTOK?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
@@ -4453,8 +4576,7 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        TELEGRAM?: unknown;
-                        THREADS?: unknown;
+                        MASTODON?: unknown;
                     };
                     error?: string | null;
                     errors?: {
@@ -4468,7 +4590,7 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         YOUTUBE?: string | null;
-                        TELEGRAM?: string | null;
+                        MASTODON?: string | null;
                         THREADS?: string | null;
                     } | null;
                     externalData?: {
@@ -4517,7 +4639,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;
-                        TELEGRAM?: {
+                        MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;

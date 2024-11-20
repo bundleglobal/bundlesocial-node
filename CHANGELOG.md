@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.0.0...v2.1.0) (2024-11-20)
+
+
+### Features
+
+* custom team plans, link in bio, threads ([a4f48e1](https://github.com/bundleglobal/bundlesocial-node/commit/a4f48e18101bbc773cc357c4ba4dc4ea16e90550))
+
 # [2.0.0](https://github.com/bundleglobal/bundlesocial-node/compare/v1.6.0...v2.0.0) (2024-09-22)
 
 

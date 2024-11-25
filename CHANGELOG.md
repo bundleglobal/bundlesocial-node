@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.1.0...v2.2.0) (2024-11-25)
+
+
+### Features
+
+* mastodon integration ([48657e9](https://github.com/bundleglobal/bundlesocial-node/commit/48657e960832a9fb751624042f8dd0a3cb7a2405))
+
 # [2.1.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.0.0...v2.1.0) (2024-11-20)
 
 

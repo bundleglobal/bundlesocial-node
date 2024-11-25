@@ -1521,11 +1521,16 @@ paths:
                     - REDDIT
                     - DISCORD
                     - SLACK
+                    - MASTODON
                 teamId:
                   type: string
                 redirectUrl:
                   type: string
                   format: uri
+                serverUrl:
+                  type: string
+                  format: uri
+                  description: Mastodon only
               required:
                 - type
                 - teamId
@@ -1655,6 +1660,7 @@ paths:
                     - REDDIT
                     - DISCORD
                     - SLACK
+                    - MASTODON
                 teamId:
                   type: string
               required:
@@ -3497,7 +3503,26 @@ paths:
                         nullable: true
                       MASTODON:
                         type: object
-                        properties: {}
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PUBLIC
+                              - UNLISTED
+                              - PRIVATE
+                              - DIRECT
+                            nullable: true
+                          spoiler:
+                            type: string
+                            nullable: true
                         nullable: true
                   error:
                     type: string
@@ -4359,7 +4384,26 @@ paths:
                       nullable: true
                     MASTODON:
                       type: object
-                      properties: {}
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        privacy:
+                          type: string
+                          enum:
+                            - PUBLIC
+                            - UNLISTED
+                            - PRIVATE
+                            - DIRECT
+                          nullable: true
+                        spoiler:
+                          type: string
+                          nullable: true
                       nullable: true
       responses:
         '200':
@@ -4710,7 +4754,26 @@ paths:
                         nullable: true
                       MASTODON:
                         type: object
-                        properties: {}
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PUBLIC
+                              - UNLISTED
+                              - PRIVATE
+                              - DIRECT
+                            nullable: true
+                          spoiler:
+                            type: string
+                            nullable: true
                         nullable: true
                   error:
                     type: string
@@ -5357,7 +5420,26 @@ paths:
                         nullable: true
                       MASTODON:
                         type: object
-                        properties: {}
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PUBLIC
+                              - UNLISTED
+                              - PRIVATE
+                              - DIRECT
+                            nullable: true
+                          spoiler:
+                            type: string
+                            nullable: true
                         nullable: true
                   error:
                     type: string
@@ -6081,7 +6163,26 @@ paths:
                               nullable: true
                             MASTODON:
                               type: object
-                              properties: {}
+                              properties:
+                                text:
+                                  type: string
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                privacy:
+                                  type: string
+                                  enum:
+                                    - PUBLIC
+                                    - UNLISTED
+                                    - PRIVATE
+                                    - DIRECT
+                                  nullable: true
+                                spoiler:
+                                  type: string
+                                  nullable: true
                               nullable: true
                         error:
                           type: string
@@ -6945,7 +7046,26 @@ paths:
                       nullable: true
                     MASTODON:
                       type: object
-                      properties: {}
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        privacy:
+                          type: string
+                          enum:
+                            - PUBLIC
+                            - UNLISTED
+                            - PRIVATE
+                            - DIRECT
+                          nullable: true
+                        spoiler:
+                          type: string
+                          nullable: true
                       nullable: true
               required:
                 - teamId
@@ -7303,7 +7423,26 @@ paths:
                         nullable: true
                       MASTODON:
                         type: object
-                        properties: {}
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          privacy:
+                            type: string
+                            enum:
+                              - PUBLIC
+                              - UNLISTED
+                              - PRIVATE
+                              - DIRECT
+                            nullable: true
+                          spoiler:
+                            type: string
+                            nullable: true
                         nullable: true
                   error:
                     type: string

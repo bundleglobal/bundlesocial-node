@@ -289,9 +289,13 @@ export type SocialAccountConnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON';
         teamId: string;
         redirectUrl: string;
+        /**
+         * Mastodon only
+         */
+        serverUrl?: string;
     };
 };
 
@@ -307,7 +311,7 @@ export type SocialAccountDisconnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON';
         teamId: string;
     };
 };
@@ -698,7 +702,12 @@ export type PostGetResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        MASTODON?: unknown;
+        MASTODON?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+            spoiler?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -977,7 +986,12 @@ export type PostUpdateData = {
                  */
                 avatarUrl?: string | null;
             } | null;
-            MASTODON?: unknown;
+            MASTODON?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                spoiler?: string | null;
+            } | null;
         };
     };
 };
@@ -1122,7 +1136,12 @@ export type PostUpdateResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        MASTODON?: unknown;
+        MASTODON?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+            spoiler?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -1343,7 +1362,12 @@ export type PostDeleteResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        MASTODON?: unknown;
+        MASTODON?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+            spoiler?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -1572,7 +1596,12 @@ export type PostGetListResponse = {
                  */
                 avatarUrl?: string | null;
             } | null;
-            MASTODON?: unknown;
+            MASTODON?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                spoiler?: string | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -1853,7 +1882,12 @@ export type PostCreateData = {
                  */
                 avatarUrl?: string | null;
             } | null;
-            MASTODON?: unknown;
+            MASTODON?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                spoiler?: string | null;
+            } | null;
         };
     };
 };
@@ -1998,7 +2032,12 @@ export type PostCreateResponse = {
              */
             avatarUrl?: string | null;
         } | null;
-        MASTODON?: unknown;
+        MASTODON?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+            spoiler?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -3397,7 +3436,12 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        MASTODON?: unknown;
+                        MASTODON?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                            spoiler?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -3720,7 +3764,12 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        MASTODON?: unknown;
+                        MASTODON?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                            spoiler?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -3984,7 +4033,12 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        MASTODON?: unknown;
+                        MASTODON?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                            spoiler?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -4251,7 +4305,12 @@ export type $OpenApiTs = {
                                  */
                                 avatarUrl?: string | null;
                             } | null;
-                            MASTODON?: unknown;
+                            MASTODON?: {
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                                spoiler?: string | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -4576,7 +4635,12 @@ export type $OpenApiTs = {
                              */
                             avatarUrl?: string | null;
                         } | null;
-                        MASTODON?: unknown;
+                        MASTODON?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                            spoiler?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {

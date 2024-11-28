@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.2.0...v2.2.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* disable creating custom tier plan via api ([45cb3a6](https://github.com/bundleglobal/bundlesocial-node/commit/45cb3a66a2c04f45779253eb84d5e84274e26a0c))
+
 # [2.2.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.1.0...v2.2.0) (2024-11-25)
 
 

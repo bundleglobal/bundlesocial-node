@@ -268,7 +268,7 @@ export type TeamCreateTeamData = {
      */
     requestBody?: {
         name: string;
-        tier: 'FREE' | 'PRO' | 'CUSTOM';
+        tier: 'FREE' | 'PRO';
         avatarUrl?: string | null;
     };
 };

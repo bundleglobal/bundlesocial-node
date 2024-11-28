@@ -1365,7 +1365,6 @@ paths:
                   enum:
                     - FREE
                     - PRO
-                    - CUSTOM
                 avatarUrl:
                   type: string
                   nullable: true

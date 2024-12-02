@@ -8,6 +8,7 @@ export type AppGetHealthResponse = {
 export type OrganizationGetOrganizationResponse = {
     id: string;
     createdById: string;
+    promotionCodeId?: string | null;
     name?: string | null;
     avatarUrl?: string | null;
     defaultPaymentMethodFilled?: boolean;
@@ -40,9 +41,11 @@ export type OrganizationGetOrganizationResponse = {
         updatedAt: string | null;
         deletedAt?: string | null;
     };
-    organizationSubscription?: {
+    subscription?: {
         id: string;
         organizationId: string;
+        couponId?: string | null;
+        promotionCodeId?: string | null;
         stripeSubscriptionId: string;
         stripeSubscriptionItems?: Array<{
             id: string;
@@ -60,19 +63,95 @@ export type OrganizationGetOrganizationResponse = {
         canceledAt?: string | null;
         trialStart?: string | null;
         trialEnd?: string | null;
+        defaultMaxMonthlyPosts: number;
+        defaultMaxDailyPosts: number;
+        discountStart?: string | null;
+        discountEnd?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
-        teamPlan?: {
+        teamPlans: Array<{
             id: string;
-            organizationSubscriptionId: string;
+            subscriptionId: string;
             teamId: string;
             stripePriceId: string;
-            tier: 'PRO' | 'CUSTOM';
+            tier: 'PRO';
             maxMonthlyPosts: number;
             maxDailyPosts: number;
             createdAt: string | null;
             updatedAt: string | null;
+        }>;
+        coupon?: {
+            id: string;
+            name?: string | null;
+            amountOff?: number | null;
+            percentOff?: number | null;
+            duration: 'forever' | 'once' | 'repeating';
+            durationInMonths?: number | null;
+            maxRedemptions?: number | null;
+            valid: boolean;
+            createdAt: string | null;
+            updatedAt: string | null;
+            promotionCodes: Array<{
+                id: string;
+                couponId: string;
+                code: string;
+                active: boolean;
+                expiresAt?: string | null;
+                maxRedemptions?: number | null;
+                firstTimeTransaction: boolean;
+                minimumAmount?: number | null;
+                createdAt: string | null;
+                updatedAt: string | null;
+            }>;
         } | null;
+        promotionCode?: {
+            id: string;
+            couponId: string;
+            code: string;
+            active: boolean;
+            expiresAt?: string | null;
+            maxRedemptions?: number | null;
+            firstTimeTransaction: boolean;
+            minimumAmount?: number | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            coupon: {
+                id: string;
+                name?: string | null;
+                amountOff?: number | null;
+                percentOff?: number | null;
+                duration: 'forever' | 'once' | 'repeating';
+                durationInMonths?: number | null;
+                maxRedemptions?: number | null;
+                valid: boolean;
+                createdAt: string | null;
+                updatedAt: string | null;
+            };
+        } | null;
+    } | null;
+    promotionCode?: {
+        id: string;
+        couponId: string;
+        code: string;
+        active: boolean;
+        expiresAt?: string | null;
+        maxRedemptions?: number | null;
+        firstTimeTransaction: boolean;
+        minimumAmount?: number | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        coupon: {
+            id: string;
+            name?: string | null;
+            amountOff?: number | null;
+            percentOff?: number | null;
+            duration: 'forever' | 'once' | 'repeating';
+            durationInMonths?: number | null;
+            maxRedemptions?: number | null;
+            valid: boolean;
+            createdAt: string | null;
+            updatedAt: string | null;
+        };
     } | null;
 };
 
@@ -92,6 +171,7 @@ export type TeamGetTeamResponse = {
     organization: {
         id: string;
         createdById: string;
+        promotionCodeId?: string | null;
         name?: string | null;
         avatarUrl?: string | null;
         defaultPaymentMethodFilled?: boolean;
@@ -191,17 +271,19 @@ export type TeamGetTeamResponse = {
     } | null;
     teamPlan?: {
         id: string;
-        organizationSubscriptionId: string;
+        subscriptionId: string;
         teamId: string;
         stripePriceId: string;
-        tier: 'PRO' | 'CUSTOM';
+        tier: 'PRO';
         maxMonthlyPosts: number;
         maxDailyPosts: number;
         createdAt: string | null;
         updatedAt: string | null;
-        organizationSubscription?: {
+        subscription?: {
             id: string;
             organizationId: string;
+            couponId?: string | null;
+            promotionCodeId?: string | null;
             stripeSubscriptionId: string;
             stripeSubscriptionItems?: Array<{
                 id: string;
@@ -219,6 +301,10 @@ export type TeamGetTeamResponse = {
             canceledAt?: string | null;
             trialStart?: string | null;
             trialEnd?: string | null;
+            defaultMaxMonthlyPosts: number;
+            defaultMaxDailyPosts: number;
+            discountStart?: string | null;
+            discountEnd?: string | null;
             createdAt: string | null;
             updatedAt: string | null;
         } | null;
@@ -2177,6 +2263,7 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     createdById: string;
+                    promotionCodeId?: string | null;
                     name?: string | null;
                     avatarUrl?: string | null;
                     defaultPaymentMethodFilled?: boolean;
@@ -2209,9 +2296,11 @@ export type $OpenApiTs = {
                         updatedAt: string | null;
                         deletedAt?: string | null;
                     };
-                    organizationSubscription?: {
+                    subscription?: {
                         id: string;
                         organizationId: string;
+                        couponId?: string | null;
+                        promotionCodeId?: string | null;
                         stripeSubscriptionId: string;
                         stripeSubscriptionItems?: Array<{
                             id: string;
@@ -2229,19 +2318,95 @@ export type $OpenApiTs = {
                         canceledAt?: string | null;
                         trialStart?: string | null;
                         trialEnd?: string | null;
+                        defaultMaxMonthlyPosts: number;
+                        defaultMaxDailyPosts: number;
+                        discountStart?: string | null;
+                        discountEnd?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
-                        teamPlan?: {
+                        teamPlans: Array<{
                             id: string;
-                            organizationSubscriptionId: string;
+                            subscriptionId: string;
                             teamId: string;
                             stripePriceId: string;
-                            tier: 'PRO' | 'CUSTOM';
+                            tier: 'PRO';
                             maxMonthlyPosts: number;
                             maxDailyPosts: number;
                             createdAt: string | null;
                             updatedAt: string | null;
+                        }>;
+                        coupon?: {
+                            id: string;
+                            name?: string | null;
+                            amountOff?: number | null;
+                            percentOff?: number | null;
+                            duration: 'forever' | 'once' | 'repeating';
+                            durationInMonths?: number | null;
+                            maxRedemptions?: number | null;
+                            valid: boolean;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            promotionCodes: Array<{
+                                id: string;
+                                couponId: string;
+                                code: string;
+                                active: boolean;
+                                expiresAt?: string | null;
+                                maxRedemptions?: number | null;
+                                firstTimeTransaction: boolean;
+                                minimumAmount?: number | null;
+                                createdAt: string | null;
+                                updatedAt: string | null;
+                            }>;
                         } | null;
+                        promotionCode?: {
+                            id: string;
+                            couponId: string;
+                            code: string;
+                            active: boolean;
+                            expiresAt?: string | null;
+                            maxRedemptions?: number | null;
+                            firstTimeTransaction: boolean;
+                            minimumAmount?: number | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            coupon: {
+                                id: string;
+                                name?: string | null;
+                                amountOff?: number | null;
+                                percentOff?: number | null;
+                                duration: 'forever' | 'once' | 'repeating';
+                                durationInMonths?: number | null;
+                                maxRedemptions?: number | null;
+                                valid: boolean;
+                                createdAt: string | null;
+                                updatedAt: string | null;
+                            };
+                        } | null;
+                    } | null;
+                    promotionCode?: {
+                        id: string;
+                        couponId: string;
+                        code: string;
+                        active: boolean;
+                        expiresAt?: string | null;
+                        maxRedemptions?: number | null;
+                        firstTimeTransaction: boolean;
+                        minimumAmount?: number | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        coupon: {
+                            id: string;
+                            name?: string | null;
+                            amountOff?: number | null;
+                            percentOff?: number | null;
+                            duration: 'forever' | 'once' | 'repeating';
+                            durationInMonths?: number | null;
+                            maxRedemptions?: number | null;
+                            valid: boolean;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                        };
                     } | null;
                 };
                 /**
@@ -2306,6 +2471,7 @@ export type $OpenApiTs = {
                     organization: {
                         id: string;
                         createdById: string;
+                        promotionCodeId?: string | null;
                         name?: string | null;
                         avatarUrl?: string | null;
                         defaultPaymentMethodFilled?: boolean;
@@ -2405,17 +2571,19 @@ export type $OpenApiTs = {
                     } | null;
                     teamPlan?: {
                         id: string;
-                        organizationSubscriptionId: string;
+                        subscriptionId: string;
                         teamId: string;
                         stripePriceId: string;
-                        tier: 'PRO' | 'CUSTOM';
+                        tier: 'PRO';
                         maxMonthlyPosts: number;
                         maxDailyPosts: number;
                         createdAt: string | null;
                         updatedAt: string | null;
-                        organizationSubscription?: {
+                        subscription?: {
                             id: string;
                             organizationId: string;
+                            couponId?: string | null;
+                            promotionCodeId?: string | null;
                             stripeSubscriptionId: string;
                             stripeSubscriptionItems?: Array<{
                                 id: string;
@@ -2433,6 +2601,10 @@ export type $OpenApiTs = {
                             canceledAt?: string | null;
                             trialStart?: string | null;
                             trialEnd?: string | null;
+                            defaultMaxMonthlyPosts: number;
+                            defaultMaxDailyPosts: number;
+                            discountStart?: string | null;
+                            discountEnd?: string | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                         } | null;

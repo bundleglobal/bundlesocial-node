@@ -124,6 +124,9 @@ paths:
                     type: string
                   createdById:
                     type: string
+                  promotionCodeId:
+                    type: string
+                    nullable: true
                   name:
                     type: string
                     nullable: true
@@ -235,13 +238,19 @@ paths:
                       - role
                       - createdAt
                       - updatedAt
-                  organizationSubscription:
+                  subscription:
                     type: object
                     properties:
                       id:
                         type: string
                       organizationId:
                         type: string
+                      couponId:
+                        type: string
+                        nullable: true
+                      promotionCodeId:
+                        type: string
+                        nullable: true
                       stripeSubscriptionId:
                         type: string
                       stripeSubscriptionItems:
@@ -309,6 +318,18 @@ paths:
                         type: string
                         format: date-time
                         nullable: true
+                      defaultMaxMonthlyPosts:
+                        type: number
+                      defaultMaxDailyPosts:
+                        type: number
+                      discountStart:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      discountEnd:
+                        type: string
+                        format: date-time
+                        nullable: true
                       createdAt:
                         type: string
                         format: date-time
@@ -317,26 +338,73 @@ paths:
                         type: string
                         format: date-time
                         nullable: true
-                      teamPlan:
+                      teamPlans:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            subscriptionId:
+                              type: string
+                            teamId:
+                              type: string
+                            stripePriceId:
+                              type: string
+                            tier:
+                              type: string
+                              enum:
+                                - PRO
+                            maxMonthlyPosts:
+                              type: number
+                            maxDailyPosts:
+                              type: number
+                            createdAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            updatedAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                          required:
+                            - id
+                            - subscriptionId
+                            - teamId
+                            - stripePriceId
+                            - tier
+                            - maxMonthlyPosts
+                            - maxDailyPosts
+                            - createdAt
+                            - updatedAt
+                      coupon:
                         type: object
                         properties:
                           id:
                             type: string
-                          organizationSubscriptionId:
+                          name:
                             type: string
-                          teamId:
-                            type: string
-                          stripePriceId:
-                            type: string
-                          tier:
+                            nullable: true
+                          amountOff:
+                            type: number
+                            nullable: true
+                          percentOff:
+                            type: number
+                            nullable: true
+                          duration:
                             type: string
                             enum:
-                              - PRO
-                              - CUSTOM
-                          maxMonthlyPosts:
+                              - forever
+                              - once
+                              - repeating
+                          durationInMonths:
                             type: number
-                          maxDailyPosts:
+                            nullable: true
+                          maxRedemptions:
                             type: number
+                            nullable: true
+                          valid:
+                            type: boolean
                           createdAt:
                             type: string
                             format: date-time
@@ -345,16 +413,137 @@ paths:
                             type: string
                             format: date-time
                             nullable: true
+                          promotionCodes:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                couponId:
+                                  type: string
+                                code:
+                                  type: string
+                                active:
+                                  type: boolean
+                                expiresAt:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                                maxRedemptions:
+                                  type: number
+                                  nullable: true
+                                firstTimeTransaction:
+                                  type: boolean
+                                minimumAmount:
+                                  type: number
+                                  nullable: true
+                                createdAt:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                                updatedAt:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                              required:
+                                - id
+                                - couponId
+                                - code
+                                - active
+                                - firstTimeTransaction
+                                - createdAt
+                                - updatedAt
                         required:
                           - id
-                          - organizationSubscriptionId
-                          - teamId
-                          - stripePriceId
-                          - tier
-                          - maxMonthlyPosts
-                          - maxDailyPosts
+                          - duration
+                          - valid
                           - createdAt
                           - updatedAt
+                          - promotionCodes
+                        nullable: true
+                      promotionCode:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          couponId:
+                            type: string
+                          code:
+                            type: string
+                          active:
+                            type: boolean
+                          expiresAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          maxRedemptions:
+                            type: number
+                            nullable: true
+                          firstTimeTransaction:
+                            type: boolean
+                          minimumAmount:
+                            type: number
+                            nullable: true
+                          createdAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          updatedAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          coupon:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                                nullable: true
+                              amountOff:
+                                type: number
+                                nullable: true
+                              percentOff:
+                                type: number
+                                nullable: true
+                              duration:
+                                type: string
+                                enum:
+                                  - forever
+                                  - once
+                                  - repeating
+                              durationInMonths:
+                                type: number
+                                nullable: true
+                              maxRedemptions:
+                                type: number
+                                nullable: true
+                              valid:
+                                type: boolean
+                              createdAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              updatedAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                            required:
+                              - id
+                              - duration
+                              - valid
+                              - createdAt
+                              - updatedAt
+                        required:
+                          - id
+                          - couponId
+                          - code
+                          - active
+                          - firstTimeTransaction
+                          - createdAt
+                          - updatedAt
+                          - coupon
                         nullable: true
                     required:
                       - id
@@ -365,8 +554,94 @@ paths:
                       - created
                       - currentPeriodStart
                       - currentPeriodEnd
+                      - defaultMaxMonthlyPosts
+                      - defaultMaxDailyPosts
                       - createdAt
                       - updatedAt
+                      - teamPlans
+                    nullable: true
+                  promotionCode:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      couponId:
+                        type: string
+                      code:
+                        type: string
+                      active:
+                        type: boolean
+                      expiresAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      maxRedemptions:
+                        type: number
+                        nullable: true
+                      firstTimeTransaction:
+                        type: boolean
+                      minimumAmount:
+                        type: number
+                        nullable: true
+                      createdAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      coupon:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                            nullable: true
+                          amountOff:
+                            type: number
+                            nullable: true
+                          percentOff:
+                            type: number
+                            nullable: true
+                          duration:
+                            type: string
+                            enum:
+                              - forever
+                              - once
+                              - repeating
+                          durationInMonths:
+                            type: number
+                            nullable: true
+                          maxRedemptions:
+                            type: number
+                            nullable: true
+                          valid:
+                            type: boolean
+                          createdAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          updatedAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                        required:
+                          - id
+                          - duration
+                          - valid
+                          - createdAt
+                          - updatedAt
+                    required:
+                      - id
+                      - couponId
+                      - code
+                      - active
+                      - firstTimeTransaction
+                      - createdAt
+                      - updatedAt
+                      - coupon
                     nullable: true
                 required:
                   - id
@@ -508,6 +783,9 @@ paths:
                         type: string
                       createdById:
                         type: string
+                      promotionCodeId:
+                        type: string
+                        nullable: true
                       name:
                         type: string
                         nullable: true
@@ -844,7 +1122,7 @@ paths:
                     properties:
                       id:
                         type: string
-                      organizationSubscriptionId:
+                      subscriptionId:
                         type: string
                       teamId:
                         type: string
@@ -854,7 +1132,6 @@ paths:
                         type: string
                         enum:
                           - PRO
-                          - CUSTOM
                       maxMonthlyPosts:
                         type: number
                       maxDailyPosts:
@@ -867,13 +1144,19 @@ paths:
                         type: string
                         format: date-time
                         nullable: true
-                      organizationSubscription:
+                      subscription:
                         type: object
                         properties:
                           id:
                             type: string
                           organizationId:
                             type: string
+                          couponId:
+                            type: string
+                            nullable: true
+                          promotionCodeId:
+                            type: string
+                            nullable: true
                           stripeSubscriptionId:
                             type: string
                           stripeSubscriptionItems:
@@ -941,6 +1224,18 @@ paths:
                             type: string
                             format: date-time
                             nullable: true
+                          defaultMaxMonthlyPosts:
+                            type: number
+                          defaultMaxDailyPosts:
+                            type: number
+                          discountStart:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          discountEnd:
+                            type: string
+                            format: date-time
+                            nullable: true
                           createdAt:
                             type: string
                             format: date-time
@@ -958,12 +1253,14 @@ paths:
                           - created
                           - currentPeriodStart
                           - currentPeriodEnd
+                          - defaultMaxMonthlyPosts
+                          - defaultMaxDailyPosts
                           - createdAt
                           - updatedAt
                         nullable: true
                     required:
                       - id
-                      - organizationSubscriptionId
+                      - subscriptionId
                       - teamId
                       - stripePriceId
                       - tier

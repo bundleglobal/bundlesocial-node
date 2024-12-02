@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.2.1...v2.3.0) (2024-12-02)
+
+
+### Features
+
+* subscriptions and discounts rework ([4fa285c](https://github.com/bundleglobal/bundlesocial-node/commit/4fa285c8442699f07cf6386d030b1ec1ea375793))
+
 ## [2.2.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.2.0...v2.2.1) (2024-11-28)
 
 

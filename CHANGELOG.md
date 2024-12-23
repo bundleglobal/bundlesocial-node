@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.3.0...v2.4.0) (2024-12-23)
+
+
+### Features
+
+* organization subscription instead of team subscription ([1807094](https://github.com/bundleglobal/bundlesocial-node/commit/18070945fdf46fe084327d1cc0d518252318c484))
+
 # [2.3.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.2.1...v2.3.0) (2024-12-02)
 
 

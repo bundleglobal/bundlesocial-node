@@ -47,13 +47,11 @@ describe('Organization', () => {
           id: expect.any(String),
           name: expect.any(String),
           createdById: expect.any(String),
-          defaultPaymentMethodFilled: expect.any(Boolean),
-          billingAddressFilled: expect.any(Boolean),
+
           apiAccess: expect.any(Boolean),
 
           teams: expect.arrayContaining([]),
           createdBy: expect.any(Object),
-          organizationSubscription: expect.any(Object),
         });
       } catch (error) {
         if (error instanceof ApiError) {
@@ -84,9 +82,6 @@ describe('Team', () => {
           createdBy: expect.any(Object),
           bots: expect.arrayContaining([]),
           socialAccounts: expect.arrayContaining([]),
-          usage: {
-            monthlyPosts: expect.any(Number),
-          }
         });
       } catch (error) {
         if (error instanceof ApiError) {
@@ -104,7 +99,6 @@ describe('Team', () => {
         const response = await bundlesocial.team.teamCreateTeam({
           requestBody: {
             name: 'Test Team',
-            tier: 'FREE',
           },
         });
         
@@ -167,7 +161,7 @@ const jpgUploadMatcher: UploadMatcher = {
   ...uploadMatcher,
   type: 'image',
   mime: 'image/jpeg',
-  ext: 'jpg',
+  ext: 'jpeg',
 };
 const pngUploadMatcher: UploadMatcher = {
   ...uploadMatcher,

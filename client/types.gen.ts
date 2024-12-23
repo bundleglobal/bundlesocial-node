@@ -11,8 +11,6 @@ export type OrganizationGetOrganizationResponse = {
     promotionCodeId?: string | null;
     name?: string | null;
     avatarUrl?: string | null;
-    defaultPaymentMethodFilled?: boolean;
-    billingAddressFilled?: boolean;
     apiAccess?: boolean;
     ref?: string | null;
     createdAt: string | null;
@@ -54,6 +52,8 @@ export type OrganizationGetOrganizationResponse = {
         }> | null;
         status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
         metadata?: unknown;
+        stripePriceId: string;
+        tier: 'PRO' | 'BUSINESS';
         cancelAtPeriodEnd: boolean;
         created: string | null;
         currentPeriodStart: string | null;
@@ -63,23 +63,11 @@ export type OrganizationGetOrganizationResponse = {
         canceledAt?: string | null;
         trialStart?: string | null;
         trialEnd?: string | null;
-        defaultMaxMonthlyPosts: number;
-        defaultMaxDailyPosts: number;
+        maxMonthlyPosts: number;
         discountStart?: string | null;
         discountEnd?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
-        teamPlans: Array<{
-            id: string;
-            subscriptionId: string;
-            teamId: string;
-            stripePriceId: string;
-            tier: 'PRO';
-            maxMonthlyPosts: number;
-            maxDailyPosts: number;
-            createdAt: string | null;
-            updatedAt: string | null;
-        }>;
         coupon?: {
             id: string;
             name?: string | null;
@@ -153,6 +141,9 @@ export type OrganizationGetOrganizationResponse = {
             updatedAt: string | null;
         };
     } | null;
+    usage: {
+        monthlyPosts: number;
+    };
 };
 
 export type TeamGetTeamData = {
@@ -174,8 +165,6 @@ export type TeamGetTeamResponse = {
         promotionCodeId?: string | null;
         name?: string | null;
         avatarUrl?: string | null;
-        defaultPaymentMethodFilled?: boolean;
-        billingAddressFilled?: boolean;
         apiAccess?: boolean;
         ref?: string | null;
         createdAt: string | null;
@@ -229,9 +218,6 @@ export type TeamGetTeamResponse = {
         updatedAt: string | null;
         deletedAt?: string | null;
     }>;
-    usage: {
-        monthlyPosts: number;
-    };
     bio?: {
         id: string;
         username: string;
@@ -268,46 +254,6 @@ export type TeamGetTeamResponse = {
                 updatedAt: string | null;
             }>;
         }>;
-    } | null;
-    teamPlan?: {
-        id: string;
-        subscriptionId: string;
-        teamId: string;
-        stripePriceId: string;
-        tier: 'PRO';
-        maxMonthlyPosts: number;
-        maxDailyPosts: number;
-        createdAt: string | null;
-        updatedAt: string | null;
-        subscription?: {
-            id: string;
-            organizationId: string;
-            couponId?: string | null;
-            promotionCodeId?: string | null;
-            stripeSubscriptionId: string;
-            stripeSubscriptionItems?: Array<{
-                id: string;
-                price: string;
-                quantity: number;
-            }> | null;
-            status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
-            metadata?: unknown;
-            cancelAtPeriodEnd: boolean;
-            created: string | null;
-            currentPeriodStart: string | null;
-            currentPeriodEnd: string | null;
-            endedAt?: string | null;
-            cancelAt?: string | null;
-            canceledAt?: string | null;
-            trialStart?: string | null;
-            trialEnd?: string | null;
-            defaultMaxMonthlyPosts: number;
-            defaultMaxDailyPosts: number;
-            discountStart?: string | null;
-            discountEnd?: string | null;
-            createdAt: string | null;
-            updatedAt: string | null;
-        } | null;
     } | null;
 };
 
@@ -354,7 +300,6 @@ export type TeamCreateTeamData = {
      */
     requestBody?: {
         name: string;
-        tier: 'FREE' | 'PRO';
         avatarUrl?: string | null;
     };
 };
@@ -2266,8 +2211,6 @@ export type $OpenApiTs = {
                     promotionCodeId?: string | null;
                     name?: string | null;
                     avatarUrl?: string | null;
-                    defaultPaymentMethodFilled?: boolean;
-                    billingAddressFilled?: boolean;
                     apiAccess?: boolean;
                     ref?: string | null;
                     createdAt: string | null;
@@ -2309,6 +2252,8 @@ export type $OpenApiTs = {
                         }> | null;
                         status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
                         metadata?: unknown;
+                        stripePriceId: string;
+                        tier: 'PRO' | 'BUSINESS';
                         cancelAtPeriodEnd: boolean;
                         created: string | null;
                         currentPeriodStart: string | null;
@@ -2318,23 +2263,11 @@ export type $OpenApiTs = {
                         canceledAt?: string | null;
                         trialStart?: string | null;
                         trialEnd?: string | null;
-                        defaultMaxMonthlyPosts: number;
-                        defaultMaxDailyPosts: number;
+                        maxMonthlyPosts: number;
                         discountStart?: string | null;
                         discountEnd?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
-                        teamPlans: Array<{
-                            id: string;
-                            subscriptionId: string;
-                            teamId: string;
-                            stripePriceId: string;
-                            tier: 'PRO';
-                            maxMonthlyPosts: number;
-                            maxDailyPosts: number;
-                            createdAt: string | null;
-                            updatedAt: string | null;
-                        }>;
                         coupon?: {
                             id: string;
                             name?: string | null;
@@ -2408,6 +2341,9 @@ export type $OpenApiTs = {
                             updatedAt: string | null;
                         };
                     } | null;
+                    usage: {
+                        monthlyPosts: number;
+                    };
                 };
                 /**
                  * 400
@@ -2474,8 +2410,6 @@ export type $OpenApiTs = {
                         promotionCodeId?: string | null;
                         name?: string | null;
                         avatarUrl?: string | null;
-                        defaultPaymentMethodFilled?: boolean;
-                        billingAddressFilled?: boolean;
                         apiAccess?: boolean;
                         ref?: string | null;
                         createdAt: string | null;
@@ -2529,9 +2463,6 @@ export type $OpenApiTs = {
                         updatedAt: string | null;
                         deletedAt?: string | null;
                     }>;
-                    usage: {
-                        monthlyPosts: number;
-                    };
                     bio?: {
                         id: string;
                         username: string;
@@ -2568,46 +2499,6 @@ export type $OpenApiTs = {
                                 updatedAt: string | null;
                             }>;
                         }>;
-                    } | null;
-                    teamPlan?: {
-                        id: string;
-                        subscriptionId: string;
-                        teamId: string;
-                        stripePriceId: string;
-                        tier: 'PRO';
-                        maxMonthlyPosts: number;
-                        maxDailyPosts: number;
-                        createdAt: string | null;
-                        updatedAt: string | null;
-                        subscription?: {
-                            id: string;
-                            organizationId: string;
-                            couponId?: string | null;
-                            promotionCodeId?: string | null;
-                            stripeSubscriptionId: string;
-                            stripeSubscriptionItems?: Array<{
-                                id: string;
-                                price: string;
-                                quantity: number;
-                            }> | null;
-                            status: 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid' | 'paused';
-                            metadata?: unknown;
-                            cancelAtPeriodEnd: boolean;
-                            created: string | null;
-                            currentPeriodStart: string | null;
-                            currentPeriodEnd: string | null;
-                            endedAt?: string | null;
-                            cancelAt?: string | null;
-                            canceledAt?: string | null;
-                            trialStart?: string | null;
-                            trialEnd?: string | null;
-                            defaultMaxMonthlyPosts: number;
-                            defaultMaxDailyPosts: number;
-                            discountStart?: string | null;
-                            discountEnd?: string | null;
-                            createdAt: string | null;
-                            updatedAt: string | null;
-                        } | null;
                     } | null;
                 };
                 /**

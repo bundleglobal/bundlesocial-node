@@ -133,12 +133,6 @@ paths:
                   avatarUrl:
                     type: string
                     nullable: true
-                  defaultPaymentMethodFilled:
-                    default: false
-                    type: boolean
-                  billingAddressFilled:
-                    default: false
-                    type: boolean
                   apiAccess:
                     default: true
                     type: boolean
@@ -284,6 +278,13 @@ paths:
                         type: object
                         properties: {}
                         nullable: true
+                      stripePriceId:
+                        type: string
+                      tier:
+                        type: string
+                        enum:
+                          - PRO
+                          - BUSINESS
                       cancelAtPeriodEnd:
                         type: boolean
                       created:
@@ -318,9 +319,7 @@ paths:
                         type: string
                         format: date-time
                         nullable: true
-                      defaultMaxMonthlyPosts:
-                        type: number
-                      defaultMaxDailyPosts:
+                      maxMonthlyPosts:
                         type: number
                       discountStart:
                         type: string
@@ -338,45 +337,6 @@ paths:
                         type: string
                         format: date-time
                         nullable: true
-                      teamPlans:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: string
-                            subscriptionId:
-                              type: string
-                            teamId:
-                              type: string
-                            stripePriceId:
-                              type: string
-                            tier:
-                              type: string
-                              enum:
-                                - PRO
-                            maxMonthlyPosts:
-                              type: number
-                            maxDailyPosts:
-                              type: number
-                            createdAt:
-                              type: string
-                              format: date-time
-                              nullable: true
-                            updatedAt:
-                              type: string
-                              format: date-time
-                              nullable: true
-                          required:
-                            - id
-                            - subscriptionId
-                            - teamId
-                            - stripePriceId
-                            - tier
-                            - maxMonthlyPosts
-                            - maxDailyPosts
-                            - createdAt
-                            - updatedAt
                       coupon:
                         type: object
                         properties:
@@ -550,15 +510,15 @@ paths:
                       - organizationId
                       - stripeSubscriptionId
                       - status
+                      - stripePriceId
+                      - tier
                       - cancelAtPeriodEnd
                       - created
                       - currentPeriodStart
                       - currentPeriodEnd
-                      - defaultMaxMonthlyPosts
-                      - defaultMaxDailyPosts
+                      - maxMonthlyPosts
                       - createdAt
                       - updatedAt
-                      - teamPlans
                     nullable: true
                   promotionCode:
                     type: object
@@ -643,6 +603,13 @@ paths:
                       - updatedAt
                       - coupon
                     nullable: true
+                  usage:
+                    type: object
+                    properties:
+                      monthlyPosts:
+                        type: number
+                    required:
+                      - monthlyPosts
                 required:
                   - id
                   - createdById
@@ -650,6 +617,7 @@ paths:
                   - updatedAt
                   - teams
                   - createdBy
+                  - usage
         '400':
           description: '400'
           content:
@@ -792,12 +760,6 @@ paths:
                       avatarUrl:
                         type: string
                         nullable: true
-                      defaultPaymentMethodFilled:
-                        default: false
-                        type: boolean
-                      billingAddressFilled:
-                        default: false
-                        type: boolean
                       apiAccess:
                         default: true
                         type: boolean
@@ -991,13 +953,6 @@ paths:
                         - teamId
                         - createdAt
                         - updatedAt
-                  usage:
-                    type: object
-                    properties:
-                      monthlyPosts:
-                        type: number
-                    required:
-                      - monthlyPosts
                   bio:
                     type: object
                     properties:
@@ -1117,158 +1072,6 @@ paths:
                       - updatedAt
                       - items
                     nullable: true
-                  teamPlan:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      subscriptionId:
-                        type: string
-                      teamId:
-                        type: string
-                      stripePriceId:
-                        type: string
-                      tier:
-                        type: string
-                        enum:
-                          - PRO
-                      maxMonthlyPosts:
-                        type: number
-                      maxDailyPosts:
-                        type: number
-                      createdAt:
-                        type: string
-                        format: date-time
-                        nullable: true
-                      updatedAt:
-                        type: string
-                        format: date-time
-                        nullable: true
-                      subscription:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                          organizationId:
-                            type: string
-                          couponId:
-                            type: string
-                            nullable: true
-                          promotionCodeId:
-                            type: string
-                            nullable: true
-                          stripeSubscriptionId:
-                            type: string
-                          stripeSubscriptionItems:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                price:
-                                  type: string
-                                quantity:
-                                  type: number
-                              required:
-                                - id
-                                - price
-                                - quantity
-                            nullable: true
-                          status:
-                            type: string
-                            enum:
-                              - trialing
-                              - active
-                              - canceled
-                              - incomplete
-                              - incomplete_expired
-                              - past_due
-                              - unpaid
-                              - paused
-                          metadata:
-                            type: object
-                            properties: {}
-                            nullable: true
-                          cancelAtPeriodEnd:
-                            type: boolean
-                          created:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          currentPeriodStart:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          currentPeriodEnd:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          endedAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          cancelAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          canceledAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          trialStart:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          trialEnd:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          defaultMaxMonthlyPosts:
-                            type: number
-                          defaultMaxDailyPosts:
-                            type: number
-                          discountStart:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          discountEnd:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          createdAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          updatedAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                        required:
-                          - id
-                          - organizationId
-                          - stripeSubscriptionId
-                          - status
-                          - cancelAtPeriodEnd
-                          - created
-                          - currentPeriodStart
-                          - currentPeriodEnd
-                          - defaultMaxMonthlyPosts
-                          - defaultMaxDailyPosts
-                          - createdAt
-                          - updatedAt
-                        nullable: true
-                    required:
-                      - id
-                      - subscriptionId
-                      - teamId
-                      - stripePriceId
-                      - tier
-                      - maxMonthlyPosts
-                      - maxDailyPosts
-                      - createdAt
-                      - updatedAt
-                    nullable: true
                 required:
                   - id
                   - name
@@ -1280,7 +1083,6 @@ paths:
                   - createdBy
                   - bots
                   - socialAccounts
-                  - usage
         '400':
           description: '400'
           content:
@@ -1657,17 +1459,11 @@ paths:
                   type: string
                   minLength: 3
                   maxLength: 80
-                tier:
-                  type: string
-                  enum:
-                    - FREE
-                    - PRO
                 avatarUrl:
                   type: string
                   nullable: true
               required:
                 - name
-                - tier
       responses:
         '200':
           description: '200'

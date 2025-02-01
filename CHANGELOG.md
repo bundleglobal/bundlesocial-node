@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.4.0...v2.5.0) (2025-02-01)
+
+
+### Features
+
+* create portal link endpoint ([3b9adb4](https://github.com/bundleglobal/bundlesocial-node/commit/3b9adb46e014106d058c43b7fae40816f3fe0237))
+
 # [2.4.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.3.0...v2.4.0) (2024-12-23)
 
 

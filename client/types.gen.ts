@@ -446,6 +446,21 @@ export type SocialAccountRefreshChannelsResponse = {
     deletedAt?: string | null;
 };
 
+export type SocialAccountCreatePortalLinkData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        redirectUrl: string;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON')>;
+    };
+};
+
+export type SocialAccountCreatePortalLinkResponse = {
+    url: string;
+};
+
 export type UploadGetListData = {
     teamId: string;
 };
@@ -2957,6 +2972,59 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/create-portal-link': {
+        post: {
+            req: SocialAccountCreatePortalLinkData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    url: string;
                 };
                 /**
                  * 400

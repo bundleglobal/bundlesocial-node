@@ -165,7 +165,8 @@ export class SocialAccountService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
     
     /**
-     * Generate OAuth URL
+     * Connect social account for team
+     * Generate OAuth URL for social account connection. Redirect user to this URL to connect social account.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -190,6 +191,7 @@ export class SocialAccountService {
     
     /**
      * Disconnect social account from team
+     * This will remove the social account from all the scheduled posts too.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -214,6 +216,7 @@ export class SocialAccountService {
     
     /**
      * Set channel for social account
+     * Needed only for some social account types - Youtube, Instagram, Facebook and Linkedin.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -238,6 +241,7 @@ export class SocialAccountService {
     
     /**
      * Refresh channels for social account
+     * Refresh channels saved on socialAccount.channels. This is only needed for some social account types - Reddit, Discord, Slack, Pinterest.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -262,7 +266,7 @@ export class SocialAccountService {
     
     /**
      * Create portal link
-     * Create a portal link which can be used to manage connected social accounts
+     * Simplify connect flow. Create a portal link which can be used to manage connected social accounts directly on bundle.social platform without implementing the logic on your side.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200

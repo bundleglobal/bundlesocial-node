@@ -454,6 +454,9 @@ export type SocialAccountCreatePortalLinkData = {
         teamId: string;
         redirectUrl: string;
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON')>;
+        logoUrl?: string;
+        userLogoUrl?: string;
+        userName?: string;
     };
 };
 

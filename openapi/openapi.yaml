@@ -1587,7 +1587,10 @@ paths:
                   - message
   /api/v1/social-account/connect:
     post:
-      summary: Generate OAuth URL
+      description: >-
+        Generate OAuth URL for social account connection. Redirect user to this
+        URL to connect social account.
+      summary: Connect social account for team
       tags: &ref_1
         - socialAccount
       parameters: []
@@ -1727,6 +1730,7 @@ paths:
                   - message
   /api/v1/social-account/disconnect:
     delete:
+      description: This will remove the social account from all the scheduled posts too.
       summary: Disconnect social account from team
       tags: *ref_1
       parameters: []
@@ -1938,6 +1942,9 @@ paths:
                   - message
   /api/v1/social-account/set-channel:
     post:
+      description: >-
+        Needed only for some social account types - Youtube, Instagram, Facebook
+        and Linkedin.
       summary: Set channel for social account
       tags: *ref_1
       parameters: []
@@ -2144,6 +2151,9 @@ paths:
                   - message
   /api/v1/social-account/refresh-channels:
     post:
+      description: >-
+        Refresh channels saved on socialAccount.channels. This is only needed
+        for some social account types - Reddit, Discord, Slack, Pinterest.
       summary: Refresh channels for social account
       tags: *ref_1
       parameters: []
@@ -2348,8 +2358,9 @@ paths:
   /api/v1/social-account/create-portal-link:
     post:
       description: >-
-        Create a portal link which can be used to manage connected social
-        accounts
+        Simplify connect flow. Create a portal link which can be used to manage
+        connected social accounts directly on bundle.social platform without
+        implementing the logic on your side.
       summary: Create portal link
       tags: *ref_1
       parameters: []
@@ -2382,6 +2393,12 @@ paths:
                       - DISCORD
                       - SLACK
                       - MASTODON
+                logoUrl:
+                  type: string
+                userLogoUrl:
+                  type: string
+                userName:
+                  type: string
               required:
                 - teamId
                 - redirectUrl

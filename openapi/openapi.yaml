@@ -1614,9 +1614,9 @@ paths:
                     - LINKEDIN
                     - PINTEREST
                     - REDDIT
+                    - MASTODON
                     - DISCORD
                     - SLACK
-                    - MASTODON
                 teamId:
                   type: string
                 redirectUrl:
@@ -1754,9 +1754,9 @@ paths:
                     - LINKEDIN
                     - PINTEREST
                     - REDDIT
+                    - MASTODON
                     - DISCORD
                     - SLACK
-                    - MASTODON
                 teamId:
                   type: string
               required:
@@ -2390,9 +2390,9 @@ paths:
                       - LINKEDIN
                       - PINTEREST
                       - REDDIT
+                      - MASTODON
                       - DISCORD
                       - SLACK
-                      - MASTODON
                 logoUrl:
                   type: string
                 userLogoUrl:

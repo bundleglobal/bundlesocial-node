@@ -1614,9 +1614,9 @@ paths:
                     - LINKEDIN
                     - PINTEREST
                     - REDDIT
+                    - MASTODON
                     - DISCORD
                     - SLACK
-                    - MASTODON
                 teamId:
                   type: string
                 redirectUrl:
@@ -1754,9 +1754,9 @@ paths:
                     - LINKEDIN
                     - PINTEREST
                     - REDDIT
+                    - MASTODON
                     - DISCORD
                     - SLACK
-                    - MASTODON
                 teamId:
                   type: string
               required:
@@ -2390,9 +2390,9 @@ paths:
                       - LINKEDIN
                       - PINTEREST
                       - REDDIT
+                      - MASTODON
                       - DISCORD
                       - SLACK
-                      - MASTODON
                 logoUrl:
                   type: string
                 userLogoUrl:
@@ -3523,6 +3523,9 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          firstComment:
+                            type: string
+                            nullable: true
                         nullable: true
                       THREADS:
                         type: object
@@ -4408,6 +4411,9 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        firstComment:
+                          type: string
+                          nullable: true
                       nullable: true
                     THREADS:
                       type: object
@@ -4773,6 +4779,9 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          firstComment:
+                            type: string
                             nullable: true
                         nullable: true
                       THREADS:
@@ -5439,6 +5448,9 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          firstComment:
+                            type: string
                             nullable: true
                         nullable: true
                       THREADS:
@@ -6181,6 +6193,9 @@ paths:
                                   type: array
                                   items:
                                     type: string
+                                  nullable: true
+                                firstComment:
+                                  type: string
                                   nullable: true
                               nullable: true
                             THREADS:
@@ -7070,6 +7085,9 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        firstComment:
+                          type: string
+                          nullable: true
                       nullable: true
                     THREADS:
                       type: object
@@ -7442,6 +7460,9 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          firstComment:
+                            type: string
                             nullable: true
                         nullable: true
                       THREADS:

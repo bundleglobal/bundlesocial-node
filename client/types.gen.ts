@@ -320,7 +320,7 @@ export type SocialAccountConnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
         teamId: string;
         redirectUrl: string;
         /**
@@ -342,7 +342,7 @@ export type SocialAccountDisconnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
         teamId: string;
     };
 };
@@ -453,7 +453,7 @@ export type SocialAccountCreatePortalLinkData = {
     requestBody?: {
         teamId: string;
         redirectUrl: string;
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
         logoUrl?: string;
         userLogoUrl?: string;
         userName?: string;

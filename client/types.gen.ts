@@ -320,7 +320,7 @@ export type SocialAccountConnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
         teamId: string;
         redirectUrl: string;
         /**
@@ -342,7 +342,7 @@ export type SocialAccountDisconnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
         teamId: string;
     };
 };
@@ -453,7 +453,7 @@ export type SocialAccountCreatePortalLinkData = {
     requestBody?: {
         teamId: string;
         redirectUrl: string;
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'DISCORD' | 'SLACK' | 'MASTODON')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
         logoUrl?: string;
         userLogoUrl?: string;
         userName?: string;
@@ -660,6 +660,7 @@ export type PostGetResponse = {
             uploadIds?: Array<(string)> | null;
         } | null;
         TIKTOK?: {
+            type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -683,6 +684,14 @@ export type PostGetResponse = {
              * If set to true, other TikTok users will not be allowed to make Duets using this post.
              */
             disableStitch?: boolean | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * Set to true if this video is AI generated.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -798,6 +807,7 @@ export type PostGetResponse = {
         } | null;
         LINKEDIN?: {
             id?: string | null;
+            activity?: string | null;
             permalink?: string | null;
         } | null;
         REDDIT?: {
@@ -944,6 +954,7 @@ export type PostUpdateData = {
                 uploadIds?: Array<(string)> | null;
             } | null;
             TIKTOK?: {
+                type?: 'VIDEO' | 'IMAGE';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -967,6 +978,14 @@ export type PostUpdateData = {
                  * If set to true, other TikTok users will not be allowed to make Duets using this post.
                  */
                 disableStitch?: boolean | null;
+                /**
+                 * Choose a frame of the published video as the cover photo in ms
+                 */
+                thumbnailOffset?: number | null;
+                /**
+                 * Set to true if this video is AI generated.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -1094,6 +1113,7 @@ export type PostUpdateResponse = {
             uploadIds?: Array<(string)> | null;
         } | null;
         TIKTOK?: {
+            type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -1117,6 +1137,14 @@ export type PostUpdateResponse = {
              * If set to true, other TikTok users will not be allowed to make Duets using this post.
              */
             disableStitch?: boolean | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * Set to true if this video is AI generated.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -1232,6 +1260,7 @@ export type PostUpdateResponse = {
         } | null;
         LINKEDIN?: {
             id?: string | null;
+            activity?: string | null;
             permalink?: string | null;
         } | null;
         REDDIT?: {
@@ -1320,6 +1349,7 @@ export type PostDeleteResponse = {
             uploadIds?: Array<(string)> | null;
         } | null;
         TIKTOK?: {
+            type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -1343,6 +1373,14 @@ export type PostDeleteResponse = {
              * If set to true, other TikTok users will not be allowed to make Duets using this post.
              */
             disableStitch?: boolean | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * Set to true if this video is AI generated.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -1458,6 +1496,7 @@ export type PostDeleteResponse = {
         } | null;
         LINKEDIN?: {
             id?: string | null;
+            activity?: string | null;
             permalink?: string | null;
         } | null;
         REDDIT?: {
@@ -1554,6 +1593,7 @@ export type PostGetListResponse = {
                 uploadIds?: Array<(string)> | null;
             } | null;
             TIKTOK?: {
+                type?: 'VIDEO' | 'IMAGE';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -1577,6 +1617,14 @@ export type PostGetListResponse = {
                  * If set to true, other TikTok users will not be allowed to make Duets using this post.
                  */
                 disableStitch?: boolean | null;
+                /**
+                 * Choose a frame of the published video as the cover photo in ms
+                 */
+                thumbnailOffset?: number | null;
+                /**
+                 * Set to true if this video is AI generated.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -1692,6 +1740,7 @@ export type PostGetListResponse = {
             } | null;
             LINKEDIN?: {
                 id?: string | null;
+                activity?: string | null;
                 permalink?: string | null;
             } | null;
             REDDIT?: {
@@ -1840,6 +1889,7 @@ export type PostCreateData = {
                 uploadIds?: Array<(string)> | null;
             } | null;
             TIKTOK?: {
+                type?: 'VIDEO' | 'IMAGE';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -1863,6 +1913,14 @@ export type PostCreateData = {
                  * If set to true, other TikTok users will not be allowed to make Duets using this post.
                  */
                 disableStitch?: boolean | null;
+                /**
+                 * Choose a frame of the published video as the cover photo in ms
+                 */
+                thumbnailOffset?: number | null;
+                /**
+                 * Set to true if this video is AI generated.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -1990,6 +2048,7 @@ export type PostCreateResponse = {
             uploadIds?: Array<(string)> | null;
         } | null;
         TIKTOK?: {
+            type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -2013,6 +2072,14 @@ export type PostCreateResponse = {
              * If set to true, other TikTok users will not be allowed to make Duets using this post.
              */
             disableStitch?: boolean | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * Set to true if this video is AI generated.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -2128,6 +2195,7 @@ export type PostCreateResponse = {
         } | null;
         LINKEDIN?: {
             id?: string | null;
+            activity?: string | null;
             permalink?: string | null;
         } | null;
         REDDIT?: {
@@ -2154,6 +2222,632 @@ export type PostCreateResponse = {
             permalink?: string | null;
         } | null;
         THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type CommentGetData = {
+    id: string;
+};
+
+export type CommentGetResponse = {
+    id: string;
+    teamId: string;
+    internalPostId: string;
+    internalParentCommentId?: string | null;
+    text: string;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    data: {
+        FACEBOOK?: {
+            text?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            text?: string | null;
+        } | null;
+        THREADS?: {
+            text?: string | null;
+        } | null;
+        TIKTOK?: {
+            text?: string | null;
+        } | null;
+        LINKEDIN?: {
+            text: string;
+        } | null;
+        YOUTUBE?: {
+            text?: string | null;
+        } | null;
+        REDDIT?: {
+            text: string;
+        } | null;
+        MASTODON?: {
+            text?: string | null;
+        } | null;
+        DISCORD?: {
+            text?: string | null;
+        } | null;
+        SLACK?: {
+            text?: string | null;
+        } | null;
+    };
+    error?: string | null;
+    errors?: {
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        YOUTUBE?: string | null;
+        MASTODON?: string | null;
+        THREADS?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+    } | null;
+    externalData?: {
+        FACEBOOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            commentUrn?: string | null;
+            permalink?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        MASTODON?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        SLACK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type CommentUpdateData = {
+    id: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        text?: string;
+        internalPostId?: string;
+        internalParentCommentId?: string | null;
+        postDate?: string;
+        status?: 'DRAFT' | 'SCHEDULED';
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        data?: {
+            FACEBOOK?: {
+                text?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                text?: string | null;
+            } | null;
+            THREADS?: {
+                text?: string | null;
+            } | null;
+            TIKTOK?: {
+                text?: string | null;
+            } | null;
+            LINKEDIN?: {
+                text: string;
+            } | null;
+            YOUTUBE?: {
+                text?: string | null;
+            } | null;
+            REDDIT?: {
+                text: string;
+            } | null;
+            MASTODON?: {
+                text?: string | null;
+            } | null;
+            DISCORD?: {
+                text?: string | null;
+            } | null;
+            SLACK?: {
+                text?: string | null;
+            } | null;
+        };
+    };
+};
+
+export type CommentUpdateResponse = {
+    id: string;
+    teamId: string;
+    internalPostId: string;
+    internalParentCommentId?: string | null;
+    text: string;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    data: {
+        FACEBOOK?: {
+            text?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            text?: string | null;
+        } | null;
+        THREADS?: {
+            text?: string | null;
+        } | null;
+        TIKTOK?: {
+            text?: string | null;
+        } | null;
+        LINKEDIN?: {
+            text: string;
+        } | null;
+        YOUTUBE?: {
+            text?: string | null;
+        } | null;
+        REDDIT?: {
+            text: string;
+        } | null;
+        MASTODON?: {
+            text?: string | null;
+        } | null;
+        DISCORD?: {
+            text?: string | null;
+        } | null;
+        SLACK?: {
+            text?: string | null;
+        } | null;
+    };
+    error?: string | null;
+    errors?: {
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        YOUTUBE?: string | null;
+        MASTODON?: string | null;
+        THREADS?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+    } | null;
+    externalData?: {
+        FACEBOOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            commentUrn?: string | null;
+            permalink?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        MASTODON?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        SLACK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type CommentDeleteData = {
+    id: string;
+};
+
+export type CommentDeleteResponse = {
+    id: string;
+    teamId: string;
+    internalPostId: string;
+    internalParentCommentId?: string | null;
+    text: string;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    data: {
+        FACEBOOK?: {
+            text?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            text?: string | null;
+        } | null;
+        THREADS?: {
+            text?: string | null;
+        } | null;
+        TIKTOK?: {
+            text?: string | null;
+        } | null;
+        LINKEDIN?: {
+            text: string;
+        } | null;
+        YOUTUBE?: {
+            text?: string | null;
+        } | null;
+        REDDIT?: {
+            text: string;
+        } | null;
+        MASTODON?: {
+            text?: string | null;
+        } | null;
+        DISCORD?: {
+            text?: string | null;
+        } | null;
+        SLACK?: {
+            text?: string | null;
+        } | null;
+    };
+    error?: string | null;
+    errors?: {
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        YOUTUBE?: string | null;
+        MASTODON?: string | null;
+        THREADS?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+    } | null;
+    externalData?: {
+        FACEBOOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            commentUrn?: string | null;
+            permalink?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        MASTODON?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        SLACK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type CommentGetListData = {
+    limit?: number | null;
+    offset?: number | null;
+    order?: 'ASC' | 'DESC';
+    orderBy?: 'createdAt' | 'updatedAt' | 'deletedAt';
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+    q?: string;
+    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    teamId: string;
+};
+
+export type CommentGetListResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        internalPostId: string;
+        internalParentCommentId?: string | null;
+        text: string;
+        postDate: string | null;
+        postedDate?: string | null;
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+        data: {
+            FACEBOOK?: {
+                text?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                text?: string | null;
+            } | null;
+            THREADS?: {
+                text?: string | null;
+            } | null;
+            TIKTOK?: {
+                text?: string | null;
+            } | null;
+            LINKEDIN?: {
+                text: string;
+            } | null;
+            YOUTUBE?: {
+                text?: string | null;
+            } | null;
+            REDDIT?: {
+                text: string;
+            } | null;
+            MASTODON?: {
+                text?: string | null;
+            } | null;
+            DISCORD?: {
+                text?: string | null;
+            } | null;
+            SLACK?: {
+                text?: string | null;
+            } | null;
+        };
+        error?: string | null;
+        errors?: {
+            FACEBOOK?: string | null;
+            INSTAGRAM?: string | null;
+            TIKTOK?: string | null;
+            LINKEDIN?: string | null;
+            REDDIT?: string | null;
+            YOUTUBE?: string | null;
+            MASTODON?: string | null;
+            THREADS?: string | null;
+            DISCORD?: string | null;
+            SLACK?: string | null;
+        } | null;
+        externalData?: {
+            FACEBOOK?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            TIKTOK?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            LINKEDIN?: {
+                id?: string | null;
+                commentUrn?: string | null;
+                permalink?: string | null;
+            } | null;
+            REDDIT?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            YOUTUBE?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            MASTODON?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            THREADS?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            DISCORD?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+            SLACK?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+    total: number;
+};
+
+export type CommentCreateData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        text: string;
+        internalPostId: string;
+        internalParentCommentId?: string | null;
+        postDate: string;
+        status: 'DRAFT' | 'SCHEDULED';
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        data: {
+            FACEBOOK?: {
+                text?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                text?: string | null;
+            } | null;
+            THREADS?: {
+                text?: string | null;
+            } | null;
+            TIKTOK?: {
+                text?: string | null;
+            } | null;
+            LINKEDIN?: {
+                text: string;
+            } | null;
+            YOUTUBE?: {
+                text?: string | null;
+            } | null;
+            REDDIT?: {
+                text: string;
+            } | null;
+            MASTODON?: {
+                text?: string | null;
+            } | null;
+            DISCORD?: {
+                text?: string | null;
+            } | null;
+            SLACK?: {
+                text?: string | null;
+            } | null;
+        };
+    };
+};
+
+export type CommentCreateResponse = {
+    id: string;
+    teamId: string;
+    internalPostId: string;
+    internalParentCommentId?: string | null;
+    text: string;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    data: {
+        FACEBOOK?: {
+            text?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            text?: string | null;
+        } | null;
+        THREADS?: {
+            text?: string | null;
+        } | null;
+        TIKTOK?: {
+            text?: string | null;
+        } | null;
+        LINKEDIN?: {
+            text: string;
+        } | null;
+        YOUTUBE?: {
+            text?: string | null;
+        } | null;
+        REDDIT?: {
+            text: string;
+        } | null;
+        MASTODON?: {
+            text?: string | null;
+        } | null;
+        DISCORD?: {
+            text?: string | null;
+        } | null;
+        SLACK?: {
+            text?: string | null;
+        } | null;
+    };
+    error?: string | null;
+    errors?: {
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        YOUTUBE?: string | null;
+        MASTODON?: string | null;
+        THREADS?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+    } | null;
+    externalData?: {
+        FACEBOOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            commentUrn?: string | null;
+            permalink?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        MASTODON?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        SLACK?: {
             id?: string | null;
             permalink?: string | null;
         } | null;
@@ -3479,6 +4173,7 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                         } | null;
                         TIKTOK?: {
+                            type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -3502,6 +4197,14 @@ export type $OpenApiTs = {
                              * If set to true, other TikTok users will not be allowed to make Duets using this post.
                              */
                             disableStitch?: boolean | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * Set to true if this video is AI generated.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -3617,6 +4320,7 @@ export type $OpenApiTs = {
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
+                            activity?: string | null;
                             permalink?: string | null;
                         } | null;
                         REDDIT?: {
@@ -3807,6 +4511,7 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                         } | null;
                         TIKTOK?: {
+                            type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -3830,6 +4535,14 @@ export type $OpenApiTs = {
                              * If set to true, other TikTok users will not be allowed to make Duets using this post.
                              */
                             disableStitch?: boolean | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * Set to true if this video is AI generated.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -3945,6 +4658,7 @@ export type $OpenApiTs = {
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
+                            activity?: string | null;
                             permalink?: string | null;
                         } | null;
                         REDDIT?: {
@@ -4076,6 +4790,7 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                         } | null;
                         TIKTOK?: {
+                            type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -4099,6 +4814,14 @@ export type $OpenApiTs = {
                              * If set to true, other TikTok users will not be allowed to make Duets using this post.
                              */
                             disableStitch?: boolean | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * Set to true if this video is AI generated.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -4214,6 +4937,7 @@ export type $OpenApiTs = {
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
+                            activity?: string | null;
                             permalink?: string | null;
                         } | null;
                         REDDIT?: {
@@ -4348,6 +5072,7 @@ export type $OpenApiTs = {
                                 uploadIds?: Array<(string)> | null;
                             } | null;
                             TIKTOK?: {
+                                type?: 'VIDEO' | 'IMAGE';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -4371,6 +5096,14 @@ export type $OpenApiTs = {
                                  * If set to true, other TikTok users will not be allowed to make Duets using this post.
                                  */
                                 disableStitch?: boolean | null;
+                                /**
+                                 * Choose a frame of the published video as the cover photo in ms
+                                 */
+                                thumbnailOffset?: number | null;
+                                /**
+                                 * Set to true if this video is AI generated.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -4486,6 +5219,7 @@ export type $OpenApiTs = {
                             } | null;
                             LINKEDIN?: {
                                 id?: string | null;
+                                activity?: string | null;
                                 permalink?: string | null;
                             } | null;
                             REDDIT?: {
@@ -4678,6 +5412,7 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                         } | null;
                         TIKTOK?: {
+                            type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
@@ -4701,6 +5436,14 @@ export type $OpenApiTs = {
                              * If set to true, other TikTok users will not be allowed to make Duets using this post.
                              */
                             disableStitch?: boolean | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * Set to true if this video is AI generated.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -4816,6 +5559,7 @@ export type $OpenApiTs = {
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
+                            activity?: string | null;
                             permalink?: string | null;
                         } | null;
                         REDDIT?: {
@@ -4842,6 +5586,758 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                         } | null;
                         THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/comment/{id}': {
+        get: {
+            req: CommentGetData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    internalPostId: string;
+                    internalParentCommentId?: string | null;
+                    text: string;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    data: {
+                        FACEBOOK?: {
+                            text?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            text?: string | null;
+                        } | null;
+                        THREADS?: {
+                            text?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            text?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text: string;
+                        } | null;
+                        YOUTUBE?: {
+                            text?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            text: string;
+                        } | null;
+                        MASTODON?: {
+                            text?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            text?: string | null;
+                        } | null;
+                        SLACK?: {
+                            text?: string | null;
+                        } | null;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        YOUTUBE?: string | null;
+                        MASTODON?: string | null;
+                        THREADS?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                    } | null;
+                    externalData?: {
+                        FACEBOOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            commentUrn?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        SLACK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: CommentUpdateData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    internalPostId: string;
+                    internalParentCommentId?: string | null;
+                    text: string;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    data: {
+                        FACEBOOK?: {
+                            text?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            text?: string | null;
+                        } | null;
+                        THREADS?: {
+                            text?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            text?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text: string;
+                        } | null;
+                        YOUTUBE?: {
+                            text?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            text: string;
+                        } | null;
+                        MASTODON?: {
+                            text?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            text?: string | null;
+                        } | null;
+                        SLACK?: {
+                            text?: string | null;
+                        } | null;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        YOUTUBE?: string | null;
+                        MASTODON?: string | null;
+                        THREADS?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                    } | null;
+                    externalData?: {
+                        FACEBOOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            commentUrn?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        SLACK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: CommentDeleteData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    internalPostId: string;
+                    internalParentCommentId?: string | null;
+                    text: string;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    data: {
+                        FACEBOOK?: {
+                            text?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            text?: string | null;
+                        } | null;
+                        THREADS?: {
+                            text?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            text?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text: string;
+                        } | null;
+                        YOUTUBE?: {
+                            text?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            text: string;
+                        } | null;
+                        MASTODON?: {
+                            text?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            text?: string | null;
+                        } | null;
+                        SLACK?: {
+                            text?: string | null;
+                        } | null;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        YOUTUBE?: string | null;
+                        MASTODON?: string | null;
+                        THREADS?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                    } | null;
+                    externalData?: {
+                        FACEBOOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            commentUrn?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        SLACK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/comment/': {
+        get: {
+            req: CommentGetListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        internalPostId: string;
+                        internalParentCommentId?: string | null;
+                        text: string;
+                        postDate: string | null;
+                        postedDate?: string | null;
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                        data: {
+                            FACEBOOK?: {
+                                text?: string | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                text?: string | null;
+                            } | null;
+                            THREADS?: {
+                                text?: string | null;
+                            } | null;
+                            TIKTOK?: {
+                                text?: string | null;
+                            } | null;
+                            LINKEDIN?: {
+                                text: string;
+                            } | null;
+                            YOUTUBE?: {
+                                text?: string | null;
+                            } | null;
+                            REDDIT?: {
+                                text: string;
+                            } | null;
+                            MASTODON?: {
+                                text?: string | null;
+                            } | null;
+                            DISCORD?: {
+                                text?: string | null;
+                            } | null;
+                            SLACK?: {
+                                text?: string | null;
+                            } | null;
+                        };
+                        error?: string | null;
+                        errors?: {
+                            FACEBOOK?: string | null;
+                            INSTAGRAM?: string | null;
+                            TIKTOK?: string | null;
+                            LINKEDIN?: string | null;
+                            REDDIT?: string | null;
+                            YOUTUBE?: string | null;
+                            MASTODON?: string | null;
+                            THREADS?: string | null;
+                            DISCORD?: string | null;
+                            SLACK?: string | null;
+                        } | null;
+                        externalData?: {
+                            FACEBOOK?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            TIKTOK?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            LINKEDIN?: {
+                                id?: string | null;
+                                commentUrn?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            REDDIT?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            YOUTUBE?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            MASTODON?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            THREADS?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            DISCORD?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            SLACK?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        post: {
+            req: CommentCreateData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    internalPostId: string;
+                    internalParentCommentId?: string | null;
+                    text: string;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    data: {
+                        FACEBOOK?: {
+                            text?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            text?: string | null;
+                        } | null;
+                        THREADS?: {
+                            text?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            text?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text: string;
+                        } | null;
+                        YOUTUBE?: {
+                            text?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            text: string;
+                        } | null;
+                        MASTODON?: {
+                            text?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            text?: string | null;
+                        } | null;
+                        SLACK?: {
+                            text?: string | null;
+                        } | null;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        YOUTUBE?: string | null;
+                        MASTODON?: string | null;
+                        THREADS?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                    } | null;
+                    externalData?: {
+                        FACEBOOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            commentUrn?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        SLACK?: {
                             id?: string | null;
                             permalink?: string | null;
                         } | null;

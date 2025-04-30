@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -551,6 +551,152 @@ export class PostService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/post/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class CommentService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Get comment
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentGet(data: CommentGetData): CancelablePromise<CommentGetResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/comment/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update comment
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentUpdate(data: CommentUpdateData): CancelablePromise<CommentUpdateResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/comment/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete comment
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentDelete(data: CommentDeleteData): CancelablePromise<CommentDeleteResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/comment/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get comment list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.status
+     * @param data.orderBy
+     * @param data.order
+     * @param data.q
+     * @param data.platforms
+     * @param data.offset
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentGetList(data: CommentGetListData): CancelablePromise<CommentGetListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/comment/',
+            query: {
+                teamId: data.teamId,
+                status: data.status,
+                orderBy: data.orderBy,
+                order: data.order,
+                q: data.q,
+                platforms: data.platforms,
+                offset: data.offset,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Create comment
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentCreate(data: CommentCreateData = {}): CancelablePromise<CommentCreateResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/comment/',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {

@@ -4,6 +4,7 @@ import { Interceptors } from './core/OpenAPI';
 import { FetchHttpRequest } from './core/FetchHttpRequest';
 
 import { AppService } from './services.gen';
+import { CommentService } from './services.gen';
 import { OrganizationService } from './services.gen';
 import { PostService } from './services.gen';
 import { SocialAccountService } from './services.gen';
@@ -15,6 +16,7 @@ type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 export class Client {
 
 	public readonly app: AppService;
+	public readonly comment: CommentService;
 	public readonly organization: OrganizationService;
 	public readonly post: PostService;
 	public readonly socialAccount: SocialAccountService;
@@ -41,6 +43,7 @@ export class Client {
 		});
 
 		this.app = new AppService(this.request);
+		this.comment = new CommentService(this.request);
 		this.organization = new OrganizationService(this.request);
 		this.post = new PostService(this.request);
 		this.socialAccount = new SocialAccountService(this.request);

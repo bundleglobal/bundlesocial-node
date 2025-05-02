@@ -3,6 +3,7 @@ import type { OpenAPIConfig } from './core/OpenAPI';
 import { Interceptors } from './core/OpenAPI';
 import { FetchHttpRequest } from './core/FetchHttpRequest';
 
+import { AnalyticsService } from './services.gen';
 import { AppService } from './services.gen';
 import { CommentService } from './services.gen';
 import { OrganizationService } from './services.gen';
@@ -15,6 +16,7 @@ type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 
 export class Client {
 
+	public readonly analytics: AnalyticsService;
 	public readonly app: AppService;
 	public readonly comment: CommentService;
 	public readonly organization: OrganizationService;
@@ -42,6 +44,7 @@ export class Client {
       },
 		});
 
+		this.analytics = new AnalyticsService(this.request);
 		this.app = new AppService(this.request);
 		this.comment = new CommentService(this.request);
 		this.organization = new OrganizationService(this.request);

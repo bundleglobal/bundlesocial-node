@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, AnalyticsGetProfileAnalyticsData, AnalyticsGetProfileAnalyticsResponse, AnalyticsGetProfilePostsData, AnalyticsGetProfilePostsResponse, AnalyticsGetProfilePostData, AnalyticsGetProfilePostResponse, AnalyticsTestData, AnalyticsTestResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -551,6 +551,114 @@ export class PostService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/post/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class AnalyticsService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Get Profile Analytics
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.platformType
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public analyticsGetProfileAnalytics(data: AnalyticsGetProfileAnalyticsData): CancelablePromise<AnalyticsGetProfileAnalyticsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/analytics/profile',
+            query: {
+                teamId: data.teamId,
+                platformType: data.platformType
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Profile Posts
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.platformType
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public analyticsGetProfilePosts(data: AnalyticsGetProfilePostsData): CancelablePromise<AnalyticsGetProfilePostsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/analytics/profile-post',
+            query: {
+                teamId: data.teamId,
+                platformType: data.platformType
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Profile Post
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public analyticsGetProfilePost(data: AnalyticsGetProfilePostData): CancelablePromise<AnalyticsGetProfilePostResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/analytics/profile-post/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Test Analytics
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public analyticsTest(data: AnalyticsTestData = {}): CancelablePromise<AnalyticsTestResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/analytics/test',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {

@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.7.0...v2.8.0) (2025-05-02)
+
+
+### Features
+
+* expose analytics endpoints ([9c13608](https://github.com/bundleglobal/bundlesocial-node/commit/9c1360839c806c9816151340b05b10afb6edfb33))
+
 # [2.7.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.6.0...v2.7.0) (2025-04-30)
 
 

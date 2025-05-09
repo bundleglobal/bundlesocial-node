@@ -13,6 +13,20 @@ export type OrganizationGetOrganizationResponse = {
     avatarUrl?: string | null;
     apiAccess?: boolean;
     ref?: string | null;
+    dailyPostLimit?: {
+        TWITTER?: number;
+        FACEBOOK?: number;
+        INSTAGRAM?: number;
+        LINKEDIN?: number;
+        YOUTUBE?: number;
+        TIKTOK?: number;
+        THREADS?: number;
+        PINTEREST?: number;
+        REDDIT?: number;
+        DISCORD?: number;
+        SLACK?: number;
+        MASTODON?: number;
+    } | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -167,6 +181,20 @@ export type TeamGetTeamResponse = {
         avatarUrl?: string | null;
         apiAccess?: boolean;
         ref?: string | null;
+        dailyPostLimit?: {
+            TWITTER?: number;
+            FACEBOOK?: number;
+            INSTAGRAM?: number;
+            LINKEDIN?: number;
+            YOUTUBE?: number;
+            TIKTOK?: number;
+            THREADS?: number;
+            PINTEREST?: number;
+            REDDIT?: number;
+            DISCORD?: number;
+            SLACK?: number;
+            MASTODON?: number;
+        } | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -3311,6 +3339,20 @@ export type $OpenApiTs = {
                     avatarUrl?: string | null;
                     apiAccess?: boolean;
                     ref?: string | null;
+                    dailyPostLimit?: {
+                        TWITTER?: number;
+                        FACEBOOK?: number;
+                        INSTAGRAM?: number;
+                        LINKEDIN?: number;
+                        YOUTUBE?: number;
+                        TIKTOK?: number;
+                        THREADS?: number;
+                        PINTEREST?: number;
+                        REDDIT?: number;
+                        DISCORD?: number;
+                        SLACK?: number;
+                        MASTODON?: number;
+                    } | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -3510,6 +3552,20 @@ export type $OpenApiTs = {
                         avatarUrl?: string | null;
                         apiAccess?: boolean;
                         ref?: string | null;
+                        dailyPostLimit?: {
+                            TWITTER?: number;
+                            FACEBOOK?: number;
+                            INSTAGRAM?: number;
+                            LINKEDIN?: number;
+                            YOUTUBE?: number;
+                            TIKTOK?: number;
+                            THREADS?: number;
+                            PINTEREST?: number;
+                            REDDIT?: number;
+                            DISCORD?: number;
+                            SLACK?: number;
+                            MASTODON?: number;
+                        } | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;

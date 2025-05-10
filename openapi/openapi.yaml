@@ -139,6 +139,34 @@ paths:
                   ref:
                     type: string
                     nullable: true
+                  dailyPostLimit:
+                    type: object
+                    properties:
+                      TWITTER:
+                        type: number
+                      FACEBOOK:
+                        type: number
+                      INSTAGRAM:
+                        type: number
+                      LINKEDIN:
+                        type: number
+                      YOUTUBE:
+                        type: number
+                      TIKTOK:
+                        type: number
+                      THREADS:
+                        type: number
+                      PINTEREST:
+                        type: number
+                      REDDIT:
+                        type: number
+                      DISCORD:
+                        type: number
+                      SLACK:
+                        type: number
+                      MASTODON:
+                        type: number
+                    nullable: true
                   createdAt:
                     type: string
                     format: date-time
@@ -765,6 +793,34 @@ paths:
                         type: boolean
                       ref:
                         type: string
+                        nullable: true
+                      dailyPostLimit:
+                        type: object
+                        properties:
+                          TWITTER:
+                            type: number
+                          FACEBOOK:
+                            type: number
+                          INSTAGRAM:
+                            type: number
+                          LINKEDIN:
+                            type: number
+                          YOUTUBE:
+                            type: number
+                          TIKTOK:
+                            type: number
+                          THREADS:
+                            type: number
+                          PINTEREST:
+                            type: number
+                          REDDIT:
+                            type: number
+                          DISCORD:
+                            type: number
+                          SLACK:
+                            type: number
+                          MASTODON:
+                            type: number
                         nullable: true
                       createdAt:
                         type: string

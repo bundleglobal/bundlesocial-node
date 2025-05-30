@@ -13,6 +13,20 @@ export type OrganizationGetOrganizationResponse = {
     avatarUrl?: string | null;
     apiAccess?: boolean;
     ref?: string | null;
+    dailyPostLimit?: {
+        TWITTER?: number;
+        FACEBOOK?: number;
+        INSTAGRAM?: number;
+        LINKEDIN?: number;
+        YOUTUBE?: number;
+        TIKTOK?: number;
+        THREADS?: number;
+        PINTEREST?: number;
+        REDDIT?: number;
+        DISCORD?: number;
+        SLACK?: number;
+        MASTODON?: number;
+    } | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -167,6 +181,20 @@ export type TeamGetTeamResponse = {
         avatarUrl?: string | null;
         apiAccess?: boolean;
         ref?: string | null;
+        dailyPostLimit?: {
+            TWITTER?: number;
+            FACEBOOK?: number;
+            INSTAGRAM?: number;
+            LINKEDIN?: number;
+            YOUTUBE?: number;
+            TIKTOK?: number;
+            THREADS?: number;
+            PINTEREST?: number;
+            REDDIT?: number;
+            DISCORD?: number;
+            SLACK?: number;
+            MASTODON?: number;
+        } | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -587,6 +615,53 @@ export type UploadDeleteData = {
 };
 
 export type UploadDeleteResponse = {
+    id: string;
+    teamId: string;
+    expiresAt?: string | null;
+    iconUrl?: string | null;
+    thumbnailUrl?: string | null;
+    url?: string | null;
+    iconPath?: string | null;
+    thumbnailPath?: string | null;
+    path?: string | null;
+    type: 'image' | 'video';
+    width?: number | null;
+    height?: number | null;
+    fileSize?: number | null;
+    videoLength?: number | null;
+    mime?: string | null;
+    ext?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+};
+
+export type UploadInitLargeUploadData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        fileName: string;
+        mimeType: string;
+    };
+};
+
+export type UploadInitLargeUploadResponse = {
+    url: string;
+    path: string;
+};
+
+export type UploadFinalizeLargeUploadData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        path: string;
+    };
+};
+
+export type UploadFinalizeLargeUploadResponse = {
     id: string;
     teamId: string;
     expiresAt?: string | null;
@@ -2644,13 +2719,13 @@ export type CommentGetResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -2749,13 +2824,13 @@ export type CommentUpdateData = {
                 text?: string | null;
             } | null;
             LINKEDIN?: {
-                text: string;
+                text?: string | null;
             } | null;
             YOUTUBE?: {
                 text?: string | null;
             } | null;
             REDDIT?: {
-                text: string;
+                text?: string | null;
             } | null;
             MASTODON?: {
                 text?: string | null;
@@ -2793,13 +2868,13 @@ export type CommentUpdateResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -2899,13 +2974,13 @@ export type CommentDeleteResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -3013,13 +3088,13 @@ export type CommentGetListResponse = {
                 text?: string | null;
             } | null;
             LINKEDIN?: {
-                text: string;
+                text?: string | null;
             } | null;
             YOUTUBE?: {
                 text?: string | null;
             } | null;
             REDDIT?: {
-                text: string;
+                text?: string | null;
             } | null;
             MASTODON?: {
                 text?: string | null;
@@ -3120,13 +3195,13 @@ export type CommentCreateData = {
                 text?: string | null;
             } | null;
             LINKEDIN?: {
-                text: string;
+                text?: string | null;
             } | null;
             YOUTUBE?: {
                 text?: string | null;
             } | null;
             REDDIT?: {
-                text: string;
+                text?: string | null;
             } | null;
             MASTODON?: {
                 text?: string | null;
@@ -3164,13 +3239,13 @@ export type CommentCreateResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -3311,6 +3386,20 @@ export type $OpenApiTs = {
                     avatarUrl?: string | null;
                     apiAccess?: boolean;
                     ref?: string | null;
+                    dailyPostLimit?: {
+                        TWITTER?: number;
+                        FACEBOOK?: number;
+                        INSTAGRAM?: number;
+                        LINKEDIN?: number;
+                        YOUTUBE?: number;
+                        TIKTOK?: number;
+                        THREADS?: number;
+                        PINTEREST?: number;
+                        REDDIT?: number;
+                        DISCORD?: number;
+                        SLACK?: number;
+                        MASTODON?: number;
+                    } | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -3510,6 +3599,20 @@ export type $OpenApiTs = {
                         avatarUrl?: string | null;
                         apiAccess?: boolean;
                         ref?: string | null;
+                        dailyPostLimit?: {
+                            TWITTER?: number;
+                            FACEBOOK?: number;
+                            INSTAGRAM?: number;
+                            LINKEDIN?: number;
+                            YOUTUBE?: number;
+                            TIKTOK?: number;
+                            THREADS?: number;
+                            PINTEREST?: number;
+                            REDDIT?: number;
+                            DISCORD?: number;
+                            SLACK?: number;
+                            MASTODON?: number;
+                        } | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -4436,6 +4539,130 @@ export type $OpenApiTs = {
         };
         delete: {
             req: UploadDeleteData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    expiresAt?: string | null;
+                    iconUrl?: string | null;
+                    thumbnailUrl?: string | null;
+                    url?: string | null;
+                    iconPath?: string | null;
+                    thumbnailPath?: string | null;
+                    path?: string | null;
+                    type: 'image' | 'video';
+                    width?: number | null;
+                    height?: number | null;
+                    fileSize?: number | null;
+                    videoLength?: number | null;
+                    mime?: string | null;
+                    ext?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/init': {
+        post: {
+            req: UploadInitLargeUploadData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    url: string;
+                    path: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/finalize': {
+        post: {
+            req: UploadFinalizeLargeUploadData;
             res: {
                 /**
                  * 200
@@ -6572,13 +6799,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;
@@ -6721,13 +6948,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;
@@ -6870,13 +7097,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;
@@ -7022,13 +7249,13 @@ export type $OpenApiTs = {
                                 text?: string | null;
                             } | null;
                             LINKEDIN?: {
-                                text: string;
+                                text?: string | null;
                             } | null;
                             YOUTUBE?: {
                                 text?: string | null;
                             } | null;
                             REDDIT?: {
-                                text: string;
+                                text?: string | null;
                             } | null;
                             MASTODON?: {
                                 text?: string | null;
@@ -7173,13 +7400,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;

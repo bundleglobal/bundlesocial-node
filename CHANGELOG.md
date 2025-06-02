@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.8.0...v2.9.0) (2025-06-02)
+
+
+### Features
+
+* large uploads, shared uploads, thumbnails ([77b7d64](https://github.com/bundleglobal/bundlesocial-node/commit/77b7d642285bcee80b7cb683538fdba2a1edc736))
+
 # [2.8.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.7.0...v2.8.0) (2025-05-02)
 
 

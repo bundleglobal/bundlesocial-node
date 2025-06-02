@@ -13,6 +13,20 @@ export type OrganizationGetOrganizationResponse = {
     avatarUrl?: string | null;
     apiAccess?: boolean;
     ref?: string | null;
+    dailyPostLimit?: {
+        TWITTER?: number;
+        FACEBOOK?: number;
+        INSTAGRAM?: number;
+        LINKEDIN?: number;
+        YOUTUBE?: number;
+        TIKTOK?: number;
+        THREADS?: number;
+        PINTEREST?: number;
+        REDDIT?: number;
+        DISCORD?: number;
+        SLACK?: number;
+        MASTODON?: number;
+    } | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -167,6 +181,20 @@ export type TeamGetTeamResponse = {
         avatarUrl?: string | null;
         apiAccess?: boolean;
         ref?: string | null;
+        dailyPostLimit?: {
+            TWITTER?: number;
+            FACEBOOK?: number;
+            INSTAGRAM?: number;
+            LINKEDIN?: number;
+            YOUTUBE?: number;
+            TIKTOK?: number;
+            THREADS?: number;
+            PINTEREST?: number;
+            REDDIT?: number;
+            DISCORD?: number;
+            SLACK?: number;
+            MASTODON?: number;
+        } | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -465,12 +493,13 @@ export type SocialAccountCreatePortalLinkResponse = {
 };
 
 export type UploadGetListData = {
-    teamId: string;
+    teamId?: string | null;
 };
 
 export type UploadGetListResponse = Array<{
     id: string;
-    teamId: string;
+    teamId?: string | null;
+    organizationId?: string | null;
     expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
@@ -501,14 +530,15 @@ export type UploadCreateData = {
      * Body
      */
     formData?: {
-        teamId: string;
+        teamId?: string | null;
         file?: (Blob | File) | null;
     };
 };
 
 export type UploadCreateResponse = {
     id: string;
-    teamId: string;
+    teamId?: string | null;
+    organizationId?: string | null;
     expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
@@ -538,7 +568,8 @@ export type UploadDeleteManyData = {
 
 export type UploadDeleteManyResponse = Array<{
     id: string;
-    teamId: string;
+    teamId?: string | null;
+    organizationId?: string | null;
     expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
@@ -563,7 +594,8 @@ export type UploadGetData = {
 
 export type UploadGetResponse = {
     id: string;
-    teamId: string;
+    teamId?: string | null;
+    organizationId?: string | null;
     expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
@@ -588,7 +620,56 @@ export type UploadDeleteData = {
 
 export type UploadDeleteResponse = {
     id: string;
-    teamId: string;
+    teamId?: string | null;
+    organizationId?: string | null;
+    expiresAt?: string | null;
+    iconUrl?: string | null;
+    thumbnailUrl?: string | null;
+    url?: string | null;
+    iconPath?: string | null;
+    thumbnailPath?: string | null;
+    path?: string | null;
+    type: 'image' | 'video';
+    width?: number | null;
+    height?: number | null;
+    fileSize?: number | null;
+    videoLength?: number | null;
+    mime?: string | null;
+    ext?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+};
+
+export type UploadInitLargeUploadData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string | null;
+        fileName: string;
+        mimeType: string;
+    };
+};
+
+export type UploadInitLargeUploadResponse = {
+    url: string;
+    path: string;
+};
+
+export type UploadFinalizeLargeUploadData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string | null;
+        path: string;
+    };
+};
+
+export type UploadFinalizeLargeUploadResponse = {
+    id: string;
+    teamId?: string | null;
+    organizationId?: string | null;
     expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
@@ -629,6 +710,10 @@ export type PostGetResponse = {
             boardName: string;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
              * The URL to which the Pin will link to.
              */
             link?: string | null;
@@ -649,11 +734,27 @@ export type PostGetResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+             */
+            shareToFeed?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -696,6 +797,10 @@ export type PostGetResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -711,6 +816,10 @@ export type PostGetResponse = {
             uploadIds?: Array<(string)> | null;
             text?: string | null;
             description?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
             /**
              * Set to true if the video is made for kids.
@@ -763,6 +872,10 @@ export type PostGetResponse = {
         MASTODON?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
@@ -790,16 +903,19 @@ export type PostGetResponse = {
         PINTEREST?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         FACEBOOK?: {
             id?: string | null;
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -809,6 +925,7 @@ export type PostGetResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -828,10 +945,12 @@ export type PostGetResponse = {
         YOUTUBE?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         THREADS?: {
             id?: string | null;
@@ -849,7 +968,8 @@ export type PostGetResponse = {
         deletedAt?: string | null;
         upload: {
             id: string;
-            teamId: string;
+            teamId?: string | null;
+            organizationId?: string | null;
             expiresAt?: string | null;
             iconUrl?: string | null;
             thumbnailUrl?: string | null;
@@ -923,6 +1043,10 @@ export type PostUpdateData = {
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
                  * The URL to which the Pin will link to.
                  */
                 link?: string | null;
@@ -943,11 +1067,27 @@ export type PostUpdateData = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Choose a frame of the published video as the cover photo in ms
+                 */
+                thumbnailOffset?: number | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
+                 * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                 */
+                shareToFeed?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -990,6 +1130,10 @@ export type PostUpdateData = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -1005,6 +1149,10 @@ export type PostUpdateData = {
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
                 description?: string | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                 /**
                  * Set to true if the video is made for kids.
@@ -1057,6 +1205,10 @@ export type PostUpdateData = {
             MASTODON?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
             } | null;
@@ -1082,6 +1234,10 @@ export type PostUpdateResponse = {
             boardName: string;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
              * The URL to which the Pin will link to.
              */
             link?: string | null;
@@ -1102,11 +1258,27 @@ export type PostUpdateResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+             */
+            shareToFeed?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -1149,6 +1321,10 @@ export type PostUpdateResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -1164,6 +1340,10 @@ export type PostUpdateResponse = {
             uploadIds?: Array<(string)> | null;
             text?: string | null;
             description?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
             /**
              * Set to true if the video is made for kids.
@@ -1216,6 +1396,10 @@ export type PostUpdateResponse = {
         MASTODON?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
@@ -1243,16 +1427,19 @@ export type PostUpdateResponse = {
         PINTEREST?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         FACEBOOK?: {
             id?: string | null;
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -1262,6 +1449,7 @@ export type PostUpdateResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -1281,10 +1469,12 @@ export type PostUpdateResponse = {
         YOUTUBE?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         THREADS?: {
             id?: string | null;
@@ -1318,6 +1508,10 @@ export type PostDeleteResponse = {
             boardName: string;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
              * The URL to which the Pin will link to.
              */
             link?: string | null;
@@ -1338,11 +1532,27 @@ export type PostDeleteResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+             */
+            shareToFeed?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -1385,6 +1595,10 @@ export type PostDeleteResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -1400,6 +1614,10 @@ export type PostDeleteResponse = {
             uploadIds?: Array<(string)> | null;
             text?: string | null;
             description?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
             /**
              * Set to true if the video is made for kids.
@@ -1452,6 +1670,10 @@ export type PostDeleteResponse = {
         MASTODON?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
@@ -1479,16 +1701,19 @@ export type PostDeleteResponse = {
         PINTEREST?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         FACEBOOK?: {
             id?: string | null;
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -1498,6 +1723,7 @@ export type PostDeleteResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -1517,10 +1743,12 @@ export type PostDeleteResponse = {
         YOUTUBE?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         THREADS?: {
             id?: string | null;
@@ -1562,6 +1790,10 @@ export type PostGetListResponse = {
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
                  * The URL to which the Pin will link to.
                  */
                 link?: string | null;
@@ -1582,11 +1814,27 @@ export type PostGetListResponse = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Choose a frame of the published video as the cover photo in ms
+                 */
+                thumbnailOffset?: number | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
+                 * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                 */
+                shareToFeed?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -1629,6 +1877,10 @@ export type PostGetListResponse = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -1644,6 +1896,10 @@ export type PostGetListResponse = {
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
                 description?: string | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                 /**
                  * Set to true if the video is made for kids.
@@ -1696,6 +1952,10 @@ export type PostGetListResponse = {
             MASTODON?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
             } | null;
@@ -1723,16 +1983,19 @@ export type PostGetListResponse = {
             PINTEREST?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string | null;
             } | null;
             FACEBOOK?: {
                 id?: string | null;
                 postId?: string | null;
                 videoId?: string | null;
                 permalink?: string | null;
+                thumbnail?: string;
             } | null;
             INSTAGRAM?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -1742,6 +2005,7 @@ export type PostGetListResponse = {
                 id?: string | null;
                 activity?: string | null;
                 permalink?: string | null;
+                thumbnail?: string;
             } | null;
             REDDIT?: {
                 id?: string | null;
@@ -1761,10 +2025,12 @@ export type PostGetListResponse = {
             YOUTUBE?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string | null;
             } | null;
             MASTODON?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string | null;
             } | null;
             THREADS?: {
                 id?: string | null;
@@ -1782,7 +2048,8 @@ export type PostGetListResponse = {
             deletedAt?: string | null;
             upload: {
                 id: string;
-                teamId: string;
+                teamId?: string | null;
+                organizationId?: string | null;
                 expiresAt?: string | null;
                 iconUrl?: string | null;
                 thumbnailUrl?: string | null;
@@ -1858,6 +2125,10 @@ export type PostCreateData = {
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
                  * The URL to which the Pin will link to.
                  */
                 link?: string | null;
@@ -1878,11 +2149,27 @@ export type PostCreateData = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Choose a frame of the published video as the cover photo in ms
+                 */
+                thumbnailOffset?: number | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
+                 * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                 */
+                shareToFeed?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -1925,6 +2212,10 @@ export type PostCreateData = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -1940,6 +2231,10 @@ export type PostCreateData = {
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
                 description?: string | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                 /**
                  * Set to true if the video is made for kids.
@@ -1992,6 +2287,10 @@ export type PostCreateData = {
             MASTODON?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
             } | null;
@@ -2017,6 +2316,10 @@ export type PostCreateResponse = {
             boardName: string;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
              * The URL to which the Pin will link to.
              */
             link?: string | null;
@@ -2037,11 +2340,27 @@ export type PostCreateResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+             */
+            shareToFeed?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -2084,6 +2403,10 @@ export type PostCreateResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -2099,6 +2422,10 @@ export type PostCreateResponse = {
             uploadIds?: Array<(string)> | null;
             text?: string | null;
             description?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
             /**
              * Set to true if the video is made for kids.
@@ -2151,6 +2478,10 @@ export type PostCreateResponse = {
         MASTODON?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
@@ -2178,16 +2509,19 @@ export type PostCreateResponse = {
         PINTEREST?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         FACEBOOK?: {
             id?: string | null;
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -2197,6 +2531,7 @@ export type PostCreateResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
+            thumbnail?: string;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -2216,10 +2551,12 @@ export type PostCreateResponse = {
         YOUTUBE?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
             permalink?: string | null;
+            thumbnail?: string | null;
         } | null;
         THREADS?: {
             id?: string | null;
@@ -2359,6 +2696,10 @@ export type AnalyticsGetProfilePostResponse = {
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
                  * The URL to which the Pin will link to.
                  */
                 link?: string | null;
@@ -2379,11 +2720,27 @@ export type AnalyticsGetProfilePostResponse = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Choose a frame of the published video as the cover photo in ms
+                 */
+                thumbnailOffset?: number | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
+                /**
+                 * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                 */
+                shareToFeed?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -2426,6 +2783,10 @@ export type AnalyticsGetProfilePostResponse = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -2441,6 +2802,10 @@ export type AnalyticsGetProfilePostResponse = {
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
                 description?: string | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                 /**
                  * Set to true if the video is made for kids.
@@ -2493,6 +2858,10 @@ export type AnalyticsGetProfilePostResponse = {
             MASTODON?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
             } | null;
@@ -2520,16 +2889,19 @@ export type AnalyticsGetProfilePostResponse = {
             PINTEREST?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string | null;
             } | null;
             FACEBOOK?: {
                 id?: string | null;
                 postId?: string | null;
                 videoId?: string | null;
                 permalink?: string | null;
+                thumbnail?: string;
             } | null;
             INSTAGRAM?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -2539,6 +2911,7 @@ export type AnalyticsGetProfilePostResponse = {
                 id?: string | null;
                 activity?: string | null;
                 permalink?: string | null;
+                thumbnail?: string;
             } | null;
             REDDIT?: {
                 id?: string | null;
@@ -2558,10 +2931,12 @@ export type AnalyticsGetProfilePostResponse = {
             YOUTUBE?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string | null;
             } | null;
             MASTODON?: {
                 id?: string | null;
                 permalink?: string | null;
+                thumbnail?: string | null;
             } | null;
             THREADS?: {
                 id?: string | null;
@@ -2644,13 +3019,13 @@ export type CommentGetResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -2749,13 +3124,13 @@ export type CommentUpdateData = {
                 text?: string | null;
             } | null;
             LINKEDIN?: {
-                text: string;
+                text?: string | null;
             } | null;
             YOUTUBE?: {
                 text?: string | null;
             } | null;
             REDDIT?: {
-                text: string;
+                text?: string | null;
             } | null;
             MASTODON?: {
                 text?: string | null;
@@ -2793,13 +3168,13 @@ export type CommentUpdateResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -2899,13 +3274,13 @@ export type CommentDeleteResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -3013,13 +3388,13 @@ export type CommentGetListResponse = {
                 text?: string | null;
             } | null;
             LINKEDIN?: {
-                text: string;
+                text?: string | null;
             } | null;
             YOUTUBE?: {
                 text?: string | null;
             } | null;
             REDDIT?: {
-                text: string;
+                text?: string | null;
             } | null;
             MASTODON?: {
                 text?: string | null;
@@ -3120,13 +3495,13 @@ export type CommentCreateData = {
                 text?: string | null;
             } | null;
             LINKEDIN?: {
-                text: string;
+                text?: string | null;
             } | null;
             YOUTUBE?: {
                 text?: string | null;
             } | null;
             REDDIT?: {
-                text: string;
+                text?: string | null;
             } | null;
             MASTODON?: {
                 text?: string | null;
@@ -3164,13 +3539,13 @@ export type CommentCreateResponse = {
             text?: string | null;
         } | null;
         LINKEDIN?: {
-            text: string;
+            text?: string | null;
         } | null;
         YOUTUBE?: {
             text?: string | null;
         } | null;
         REDDIT?: {
-            text: string;
+            text?: string | null;
         } | null;
         MASTODON?: {
             text?: string | null;
@@ -3311,6 +3686,20 @@ export type $OpenApiTs = {
                     avatarUrl?: string | null;
                     apiAccess?: boolean;
                     ref?: string | null;
+                    dailyPostLimit?: {
+                        TWITTER?: number;
+                        FACEBOOK?: number;
+                        INSTAGRAM?: number;
+                        LINKEDIN?: number;
+                        YOUTUBE?: number;
+                        TIKTOK?: number;
+                        THREADS?: number;
+                        PINTEREST?: number;
+                        REDDIT?: number;
+                        DISCORD?: number;
+                        SLACK?: number;
+                        MASTODON?: number;
+                    } | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -3510,6 +3899,20 @@ export type $OpenApiTs = {
                         avatarUrl?: string | null;
                         apiAccess?: boolean;
                         ref?: string | null;
+                        dailyPostLimit?: {
+                            TWITTER?: number;
+                            FACEBOOK?: number;
+                            INSTAGRAM?: number;
+                            LINKEDIN?: number;
+                            YOUTUBE?: number;
+                            TIKTOK?: number;
+                            THREADS?: number;
+                            PINTEREST?: number;
+                            REDDIT?: number;
+                            DISCORD?: number;
+                            SLACK?: number;
+                            MASTODON?: number;
+                        } | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -4161,7 +4564,8 @@ export type $OpenApiTs = {
                  */
                 200: Array<{
                     id: string;
-                    teamId: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
                     expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
@@ -4236,7 +4640,8 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    teamId: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
                     expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
@@ -4304,7 +4709,8 @@ export type $OpenApiTs = {
                  */
                 200: Array<{
                     id: string;
-                    teamId: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
                     expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
@@ -4374,7 +4780,8 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    teamId: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
                     expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
@@ -4442,7 +4849,133 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    teamId: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
+                    expiresAt?: string | null;
+                    iconUrl?: string | null;
+                    thumbnailUrl?: string | null;
+                    url?: string | null;
+                    iconPath?: string | null;
+                    thumbnailPath?: string | null;
+                    path?: string | null;
+                    type: 'image' | 'video';
+                    width?: number | null;
+                    height?: number | null;
+                    fileSize?: number | null;
+                    videoLength?: number | null;
+                    mime?: string | null;
+                    ext?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/init': {
+        post: {
+            req: UploadInitLargeUploadData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    url: string;
+                    path: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/finalize': {
+        post: {
+            req: UploadFinalizeLargeUploadData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
                     expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
@@ -4528,6 +5061,10 @@ export type $OpenApiTs = {
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * The URL to which the Pin will link to.
                              */
                             link?: string | null;
@@ -4548,11 +5085,27 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                             */
+                            shareToFeed?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -4595,6 +5148,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -4610,6 +5167,10 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
                             description?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                             /**
                              * Set to true if the video is made for kids.
@@ -4662,6 +5223,10 @@ export type $OpenApiTs = {
                         MASTODON?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
@@ -4689,16 +5254,19 @@ export type $OpenApiTs = {
                         PINTEREST?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -4708,6 +5276,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -4727,10 +5296,12 @@ export type $OpenApiTs = {
                         YOUTUBE?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         THREADS?: {
                             id?: string | null;
@@ -4748,7 +5319,8 @@ export type $OpenApiTs = {
                         deletedAt?: string | null;
                         upload: {
                             id: string;
-                            teamId: string;
+                            teamId?: string | null;
+                            organizationId?: string | null;
                             expiresAt?: string | null;
                             iconUrl?: string | null;
                             thumbnailUrl?: string | null;
@@ -4866,6 +5438,10 @@ export type $OpenApiTs = {
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * The URL to which the Pin will link to.
                              */
                             link?: string | null;
@@ -4886,11 +5462,27 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                             */
+                            shareToFeed?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -4933,6 +5525,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -4948,6 +5544,10 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
                             description?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                             /**
                              * Set to true if the video is made for kids.
@@ -5000,6 +5600,10 @@ export type $OpenApiTs = {
                         MASTODON?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
@@ -5027,16 +5631,19 @@ export type $OpenApiTs = {
                         PINTEREST?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -5046,6 +5653,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -5065,10 +5673,12 @@ export type $OpenApiTs = {
                         YOUTUBE?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         THREADS?: {
                             id?: string | null;
@@ -5145,6 +5755,10 @@ export type $OpenApiTs = {
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * The URL to which the Pin will link to.
                              */
                             link?: string | null;
@@ -5165,11 +5779,27 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                             */
+                            shareToFeed?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -5212,6 +5842,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -5227,6 +5861,10 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
                             description?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                             /**
                              * Set to true if the video is made for kids.
@@ -5279,6 +5917,10 @@ export type $OpenApiTs = {
                         MASTODON?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
@@ -5306,16 +5948,19 @@ export type $OpenApiTs = {
                         PINTEREST?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -5325,6 +5970,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -5344,10 +5990,12 @@ export type $OpenApiTs = {
                         YOUTUBE?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         THREADS?: {
                             id?: string | null;
@@ -5427,6 +6075,10 @@ export type $OpenApiTs = {
                                 boardName: string;
                                 uploadIds?: Array<(string)> | null;
                                 /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
+                                /**
                                  * The URL to which the Pin will link to.
                                  */
                                 link?: string | null;
@@ -5447,11 +6099,27 @@ export type $OpenApiTs = {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Choose a frame of the published video as the cover photo in ms
+                                 */
+                                thumbnailOffset?: number | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
+                                /**
+                                 * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                                 */
+                                shareToFeed?: boolean | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -5494,6 +6162,10 @@ export type $OpenApiTs = {
                             LINKEDIN?: {
                                 text: string;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                                 /**
                                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -5509,6 +6181,10 @@ export type $OpenApiTs = {
                                 uploadIds?: Array<(string)> | null;
                                 text?: string | null;
                                 description?: string | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                                 /**
                                  * Set to true if the video is made for kids.
@@ -5561,6 +6237,10 @@ export type $OpenApiTs = {
                             MASTODON?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                                 spoiler?: string | null;
                             } | null;
@@ -5588,16 +6268,19 @@ export type $OpenApiTs = {
                             PINTEREST?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string | null;
                             } | null;
                             FACEBOOK?: {
                                 id?: string | null;
                                 postId?: string | null;
                                 videoId?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string;
                             } | null;
                             INSTAGRAM?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -5607,6 +6290,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 activity?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string;
                             } | null;
                             REDDIT?: {
                                 id?: string | null;
@@ -5626,10 +6310,12 @@ export type $OpenApiTs = {
                             YOUTUBE?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string | null;
                             } | null;
                             MASTODON?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string | null;
                             } | null;
                             THREADS?: {
                                 id?: string | null;
@@ -5647,7 +6333,8 @@ export type $OpenApiTs = {
                             deletedAt?: string | null;
                             upload: {
                                 id: string;
-                                teamId: string;
+                                teamId?: string | null;
+                                organizationId?: string | null;
                                 expiresAt?: string | null;
                                 iconUrl?: string | null;
                                 thumbnailUrl?: string | null;
@@ -5767,6 +6454,10 @@ export type $OpenApiTs = {
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * The URL to which the Pin will link to.
                              */
                             link?: string | null;
@@ -5787,11 +6478,27 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                             */
+                            shareToFeed?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -5834,6 +6541,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -5849,6 +6560,10 @@ export type $OpenApiTs = {
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
                             description?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                             /**
                              * Set to true if the video is made for kids.
@@ -5901,6 +6616,10 @@ export type $OpenApiTs = {
                         MASTODON?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
@@ -5928,16 +6647,19 @@ export type $OpenApiTs = {
                         PINTEREST?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -5947,6 +6669,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -5966,10 +6689,12 @@ export type $OpenApiTs = {
                         YOUTUBE?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
                             permalink?: string | null;
+                            thumbnail?: string | null;
                         } | null;
                         THREADS?: {
                             id?: string | null;
@@ -6242,6 +6967,10 @@ export type $OpenApiTs = {
                                 boardName: string;
                                 uploadIds?: Array<(string)> | null;
                                 /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
+                                /**
                                  * The URL to which the Pin will link to.
                                  */
                                 link?: string | null;
@@ -6262,11 +6991,27 @@ export type $OpenApiTs = {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Choose a frame of the published video as the cover photo in ms
+                                 */
+                                thumbnailOffset?: number | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
+                                /**
+                                 * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                                 */
+                                shareToFeed?: boolean | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -6309,6 +7054,10 @@ export type $OpenApiTs = {
                             LINKEDIN?: {
                                 text: string;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                                 /**
                                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -6324,6 +7073,10 @@ export type $OpenApiTs = {
                                 uploadIds?: Array<(string)> | null;
                                 text?: string | null;
                                 description?: string | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                                 /**
                                  * Set to true if the video is made for kids.
@@ -6376,6 +7129,10 @@ export type $OpenApiTs = {
                             MASTODON?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                                 spoiler?: string | null;
                             } | null;
@@ -6403,16 +7160,19 @@ export type $OpenApiTs = {
                             PINTEREST?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string | null;
                             } | null;
                             FACEBOOK?: {
                                 id?: string | null;
                                 postId?: string | null;
                                 videoId?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string;
                             } | null;
                             INSTAGRAM?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -6422,6 +7182,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 activity?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string;
                             } | null;
                             REDDIT?: {
                                 id?: string | null;
@@ -6441,10 +7202,12 @@ export type $OpenApiTs = {
                             YOUTUBE?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string | null;
                             } | null;
                             MASTODON?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                thumbnail?: string | null;
                             } | null;
                             THREADS?: {
                                 id?: string | null;
@@ -6572,13 +7335,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;
@@ -6721,13 +7484,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;
@@ -6870,13 +7633,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;
@@ -7022,13 +7785,13 @@ export type $OpenApiTs = {
                                 text?: string | null;
                             } | null;
                             LINKEDIN?: {
-                                text: string;
+                                text?: string | null;
                             } | null;
                             YOUTUBE?: {
                                 text?: string | null;
                             } | null;
                             REDDIT?: {
-                                text: string;
+                                text?: string | null;
                             } | null;
                             MASTODON?: {
                                 text?: string | null;
@@ -7173,13 +7936,13 @@ export type $OpenApiTs = {
                             text?: string | null;
                         } | null;
                         LINKEDIN?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         YOUTUBE?: {
                             text?: string | null;
                         } | null;
                         REDDIT?: {
-                            text: string;
+                            text?: string | null;
                         } | null;
                         MASTODON?: {
                             text?: string | null;

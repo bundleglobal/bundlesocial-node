@@ -329,6 +329,7 @@ export type TeamCreateTeamData = {
     requestBody?: {
         name: string;
         avatarUrl?: string | null;
+        copyTeamId?: string | null;
     };
 };
 
@@ -443,7 +444,7 @@ export type SocialAccountRefreshChannelsData = {
      * Body
      */
     requestBody?: {
-        type: 'DISCORD' | 'SLACK' | 'REDDIT' | 'PINTEREST';
+        type: 'DISCORD' | 'SLACK' | 'REDDIT' | 'PINTEREST' | 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE';
         teamId: string;
     };
 };
@@ -491,6 +492,47 @@ export type SocialAccountCreatePortalLinkData = {
 export type SocialAccountCreatePortalLinkResponse = {
     url: string;
 };
+
+export type SocialAccountCopyData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        fromTeamId: string;
+        toTeamId: string;
+        /**
+         * If you set that to true, selected page will not be transferred automatically. The user will have to select the page themselves again. This only applies to Facebook, Instagram, Linkedin and Youtube.
+         */
+        resetChannel?: boolean;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+    };
+};
+
+export type SocialAccountCopyResponse = Array<{
+    id: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+    teamId: string;
+    username?: string | null;
+    displayName?: string | null;
+    externalId?: string | null;
+    userUsername?: string | null;
+    userDisplayName?: string | null;
+    userId?: string | null;
+    channels?: Array<{
+        id: string;
+        name?: string | null;
+        username?: string | null;
+        webhook?: {
+            id?: string | null;
+            name?: string | null;
+            avatar?: string | null;
+            url?: string | null;
+        } | null;
+    }> | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+}>;
 
 export type UploadGetListData = {
     teamId?: string | null;
@@ -4512,6 +4554,81 @@ export type $OpenApiTs = {
                 200: {
                     url: string;
                 };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/copy': {
+        post: {
+            req: SocialAccountCopyData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: Array<{
+                    id: string;
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                    teamId: string;
+                    username?: string | null;
+                    displayName?: string | null;
+                    externalId?: string | null;
+                    userUsername?: string | null;
+                    userDisplayName?: string | null;
+                    userId?: string | null;
+                    channels?: Array<{
+                        id: string;
+                        name?: string | null;
+                        username?: string | null;
+                        webhook?: {
+                            id?: string | null;
+                            name?: string | null;
+                            avatar?: string | null;
+                            url?: string | null;
+                        } | null;
+                    }> | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                }>;
                 /**
                  * 400
                  */

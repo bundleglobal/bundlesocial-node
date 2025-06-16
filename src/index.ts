@@ -1,11 +1,42 @@
-import { Client, type OpenAPIConfig, OpenAPI, PostGetResponse } from '../client';
+import { Client, type OpenAPIConfig, OpenAPI, PostGetResponse, CommentGetResponse, TeamGetTeamResponse } from '../client';
 import crypto from 'crypto';
 
-export type WebhookEventType = 'post.published';
+export enum WebhookEventEnum {
+  POST_PUBLISHED = "post.published",
+  COMMENT_PUBLISHED = "comment.published",
+  TEAM_CREATED = "team.created",
+  TEAM_UPDATED = "team.updated",
+  TEAM_DELETED = "team.deleted",
+  SOCIAL_ACCOUNT_CREATED = "social-account.created",
+  SOCIAL_ACCOUNT_UPDATED = "social-account.updated",
+  SOCIAL_ACCOUNT_DELETED = "social-account.deleted",
+}
+
 export type WebhookEvent = {
-  type: 'post.published';
+  type: WebhookEventEnum.POST_PUBLISHED;
   data: PostGetResponse;
-};
+} | {
+  type: WebhookEventEnum.COMMENT_PUBLISHED;
+  data: CommentGetResponse;
+} | {
+  type: WebhookEventEnum.TEAM_CREATED;
+  data: TeamGetTeamResponse;
+} | {
+  type: WebhookEventEnum.TEAM_UPDATED;
+  data: TeamGetTeamResponse;
+} | {
+  type: WebhookEventEnum.TEAM_DELETED;
+  data: TeamGetTeamResponse;
+} | {
+  type: WebhookEventEnum.SOCIAL_ACCOUNT_CREATED;
+  data: TeamGetTeamResponse['socialAccounts'][number];
+} | {
+  type: WebhookEventEnum.SOCIAL_ACCOUNT_UPDATED;
+  data: TeamGetTeamResponse['socialAccounts'][number];
+} | {
+  type: WebhookEventEnum.SOCIAL_ACCOUNT_DELETED;
+  data: TeamGetTeamResponse['socialAccounts'][number];
+}
 
 class Webhooks {
   constructor() {}

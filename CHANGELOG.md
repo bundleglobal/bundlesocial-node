@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.10.0...v2.11.0) (2025-06-16)
+
+
+### Features
+
+* custom max monthly uploads ([a713e92](https://github.com/bundleglobal/bundlesocial-node/commit/a713e9237e386bdafd622551f83233aadd4085af))
+
 # [2.10.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.9.0...v2.10.0) (2025-06-15)
 
 

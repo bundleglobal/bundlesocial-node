@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.11.0...v2.12.0) (2025-06-16)
+
+
+### Features
+
+* additional webhook events ([92b7975](https://github.com/bundleglobal/bundlesocial-node/commit/92b7975a83e2de7fd0d72f4358540f9261eae7ee))
+
 # [2.11.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.10.0...v2.11.0) (2025-06-16)
 
 

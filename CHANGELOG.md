@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.12.0...v2.12.1) (2025-06-16)
+
+
+### Bug Fixes
+
+* replace WebhookEventEnum with string literals ([5f50a93](https://github.com/bundleglobal/bundlesocial-node/commit/5f50a931981acb36f198ba968a5c1f285e61ff24))
+
 # [2.12.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.11.0...v2.12.0) (2025-06-16)
 
 

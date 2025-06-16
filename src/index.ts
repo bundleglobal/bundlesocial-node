@@ -1,42 +1,36 @@
 import { Client, type OpenAPIConfig, OpenAPI, PostGetResponse, CommentGetResponse, TeamGetTeamResponse } from '../client';
 import crypto from 'crypto';
 
-export enum WebhookEventEnum {
-  POST_PUBLISHED = "post.published",
-  COMMENT_PUBLISHED = "comment.published",
-  TEAM_CREATED = "team.created",
-  TEAM_UPDATED = "team.updated",
-  TEAM_DELETED = "team.deleted",
-  SOCIAL_ACCOUNT_CREATED = "social-account.created",
-  SOCIAL_ACCOUNT_UPDATED = "social-account.updated",
-  SOCIAL_ACCOUNT_DELETED = "social-account.deleted",
-}
+export const webhookEventTypes = [
+  "post.published",
+  "comment.published",
+  "team.created",
+  "team.updated",
+  "team.deleted",
+  "social-account.created",
+  "social-account.updated",
+  "social-account.deleted",
+] as const;
+
+export type WebhookEventType = typeof webhookEventTypes[number];
+
+type WebhookEventMap = {
+  "post.published": PostGetResponse;
+  "comment.published": CommentGetResponse;
+  "team.created": TeamGetTeamResponse;
+  "team.updated": TeamGetTeamResponse;
+  "team.deleted": TeamGetTeamResponse;
+  "social-account.created": TeamGetTeamResponse["socialAccounts"][number];
+  "social-account.updated": TeamGetTeamResponse["socialAccounts"][number];
+  "social-account.deleted": TeamGetTeamResponse["socialAccounts"][number];
+};
 
 export type WebhookEvent = {
-  type: WebhookEventEnum.POST_PUBLISHED;
-  data: PostGetResponse;
-} | {
-  type: WebhookEventEnum.COMMENT_PUBLISHED;
-  data: CommentGetResponse;
-} | {
-  type: WebhookEventEnum.TEAM_CREATED;
-  data: TeamGetTeamResponse;
-} | {
-  type: WebhookEventEnum.TEAM_UPDATED;
-  data: TeamGetTeamResponse;
-} | {
-  type: WebhookEventEnum.TEAM_DELETED;
-  data: TeamGetTeamResponse;
-} | {
-  type: WebhookEventEnum.SOCIAL_ACCOUNT_CREATED;
-  data: TeamGetTeamResponse['socialAccounts'][number];
-} | {
-  type: WebhookEventEnum.SOCIAL_ACCOUNT_UPDATED;
-  data: TeamGetTeamResponse['socialAccounts'][number];
-} | {
-  type: WebhookEventEnum.SOCIAL_ACCOUNT_DELETED;
-  data: TeamGetTeamResponse['socialAccounts'][number];
-}
+  [K in keyof WebhookEventMap]: {
+    type: K;
+    data: WebhookEventMap[K];
+  }
+}[keyof WebhookEventMap];
 
 class Webhooks {
   constructor() {}

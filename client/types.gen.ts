@@ -78,6 +78,7 @@ export type OrganizationGetOrganizationResponse = {
         trialStart?: string | null;
         trialEnd?: string | null;
         maxMonthlyPosts: number;
+        maxMonthlyUploads: number;
         discountStart?: string | null;
         discountEnd?: string | null;
         createdAt: string | null;
@@ -3793,6 +3794,7 @@ export type $OpenApiTs = {
                         trialStart?: string | null;
                         trialEnd?: string | null;
                         maxMonthlyPosts: number;
+                        maxMonthlyUploads: number;
                         discountStart?: string | null;
                         discountEnd?: string | null;
                         createdAt: string | null;

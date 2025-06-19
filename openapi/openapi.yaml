@@ -349,8 +349,10 @@ paths:
                         nullable: true
                       maxMonthlyPosts:
                         type: number
+                        nullable: true
                       maxMonthlyUploads:
                         type: number
+                        nullable: true
                       discountStart:
                         type: string
                         format: date-time
@@ -546,8 +548,6 @@ paths:
                       - created
                       - currentPeriodStart
                       - currentPeriodEnd
-                      - maxMonthlyPosts
-                      - maxMonthlyUploads
                       - createdAt
                       - updatedAt
                     nullable: true

@@ -322,6 +322,7 @@ export class UploadService {
      * Get upload list
      * @param data The data for the request.
      * @param data.teamId
+     * @param data.type
      * @returns unknown 200
      * @throws ApiError
      */
@@ -330,7 +331,8 @@ export class UploadService {
             method: 'GET',
             url: '/api/v1/upload/',
             query: {
-                teamId: data.teamId
+                teamId: data.teamId,
+                type: data.type
             },
             errors: {
                 400: '400',

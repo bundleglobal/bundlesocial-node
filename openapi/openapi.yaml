@@ -349,8 +349,10 @@ paths:
                         nullable: true
                       maxMonthlyPosts:
                         type: number
+                        nullable: true
                       maxMonthlyUploads:
                         type: number
+                        nullable: true
                       discountStart:
                         type: string
                         format: date-time
@@ -546,8 +548,6 @@ paths:
                       - created
                       - currentPeriodStart
                       - currentPeriodEnd
-                      - maxMonthlyPosts
-                      - maxMonthlyUploads
                       - createdAt
                       - updatedAt
                     nullable: true
@@ -2801,6 +2801,14 @@ paths:
           schema:
             type: string
             nullable: true
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum:
+              - image
+              - video
+            nullable: true
       operationId: upload.getList
       responses:
         '200':
@@ -2876,38 +2884,11 @@ paths:
                       type: string
                       format: date-time
                       nullable: true
-                    posts:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          postId:
-                            type: string
-                          uploadId:
-                            type: string
-                          createdAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          updatedAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          deletedAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                        required:
-                          - postId
-                          - uploadId
-                          - createdAt
-                          - updatedAt
                   required:
                     - id
                     - type
                     - createdAt
                     - updatedAt
-                    - posts
         '400':
           description: '400'
           content:
@@ -4022,6 +4003,9 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   title:
                     type: string
                   postDate:
@@ -4119,6 +4103,12 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          link:
+                            type: string
+                            nullable: true
+                            description: >-
+                              The URL to which the post will link to. Only
+                              available for type POST.
                           thumbnail:
                             type: string
                             nullable: true
@@ -4162,6 +4152,27 @@ paths:
                               can appear in both the Feed and Reels tabs.When
                               false, indicates the reel can only appear in the
                               Reels tab.
+                          collaborators:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tagged:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                username:
+                                  type: string
+                                x:
+                                  type: number
+                                'y':
+                                  type: number
+                              required:
+                                - username
+                                - x
+                                - 'y'
+                            nullable: true
                         nullable: true
                       THREADS:
                         type: object
@@ -4192,6 +4203,10 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          thumbnail:
+                            type: string
+                            nullable: true
+                            description: The URL to image uploaded on bundle.social.
                           privacy:
                             type: string
                             enum:
@@ -5083,6 +5098,12 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        link:
+                          type: string
+                          nullable: true
+                          description: >-
+                            The URL to which the post will link to. Only
+                            available for type POST.
                         thumbnail:
                           type: string
                           nullable: true
@@ -5126,6 +5147,27 @@ paths:
                             can appear in both the Feed and Reels tabs.When
                             false, indicates the reel can only appear in the
                             Reels tab.
+                        collaborators:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        tagged:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              username:
+                                type: string
+                              x:
+                                type: number
+                              'y':
+                                type: number
+                            required:
+                              - username
+                              - x
+                              - 'y'
+                          nullable: true
                       nullable: true
                     THREADS:
                       type: object
@@ -5156,6 +5198,10 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        thumbnail:
+                          type: string
+                          nullable: true
+                          description: The URL to image uploaded on bundle.social.
                         privacy:
                           type: string
                           enum:
@@ -5410,6 +5456,9 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   title:
                     type: string
                   postDate:
@@ -5507,6 +5556,12 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          link:
+                            type: string
+                            nullable: true
+                            description: >-
+                              The URL to which the post will link to. Only
+                              available for type POST.
                           thumbnail:
                             type: string
                             nullable: true
@@ -5550,6 +5605,27 @@ paths:
                               can appear in both the Feed and Reels tabs.When
                               false, indicates the reel can only appear in the
                               Reels tab.
+                          collaborators:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tagged:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                username:
+                                  type: string
+                                x:
+                                  type: number
+                                'y':
+                                  type: number
+                              required:
+                                - username
+                                - x
+                                - 'y'
+                            nullable: true
                         nullable: true
                       THREADS:
                         type: object
@@ -5580,6 +5656,10 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          thumbnail:
+                            type: string
+                            nullable: true
+                            description: The URL to image uploaded on bundle.social.
                           privacy:
                             type: string
                             enum:
@@ -6152,6 +6232,9 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   title:
                     type: string
                   postDate:
@@ -6249,6 +6332,12 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          link:
+                            type: string
+                            nullable: true
+                            description: >-
+                              The URL to which the post will link to. Only
+                              available for type POST.
                           thumbnail:
                             type: string
                             nullable: true
@@ -6292,6 +6381,27 @@ paths:
                               can appear in both the Feed and Reels tabs.When
                               false, indicates the reel can only appear in the
                               Reels tab.
+                          collaborators:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tagged:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                username:
+                                  type: string
+                                x:
+                                  type: number
+                                'y':
+                                  type: number
+                              required:
+                                - username
+                                - x
+                                - 'y'
+                            nullable: true
                         nullable: true
                       THREADS:
                         type: object
@@ -6322,6 +6432,10 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          thumbnail:
+                            type: string
+                            nullable: true
+                            description: The URL to image uploaded on bundle.social.
                           privacy:
                             type: string
                             enum:
@@ -6968,6 +7082,9 @@ paths:
                           type: string
                         teamId:
                           type: string
+                        organizationId:
+                          type: string
+                          nullable: true
                         title:
                           type: string
                         postDate:
@@ -7067,6 +7184,12 @@ paths:
                                   items:
                                     type: string
                                   nullable: true
+                                link:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    The URL to which the post will link to. Only
+                                    available for type POST.
                                 thumbnail:
                                   type: string
                                   nullable: true
@@ -7110,6 +7233,27 @@ paths:
                                     reel can appear in both the Feed and Reels
                                     tabs.When false, indicates the reel can only
                                     appear in the Reels tab.
+                                collaborators:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                tagged:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      username:
+                                        type: string
+                                      x:
+                                        type: number
+                                      'y':
+                                        type: number
+                                    required:
+                                      - username
+                                      - x
+                                      - 'y'
+                                  nullable: true
                               nullable: true
                             THREADS:
                               type: object
@@ -7140,6 +7284,10 @@ paths:
                                   items:
                                     type: string
                                   nullable: true
+                                thumbnail:
+                                  type: string
+                                  nullable: true
+                                  description: The URL to image uploaded on bundle.social.
                                 privacy:
                                   type: string
                                   enum:
@@ -8034,6 +8182,12 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        link:
+                          type: string
+                          nullable: true
+                          description: >-
+                            The URL to which the post will link to. Only
+                            available for type POST.
                         thumbnail:
                           type: string
                           nullable: true
@@ -8077,6 +8231,27 @@ paths:
                             can appear in both the Feed and Reels tabs.When
                             false, indicates the reel can only appear in the
                             Reels tab.
+                        collaborators:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        tagged:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              username:
+                                type: string
+                              x:
+                                type: number
+                              'y':
+                                type: number
+                            required:
+                              - username
+                              - x
+                              - 'y'
+                          nullable: true
                       nullable: true
                     THREADS:
                       type: object
@@ -8107,6 +8282,10 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        thumbnail:
+                          type: string
+                          nullable: true
+                          description: The URL to image uploaded on bundle.social.
                         privacy:
                           type: string
                           enum:
@@ -8368,6 +8547,9 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   title:
                     type: string
                   postDate:
@@ -8465,6 +8647,12 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          link:
+                            type: string
+                            nullable: true
+                            description: >-
+                              The URL to which the post will link to. Only
+                              available for type POST.
                           thumbnail:
                             type: string
                             nullable: true
@@ -8508,6 +8696,27 @@ paths:
                               can appear in both the Feed and Reels tabs.When
                               false, indicates the reel can only appear in the
                               Reels tab.
+                          collaborators:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tagged:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                username:
+                                  type: string
+                                x:
+                                  type: number
+                                'y':
+                                  type: number
+                              required:
+                                - username
+                                - x
+                                - 'y'
+                            nullable: true
                         nullable: true
                       THREADS:
                         type: object
@@ -8538,6 +8747,10 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          thumbnail:
+                            type: string
+                            nullable: true
+                            description: The URL to image uploaded on bundle.social.
                           privacy:
                             type: string
                             enum:
@@ -9661,6 +9874,9 @@ paths:
                         type: string
                       teamId:
                         type: string
+                      organizationId:
+                        type: string
+                        nullable: true
                       title:
                         type: string
                       postDate:
@@ -9759,6 +9975,12 @@ paths:
                                 items:
                                   type: string
                                 nullable: true
+                              link:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  The URL to which the post will link to. Only
+                                  available for type POST.
                               thumbnail:
                                 type: string
                                 nullable: true
@@ -9802,6 +10024,27 @@ paths:
                                   reel can appear in both the Feed and Reels
                                   tabs.When false, indicates the reel can only
                                   appear in the Reels tab.
+                              collaborators:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              tagged:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    username:
+                                      type: string
+                                    x:
+                                      type: number
+                                    'y':
+                                      type: number
+                                  required:
+                                    - username
+                                    - x
+                                    - 'y'
+                                nullable: true
                             nullable: true
                           THREADS:
                             type: object
@@ -9832,6 +10075,10 @@ paths:
                                 items:
                                   type: string
                                 nullable: true
+                              thumbnail:
+                                type: string
+                                nullable: true
+                                description: The URL to image uploaded on bundle.social.
                               privacy:
                                 type: string
                                 enum:
@@ -10574,12 +10821,15 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   internalPostId:
                     type: string
                   internalParentCommentId:
                     type: string
                     nullable: true
-                  text:
+                  title:
                     type: string
                   postDate:
                     type: string
@@ -10831,7 +11081,7 @@ paths:
                   - id
                   - teamId
                   - internalPostId
-                  - text
+                  - title
                   - postDate
                   - status
                   - data
@@ -10937,7 +11187,7 @@ paths:
             schema:
               type: object
               properties:
-                text:
+                title:
                   type: string
                   minLength: 1
                 internalPostId:
@@ -11053,12 +11303,15 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   internalPostId:
                     type: string
                   internalParentCommentId:
                     type: string
                     nullable: true
-                  text:
+                  title:
                     type: string
                   postDate:
                     type: string
@@ -11310,7 +11563,7 @@ paths:
                   - id
                   - teamId
                   - internalPostId
-                  - text
+                  - title
                   - postDate
                   - status
                   - data
@@ -11421,12 +11674,15 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   internalPostId:
                     type: string
                   internalParentCommentId:
                     type: string
                     nullable: true
-                  text:
+                  title:
                     type: string
                   postDate:
                     type: string
@@ -11678,7 +11934,7 @@ paths:
                   - id
                   - teamId
                   - internalPostId
-                  - text
+                  - title
                   - postDate
                   - status
                   - data
@@ -11854,12 +12110,15 @@ paths:
                           type: string
                         teamId:
                           type: string
+                        organizationId:
+                          type: string
+                          nullable: true
                         internalPostId:
                           type: string
                         internalParentCommentId:
                           type: string
                           nullable: true
-                        text:
+                        title:
                           type: string
                         postDate:
                           type: string
@@ -12111,7 +12370,7 @@ paths:
                         - id
                         - teamId
                         - internalPostId
-                        - text
+                        - title
                         - postDate
                         - status
                         - data
@@ -12219,7 +12478,7 @@ paths:
               properties:
                 teamId:
                   type: string
-                text:
+                title:
                   type: string
                   minLength: 1
                 internalPostId:
@@ -12325,7 +12584,7 @@ paths:
                       nullable: true
               required:
                 - teamId
-                - text
+                - title
                 - internalPostId
                 - postDate
                 - status
@@ -12343,12 +12602,15 @@ paths:
                     type: string
                   teamId:
                     type: string
+                  organizationId:
+                    type: string
+                    nullable: true
                   internalPostId:
                     type: string
                   internalParentCommentId:
                     type: string
                     nullable: true
-                  text:
+                  title:
                     type: string
                   postDate:
                     type: string
@@ -12600,7 +12862,7 @@ paths:
                   - id
                   - teamId
                   - internalPostId
-                  - text
+                  - title
                   - postDate
                   - status
                   - data

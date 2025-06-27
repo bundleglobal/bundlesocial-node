@@ -77,8 +77,8 @@ export type OrganizationGetOrganizationResponse = {
         canceledAt?: string | null;
         trialStart?: string | null;
         trialEnd?: string | null;
-        maxMonthlyPosts: number;
-        maxMonthlyUploads: number;
+        maxMonthlyPosts?: number | null;
+        maxMonthlyUploads?: number | null;
         discountStart?: string | null;
         discountEnd?: string | null;
         createdAt: string | null;
@@ -537,6 +537,7 @@ export type SocialAccountCopyResponse = Array<{
 
 export type UploadGetListData = {
     teamId?: string | null;
+    type?: 'image' | 'video' | null;
 };
 
 export type UploadGetListResponse = Array<{
@@ -559,13 +560,6 @@ export type UploadGetListResponse = Array<{
     ext?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
-    posts: Array<{
-        postId: string;
-        uploadId: string;
-        createdAt: string | null;
-        updatedAt: string | null;
-        deletedAt?: string | null;
-    }>;
 }>;
 
 export type UploadCreateData = {
@@ -738,6 +732,7 @@ export type PostGetData = {
 export type PostGetResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -778,6 +773,10 @@ export type PostGetResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to which the post will link to. Only available for type POST.
+             */
+            link?: string | null;
+            /**
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
@@ -798,6 +797,12 @@ export type PostGetResponse = {
              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
              */
             shareToFeed?: boolean | null;
+            collaborators?: Array<(string)> | null;
+            tagged?: Array<{
+                username: string;
+                x: number;
+                y: number;
+            }> | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -807,6 +812,10 @@ export type PostGetResponse = {
             type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -1111,6 +1120,10 @@ export type PostUpdateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to which the post will link to. Only available for type POST.
+                 */
+                link?: string | null;
+                /**
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
@@ -1131,6 +1144,12 @@ export type PostUpdateData = {
                  * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                  */
                 shareToFeed?: boolean | null;
+                collaborators?: Array<(string)> | null;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -1140,6 +1159,10 @@ export type PostUpdateData = {
                 type?: 'VIDEO' | 'IMAGE';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
@@ -1262,6 +1285,7 @@ export type PostUpdateData = {
 export type PostUpdateResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -1302,6 +1326,10 @@ export type PostUpdateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to which the post will link to. Only available for type POST.
+             */
+            link?: string | null;
+            /**
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
@@ -1322,6 +1350,12 @@ export type PostUpdateResponse = {
              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
              */
             shareToFeed?: boolean | null;
+            collaborators?: Array<(string)> | null;
+            tagged?: Array<{
+                username: string;
+                x: number;
+                y: number;
+            }> | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -1331,6 +1365,10 @@ export type PostUpdateResponse = {
             type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -1536,6 +1574,7 @@ export type PostDeleteData = {
 export type PostDeleteResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -1576,6 +1615,10 @@ export type PostDeleteResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to which the post will link to. Only available for type POST.
+             */
+            link?: string | null;
+            /**
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
@@ -1596,6 +1639,12 @@ export type PostDeleteResponse = {
              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
              */
             shareToFeed?: boolean | null;
+            collaborators?: Array<(string)> | null;
+            tagged?: Array<{
+                username: string;
+                x: number;
+                y: number;
+            }> | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -1605,6 +1654,10 @@ export type PostDeleteResponse = {
             type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -1818,6 +1871,7 @@ export type PostGetListResponse = {
     items: Array<{
         id: string;
         teamId: string;
+        organizationId?: string | null;
         title: string;
         postDate: string | null;
         postedDate?: string | null;
@@ -1858,6 +1912,10 @@ export type PostGetListResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to which the post will link to. Only available for type POST.
+                 */
+                link?: string | null;
+                /**
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
@@ -1878,6 +1936,12 @@ export type PostGetListResponse = {
                  * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                  */
                 shareToFeed?: boolean | null;
+                collaborators?: Array<(string)> | null;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -1887,6 +1951,10 @@ export type PostGetListResponse = {
                 type?: 'VIDEO' | 'IMAGE';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
@@ -2193,6 +2261,10 @@ export type PostCreateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to which the post will link to. Only available for type POST.
+                 */
+                link?: string | null;
+                /**
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
@@ -2213,6 +2285,12 @@ export type PostCreateData = {
                  * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                  */
                 shareToFeed?: boolean | null;
+                collaborators?: Array<(string)> | null;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -2222,6 +2300,10 @@ export type PostCreateData = {
                 type?: 'VIDEO' | 'IMAGE';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
@@ -2344,6 +2426,7 @@ export type PostCreateData = {
 export type PostCreateResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -2384,6 +2467,10 @@ export type PostCreateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * The URL to which the post will link to. Only available for type POST.
+             */
+            link?: string | null;
+            /**
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
@@ -2404,6 +2491,12 @@ export type PostCreateResponse = {
              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
              */
             shareToFeed?: boolean | null;
+            collaborators?: Array<(string)> | null;
+            tagged?: Array<{
+                username: string;
+                x: number;
+                y: number;
+            }> | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -2413,6 +2506,10 @@ export type PostCreateResponse = {
             type?: 'VIDEO' | 'IMAGE';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -2724,6 +2821,7 @@ export type AnalyticsGetProfilePostResponse = {
     post?: {
         id: string;
         teamId: string;
+        organizationId?: string | null;
         title: string;
         postDate: string | null;
         postedDate?: string | null;
@@ -2764,6 +2862,10 @@ export type AnalyticsGetProfilePostResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * The URL to which the post will link to. Only available for type POST.
+                 */
+                link?: string | null;
+                /**
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
@@ -2784,6 +2886,12 @@ export type AnalyticsGetProfilePostResponse = {
                  * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                  */
                 shareToFeed?: boolean | null;
+                collaborators?: Array<(string)> | null;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -2793,6 +2901,10 @@ export type AnalyticsGetProfilePostResponse = {
                 type?: 'VIDEO' | 'IMAGE';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * The URL to image uploaded on bundle.social.
+                 */
+                thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
@@ -3042,9 +3154,10 @@ export type CommentGetData = {
 export type CommentGetResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
-    text: string;
+    title: string;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -3147,7 +3260,7 @@ export type CommentUpdateData = {
      * Body
      */
     requestBody?: {
-        text?: string;
+        title?: string;
         internalPostId?: string;
         internalParentCommentId?: string | null;
         postDate?: string;
@@ -3191,9 +3304,10 @@ export type CommentUpdateData = {
 export type CommentUpdateResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
-    text: string;
+    title: string;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -3297,9 +3411,10 @@ export type CommentDeleteData = {
 export type CommentDeleteResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
-    text: string;
+    title: string;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -3411,9 +3526,10 @@ export type CommentGetListResponse = {
     items: Array<{
         id: string;
         teamId: string;
+        organizationId?: string | null;
         internalPostId: string;
         internalParentCommentId?: string | null;
-        text: string;
+        title: string;
         postDate: string | null;
         postedDate?: string | null;
         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -3518,7 +3634,7 @@ export type CommentCreateData = {
      */
     requestBody?: {
         teamId: string;
-        text: string;
+        title: string;
         internalPostId: string;
         internalParentCommentId?: string | null;
         postDate: string;
@@ -3562,9 +3678,10 @@ export type CommentCreateData = {
 export type CommentCreateResponse = {
     id: string;
     teamId: string;
+    organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
-    text: string;
+    title: string;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -3793,8 +3910,8 @@ export type $OpenApiTs = {
                         canceledAt?: string | null;
                         trialStart?: string | null;
                         trialEnd?: string | null;
-                        maxMonthlyPosts: number;
-                        maxMonthlyUploads: number;
+                        maxMonthlyPosts?: number | null;
+                        maxMonthlyUploads?: number | null;
                         discountStart?: string | null;
                         discountEnd?: string | null;
                         createdAt: string | null;
@@ -4701,13 +4818,6 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
-                    posts: Array<{
-                        postId: string;
-                        uploadId: string;
-                        createdAt: string | null;
-                        updatedAt: string | null;
-                        deletedAt?: string | null;
-                    }>;
                 }>;
                 /**
                  * 400
@@ -5165,6 +5275,7 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -5205,6 +5316,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to which the post will link to. Only available for type POST.
+                             */
+                            link?: string | null;
+                            /**
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
@@ -5225,6 +5340,12 @@ export type $OpenApiTs = {
                              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                              */
                             shareToFeed?: boolean | null;
+                            collaborators?: Array<(string)> | null;
+                            tagged?: Array<{
+                                username: string;
+                                x: number;
+                                y: number;
+                            }> | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -5234,6 +5355,10 @@ export type $OpenApiTs = {
                             type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -5542,6 +5667,7 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -5582,6 +5708,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to which the post will link to. Only available for type POST.
+                             */
+                            link?: string | null;
+                            /**
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
@@ -5602,6 +5732,12 @@ export type $OpenApiTs = {
                              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                              */
                             shareToFeed?: boolean | null;
+                            collaborators?: Array<(string)> | null;
+                            tagged?: Array<{
+                                username: string;
+                                x: number;
+                                y: number;
+                            }> | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -5611,6 +5747,10 @@ export type $OpenApiTs = {
                             type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -5859,6 +5999,7 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -5899,6 +6040,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to which the post will link to. Only available for type POST.
+                             */
+                            link?: string | null;
+                            /**
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
@@ -5919,6 +6064,12 @@ export type $OpenApiTs = {
                              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                              */
                             shareToFeed?: boolean | null;
+                            collaborators?: Array<(string)> | null;
+                            tagged?: Array<{
+                                username: string;
+                                x: number;
+                                y: number;
+                            }> | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -5928,6 +6079,10 @@ export type $OpenApiTs = {
                             type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -6179,6 +6334,7 @@ export type $OpenApiTs = {
                     items: Array<{
                         id: string;
                         teamId: string;
+                        organizationId?: string | null;
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
@@ -6219,6 +6375,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 /**
+                                 * The URL to which the post will link to. Only available for type POST.
+                                 */
+                                link?: string | null;
+                                /**
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
@@ -6239,6 +6399,12 @@ export type $OpenApiTs = {
                                  * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                                  */
                                 shareToFeed?: boolean | null;
+                                collaborators?: Array<(string)> | null;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -6248,6 +6414,10 @@ export type $OpenApiTs = {
                                 type?: 'VIDEO' | 'IMAGE';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                                 /**
                                  * Set to true if the video is a paid partnership to promote a third-party business.
@@ -6558,6 +6728,7 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -6598,6 +6769,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * The URL to which the post will link to. Only available for type POST.
+                             */
+                            link?: string | null;
+                            /**
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
@@ -6618,6 +6793,12 @@ export type $OpenApiTs = {
                              * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                              */
                             shareToFeed?: boolean | null;
+                            collaborators?: Array<(string)> | null;
+                            tagged?: Array<{
+                                username: string;
+                                x: number;
+                                y: number;
+                            }> | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -6627,6 +6808,10 @@ export type $OpenApiTs = {
                             type?: 'VIDEO' | 'IMAGE';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
@@ -7071,6 +7256,7 @@ export type $OpenApiTs = {
                     post?: {
                         id: string;
                         teamId: string;
+                        organizationId?: string | null;
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
@@ -7111,6 +7297,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 /**
+                                 * The URL to which the post will link to. Only available for type POST.
+                                 */
+                                link?: string | null;
+                                /**
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
@@ -7131,6 +7321,12 @@ export type $OpenApiTs = {
                                  * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
                                  */
                                 shareToFeed?: boolean | null;
+                                collaborators?: Array<(string)> | null;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -7140,6 +7336,10 @@ export type $OpenApiTs = {
                                 type?: 'VIDEO' | 'IMAGE';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * The URL to image uploaded on bundle.social.
+                                 */
+                                thumbnail?: string | null;
                                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
                                 /**
                                  * Set to true if the video is a paid partnership to promote a third-party business.
@@ -7434,9 +7634,10 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
-                    text: string;
+                    title: string;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -7583,9 +7784,10 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
-                    text: string;
+                    title: string;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -7732,9 +7934,10 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
-                    text: string;
+                    title: string;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -7884,9 +8087,10 @@ export type $OpenApiTs = {
                     items: Array<{
                         id: string;
                         teamId: string;
+                        organizationId?: string | null;
                         internalPostId: string;
                         internalParentCommentId?: string | null;
-                        text: string;
+                        title: string;
                         postDate: string | null;
                         postedDate?: string | null;
                         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -8035,9 +8239,10 @@ export type $OpenApiTs = {
                 200: {
                     id: string;
                     teamId: string;
+                    organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
-                    text: string;
+                    title: string;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';

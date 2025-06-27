@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.12.1...v2.13.0) (2025-06-27)
+
+
+### Features
+
+* fb post link, tiktok thumbnails, ig collaborators, ig tagged accounts, upload get list filters ([46ec013](https://github.com/bundleglobal/bundlesocial-node/commit/46ec01389fae8a1dcc175582fb626ea610cbb193))
+
 ## [2.12.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.12.0...v2.12.1) (2025-06-16)
 
 

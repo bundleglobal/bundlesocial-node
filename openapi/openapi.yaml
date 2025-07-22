@@ -4025,6 +4025,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -5478,6 +5479,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -6254,6 +6256,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -7007,6 +7010,7 @@ paths:
               - ERROR
               - DELETED
               - PROCESSING
+              - REVIEW
             nullable: true
         - name: orderBy
           in: query
@@ -7104,6 +7108,7 @@ paths:
                             - ERROR
                             - DELETED
                             - PROCESSING
+                            - REVIEW
                         data:
                           type: object
                           properties:
@@ -8569,6 +8574,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -9896,6 +9902,7 @@ paths:
                           - ERROR
                           - DELETED
                           - PROCESSING
+                          - REVIEW
                       data:
                         type: object
                         properties:

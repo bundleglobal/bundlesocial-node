@@ -736,7 +736,7 @@ export type PostGetResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1289,7 +1289,7 @@ export type PostUpdateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1578,7 +1578,7 @@ export type PostDeleteResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1863,7 +1863,7 @@ export type PostGetListData = {
     orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
     platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')> | null;
     q?: string | null;
-    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | null;
+    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | null;
     teamId: string;
 };
 
@@ -1875,7 +1875,7 @@ export type PostGetListResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -2430,7 +2430,7 @@ export type PostCreateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -2825,7 +2825,7 @@ export type AnalyticsGetProfilePostResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -5279,7 +5279,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -5671,7 +5671,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -6003,7 +6003,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -6338,7 +6338,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                         data: {
                             TWITTER?: {
                                 text?: string | null;
@@ -6732,7 +6732,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -7260,7 +7260,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                         data: {
                             TWITTER?: {
                                 text?: string | null;

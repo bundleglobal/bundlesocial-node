@@ -1502,6 +1502,514 @@ paths:
                 required:
                   - message
   /api/v1/team/:
+    get:
+      summary: Get list of teams
+      tags: *ref_0
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: number
+            nullable: true
+        - name: limit
+          in: query
+          schema:
+            default: 10
+            type: number
+            nullable: true
+      operationId: team.getList
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        avatarUrl:
+                          type: string
+                          nullable: true
+                        organizationId:
+                          type: string
+                        createdById:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        organization:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            createdById:
+                              type: string
+                            promotionCodeId:
+                              type: string
+                              nullable: true
+                            name:
+                              type: string
+                              nullable: true
+                            avatarUrl:
+                              type: string
+                              nullable: true
+                            apiAccess:
+                              default: true
+                              type: boolean
+                            ref:
+                              type: string
+                              nullable: true
+                            dailyPostLimit:
+                              type: object
+                              properties:
+                                TWITTER:
+                                  type: number
+                                FACEBOOK:
+                                  type: number
+                                INSTAGRAM:
+                                  type: number
+                                LINKEDIN:
+                                  type: number
+                                YOUTUBE:
+                                  type: number
+                                TIKTOK:
+                                  type: number
+                                THREADS:
+                                  type: number
+                                PINTEREST:
+                                  type: number
+                                REDDIT:
+                                  type: number
+                                DISCORD:
+                                  type: number
+                                SLACK:
+                                  type: number
+                                MASTODON:
+                                  type: number
+                              nullable: true
+                            createdAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            updatedAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            deletedAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                          required:
+                            - id
+                            - createdById
+                            - createdAt
+                            - updatedAt
+                        createdBy:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            externalId:
+                              type: string
+                            email:
+                              type: string
+                            emailVerified:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            firstName:
+                              type: string
+                              nullable: true
+                            lastName:
+                              type: string
+                              nullable: true
+                            avatarUrl:
+                              type: string
+                              nullable: true
+                            role:
+                              type: string
+                              enum:
+                                - ADMIN
+                                - CUSTOMER
+                            createdAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            updatedAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            deletedAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                          required:
+                            - id
+                            - externalId
+                            - email
+                            - role
+                            - createdAt
+                            - updatedAt
+                        bots:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                              avatarUrl:
+                                type: string
+                                nullable: true
+                              teamId:
+                                type: string
+                              createdAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              updatedAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              deletedAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                            required:
+                              - id
+                              - name
+                              - teamId
+                              - createdAt
+                              - updatedAt
+                        socialAccounts:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - TIKTOK
+                                  - YOUTUBE
+                                  - INSTAGRAM
+                                  - FACEBOOK
+                                  - TWITTER
+                                  - THREADS
+                                  - LINKEDIN
+                                  - PINTEREST
+                                  - REDDIT
+                                  - MASTODON
+                                  - DISCORD
+                                  - SLACK
+                              teamId:
+                                type: string
+                              username:
+                                type: string
+                                nullable: true
+                              displayName:
+                                type: string
+                                nullable: true
+                              externalId:
+                                type: string
+                                nullable: true
+                              userUsername:
+                                type: string
+                                nullable: true
+                              userDisplayName:
+                                type: string
+                                nullable: true
+                              userId:
+                                type: string
+                                nullable: true
+                              channels:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                    name:
+                                      type: string
+                                      nullable: true
+                                    username:
+                                      type: string
+                                      nullable: true
+                                    webhook:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          nullable: true
+                                        name:
+                                          type: string
+                                          nullable: true
+                                        avatar:
+                                          type: string
+                                          nullable: true
+                                        url:
+                                          type: string
+                                          nullable: true
+                                      nullable: true
+                                  required:
+                                    - id
+                                nullable: true
+                              createdAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              updatedAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              deletedAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                            required:
+                              - id
+                              - type
+                              - teamId
+                              - createdAt
+                              - updatedAt
+                        bio:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            username:
+                              type: string
+                            name:
+                              type: string
+                              nullable: true
+                            description:
+                              type: string
+                              nullable: true
+                            avatarUrl:
+                              type: string
+                              nullable: true
+                            socials:
+                              type: object
+                              additionalProperties:
+                                type: string
+                                format: uri
+                                maxLength: 2048
+                                nullable: true
+                              nullable: true
+                            teamId:
+                              type: string
+                            createdAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            updatedAt:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            items:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  bioId:
+                                    type: string
+                                  name:
+                                    type: string
+                                  link:
+                                    type: string
+                                  icon:
+                                    type: string
+                                    nullable: true
+                                  enabled:
+                                    type: boolean
+                                  order:
+                                    type: number
+                                    nullable: true
+                                  createdAt:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                  updatedAt:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                  analytics:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                        count:
+                                          type: number
+                                        bioItemId:
+                                          type: string
+                                        deviceType:
+                                          type: object
+                                          additionalProperties:
+                                            type: number
+                                        country:
+                                          type: object
+                                          additionalProperties:
+                                            type: number
+                                        createdAt:
+                                          type: string
+                                          format: date-time
+                                          nullable: true
+                                        updatedAt:
+                                          type: string
+                                          format: date-time
+                                          nullable: true
+                                      required:
+                                        - id
+                                        - count
+                                        - bioItemId
+                                        - deviceType
+                                        - country
+                                        - createdAt
+                                        - updatedAt
+                                required:
+                                  - id
+                                  - bioId
+                                  - name
+                                  - link
+                                  - enabled
+                                  - createdAt
+                                  - updatedAt
+                                  - analytics
+                          required:
+                            - id
+                            - username
+                            - name
+                            - description
+                            - avatarUrl
+                            - socials
+                            - teamId
+                            - createdAt
+                            - updatedAt
+                            - items
+                          nullable: true
+                      required:
+                        - id
+                        - name
+                        - organizationId
+                        - createdById
+                        - createdAt
+                        - updatedAt
+                        - organization
+                        - createdBy
+                        - bots
+                        - socialAccounts
+                  total:
+                    type: number
+                required:
+                  - items
+                  - total
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
     post:
       summary: Create new team
       tags: *ref_0
@@ -2809,6 +3317,14 @@ paths:
               - image
               - video
             nullable: true
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - USED
+              - UNUSED
+            nullable: true
       operationId: upload.getList
       responses:
         '200':
@@ -2884,11 +3400,38 @@ paths:
                       type: string
                       format: date-time
                       nullable: true
+                    posts:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          postId:
+                            type: string
+                          uploadId:
+                            type: string
+                          createdAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          updatedAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          deletedAt:
+                            type: string
+                            format: date-time
+                            nullable: true
+                        required:
+                          - postId
+                          - uploadId
+                          - createdAt
+                          - updatedAt
                   required:
                     - id
                     - type
                     - createdAt
                     - updatedAt
+                    - posts
         '400':
           description: '400'
           content:
@@ -3416,11 +3959,38 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
+                  posts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        postId:
+                          type: string
+                        uploadId:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - postId
+                        - uploadId
+                        - createdAt
+                        - updatedAt
                 required:
                   - id
                   - type
                   - createdAt
                   - updatedAt
+                  - posts
         '400':
           description: '400'
           content:
@@ -4025,6 +4595,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -5478,6 +6049,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -6254,6 +6826,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -7007,6 +7580,7 @@ paths:
               - ERROR
               - DELETED
               - PROCESSING
+              - REVIEW
             nullable: true
         - name: orderBy
           in: query
@@ -7104,6 +7678,7 @@ paths:
                             - ERROR
                             - DELETED
                             - PROCESSING
+                            - REVIEW
                         data:
                           type: object
                           properties:
@@ -8569,6 +9144,7 @@ paths:
                       - ERROR
                       - DELETED
                       - PROCESSING
+                      - REVIEW
                   data:
                     type: object
                     properties:
@@ -9896,6 +10472,7 @@ paths:
                           - ERROR
                           - DELETED
                           - PROCESSING
+                          - REVIEW
                       data:
                         type: object
                         properties:

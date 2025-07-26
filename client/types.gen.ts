@@ -323,6 +323,135 @@ export type TeamDeleteTeamResponse = {
     deletedAt?: string | null;
 };
 
+export type TeamGetListData = {
+    limit?: number | null;
+    offset?: number | null;
+};
+
+export type TeamGetListResponse = {
+    items: Array<{
+        id: string;
+        name: string;
+        avatarUrl?: string | null;
+        organizationId: string;
+        createdById: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        organization: {
+            id: string;
+            createdById: string;
+            promotionCodeId?: string | null;
+            name?: string | null;
+            avatarUrl?: string | null;
+            apiAccess?: boolean;
+            ref?: string | null;
+            dailyPostLimit?: {
+                TWITTER?: number;
+                FACEBOOK?: number;
+                INSTAGRAM?: number;
+                LINKEDIN?: number;
+                YOUTUBE?: number;
+                TIKTOK?: number;
+                THREADS?: number;
+                PINTEREST?: number;
+                REDDIT?: number;
+                DISCORD?: number;
+                SLACK?: number;
+                MASTODON?: number;
+            } | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+        createdBy: {
+            id: string;
+            externalId: string;
+            email: string;
+            emailVerified?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            avatarUrl?: string | null;
+            role: 'ADMIN' | 'CUSTOMER';
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+        bots: Array<{
+            id: string;
+            name: string;
+            avatarUrl?: string | null;
+            teamId: string;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        }>;
+        socialAccounts: Array<{
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            externalId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+            }> | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        }>;
+        bio?: {
+            id: string;
+            username: string;
+            name: string | null;
+            description: string | null;
+            avatarUrl: string | null;
+            socials: {
+                [key: string]: (string | null);
+            } | null;
+            teamId: string;
+            createdAt: string | null;
+            updatedAt: string | null;
+            items: Array<{
+                id: string;
+                bioId: string;
+                name: string;
+                link: string;
+                icon?: string | null;
+                enabled: boolean;
+                order?: number | null;
+                createdAt: string | null;
+                updatedAt: string | null;
+                analytics: Array<{
+                    id: string;
+                    count: number;
+                    bioItemId: string;
+                    deviceType: {
+                        [key: string]: (number);
+                    };
+                    country: {
+                        [key: string]: (number);
+                    };
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                }>;
+            }>;
+        } | null;
+    }>;
+    total: number;
+};
+
 export type TeamCreateTeamData = {
     /**
      * Body
@@ -536,6 +665,7 @@ export type SocialAccountCopyResponse = Array<{
 }>;
 
 export type UploadGetListData = {
+    status?: 'USED' | 'UNUSED' | null;
     teamId?: string | null;
     type?: 'image' | 'video' | null;
 };
@@ -560,6 +690,13 @@ export type UploadGetListResponse = Array<{
     ext?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
+    posts: Array<{
+        postId: string;
+        uploadId: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
 }>;
 
 export type UploadCreateData = {
@@ -649,6 +786,13 @@ export type UploadGetResponse = {
     ext?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
+    posts: Array<{
+        postId: string;
+        uploadId: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
 };
 
 export type UploadDeleteData = {
@@ -736,7 +880,7 @@ export type PostGetResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1289,7 +1433,7 @@ export type PostUpdateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1578,7 +1722,7 @@ export type PostDeleteResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1863,7 +2007,7 @@ export type PostGetListData = {
     orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
     platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')> | null;
     q?: string | null;
-    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | null;
+    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | null;
     teamId: string;
 };
 
@@ -1875,7 +2019,7 @@ export type PostGetListResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -2430,7 +2574,7 @@ export type PostCreateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -2825,7 +2969,7 @@ export type AnalyticsGetProfilePostResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -4323,6 +4467,177 @@ export type $OpenApiTs = {
         };
     };
     '/api/v1/team/': {
+        get: {
+            req: TeamGetListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        name: string;
+                        avatarUrl?: string | null;
+                        organizationId: string;
+                        createdById: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        organization: {
+                            id: string;
+                            createdById: string;
+                            promotionCodeId?: string | null;
+                            name?: string | null;
+                            avatarUrl?: string | null;
+                            apiAccess?: boolean;
+                            ref?: string | null;
+                            dailyPostLimit?: {
+                                TWITTER?: number;
+                                FACEBOOK?: number;
+                                INSTAGRAM?: number;
+                                LINKEDIN?: number;
+                                YOUTUBE?: number;
+                                TIKTOK?: number;
+                                THREADS?: number;
+                                PINTEREST?: number;
+                                REDDIT?: number;
+                                DISCORD?: number;
+                                SLACK?: number;
+                                MASTODON?: number;
+                            } | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                        createdBy: {
+                            id: string;
+                            externalId: string;
+                            email: string;
+                            emailVerified?: string | null;
+                            firstName?: string | null;
+                            lastName?: string | null;
+                            avatarUrl?: string | null;
+                            role: 'ADMIN' | 'CUSTOMER';
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                        bots: Array<{
+                            id: string;
+                            name: string;
+                            avatarUrl?: string | null;
+                            teamId: string;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        }>;
+                        socialAccounts: Array<{
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            externalId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                            }> | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        }>;
+                        bio?: {
+                            id: string;
+                            username: string;
+                            name: string | null;
+                            description: string | null;
+                            avatarUrl: string | null;
+                            socials: {
+                                [key: string]: (string | null);
+                            } | null;
+                            teamId: string;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            items: Array<{
+                                id: string;
+                                bioId: string;
+                                name: string;
+                                link: string;
+                                icon?: string | null;
+                                enabled: boolean;
+                                order?: number | null;
+                                createdAt: string | null;
+                                updatedAt: string | null;
+                                analytics: Array<{
+                                    id: string;
+                                    count: number;
+                                    bioItemId: string;
+                                    deviceType: {
+                                        [key: string]: (number);
+                                    };
+                                    country: {
+                                        [key: string]: (number);
+                                    };
+                                    createdAt: string | null;
+                                    updatedAt: string | null;
+                                }>;
+                            }>;
+                        } | null;
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
         post: {
             req: TeamCreateTeamData;
             res: {
@@ -4818,6 +5133,13 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
+                    posts: Array<{
+                        postId: string;
+                        uploadId: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
                 }>;
                 /**
                  * 400
@@ -5027,6 +5349,13 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
+                    posts: Array<{
+                        postId: string;
+                        uploadId: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
                 };
                 /**
                  * 400
@@ -5279,7 +5608,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -5671,7 +6000,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -6003,7 +6332,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -6338,7 +6667,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                         data: {
                             TWITTER?: {
                                 text?: string | null;
@@ -6732,7 +7061,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -7260,7 +7589,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
                         data: {
                             TWITTER?: {
                                 text?: string | null;

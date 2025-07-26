@@ -1,3 +1,10 @@
+# [2.14.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.13.0...v2.14.0) (2025-07-26)
+
+
+### Features
+
+* team list endpoint, used/unused uploads ([619c190](https://github.com/bundleglobal/bundlesocial-node/commit/619c190b49d7f3a3aba62fef53d4d6043c9aef23))
+
 # [2.13.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.12.1...v2.13.0) (2025-06-27)
 
 

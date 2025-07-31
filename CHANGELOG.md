@@ -1,3 +1,10 @@
+# [2.15.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.14.0...v2.15.0) (2025-07-31)
+
+
+### Features
+
+* youtube additional settings ([2b22bbf](https://github.com/bundleglobal/bundlesocial-node/commit/2b22bbfeafed27be86dbfda471ee8236e415878b))
+
 # [2.14.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.13.0...v2.14.0) (2025-07-26)
 
 

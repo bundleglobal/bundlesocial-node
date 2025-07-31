@@ -1021,6 +1021,14 @@ export type PostGetResponse = {
              * Set to true if the video is made for kids.
              */
             madeForKids?: boolean | null;
+            /**
+             * Set to true if video contains AI generated content
+             */
+            containsSyntheticMedia?: boolean | null;
+            /**
+             * Set to true if video has paid product placement
+             */
+            hasPaidProductPlacement?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -1368,6 +1376,14 @@ export type PostUpdateData = {
                  * Set to true if the video is made for kids.
                  */
                 madeForKids?: boolean | null;
+                /**
+                 * Set to true if video contains AI generated content
+                 */
+                containsSyntheticMedia?: boolean | null;
+                /**
+                 * Set to true if video has paid product placement
+                 */
+                hasPaidProductPlacement?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -1574,6 +1590,14 @@ export type PostUpdateResponse = {
              * Set to true if the video is made for kids.
              */
             madeForKids?: boolean | null;
+            /**
+             * Set to true if video contains AI generated content
+             */
+            containsSyntheticMedia?: boolean | null;
+            /**
+             * Set to true if video has paid product placement
+             */
+            hasPaidProductPlacement?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -1863,6 +1887,14 @@ export type PostDeleteResponse = {
              * Set to true if the video is made for kids.
              */
             madeForKids?: boolean | null;
+            /**
+             * Set to true if video contains AI generated content
+             */
+            containsSyntheticMedia?: boolean | null;
+            /**
+             * Set to true if video has paid product placement
+             */
+            hasPaidProductPlacement?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -2160,6 +2192,14 @@ export type PostGetListResponse = {
                  * Set to true if the video is made for kids.
                  */
                 madeForKids?: boolean | null;
+                /**
+                 * Set to true if video contains AI generated content
+                 */
+                containsSyntheticMedia?: boolean | null;
+                /**
+                 * Set to true if video has paid product placement
+                 */
+                hasPaidProductPlacement?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -2509,6 +2549,14 @@ export type PostCreateData = {
                  * Set to true if the video is made for kids.
                  */
                 madeForKids?: boolean | null;
+                /**
+                 * Set to true if video contains AI generated content
+                 */
+                containsSyntheticMedia?: boolean | null;
+                /**
+                 * Set to true if video has paid product placement
+                 */
+                hasPaidProductPlacement?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -2715,6 +2763,14 @@ export type PostCreateResponse = {
              * Set to true if the video is made for kids.
              */
             madeForKids?: boolean | null;
+            /**
+             * Set to true if video contains AI generated content
+             */
+            containsSyntheticMedia?: boolean | null;
+            /**
+             * Set to true if video has paid product placement
+             */
+            hasPaidProductPlacement?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -3110,6 +3166,14 @@ export type AnalyticsGetProfilePostResponse = {
                  * Set to true if the video is made for kids.
                  */
                 madeForKids?: boolean | null;
+                /**
+                 * Set to true if video contains AI generated content
+                 */
+                containsSyntheticMedia?: boolean | null;
+                /**
+                 * Set to true if video has paid product placement
+                 */
+                hasPaidProductPlacement?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -5749,6 +5813,14 @@ export type $OpenApiTs = {
                              * Set to true if the video is made for kids.
                              */
                             madeForKids?: boolean | null;
+                            /**
+                             * Set to true if video contains AI generated content
+                             */
+                            containsSyntheticMedia?: boolean | null;
+                            /**
+                             * Set to true if video has paid product placement
+                             */
+                            hasPaidProductPlacement?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -6141,6 +6213,14 @@ export type $OpenApiTs = {
                              * Set to true if the video is made for kids.
                              */
                             madeForKids?: boolean | null;
+                            /**
+                             * Set to true if video contains AI generated content
+                             */
+                            containsSyntheticMedia?: boolean | null;
+                            /**
+                             * Set to true if video has paid product placement
+                             */
+                            hasPaidProductPlacement?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -6473,6 +6553,14 @@ export type $OpenApiTs = {
                              * Set to true if the video is made for kids.
                              */
                             madeForKids?: boolean | null;
+                            /**
+                             * Set to true if video contains AI generated content
+                             */
+                            containsSyntheticMedia?: boolean | null;
+                            /**
+                             * Set to true if video has paid product placement
+                             */
+                            hasPaidProductPlacement?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -6808,6 +6896,14 @@ export type $OpenApiTs = {
                                  * Set to true if the video is made for kids.
                                  */
                                 madeForKids?: boolean | null;
+                                /**
+                                 * Set to true if video contains AI generated content
+                                 */
+                                containsSyntheticMedia?: boolean | null;
+                                /**
+                                 * Set to true if video has paid product placement
+                                 */
+                                hasPaidProductPlacement?: boolean | null;
                             } | null;
                             REDDIT?: {
                                 /**
@@ -7202,6 +7298,14 @@ export type $OpenApiTs = {
                              * Set to true if the video is made for kids.
                              */
                             madeForKids?: boolean | null;
+                            /**
+                             * Set to true if video contains AI generated content
+                             */
+                            containsSyntheticMedia?: boolean | null;
+                            /**
+                             * Set to true if video has paid product placement
+                             */
+                            hasPaidProductPlacement?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -7730,6 +7834,14 @@ export type $OpenApiTs = {
                                  * Set to true if the video is made for kids.
                                  */
                                 madeForKids?: boolean | null;
+                                /**
+                                 * Set to true if video contains AI generated content
+                                 */
+                                containsSyntheticMedia?: boolean | null;
+                                /**
+                                 * Set to true if video has paid product placement
+                                 */
+                                hasPaidProductPlacement?: boolean | null;
                             } | null;
                             REDDIT?: {
                                 /**

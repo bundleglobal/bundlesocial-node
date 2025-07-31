@@ -4909,6 +4909,16 @@ paths:
                             type: boolean
                             nullable: true
                             description: Set to true if the video is made for kids.
+                          containsSyntheticMedia:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video contains AI generated content
+                          hasPaidProductPlacement:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video has paid product placement
                         nullable: true
                       REDDIT:
                         type: object
@@ -5904,6 +5914,16 @@ paths:
                           type: boolean
                           nullable: true
                           description: Set to true if the video is made for kids.
+                        containsSyntheticMedia:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: Set to true if video contains AI generated content
+                        hasPaidProductPlacement:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: Set to true if video has paid product placement
                       nullable: true
                     REDDIT:
                       type: object
@@ -6363,6 +6383,16 @@ paths:
                             type: boolean
                             nullable: true
                             description: Set to true if the video is made for kids.
+                          containsSyntheticMedia:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video contains AI generated content
+                          hasPaidProductPlacement:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video has paid product placement
                         nullable: true
                       REDDIT:
                         type: object
@@ -7140,6 +7170,16 @@ paths:
                             type: boolean
                             nullable: true
                             description: Set to true if the video is made for kids.
+                          containsSyntheticMedia:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video contains AI generated content
+                          hasPaidProductPlacement:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video has paid product placement
                         nullable: true
                       REDDIT:
                         type: object
@@ -7995,6 +8035,20 @@ paths:
                                   type: boolean
                                   nullable: true
                                   description: Set to true if the video is made for kids.
+                                containsSyntheticMedia:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if video contains AI generated
+                                    content
+                                hasPaidProductPlacement:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if video has paid product
+                                    placement
                               nullable: true
                             REDDIT:
                               type: object
@@ -8992,6 +9046,16 @@ paths:
                           type: boolean
                           nullable: true
                           description: Set to true if the video is made for kids.
+                        containsSyntheticMedia:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: Set to true if video contains AI generated content
+                        hasPaidProductPlacement:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: Set to true if video has paid product placement
                       nullable: true
                     REDDIT:
                       type: object
@@ -9458,6 +9522,16 @@ paths:
                             type: boolean
                             nullable: true
                             description: Set to true if the video is made for kids.
+                          containsSyntheticMedia:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video contains AI generated content
+                          hasPaidProductPlacement:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: Set to true if video has paid product placement
                         nullable: true
                       REDDIT:
                         type: object
@@ -10787,6 +10861,20 @@ paths:
                                 type: boolean
                                 nullable: true
                                 description: Set to true if the video is made for kids.
+                              containsSyntheticMedia:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if video contains AI generated
+                                  content
+                              hasPaidProductPlacement:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if video has paid product
+                                  placement
                             nullable: true
                           REDDIT:
                             type: object

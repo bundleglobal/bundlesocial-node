@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, AnalyticsGetProfileAnalyticsData, AnalyticsGetProfileAnalyticsResponse, AnalyticsGetProfilePostsData, AnalyticsGetProfilePostsResponse, AnalyticsGetProfilePostData, AnalyticsGetProfilePostResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, AnalyticsGetProfileAnalyticsData, AnalyticsGetProfileAnalyticsResponse, AnalyticsGetProfilePostsData, AnalyticsGetProfilePostsResponse, AnalyticsGetProfilePostData, AnalyticsGetProfilePostResponse, AnalyticsGetRawProfileAnalyticsData, AnalyticsGetRawProfileAnalyticsResponse, AnalyticsGetRawPostsAnalyticsData, AnalyticsGetRawPostsAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -702,7 +702,7 @@ export class AnalyticsService {
     }
     
     /**
-     * Get Profile Posts
+     * Get Profile Post List
      * @param data The data for the request.
      * @param data.teamId
      * @param data.platformType
@@ -729,7 +729,7 @@ export class AnalyticsService {
     }
     
     /**
-     * Get Profile Post
+     * Get Profile Post By ID
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -741,6 +741,60 @@ export class AnalyticsService {
             url: '/api/v1/analytics/profile-post/{id}',
             path: {
                 id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Raw Profile Analytics In Last 24 Hours
+     * @param data The data for the request.
+     * @param data.socialAccountId
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public analyticsGetRawProfileAnalytics(data: AnalyticsGetRawProfileAnalyticsData): CancelablePromise<AnalyticsGetRawProfileAnalyticsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/analytics/raw-profile',
+            query: {
+                socialAccountId: data.socialAccountId,
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Raw Post Analytics In Last 24 Hours
+     * @param data The data for the request.
+     * @param data.profilePostId
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public analyticsGetRawPostsAnalytics(data: AnalyticsGetRawPostsAnalyticsData): CancelablePromise<AnalyticsGetRawPostsAnalyticsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/analytics/raw-post',
+            query: {
+                profilePostId: data.profilePostId,
+                teamId: data.teamId
             },
             errors: {
                 400: '400',

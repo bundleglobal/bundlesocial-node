@@ -10122,7 +10122,7 @@ paths:
                   - message
   /api/v1/analytics/profile-post:
     get:
-      summary: Get Profile Posts
+      summary: Get Profile Post List
       tags: *ref_4
       parameters:
         - name: teamId
@@ -10301,7 +10301,7 @@ paths:
                   - message
   /api/v1/analytics/profile-post/{id}:
     get:
-      summary: Get Profile Post
+      summary: Get Profile Post By ID
       tags: *ref_4
       parameters:
         - name: id
@@ -11202,163 +11202,6 @@ paths:
                         type: string
                         format: date-time
                         nullable: true
-                      profilePosts:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: string
-                            socialAccountId:
-                              type: string
-                            postId:
-                              type: string
-                              nullable: true
-                            externalId:
-                              type: string
-                              nullable: true
-                            title:
-                              type: string
-                              nullable: true
-                            description:
-                              type: string
-                              nullable: true
-                            smallThumbnail:
-                              type: string
-                              nullable: true
-                            thumbnail:
-                              type: string
-                              nullable: true
-                            permalink:
-                              type: string
-                              nullable: true
-                            subreddit:
-                              type: string
-                              nullable: true
-                            publishedAt:
-                              type: string
-                              format: date-time
-                              nullable: true
-                            type:
-                              type: string
-                              enum:
-                                - POST
-                                - REEL
-                                - STORY
-                                - VIDEO
-                                - IMAGE
-                            init:
-                              type: boolean
-                            createdAt:
-                              type: string
-                              format: date-time
-                              nullable: true
-                            updatedAt:
-                              type: string
-                              format: date-time
-                              nullable: true
-                            deletedAt:
-                              type: string
-                              format: date-time
-                              nullable: true
-                            socialAccount:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                type:
-                                  type: string
-                                  enum:
-                                    - TIKTOK
-                                    - YOUTUBE
-                                    - INSTAGRAM
-                                    - FACEBOOK
-                                    - TWITTER
-                                    - THREADS
-                                    - LINKEDIN
-                                    - PINTEREST
-                                    - REDDIT
-                                    - MASTODON
-                                    - DISCORD
-                                    - SLACK
-                                teamId:
-                                  type: string
-                                username:
-                                  type: string
-                                  nullable: true
-                                displayName:
-                                  type: string
-                                  nullable: true
-                                externalId:
-                                  type: string
-                                  nullable: true
-                                userUsername:
-                                  type: string
-                                  nullable: true
-                                userDisplayName:
-                                  type: string
-                                  nullable: true
-                                userId:
-                                  type: string
-                                  nullable: true
-                                channels:
-                                  type: array
-                                  items:
-                                    type: object
-                                    properties:
-                                      id:
-                                        type: string
-                                      name:
-                                        type: string
-                                        nullable: true
-                                      username:
-                                        type: string
-                                        nullable: true
-                                      webhook:
-                                        type: object
-                                        properties:
-                                          id:
-                                            type: string
-                                            nullable: true
-                                          name:
-                                            type: string
-                                            nullable: true
-                                          avatar:
-                                            type: string
-                                            nullable: true
-                                          url:
-                                            type: string
-                                            nullable: true
-                                        nullable: true
-                                    required:
-                                      - id
-                                  nullable: true
-                                createdAt:
-                                  type: string
-                                  format: date-time
-                                  nullable: true
-                                updatedAt:
-                                  type: string
-                                  format: date-time
-                                  nullable: true
-                                deletedAt:
-                                  type: string
-                                  format: date-time
-                                  nullable: true
-                              required:
-                                - id
-                                - type
-                                - teamId
-                                - createdAt
-                                - updatedAt
-                          required:
-                            - id
-                            - socialAccountId
-                            - type
-                            - init
-                            - createdAt
-                            - updatedAt
-                            - socialAccount
                     required:
                       - id
                       - teamId
@@ -11368,7 +11211,6 @@ paths:
                       - data
                       - createdAt
                       - updatedAt
-                      - profilePosts
                     nullable: true
                 required:
                   - id
@@ -11379,6 +11221,272 @@ paths:
                   - updatedAt
                   - analytics
                   - socialAccount
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/analytics/raw-profile:
+    get:
+      summary: Get Raw Profile Analytics In Last 24 Hours
+      tags: *ref_4
+      parameters:
+        - name: socialAccountId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: analytics.getRawProfileAnalytics
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  profilePostId:
+                    type: string
+                    nullable: true
+                  socialAccountId:
+                    type: string
+                    nullable: true
+                  raw:
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/analytics/raw-post:
+    get:
+      summary: Get Raw Post Analytics In Last 24 Hours
+      tags: *ref_4
+      parameters:
+        - name: profilePostId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: analytics.getRawPostsAnalytics
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  profilePostId:
+                    type: string
+                    nullable: true
+                  socialAccountId:
+                    type: string
+                    nullable: true
+                  raw:
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - createdAt
+                  - updatedAt
         '400':
           description: '400'
           content:

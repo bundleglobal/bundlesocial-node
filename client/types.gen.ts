@@ -3309,50 +3309,37 @@ export type AnalyticsGetProfilePostResponse = {
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
-        profilePosts: Array<{
-            id: string;
-            socialAccountId: string;
-            postId?: string | null;
-            externalId?: string | null;
-            title?: string | null;
-            description?: string | null;
-            smallThumbnail?: string | null;
-            thumbnail?: string | null;
-            permalink?: string | null;
-            subreddit?: string | null;
-            publishedAt?: string | null;
-            type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
-            init: boolean;
-            createdAt: string | null;
-            updatedAt: string | null;
-            deletedAt?: string | null;
-            socialAccount: {
-                id: string;
-                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
-                teamId: string;
-                username?: string | null;
-                displayName?: string | null;
-                externalId?: string | null;
-                userUsername?: string | null;
-                userDisplayName?: string | null;
-                userId?: string | null;
-                channels?: Array<{
-                    id: string;
-                    name?: string | null;
-                    username?: string | null;
-                    webhook?: {
-                        id?: string | null;
-                        name?: string | null;
-                        avatar?: string | null;
-                        url?: string | null;
-                    } | null;
-                }> | null;
-                createdAt: string | null;
-                updatedAt: string | null;
-                deletedAt?: string | null;
-            };
-        }>;
     } | null;
+};
+
+export type AnalyticsGetRawProfileAnalyticsData = {
+    socialAccountId: string;
+    teamId: string;
+};
+
+export type AnalyticsGetRawProfileAnalyticsResponse = {
+    id: string;
+    profilePostId?: string | null;
+    socialAccountId?: string | null;
+    raw?: unknown;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type AnalyticsGetRawPostsAnalyticsData = {
+    profilePostId: string;
+    teamId: string;
+};
+
+export type AnalyticsGetRawPostsAnalyticsResponse = {
+    id: string;
+    profilePostId?: string | null;
+    socialAccountId?: string | null;
+    raw?: unknown;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
 };
 
 export type CommentGetData = {
@@ -7977,50 +7964,125 @@ export type $OpenApiTs = {
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
-                        profilePosts: Array<{
-                            id: string;
-                            socialAccountId: string;
-                            postId?: string | null;
-                            externalId?: string | null;
-                            title?: string | null;
-                            description?: string | null;
-                            smallThumbnail?: string | null;
-                            thumbnail?: string | null;
-                            permalink?: string | null;
-                            subreddit?: string | null;
-                            publishedAt?: string | null;
-                            type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
-                            init: boolean;
-                            createdAt: string | null;
-                            updatedAt: string | null;
-                            deletedAt?: string | null;
-                            socialAccount: {
-                                id: string;
-                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
-                                teamId: string;
-                                username?: string | null;
-                                displayName?: string | null;
-                                externalId?: string | null;
-                                userUsername?: string | null;
-                                userDisplayName?: string | null;
-                                userId?: string | null;
-                                channels?: Array<{
-                                    id: string;
-                                    name?: string | null;
-                                    username?: string | null;
-                                    webhook?: {
-                                        id?: string | null;
-                                        name?: string | null;
-                                        avatar?: string | null;
-                                        url?: string | null;
-                                    } | null;
-                                }> | null;
-                                createdAt: string | null;
-                                updatedAt: string | null;
-                                deletedAt?: string | null;
-                            };
-                        }>;
                     } | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/analytics/raw-profile': {
+        get: {
+            req: AnalyticsGetRawProfileAnalyticsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    profilePostId?: string | null;
+                    socialAccountId?: string | null;
+                    raw?: unknown;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/analytics/raw-post': {
+        get: {
+            req: AnalyticsGetRawPostsAnalyticsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    profilePostId?: string | null;
+                    socialAccountId?: string | null;
+                    raw?: unknown;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
                 };
                 /**
                  * 400

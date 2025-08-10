@@ -1,3 +1,10 @@
+# [2.16.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.15.0...v2.16.0) (2025-08-10)
+
+
+### Features
+
+* additional analytics endpoints ([a66907c](https://github.com/bundleglobal/bundlesocial-node/commit/a66907ce876f91ea64ce82cd68d2991efe72e3aa))
+
 # [2.15.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.14.0...v2.15.0) (2025-07-31)
 
 

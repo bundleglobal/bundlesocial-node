@@ -828,7 +828,7 @@ export type UploadInitLargeUploadData = {
     requestBody?: {
         teamId?: string | null;
         fileName: string;
-        mimeType: string;
+        mimeType: 'image/jpg' | 'image/jpeg' | 'image/png' | 'video/mp4';
     };
 };
 

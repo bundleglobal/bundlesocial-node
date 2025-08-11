@@ -4267,6 +4267,11 @@ paths:
                   type: string
                 mimeType:
                   type: string
+                  enum:
+                    - image/jpg
+                    - image/jpeg
+                    - image/png
+                    - video/mp4
               required:
                 - fileName
                 - mimeType

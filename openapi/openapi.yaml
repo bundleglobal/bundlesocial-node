@@ -14928,6 +14928,1489 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/youtube/thumbnail:
+    post:
+      summary: Set or change thumbnail for a YouTube video
+      tags: &ref_6
+        - misc
+      parameters: []
+      operationId: misc.setThumbnail
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                url:
+                  type: string
+                postId:
+                  type: string
+              required:
+                - teamId
+                - url
+                - postId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        default:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              format: uri
+                            width:
+                              type: integer
+                            height:
+                              type: integer
+                          required:
+                            - url
+                        medium:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              format: uri
+                            width:
+                              type: integer
+                            height:
+                              type: integer
+                          required:
+                            - url
+                        high:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              format: uri
+                            width:
+                              type: integer
+                            height:
+                              type: integer
+                          required:
+                            - url
+                        standard:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              format: uri
+                            width:
+                              type: integer
+                            height:
+                              type: integer
+                          required:
+                            - url
+                        maxres:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              format: uri
+                            width:
+                              type: integer
+                            height:
+                              type: integer
+                          required:
+                            - url
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/youtube/playlist:
+    get:
+      summary: Get channel playlists
+      tags: *ref_6
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          schema:
+            default: 10
+            type: integer
+            minimum: 1
+            maximum: 20
+      operationId: misc.getChannelPlaylist
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                  etag:
+                    type: string
+                  nextPageToken:
+                    type: string
+                  prevPageToken:
+                    type: string
+                  pageInfo:
+                    type: object
+                    properties:
+                      totalResults:
+                        type: integer
+                      resultsPerPage:
+                        type: integer
+                  items:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        kind:
+                          type: string
+                        etag:
+                          type: string
+                        id:
+                          type: string
+                        snippet:
+                          type: object
+                          properties:
+                            publishedAt:
+                              type: string
+                            channelId:
+                              type: string
+                            title:
+                              type: string
+                            description:
+                              type: string
+                            channelTitle:
+                              type: string
+                            thumbnails:
+                              type: object
+                              properties:
+                                default:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                medium:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                high:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                standard:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                maxres:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                            localized:
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                description:
+                                  type: string
+                        status:
+                          type: object
+                          properties:
+                            privacyStatus:
+                              type: string
+                        contentDetails:
+                          type: object
+                          properties:
+                            itemCount:
+                              type: integer
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+    post:
+      summary: Create a new playlist
+      tags: *ref_6
+      parameters: []
+      operationId: misc.createNewChannelPlaylist
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                title:
+                  type: string
+                  description: >-
+                    bundle.social does not store this value and YouTube overites
+                    it everytime so you need to pass it everytime
+                description:
+                  type: string
+                  description: >-
+                    bundle.social does not store this value and YouTube overites
+                    it everytime so you need to pass it everytime
+                privacyStatus:
+                  type: string
+                  enum:
+                    - public
+                    - unlisted
+                    - private
+              required:
+                - teamId
+                - title
+                - description
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                  etag:
+                    type: string
+                  id:
+                    type: string
+                  snippet:
+                    type: object
+                    properties:
+                      publishedAt:
+                        type: string
+                      channelId:
+                        type: string
+                      title:
+                        type: string
+                      description:
+                        type: string
+                      channelTitle:
+                        type: string
+                      thumbnails:
+                        type: object
+                        properties:
+                          default:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          medium:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          high:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          standard:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          maxres:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                      localized:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                          description:
+                            type: string
+                  status:
+                    type: object
+                    properties:
+                      privacyStatus:
+                        type: string
+                  contentDetails:
+                    type: object
+                    properties:
+                      itemCount:
+                        type: integer
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+    put:
+      summary: Update an existing playlist
+      tags: *ref_6
+      parameters: []
+      operationId: misc.updateChannelPlaylist
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                title:
+                  type: string
+                  description: >-
+                    bundle.social does not store this value and YouTube overites
+                    it everytime so you need to pass it everytime
+                description:
+                  type: string
+                  description: >-
+                    bundle.social does not store this value and YouTube overites
+                    it everytime so you need to pass it everytime
+                privacyStatus:
+                  type: string
+                  enum:
+                    - public
+                    - unlisted
+                    - private
+                playlistId:
+                  type: string
+              required:
+                - teamId
+                - title
+                - description
+                - playlistId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                  etag:
+                    type: string
+                  id:
+                    type: string
+                  snippet:
+                    type: object
+                    properties:
+                      publishedAt:
+                        type: string
+                      channelId:
+                        type: string
+                      title:
+                        type: string
+                      description:
+                        type: string
+                      channelTitle:
+                        type: string
+                      thumbnails:
+                        type: object
+                        properties:
+                          default:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          medium:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          high:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          standard:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          maxres:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                      localized:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                          description:
+                            type: string
+                  status:
+                    type: object
+                    properties:
+                      privacyStatus:
+                        type: string
+                  contentDetails:
+                    type: object
+                    properties:
+                      itemCount:
+                        type: integer
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/youtube/playlist/{playlistId}:
+    delete:
+      summary: Remove a video from a playlist
+      tags: *ref_6
+      parameters:
+        - name: playlistId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.deleteChannelPlaylist
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/youtube/playlist-items:
+    post:
+      summary: Add a video to a playlist
+      tags: *ref_6
+      parameters: []
+      operationId: misc.addVideoToPlaylist
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                playlistId:
+                  type: string
+                postId:
+                  type: string
+                position:
+                  type: integer
+                  minimum: 0
+              required:
+                - teamId
+                - playlistId
+                - postId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                  etag:
+                    type: string
+                  id:
+                    type: string
+                  snippet:
+                    type: object
+                    properties:
+                      publishedAt:
+                        type: string
+                      channelId:
+                        type: string
+                      title:
+                        type: string
+                      description:
+                        type: string
+                      channelTitle:
+                        type: string
+                      thumbnails:
+                        type: object
+                        properties:
+                          default:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          medium:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          high:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          standard:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                          maxres:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                format: uri
+                              width:
+                                type: integer
+                              height:
+                                type: integer
+                      playlistId:
+                        type: string
+                      position:
+                        type: integer
+                      resourceId:
+                        type: object
+                        properties:
+                          kind:
+                            type: string
+                          videoId:
+                            type: string
+                          playlistId:
+                            type: string
+                          channelId:
+                            type: string
+                  contentDetails:
+                    type: object
+                    properties:
+                      videoId:
+                        type: string
+                      videoPublishedAt:
+                        type: string
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+    get:
+      summary: Get videos from a playlist
+      tags: *ref_6
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: playlistId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          schema:
+            default: 10
+            type: integer
+            minimum: 1
+            maximum: 20
+      operationId: misc.getVideosFromPlaylist
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                  etag:
+                    type: string
+                  nextPageToken:
+                    type: string
+                  prevPageToken:
+                    type: string
+                  pageInfo:
+                    type: object
+                    properties:
+                      totalResults:
+                        type: integer
+                      resultsPerPage:
+                        type: integer
+                  items:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        kind:
+                          type: string
+                        etag:
+                          type: string
+                        id:
+                          type: string
+                        snippet:
+                          type: object
+                          properties:
+                            publishedAt:
+                              type: string
+                            channelId:
+                              type: string
+                            title:
+                              type: string
+                            description:
+                              type: string
+                            channelTitle:
+                              type: string
+                            thumbnails:
+                              type: object
+                              properties:
+                                default:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                medium:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                high:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                standard:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                                maxres:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                      format: uri
+                                    width:
+                                      type: integer
+                                    height:
+                                      type: integer
+                            playlistId:
+                              type: string
+                            position:
+                              type: integer
+                            resourceId:
+                              type: object
+                              properties:
+                                kind:
+                                  type: string
+                                videoId:
+                                  type: string
+                                playlistId:
+                                  type: string
+                                channelId:
+                                  type: string
+                        contentDetails:
+                          type: object
+                          properties:
+                            videoId:
+                              type: string
+                            videoPublishedAt:
+                              type: string
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/youtube/playlist-items/{playlistItemId}:
+    delete:
+      summary: Remove a video from a playlist
+      tags: *ref_6
+      parameters:
+        - name: playlistItemId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Playlist item ID (not video ID)
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.deleteVideoFromPlaylist
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
 info:
   title: bundle.social API
   description: >-

@@ -1,3 +1,10 @@
+# [2.18.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.17.0...v2.18.0) (2025-08-19)
+
+
+### Features
+
+* misc endpoints for youtube ([d2797b2](https://github.com/bundleglobal/bundlesocial-node/commit/d2797b27e34319213f017a8f9e0d84a6baddf553))
+
 # [2.17.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.16.0...v2.17.0) (2025-08-18)
 
 

@@ -4279,6 +4279,398 @@ export type CommentCreateResponse = {
     deletedAt?: string | null;
 };
 
+export type MiscSetThumbnailData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        url: string;
+        postId: string;
+    };
+};
+
+export type MiscSetThumbnailResponse = {
+    items?: Array<{
+        default?: {
+            url: string;
+            width?: number;
+            height?: number;
+        };
+        medium?: {
+            url: string;
+            width?: number;
+            height?: number;
+        };
+        high?: {
+            url: string;
+            width?: number;
+            height?: number;
+        };
+        standard?: {
+            url: string;
+            width?: number;
+            height?: number;
+        };
+        maxres?: {
+            url: string;
+            width?: number;
+            height?: number;
+        };
+    }>;
+};
+
+export type MiscGetChannelPlaylistData = {
+    maxResults?: number;
+    teamId: string;
+};
+
+export type MiscGetChannelPlaylistResponse = {
+    kind?: string;
+    etag?: string;
+    nextPageToken?: string;
+    prevPageToken?: string;
+    pageInfo?: {
+        totalResults?: number;
+        resultsPerPage?: number;
+    };
+    items?: Array<{
+        kind?: string;
+        etag?: string;
+        id?: string;
+        snippet?: {
+            publishedAt?: string;
+            channelId?: string;
+            title?: string;
+            description?: string;
+            channelTitle?: string;
+            thumbnails?: {
+                default?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                medium?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                high?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                standard?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                maxres?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+            };
+            localized?: {
+                title?: string;
+                description?: string;
+            };
+        };
+        status?: {
+            privacyStatus?: string;
+        };
+        contentDetails?: {
+            itemCount?: number;
+        };
+    }>;
+};
+
+export type MiscCreateNewChannelPlaylistData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * bundle.social does not store this value and YouTube overites it everytime so you need to pass it everytime
+         */
+        title: string;
+        /**
+         * bundle.social does not store this value and YouTube overites it everytime so you need to pass it everytime
+         */
+        description: string;
+        privacyStatus?: 'public' | 'unlisted' | 'private';
+    };
+};
+
+export type MiscCreateNewChannelPlaylistResponse = {
+    kind?: string;
+    etag?: string;
+    id?: string;
+    snippet?: {
+        publishedAt?: string;
+        channelId?: string;
+        title?: string;
+        description?: string;
+        channelTitle?: string;
+        thumbnails?: {
+            default?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            medium?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            high?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            standard?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            maxres?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+        };
+        localized?: {
+            title?: string;
+            description?: string;
+        };
+    };
+    status?: {
+        privacyStatus?: string;
+    };
+    contentDetails?: {
+        itemCount?: number;
+    };
+};
+
+export type MiscUpdateChannelPlaylistData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * bundle.social does not store this value and YouTube overites it everytime so you need to pass it everytime
+         */
+        title: string;
+        /**
+         * bundle.social does not store this value and YouTube overites it everytime so you need to pass it everytime
+         */
+        description: string;
+        privacyStatus?: 'public' | 'unlisted' | 'private';
+        playlistId: string;
+    };
+};
+
+export type MiscUpdateChannelPlaylistResponse = {
+    kind?: string;
+    etag?: string;
+    id?: string;
+    snippet?: {
+        publishedAt?: string;
+        channelId?: string;
+        title?: string;
+        description?: string;
+        channelTitle?: string;
+        thumbnails?: {
+            default?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            medium?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            high?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            standard?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            maxres?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+        };
+        localized?: {
+            title?: string;
+            description?: string;
+        };
+    };
+    status?: {
+        privacyStatus?: string;
+    };
+    contentDetails?: {
+        itemCount?: number;
+    };
+};
+
+export type MiscDeleteChannelPlaylistData = {
+    playlistId: string;
+    teamId: string;
+};
+
+export type MiscDeleteChannelPlaylistResponse = boolean;
+
+export type MiscAddVideoToPlaylistData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        playlistId: string;
+        postId: string;
+        position?: number;
+    };
+};
+
+export type MiscAddVideoToPlaylistResponse = {
+    kind?: string;
+    etag?: string;
+    id?: string;
+    snippet?: {
+        publishedAt?: string;
+        channelId?: string;
+        title?: string;
+        description?: string;
+        channelTitle?: string;
+        thumbnails?: {
+            default?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            medium?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            high?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            standard?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            maxres?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+        };
+        playlistId?: string;
+        position?: number;
+        resourceId?: {
+            kind?: string;
+            videoId?: string;
+            playlistId?: string;
+            channelId?: string;
+        };
+    };
+    contentDetails?: {
+        videoId?: string;
+        videoPublishedAt?: string;
+    };
+};
+
+export type MiscGetVideosFromPlaylistData = {
+    maxResults?: number;
+    playlistId: string;
+    teamId: string;
+};
+
+export type MiscGetVideosFromPlaylistResponse = {
+    kind?: string;
+    etag?: string;
+    nextPageToken?: string;
+    prevPageToken?: string;
+    pageInfo?: {
+        totalResults?: number;
+        resultsPerPage?: number;
+    };
+    items?: Array<{
+        kind?: string;
+        etag?: string;
+        id?: string;
+        snippet?: {
+            publishedAt?: string;
+            channelId?: string;
+            title?: string;
+            description?: string;
+            channelTitle?: string;
+            thumbnails?: {
+                default?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                medium?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                high?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                standard?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                maxres?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+            };
+            playlistId?: string;
+            position?: number;
+            resourceId?: {
+                kind?: string;
+                videoId?: string;
+                playlistId?: string;
+                channelId?: string;
+            };
+        };
+        contentDetails?: {
+            videoId?: string;
+            videoPublishedAt?: string;
+        };
+    }>;
+};
+
+export type MiscDeleteVideoFromPlaylistData = {
+    /**
+     * Playlist item ID (not video ID)
+     */
+    playlistItemId: string;
+    teamId: string;
+};
+
+export type MiscDeleteVideoFromPlaylistResponse = boolean;
+
 export type $OpenApiTs = {
     '/api/v1/': {
         get: {
@@ -9690,6 +10082,700 @@ export type $OpenApiTs = {
                     updatedAt: string | null;
                     deletedAt?: string | null;
                 };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/youtube/thumbnail': {
+        post: {
+            req: MiscSetThumbnailData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items?: Array<{
+                        default?: {
+                            url: string;
+                            width?: number;
+                            height?: number;
+                        };
+                        medium?: {
+                            url: string;
+                            width?: number;
+                            height?: number;
+                        };
+                        high?: {
+                            url: string;
+                            width?: number;
+                            height?: number;
+                        };
+                        standard?: {
+                            url: string;
+                            width?: number;
+                            height?: number;
+                        };
+                        maxres?: {
+                            url: string;
+                            width?: number;
+                            height?: number;
+                        };
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/youtube/playlist': {
+        get: {
+            req: MiscGetChannelPlaylistData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    kind?: string;
+                    etag?: string;
+                    nextPageToken?: string;
+                    prevPageToken?: string;
+                    pageInfo?: {
+                        totalResults?: number;
+                        resultsPerPage?: number;
+                    };
+                    items?: Array<{
+                        kind?: string;
+                        etag?: string;
+                        id?: string;
+                        snippet?: {
+                            publishedAt?: string;
+                            channelId?: string;
+                            title?: string;
+                            description?: string;
+                            channelTitle?: string;
+                            thumbnails?: {
+                                default?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                medium?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                high?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                standard?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                maxres?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                            };
+                            localized?: {
+                                title?: string;
+                                description?: string;
+                            };
+                        };
+                        status?: {
+                            privacyStatus?: string;
+                        };
+                        contentDetails?: {
+                            itemCount?: number;
+                        };
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        post: {
+            req: MiscCreateNewChannelPlaylistData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    kind?: string;
+                    etag?: string;
+                    id?: string;
+                    snippet?: {
+                        publishedAt?: string;
+                        channelId?: string;
+                        title?: string;
+                        description?: string;
+                        channelTitle?: string;
+                        thumbnails?: {
+                            default?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            medium?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            high?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            standard?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            maxres?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                        };
+                        localized?: {
+                            title?: string;
+                            description?: string;
+                        };
+                    };
+                    status?: {
+                        privacyStatus?: string;
+                    };
+                    contentDetails?: {
+                        itemCount?: number;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        put: {
+            req: MiscUpdateChannelPlaylistData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    kind?: string;
+                    etag?: string;
+                    id?: string;
+                    snippet?: {
+                        publishedAt?: string;
+                        channelId?: string;
+                        title?: string;
+                        description?: string;
+                        channelTitle?: string;
+                        thumbnails?: {
+                            default?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            medium?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            high?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            standard?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            maxres?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                        };
+                        localized?: {
+                            title?: string;
+                            description?: string;
+                        };
+                    };
+                    status?: {
+                        privacyStatus?: string;
+                    };
+                    contentDetails?: {
+                        itemCount?: number;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/youtube/playlist/{playlistId}': {
+        delete: {
+            req: MiscDeleteChannelPlaylistData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: boolean;
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/youtube/playlist-items': {
+        post: {
+            req: MiscAddVideoToPlaylistData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    kind?: string;
+                    etag?: string;
+                    id?: string;
+                    snippet?: {
+                        publishedAt?: string;
+                        channelId?: string;
+                        title?: string;
+                        description?: string;
+                        channelTitle?: string;
+                        thumbnails?: {
+                            default?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            medium?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            high?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            standard?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            maxres?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                        };
+                        playlistId?: string;
+                        position?: number;
+                        resourceId?: {
+                            kind?: string;
+                            videoId?: string;
+                            playlistId?: string;
+                            channelId?: string;
+                        };
+                    };
+                    contentDetails?: {
+                        videoId?: string;
+                        videoPublishedAt?: string;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        get: {
+            req: MiscGetVideosFromPlaylistData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    kind?: string;
+                    etag?: string;
+                    nextPageToken?: string;
+                    prevPageToken?: string;
+                    pageInfo?: {
+                        totalResults?: number;
+                        resultsPerPage?: number;
+                    };
+                    items?: Array<{
+                        kind?: string;
+                        etag?: string;
+                        id?: string;
+                        snippet?: {
+                            publishedAt?: string;
+                            channelId?: string;
+                            title?: string;
+                            description?: string;
+                            channelTitle?: string;
+                            thumbnails?: {
+                                default?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                medium?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                high?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                standard?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                maxres?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                            };
+                            playlistId?: string;
+                            position?: number;
+                            resourceId?: {
+                                kind?: string;
+                                videoId?: string;
+                                playlistId?: string;
+                                channelId?: string;
+                            };
+                        };
+                        contentDetails?: {
+                            videoId?: string;
+                            videoPublishedAt?: string;
+                        };
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/youtube/playlist-items/{playlistItemId}': {
+        delete: {
+            req: MiscDeleteVideoFromPlaylistData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: boolean;
                 /**
                  * 400
                  */

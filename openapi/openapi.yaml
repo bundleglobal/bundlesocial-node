@@ -14010,6 +14010,10 @@ paths:
           required: true
           schema:
             type: string
+        - name: postId
+          in: query
+          schema:
+            type: string
         - name: status
           in: query
           schema:

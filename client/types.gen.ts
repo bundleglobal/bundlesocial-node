@@ -4018,6 +4018,7 @@ export type CommentGetListData = {
     order?: 'ASC' | 'DESC';
     orderBy?: 'createdAt' | 'updatedAt' | 'deletedAt';
     platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+    postId?: string;
     q?: string;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
     teamId: string;

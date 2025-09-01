@@ -1005,6 +1005,7 @@ export class CommentService {
      * Get comment list
      * @param data The data for the request.
      * @param data.teamId
+     * @param data.postId
      * @param data.status
      * @param data.orderBy
      * @param data.order
@@ -1021,6 +1022,7 @@ export class CommentService {
             url: '/api/v1/comment/',
             query: {
                 teamId: data.teamId,
+                postId: data.postId,
                 status: data.status,
                 orderBy: data.orderBy,
                 order: data.order,

@@ -1,3 +1,10 @@
+# [2.19.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.18.0...v2.19.0) (2025-09-01)
+
+
+### Features
+
+* get comments by post id ([26f6d36](https://github.com/bundleglobal/bundlesocial-node/commit/26f6d36fb19be9db0e7bd3458dc701b3f429052c))
+
 # [2.18.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.17.0...v2.18.0) (2025-08-19)
 
 

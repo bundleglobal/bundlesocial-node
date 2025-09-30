@@ -1,3 +1,10 @@
+# [2.20.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.19.0...v2.20.0) (2025-09-30)
+
+
+### Features
+
+* instagram direct connection and connect page translations ([0e0a960](https://github.com/bundleglobal/bundlesocial-node/commit/0e0a9603051f3ccf30c5022c22e565564f865937))
+
 # [2.19.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.18.0...v2.19.0) (2025-09-01)
 
 

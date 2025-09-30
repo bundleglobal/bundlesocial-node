@@ -28,6 +28,7 @@ export type OrganizationGetOrganizationResponse = {
     } | null;
     apiAccess?: boolean;
     analyticsDisabled?: boolean;
+    analyticsPostsDisabled?: boolean;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -198,6 +199,7 @@ export type TeamGetTeamResponse = {
         } | null;
         apiAccess?: boolean;
         analyticsDisabled?: boolean;
+        analyticsPostsDisabled?: boolean;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -245,6 +247,8 @@ export type TeamGetTeamResponse = {
                 url?: string | null;
             } | null;
         }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -363,6 +367,7 @@ export type TeamGetListResponse = {
             } | null;
             apiAccess?: boolean;
             analyticsDisabled?: boolean;
+            analyticsPostsDisabled?: boolean;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -410,6 +415,8 @@ export type TeamGetListResponse = {
                     url?: string | null;
                 } | null;
             }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -489,6 +496,10 @@ export type SocialAccountConnectData = {
          * Mastodon only
          */
         serverUrl?: string;
+        /**
+         * Instagram only - connection method
+         */
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
     };
 };
 
@@ -530,6 +541,8 @@ export type SocialAccountDisconnectResponse = {
             url?: string | null;
         } | null;
     }> | null;
+    mastodonServerId?: string | null;
+    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -567,6 +580,8 @@ export type SocialAccountSetChannelResponse = {
             url?: string | null;
         } | null;
     }> | null;
+    mastodonServerId?: string | null;
+    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -603,6 +618,8 @@ export type SocialAccountRefreshChannelsResponse = {
             url?: string | null;
         } | null;
     }> | null;
+    mastodonServerId?: string | null;
+    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -619,6 +636,7 @@ export type SocialAccountCreatePortalLinkData = {
         logoUrl?: string;
         userLogoUrl?: string;
         userName?: string;
+        language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv';
     };
 };
 
@@ -662,6 +680,8 @@ export type SocialAccountCopyResponse = Array<{
             url?: string | null;
         } | null;
     }> | null;
+    mastodonServerId?: string | null;
+    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -1222,6 +1242,8 @@ export type PostGetResponse = {
                     url?: string | null;
                 } | null;
             }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -2393,6 +2415,8 @@ export type PostGetListResponse = {
                         url?: string | null;
                     } | null;
                 }> | null;
+                mastodonServerId?: string | null;
+                instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                 createdAt: string | null;
                 updatedAt: string | null;
                 deletedAt?: string | null;
@@ -2912,7 +2936,7 @@ export type PostCreateResponse = {
 };
 
 export type AnalyticsGetSocialAccountAnalyticsData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
     teamId: string;
 };
 
@@ -2938,6 +2962,8 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
                 url?: string | null;
             } | null;
         }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -2961,7 +2987,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
 };
 
 export type AnalyticsGetPostAnalyticsData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
     postId: string;
 };
 
@@ -3278,7 +3304,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
 };
 
 export type AnalyticsGetSocialAccountAnalyticsRawData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
     teamId: string;
 };
 
@@ -3304,6 +3330,8 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
                 url?: string | null;
             } | null;
         }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -3320,7 +3348,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
 };
 
 export type AnalyticsGetPostAnalyticsRawData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
     postId: string;
 };
 
@@ -4755,6 +4783,7 @@ export type $OpenApiTs = {
                     } | null;
                     apiAccess?: boolean;
                     analyticsDisabled?: boolean;
+                    analyticsPostsDisabled?: boolean;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -4970,6 +4999,7 @@ export type $OpenApiTs = {
                         } | null;
                         apiAccess?: boolean;
                         analyticsDisabled?: boolean;
+                        analyticsPostsDisabled?: boolean;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -5017,6 +5047,8 @@ export type $OpenApiTs = {
                                 url?: string | null;
                             } | null;
                         }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -5258,6 +5290,7 @@ export type $OpenApiTs = {
                             } | null;
                             apiAccess?: boolean;
                             analyticsDisabled?: boolean;
+                            analyticsPostsDisabled?: boolean;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -5305,6 +5338,8 @@ export type $OpenApiTs = {
                                     url?: string | null;
                                 } | null;
                             }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -5534,6 +5569,8 @@ export type $OpenApiTs = {
                             url?: string | null;
                         } | null;
                     }> | null;
+                    mastodonServerId?: string | null;
+                    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -5609,6 +5646,8 @@ export type $OpenApiTs = {
                             url?: string | null;
                         } | null;
                     }> | null;
+                    mastodonServerId?: string | null;
+                    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -5684,6 +5723,8 @@ export type $OpenApiTs = {
                             url?: string | null;
                         } | null;
                     }> | null;
+                    mastodonServerId?: string | null;
+                    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -5812,6 +5853,8 @@ export type $OpenApiTs = {
                             url?: string | null;
                         } | null;
                     }> | null;
+                    mastodonServerId?: string | null;
+                    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -6700,6 +6743,8 @@ export type $OpenApiTs = {
                                     url?: string | null;
                                 } | null;
                             }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -7783,6 +7828,8 @@ export type $OpenApiTs = {
                                         url?: string | null;
                                     } | null;
                                 }> | null;
+                                mastodonServerId?: string | null;
+                                instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                                 createdAt: string | null;
                                 updatedAt: string | null;
                                 deletedAt?: string | null;
@@ -8203,6 +8250,8 @@ export type $OpenApiTs = {
                                 url?: string | null;
                             } | null;
                         }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -8657,6 +8706,8 @@ export type $OpenApiTs = {
                                 url?: string | null;
                             } | null;
                         }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;

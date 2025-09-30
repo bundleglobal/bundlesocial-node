@@ -170,6 +170,9 @@ paths:
                   analyticsDisabled:
                     default: false
                     type: boolean
+                  analyticsPostsDisabled:
+                    default: false
+                    type: boolean
                   createdAt:
                     type: string
                     format: date-time
@@ -831,6 +834,9 @@ paths:
                       analyticsDisabled:
                         default: false
                         type: boolean
+                      analyticsPostsDisabled:
+                        default: false
+                        type: boolean
                       createdAt:
                         type: string
                         format: date-time
@@ -999,6 +1005,15 @@ paths:
                                 nullable: true
                             required:
                               - id
+                          nullable: true
+                        mastodonServerId:
+                          type: string
+                          nullable: true
+                        instagramConnectionMethod:
+                          type: string
+                          enum:
+                            - FACEBOOK
+                            - INSTAGRAM
                           nullable: true
                         createdAt:
                           type: string
@@ -1614,6 +1629,9 @@ paths:
                             analyticsDisabled:
                               default: false
                               type: boolean
+                            analyticsPostsDisabled:
+                              default: false
+                              type: boolean
                             createdAt:
                               type: string
                               format: date-time
@@ -1782,6 +1800,15 @@ paths:
                                       nullable: true
                                   required:
                                     - id
+                                nullable: true
+                              mastodonServerId:
+                                type: string
+                                nullable: true
+                              instagramConnectionMethod:
+                                type: string
+                                enum:
+                                  - FACEBOOK
+                                  - INSTAGRAM
                                 nullable: true
                               createdAt:
                                 type: string
@@ -2205,6 +2232,12 @@ paths:
                   type: string
                   format: uri
                   description: Mastodon only
+                instagramConnectionMethod:
+                  type: string
+                  enum:
+                    - FACEBOOK
+                    - INSTAGRAM
+                  description: Instagram only - connection method
               required:
                 - type
                 - teamId
@@ -2418,6 +2451,15 @@ paths:
                       required:
                         - id
                     nullable: true
+                  mastodonServerId:
+                    type: string
+                    nullable: true
+                  instagramConnectionMethod:
+                    type: string
+                    enum:
+                      - FACEBOOK
+                      - INSTAGRAM
+                    nullable: true
                   createdAt:
                     type: string
                     format: date-time
@@ -2626,6 +2668,15 @@ paths:
                           nullable: true
                       required:
                         - id
+                    nullable: true
+                  mastodonServerId:
+                    type: string
+                    nullable: true
+                  instagramConnectionMethod:
+                    type: string
+                    enum:
+                      - FACEBOOK
+                      - INSTAGRAM
                     nullable: true
                   createdAt:
                     type: string
@@ -2837,6 +2888,15 @@ paths:
                       required:
                         - id
                     nullable: true
+                  mastodonServerId:
+                    type: string
+                    nullable: true
+                  instagramConnectionMethod:
+                    type: string
+                    enum:
+                      - FACEBOOK
+                      - INSTAGRAM
+                    nullable: true
                   createdAt:
                     type: string
                     format: date-time
@@ -2982,6 +3042,15 @@ paths:
                   type: string
                 userName:
                   type: string
+                language:
+                  default: en
+                  type: string
+                  enum:
+                    - en
+                    - pl
+                    - fr
+                    - hi
+                    - sv
               required:
                 - teamId
                 - redirectUrl
@@ -3205,6 +3274,15 @@ paths:
                             nullable: true
                         required:
                           - id
+                      nullable: true
+                    mastodonServerId:
+                      type: string
+                      nullable: true
+                    instagramConnectionMethod:
+                      type: string
+                      enum:
+                        - FACEBOOK
+                        - INSTAGRAM
                       nullable: true
                     createdAt:
                       type: string
@@ -5451,6 +5529,15 @@ paths:
                                     nullable: true
                                 required:
                                   - id
+                              nullable: true
+                            mastodonServerId:
+                              type: string
+                              nullable: true
+                            instagramConnectionMethod:
+                              type: string
+                              enum:
+                                - FACEBOOK
+                                - INSTAGRAM
                               nullable: true
                             createdAt:
                               type: string
@@ -8582,6 +8669,15 @@ paths:
                                       required:
                                         - id
                                     nullable: true
+                                  mastodonServerId:
+                                    type: string
+                                    nullable: true
+                                  instagramConnectionMethod:
+                                    type: string
+                                    enum:
+                                      - FACEBOOK
+                                      - INSTAGRAM
+                                    nullable: true
                                   createdAt:
                                     type: string
                                     format: date-time
@@ -9990,6 +10086,7 @@ paths:
               - REDDIT
               - PINTEREST
               - MASTODON
+              - LINKEDIN
       operationId: analytics.getSocialAccountAnalytics
       responses:
         '200':
@@ -10070,6 +10167,15 @@ paths:
                               nullable: true
                           required:
                             - id
+                        nullable: true
+                      mastodonServerId:
+                        type: string
+                        nullable: true
+                      instagramConnectionMethod:
+                        type: string
+                        enum:
+                          - FACEBOOK
+                          - INSTAGRAM
                         nullable: true
                       createdAt:
                         type: string
@@ -10252,6 +10358,7 @@ paths:
               - REDDIT
               - PINTEREST
               - MASTODON
+              - LINKEDIN
       operationId: analytics.getPostAnalytics
       responses:
         '200':
@@ -11120,6 +11227,7 @@ paths:
               - REDDIT
               - PINTEREST
               - MASTODON
+              - LINKEDIN
       operationId: analytics.getSocialAccountAnalyticsRaw
       responses:
         '200':
@@ -11200,6 +11308,15 @@ paths:
                               nullable: true
                           required:
                             - id
+                        nullable: true
+                      mastodonServerId:
+                        type: string
+                        nullable: true
+                      instagramConnectionMethod:
+                        type: string
+                        enum:
+                          - FACEBOOK
+                          - INSTAGRAM
                         nullable: true
                       createdAt:
                         type: string
@@ -11360,6 +11477,7 @@ paths:
               - REDDIT
               - PINTEREST
               - MASTODON
+              - LINKEDIN
       operationId: analytics.getPostAnalyticsRaw
       responses:
         '200':

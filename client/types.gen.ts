@@ -636,6 +636,12 @@ export type SocialAccountCreatePortalLinkData = {
         logoUrl?: string;
         userLogoUrl?: string;
         userName?: string;
+        goBackButtonText?: string;
+        hidePoweredBy?: boolean;
+        hideGoBackButton?: boolean;
+        hideUserLogo?: boolean;
+        hideUserName?: boolean;
+        hideLanguageSwitcher?: boolean;
         language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv';
     };
 };

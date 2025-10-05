@@ -3042,6 +3042,18 @@ paths:
                   type: string
                 userName:
                   type: string
+                goBackButtonText:
+                  type: string
+                hidePoweredBy:
+                  type: boolean
+                hideGoBackButton:
+                  type: boolean
+                hideUserLogo:
+                  type: boolean
+                hideUserName:
+                  type: boolean
+                hideLanguageSwitcher:
+                  type: boolean
                 language:
                   default: en
                   type: string

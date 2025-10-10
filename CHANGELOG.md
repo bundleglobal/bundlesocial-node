@@ -1,3 +1,10 @@
+# [2.22.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.21.0...v2.22.0) (2025-10-10)
+
+
+### Features
+
+* facebook native scheduling ([3d332b5](https://github.com/bundleglobal/bundlesocial-node/commit/3d332b566fa6412e6e8be4dccb77db52ba631344))
+
 # [2.21.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.20.0...v2.21.0) (2025-10-05)
 
 

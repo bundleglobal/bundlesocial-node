@@ -4788,6 +4788,15 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          nativeScheduleTime:
+                            type: string
+                            format: date-time
+                            nullable: true
+                            description: >-
+                              If passed, instead of publishing immediately, the
+                              post will be scheduled for the given date/time
+                              directly in Meta scheduler. Local date/time as ISO
+                              8601 string max 30 days in the future.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -5802,6 +5811,15 @@ paths:
                           type: string
                           nullable: true
                           description: The URL to image uploaded on bundle.social.
+                        nativeScheduleTime:
+                          type: string
+                          format: date-time
+                          nullable: true
+                          description: >-
+                            If passed, instead of publishing immediately, the
+                            post will be scheduled for the given date/time
+                            directly in Meta scheduler. Local date/time as ISO
+                            8601 string max 30 days in the future.
                       nullable: true
                     INSTAGRAM:
                       type: object
@@ -6271,6 +6289,15 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          nativeScheduleTime:
+                            type: string
+                            format: date-time
+                            nullable: true
+                            description: >-
+                              If passed, instead of publishing immediately, the
+                              post will be scheduled for the given date/time
+                              directly in Meta scheduler. Local date/time as ISO
+                              8601 string max 30 days in the future.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -7058,6 +7085,15 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          nativeScheduleTime:
+                            type: string
+                            format: date-time
+                            nullable: true
+                            description: >-
+                              If passed, instead of publishing immediately, the
+                              post will be scheduled for the given date/time
+                              directly in Meta scheduler. Local date/time as ISO
+                              8601 string max 30 days in the future.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -7922,6 +7958,16 @@ paths:
                                   type: string
                                   nullable: true
                                   description: The URL to image uploaded on bundle.social.
+                                nativeScheduleTime:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                                  description: >-
+                                    If passed, instead of publishing
+                                    immediately, the post will be scheduled for
+                                    the given date/time directly in Meta
+                                    scheduler. Local date/time as ISO 8601
+                                    string max 30 days in the future.
                               nullable: true
                             INSTAGRAM:
                               type: object
@@ -8943,6 +8989,15 @@ paths:
                           type: string
                           nullable: true
                           description: The URL to image uploaded on bundle.social.
+                        nativeScheduleTime:
+                          type: string
+                          format: date-time
+                          nullable: true
+                          description: >-
+                            If passed, instead of publishing immediately, the
+                            post will be scheduled for the given date/time
+                            directly in Meta scheduler. Local date/time as ISO
+                            8601 string max 30 days in the future.
                       nullable: true
                     INSTAGRAM:
                       type: object
@@ -9419,6 +9474,15 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          nativeScheduleTime:
+                            type: string
+                            format: date-time
+                            nullable: true
+                            description: >-
+                              If passed, instead of publishing immediately, the
+                              post will be scheduled for the given date/time
+                              directly in Meta scheduler. Local date/time as ISO
+                              8601 string max 30 days in the future.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -10499,6 +10563,16 @@ paths:
                                 type: string
                                 nullable: true
                                 description: The URL to image uploaded on bundle.social.
+                              nativeScheduleTime:
+                                type: string
+                                format: date-time
+                                nullable: true
+                                description: >-
+                                  If passed, instead of publishing immediately,
+                                  the post will be scheduled for the given
+                                  date/time directly in Meta scheduler. Local
+                                  date/time as ISO 8601 string max 30 days in
+                                  the future.
                             nullable: true
                           INSTAGRAM:
                             type: object
@@ -11618,6 +11692,16 @@ paths:
                                 type: string
                                 nullable: true
                                 description: The URL to image uploaded on bundle.social.
+                              nativeScheduleTime:
+                                type: string
+                                format: date-time
+                                nullable: true
+                                description: >-
+                                  If passed, instead of publishing immediately,
+                                  the post will be scheduled for the given
+                                  date/time directly in Meta scheduler. Local
+                                  date/time as ISO 8601 string max 30 days in
+                                  the future.
                             nullable: true
                           INSTAGRAM:
                             type: object

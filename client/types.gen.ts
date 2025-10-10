@@ -953,6 +953,10 @@ export type PostGetResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+             */
+            nativeScheduleTime?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -1310,6 +1314,10 @@ export type PostUpdateData = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                 */
+                nativeScheduleTime?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -1524,6 +1532,10 @@ export type PostUpdateResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+             */
+            nativeScheduleTime?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -1821,6 +1833,10 @@ export type PostDeleteResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+             */
+            nativeScheduleTime?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -2126,6 +2142,10 @@ export type PostGetListResponse = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                 */
+                nativeScheduleTime?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -2485,6 +2505,10 @@ export type PostCreateData = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                 */
+                nativeScheduleTime?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -2699,6 +2723,10 @@ export type PostCreateResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+             */
+            nativeScheduleTime?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -3049,6 +3077,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                 */
+                nativeScheduleTime?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -3410,6 +3442,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                 */
+                nativeScheduleTime?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -6454,6 +6490,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                             */
+                            nativeScheduleTime?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -6856,6 +6896,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                             */
+                            nativeScheduleTime?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -7196,6 +7240,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                             */
+                            nativeScheduleTime?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -7539,6 +7587,10 @@ export type $OpenApiTs = {
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
+                                /**
+                                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                                 */
+                                nativeScheduleTime?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -7943,6 +7995,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                             */
+                            nativeScheduleTime?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -8381,6 +8437,10 @@ export type $OpenApiTs = {
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
+                                /**
+                                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                                 */
+                                nativeScheduleTime?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -8830,6 +8890,10 @@ export type $OpenApiTs = {
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
+                                /**
+                                 * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                                 */
+                                nativeScheduleTime?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';

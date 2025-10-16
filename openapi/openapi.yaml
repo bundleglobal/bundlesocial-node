@@ -3054,6 +3054,8 @@ paths:
                   type: boolean
                 hideLanguageSwitcher:
                   type: boolean
+                showModalOnConnectSuccess:
+                  type: boolean
                 language:
                   default: en
                   type: string

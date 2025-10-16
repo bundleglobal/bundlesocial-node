@@ -642,6 +642,7 @@ export type SocialAccountCreatePortalLinkData = {
         hideUserLogo?: boolean;
         hideUserName?: boolean;
         hideLanguageSwitcher?: boolean;
+        showModalOnConnectSuccess?: boolean;
         language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv';
     };
 };

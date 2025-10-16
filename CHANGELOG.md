@@ -1,3 +1,10 @@
+# [2.23.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.22.0...v2.23.0) (2025-10-16)
+
+
+### Features
+
+* add showModalOnConnectSuccess option for create portal link ([85da124](https://github.com/bundleglobal/bundlesocial-node/commit/85da124f91358b0bd8a4d4158e1e318a75c5948d))
+
 # [2.22.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.21.0...v2.22.0) (2025-10-10)
 
 

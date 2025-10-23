@@ -1,3 +1,10 @@
+# [2.24.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.23.0...v2.24.0) (2025-10-23)
+
+
+### Features
+
+* linkedin pdfs, linkedin tags, avatars ([3c84d17](https://github.com/bundleglobal/bundlesocial-node/commit/3c84d17957f0ede4eef3658b9b25c2e6898bd560))
+
 # [2.23.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.22.0...v2.23.0) (2025-10-16)
 
 

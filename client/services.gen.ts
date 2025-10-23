@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetProfileAnalyticsResponse, AnalyticsGetProfilePostsResponse, AnalyticsGetProfilePostData, AnalyticsGetProfilePostResponse, AnalyticsGetProfilePostByPostIdData, AnalyticsGetProfilePostByPostIdResponse, AnalyticsGetRawSocialAccountAnalyticsResponse, AnalyticsGetRawPostsAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscSetThumbnailData, MiscSetThumbnailResponse, MiscGetChannelPlaylistData, MiscGetChannelPlaylistResponse, MiscCreateNewChannelPlaylistData, MiscCreateNewChannelPlaylistResponse, MiscUpdateChannelPlaylistData, MiscUpdateChannelPlaylistResponse, MiscDeleteChannelPlaylistData, MiscDeleteChannelPlaylistResponse, MiscAddVideoToPlaylistData, MiscAddVideoToPlaylistResponse, MiscGetVideosFromPlaylistData, MiscGetVideosFromPlaylistResponse, MiscDeleteVideoFromPlaylistData, MiscDeleteVideoFromPlaylistResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetProfileAnalyticsResponse, AnalyticsGetProfilePostsResponse, AnalyticsGetProfilePostData, AnalyticsGetProfilePostResponse, AnalyticsGetProfilePostByPostIdData, AnalyticsGetProfilePostByPostIdResponse, AnalyticsGetRawSocialAccountAnalyticsResponse, AnalyticsGetRawPostsAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -1078,7 +1078,7 @@ export class MiscService {
      * @returns unknown 200
      * @throws ApiError
      */
-    public miscSetThumbnail(data: MiscSetThumbnailData = {}): CancelablePromise<MiscSetThumbnailResponse> {
+    public miscYoutubeSetThumbnail(data: MiscYoutubeSetThumbnailData = {}): CancelablePromise<MiscYoutubeSetThumbnailResponse> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/misc/youtube/thumbnail',
@@ -1103,7 +1103,7 @@ export class MiscService {
      * @returns unknown 200
      * @throws ApiError
      */
-    public miscGetChannelPlaylist(data: MiscGetChannelPlaylistData): CancelablePromise<MiscGetChannelPlaylistResponse> {
+    public miscYoutubeGetChannelPlaylist(data: MiscYoutubeGetChannelPlaylistData): CancelablePromise<MiscYoutubeGetChannelPlaylistResponse> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/v1/misc/youtube/playlist',
@@ -1129,7 +1129,7 @@ export class MiscService {
      * @returns unknown 200
      * @throws ApiError
      */
-    public miscCreateNewChannelPlaylist(data: MiscCreateNewChannelPlaylistData = {}): CancelablePromise<MiscCreateNewChannelPlaylistResponse> {
+    public miscYoutubeCreateNewChannelPlaylist(data: MiscYoutubeCreateNewChannelPlaylistData = {}): CancelablePromise<MiscYoutubeCreateNewChannelPlaylistResponse> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/misc/youtube/playlist',
@@ -1153,7 +1153,7 @@ export class MiscService {
      * @returns unknown 200
      * @throws ApiError
      */
-    public miscUpdateChannelPlaylist(data: MiscUpdateChannelPlaylistData = {}): CancelablePromise<MiscUpdateChannelPlaylistResponse> {
+    public miscYoutubeUpdateChannelPlaylist(data: MiscYoutubeUpdateChannelPlaylistData = {}): CancelablePromise<MiscYoutubeUpdateChannelPlaylistResponse> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/api/v1/misc/youtube/playlist',
@@ -1178,7 +1178,7 @@ export class MiscService {
      * @returns boolean 200
      * @throws ApiError
      */
-    public miscDeleteChannelPlaylist(data: MiscDeleteChannelPlaylistData): CancelablePromise<MiscDeleteChannelPlaylistResponse> {
+    public miscYoutubeDeleteChannelPlaylist(data: MiscYoutubeDeleteChannelPlaylistData): CancelablePromise<MiscYoutubeDeleteChannelPlaylistResponse> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/youtube/playlist/{playlistId}',
@@ -1206,7 +1206,7 @@ export class MiscService {
      * @returns unknown 200
      * @throws ApiError
      */
-    public miscAddVideoToPlaylist(data: MiscAddVideoToPlaylistData = {}): CancelablePromise<MiscAddVideoToPlaylistResponse> {
+    public miscYoutubeAddVideoToPlaylist(data: MiscYoutubeAddVideoToPlaylistData = {}): CancelablePromise<MiscYoutubeAddVideoToPlaylistResponse> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/misc/youtube/playlist-items',
@@ -1232,7 +1232,7 @@ export class MiscService {
      * @returns unknown 200
      * @throws ApiError
      */
-    public miscGetVideosFromPlaylist(data: MiscGetVideosFromPlaylistData): CancelablePromise<MiscGetVideosFromPlaylistResponse> {
+    public miscYoutubeGetVideosFromPlaylist(data: MiscYoutubeGetVideosFromPlaylistData): CancelablePromise<MiscYoutubeGetVideosFromPlaylistResponse> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/v1/misc/youtube/playlist-items',
@@ -1260,7 +1260,7 @@ export class MiscService {
      * @returns boolean 200
      * @throws ApiError
      */
-    public miscDeleteVideoFromPlaylist(data: MiscDeleteVideoFromPlaylistData): CancelablePromise<MiscDeleteVideoFromPlaylistResponse> {
+    public miscYoutubeDeleteVideoFromPlaylist(data: MiscYoutubeDeleteVideoFromPlaylistData): CancelablePromise<MiscYoutubeDeleteVideoFromPlaylistResponse> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/youtube/playlist-items/{playlistItemId}',
@@ -1270,6 +1270,334 @@ export class MiscService {
             query: {
                 teamId: data.teamId
             },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get LinkedIn mentionable tags (people & organizations)
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.q
+     * @param data.scope
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinGetTags(data: MiscLinkedinGetTagsData): CancelablePromise<MiscLinkedinGetTagsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/linkedin/mentions/tags',
+            query: {
+                teamId: data.teamId,
+                q: data.q,
+                scope: data.scope
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Build LinkedIn text and insert mentions at /#tag\b/gi.
+     * If `#tag` (case-insensitive) is present, mentions replace it; otherwise they’re appended to the end.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinBuildCommentary(data: MiscLinkedinBuildCommentaryData = {}): CancelablePromise<MiscLinkedinBuildCommentaryResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/linkedin/mentions/builder',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class YoutubeService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Set or change thumbnail for a YouTube video
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeSetThumbnail(data: MiscYoutubeSetThumbnailData = {}): CancelablePromise<MiscYoutubeSetThumbnailResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/youtube/thumbnail',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get channel playlists
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.maxResults
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeGetChannelPlaylist(data: MiscYoutubeGetChannelPlaylistData): CancelablePromise<MiscYoutubeGetChannelPlaylistResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/youtube/playlist',
+            query: {
+                teamId: data.teamId,
+                maxResults: data.maxResults
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Create a new playlist
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeCreateNewChannelPlaylist(data: MiscYoutubeCreateNewChannelPlaylistData = {}): CancelablePromise<MiscYoutubeCreateNewChannelPlaylistResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/youtube/playlist',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update an existing playlist
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeUpdateChannelPlaylist(data: MiscYoutubeUpdateChannelPlaylistData = {}): CancelablePromise<MiscYoutubeUpdateChannelPlaylistResponse> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/api/v1/misc/youtube/playlist',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Remove a video from a playlist
+     * @param data The data for the request.
+     * @param data.playlistId
+     * @param data.teamId
+     * @returns boolean 200
+     * @throws ApiError
+     */
+    public miscYoutubeDeleteChannelPlaylist(data: MiscYoutubeDeleteChannelPlaylistData): CancelablePromise<MiscYoutubeDeleteChannelPlaylistResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/youtube/playlist/{playlistId}',
+            path: {
+                playlistId: data.playlistId
+            },
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Add a video to a playlist
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeAddVideoToPlaylist(data: MiscYoutubeAddVideoToPlaylistData = {}): CancelablePromise<MiscYoutubeAddVideoToPlaylistResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/youtube/playlist-items',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get videos from a playlist
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.playlistId
+     * @param data.maxResults
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeGetVideosFromPlaylist(data: MiscYoutubeGetVideosFromPlaylistData): CancelablePromise<MiscYoutubeGetVideosFromPlaylistResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/youtube/playlist-items',
+            query: {
+                teamId: data.teamId,
+                playlistId: data.playlistId,
+                maxResults: data.maxResults
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Remove a video from a playlist
+     * @param data The data for the request.
+     * @param data.playlistItemId Playlist item ID (not video ID)
+     * @param data.teamId
+     * @returns boolean 200
+     * @throws ApiError
+     */
+    public miscYoutubeDeleteVideoFromPlaylist(data: MiscYoutubeDeleteVideoFromPlaylistData): CancelablePromise<MiscYoutubeDeleteVideoFromPlaylistResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/youtube/playlist-items/{playlistItemId}',
+            path: {
+                playlistItemId: data.playlistItemId
+            },
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class LinkedinService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Get LinkedIn mentionable tags (people & organizations)
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.q
+     * @param data.scope
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinGetTags(data: MiscLinkedinGetTagsData): CancelablePromise<MiscLinkedinGetTagsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/linkedin/mentions/tags',
+            query: {
+                teamId: data.teamId,
+                q: data.q,
+                scope: data.scope
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Build LinkedIn text and insert mentions at /#tag\b/gi.
+     * If `#tag` (case-insensitive) is present, mentions replace it; otherwise they’re appended to the end.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinBuildCommentary(data: MiscLinkedinBuildCommentaryData = {}): CancelablePromise<MiscLinkedinBuildCommentaryResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/linkedin/mentions/builder',
+            body: data.requestBody,
+            mediaType: 'application/json',
             errors: {
                 400: '400',
                 401: '401',

@@ -232,6 +232,7 @@ export type TeamGetTeamResponse = {
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
@@ -240,6 +241,7 @@ export type TeamGetTeamResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
                 name?: string | null;
@@ -400,6 +402,7 @@ export type TeamGetListResponse = {
             teamId: string;
             username?: string | null;
             displayName?: string | null;
+            avatarUrl?: string | null;
             externalId?: string | null;
             userUsername?: string | null;
             userDisplayName?: string | null;
@@ -408,6 +411,7 @@ export type TeamGetListResponse = {
                 id: string;
                 name?: string | null;
                 username?: string | null;
+                avatarUrl?: string | null;
                 webhook?: {
                     id?: string | null;
                     name?: string | null;
@@ -526,6 +530,7 @@ export type SocialAccountDisconnectResponse = {
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
@@ -534,6 +539,7 @@ export type SocialAccountDisconnectResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
             name?: string | null;
@@ -565,6 +571,7 @@ export type SocialAccountSetChannelResponse = {
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
@@ -573,6 +580,7 @@ export type SocialAccountSetChannelResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
             name?: string | null;
@@ -603,6 +611,7 @@ export type SocialAccountRefreshChannelsResponse = {
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
@@ -611,6 +620,7 @@ export type SocialAccountRefreshChannelsResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
             name?: string | null;
@@ -672,6 +682,7 @@ export type SocialAccountCopyResponse = Array<{
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
@@ -680,6 +691,7 @@ export type SocialAccountCopyResponse = Array<{
         id: string;
         name?: string | null;
         username?: string | null;
+        avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
             name?: string | null;
@@ -697,7 +709,7 @@ export type SocialAccountCopyResponse = Array<{
 export type UploadGetListData = {
     status?: 'USED' | 'UNUSED' | null;
     teamId?: string | null;
-    type?: 'image' | 'video' | null;
+    type?: 'image' | 'video' | 'document' | null;
 };
 
 export type UploadGetListResponse = Array<{
@@ -711,7 +723,7 @@ export type UploadGetListResponse = Array<{
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
-    type: 'image' | 'video';
+    type: 'image' | 'video' | 'document';
     width?: number | null;
     height?: number | null;
     fileSize?: number | null;
@@ -750,7 +762,7 @@ export type UploadCreateResponse = {
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
-    type: 'image' | 'video';
+    type: 'image' | 'video' | 'document';
     width?: number | null;
     height?: number | null;
     fileSize?: number | null;
@@ -781,7 +793,7 @@ export type UploadDeleteManyResponse = Array<{
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
-    type: 'image' | 'video';
+    type: 'image' | 'video' | 'document';
     width?: number | null;
     height?: number | null;
     fileSize?: number | null;
@@ -807,7 +819,7 @@ export type UploadGetResponse = {
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
-    type: 'image' | 'video';
+    type: 'image' | 'video' | 'document';
     width?: number | null;
     height?: number | null;
     fileSize?: number | null;
@@ -840,7 +852,7 @@ export type UploadDeleteResponse = {
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
-    type: 'image' | 'video';
+    type: 'image' | 'video' | 'document';
     width?: number | null;
     height?: number | null;
     fileSize?: number | null;
@@ -858,7 +870,7 @@ export type UploadInitLargeUploadData = {
     requestBody?: {
         teamId?: string | null;
         fileName: string;
-        mimeType: 'image/jpg' | 'image/jpeg' | 'image/png' | 'video/mp4';
+        mimeType: 'image/jpg' | 'image/jpeg' | 'image/png' | 'video/mp4' | 'application/pdf';
     };
 };
 
@@ -888,7 +900,7 @@ export type UploadFinalizeLargeUploadResponse = {
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
-    type: 'image' | 'video';
+    type: 'image' | 'video' | 'document';
     width?: number | null;
     height?: number | null;
     fileSize?: number | null;
@@ -1215,7 +1227,7 @@ export type PostGetResponse = {
             iconPath?: string | null;
             thumbnailPath?: string | null;
             path?: string | null;
-            type: 'image' | 'video';
+            type: 'image' | 'video' | 'document';
             width?: number | null;
             height?: number | null;
             fileSize?: number | null;
@@ -1238,6 +1250,7 @@ export type PostGetResponse = {
             teamId: string;
             username?: string | null;
             displayName?: string | null;
+            avatarUrl?: string | null;
             externalId?: string | null;
             userUsername?: string | null;
             userDisplayName?: string | null;
@@ -1246,6 +1259,7 @@ export type PostGetResponse = {
                 id: string;
                 name?: string | null;
                 username?: string | null;
+                avatarUrl?: string | null;
                 webhook?: {
                     id?: string | null;
                     name?: string | null;
@@ -2404,7 +2418,7 @@ export type PostGetListResponse = {
                 iconPath?: string | null;
                 thumbnailPath?: string | null;
                 path?: string | null;
-                type: 'image' | 'video';
+                type: 'image' | 'video' | 'document';
                 width?: number | null;
                 height?: number | null;
                 fileSize?: number | null;
@@ -2427,6 +2441,7 @@ export type PostGetListResponse = {
                 teamId: string;
                 username?: string | null;
                 displayName?: string | null;
+                avatarUrl?: string | null;
                 externalId?: string | null;
                 userUsername?: string | null;
                 userDisplayName?: string | null;
@@ -2435,6 +2450,7 @@ export type PostGetListResponse = {
                     id: string;
                     name?: string | null;
                     username?: string | null;
+                    avatarUrl?: string | null;
                     webhook?: {
                         id?: string | null;
                         name?: string | null;
@@ -2982,6 +2998,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
@@ -2990,6 +3007,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
                 name?: string | null;
@@ -3354,6 +3372,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
@@ -3362,6 +3381,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
                 name?: string | null;
@@ -4351,7 +4371,7 @@ export type CommentCreateResponse = {
     deletedAt?: string | null;
 };
 
-export type MiscSetThumbnailData = {
+export type MiscYoutubeSetThumbnailData = {
     /**
      * Body
      */
@@ -4362,7 +4382,7 @@ export type MiscSetThumbnailData = {
     };
 };
 
-export type MiscSetThumbnailResponse = {
+export type MiscYoutubeSetThumbnailResponse = {
     items?: Array<{
         default?: {
             url: string;
@@ -4392,12 +4412,12 @@ export type MiscSetThumbnailResponse = {
     }>;
 };
 
-export type MiscGetChannelPlaylistData = {
+export type MiscYoutubeGetChannelPlaylistData = {
     maxResults?: number;
     teamId: string;
 };
 
-export type MiscGetChannelPlaylistResponse = {
+export type MiscYoutubeGetChannelPlaylistResponse = {
     kind?: string;
     etag?: string;
     nextPageToken?: string;
@@ -4457,7 +4477,7 @@ export type MiscGetChannelPlaylistResponse = {
     }>;
 };
 
-export type MiscCreateNewChannelPlaylistData = {
+export type MiscYoutubeCreateNewChannelPlaylistData = {
     /**
      * Body
      */
@@ -4475,7 +4495,7 @@ export type MiscCreateNewChannelPlaylistData = {
     };
 };
 
-export type MiscCreateNewChannelPlaylistResponse = {
+export type MiscYoutubeCreateNewChannelPlaylistResponse = {
     kind?: string;
     etag?: string;
     id?: string;
@@ -4525,7 +4545,7 @@ export type MiscCreateNewChannelPlaylistResponse = {
     };
 };
 
-export type MiscUpdateChannelPlaylistData = {
+export type MiscYoutubeUpdateChannelPlaylistData = {
     /**
      * Body
      */
@@ -4544,7 +4564,7 @@ export type MiscUpdateChannelPlaylistData = {
     };
 };
 
-export type MiscUpdateChannelPlaylistResponse = {
+export type MiscYoutubeUpdateChannelPlaylistResponse = {
     kind?: string;
     etag?: string;
     id?: string;
@@ -4594,14 +4614,14 @@ export type MiscUpdateChannelPlaylistResponse = {
     };
 };
 
-export type MiscDeleteChannelPlaylistData = {
+export type MiscYoutubeDeleteChannelPlaylistData = {
     playlistId: string;
     teamId: string;
 };
 
-export type MiscDeleteChannelPlaylistResponse = boolean;
+export type MiscYoutubeDeleteChannelPlaylistResponse = boolean;
 
-export type MiscAddVideoToPlaylistData = {
+export type MiscYoutubeAddVideoToPlaylistData = {
     /**
      * Body
      */
@@ -4613,7 +4633,7 @@ export type MiscAddVideoToPlaylistData = {
     };
 };
 
-export type MiscAddVideoToPlaylistResponse = {
+export type MiscYoutubeAddVideoToPlaylistResponse = {
     kind?: string;
     etag?: string;
     id?: string;
@@ -4665,13 +4685,13 @@ export type MiscAddVideoToPlaylistResponse = {
     };
 };
 
-export type MiscGetVideosFromPlaylistData = {
+export type MiscYoutubeGetVideosFromPlaylistData = {
     maxResults?: number;
     playlistId: string;
     teamId: string;
 };
 
-export type MiscGetVideosFromPlaylistResponse = {
+export type MiscYoutubeGetVideosFromPlaylistResponse = {
     kind?: string;
     etag?: string;
     nextPageToken?: string;
@@ -4733,7 +4753,7 @@ export type MiscGetVideosFromPlaylistResponse = {
     }>;
 };
 
-export type MiscDeleteVideoFromPlaylistData = {
+export type MiscYoutubeDeleteVideoFromPlaylistData = {
     /**
      * Playlist item ID (not video ID)
      */
@@ -4741,7 +4761,47 @@ export type MiscDeleteVideoFromPlaylistData = {
     teamId: string;
 };
 
-export type MiscDeleteVideoFromPlaylistResponse = boolean;
+export type MiscYoutubeDeleteVideoFromPlaylistResponse = boolean;
+
+export type MiscLinkedinGetTagsData = {
+    q: string;
+    scope?: 'people' | 'organizations' | 'all';
+    teamId: string;
+};
+
+export type MiscLinkedinGetTagsResponse = {
+    people?: Array<{
+        kind: 'person';
+        urn: string;
+        display: string;
+        headline?: string;
+        photoUrl?: string;
+    }>;
+    organizations?: Array<{
+        kind: 'organization';
+        urn: string;
+        display: string;
+        vanityName?: string;
+        logoUrl?: string;
+    }>;
+};
+
+export type MiscLinkedinBuildCommentaryData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        text?: string;
+        tags?: Array<{
+            display: string;
+            urn: string;
+        }>;
+    };
+};
+
+export type MiscLinkedinBuildCommentaryResponse = {
+    commentary: string;
+};
 
 export type $OpenApiTs = {
     '/api/v1/': {
@@ -5075,6 +5135,7 @@ export type $OpenApiTs = {
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
@@ -5083,6 +5144,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
                                 name?: string | null;
@@ -5366,6 +5428,7 @@ export type $OpenApiTs = {
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
+                            avatarUrl?: string | null;
                             externalId?: string | null;
                             userUsername?: string | null;
                             userDisplayName?: string | null;
@@ -5374,6 +5437,7 @@ export type $OpenApiTs = {
                                 id: string;
                                 name?: string | null;
                                 username?: string | null;
+                                avatarUrl?: string | null;
                                 webhook?: {
                                     id?: string | null;
                                     name?: string | null;
@@ -5597,6 +5661,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
@@ -5605,6 +5670,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
                             name?: string | null;
@@ -5674,6 +5740,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
@@ -5682,6 +5749,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
                             name?: string | null;
@@ -5751,6 +5819,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
@@ -5759,6 +5828,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
                             name?: string | null;
@@ -5881,6 +5951,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
@@ -5889,6 +5960,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
                             name?: string | null;
@@ -5963,7 +6035,7 @@ export type $OpenApiTs = {
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
-                    type: 'image' | 'video';
+                    type: 'image' | 'video' | 'document';
                     width?: number | null;
                     height?: number | null;
                     fileSize?: number | null;
@@ -6039,7 +6111,7 @@ export type $OpenApiTs = {
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
-                    type: 'image' | 'video';
+                    type: 'image' | 'video' | 'document';
                     width?: number | null;
                     height?: number | null;
                     fileSize?: number | null;
@@ -6108,7 +6180,7 @@ export type $OpenApiTs = {
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
-                    type: 'image' | 'video';
+                    type: 'image' | 'video' | 'document';
                     width?: number | null;
                     height?: number | null;
                     fileSize?: number | null;
@@ -6179,7 +6251,7 @@ export type $OpenApiTs = {
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
-                    type: 'image' | 'video';
+                    type: 'image' | 'video' | 'document';
                     width?: number | null;
                     height?: number | null;
                     fileSize?: number | null;
@@ -6255,7 +6327,7 @@ export type $OpenApiTs = {
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
-                    type: 'image' | 'video';
+                    type: 'image' | 'video' | 'document';
                     width?: number | null;
                     height?: number | null;
                     fileSize?: number | null;
@@ -6380,7 +6452,7 @@ export type $OpenApiTs = {
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
-                    type: 'image' | 'video';
+                    type: 'image' | 'video' | 'document';
                     width?: number | null;
                     height?: number | null;
                     fileSize?: number | null;
@@ -6752,7 +6824,7 @@ export type $OpenApiTs = {
                             iconPath?: string | null;
                             thumbnailPath?: string | null;
                             path?: string | null;
-                            type: 'image' | 'video';
+                            type: 'image' | 'video' | 'document';
                             width?: number | null;
                             height?: number | null;
                             fileSize?: number | null;
@@ -6775,6 +6847,7 @@ export type $OpenApiTs = {
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
+                            avatarUrl?: string | null;
                             externalId?: string | null;
                             userUsername?: string | null;
                             userDisplayName?: string | null;
@@ -6783,6 +6856,7 @@ export type $OpenApiTs = {
                                 id: string;
                                 name?: string | null;
                                 username?: string | null;
+                                avatarUrl?: string | null;
                                 webhook?: {
                                     id?: string | null;
                                     name?: string | null;
@@ -7849,7 +7923,7 @@ export type $OpenApiTs = {
                                 iconPath?: string | null;
                                 thumbnailPath?: string | null;
                                 path?: string | null;
-                                type: 'image' | 'video';
+                                type: 'image' | 'video' | 'document';
                                 width?: number | null;
                                 height?: number | null;
                                 fileSize?: number | null;
@@ -7872,6 +7946,7 @@ export type $OpenApiTs = {
                                 teamId: string;
                                 username?: string | null;
                                 displayName?: string | null;
+                                avatarUrl?: string | null;
                                 externalId?: string | null;
                                 userUsername?: string | null;
                                 userDisplayName?: string | null;
@@ -7880,6 +7955,7 @@ export type $OpenApiTs = {
                                     id: string;
                                     name?: string | null;
                                     username?: string | null;
+                                    avatarUrl?: string | null;
                                     webhook?: {
                                         id?: string | null;
                                         name?: string | null;
@@ -8298,6 +8374,7 @@ export type $OpenApiTs = {
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
@@ -8306,6 +8383,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
                                 name?: string | null;
@@ -8758,6 +8836,7 @@ export type $OpenApiTs = {
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
@@ -8766,6 +8845,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
                                 name?: string | null;
@@ -10250,7 +10330,7 @@ export type $OpenApiTs = {
     };
     '/api/v1/misc/youtube/thumbnail': {
         post: {
-            req: MiscSetThumbnailData;
+            req: MiscYoutubeSetThumbnailData;
             res: {
                 /**
                  * 200
@@ -10329,7 +10409,7 @@ export type $OpenApiTs = {
     };
     '/api/v1/misc/youtube/playlist': {
         get: {
-            req: MiscGetChannelPlaylistData;
+            req: MiscYoutubeGetChannelPlaylistData;
             res: {
                 /**
                  * 200
@@ -10436,7 +10516,7 @@ export type $OpenApiTs = {
             };
         };
         post: {
-            req: MiscCreateNewChannelPlaylistData;
+            req: MiscYoutubeCreateNewChannelPlaylistData;
             res: {
                 /**
                  * 200
@@ -10533,7 +10613,7 @@ export type $OpenApiTs = {
             };
         };
         put: {
-            req: MiscUpdateChannelPlaylistData;
+            req: MiscYoutubeUpdateChannelPlaylistData;
             res: {
                 /**
                  * 200
@@ -10632,7 +10712,7 @@ export type $OpenApiTs = {
     };
     '/api/v1/misc/youtube/playlist/{playlistId}': {
         delete: {
-            req: MiscDeleteChannelPlaylistData;
+            req: MiscYoutubeDeleteChannelPlaylistData;
             res: {
                 /**
                  * 200
@@ -10683,7 +10763,7 @@ export type $OpenApiTs = {
     };
     '/api/v1/misc/youtube/playlist-items': {
         post: {
-            req: MiscAddVideoToPlaylistData;
+            req: MiscYoutubeAddVideoToPlaylistData;
             res: {
                 /**
                  * 200
@@ -10782,7 +10862,7 @@ export type $OpenApiTs = {
             };
         };
         get: {
-            req: MiscGetVideosFromPlaylistData;
+            req: MiscYoutubeGetVideosFromPlaylistData;
             res: {
                 /**
                  * 200
@@ -10893,12 +10973,131 @@ export type $OpenApiTs = {
     };
     '/api/v1/misc/youtube/playlist-items/{playlistItemId}': {
         delete: {
-            req: MiscDeleteVideoFromPlaylistData;
+            req: MiscYoutubeDeleteVideoFromPlaylistData;
             res: {
                 /**
                  * 200
                  */
                 200: boolean;
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/linkedin/mentions/tags': {
+        get: {
+            req: MiscLinkedinGetTagsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    people?: Array<{
+                        kind: 'person';
+                        urn: string;
+                        display: string;
+                        headline?: string;
+                        photoUrl?: string;
+                    }>;
+                    organizations?: Array<{
+                        kind: 'organization';
+                        urn: string;
+                        display: string;
+                        vanityName?: string;
+                        logoUrl?: string;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/linkedin/mentions/builder': {
+        post: {
+            req: MiscLinkedinBuildCommentaryData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    commentary: string;
+                };
                 /**
                  * 400
                  */

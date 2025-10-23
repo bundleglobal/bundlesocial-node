@@ -6,12 +6,14 @@ import { FetchHttpRequest } from './core/FetchHttpRequest';
 import { AnalyticsService } from './services.gen';
 import { AppService } from './services.gen';
 import { CommentService } from './services.gen';
+import { LinkedinService } from './services.gen';
 import { MiscService } from './services.gen';
 import { OrganizationService } from './services.gen';
 import { PostService } from './services.gen';
 import { SocialAccountService } from './services.gen';
 import { TeamService } from './services.gen';
 import { UploadService } from './services.gen';
+import { YoutubeService } from './services.gen';
 
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 
@@ -20,12 +22,14 @@ export class Client {
 	public readonly analytics: AnalyticsService;
 	public readonly app: AppService;
 	public readonly comment: CommentService;
+	public readonly linkedin: LinkedinService;
 	public readonly misc: MiscService;
 	public readonly organization: OrganizationService;
 	public readonly post: PostService;
 	public readonly socialAccount: SocialAccountService;
 	public readonly team: TeamService;
 	public readonly upload: UploadService;
+	public readonly youtube: YoutubeService;
 
 	public readonly request: BaseHttpRequest;
 
@@ -49,11 +53,13 @@ export class Client {
 		this.analytics = new AnalyticsService(this.request);
 		this.app = new AppService(this.request);
 		this.comment = new CommentService(this.request);
+		this.linkedin = new LinkedinService(this.request);
 		this.misc = new MiscService(this.request);
 		this.organization = new OrganizationService(this.request);
 		this.post = new PostService(this.request);
 		this.socialAccount = new SocialAccountService(this.request);
 		this.team = new TeamService(this.request);
 		this.upload = new UploadService(this.request);
+		this.youtube = new YoutubeService(this.request);
 	}
 }

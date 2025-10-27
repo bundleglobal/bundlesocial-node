@@ -25,6 +25,8 @@ export type OrganizationGetOrganizationResponse = {
         DISCORD?: number;
         SLACK?: number;
         MASTODON?: number;
+        BLUESKY?: number;
+        GOOGLE_BUSINESS?: number;
     } | null;
     apiAccess?: boolean;
     analyticsDisabled?: boolean;
@@ -196,6 +198,8 @@ export type TeamGetTeamResponse = {
             DISCORD?: number;
             SLACK?: number;
             MASTODON?: number;
+            BLUESKY?: number;
+            GOOGLE_BUSINESS?: number;
         } | null;
         apiAccess?: boolean;
         analyticsDisabled?: boolean;
@@ -228,7 +232,7 @@ export type TeamGetTeamResponse = {
     }>;
     socialAccounts: Array<{
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
@@ -366,6 +370,8 @@ export type TeamGetListResponse = {
                 DISCORD?: number;
                 SLACK?: number;
                 MASTODON?: number;
+                BLUESKY?: number;
+                GOOGLE_BUSINESS?: number;
             } | null;
             apiAccess?: boolean;
             analyticsDisabled?: boolean;
@@ -398,7 +404,7 @@ export type TeamGetListResponse = {
         }>;
         socialAccounts: Array<{
             id: string;
-            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
             teamId: string;
             username?: string | null;
             displayName?: string | null;
@@ -493,11 +499,11 @@ export type SocialAccountConnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
         teamId: string;
         redirectUrl: string;
         /**
-         * Mastodon only
+         * Mastodon or Bluesky only
          */
         serverUrl?: string;
         /**
@@ -519,14 +525,14 @@ export type SocialAccountDisconnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
         teamId: string;
     };
 };
 
 export type SocialAccountDisconnectResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
@@ -559,7 +565,7 @@ export type SocialAccountSetChannelData = {
      * Body
      */
     requestBody?: {
-        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE';
+        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS';
         teamId: string;
         channelId: string;
     };
@@ -567,7 +573,7 @@ export type SocialAccountSetChannelData = {
 
 export type SocialAccountSetChannelResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
@@ -600,14 +606,14 @@ export type SocialAccountRefreshChannelsData = {
      * Body
      */
     requestBody?: {
-        type: 'DISCORD' | 'SLACK' | 'REDDIT' | 'PINTEREST' | 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE';
+        type: 'DISCORD' | 'SLACK' | 'REDDIT' | 'PINTEREST' | 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS';
         teamId: string;
     };
 };
 
 export type SocialAccountRefreshChannelsResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
@@ -642,7 +648,7 @@ export type SocialAccountCreatePortalLinkData = {
     requestBody?: {
         teamId: string;
         redirectUrl: string;
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
         logoUrl?: string;
         userLogoUrl?: string;
         userName?: string;
@@ -672,13 +678,13 @@ export type SocialAccountCopyData = {
          * If you set that to true, selected page will not be transferred automatically. The user will have to select the page themselves again. This only applies to Facebook, Instagram, Linkedin and Youtube.
          */
         resetChannel?: boolean;
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
     };
 };
 
 export type SocialAccountCopyResponse = Array<{
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
@@ -1129,6 +1135,62 @@ export type PostGetResponse = {
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Extra hashtags (without #), up to 8.
+             */
+            tags?: Array<(string)> | null;
+            /**
+             * Self-labels (content warnings) applied to the post.
+             */
+            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+            /**
+             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+             */
+            quoteUri?: string;
+            /**
+             * Target URL for the external link card
+             */
+            externalUrl?: string | null;
+            /**
+             * Card title for the external link card
+             */
+            externalTitle?: string | null;
+            /**
+             * Card description for the external link card
+             */
+            externalDescription?: string | null;
+            /**
+             * Alt text for the video embed.
+             */
+            videoAlt?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            text?: string | null;
+            /**
+             * IDs of images/videos uploaded to bundle.social.
+             */
+            uploadIds?: Array<(string)> | null;
+            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+            /**
+             * Language tag like 'en' or 'en-US'.
+             */
+            languageCode?: string | null;
+            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+            callToActionUrl?: string | null;
+            eventTitle?: string | null;
+            eventStartDate?: string | null;
+            eventEndDate?: string | null;
+            offerCouponCode?: string | null;
+            offerRedeemOnlineUrl?: string | null;
+            offerTermsConditions?: string | null;
+            /**
+             * Alert type for ALERT posts.
+             */
+            alertType?: 'COVID_19' | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -1144,6 +1206,8 @@ export type PostGetResponse = {
         YOUTUBE?: string | null;
         MASTODON?: string | null;
         THREADS?: string | null;
+        BLUESKY?: string | null;
+        GOOGLE_BUSINESS?: string | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -1160,12 +1224,12 @@ export type PostGetResponse = {
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -1175,7 +1239,7 @@ export type PostGetResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -1204,6 +1268,29 @@ export type PostGetResponse = {
         } | null;
         THREADS?: {
             id?: string | null;
+            permalink?: string | null;
+        } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            /**
+             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+             */
+            id?: string | null;
+            /**
+             * Public link to the post (searchUrl) when available.
+             */
             permalink?: string | null;
         } | null;
     } | null;
@@ -1246,7 +1333,7 @@ export type PostGetResponse = {
         deletedAt?: string | null;
         socialAccount: {
             id: string;
-            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
             teamId: string;
             username?: string | null;
             displayName?: string | null;
@@ -1285,7 +1372,7 @@ export type PostUpdateData = {
         title?: string;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
         data?: {
             TWITTER?: {
                 text?: string | null;
@@ -1491,6 +1578,62 @@ export type PostUpdateData = {
                 thumbnail?: string | null;
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
+            } | null;
+            BLUESKY?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * Extra hashtags (without #), up to 8.
+                 */
+                tags?: Array<(string)> | null;
+                /**
+                 * Self-labels (content warnings) applied to the post.
+                 */
+                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                /**
+                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                 */
+                quoteUri?: string;
+                /**
+                 * Target URL for the external link card
+                 */
+                externalUrl?: string | null;
+                /**
+                 * Card title for the external link card
+                 */
+                externalTitle?: string | null;
+                /**
+                 * Card description for the external link card
+                 */
+                externalDescription?: string | null;
+                /**
+                 * Alt text for the video embed.
+                 */
+                videoAlt?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                text?: string | null;
+                /**
+                 * IDs of images/videos uploaded to bundle.social.
+                 */
+                uploadIds?: Array<(string)> | null;
+                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                /**
+                 * Language tag like 'en' or 'en-US'.
+                 */
+                languageCode?: string | null;
+                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                callToActionUrl?: string | null;
+                eventTitle?: string | null;
+                eventStartDate?: string | null;
+                eventEndDate?: string | null;
+                offerCouponCode?: string | null;
+                offerRedeemOnlineUrl?: string | null;
+                offerTermsConditions?: string | null;
+                /**
+                 * Alert type for ALERT posts.
+                 */
+                alertType?: 'COVID_19' | null;
             } | null;
         };
     };
@@ -1710,6 +1853,62 @@ export type PostUpdateResponse = {
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Extra hashtags (without #), up to 8.
+             */
+            tags?: Array<(string)> | null;
+            /**
+             * Self-labels (content warnings) applied to the post.
+             */
+            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+            /**
+             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+             */
+            quoteUri?: string;
+            /**
+             * Target URL for the external link card
+             */
+            externalUrl?: string | null;
+            /**
+             * Card title for the external link card
+             */
+            externalTitle?: string | null;
+            /**
+             * Card description for the external link card
+             */
+            externalDescription?: string | null;
+            /**
+             * Alt text for the video embed.
+             */
+            videoAlt?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            text?: string | null;
+            /**
+             * IDs of images/videos uploaded to bundle.social.
+             */
+            uploadIds?: Array<(string)> | null;
+            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+            /**
+             * Language tag like 'en' or 'en-US'.
+             */
+            languageCode?: string | null;
+            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+            callToActionUrl?: string | null;
+            eventTitle?: string | null;
+            eventStartDate?: string | null;
+            eventEndDate?: string | null;
+            offerCouponCode?: string | null;
+            offerRedeemOnlineUrl?: string | null;
+            offerTermsConditions?: string | null;
+            /**
+             * Alert type for ALERT posts.
+             */
+            alertType?: 'COVID_19' | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -1725,6 +1924,8 @@ export type PostUpdateResponse = {
         YOUTUBE?: string | null;
         MASTODON?: string | null;
         THREADS?: string | null;
+        BLUESKY?: string | null;
+        GOOGLE_BUSINESS?: string | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -1741,12 +1942,12 @@ export type PostUpdateResponse = {
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -1756,7 +1957,7 @@ export type PostUpdateResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -1785,6 +1986,29 @@ export type PostUpdateResponse = {
         } | null;
         THREADS?: {
             id?: string | null;
+            permalink?: string | null;
+        } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            /**
+             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+             */
+            id?: string | null;
+            /**
+             * Public link to the post (searchUrl) when available.
+             */
             permalink?: string | null;
         } | null;
     } | null;
@@ -2011,6 +2235,62 @@ export type PostDeleteResponse = {
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Extra hashtags (without #), up to 8.
+             */
+            tags?: Array<(string)> | null;
+            /**
+             * Self-labels (content warnings) applied to the post.
+             */
+            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+            /**
+             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+             */
+            quoteUri?: string;
+            /**
+             * Target URL for the external link card
+             */
+            externalUrl?: string | null;
+            /**
+             * Card title for the external link card
+             */
+            externalTitle?: string | null;
+            /**
+             * Card description for the external link card
+             */
+            externalDescription?: string | null;
+            /**
+             * Alt text for the video embed.
+             */
+            videoAlt?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            text?: string | null;
+            /**
+             * IDs of images/videos uploaded to bundle.social.
+             */
+            uploadIds?: Array<(string)> | null;
+            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+            /**
+             * Language tag like 'en' or 'en-US'.
+             */
+            languageCode?: string | null;
+            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+            callToActionUrl?: string | null;
+            eventTitle?: string | null;
+            eventStartDate?: string | null;
+            eventEndDate?: string | null;
+            offerCouponCode?: string | null;
+            offerRedeemOnlineUrl?: string | null;
+            offerTermsConditions?: string | null;
+            /**
+             * Alert type for ALERT posts.
+             */
+            alertType?: 'COVID_19' | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -2026,6 +2306,8 @@ export type PostDeleteResponse = {
         YOUTUBE?: string | null;
         MASTODON?: string | null;
         THREADS?: string | null;
+        BLUESKY?: string | null;
+        GOOGLE_BUSINESS?: string | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -2042,12 +2324,12 @@ export type PostDeleteResponse = {
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -2057,7 +2339,7 @@ export type PostDeleteResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -2088,6 +2370,29 @@ export type PostDeleteResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            /**
+             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+             */
+            id?: string | null;
+            /**
+             * Public link to the post (searchUrl) when available.
+             */
+            permalink?: string | null;
+        } | null;
     } | null;
     createdAt: string | null;
     updatedAt: string | null;
@@ -2099,7 +2404,7 @@ export type PostGetListData = {
     offset?: number | null;
     order?: 'ASC' | 'DESC' | null;
     orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')> | null;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')> | null;
     q?: string | null;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | null;
     teamId: string;
@@ -2320,6 +2625,62 @@ export type PostGetListResponse = {
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
             } | null;
+            BLUESKY?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * Extra hashtags (without #), up to 8.
+                 */
+                tags?: Array<(string)> | null;
+                /**
+                 * Self-labels (content warnings) applied to the post.
+                 */
+                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                /**
+                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                 */
+                quoteUri?: string;
+                /**
+                 * Target URL for the external link card
+                 */
+                externalUrl?: string | null;
+                /**
+                 * Card title for the external link card
+                 */
+                externalTitle?: string | null;
+                /**
+                 * Card description for the external link card
+                 */
+                externalDescription?: string | null;
+                /**
+                 * Alt text for the video embed.
+                 */
+                videoAlt?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                text?: string | null;
+                /**
+                 * IDs of images/videos uploaded to bundle.social.
+                 */
+                uploadIds?: Array<(string)> | null;
+                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                /**
+                 * Language tag like 'en' or 'en-US'.
+                 */
+                languageCode?: string | null;
+                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                callToActionUrl?: string | null;
+                eventTitle?: string | null;
+                eventStartDate?: string | null;
+                eventEndDate?: string | null;
+                offerCouponCode?: string | null;
+                offerRedeemOnlineUrl?: string | null;
+                offerTermsConditions?: string | null;
+                /**
+                 * Alert type for ALERT posts.
+                 */
+                alertType?: 'COVID_19' | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -2335,6 +2696,8 @@ export type PostGetListResponse = {
             YOUTUBE?: string | null;
             MASTODON?: string | null;
             THREADS?: string | null;
+            BLUESKY?: string | null;
+            GOOGLE_BUSINESS?: string | null;
         } | null;
         externalData?: {
             TWITTER?: {
@@ -2351,12 +2714,12 @@ export type PostGetListResponse = {
                 postId?: string | null;
                 videoId?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             INSTAGRAM?: {
                 id?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -2366,7 +2729,7 @@ export type PostGetListResponse = {
                 id?: string | null;
                 activity?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             REDDIT?: {
                 id?: string | null;
@@ -2395,6 +2758,29 @@ export type PostGetListResponse = {
             } | null;
             THREADS?: {
                 id?: string | null;
+                permalink?: string | null;
+            } | null;
+            BLUESKY?: {
+                id?: string | null;
+                uri?: string | null;
+                /**
+                 * Content ID of the created record
+                 */
+                cid?: string | null;
+                permalink?: string | null;
+                /**
+                 * Author DID (owner of the record)
+                 */
+                did?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                /**
+                 * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                 */
+                id?: string | null;
+                /**
+                 * Public link to the post (searchUrl) when available.
+                 */
                 permalink?: string | null;
             } | null;
         } | null;
@@ -2437,7 +2823,7 @@ export type PostGetListResponse = {
             deletedAt?: string | null;
             socialAccount: {
                 id: string;
-                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                 teamId: string;
                 username?: string | null;
                 displayName?: string | null;
@@ -2478,7 +2864,7 @@ export type PostCreateData = {
         title: string;
         postDate: string;
         status: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -2684,6 +3070,62 @@ export type PostCreateData = {
                 thumbnail?: string | null;
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
+            } | null;
+            BLUESKY?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * Extra hashtags (without #), up to 8.
+                 */
+                tags?: Array<(string)> | null;
+                /**
+                 * Self-labels (content warnings) applied to the post.
+                 */
+                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                /**
+                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                 */
+                quoteUri?: string;
+                /**
+                 * Target URL for the external link card
+                 */
+                externalUrl?: string | null;
+                /**
+                 * Card title for the external link card
+                 */
+                externalTitle?: string | null;
+                /**
+                 * Card description for the external link card
+                 */
+                externalDescription?: string | null;
+                /**
+                 * Alt text for the video embed.
+                 */
+                videoAlt?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                text?: string | null;
+                /**
+                 * IDs of images/videos uploaded to bundle.social.
+                 */
+                uploadIds?: Array<(string)> | null;
+                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                /**
+                 * Language tag like 'en' or 'en-US'.
+                 */
+                languageCode?: string | null;
+                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                callToActionUrl?: string | null;
+                eventTitle?: string | null;
+                eventStartDate?: string | null;
+                eventEndDate?: string | null;
+                offerCouponCode?: string | null;
+                offerRedeemOnlineUrl?: string | null;
+                offerTermsConditions?: string | null;
+                /**
+                 * Alert type for ALERT posts.
+                 */
+                alertType?: 'COVID_19' | null;
             } | null;
         };
     };
@@ -2903,6 +3345,62 @@ export type PostCreateResponse = {
             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
             spoiler?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Extra hashtags (without #), up to 8.
+             */
+            tags?: Array<(string)> | null;
+            /**
+             * Self-labels (content warnings) applied to the post.
+             */
+            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+            /**
+             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+             */
+            quoteUri?: string;
+            /**
+             * Target URL for the external link card
+             */
+            externalUrl?: string | null;
+            /**
+             * Card title for the external link card
+             */
+            externalTitle?: string | null;
+            /**
+             * Card description for the external link card
+             */
+            externalDescription?: string | null;
+            /**
+             * Alt text for the video embed.
+             */
+            videoAlt?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            text?: string | null;
+            /**
+             * IDs of images/videos uploaded to bundle.social.
+             */
+            uploadIds?: Array<(string)> | null;
+            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+            /**
+             * Language tag like 'en' or 'en-US'.
+             */
+            languageCode?: string | null;
+            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+            callToActionUrl?: string | null;
+            eventTitle?: string | null;
+            eventStartDate?: string | null;
+            eventEndDate?: string | null;
+            offerCouponCode?: string | null;
+            offerRedeemOnlineUrl?: string | null;
+            offerTermsConditions?: string | null;
+            /**
+             * Alert type for ALERT posts.
+             */
+            alertType?: 'COVID_19' | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -2918,6 +3416,8 @@ export type PostCreateResponse = {
         YOUTUBE?: string | null;
         MASTODON?: string | null;
         THREADS?: string | null;
+        BLUESKY?: string | null;
+        GOOGLE_BUSINESS?: string | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -2934,12 +3434,12 @@ export type PostCreateResponse = {
             postId?: string | null;
             videoId?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         INSTAGRAM?: {
             id?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -2949,7 +3449,7 @@ export type PostCreateResponse = {
             id?: string | null;
             activity?: string | null;
             permalink?: string | null;
-            thumbnail?: string;
+            thumbnail?: string | null;
         } | null;
         REDDIT?: {
             id?: string | null;
@@ -2980,6 +3480,29 @@ export type PostCreateResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            /**
+             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+             */
+            id?: string | null;
+            /**
+             * Public link to the post (searchUrl) when available.
+             */
+            permalink?: string | null;
+        } | null;
     } | null;
     createdAt: string | null;
     updatedAt: string | null;
@@ -2987,14 +3510,14 @@ export type PostCreateResponse = {
 };
 
 export type AnalyticsGetSocialAccountAnalyticsData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     teamId: string;
 };
 
 export type AnalyticsGetSocialAccountAnalyticsResponse = {
     socialAccount: {
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
@@ -3040,7 +3563,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
 };
 
 export type AnalyticsGetPostAnalyticsData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     postId: string;
 };
 
@@ -3259,6 +3782,62 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
             } | null;
+            BLUESKY?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * Extra hashtags (without #), up to 8.
+                 */
+                tags?: Array<(string)> | null;
+                /**
+                 * Self-labels (content warnings) applied to the post.
+                 */
+                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                /**
+                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                 */
+                quoteUri?: string;
+                /**
+                 * Target URL for the external link card
+                 */
+                externalUrl?: string | null;
+                /**
+                 * Card title for the external link card
+                 */
+                externalTitle?: string | null;
+                /**
+                 * Card description for the external link card
+                 */
+                externalDescription?: string | null;
+                /**
+                 * Alt text for the video embed.
+                 */
+                videoAlt?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                text?: string | null;
+                /**
+                 * IDs of images/videos uploaded to bundle.social.
+                 */
+                uploadIds?: Array<(string)> | null;
+                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                /**
+                 * Language tag like 'en' or 'en-US'.
+                 */
+                languageCode?: string | null;
+                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                callToActionUrl?: string | null;
+                eventTitle?: string | null;
+                eventStartDate?: string | null;
+                eventEndDate?: string | null;
+                offerCouponCode?: string | null;
+                offerRedeemOnlineUrl?: string | null;
+                offerTermsConditions?: string | null;
+                /**
+                 * Alert type for ALERT posts.
+                 */
+                alertType?: 'COVID_19' | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -3274,6 +3853,8 @@ export type AnalyticsGetPostAnalyticsResponse = {
             YOUTUBE?: string | null;
             MASTODON?: string | null;
             THREADS?: string | null;
+            BLUESKY?: string | null;
+            GOOGLE_BUSINESS?: string | null;
         } | null;
         externalData?: {
             TWITTER?: {
@@ -3290,12 +3871,12 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 postId?: string | null;
                 videoId?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             INSTAGRAM?: {
                 id?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -3305,7 +3886,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 id?: string | null;
                 activity?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             REDDIT?: {
                 id?: string | null;
@@ -3336,6 +3917,29 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 id?: string | null;
                 permalink?: string | null;
             } | null;
+            BLUESKY?: {
+                id?: string | null;
+                uri?: string | null;
+                /**
+                 * Content ID of the created record
+                 */
+                cid?: string | null;
+                permalink?: string | null;
+                /**
+                 * Author DID (owner of the record)
+                 */
+                did?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                /**
+                 * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                 */
+                id?: string | null;
+                /**
+                 * Public link to the post (searchUrl) when available.
+                 */
+                permalink?: string | null;
+            } | null;
         } | null;
         createdAt: string | null;
         updatedAt: string | null;
@@ -3361,14 +3965,14 @@ export type AnalyticsGetPostAnalyticsResponse = {
 };
 
 export type AnalyticsGetSocialAccountAnalyticsRawData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     teamId: string;
 };
 
 export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
     socialAccount: {
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
@@ -3407,7 +4011,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
 };
 
 export type AnalyticsGetPostAnalyticsRawData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
     postId: string;
 };
 
@@ -3626,6 +4230,62 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                 spoiler?: string | null;
             } | null;
+            BLUESKY?: {
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+                /**
+                 * Extra hashtags (without #), up to 8.
+                 */
+                tags?: Array<(string)> | null;
+                /**
+                 * Self-labels (content warnings) applied to the post.
+                 */
+                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                /**
+                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                 */
+                quoteUri?: string;
+                /**
+                 * Target URL for the external link card
+                 */
+                externalUrl?: string | null;
+                /**
+                 * Card title for the external link card
+                 */
+                externalTitle?: string | null;
+                /**
+                 * Card description for the external link card
+                 */
+                externalDescription?: string | null;
+                /**
+                 * Alt text for the video embed.
+                 */
+                videoAlt?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                text?: string | null;
+                /**
+                 * IDs of images/videos uploaded to bundle.social.
+                 */
+                uploadIds?: Array<(string)> | null;
+                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                /**
+                 * Language tag like 'en' or 'en-US'.
+                 */
+                languageCode?: string | null;
+                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                callToActionUrl?: string | null;
+                eventTitle?: string | null;
+                eventStartDate?: string | null;
+                eventEndDate?: string | null;
+                offerCouponCode?: string | null;
+                offerRedeemOnlineUrl?: string | null;
+                offerTermsConditions?: string | null;
+                /**
+                 * Alert type for ALERT posts.
+                 */
+                alertType?: 'COVID_19' | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -3641,6 +4301,8 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             YOUTUBE?: string | null;
             MASTODON?: string | null;
             THREADS?: string | null;
+            BLUESKY?: string | null;
+            GOOGLE_BUSINESS?: string | null;
         } | null;
         externalData?: {
             TWITTER?: {
@@ -3657,12 +4319,12 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 postId?: string | null;
                 videoId?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             INSTAGRAM?: {
                 id?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -3672,7 +4334,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 id?: string | null;
                 activity?: string | null;
                 permalink?: string | null;
-                thumbnail?: string;
+                thumbnail?: string | null;
             } | null;
             REDDIT?: {
                 id?: string | null;
@@ -3701,6 +4363,29 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             } | null;
             THREADS?: {
                 id?: string | null;
+                permalink?: string | null;
+            } | null;
+            BLUESKY?: {
+                id?: string | null;
+                uri?: string | null;
+                /**
+                 * Content ID of the created record
+                 */
+                cid?: string | null;
+                permalink?: string | null;
+                /**
+                 * Author DID (owner of the record)
+                 */
+                did?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                /**
+                 * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                 */
+                id?: string | null;
+                /**
+                 * Public link to the post (searchUrl) when available.
+                 */
                 permalink?: string | null;
             } | null;
         } | null;
@@ -3784,6 +4469,9 @@ export type CommentGetResponse = {
         SLACK?: {
             text?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -3797,6 +4485,7 @@ export type CommentGetResponse = {
         THREADS?: string | null;
         DISCORD?: string | null;
         SLACK?: string | null;
+        BLUESKY?: string | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -3840,6 +4529,19 @@ export type CommentGetResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
     } | null;
     createdAt: string | null;
     updatedAt: string | null;
@@ -3857,7 +4559,7 @@ export type CommentUpdateData = {
         internalParentCommentId?: string | null;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
         data?: {
             FACEBOOK?: {
                 text?: string | null;
@@ -3887,6 +4589,9 @@ export type CommentUpdateData = {
                 text?: string | null;
             } | null;
             SLACK?: {
+                text?: string | null;
+            } | null;
+            BLUESKY?: {
                 text?: string | null;
             } | null;
         };
@@ -3934,6 +4639,9 @@ export type CommentUpdateResponse = {
         SLACK?: {
             text?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -3947,6 +4655,7 @@ export type CommentUpdateResponse = {
         THREADS?: string | null;
         DISCORD?: string | null;
         SLACK?: string | null;
+        BLUESKY?: string | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -3989,6 +4698,19 @@ export type CommentUpdateResponse = {
         SLACK?: {
             id?: string | null;
             permalink?: string | null;
+        } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
         } | null;
     } | null;
     createdAt: string | null;
@@ -4041,6 +4763,9 @@ export type CommentDeleteResponse = {
         SLACK?: {
             text?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -4054,6 +4779,7 @@ export type CommentDeleteResponse = {
         THREADS?: string | null;
         DISCORD?: string | null;
         SLACK?: string | null;
+        BLUESKY?: string | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -4097,6 +4823,19 @@ export type CommentDeleteResponse = {
             id?: string | null;
             permalink?: string | null;
         } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
     } | null;
     createdAt: string | null;
     updatedAt: string | null;
@@ -4108,7 +4847,7 @@ export type CommentGetListData = {
     offset?: number | null;
     order?: 'ASC' | 'DESC';
     orderBy?: 'createdAt' | 'updatedAt' | 'deletedAt';
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
     postId?: string;
     q?: string;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
@@ -4157,6 +4896,9 @@ export type CommentGetListResponse = {
             SLACK?: {
                 text?: string | null;
             } | null;
+            BLUESKY?: {
+                text?: string | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -4170,6 +4912,7 @@ export type CommentGetListResponse = {
             THREADS?: string | null;
             DISCORD?: string | null;
             SLACK?: string | null;
+            BLUESKY?: string | null;
         } | null;
         externalData?: {
             FACEBOOK?: {
@@ -4213,6 +4956,19 @@ export type CommentGetListResponse = {
                 id?: string | null;
                 permalink?: string | null;
             } | null;
+            BLUESKY?: {
+                id?: string | null;
+                uri?: string | null;
+                /**
+                 * Content ID of the created record
+                 */
+                cid?: string | null;
+                permalink?: string | null;
+                /**
+                 * Author DID (owner of the record)
+                 */
+                did?: string | null;
+            } | null;
         } | null;
         createdAt: string | null;
         updatedAt: string | null;
@@ -4232,7 +4988,7 @@ export type CommentCreateData = {
         internalParentCommentId?: string | null;
         postDate: string;
         status: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
         data: {
             FACEBOOK?: {
                 text?: string | null;
@@ -4262,6 +5018,9 @@ export type CommentCreateData = {
                 text?: string | null;
             } | null;
             SLACK?: {
+                text?: string | null;
+            } | null;
+            BLUESKY?: {
                 text?: string | null;
             } | null;
         };
@@ -4309,6 +5068,9 @@ export type CommentCreateResponse = {
         SLACK?: {
             text?: string | null;
         } | null;
+        BLUESKY?: {
+            text?: string | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -4322,6 +5084,7 @@ export type CommentCreateResponse = {
         THREADS?: string | null;
         DISCORD?: string | null;
         SLACK?: string | null;
+        BLUESKY?: string | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -4364,6 +5127,19 @@ export type CommentCreateResponse = {
         SLACK?: {
             id?: string | null;
             permalink?: string | null;
+        } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
         } | null;
     } | null;
     createdAt: string | null;
@@ -4803,6 +5579,28 @@ export type MiscLinkedinBuildCommentaryResponse = {
     commentary: string;
 };
 
+export type MiscGoogleBusinessAddMediaData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        uploadId: string;
+        category?: 'CATEGORY_UNSPECIFIED' | 'COVER' | 'PROFILE' | 'LOGO' | 'EXTERIOR' | 'INTERIOR' | 'PRODUCT' | 'AT_WORK' | 'FOOD_AND_DRINK' | 'MENU' | 'COMMON_AREA' | 'ROOMS' | 'TEAMS' | 'ADDITIONAL';
+        description?: string;
+    };
+};
+
+export type MiscGoogleBusinessAddMediaResponse = {
+    name?: string;
+    googleUrl?: string;
+    locationAssociation?: {
+        category?: 'CATEGORY_UNSPECIFIED' | 'COVER' | 'PROFILE' | 'LOGO' | 'EXTERIOR' | 'INTERIOR' | 'PRODUCT' | 'AT_WORK' | 'FOOD_AND_DRINK' | 'MENU' | 'COMMON_AREA' | 'ROOMS' | 'TEAMS' | 'ADDITIONAL';
+        priceListItemId?: string;
+    };
+    description?: string;
+};
+
 export type $OpenApiTs = {
     '/api/v1/': {
         get: {
@@ -4883,6 +5681,8 @@ export type $OpenApiTs = {
                         DISCORD?: number;
                         SLACK?: number;
                         MASTODON?: number;
+                        BLUESKY?: number;
+                        GOOGLE_BUSINESS?: number;
                     } | null;
                     apiAccess?: boolean;
                     analyticsDisabled?: boolean;
@@ -5099,6 +5899,8 @@ export type $OpenApiTs = {
                             DISCORD?: number;
                             SLACK?: number;
                             MASTODON?: number;
+                            BLUESKY?: number;
+                            GOOGLE_BUSINESS?: number;
                         } | null;
                         apiAccess?: boolean;
                         analyticsDisabled?: boolean;
@@ -5131,7 +5933,7 @@ export type $OpenApiTs = {
                     }>;
                     socialAccounts: Array<{
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
@@ -5392,6 +6194,8 @@ export type $OpenApiTs = {
                                 DISCORD?: number;
                                 SLACK?: number;
                                 MASTODON?: number;
+                                BLUESKY?: number;
+                                GOOGLE_BUSINESS?: number;
                             } | null;
                             apiAccess?: boolean;
                             analyticsDisabled?: boolean;
@@ -5424,7 +6228,7 @@ export type $OpenApiTs = {
                         }>;
                         socialAccounts: Array<{
                             id: string;
-                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
@@ -5657,7 +6461,7 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
@@ -5736,7 +6540,7 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
@@ -5815,7 +6619,7 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
@@ -5947,7 +6751,7 @@ export type $OpenApiTs = {
                  */
                 200: Array<{
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
@@ -6726,6 +7530,62 @@ export type $OpenApiTs = {
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Extra hashtags (without #), up to 8.
+                             */
+                            tags?: Array<(string)> | null;
+                            /**
+                             * Self-labels (content warnings) applied to the post.
+                             */
+                            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                            /**
+                             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                             */
+                            quoteUri?: string;
+                            /**
+                             * Target URL for the external link card
+                             */
+                            externalUrl?: string | null;
+                            /**
+                             * Card title for the external link card
+                             */
+                            externalTitle?: string | null;
+                            /**
+                             * Card description for the external link card
+                             */
+                            externalDescription?: string | null;
+                            /**
+                             * Alt text for the video embed.
+                             */
+                            videoAlt?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            text?: string | null;
+                            /**
+                             * IDs of images/videos uploaded to bundle.social.
+                             */
+                            uploadIds?: Array<(string)> | null;
+                            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                            /**
+                             * Language tag like 'en' or 'en-US'.
+                             */
+                            languageCode?: string | null;
+                            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                            callToActionUrl?: string | null;
+                            eventTitle?: string | null;
+                            eventStartDate?: string | null;
+                            eventEndDate?: string | null;
+                            offerCouponCode?: string | null;
+                            offerRedeemOnlineUrl?: string | null;
+                            offerTermsConditions?: string | null;
+                            /**
+                             * Alert type for ALERT posts.
+                             */
+                            alertType?: 'COVID_19' | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -6741,6 +7601,8 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         MASTODON?: string | null;
                         THREADS?: string | null;
+                        BLUESKY?: string | null;
+                        GOOGLE_BUSINESS?: string | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -6757,12 +7619,12 @@ export type $OpenApiTs = {
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -6772,7 +7634,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -6801,6 +7663,29 @@ export type $OpenApiTs = {
                         } | null;
                         THREADS?: {
                             id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            /**
+                             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                             */
+                            id?: string | null;
+                            /**
+                             * Public link to the post (searchUrl) when available.
+                             */
                             permalink?: string | null;
                         } | null;
                     } | null;
@@ -6843,7 +7728,7 @@ export type $OpenApiTs = {
                         deletedAt?: string | null;
                         socialAccount: {
                             id: string;
-                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
@@ -7134,6 +8019,62 @@ export type $OpenApiTs = {
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Extra hashtags (without #), up to 8.
+                             */
+                            tags?: Array<(string)> | null;
+                            /**
+                             * Self-labels (content warnings) applied to the post.
+                             */
+                            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                            /**
+                             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                             */
+                            quoteUri?: string;
+                            /**
+                             * Target URL for the external link card
+                             */
+                            externalUrl?: string | null;
+                            /**
+                             * Card title for the external link card
+                             */
+                            externalTitle?: string | null;
+                            /**
+                             * Card description for the external link card
+                             */
+                            externalDescription?: string | null;
+                            /**
+                             * Alt text for the video embed.
+                             */
+                            videoAlt?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            text?: string | null;
+                            /**
+                             * IDs of images/videos uploaded to bundle.social.
+                             */
+                            uploadIds?: Array<(string)> | null;
+                            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                            /**
+                             * Language tag like 'en' or 'en-US'.
+                             */
+                            languageCode?: string | null;
+                            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                            callToActionUrl?: string | null;
+                            eventTitle?: string | null;
+                            eventStartDate?: string | null;
+                            eventEndDate?: string | null;
+                            offerCouponCode?: string | null;
+                            offerRedeemOnlineUrl?: string | null;
+                            offerTermsConditions?: string | null;
+                            /**
+                             * Alert type for ALERT posts.
+                             */
+                            alertType?: 'COVID_19' | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -7149,6 +8090,8 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         MASTODON?: string | null;
                         THREADS?: string | null;
+                        BLUESKY?: string | null;
+                        GOOGLE_BUSINESS?: string | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -7165,12 +8108,12 @@ export type $OpenApiTs = {
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -7180,7 +8123,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -7209,6 +8152,29 @@ export type $OpenApiTs = {
                         } | null;
                         THREADS?: {
                             id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            /**
+                             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                             */
+                            id?: string | null;
+                            /**
+                             * Public link to the post (searchUrl) when available.
+                             */
                             permalink?: string | null;
                         } | null;
                     } | null;
@@ -7478,6 +8444,62 @@ export type $OpenApiTs = {
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Extra hashtags (without #), up to 8.
+                             */
+                            tags?: Array<(string)> | null;
+                            /**
+                             * Self-labels (content warnings) applied to the post.
+                             */
+                            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                            /**
+                             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                             */
+                            quoteUri?: string;
+                            /**
+                             * Target URL for the external link card
+                             */
+                            externalUrl?: string | null;
+                            /**
+                             * Card title for the external link card
+                             */
+                            externalTitle?: string | null;
+                            /**
+                             * Card description for the external link card
+                             */
+                            externalDescription?: string | null;
+                            /**
+                             * Alt text for the video embed.
+                             */
+                            videoAlt?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            text?: string | null;
+                            /**
+                             * IDs of images/videos uploaded to bundle.social.
+                             */
+                            uploadIds?: Array<(string)> | null;
+                            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                            /**
+                             * Language tag like 'en' or 'en-US'.
+                             */
+                            languageCode?: string | null;
+                            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                            callToActionUrl?: string | null;
+                            eventTitle?: string | null;
+                            eventStartDate?: string | null;
+                            eventEndDate?: string | null;
+                            offerCouponCode?: string | null;
+                            offerRedeemOnlineUrl?: string | null;
+                            offerTermsConditions?: string | null;
+                            /**
+                             * Alert type for ALERT posts.
+                             */
+                            alertType?: 'COVID_19' | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -7493,6 +8515,8 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         MASTODON?: string | null;
                         THREADS?: string | null;
+                        BLUESKY?: string | null;
+                        GOOGLE_BUSINESS?: string | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -7509,12 +8533,12 @@ export type $OpenApiTs = {
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -7524,7 +8548,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -7553,6 +8577,29 @@ export type $OpenApiTs = {
                         } | null;
                         THREADS?: {
                             id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            /**
+                             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                             */
+                            id?: string | null;
+                            /**
+                             * Public link to the post (searchUrl) when available.
+                             */
                             permalink?: string | null;
                         } | null;
                     } | null;
@@ -7825,6 +8872,62 @@ export type $OpenApiTs = {
                                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                                 spoiler?: string | null;
                             } | null;
+                            BLUESKY?: {
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Extra hashtags (without #), up to 8.
+                                 */
+                                tags?: Array<(string)> | null;
+                                /**
+                                 * Self-labels (content warnings) applied to the post.
+                                 */
+                                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                                /**
+                                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                                 */
+                                quoteUri?: string;
+                                /**
+                                 * Target URL for the external link card
+                                 */
+                                externalUrl?: string | null;
+                                /**
+                                 * Card title for the external link card
+                                 */
+                                externalTitle?: string | null;
+                                /**
+                                 * Card description for the external link card
+                                 */
+                                externalDescription?: string | null;
+                                /**
+                                 * Alt text for the video embed.
+                                 */
+                                videoAlt?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                text?: string | null;
+                                /**
+                                 * IDs of images/videos uploaded to bundle.social.
+                                 */
+                                uploadIds?: Array<(string)> | null;
+                                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                                /**
+                                 * Language tag like 'en' or 'en-US'.
+                                 */
+                                languageCode?: string | null;
+                                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                                callToActionUrl?: string | null;
+                                eventTitle?: string | null;
+                                eventStartDate?: string | null;
+                                eventEndDate?: string | null;
+                                offerCouponCode?: string | null;
+                                offerRedeemOnlineUrl?: string | null;
+                                offerTermsConditions?: string | null;
+                                /**
+                                 * Alert type for ALERT posts.
+                                 */
+                                alertType?: 'COVID_19' | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -7840,6 +8943,8 @@ export type $OpenApiTs = {
                             YOUTUBE?: string | null;
                             MASTODON?: string | null;
                             THREADS?: string | null;
+                            BLUESKY?: string | null;
+                            GOOGLE_BUSINESS?: string | null;
                         } | null;
                         externalData?: {
                             TWITTER?: {
@@ -7856,12 +8961,12 @@ export type $OpenApiTs = {
                                 postId?: string | null;
                                 videoId?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 id?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -7871,7 +8976,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 activity?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             REDDIT?: {
                                 id?: string | null;
@@ -7900,6 +9005,29 @@ export type $OpenApiTs = {
                             } | null;
                             THREADS?: {
                                 id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                id?: string | null;
+                                uri?: string | null;
+                                /**
+                                 * Content ID of the created record
+                                 */
+                                cid?: string | null;
+                                permalink?: string | null;
+                                /**
+                                 * Author DID (owner of the record)
+                                 */
+                                did?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                /**
+                                 * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                                 */
+                                id?: string | null;
+                                /**
+                                 * Public link to the post (searchUrl) when available.
+                                 */
                                 permalink?: string | null;
                             } | null;
                         } | null;
@@ -7942,7 +9070,7 @@ export type $OpenApiTs = {
                             deletedAt?: string | null;
                             socialAccount: {
                                 id: string;
-                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                                 teamId: string;
                                 username?: string | null;
                                 displayName?: string | null;
@@ -8235,6 +9363,62 @@ export type $OpenApiTs = {
                             privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                             spoiler?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Extra hashtags (without #), up to 8.
+                             */
+                            tags?: Array<(string)> | null;
+                            /**
+                             * Self-labels (content warnings) applied to the post.
+                             */
+                            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                            /**
+                             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                             */
+                            quoteUri?: string;
+                            /**
+                             * Target URL for the external link card
+                             */
+                            externalUrl?: string | null;
+                            /**
+                             * Card title for the external link card
+                             */
+                            externalTitle?: string | null;
+                            /**
+                             * Card description for the external link card
+                             */
+                            externalDescription?: string | null;
+                            /**
+                             * Alt text for the video embed.
+                             */
+                            videoAlt?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            text?: string | null;
+                            /**
+                             * IDs of images/videos uploaded to bundle.social.
+                             */
+                            uploadIds?: Array<(string)> | null;
+                            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                            /**
+                             * Language tag like 'en' or 'en-US'.
+                             */
+                            languageCode?: string | null;
+                            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                            callToActionUrl?: string | null;
+                            eventTitle?: string | null;
+                            eventStartDate?: string | null;
+                            eventEndDate?: string | null;
+                            offerCouponCode?: string | null;
+                            offerRedeemOnlineUrl?: string | null;
+                            offerTermsConditions?: string | null;
+                            /**
+                             * Alert type for ALERT posts.
+                             */
+                            alertType?: 'COVID_19' | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -8250,6 +9434,8 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         MASTODON?: string | null;
                         THREADS?: string | null;
+                        BLUESKY?: string | null;
+                        GOOGLE_BUSINESS?: string | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -8266,12 +9452,12 @@ export type $OpenApiTs = {
                             postId?: string | null;
                             videoId?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             id?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -8281,7 +9467,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             activity?: string | null;
                             permalink?: string | null;
-                            thumbnail?: string;
+                            thumbnail?: string | null;
                         } | null;
                         REDDIT?: {
                             id?: string | null;
@@ -8310,6 +9496,29 @@ export type $OpenApiTs = {
                         } | null;
                         THREADS?: {
                             id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            /**
+                             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                             */
+                            id?: string | null;
+                            /**
+                             * Public link to the post (searchUrl) when available.
+                             */
                             permalink?: string | null;
                         } | null;
                     } | null;
@@ -8370,7 +9579,7 @@ export type $OpenApiTs = {
                 200: {
                     socialAccount: {
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
@@ -8679,6 +9888,62 @@ export type $OpenApiTs = {
                                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                                 spoiler?: string | null;
                             } | null;
+                            BLUESKY?: {
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Extra hashtags (without #), up to 8.
+                                 */
+                                tags?: Array<(string)> | null;
+                                /**
+                                 * Self-labels (content warnings) applied to the post.
+                                 */
+                                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                                /**
+                                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                                 */
+                                quoteUri?: string;
+                                /**
+                                 * Target URL for the external link card
+                                 */
+                                externalUrl?: string | null;
+                                /**
+                                 * Card title for the external link card
+                                 */
+                                externalTitle?: string | null;
+                                /**
+                                 * Card description for the external link card
+                                 */
+                                externalDescription?: string | null;
+                                /**
+                                 * Alt text for the video embed.
+                                 */
+                                videoAlt?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                text?: string | null;
+                                /**
+                                 * IDs of images/videos uploaded to bundle.social.
+                                 */
+                                uploadIds?: Array<(string)> | null;
+                                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                                /**
+                                 * Language tag like 'en' or 'en-US'.
+                                 */
+                                languageCode?: string | null;
+                                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                                callToActionUrl?: string | null;
+                                eventTitle?: string | null;
+                                eventStartDate?: string | null;
+                                eventEndDate?: string | null;
+                                offerCouponCode?: string | null;
+                                offerRedeemOnlineUrl?: string | null;
+                                offerTermsConditions?: string | null;
+                                /**
+                                 * Alert type for ALERT posts.
+                                 */
+                                alertType?: 'COVID_19' | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -8694,6 +9959,8 @@ export type $OpenApiTs = {
                             YOUTUBE?: string | null;
                             MASTODON?: string | null;
                             THREADS?: string | null;
+                            BLUESKY?: string | null;
+                            GOOGLE_BUSINESS?: string | null;
                         } | null;
                         externalData?: {
                             TWITTER?: {
@@ -8710,12 +9977,12 @@ export type $OpenApiTs = {
                                 postId?: string | null;
                                 videoId?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 id?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -8725,7 +9992,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 activity?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             REDDIT?: {
                                 id?: string | null;
@@ -8754,6 +10021,29 @@ export type $OpenApiTs = {
                             } | null;
                             THREADS?: {
                                 id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                id?: string | null;
+                                uri?: string | null;
+                                /**
+                                 * Content ID of the created record
+                                 */
+                                cid?: string | null;
+                                permalink?: string | null;
+                                /**
+                                 * Author DID (owner of the record)
+                                 */
+                                did?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                /**
+                                 * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                                 */
+                                id?: string | null;
+                                /**
+                                 * Public link to the post (searchUrl) when available.
+                                 */
                                 permalink?: string | null;
                             } | null;
                         } | null;
@@ -8832,7 +10122,7 @@ export type $OpenApiTs = {
                 200: {
                     socialAccount: {
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
@@ -9134,6 +10424,62 @@ export type $OpenApiTs = {
                                 privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
                                 spoiler?: string | null;
                             } | null;
+                            BLUESKY?: {
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Extra hashtags (without #), up to 8.
+                                 */
+                                tags?: Array<(string)> | null;
+                                /**
+                                 * Self-labels (content warnings) applied to the post.
+                                 */
+                                labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                                /**
+                                 * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                                 */
+                                quoteUri?: string;
+                                /**
+                                 * Target URL for the external link card
+                                 */
+                                externalUrl?: string | null;
+                                /**
+                                 * Card title for the external link card
+                                 */
+                                externalTitle?: string | null;
+                                /**
+                                 * Card description for the external link card
+                                 */
+                                externalDescription?: string | null;
+                                /**
+                                 * Alt text for the video embed.
+                                 */
+                                videoAlt?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                text?: string | null;
+                                /**
+                                 * IDs of images/videos uploaded to bundle.social.
+                                 */
+                                uploadIds?: Array<(string)> | null;
+                                topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                                /**
+                                 * Language tag like 'en' or 'en-US'.
+                                 */
+                                languageCode?: string | null;
+                                callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                                callToActionUrl?: string | null;
+                                eventTitle?: string | null;
+                                eventStartDate?: string | null;
+                                eventEndDate?: string | null;
+                                offerCouponCode?: string | null;
+                                offerRedeemOnlineUrl?: string | null;
+                                offerTermsConditions?: string | null;
+                                /**
+                                 * Alert type for ALERT posts.
+                                 */
+                                alertType?: 'COVID_19' | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -9149,6 +10495,8 @@ export type $OpenApiTs = {
                             YOUTUBE?: string | null;
                             MASTODON?: string | null;
                             THREADS?: string | null;
+                            BLUESKY?: string | null;
+                            GOOGLE_BUSINESS?: string | null;
                         } | null;
                         externalData?: {
                             TWITTER?: {
@@ -9165,12 +10513,12 @@ export type $OpenApiTs = {
                                 postId?: string | null;
                                 videoId?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 id?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -9180,7 +10528,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 activity?: string | null;
                                 permalink?: string | null;
-                                thumbnail?: string;
+                                thumbnail?: string | null;
                             } | null;
                             REDDIT?: {
                                 id?: string | null;
@@ -9209,6 +10557,29 @@ export type $OpenApiTs = {
                             } | null;
                             THREADS?: {
                                 id?: string | null;
+                                permalink?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                id?: string | null;
+                                uri?: string | null;
+                                /**
+                                 * Content ID of the created record
+                                 */
+                                cid?: string | null;
+                                permalink?: string | null;
+                                /**
+                                 * Author DID (owner of the record)
+                                 */
+                                did?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                /**
+                                 * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                                 */
+                                id?: string | null;
+                                /**
+                                 * Public link to the post (searchUrl) when available.
+                                 */
                                 permalink?: string | null;
                             } | null;
                         } | null;
@@ -9619,6 +10990,9 @@ export type $OpenApiTs = {
                         SLACK?: {
                             text?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -9632,6 +11006,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         DISCORD?: string | null;
                         SLACK?: string | null;
+                        BLUESKY?: string | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {
@@ -9674,6 +11049,19 @@ export type $OpenApiTs = {
                         SLACK?: {
                             id?: string | null;
                             permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
                         } | null;
                     } | null;
                     createdAt: string | null;
@@ -9769,6 +11157,9 @@ export type $OpenApiTs = {
                         SLACK?: {
                             text?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -9782,6 +11173,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         DISCORD?: string | null;
                         SLACK?: string | null;
+                        BLUESKY?: string | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {
@@ -9824,6 +11216,19 @@ export type $OpenApiTs = {
                         SLACK?: {
                             id?: string | null;
                             permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
                         } | null;
                     } | null;
                     createdAt: string | null;
@@ -9919,6 +11324,9 @@ export type $OpenApiTs = {
                         SLACK?: {
                             text?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -9932,6 +11340,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         DISCORD?: string | null;
                         SLACK?: string | null;
+                        BLUESKY?: string | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {
@@ -9974,6 +11383,19 @@ export type $OpenApiTs = {
                         SLACK?: {
                             id?: string | null;
                             permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
                         } | null;
                     } | null;
                     createdAt: string | null;
@@ -10072,6 +11494,9 @@ export type $OpenApiTs = {
                             SLACK?: {
                                 text?: string | null;
                             } | null;
+                            BLUESKY?: {
+                                text?: string | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -10085,6 +11510,7 @@ export type $OpenApiTs = {
                             THREADS?: string | null;
                             DISCORD?: string | null;
                             SLACK?: string | null;
+                            BLUESKY?: string | null;
                         } | null;
                         externalData?: {
                             FACEBOOK?: {
@@ -10127,6 +11553,19 @@ export type $OpenApiTs = {
                             SLACK?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                id?: string | null;
+                                uri?: string | null;
+                                /**
+                                 * Content ID of the created record
+                                 */
+                                cid?: string | null;
+                                permalink?: string | null;
+                                /**
+                                 * Author DID (owner of the record)
+                                 */
+                                did?: string | null;
                             } | null;
                         } | null;
                         createdAt: string | null;
@@ -10224,6 +11663,9 @@ export type $OpenApiTs = {
                         SLACK?: {
                             text?: string | null;
                         } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -10237,6 +11679,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         DISCORD?: string | null;
                         SLACK?: string | null;
+                        BLUESKY?: string | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {
@@ -10279,6 +11722,19 @@ export type $OpenApiTs = {
                         SLACK?: {
                             id?: string | null;
                             permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
                         } | null;
                     } | null;
                     createdAt: string | null;
@@ -11097,6 +12553,65 @@ export type $OpenApiTs = {
                  */
                 200: {
                     commentary: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/media': {
+        post: {
+            req: MiscGoogleBusinessAddMediaData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    googleUrl?: string;
+                    locationAssociation?: {
+                        category?: 'CATEGORY_UNSPECIFIED' | 'COVER' | 'PROFILE' | 'LOGO' | 'EXTERIOR' | 'INTERIOR' | 'PRODUCT' | 'AT_WORK' | 'FOOD_AND_DRINK' | 'MENU' | 'COMMON_AREA' | 'ROOMS' | 'TEAMS' | 'ADDITIONAL';
+                        priceListItemId?: string;
+                    };
+                    description?: string;
                 };
                 /**
                  * 400

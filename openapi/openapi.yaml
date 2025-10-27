@@ -163,6 +163,10 @@ paths:
                         type: number
                       MASTODON:
                         type: number
+                      BLUESKY:
+                        type: number
+                      GOOGLE_BUSINESS:
+                        type: number
                     nullable: true
                   apiAccess:
                     default: true
@@ -827,6 +831,10 @@ paths:
                             type: number
                           MASTODON:
                             type: number
+                          BLUESKY:
+                            type: number
+                          GOOGLE_BUSINESS:
+                            type: number
                         nullable: true
                       apiAccess:
                         default: true
@@ -954,6 +962,8 @@ paths:
                             - MASTODON
                             - DISCORD
                             - SLACK
+                            - BLUESKY
+                            - GOOGLE_BUSINESS
                         teamId:
                           type: string
                         username:
@@ -1628,6 +1638,10 @@ paths:
                                   type: number
                                 MASTODON:
                                   type: number
+                                BLUESKY:
+                                  type: number
+                                GOOGLE_BUSINESS:
+                                  type: number
                               nullable: true
                             apiAccess:
                               default: true
@@ -1755,6 +1769,8 @@ paths:
                                   - MASTODON
                                   - DISCORD
                                   - SLACK
+                                  - BLUESKY
+                                  - GOOGLE_BUSINESS
                               teamId:
                                 type: string
                               username:
@@ -2235,6 +2251,8 @@ paths:
                     - MASTODON
                     - DISCORD
                     - SLACK
+                    - BLUESKY
+                    - GOOGLE_BUSINESS
                 teamId:
                   type: string
                 redirectUrl:
@@ -2243,7 +2261,7 @@ paths:
                 serverUrl:
                   type: string
                   format: uri
-                  description: Mastodon only
+                  description: Mastodon or Bluesky only
                 instagramConnectionMethod:
                   type: string
                   enum:
@@ -2381,6 +2399,8 @@ paths:
                     - MASTODON
                     - DISCORD
                     - SLACK
+                    - BLUESKY
+                    - GOOGLE_BUSINESS
                 teamId:
                   type: string
               required:
@@ -2411,6 +2431,8 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
                   teamId:
                     type: string
                   username:
@@ -2602,6 +2624,7 @@ paths:
                     - INSTAGRAM
                     - LINKEDIN
                     - YOUTUBE
+                    - GOOGLE_BUSINESS
                 teamId:
                   type: string
                 channelId:
@@ -2635,6 +2658,8 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
                   teamId:
                     type: string
                   username:
@@ -2830,6 +2855,7 @@ paths:
                     - INSTAGRAM
                     - LINKEDIN
                     - YOUTUBE
+                    - GOOGLE_BUSINESS
                 teamId:
                   type: string
               required:
@@ -2860,6 +2886,8 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
                   teamId:
                     type: string
                   username:
@@ -3066,6 +3094,8 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
                 logoUrl:
                   type: string
                 userLogoUrl:
@@ -3235,6 +3265,8 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
                   minItems: 1
               required:
                 - fromTeamId
@@ -3267,6 +3299,8 @@ paths:
                         - MASTODON
                         - DISCORD
                         - SLACK
+                        - BLUESKY
+                        - GOOGLE_BUSINESS
                     teamId:
                       type: string
                     username:
@@ -5193,6 +5227,130 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tags:
+                            type: array
+                            items:
+                              type: string
+                            maxItems: 8
+                            nullable: true
+                            description: 'Extra hashtags (without #), up to 8.'
+                          labels:
+                            type: array
+                            items:
+                              type: string
+                              enum:
+                                - '!no-unauthenticated'
+                                - porn
+                                - sexual
+                                - nudity
+                                - graphic-media
+                            nullable: true
+                            description: >-
+                              Self-labels (content warnings) applied to the
+                              post.
+                          quoteUri:
+                            description: >-
+                              AT-URI of the post to quote (e.g.
+                              at://did.../app.bsky.feed.post/<rkey>).
+                            type: string
+                            maxLength: 512
+                            pattern: ^at:\/\/\S+$
+                          externalUrl:
+                            type: string
+                            format: uri
+                            nullable: true
+                            description: Target URL for the external link card
+                          externalTitle:
+                            type: string
+                            nullable: true
+                            description: Card title for the external link card
+                          externalDescription:
+                            type: string
+                            nullable: true
+                            description: Card description for the external link card
+                          videoAlt:
+                            type: string
+                            maxLength: 10000
+                            nullable: true
+                            description: Alt text for the video embed.
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                            description: IDs of images/videos uploaded to bundle.social.
+                          topicType:
+                            default: STANDARD
+                            type: string
+                            enum:
+                              - STANDARD
+                              - EVENT
+                              - OFFER
+                              - ALERT
+                            nullable: true
+                          languageCode:
+                            type: string
+                            nullable: true
+                            description: Language tag like 'en' or 'en-US'.
+                          callToActionType:
+                            type: string
+                            enum:
+                              - BOOK
+                              - ORDER
+                              - SHOP
+                              - LEARN_MORE
+                              - SIGN_UP
+                              - CALL
+                            nullable: true
+                          callToActionUrl:
+                            type: string
+                            nullable: true
+                          eventTitle:
+                            type: string
+                            nullable: true
+                          eventStartDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          eventEndDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          offerCouponCode:
+                            type: string
+                            nullable: true
+                          offerRedeemOnlineUrl:
+                            type: string
+                            nullable: true
+                          offerTermsConditions:
+                            type: string
+                            nullable: true
+                          alertType:
+                            default: COVID_19
+                            type: string
+                            enum:
+                              - COVID_19
+                            nullable: true
+                            description: Alert type for ALERT posts.
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -5233,6 +5391,12 @@ paths:
                         type: string
                         nullable: true
                       THREADS:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                      GOOGLE_BUSINESS:
                         type: string
                         nullable: true
                     nullable: true
@@ -5279,6 +5443,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -5291,6 +5456,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -5316,6 +5482,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       REDDIT:
                         type: object
@@ -5391,6 +5558,43 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Resource name of the Local Post, e.g.
+                              'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                          permalink:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Public link to the post (searchUrl) when
+                              available.
                         nullable: true
                     nullable: true
                   createdAt:
@@ -5546,6 +5750,8 @@ paths:
                                 - MASTODON
                                 - DISCORD
                                 - SLACK
+                                - BLUESKY
+                                - GOOGLE_BUSINESS
                             teamId:
                               type: string
                             username:
@@ -5775,6 +5981,8 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
                   minItems: 1
                 data:
                   type: object
@@ -6218,6 +6426,128 @@ paths:
                         spoiler:
                           type: string
                           nullable: true
+                      nullable: true
+                    BLUESKY:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                          maxItems: 8
+                          nullable: true
+                          description: 'Extra hashtags (without #), up to 8.'
+                        labels:
+                          type: array
+                          items:
+                            type: string
+                            enum:
+                              - '!no-unauthenticated'
+                              - porn
+                              - sexual
+                              - nudity
+                              - graphic-media
+                          nullable: true
+                          description: Self-labels (content warnings) applied to the post.
+                        quoteUri:
+                          description: >-
+                            AT-URI of the post to quote (e.g.
+                            at://did.../app.bsky.feed.post/<rkey>).
+                          type: string
+                          maxLength: 512
+                          pattern: ^at:\/\/\S+$
+                        externalUrl:
+                          type: string
+                          format: uri
+                          nullable: true
+                          description: Target URL for the external link card
+                        externalTitle:
+                          type: string
+                          nullable: true
+                          description: Card title for the external link card
+                        externalDescription:
+                          type: string
+                          nullable: true
+                          description: Card description for the external link card
+                        videoAlt:
+                          type: string
+                          maxLength: 10000
+                          nullable: true
+                          description: Alt text for the video embed.
+                      nullable: true
+                    GOOGLE_BUSINESS:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                          description: IDs of images/videos uploaded to bundle.social.
+                        topicType:
+                          default: STANDARD
+                          type: string
+                          enum:
+                            - STANDARD
+                            - EVENT
+                            - OFFER
+                            - ALERT
+                          nullable: true
+                        languageCode:
+                          type: string
+                          nullable: true
+                          description: Language tag like 'en' or 'en-US'.
+                        callToActionType:
+                          type: string
+                          enum:
+                            - BOOK
+                            - ORDER
+                            - SHOP
+                            - LEARN_MORE
+                            - SIGN_UP
+                            - CALL
+                          nullable: true
+                        callToActionUrl:
+                          type: string
+                          nullable: true
+                        eventTitle:
+                          type: string
+                          nullable: true
+                        eventStartDate:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        eventEndDate:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        offerCouponCode:
+                          type: string
+                          nullable: true
+                        offerRedeemOnlineUrl:
+                          type: string
+                          nullable: true
+                        offerTermsConditions:
+                          type: string
+                          nullable: true
+                        alertType:
+                          default: COVID_19
+                          type: string
+                          enum:
+                            - COVID_19
+                          nullable: true
+                          description: Alert type for ALERT posts.
                       nullable: true
       responses:
         '200':
@@ -6701,6 +7031,130 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tags:
+                            type: array
+                            items:
+                              type: string
+                            maxItems: 8
+                            nullable: true
+                            description: 'Extra hashtags (without #), up to 8.'
+                          labels:
+                            type: array
+                            items:
+                              type: string
+                              enum:
+                                - '!no-unauthenticated'
+                                - porn
+                                - sexual
+                                - nudity
+                                - graphic-media
+                            nullable: true
+                            description: >-
+                              Self-labels (content warnings) applied to the
+                              post.
+                          quoteUri:
+                            description: >-
+                              AT-URI of the post to quote (e.g.
+                              at://did.../app.bsky.feed.post/<rkey>).
+                            type: string
+                            maxLength: 512
+                            pattern: ^at:\/\/\S+$
+                          externalUrl:
+                            type: string
+                            format: uri
+                            nullable: true
+                            description: Target URL for the external link card
+                          externalTitle:
+                            type: string
+                            nullable: true
+                            description: Card title for the external link card
+                          externalDescription:
+                            type: string
+                            nullable: true
+                            description: Card description for the external link card
+                          videoAlt:
+                            type: string
+                            maxLength: 10000
+                            nullable: true
+                            description: Alt text for the video embed.
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                            description: IDs of images/videos uploaded to bundle.social.
+                          topicType:
+                            default: STANDARD
+                            type: string
+                            enum:
+                              - STANDARD
+                              - EVENT
+                              - OFFER
+                              - ALERT
+                            nullable: true
+                          languageCode:
+                            type: string
+                            nullable: true
+                            description: Language tag like 'en' or 'en-US'.
+                          callToActionType:
+                            type: string
+                            enum:
+                              - BOOK
+                              - ORDER
+                              - SHOP
+                              - LEARN_MORE
+                              - SIGN_UP
+                              - CALL
+                            nullable: true
+                          callToActionUrl:
+                            type: string
+                            nullable: true
+                          eventTitle:
+                            type: string
+                            nullable: true
+                          eventStartDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          eventEndDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          offerCouponCode:
+                            type: string
+                            nullable: true
+                          offerRedeemOnlineUrl:
+                            type: string
+                            nullable: true
+                          offerTermsConditions:
+                            type: string
+                            nullable: true
+                          alertType:
+                            default: COVID_19
+                            type: string
+                            enum:
+                              - COVID_19
+                            nullable: true
+                            description: Alert type for ALERT posts.
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -6741,6 +7195,12 @@ paths:
                         type: string
                         nullable: true
                       THREADS:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                      GOOGLE_BUSINESS:
                         type: string
                         nullable: true
                     nullable: true
@@ -6787,6 +7247,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -6799,6 +7260,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -6824,6 +7286,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       REDDIT:
                         type: object
@@ -6899,6 +7362,43 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Resource name of the Local Post, e.g.
+                              'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                          permalink:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Public link to the post (searchUrl) when
+                              available.
                         nullable: true
                     nullable: true
                   createdAt:
@@ -7497,6 +7997,130 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tags:
+                            type: array
+                            items:
+                              type: string
+                            maxItems: 8
+                            nullable: true
+                            description: 'Extra hashtags (without #), up to 8.'
+                          labels:
+                            type: array
+                            items:
+                              type: string
+                              enum:
+                                - '!no-unauthenticated'
+                                - porn
+                                - sexual
+                                - nudity
+                                - graphic-media
+                            nullable: true
+                            description: >-
+                              Self-labels (content warnings) applied to the
+                              post.
+                          quoteUri:
+                            description: >-
+                              AT-URI of the post to quote (e.g.
+                              at://did.../app.bsky.feed.post/<rkey>).
+                            type: string
+                            maxLength: 512
+                            pattern: ^at:\/\/\S+$
+                          externalUrl:
+                            type: string
+                            format: uri
+                            nullable: true
+                            description: Target URL for the external link card
+                          externalTitle:
+                            type: string
+                            nullable: true
+                            description: Card title for the external link card
+                          externalDescription:
+                            type: string
+                            nullable: true
+                            description: Card description for the external link card
+                          videoAlt:
+                            type: string
+                            maxLength: 10000
+                            nullable: true
+                            description: Alt text for the video embed.
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                            description: IDs of images/videos uploaded to bundle.social.
+                          topicType:
+                            default: STANDARD
+                            type: string
+                            enum:
+                              - STANDARD
+                              - EVENT
+                              - OFFER
+                              - ALERT
+                            nullable: true
+                          languageCode:
+                            type: string
+                            nullable: true
+                            description: Language tag like 'en' or 'en-US'.
+                          callToActionType:
+                            type: string
+                            enum:
+                              - BOOK
+                              - ORDER
+                              - SHOP
+                              - LEARN_MORE
+                              - SIGN_UP
+                              - CALL
+                            nullable: true
+                          callToActionUrl:
+                            type: string
+                            nullable: true
+                          eventTitle:
+                            type: string
+                            nullable: true
+                          eventStartDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          eventEndDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          offerCouponCode:
+                            type: string
+                            nullable: true
+                          offerRedeemOnlineUrl:
+                            type: string
+                            nullable: true
+                          offerTermsConditions:
+                            type: string
+                            nullable: true
+                          alertType:
+                            default: COVID_19
+                            type: string
+                            enum:
+                              - COVID_19
+                            nullable: true
+                            description: Alert type for ALERT posts.
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -7537,6 +8161,12 @@ paths:
                         type: string
                         nullable: true
                       THREADS:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                      GOOGLE_BUSINESS:
                         type: string
                         nullable: true
                     nullable: true
@@ -7583,6 +8213,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -7595,6 +8226,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -7620,6 +8252,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       REDDIT:
                         type: object
@@ -7695,6 +8328,43 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Resource name of the Local Post, e.g.
+                              'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                          permalink:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Public link to the post (searchUrl) when
+                              available.
                         nullable: true
                     nullable: true
                   createdAt:
@@ -7867,6 +8537,8 @@ paths:
                 - MASTODON
                 - DISCORD
                 - SLACK
+                - BLUESKY
+                - GOOGLE_BUSINESS
             nullable: true
         - name: offset
           in: query
@@ -8376,6 +9048,132 @@ paths:
                                   type: string
                                   nullable: true
                               nullable: true
+                            BLUESKY:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  maxItems: 8
+                                  nullable: true
+                                  description: 'Extra hashtags (without #), up to 8.'
+                                labels:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                      - '!no-unauthenticated'
+                                      - porn
+                                      - sexual
+                                      - nudity
+                                      - graphic-media
+                                  nullable: true
+                                  description: >-
+                                    Self-labels (content warnings) applied to
+                                    the post.
+                                quoteUri:
+                                  description: >-
+                                    AT-URI of the post to quote (e.g.
+                                    at://did.../app.bsky.feed.post/<rkey>).
+                                  type: string
+                                  maxLength: 512
+                                  pattern: ^at:\/\/\S+$
+                                externalUrl:
+                                  type: string
+                                  format: uri
+                                  nullable: true
+                                  description: Target URL for the external link card
+                                externalTitle:
+                                  type: string
+                                  nullable: true
+                                  description: Card title for the external link card
+                                externalDescription:
+                                  type: string
+                                  nullable: true
+                                  description: Card description for the external link card
+                                videoAlt:
+                                  type: string
+                                  maxLength: 10000
+                                  nullable: true
+                                  description: Alt text for the video embed.
+                              nullable: true
+                            GOOGLE_BUSINESS:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                  description: >-
+                                    IDs of images/videos uploaded to
+                                    bundle.social.
+                                topicType:
+                                  default: STANDARD
+                                  type: string
+                                  enum:
+                                    - STANDARD
+                                    - EVENT
+                                    - OFFER
+                                    - ALERT
+                                  nullable: true
+                                languageCode:
+                                  type: string
+                                  nullable: true
+                                  description: Language tag like 'en' or 'en-US'.
+                                callToActionType:
+                                  type: string
+                                  enum:
+                                    - BOOK
+                                    - ORDER
+                                    - SHOP
+                                    - LEARN_MORE
+                                    - SIGN_UP
+                                    - CALL
+                                  nullable: true
+                                callToActionUrl:
+                                  type: string
+                                  nullable: true
+                                eventTitle:
+                                  type: string
+                                  nullable: true
+                                eventStartDate:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                                eventEndDate:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                                offerCouponCode:
+                                  type: string
+                                  nullable: true
+                                offerRedeemOnlineUrl:
+                                  type: string
+                                  nullable: true
+                                offerTermsConditions:
+                                  type: string
+                                  nullable: true
+                                alertType:
+                                  default: COVID_19
+                                  type: string
+                                  enum:
+                                    - COVID_19
+                                  nullable: true
+                                  description: Alert type for ALERT posts.
+                              nullable: true
                         error:
                           type: string
                           nullable: true
@@ -8416,6 +9214,12 @@ paths:
                               type: string
                               nullable: true
                             THREADS:
+                              type: string
+                              nullable: true
+                            BLUESKY:
+                              type: string
+                              nullable: true
+                            GOOGLE_BUSINESS:
                               type: string
                               nullable: true
                           nullable: true
@@ -8462,6 +9266,7 @@ paths:
                                   nullable: true
                                 thumbnail:
                                   type: string
+                                  nullable: true
                               nullable: true
                             INSTAGRAM:
                               type: object
@@ -8474,6 +9279,7 @@ paths:
                                   nullable: true
                                 thumbnail:
                                   type: string
+                                  nullable: true
                               nullable: true
                             TIKTOK:
                               type: object
@@ -8499,6 +9305,7 @@ paths:
                                   nullable: true
                                 thumbnail:
                                   type: string
+                                  nullable: true
                               nullable: true
                             REDDIT:
                               type: object
@@ -8574,6 +9381,43 @@ paths:
                                 permalink:
                                   type: string
                                   nullable: true
+                              nullable: true
+                            BLUESKY:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  nullable: true
+                                uri:
+                                  type: string
+                                  nullable: true
+                                cid:
+                                  type: string
+                                  nullable: true
+                                  description: 'Content ID of the created record '
+                                permalink:
+                                  type: string
+                                  nullable: true
+                                did:
+                                  type: string
+                                  nullable: true
+                                  description: Author DID (owner of the record)
+                              nullable: true
+                            GOOGLE_BUSINESS:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    Resource name of the Local Post, e.g.
+                                    'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                                permalink:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    Public link to the post (searchUrl) when
+                                    available.
                               nullable: true
                           nullable: true
                         createdAt:
@@ -8729,6 +9573,8 @@ paths:
                                       - MASTODON
                                       - DISCORD
                                       - SLACK
+                                      - BLUESKY
+                                      - GOOGLE_BUSINESS
                                   teamId:
                                     type: string
                                   username:
@@ -8960,6 +9806,8 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
                   minItems: 1
                 data:
                   type: object
@@ -9403,6 +10251,128 @@ paths:
                         spoiler:
                           type: string
                           nullable: true
+                      nullable: true
+                    BLUESKY:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                          maxItems: 8
+                          nullable: true
+                          description: 'Extra hashtags (without #), up to 8.'
+                        labels:
+                          type: array
+                          items:
+                            type: string
+                            enum:
+                              - '!no-unauthenticated'
+                              - porn
+                              - sexual
+                              - nudity
+                              - graphic-media
+                          nullable: true
+                          description: Self-labels (content warnings) applied to the post.
+                        quoteUri:
+                          description: >-
+                            AT-URI of the post to quote (e.g.
+                            at://did.../app.bsky.feed.post/<rkey>).
+                          type: string
+                          maxLength: 512
+                          pattern: ^at:\/\/\S+$
+                        externalUrl:
+                          type: string
+                          format: uri
+                          nullable: true
+                          description: Target URL for the external link card
+                        externalTitle:
+                          type: string
+                          nullable: true
+                          description: Card title for the external link card
+                        externalDescription:
+                          type: string
+                          nullable: true
+                          description: Card description for the external link card
+                        videoAlt:
+                          type: string
+                          maxLength: 10000
+                          nullable: true
+                          description: Alt text for the video embed.
+                      nullable: true
+                    GOOGLE_BUSINESS:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                          description: IDs of images/videos uploaded to bundle.social.
+                        topicType:
+                          default: STANDARD
+                          type: string
+                          enum:
+                            - STANDARD
+                            - EVENT
+                            - OFFER
+                            - ALERT
+                          nullable: true
+                        languageCode:
+                          type: string
+                          nullable: true
+                          description: Language tag like 'en' or 'en-US'.
+                        callToActionType:
+                          type: string
+                          enum:
+                            - BOOK
+                            - ORDER
+                            - SHOP
+                            - LEARN_MORE
+                            - SIGN_UP
+                            - CALL
+                          nullable: true
+                        callToActionUrl:
+                          type: string
+                          nullable: true
+                        eventTitle:
+                          type: string
+                          nullable: true
+                        eventStartDate:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        eventEndDate:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        offerCouponCode:
+                          type: string
+                          nullable: true
+                        offerRedeemOnlineUrl:
+                          type: string
+                          nullable: true
+                        offerTermsConditions:
+                          type: string
+                          nullable: true
+                        alertType:
+                          default: COVID_19
+                          type: string
+                          enum:
+                            - COVID_19
+                          nullable: true
+                          description: Alert type for ALERT posts.
                       nullable: true
               required:
                 - teamId
@@ -9893,6 +10863,130 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          tags:
+                            type: array
+                            items:
+                              type: string
+                            maxItems: 8
+                            nullable: true
+                            description: 'Extra hashtags (without #), up to 8.'
+                          labels:
+                            type: array
+                            items:
+                              type: string
+                              enum:
+                                - '!no-unauthenticated'
+                                - porn
+                                - sexual
+                                - nudity
+                                - graphic-media
+                            nullable: true
+                            description: >-
+                              Self-labels (content warnings) applied to the
+                              post.
+                          quoteUri:
+                            description: >-
+                              AT-URI of the post to quote (e.g.
+                              at://did.../app.bsky.feed.post/<rkey>).
+                            type: string
+                            maxLength: 512
+                            pattern: ^at:\/\/\S+$
+                          externalUrl:
+                            type: string
+                            format: uri
+                            nullable: true
+                            description: Target URL for the external link card
+                          externalTitle:
+                            type: string
+                            nullable: true
+                            description: Card title for the external link card
+                          externalDescription:
+                            type: string
+                            nullable: true
+                            description: Card description for the external link card
+                          videoAlt:
+                            type: string
+                            maxLength: 10000
+                            nullable: true
+                            description: Alt text for the video embed.
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                            description: IDs of images/videos uploaded to bundle.social.
+                          topicType:
+                            default: STANDARD
+                            type: string
+                            enum:
+                              - STANDARD
+                              - EVENT
+                              - OFFER
+                              - ALERT
+                            nullable: true
+                          languageCode:
+                            type: string
+                            nullable: true
+                            description: Language tag like 'en' or 'en-US'.
+                          callToActionType:
+                            type: string
+                            enum:
+                              - BOOK
+                              - ORDER
+                              - SHOP
+                              - LEARN_MORE
+                              - SIGN_UP
+                              - CALL
+                            nullable: true
+                          callToActionUrl:
+                            type: string
+                            nullable: true
+                          eventTitle:
+                            type: string
+                            nullable: true
+                          eventStartDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          eventEndDate:
+                            type: string
+                            format: date-time
+                            nullable: true
+                          offerCouponCode:
+                            type: string
+                            nullable: true
+                          offerRedeemOnlineUrl:
+                            type: string
+                            nullable: true
+                          offerTermsConditions:
+                            type: string
+                            nullable: true
+                          alertType:
+                            default: COVID_19
+                            type: string
+                            enum:
+                              - COVID_19
+                            nullable: true
+                            description: Alert type for ALERT posts.
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -9933,6 +11027,12 @@ paths:
                         type: string
                         nullable: true
                       THREADS:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                      GOOGLE_BUSINESS:
                         type: string
                         nullable: true
                     nullable: true
@@ -9979,6 +11079,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -9991,6 +11092,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -10016,6 +11118,7 @@ paths:
                             nullable: true
                           thumbnail:
                             type: string
+                            nullable: true
                         nullable: true
                       REDDIT:
                         type: object
@@ -10091,6 +11194,43 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
+                        nullable: true
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Resource name of the Local Post, e.g.
+                              'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                          permalink:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Public link to the post (searchUrl) when
+                              available.
                         nullable: true
                     nullable: true
                   createdAt:
@@ -10223,6 +11363,8 @@ paths:
               - PINTEREST
               - MASTODON
               - LINKEDIN
+              - BLUESKY
+              - GOOGLE_BUSINESS
       operationId: analytics.getSocialAccountAnalytics
       responses:
         '200':
@@ -10252,6 +11394,8 @@ paths:
                           - MASTODON
                           - DISCORD
                           - SLACK
+                          - BLUESKY
+                          - GOOGLE_BUSINESS
                       teamId:
                         type: string
                       username:
@@ -10501,6 +11645,8 @@ paths:
               - PINTEREST
               - MASTODON
               - LINKEDIN
+              - BLUESKY
+              - GOOGLE_BUSINESS
       operationId: analytics.getPostAnalytics
       responses:
         '200':
@@ -10993,6 +12139,132 @@ paths:
                                 type: string
                                 nullable: true
                             nullable: true
+                          BLUESKY:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                                nullable: true
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              tags:
+                                type: array
+                                items:
+                                  type: string
+                                maxItems: 8
+                                nullable: true
+                                description: 'Extra hashtags (without #), up to 8.'
+                              labels:
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                    - '!no-unauthenticated'
+                                    - porn
+                                    - sexual
+                                    - nudity
+                                    - graphic-media
+                                nullable: true
+                                description: >-
+                                  Self-labels (content warnings) applied to the
+                                  post.
+                              quoteUri:
+                                description: >-
+                                  AT-URI of the post to quote (e.g.
+                                  at://did.../app.bsky.feed.post/<rkey>).
+                                type: string
+                                maxLength: 512
+                                pattern: ^at:\/\/\S+$
+                              externalUrl:
+                                type: string
+                                format: uri
+                                nullable: true
+                                description: Target URL for the external link card
+                              externalTitle:
+                                type: string
+                                nullable: true
+                                description: Card title for the external link card
+                              externalDescription:
+                                type: string
+                                nullable: true
+                                description: Card description for the external link card
+                              videoAlt:
+                                type: string
+                                maxLength: 10000
+                                nullable: true
+                                description: Alt text for the video embed.
+                            nullable: true
+                          GOOGLE_BUSINESS:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                                nullable: true
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                                description: >-
+                                  IDs of images/videos uploaded to
+                                  bundle.social.
+                              topicType:
+                                default: STANDARD
+                                type: string
+                                enum:
+                                  - STANDARD
+                                  - EVENT
+                                  - OFFER
+                                  - ALERT
+                                nullable: true
+                              languageCode:
+                                type: string
+                                nullable: true
+                                description: Language tag like 'en' or 'en-US'.
+                              callToActionType:
+                                type: string
+                                enum:
+                                  - BOOK
+                                  - ORDER
+                                  - SHOP
+                                  - LEARN_MORE
+                                  - SIGN_UP
+                                  - CALL
+                                nullable: true
+                              callToActionUrl:
+                                type: string
+                                nullable: true
+                              eventTitle:
+                                type: string
+                                nullable: true
+                              eventStartDate:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              eventEndDate:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              offerCouponCode:
+                                type: string
+                                nullable: true
+                              offerRedeemOnlineUrl:
+                                type: string
+                                nullable: true
+                              offerTermsConditions:
+                                type: string
+                                nullable: true
+                              alertType:
+                                default: COVID_19
+                                type: string
+                                enum:
+                                  - COVID_19
+                                nullable: true
+                                description: Alert type for ALERT posts.
+                            nullable: true
                       error:
                         type: string
                         nullable: true
@@ -11033,6 +12305,12 @@ paths:
                             type: string
                             nullable: true
                           THREADS:
+                            type: string
+                            nullable: true
+                          BLUESKY:
+                            type: string
+                            nullable: true
+                          GOOGLE_BUSINESS:
                             type: string
                             nullable: true
                         nullable: true
@@ -11079,6 +12357,7 @@ paths:
                                 nullable: true
                               thumbnail:
                                 type: string
+                                nullable: true
                             nullable: true
                           INSTAGRAM:
                             type: object
@@ -11091,6 +12370,7 @@ paths:
                                 nullable: true
                               thumbnail:
                                 type: string
+                                nullable: true
                             nullable: true
                           TIKTOK:
                             type: object
@@ -11116,6 +12396,7 @@ paths:
                                 nullable: true
                               thumbnail:
                                 type: string
+                                nullable: true
                             nullable: true
                           REDDIT:
                             type: object
@@ -11191,6 +12472,43 @@ paths:
                               permalink:
                                 type: string
                                 nullable: true
+                            nullable: true
+                          BLUESKY:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                nullable: true
+                              uri:
+                                type: string
+                                nullable: true
+                              cid:
+                                type: string
+                                nullable: true
+                                description: 'Content ID of the created record '
+                              permalink:
+                                type: string
+                                nullable: true
+                              did:
+                                type: string
+                                nullable: true
+                                description: Author DID (owner of the record)
+                            nullable: true
+                          GOOGLE_BUSINESS:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Resource name of the Local Post, e.g.
+                                  'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                              permalink:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Public link to the post (searchUrl) when
+                                  available.
                             nullable: true
                         nullable: true
                       createdAt:
@@ -11380,6 +12698,8 @@ paths:
               - PINTEREST
               - MASTODON
               - LINKEDIN
+              - BLUESKY
+              - GOOGLE_BUSINESS
       operationId: analytics.getSocialAccountAnalyticsRaw
       responses:
         '200':
@@ -11409,6 +12729,8 @@ paths:
                           - MASTODON
                           - DISCORD
                           - SLACK
+                          - BLUESKY
+                          - GOOGLE_BUSINESS
                       teamId:
                         type: string
                       username:
@@ -11636,6 +12958,8 @@ paths:
               - PINTEREST
               - MASTODON
               - LINKEDIN
+              - BLUESKY
+              - GOOGLE_BUSINESS
       operationId: analytics.getPostAnalyticsRaw
       responses:
         '200':
@@ -12128,6 +13452,132 @@ paths:
                                 type: string
                                 nullable: true
                             nullable: true
+                          BLUESKY:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                                nullable: true
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              tags:
+                                type: array
+                                items:
+                                  type: string
+                                maxItems: 8
+                                nullable: true
+                                description: 'Extra hashtags (without #), up to 8.'
+                              labels:
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                    - '!no-unauthenticated'
+                                    - porn
+                                    - sexual
+                                    - nudity
+                                    - graphic-media
+                                nullable: true
+                                description: >-
+                                  Self-labels (content warnings) applied to the
+                                  post.
+                              quoteUri:
+                                description: >-
+                                  AT-URI of the post to quote (e.g.
+                                  at://did.../app.bsky.feed.post/<rkey>).
+                                type: string
+                                maxLength: 512
+                                pattern: ^at:\/\/\S+$
+                              externalUrl:
+                                type: string
+                                format: uri
+                                nullable: true
+                                description: Target URL for the external link card
+                              externalTitle:
+                                type: string
+                                nullable: true
+                                description: Card title for the external link card
+                              externalDescription:
+                                type: string
+                                nullable: true
+                                description: Card description for the external link card
+                              videoAlt:
+                                type: string
+                                maxLength: 10000
+                                nullable: true
+                                description: Alt text for the video embed.
+                            nullable: true
+                          GOOGLE_BUSINESS:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                                nullable: true
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                                description: >-
+                                  IDs of images/videos uploaded to
+                                  bundle.social.
+                              topicType:
+                                default: STANDARD
+                                type: string
+                                enum:
+                                  - STANDARD
+                                  - EVENT
+                                  - OFFER
+                                  - ALERT
+                                nullable: true
+                              languageCode:
+                                type: string
+                                nullable: true
+                                description: Language tag like 'en' or 'en-US'.
+                              callToActionType:
+                                type: string
+                                enum:
+                                  - BOOK
+                                  - ORDER
+                                  - SHOP
+                                  - LEARN_MORE
+                                  - SIGN_UP
+                                  - CALL
+                                nullable: true
+                              callToActionUrl:
+                                type: string
+                                nullable: true
+                              eventTitle:
+                                type: string
+                                nullable: true
+                              eventStartDate:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              eventEndDate:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              offerCouponCode:
+                                type: string
+                                nullable: true
+                              offerRedeemOnlineUrl:
+                                type: string
+                                nullable: true
+                              offerTermsConditions:
+                                type: string
+                                nullable: true
+                              alertType:
+                                default: COVID_19
+                                type: string
+                                enum:
+                                  - COVID_19
+                                nullable: true
+                                description: Alert type for ALERT posts.
+                            nullable: true
                       error:
                         type: string
                         nullable: true
@@ -12168,6 +13618,12 @@ paths:
                             type: string
                             nullable: true
                           THREADS:
+                            type: string
+                            nullable: true
+                          BLUESKY:
+                            type: string
+                            nullable: true
+                          GOOGLE_BUSINESS:
                             type: string
                             nullable: true
                         nullable: true
@@ -12214,6 +13670,7 @@ paths:
                                 nullable: true
                               thumbnail:
                                 type: string
+                                nullable: true
                             nullable: true
                           INSTAGRAM:
                             type: object
@@ -12226,6 +13683,7 @@ paths:
                                 nullable: true
                               thumbnail:
                                 type: string
+                                nullable: true
                             nullable: true
                           TIKTOK:
                             type: object
@@ -12251,6 +13709,7 @@ paths:
                                 nullable: true
                               thumbnail:
                                 type: string
+                                nullable: true
                             nullable: true
                           REDDIT:
                             type: object
@@ -12326,6 +13785,43 @@ paths:
                               permalink:
                                 type: string
                                 nullable: true
+                            nullable: true
+                          BLUESKY:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                nullable: true
+                              uri:
+                                type: string
+                                nullable: true
+                              cid:
+                                type: string
+                                nullable: true
+                                description: 'Content ID of the created record '
+                              permalink:
+                                type: string
+                                nullable: true
+                              did:
+                                type: string
+                                nullable: true
+                                description: Author DID (owner of the record)
+                            nullable: true
+                          GOOGLE_BUSINESS:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Resource name of the Local Post, e.g.
+                                  'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                              permalink:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Public link to the post (searchUrl) when
+                                  available.
                             nullable: true
                         nullable: true
                       createdAt:
@@ -13184,6 +14680,13 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -13218,6 +14721,9 @@ paths:
                         type: string
                         nullable: true
                       SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
                         type: string
                         nullable: true
                     nullable: true
@@ -13326,6 +14832,27 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
                         nullable: true
                     nullable: true
                   createdAt:
@@ -13480,6 +15007,7 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
                   minItems: 1
                 data:
                   type: object
@@ -13548,6 +15076,13 @@ paths:
                           nullable: true
                       nullable: true
                     SLACK:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                      nullable: true
+                    BLUESKY:
                       type: object
                       properties:
                         text:
@@ -13666,6 +15201,13 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -13700,6 +15242,9 @@ paths:
                         type: string
                         nullable: true
                       SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
                         type: string
                         nullable: true
                     nullable: true
@@ -13808,6 +15353,27 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
                         nullable: true
                     nullable: true
                   createdAt:
@@ -14037,6 +15603,13 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -14071,6 +15644,9 @@ paths:
                         type: string
                         nullable: true
                       SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
                         type: string
                         nullable: true
                     nullable: true
@@ -14179,6 +15755,27 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
                         nullable: true
                     nullable: true
                   createdAt:
@@ -14347,6 +15944,7 @@ paths:
                 - MASTODON
                 - DISCORD
                 - SLACK
+                - BLUESKY
         - name: offset
           in: query
           schema:
@@ -14477,6 +16075,13 @@ paths:
                                   type: string
                                   nullable: true
                               nullable: true
+                            BLUESKY:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  nullable: true
+                              nullable: true
                         error:
                           type: string
                           nullable: true
@@ -14511,6 +16116,9 @@ paths:
                               type: string
                               nullable: true
                             SLACK:
+                              type: string
+                              nullable: true
+                            BLUESKY:
                               type: string
                               nullable: true
                           nullable: true
@@ -14619,6 +16227,27 @@ paths:
                                 permalink:
                                   type: string
                                   nullable: true
+                              nullable: true
+                            BLUESKY:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  nullable: true
+                                uri:
+                                  type: string
+                                  nullable: true
+                                cid:
+                                  type: string
+                                  nullable: true
+                                  description: 'Content ID of the created record '
+                                permalink:
+                                  type: string
+                                  nullable: true
+                                did:
+                                  type: string
+                                  nullable: true
+                                  description: Author DID (owner of the record)
                               nullable: true
                           nullable: true
                         createdAt:
@@ -14775,6 +16404,7 @@ paths:
                       - MASTODON
                       - DISCORD
                       - SLACK
+                      - BLUESKY
                   minItems: 1
                 data:
                   type: object
@@ -14843,6 +16473,13 @@ paths:
                           nullable: true
                       nullable: true
                     SLACK:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                      nullable: true
+                    BLUESKY:
                       type: object
                       properties:
                         text:
@@ -14969,6 +16606,13 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -15003,6 +16647,9 @@ paths:
                         type: string
                         nullable: true
                       SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
                         type: string
                         nullable: true
                     nullable: true
@@ -15111,6 +16758,27 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                        nullable: true
+                      BLUESKY:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          uri:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                            description: 'Content ID of the created record '
+                          permalink:
+                            type: string
+                            nullable: true
+                          did:
+                            type: string
+                            nullable: true
+                            description: Author DID (owner of the record)
                         nullable: true
                     nullable: true
                   createdAt:
@@ -16911,6 +18579,169 @@ paths:
                     type: string
                 required:
                   - commentary
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/media:
+    post:
+      summary: Add a media item (photo/video) using uploadId and category
+      tags:
+        - misc
+        - google_business
+      parameters: []
+      operationId: misc.google_business.addMedia
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                uploadId:
+                  type: string
+                category:
+                  default: ADDITIONAL
+                  type: string
+                  enum:
+                    - CATEGORY_UNSPECIFIED
+                    - COVER
+                    - PROFILE
+                    - LOGO
+                    - EXTERIOR
+                    - INTERIOR
+                    - PRODUCT
+                    - AT_WORK
+                    - FOOD_AND_DRINK
+                    - MENU
+                    - COMMON_AREA
+                    - ROOMS
+                    - TEAMS
+                    - ADDITIONAL
+                description:
+                  type: string
+                  maxLength: 2000
+              required:
+                - teamId
+                - uploadId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  googleUrl:
+                    type: string
+                    format: uri
+                  locationAssociation:
+                    type: object
+                    properties:
+                      category:
+                        type: string
+                        enum:
+                          - CATEGORY_UNSPECIFIED
+                          - COVER
+                          - PROFILE
+                          - LOGO
+                          - EXTERIOR
+                          - INTERIOR
+                          - PRODUCT
+                          - AT_WORK
+                          - FOOD_AND_DRINK
+                          - MENU
+                          - COMMON_AREA
+                          - ROOMS
+                          - TEAMS
+                          - ADDITIONAL
+                      priceListItemId:
+                        type: string
+                  description:
+                    type: string
         '400':
           description: '400'
           content:

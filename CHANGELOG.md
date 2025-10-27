@@ -1,3 +1,10 @@
+# [2.25.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.24.0...v2.25.0) (2025-10-27)
+
+
+### Features
+
+* google business profile and bluesky integrations ([a27b377](https://github.com/bundleglobal/bundlesocial-node/commit/a27b3779eb5eef55dcfc553b48adf9dc3a112f10))
+
 # [2.24.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.23.0...v2.24.0) (2025-10-23)
 
 

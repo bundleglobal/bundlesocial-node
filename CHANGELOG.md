@@ -1,3 +1,10 @@
+# [2.26.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.25.0...v2.26.0) (2025-10-30)
+
+
+### Features
+
+* maxSocialAccountsConnected and additional languages support ([b22f792](https://github.com/bundleglobal/bundlesocial-node/commit/b22f7921f28cac3ed113f791e50c614f55d3ea30))
+
 # [2.25.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.24.0...v2.25.0) (2025-10-27)
 
 

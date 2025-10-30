@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetProfileAnalyticsResponse, AnalyticsGetProfilePostsResponse, AnalyticsGetProfilePostData, AnalyticsGetProfilePostResponse, AnalyticsGetProfilePostByPostIdData, AnalyticsGetProfilePostByPostIdResponse, AnalyticsGetRawSocialAccountAnalyticsResponse, AnalyticsGetRawPostsAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -782,142 +782,6 @@ export class AnalyticsService {
         });
     }
     
-    /**
-     * @deprecated
-     * Get Profile Analytics
-     * @returns string 200
-     * @throws ApiError
-     */
-    public analyticsGetProfileAnalytics(): CancelablePromise<AnalyticsGetProfileAnalyticsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/analytics/profile',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * @deprecated
-     * Get Profile Post List - profile posts are basically external posts
-     * @returns string 200
-     * @throws ApiError
-     */
-    public analyticsGetProfilePosts(): CancelablePromise<AnalyticsGetProfilePostsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/analytics/profile-post',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * @deprecated
-     * Get Profile Post By Profile Post ID - profile posts are basically external posts
-     * @param data The data for the request.
-     * @param data.id
-     * @returns string 200
-     * @throws ApiError
-     */
-    public analyticsGetProfilePost(data: AnalyticsGetProfilePostData): CancelablePromise<AnalyticsGetProfilePostResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/analytics/profile-post/{id}',
-            path: {
-                id: data.id
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * @deprecated
-     * Get Profile Post By Post ID
-     * @param data The data for the request.
-     * @param data.id
-     * @returns string 200
-     * @throws ApiError
-     */
-    public analyticsGetProfilePostByPostId(data: AnalyticsGetProfilePostByPostIdData): CancelablePromise<AnalyticsGetProfilePostByPostIdResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/analytics/profile-post/post/{id}',
-            path: {
-                id: data.id
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * @deprecated
-     * Get Raw Profile Analytics In Last 24 Hours
-     * @returns string 200
-     * @throws ApiError
-     */
-    public analyticsGetRawSocialAccountAnalytics(): CancelablePromise<AnalyticsGetRawSocialAccountAnalyticsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/analytics/raw-profile',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * @deprecated
-     * Get Raw Post Analytics In Last 24 Hours
-     * @returns string 200
-     * @throws ApiError
-     */
-    public analyticsGetRawPostsAnalytics(): CancelablePromise<AnalyticsGetRawPostsAnalyticsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/analytics/raw-post',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
 }
 
 export class CommentService {
@@ -1282,7 +1146,7 @@ export class MiscService {
     }
     
     /**
-     * Get LinkedIn mentionable tags (people & organizations)
+     * Get Linkedin mentionable tags (people & organizations)
      * @param data The data for the request.
      * @param data.teamId
      * @param data.q
@@ -1311,8 +1175,8 @@ export class MiscService {
     }
     
     /**
-     * Build LinkedIn text and insert mentions at /#tag\b/gi.
-     * If `#tag` (case-insensitive) is present, mentions replace it; otherwise they’re appended to the end.
+     * Build Linkedin text, insert mentions at tag placeholders.
+     * If tag already exists (case insensitive), mentions replace it; otherwise they’re appended to the end.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1580,7 +1444,7 @@ export class LinkedinService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
     
     /**
-     * Get LinkedIn mentionable tags (people & organizations)
+     * Get Linkedin mentionable tags (people & organizations)
      * @param data The data for the request.
      * @param data.teamId
      * @param data.q
@@ -1609,8 +1473,8 @@ export class LinkedinService {
     }
     
     /**
-     * Build LinkedIn text and insert mentions at /#tag\b/gi.
-     * If `#tag` (case-insensitive) is present, mentions replace it; otherwise they’re appended to the end.
+     * Build Linkedin text, insert mentions at tag placeholders.
+     * If tag already exists (case insensitive), mentions replace it; otherwise they’re appended to the end.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200

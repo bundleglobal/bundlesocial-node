@@ -1,3 +1,10 @@
+# [2.27.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.26.0...v2.27.0) (2025-11-12)
+
+
+### Features
+
+* verbose errors, analytics interval, posting retries ([5cd2a57](https://github.com/bundleglobal/bundlesocial-node/commit/5cd2a57c1e7ce0c88c5f6b93865a27862c3ae846))
+
 # [2.26.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.25.0...v2.26.0) (2025-10-30)
 
 

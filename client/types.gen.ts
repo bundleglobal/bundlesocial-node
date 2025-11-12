@@ -31,6 +31,9 @@ export type OrganizationGetOrganizationResponse = {
     apiAccess?: boolean;
     analyticsDisabled?: boolean;
     analyticsPostsDisabled?: boolean;
+    uploadsCompressionEnabled?: boolean;
+    analyticsInterval?: number | null;
+    analyticsPostsInterval?: number | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -204,6 +207,9 @@ export type TeamGetTeamResponse = {
         apiAccess?: boolean;
         analyticsDisabled?: boolean;
         analyticsPostsDisabled?: boolean;
+        uploadsCompressionEnabled?: boolean;
+        analyticsInterval?: number | null;
+        analyticsPostsInterval?: number | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -376,6 +382,9 @@ export type TeamGetListResponse = {
             apiAccess?: boolean;
             analyticsDisabled?: boolean;
             analyticsPostsDisabled?: boolean;
+            uploadsCompressionEnabled?: boolean;
+            analyticsInterval?: number | null;
+            analyticsPostsInterval?: number | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -723,7 +732,6 @@ export type UploadGetListResponse = Array<{
     id: string;
     teamId?: string | null;
     organizationId?: string | null;
-    expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
@@ -762,7 +770,6 @@ export type UploadCreateResponse = {
     id: string;
     teamId?: string | null;
     organizationId?: string | null;
-    expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
@@ -793,7 +800,6 @@ export type UploadDeleteManyResponse = Array<{
     id: string;
     teamId?: string | null;
     organizationId?: string | null;
-    expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
@@ -819,7 +825,6 @@ export type UploadGetResponse = {
     id: string;
     teamId?: string | null;
     organizationId?: string | null;
-    expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
@@ -852,7 +857,6 @@ export type UploadDeleteResponse = {
     id: string;
     teamId?: string | null;
     organizationId?: string | null;
-    expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
@@ -900,7 +904,6 @@ export type UploadFinalizeLargeUploadResponse = {
     id: string;
     teamId?: string | null;
     organizationId?: string | null;
-    expiresAt?: string | null;
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
@@ -929,7 +932,7 @@ export type PostGetResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1210,6 +1213,120 @@ export type PostGetResponse = {
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
     } | null;
+    errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        PINTEREST?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+    } | null;
     externalData?: {
         TWITTER?: {
             id?: string | null;
@@ -1234,6 +1351,7 @@ export type PostGetResponse = {
         } | null;
         TIKTOK?: {
             id?: string | null;
+            shareId?: string | null;
             permalink?: string | null;
         } | null;
         LINKEDIN?: {
@@ -1308,7 +1426,6 @@ export type PostGetResponse = {
             id: string;
             teamId?: string | null;
             organizationId?: string | null;
-            expiresAt?: string | null;
             iconUrl?: string | null;
             thumbnailUrl?: string | null;
             url?: string | null;
@@ -1647,7 +1764,7 @@ export type PostUpdateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -1928,6 +2045,120 @@ export type PostUpdateResponse = {
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
     } | null;
+    errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        PINTEREST?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+    } | null;
     externalData?: {
         TWITTER?: {
             id?: string | null;
@@ -1952,6 +2183,7 @@ export type PostUpdateResponse = {
         } | null;
         TIKTOK?: {
             id?: string | null;
+            shareId?: string | null;
             permalink?: string | null;
         } | null;
         LINKEDIN?: {
@@ -2029,7 +2261,7 @@ export type PostDeleteResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -2310,6 +2542,120 @@ export type PostDeleteResponse = {
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
     } | null;
+    errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        PINTEREST?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+    } | null;
     externalData?: {
         TWITTER?: {
             id?: string | null;
@@ -2334,6 +2680,7 @@ export type PostDeleteResponse = {
         } | null;
         TIKTOK?: {
             id?: string | null;
+            shareId?: string | null;
             permalink?: string | null;
         } | null;
         LINKEDIN?: {
@@ -2407,7 +2754,7 @@ export type PostGetListData = {
     orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
     platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')> | null;
     q?: string | null;
-    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | null;
+    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING' | null;
     teamId: string;
 };
 
@@ -2419,7 +2766,7 @@ export type PostGetListResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -2700,6 +3047,120 @@ export type PostGetListResponse = {
             BLUESKY?: string | null;
             GOOGLE_BUSINESS?: string | null;
         } | null;
+        errorsVerbose?: {
+            TWITTER?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            PINTEREST?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            FACEBOOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            TIKTOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            LINKEDIN?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            REDDIT?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            DISCORD?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            SLACK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            YOUTUBE?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            MASTODON?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            THREADS?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            BLUESKY?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+        } | null;
         externalData?: {
             TWITTER?: {
                 id?: string | null;
@@ -2724,6 +3185,7 @@ export type PostGetListResponse = {
             } | null;
             TIKTOK?: {
                 id?: string | null;
+                shareId?: string | null;
                 permalink?: string | null;
             } | null;
             LINKEDIN?: {
@@ -2798,7 +3260,6 @@ export type PostGetListResponse = {
                 id: string;
                 teamId?: string | null;
                 organizationId?: string | null;
-                expiresAt?: string | null;
                 iconUrl?: string | null;
                 thumbnailUrl?: string | null;
                 url?: string | null;
@@ -3139,7 +3600,7 @@ export type PostCreateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
     data: {
         TWITTER?: {
             text?: string | null;
@@ -3420,6 +3881,120 @@ export type PostCreateResponse = {
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
     } | null;
+    errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        PINTEREST?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+    } | null;
     externalData?: {
         TWITTER?: {
             id?: string | null;
@@ -3444,6 +4019,504 @@ export type PostCreateResponse = {
         } | null;
         TIKTOK?: {
             id?: string | null;
+            shareId?: string | null;
+            permalink?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            activity?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+            subreddit_name?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+            channelId?: string | null;
+        } | null;
+        SLACK?: {
+            id?: string | null;
+            permalink?: string | null;
+            channelId?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        MASTODON?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            /**
+             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+             */
+            id?: string | null;
+            /**
+             * Public link to the post (searchUrl) when available.
+             */
+            permalink?: string | null;
+        } | null;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type PostRetryData = {
+    id: string;
+};
+
+export type PostRetryResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    title: string;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+    data: {
+        TWITTER?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
+        PINTEREST?: {
+            text?: string | null;
+            description?: string | null;
+            boardName: string;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * The URL to which the Pin will link to.
+             */
+            link?: string | null;
+            /**
+             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+             */
+            altText?: string | null;
+            /**
+             * A note about the Pin. This is not visible to the public.
+             */
+            note?: string | null;
+            /**
+             * The dominant color of the image. This is used to display the image before it's loaded.
+             */
+            dominantColor?: string | null;
+        } | null;
+        FACEBOOK?: {
+            type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the post will link to. Only available for type POST.
+             */
+            link?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+             */
+            nativeScheduleTime?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+             */
+            shareToFeed?: boolean | null;
+            collaborators?: Array<(string)> | null;
+            tagged?: Array<{
+                username: string;
+                x: number;
+                y: number;
+            }> | null;
+        } | null;
+        THREADS?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+        } | null;
+        TIKTOK?: {
+            type?: 'VIDEO' | 'IMAGE';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            /**
+             * Set to true if the video is a paid partnership to promote a third-party business.
+             */
+            isBrandContent?: boolean | null;
+            /**
+             * Set to true if this video is promoting the creator's own business.
+             */
+            isOrganicBrandContent?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make comments on this post.
+             */
+            disableComments?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+             */
+            disableDuet?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+             */
+            disableStitch?: boolean | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * Set to true if this video is AI generated.
+             */
+            isAiGenerated?: boolean | null;
+        } | null;
+        LINKEDIN?: {
+            text: string;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+            /**
+             * Set to true if the post shouldn't be displayed in the main feed.
+             */
+            hideFromFeed?: boolean | null;
+            /**
+             * Set to true if the post is not allowed to be reshared.
+             */
+            disableReshare?: boolean | null;
+        } | null;
+        YOUTUBE?: {
+            type?: 'VIDEO' | 'SHORT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * Set to true if the video is made for kids.
+             */
+            madeForKids?: boolean | null;
+            /**
+             * Set to true if video contains AI generated content
+             */
+            containsSyntheticMedia?: boolean | null;
+            /**
+             * Set to true if video has paid product placement
+             */
+            hasPaidProductPlacement?: boolean | null;
+        } | null;
+        REDDIT?: {
+            /**
+             * Subreddit name. Example: r/subredditName or u/username
+             */
+            sr: string;
+            text: string;
+            description?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the post will link to.
+             */
+            link?: string | null;
+            /**
+             * Set to true if the post is NSFW.
+             */
+            nsfw?: boolean | null;
+        } | null;
+        DISCORD?: {
+            channelId: string;
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
+            username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
+            avatarUrl?: string | null;
+        } | null;
+        SLACK?: {
+            channelId: string;
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
+            username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
+            avatarUrl?: string | null;
+        } | null;
+        MASTODON?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+            spoiler?: string | null;
+        } | null;
+        BLUESKY?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Extra hashtags (without #), up to 8.
+             */
+            tags?: Array<(string)> | null;
+            /**
+             * Self-labels (content warnings) applied to the post.
+             */
+            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+            /**
+             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+             */
+            quoteUri?: string;
+            /**
+             * Target URL for the external link card
+             */
+            externalUrl?: string | null;
+            /**
+             * Card title for the external link card
+             */
+            externalTitle?: string | null;
+            /**
+             * Card description for the external link card
+             */
+            externalDescription?: string | null;
+            /**
+             * Alt text for the video embed.
+             */
+            videoAlt?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            text?: string | null;
+            /**
+             * IDs of images/videos uploaded to bundle.social.
+             */
+            uploadIds?: Array<(string)> | null;
+            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+            /**
+             * Language tag like 'en' or 'en-US'.
+             */
+            languageCode?: string | null;
+            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+            callToActionUrl?: string | null;
+            eventTitle?: string | null;
+            eventStartDate?: string | null;
+            eventEndDate?: string | null;
+            offerCouponCode?: string | null;
+            offerRedeemOnlineUrl?: string | null;
+            offerTermsConditions?: string | null;
+            /**
+             * Alert type for ALERT posts.
+             */
+            alertType?: 'COVID_19' | null;
+        } | null;
+    };
+    error?: string | null;
+    errors?: {
+        TWITTER?: string | null;
+        PINTEREST?: string | null;
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        YOUTUBE?: string | null;
+        MASTODON?: string | null;
+        THREADS?: string | null;
+        BLUESKY?: string | null;
+        GOOGLE_BUSINESS?: string | null;
+    } | null;
+    errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        PINTEREST?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+    } | null;
+    externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        PINTEREST?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        FACEBOOK?: {
+            id?: string | null;
+            postId?: string | null;
+            videoId?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            shareId?: string | null;
             permalink?: string | null;
         } | null;
         LINKEDIN?: {
@@ -3557,6 +4630,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
         postCount: number;
         followers: number;
         following: number;
+        forced: boolean;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -3576,7 +4650,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -3857,6 +4931,120 @@ export type AnalyticsGetPostAnalyticsResponse = {
             BLUESKY?: string | null;
             GOOGLE_BUSINESS?: string | null;
         } | null;
+        errorsVerbose?: {
+            TWITTER?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            PINTEREST?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            FACEBOOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            TIKTOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            LINKEDIN?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            REDDIT?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            DISCORD?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            SLACK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            YOUTUBE?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            MASTODON?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            THREADS?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            BLUESKY?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+        } | null;
         externalData?: {
             TWITTER?: {
                 id?: string | null;
@@ -3881,6 +5069,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
             } | null;
             TIKTOK?: {
                 id?: string | null;
+                shareId?: string | null;
                 permalink?: string | null;
             } | null;
             LINKEDIN?: {
@@ -3959,6 +5148,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
         shares: number;
         saves: number;
         raw?: unknown;
+        forced: boolean;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -4005,6 +5195,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
         socialAccountId?: string | null;
         analyticsId?: string | null;
         raw?: unknown;
+        forced: boolean;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -4024,7 +5215,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -4305,6 +5496,120 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             BLUESKY?: string | null;
             GOOGLE_BUSINESS?: string | null;
         } | null;
+        errorsVerbose?: {
+            TWITTER?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            PINTEREST?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            FACEBOOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            TIKTOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            LINKEDIN?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            REDDIT?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            DISCORD?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            SLACK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            YOUTUBE?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            MASTODON?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            THREADS?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            BLUESKY?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            GOOGLE_BUSINESS?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+        } | null;
         externalData?: {
             TWITTER?: {
                 id?: string | null;
@@ -4329,6 +5634,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             } | null;
             TIKTOK?: {
                 id?: string | null;
+                shareId?: string | null;
                 permalink?: string | null;
             } | null;
             LINKEDIN?: {
@@ -4399,10 +5705,68 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
         profilePostId?: string | null;
         analyticsId?: string | null;
         raw?: unknown;
+        forced: boolean;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
     }>;
+};
+
+export type AnalyticsForceSocialAccountAnalyticsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    };
+};
+
+export type AnalyticsForceSocialAccountAnalyticsResponse = {
+    id: string;
+    socialAccountId: string;
+    impressions: number;
+    impressionsUnique: number;
+    views: number;
+    viewsUnique: number;
+    likes: number;
+    comments: number;
+    postCount: number;
+    followers: number;
+    following: number;
+    forced: boolean;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type AnalyticsForcePostAnalyticsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        postId: string;
+        platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    };
+};
+
+export type AnalyticsForcePostAnalyticsResponse = {
+    id: string;
+    profilePostId: string;
+    impressions: number;
+    impressionsUnique: number;
+    views: number;
+    viewsUnique: number;
+    likes: number;
+    dislikes: number;
+    comments: number;
+    shares: number;
+    saves: number;
+    raw?: unknown;
+    forced: boolean;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
 };
 
 export type CommentGetData = {
@@ -4418,7 +5782,7 @@ export type CommentGetResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
         FACEBOOK?: {
             text?: string | null;
@@ -4467,6 +5831,96 @@ export type CommentGetResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         BLUESKY?: string | null;
+    } | null;
+    errorsVerbose?: {
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -4588,7 +6042,7 @@ export type CommentUpdateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
         FACEBOOK?: {
             text?: string | null;
@@ -4637,6 +6091,96 @@ export type CommentUpdateResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         BLUESKY?: string | null;
+    } | null;
+    errorsVerbose?: {
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -4712,7 +6256,7 @@ export type CommentDeleteResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
         FACEBOOK?: {
             text?: string | null;
@@ -4761,6 +6305,96 @@ export type CommentDeleteResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         BLUESKY?: string | null;
+    } | null;
+    errorsVerbose?: {
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -4831,7 +6465,7 @@ export type CommentGetListData = {
     platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
     postId?: string;
     q?: string;
-    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     teamId: string;
 };
 
@@ -4845,7 +6479,7 @@ export type CommentGetListResponse = {
         title: string;
         postDate: string | null;
         postedDate?: string | null;
-        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
         data: {
             FACEBOOK?: {
                 text?: string | null;
@@ -4894,6 +6528,96 @@ export type CommentGetListResponse = {
             DISCORD?: string | null;
             SLACK?: string | null;
             BLUESKY?: string | null;
+        } | null;
+        errorsVerbose?: {
+            FACEBOOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            INSTAGRAM?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            TIKTOK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            LINKEDIN?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            REDDIT?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            YOUTUBE?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            MASTODON?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            THREADS?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            DISCORD?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            SLACK?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
+            BLUESKY?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
         } | null;
         externalData?: {
             FACEBOOK?: {
@@ -5017,7 +6741,7 @@ export type CommentCreateResponse = {
     title: string;
     postDate: string | null;
     postedDate?: string | null;
-    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
         FACEBOOK?: {
             text?: string | null;
@@ -5066,6 +6790,96 @@ export type CommentCreateResponse = {
         DISCORD?: string | null;
         SLACK?: string | null;
         BLUESKY?: string | null;
+    } | null;
+    errorsVerbose?: {
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         FACEBOOK?: {
@@ -5668,6 +7482,9 @@ export type $OpenApiTs = {
                     apiAccess?: boolean;
                     analyticsDisabled?: boolean;
                     analyticsPostsDisabled?: boolean;
+                    uploadsCompressionEnabled?: boolean;
+                    analyticsInterval?: number | null;
+                    analyticsPostsInterval?: number | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -5886,6 +7703,9 @@ export type $OpenApiTs = {
                         apiAccess?: boolean;
                         analyticsDisabled?: boolean;
                         analyticsPostsDisabled?: boolean;
+                        uploadsCompressionEnabled?: boolean;
+                        analyticsInterval?: number | null;
+                        analyticsPostsInterval?: number | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -6181,6 +8001,9 @@ export type $OpenApiTs = {
                             apiAccess?: boolean;
                             analyticsDisabled?: boolean;
                             analyticsPostsDisabled?: boolean;
+                            uploadsCompressionEnabled?: boolean;
+                            analyticsInterval?: number | null;
+                            analyticsPostsInterval?: number | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -6813,7 +8636,6 @@ export type $OpenApiTs = {
                     id: string;
                     teamId?: string | null;
                     organizationId?: string | null;
-                    expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
@@ -6889,7 +8711,6 @@ export type $OpenApiTs = {
                     id: string;
                     teamId?: string | null;
                     organizationId?: string | null;
-                    expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
@@ -6958,7 +8779,6 @@ export type $OpenApiTs = {
                     id: string;
                     teamId?: string | null;
                     organizationId?: string | null;
-                    expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
@@ -7029,7 +8849,6 @@ export type $OpenApiTs = {
                     id: string;
                     teamId?: string | null;
                     organizationId?: string | null;
-                    expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
@@ -7105,7 +8924,6 @@ export type $OpenApiTs = {
                     id: string;
                     teamId?: string | null;
                     organizationId?: string | null;
-                    expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
@@ -7230,7 +9048,6 @@ export type $OpenApiTs = {
                     id: string;
                     teamId?: string | null;
                     organizationId?: string | null;
-                    expiresAt?: string | null;
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
@@ -7304,7 +9121,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -7585,6 +9402,120 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
                     } | null;
+                    errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                    } | null;
                     externalData?: {
                         TWITTER?: {
                             id?: string | null;
@@ -7609,6 +9540,7 @@ export type $OpenApiTs = {
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
+                            shareId?: string | null;
                             permalink?: string | null;
                         } | null;
                         LINKEDIN?: {
@@ -7683,7 +9615,6 @@ export type $OpenApiTs = {
                             id: string;
                             teamId?: string | null;
                             organizationId?: string | null;
-                            expiresAt?: string | null;
                             iconUrl?: string | null;
                             thumbnailUrl?: string | null;
                             url?: string | null;
@@ -7793,7 +9724,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -8074,6 +10005,120 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
                     } | null;
+                    errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                    } | null;
                     externalData?: {
                         TWITTER?: {
                             id?: string | null;
@@ -8098,6 +10143,7 @@ export type $OpenApiTs = {
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
+                            shareId?: string | null;
                             permalink?: string | null;
                         } | null;
                         LINKEDIN?: {
@@ -8218,7 +10264,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -8499,6 +10545,120 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
                     } | null;
+                    errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                    } | null;
                     externalData?: {
                         TWITTER?: {
                             id?: string | null;
@@ -8523,6 +10683,7 @@ export type $OpenApiTs = {
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
+                            shareId?: string | null;
                             permalink?: string | null;
                         } | null;
                         LINKEDIN?: {
@@ -8646,7 +10807,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
                         data: {
                             TWITTER?: {
                                 text?: string | null;
@@ -8927,6 +11088,120 @@ export type $OpenApiTs = {
                             BLUESKY?: string | null;
                             GOOGLE_BUSINESS?: string | null;
                         } | null;
+                        errorsVerbose?: {
+                            TWITTER?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            PINTEREST?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            FACEBOOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            TIKTOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            LINKEDIN?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            REDDIT?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            DISCORD?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            SLACK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            YOUTUBE?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            MASTODON?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            THREADS?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                        } | null;
                         externalData?: {
                             TWITTER?: {
                                 id?: string | null;
@@ -8951,6 +11226,7 @@ export type $OpenApiTs = {
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
+                                shareId?: string | null;
                                 permalink?: string | null;
                             } | null;
                             LINKEDIN?: {
@@ -9025,7 +11301,6 @@ export type $OpenApiTs = {
                                 id: string;
                                 teamId?: string | null;
                                 organizationId?: string | null;
-                                expiresAt?: string | null;
                                 iconUrl?: string | null;
                                 thumbnailUrl?: string | null;
                                 url?: string | null;
@@ -9137,7 +11412,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
                     data: {
                         TWITTER?: {
                             text?: string | null;
@@ -9418,6 +11693,120 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
                     } | null;
+                    errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                    } | null;
                     externalData?: {
                         TWITTER?: {
                             id?: string | null;
@@ -9442,6 +11831,549 @@ export type $OpenApiTs = {
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
+                            shareId?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            activity?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            subreddit_name?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            channelId?: string | null;
+                        } | null;
+                        SLACK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            channelId?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            /**
+                             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                             */
+                            id?: string | null;
+                            /**
+                             * Public link to the post (searchUrl) when available.
+                             */
+                            permalink?: string | null;
+                        } | null;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post/{id}/retry': {
+        post: {
+            req: PostRetryData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    title: string;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+                    data: {
+                        TWITTER?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
+                        PINTEREST?: {
+                            text?: string | null;
+                            description?: string | null;
+                            boardName: string;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * The URL to which the Pin will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                             */
+                            altText?: string | null;
+                            /**
+                             * A note about the Pin. This is not visible to the public.
+                             */
+                            note?: string | null;
+                            /**
+                             * The dominant color of the image. This is used to display the image before it's loaded.
+                             */
+                            dominantColor?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            type?: 'POST' | 'REEL' | 'STORY';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the post will link to. Only available for type POST.
+                             */
+                            link?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                             */
+                            nativeScheduleTime?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            type?: 'POST' | 'REEL' | 'STORY';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                             */
+                            shareToFeed?: boolean | null;
+                            collaborators?: Array<(string)> | null;
+                            tagged?: Array<{
+                                username: string;
+                                x: number;
+                                y: number;
+                            }> | null;
+                        } | null;
+                        THREADS?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                        } | null;
+                        TIKTOK?: {
+                            type?: 'VIDEO' | 'IMAGE';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            /**
+                             * Set to true if the video is a paid partnership to promote a third-party business.
+                             */
+                            isBrandContent?: boolean | null;
+                            /**
+                             * Set to true if this video is promoting the creator's own business.
+                             */
+                            isOrganicBrandContent?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make comments on this post.
+                             */
+                            disableComments?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                             */
+                            disableDuet?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                             */
+                            disableStitch?: boolean | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * Set to true if this video is AI generated.
+                             */
+                            isAiGenerated?: boolean | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text: string;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                            /**
+                             * Set to true if the post shouldn't be displayed in the main feed.
+                             */
+                            hideFromFeed?: boolean | null;
+                            /**
+                             * Set to true if the post is not allowed to be reshared.
+                             */
+                            disableReshare?: boolean | null;
+                        } | null;
+                        YOUTUBE?: {
+                            type?: 'VIDEO' | 'SHORT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * Set to true if the video is made for kids.
+                             */
+                            madeForKids?: boolean | null;
+                            /**
+                             * Set to true if video contains AI generated content
+                             */
+                            containsSyntheticMedia?: boolean | null;
+                            /**
+                             * Set to true if video has paid product placement
+                             */
+                            hasPaidProductPlacement?: boolean | null;
+                        } | null;
+                        REDDIT?: {
+                            /**
+                             * Subreddit name. Example: r/subredditName or u/username
+                             */
+                            sr: string;
+                            text: string;
+                            description?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the post will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * Set to true if the post is NSFW.
+                             */
+                            nsfw?: boolean | null;
+                        } | null;
+                        DISCORD?: {
+                            channelId: string;
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
+                            username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
+                            avatarUrl?: string | null;
+                        } | null;
+                        SLACK?: {
+                            channelId: string;
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
+                            username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
+                            avatarUrl?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                            spoiler?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Extra hashtags (without #), up to 8.
+                             */
+                            tags?: Array<(string)> | null;
+                            /**
+                             * Self-labels (content warnings) applied to the post.
+                             */
+                            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                            /**
+                             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                             */
+                            quoteUri?: string;
+                            /**
+                             * Target URL for the external link card
+                             */
+                            externalUrl?: string | null;
+                            /**
+                             * Card title for the external link card
+                             */
+                            externalTitle?: string | null;
+                            /**
+                             * Card description for the external link card
+                             */
+                            externalDescription?: string | null;
+                            /**
+                             * Alt text for the video embed.
+                             */
+                            videoAlt?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            text?: string | null;
+                            /**
+                             * IDs of images/videos uploaded to bundle.social.
+                             */
+                            uploadIds?: Array<(string)> | null;
+                            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                            /**
+                             * Language tag like 'en' or 'en-US'.
+                             */
+                            languageCode?: string | null;
+                            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                            callToActionUrl?: string | null;
+                            eventTitle?: string | null;
+                            eventStartDate?: string | null;
+                            eventEndDate?: string | null;
+                            offerCouponCode?: string | null;
+                            offerRedeemOnlineUrl?: string | null;
+                            offerTermsConditions?: string | null;
+                            /**
+                             * Alert type for ALERT posts.
+                             */
+                            alertType?: 'COVID_19' | null;
+                        } | null;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        TWITTER?: string | null;
+                        PINTEREST?: string | null;
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        YOUTUBE?: string | null;
+                        MASTODON?: string | null;
+                        THREADS?: string | null;
+                        BLUESKY?: string | null;
+                        GOOGLE_BUSINESS?: string | null;
+                    } | null;
+                    errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                    } | null;
+                    externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            id?: string | null;
+                            postId?: string | null;
+                            videoId?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            shareId?: string | null;
                             permalink?: string | null;
                         } | null;
                         LINKEDIN?: {
@@ -9599,6 +12531,7 @@ export type $OpenApiTs = {
                         postCount: number;
                         followers: number;
                         following: number;
+                        forced: boolean;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -9662,7 +12595,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
                         data: {
                             TWITTER?: {
                                 text?: string | null;
@@ -9943,6 +12876,120 @@ export type $OpenApiTs = {
                             BLUESKY?: string | null;
                             GOOGLE_BUSINESS?: string | null;
                         } | null;
+                        errorsVerbose?: {
+                            TWITTER?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            PINTEREST?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            FACEBOOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            TIKTOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            LINKEDIN?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            REDDIT?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            DISCORD?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            SLACK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            YOUTUBE?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            MASTODON?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            THREADS?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                        } | null;
                         externalData?: {
                             TWITTER?: {
                                 id?: string | null;
@@ -9967,6 +13014,7 @@ export type $OpenApiTs = {
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
+                                shareId?: string | null;
                                 permalink?: string | null;
                             } | null;
                             LINKEDIN?: {
@@ -10045,6 +13093,7 @@ export type $OpenApiTs = {
                         shares: number;
                         saves: number;
                         raw?: unknown;
+                        forced: boolean;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -10135,6 +13184,7 @@ export type $OpenApiTs = {
                         socialAccountId?: string | null;
                         analyticsId?: string | null;
                         raw?: unknown;
+                        forced: boolean;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -10198,7 +13248,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
                         data: {
                             TWITTER?: {
                                 text?: string | null;
@@ -10479,6 +13529,120 @@ export type $OpenApiTs = {
                             BLUESKY?: string | null;
                             GOOGLE_BUSINESS?: string | null;
                         } | null;
+                        errorsVerbose?: {
+                            TWITTER?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            PINTEREST?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            FACEBOOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            TIKTOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            LINKEDIN?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            REDDIT?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            DISCORD?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            SLACK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            YOUTUBE?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            MASTODON?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            THREADS?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            GOOGLE_BUSINESS?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                        } | null;
                         externalData?: {
                             TWITTER?: {
                                 id?: string | null;
@@ -10503,6 +13667,7 @@ export type $OpenApiTs = {
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
+                                shareId?: string | null;
                                 permalink?: string | null;
                             } | null;
                             LINKEDIN?: {
@@ -10573,10 +13738,146 @@ export type $OpenApiTs = {
                         profilePostId?: string | null;
                         analyticsId?: string | null;
                         raw?: unknown;
+                        forced: boolean;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
                     }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/analytics/social-account/force': {
+        post: {
+            req: AnalyticsForceSocialAccountAnalyticsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    socialAccountId: string;
+                    impressions: number;
+                    impressionsUnique: number;
+                    views: number;
+                    viewsUnique: number;
+                    likes: number;
+                    comments: number;
+                    postCount: number;
+                    followers: number;
+                    following: number;
+                    forced: boolean;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/analytics/post/force': {
+        post: {
+            req: AnalyticsForcePostAnalyticsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    profilePostId: string;
+                    impressions: number;
+                    impressionsUnique: number;
+                    views: number;
+                    viewsUnique: number;
+                    likes: number;
+                    dislikes: number;
+                    comments: number;
+                    shares: number;
+                    saves: number;
+                    raw?: unknown;
+                    forced: boolean;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
                 };
                 /**
                  * 400
@@ -10637,7 +13938,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
                         FACEBOOK?: {
                             text?: string | null;
@@ -10686,6 +13987,96 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         BLUESKY?: string | null;
+                    } | null;
+                    errorsVerbose?: {
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {
@@ -10804,7 +14195,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
                         FACEBOOK?: {
                             text?: string | null;
@@ -10853,6 +14244,96 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         BLUESKY?: string | null;
+                    } | null;
+                    errorsVerbose?: {
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {
@@ -10971,7 +14452,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
                         FACEBOOK?: {
                             text?: string | null;
@@ -11020,6 +14501,96 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         BLUESKY?: string | null;
+                    } | null;
+                    errorsVerbose?: {
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {
@@ -11141,7 +14712,7 @@ export type $OpenApiTs = {
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
-                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                         data: {
                             FACEBOOK?: {
                                 text?: string | null;
@@ -11190,6 +14761,96 @@ export type $OpenApiTs = {
                             DISCORD?: string | null;
                             SLACK?: string | null;
                             BLUESKY?: string | null;
+                        } | null;
+                        errorsVerbose?: {
+                            FACEBOOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            INSTAGRAM?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            TIKTOK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            LINKEDIN?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            REDDIT?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            YOUTUBE?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            MASTODON?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            THREADS?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            DISCORD?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            SLACK?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
+                            BLUESKY?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
                         } | null;
                         externalData?: {
                             FACEBOOK?: {
@@ -11310,7 +14971,7 @@ export type $OpenApiTs = {
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
-                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING';
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
                         FACEBOOK?: {
                             text?: string | null;
@@ -11359,6 +15020,96 @@ export type $OpenApiTs = {
                         DISCORD?: string | null;
                         SLACK?: string | null;
                         BLUESKY?: string | null;
+                    } | null;
+                    errorsVerbose?: {
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         FACEBOOK?: {

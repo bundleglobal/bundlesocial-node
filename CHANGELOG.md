@@ -1,3 +1,10 @@
+# [2.28.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.27.0...v2.28.0) (2025-11-26)
+
+
+### Features
+
+* twitter limits, linkedin video size, tiktok auto music for images ([a235384](https://github.com/bundleglobal/bundlesocial-node/commit/a235384fb60f4471f05a13eeb24a0a7df4beeee6))
+
 # [2.27.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.26.0...v2.27.0) (2025-11-12)
 
 

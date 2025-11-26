@@ -258,9 +258,16 @@ export type TeamGetTeamResponse = {
                 avatar?: string | null;
                 url?: string | null;
             } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+            } | null;
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -433,9 +440,16 @@ export type TeamGetListResponse = {
                     avatar?: string | null;
                     url?: string | null;
                 } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                } | null;
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -561,9 +575,16 @@ export type SocialAccountDisconnectResponse = {
             avatar?: string | null;
             url?: string | null;
         } | null;
+        metadata?: {
+            allowImages?: boolean | null;
+            allowVideos?: boolean | null;
+            allowGalleries?: boolean | null;
+            linkFlairEnabled?: boolean | null;
+        } | null;
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -602,9 +623,16 @@ export type SocialAccountSetChannelResponse = {
             avatar?: string | null;
             url?: string | null;
         } | null;
+        metadata?: {
+            allowImages?: boolean | null;
+            allowVideos?: boolean | null;
+            allowGalleries?: boolean | null;
+            linkFlairEnabled?: boolean | null;
+        } | null;
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -642,9 +670,16 @@ export type SocialAccountRefreshChannelsResponse = {
             avatar?: string | null;
             url?: string | null;
         } | null;
+        metadata?: {
+            allowImages?: boolean | null;
+            allowVideos?: boolean | null;
+            allowGalleries?: boolean | null;
+            linkFlairEnabled?: boolean | null;
+        } | null;
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -714,9 +749,16 @@ export type SocialAccountCopyResponse = Array<{
             avatar?: string | null;
             url?: string | null;
         } | null;
+        metadata?: {
+            allowImages?: boolean | null;
+            allowVideos?: boolean | null;
+            allowGalleries?: boolean | null;
+            linkFlairEnabled?: boolean | null;
+        } | null;
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -1045,6 +1087,10 @@ export type PostGetResponse = {
              * Set to true if this video is AI generated.
              */
             isAiGenerated?: boolean | null;
+            /**
+             * If set to true, TikTok will automatically add music to the photos.
+             */
+            autoAddMusic?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -1102,6 +1148,10 @@ export type PostGetResponse = {
              * Set to true if the post is NSFW.
              */
             nsfw?: boolean | null;
+            /**
+             * Flair ID for the post. Required if the subreddit requires flair selection.
+             */
+            flairId?: string | null;
         } | null;
         DISCORD?: {
             channelId: string;
@@ -1471,9 +1521,16 @@ export type PostGetResponse = {
                     avatar?: string | null;
                     url?: string | null;
                 } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                } | null;
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -1603,6 +1660,10 @@ export type PostUpdateData = {
                  * Set to true if this video is AI generated.
                  */
                 isAiGenerated?: boolean | null;
+                /**
+                 * If set to true, TikTok will automatically add music to the photos.
+                 */
+                autoAddMusic?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -1660,6 +1721,10 @@ export type PostUpdateData = {
                  * Set to true if the post is NSFW.
                  */
                 nsfw?: boolean | null;
+                /**
+                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                 */
+                flairId?: string | null;
             } | null;
             DISCORD?: {
                 channelId: string;
@@ -1877,6 +1942,10 @@ export type PostUpdateResponse = {
              * Set to true if this video is AI generated.
              */
             isAiGenerated?: boolean | null;
+            /**
+             * If set to true, TikTok will automatically add music to the photos.
+             */
+            autoAddMusic?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -1934,6 +2003,10 @@ export type PostUpdateResponse = {
              * Set to true if the post is NSFW.
              */
             nsfw?: boolean | null;
+            /**
+             * Flair ID for the post. Required if the subreddit requires flair selection.
+             */
+            flairId?: string | null;
         } | null;
         DISCORD?: {
             channelId: string;
@@ -2374,6 +2447,10 @@ export type PostDeleteResponse = {
              * Set to true if this video is AI generated.
              */
             isAiGenerated?: boolean | null;
+            /**
+             * If set to true, TikTok will automatically add music to the photos.
+             */
+            autoAddMusic?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -2431,6 +2508,10 @@ export type PostDeleteResponse = {
              * Set to true if the post is NSFW.
              */
             nsfw?: boolean | null;
+            /**
+             * Flair ID for the post. Required if the subreddit requires flair selection.
+             */
+            flairId?: string | null;
         } | null;
         DISCORD?: {
             channelId: string;
@@ -2879,6 +2960,10 @@ export type PostGetListResponse = {
                  * Set to true if this video is AI generated.
                  */
                 isAiGenerated?: boolean | null;
+                /**
+                 * If set to true, TikTok will automatically add music to the photos.
+                 */
+                autoAddMusic?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -2936,6 +3021,10 @@ export type PostGetListResponse = {
                  * Set to true if the post is NSFW.
                  */
                 nsfw?: boolean | null;
+                /**
+                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                 */
+                flairId?: string | null;
             } | null;
             DISCORD?: {
                 channelId: string;
@@ -3305,9 +3394,16 @@ export type PostGetListResponse = {
                         avatar?: string | null;
                         url?: string | null;
                     } | null;
+                    metadata?: {
+                        allowImages?: boolean | null;
+                        allowVideos?: boolean | null;
+                        allowGalleries?: boolean | null;
+                        linkFlairEnabled?: boolean | null;
+                    } | null;
                 }> | null;
                 mastodonServerId?: string | null;
                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                 createdAt: string | null;
                 updatedAt: string | null;
                 deletedAt?: string | null;
@@ -3439,6 +3535,10 @@ export type PostCreateData = {
                  * Set to true if this video is AI generated.
                  */
                 isAiGenerated?: boolean | null;
+                /**
+                 * If set to true, TikTok will automatically add music to the photos.
+                 */
+                autoAddMusic?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -3496,6 +3596,10 @@ export type PostCreateData = {
                  * Set to true if the post is NSFW.
                  */
                 nsfw?: boolean | null;
+                /**
+                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                 */
+                flairId?: string | null;
             } | null;
             DISCORD?: {
                 channelId: string;
@@ -3713,6 +3817,10 @@ export type PostCreateResponse = {
              * Set to true if this video is AI generated.
              */
             isAiGenerated?: boolean | null;
+            /**
+             * If set to true, TikTok will automatically add music to the photos.
+             */
+            autoAddMusic?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -3770,6 +3878,10 @@ export type PostCreateResponse = {
              * Set to true if the post is NSFW.
              */
             nsfw?: boolean | null;
+            /**
+             * Flair ID for the post. Required if the subreddit requires flair selection.
+             */
+            flairId?: string | null;
         } | null;
         DISCORD?: {
             channelId: string;
@@ -4210,6 +4322,10 @@ export type PostRetryResponse = {
              * Set to true if this video is AI generated.
              */
             isAiGenerated?: boolean | null;
+            /**
+             * If set to true, TikTok will automatically add music to the photos.
+             */
+            autoAddMusic?: boolean | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -4267,6 +4383,10 @@ export type PostRetryResponse = {
              * Set to true if the post is NSFW.
              */
             nsfw?: boolean | null;
+            /**
+             * Flair ID for the post. Required if the subreddit requires flair selection.
+             */
+            flairId?: string | null;
         } | null;
         DISCORD?: {
             channelId: string;
@@ -4611,9 +4731,16 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
                 avatar?: string | null;
                 url?: string | null;
             } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+            } | null;
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -4763,6 +4890,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * Set to true if this video is AI generated.
                  */
                 isAiGenerated?: boolean | null;
+                /**
+                 * If set to true, TikTok will automatically add music to the photos.
+                 */
+                autoAddMusic?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -4820,6 +4951,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * Set to true if the post is NSFW.
                  */
                 nsfw?: boolean | null;
+                /**
+                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                 */
+                flairId?: string | null;
             } | null;
             DISCORD?: {
                 channelId: string;
@@ -5183,9 +5318,16 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
                 avatar?: string | null;
                 url?: string | null;
             } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+            } | null;
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -5328,6 +5470,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * Set to true if this video is AI generated.
                  */
                 isAiGenerated?: boolean | null;
+                /**
+                 * If set to true, TikTok will automatically add music to the photos.
+                 */
+                autoAddMusic?: boolean | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -5385,6 +5531,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * Set to true if the post is NSFW.
                  */
                 nsfw?: boolean | null;
+                /**
+                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                 */
+                flairId?: string | null;
             } | null;
             DISCORD?: {
                 channelId: string;
@@ -7396,6 +7546,32 @@ export type MiscGoogleBusinessAddMediaResponse = {
     description?: string;
 };
 
+export type MiscRedditGetPostRequirementsData = {
+    subreddit: string;
+    teamId: string;
+};
+
+export type MiscRedditGetPostRequirementsResponse = {
+    isFlairRequired: boolean;
+    isFlairEnabled: boolean;
+};
+
+export type MiscRedditGetSubredditFlairsData = {
+    subreddit: string;
+    teamId: string;
+};
+
+export type MiscRedditGetSubredditFlairsResponse = Array<{
+    id?: string;
+    text?: string;
+    cssClass?: string;
+    textColor?: string;
+    backgroundColor?: string;
+    modOnly?: boolean;
+    allowableContent?: string;
+    maxEmojis?: number;
+}>;
+
 export type $OpenApiTs = {
     '/api/v1/': {
         get: {
@@ -7754,9 +7930,16 @@ export type $OpenApiTs = {
                                 avatar?: string | null;
                                 url?: string | null;
                             } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                            } | null;
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -8052,9 +8235,16 @@ export type $OpenApiTs = {
                                     avatar?: string | null;
                                     url?: string | null;
                                 } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                } | null;
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -8285,9 +8475,16 @@ export type $OpenApiTs = {
                             avatar?: string | null;
                             url?: string | null;
                         } | null;
+                        metadata?: {
+                            allowImages?: boolean | null;
+                            allowVideos?: boolean | null;
+                            allowGalleries?: boolean | null;
+                            linkFlairEnabled?: boolean | null;
+                        } | null;
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -8364,9 +8561,16 @@ export type $OpenApiTs = {
                             avatar?: string | null;
                             url?: string | null;
                         } | null;
+                        metadata?: {
+                            allowImages?: boolean | null;
+                            allowVideos?: boolean | null;
+                            allowGalleries?: boolean | null;
+                            linkFlairEnabled?: boolean | null;
+                        } | null;
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -8443,9 +8647,16 @@ export type $OpenApiTs = {
                             avatar?: string | null;
                             url?: string | null;
                         } | null;
+                        metadata?: {
+                            allowImages?: boolean | null;
+                            allowVideos?: boolean | null;
+                            allowGalleries?: boolean | null;
+                            linkFlairEnabled?: boolean | null;
+                        } | null;
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -8575,9 +8786,16 @@ export type $OpenApiTs = {
                             avatar?: string | null;
                             url?: string | null;
                         } | null;
+                        metadata?: {
+                            allowImages?: boolean | null;
+                            allowVideos?: boolean | null;
+                            allowGalleries?: boolean | null;
+                            linkFlairEnabled?: boolean | null;
+                        } | null;
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -9234,6 +9452,10 @@ export type $OpenApiTs = {
                              * Set to true if this video is AI generated.
                              */
                             isAiGenerated?: boolean | null;
+                            /**
+                             * If set to true, TikTok will automatically add music to the photos.
+                             */
+                            autoAddMusic?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -9291,6 +9513,10 @@ export type $OpenApiTs = {
                              * Set to true if the post is NSFW.
                              */
                             nsfw?: boolean | null;
+                            /**
+                             * Flair ID for the post. Required if the subreddit requires flair selection.
+                             */
+                            flairId?: string | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
@@ -9660,9 +9886,16 @@ export type $OpenApiTs = {
                                     avatar?: string | null;
                                     url?: string | null;
                                 } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                } | null;
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -9837,6 +10070,10 @@ export type $OpenApiTs = {
                              * Set to true if this video is AI generated.
                              */
                             isAiGenerated?: boolean | null;
+                            /**
+                             * If set to true, TikTok will automatically add music to the photos.
+                             */
+                            autoAddMusic?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -9894,6 +10131,10 @@ export type $OpenApiTs = {
                              * Set to true if the post is NSFW.
                              */
                             nsfw?: boolean | null;
+                            /**
+                             * Flair ID for the post. Required if the subreddit requires flair selection.
+                             */
+                            flairId?: string | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
@@ -10377,6 +10618,10 @@ export type $OpenApiTs = {
                              * Set to true if this video is AI generated.
                              */
                             isAiGenerated?: boolean | null;
+                            /**
+                             * If set to true, TikTok will automatically add music to the photos.
+                             */
+                            autoAddMusic?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -10434,6 +10679,10 @@ export type $OpenApiTs = {
                              * Set to true if the post is NSFW.
                              */
                             nsfw?: boolean | null;
+                            /**
+                             * Flair ID for the post. Required if the subreddit requires flair selection.
+                             */
+                            flairId?: string | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
@@ -10920,6 +11169,10 @@ export type $OpenApiTs = {
                                  * Set to true if this video is AI generated.
                                  */
                                 isAiGenerated?: boolean | null;
+                                /**
+                                 * If set to true, TikTok will automatically add music to the photos.
+                                 */
+                                autoAddMusic?: boolean | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -10977,6 +11230,10 @@ export type $OpenApiTs = {
                                  * Set to true if the post is NSFW.
                                  */
                                 nsfw?: boolean | null;
+                                /**
+                                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                                 */
+                                flairId?: string | null;
                             } | null;
                             DISCORD?: {
                                 channelId: string;
@@ -11346,9 +11603,16 @@ export type $OpenApiTs = {
                                         avatar?: string | null;
                                         url?: string | null;
                                     } | null;
+                                    metadata?: {
+                                        allowImages?: boolean | null;
+                                        allowVideos?: boolean | null;
+                                        allowGalleries?: boolean | null;
+                                        linkFlairEnabled?: boolean | null;
+                                    } | null;
                                 }> | null;
                                 mastodonServerId?: string | null;
                                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                                twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                                 createdAt: string | null;
                                 updatedAt: string | null;
                                 deletedAt?: string | null;
@@ -11525,6 +11789,10 @@ export type $OpenApiTs = {
                              * Set to true if this video is AI generated.
                              */
                             isAiGenerated?: boolean | null;
+                            /**
+                             * If set to true, TikTok will automatically add music to the photos.
+                             */
+                            autoAddMusic?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -11582,6 +11850,10 @@ export type $OpenApiTs = {
                              * Set to true if the post is NSFW.
                              */
                             nsfw?: boolean | null;
+                            /**
+                             * Flair ID for the post. Required if the subreddit requires flair selection.
+                             */
+                            flairId?: string | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
@@ -12067,6 +12339,10 @@ export type $OpenApiTs = {
                              * Set to true if this video is AI generated.
                              */
                             isAiGenerated?: boolean | null;
+                            /**
+                             * If set to true, TikTok will automatically add music to the photos.
+                             */
+                            autoAddMusic?: boolean | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -12124,6 +12400,10 @@ export type $OpenApiTs = {
                              * Set to true if the post is NSFW.
                              */
                             nsfw?: boolean | null;
+                            /**
+                             * Flair ID for the post. Required if the subreddit requires flair selection.
+                             */
+                            flairId?: string | null;
                         } | null;
                         DISCORD?: {
                             channelId: string;
@@ -12512,9 +12792,16 @@ export type $OpenApiTs = {
                                 avatar?: string | null;
                                 url?: string | null;
                             } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                            } | null;
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -12708,6 +12995,10 @@ export type $OpenApiTs = {
                                  * Set to true if this video is AI generated.
                                  */
                                 isAiGenerated?: boolean | null;
+                                /**
+                                 * If set to true, TikTok will automatically add music to the photos.
+                                 */
+                                autoAddMusic?: boolean | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -12765,6 +13056,10 @@ export type $OpenApiTs = {
                                  * Set to true if the post is NSFW.
                                  */
                                 nsfw?: boolean | null;
+                                /**
+                                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                                 */
+                                flairId?: string | null;
                             } | null;
                             DISCORD?: {
                                 channelId: string;
@@ -13172,9 +13467,16 @@ export type $OpenApiTs = {
                                 avatar?: string | null;
                                 url?: string | null;
                             } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                            } | null;
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -13361,6 +13663,10 @@ export type $OpenApiTs = {
                                  * Set to true if this video is AI generated.
                                  */
                                 isAiGenerated?: boolean | null;
+                                /**
+                                 * If set to true, TikTok will automatically add music to the photos.
+                                 */
+                                autoAddMusic?: boolean | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -13418,6 +13724,10 @@ export type $OpenApiTs = {
                                  * Set to true if the post is NSFW.
                                  */
                                 nsfw?: boolean | null;
+                                /**
+                                 * Flair ID for the post. Required if the subreddit requires flair selection.
+                                 */
+                                flairId?: string | null;
                             } | null;
                             DISCORD?: {
                                 channelId: string;
@@ -16043,6 +16353,120 @@ export type $OpenApiTs = {
                     };
                     description?: string;
                 };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/reddit/post-requirements': {
+        get: {
+            req: MiscRedditGetPostRequirementsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    isFlairRequired: boolean;
+                    isFlairEnabled: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/reddit/subreddit-flairs': {
+        get: {
+            req: MiscRedditGetSubredditFlairsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: Array<{
+                    id?: string;
+                    text?: string;
+                    cssClass?: string;
+                    textColor?: string;
+                    backgroundColor?: string;
+                    modOnly?: boolean;
+                    allowableContent?: string;
+                    maxEmojis?: number;
+                }>;
                 /**
                  * 400
                  */

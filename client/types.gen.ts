@@ -7484,6 +7484,85 @@ export type MiscYoutubeDeleteVideoFromPlaylistData = {
 
 export type MiscYoutubeDeleteVideoFromPlaylistResponse = boolean;
 
+export type MiscYoutubeEditVideoData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * Post ID for reference
+         */
+        postId: string;
+        /**
+         * The updated video title
+         */
+        title?: string;
+        /**
+         * The updated video description
+         */
+        description?: string;
+        /**
+         * The updated tags
+         */
+        tags?: Array<(string)>;
+        /**
+         * The updated category ID
+         */
+        categoryId?: string;
+        /**
+         * The updated privacy status
+         */
+        privacyStatus?: 'public' | 'unlisted' | 'private';
+    };
+};
+
+export type MiscYoutubeEditVideoResponse = {
+    success: boolean;
+    permalink: string;
+};
+
+export type MiscYoutubeGetVideoCategoriesData = {
+    /**
+     * ISO 3166-1 alpha-2 country code (e.g., 'US', 'GB', 'PL'). Defaults to 'US'
+     */
+    regionCode?: string;
+    teamId: string;
+};
+
+export type MiscYoutubeGetVideoCategoriesResponse = {
+    kind?: string;
+    etag?: string;
+    items?: Array<{
+        kind?: string;
+        etag?: string;
+        id?: string;
+        snippet?: {
+            channelId?: string;
+            title?: string;
+            assignable?: boolean;
+        };
+    }>;
+};
+
+export type MiscYoutubeGetRegionsData = {
+    teamId: string;
+};
+
+export type MiscYoutubeGetRegionsResponse = {
+    kind?: string;
+    etag?: string;
+    items?: Array<{
+        kind?: string;
+        etag?: string;
+        id?: string;
+        snippet?: {
+            gl?: string;
+            name?: string;
+        };
+    }>;
+};
+
 export type MiscLinkedinGetTagsData = {
     q: string;
     scope?: 'people' | 'organizations' | 'all';
@@ -7522,6 +7601,28 @@ export type MiscLinkedinBuildCommentaryData = {
 
 export type MiscLinkedinBuildCommentaryResponse = {
     commentary: string;
+};
+
+export type MiscLinkedinEditPostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The URN of the post to edit
+         */
+        postId: string;
+        /**
+         * The updated text content
+         */
+        description: string;
+    };
+};
+
+export type MiscLinkedinEditPostResponse = {
+    success: boolean;
+    permalink: string;
 };
 
 export type MiscGoogleBusinessAddMediaData = {
@@ -7571,6 +7672,136 @@ export type MiscRedditGetSubredditFlairsResponse = Array<{
     allowableContent?: string;
     maxEmojis?: number;
 }>;
+
+export type MiscRedditEditPostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post to edit (without prefix)
+         */
+        postId: string;
+        /**
+         * The updated text content (selftext for text posts, works for all editable post types)
+         */
+        description: string;
+    };
+};
+
+export type MiscRedditEditPostResponse = {
+    success: boolean;
+    permalink: string;
+};
+
+export type MiscFacebookEditPostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post/reel to edit
+         */
+        postId: string;
+        /**
+         * The updated message/text content of the post
+         */
+        description?: string;
+    };
+};
+
+export type MiscFacebookEditPostResponse = {
+    success: boolean;
+    permalink: string;
+};
+
+export type MiscPinterestEditPinData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in our database
+         */
+        postId: string;
+        /**
+         * The updated title
+         */
+        title?: string;
+        /**
+         * The updated description
+         */
+        description?: string;
+        /**
+         * The updated destination link
+         */
+        link?: string;
+        /**
+         * The updated alt text
+         */
+        altText?: string;
+        /**
+         * The updated note
+         */
+        note?: string;
+    };
+};
+
+export type MiscPinterestEditPinResponse = {
+    success: boolean;
+    permalink: string;
+};
+
+export type MiscMastodonEditStatusData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in our database
+         */
+        postId: string;
+        /**
+         * The updated status text
+         */
+        description: string;
+        /**
+         * The updated spoiler/content warning text
+         */
+        spoilerText?: string;
+    };
+};
+
+export type MiscMastodonEditStatusResponse = {
+    success: boolean;
+    permalink: string;
+};
+
+export type MiscSlackEditMessageData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in our database
+         */
+        postId: string;
+        /**
+         * The updated message text
+         */
+        description: string;
+    };
+};
+
+export type MiscSlackEditMessageResponse = {
+    success: boolean;
+    permalink: string;
+};
 
 export type $OpenApiTs = {
     '/api/v1/': {
@@ -16218,6 +16449,187 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/misc/youtube/video': {
+        patch: {
+            req: MiscYoutubeEditVideoData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/youtube/video-categories': {
+        get: {
+            req: MiscYoutubeGetVideoCategoriesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    kind?: string;
+                    etag?: string;
+                    items?: Array<{
+                        kind?: string;
+                        etag?: string;
+                        id?: string;
+                        snippet?: {
+                            channelId?: string;
+                            title?: string;
+                            assignable?: boolean;
+                        };
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/youtube/regions': {
+        get: {
+            req: MiscYoutubeGetRegionsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    kind?: string;
+                    etag?: string;
+                    items?: Array<{
+                        kind?: string;
+                        etag?: string;
+                        id?: string;
+                        snippet?: {
+                            gl?: string;
+                            name?: string;
+                        };
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/misc/linkedin/mentions/tags': {
         get: {
             req: MiscLinkedinGetTagsData;
@@ -16293,6 +16705,60 @@ export type $OpenApiTs = {
                  */
                 200: {
                     commentary: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/linkedin/post': {
+        patch: {
+            req: MiscLinkedinEditPostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink: string;
                 };
                 /**
                  * 400
@@ -16467,6 +16933,276 @@ export type $OpenApiTs = {
                     allowableContent?: string;
                     maxEmojis?: number;
                 }>;
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/reddit/post': {
+        patch: {
+            req: MiscRedditEditPostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/post': {
+        patch: {
+            req: MiscFacebookEditPostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/pinterest/pin': {
+        patch: {
+            req: MiscPinterestEditPinData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/mastodon/status': {
+        patch: {
+            req: MiscMastodonEditStatusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/slack/message': {
+        patch: {
+            req: MiscSlackEditMessageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink: string;
+                };
                 /**
                  * 400
                  */

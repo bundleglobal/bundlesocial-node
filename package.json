@@ -16,9 +16,6 @@
     "type": "git",
     "url": "git+https://github.com/bundleglobal/bundlesocial-node.git"
   },
-  "publishConfig": {
-    "@bundleglobal:registry": "https://npm.pkg.github.com"
-  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -60,7 +57,7 @@
     "dotenv": "^16.4.5",
     "form-data": "^4.0.0",
     "jest": "^29.7.0",
-    "semantic-release": "^24.0.0",
+    "semantic-release": "^25.0.2",
     "ts-jest": "29.1.4",
     "ts-node": "10.9.2",
     "tsup": "7.2.0",

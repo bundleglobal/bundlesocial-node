@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -1219,6 +1219,85 @@ export class MiscService {
     }
     
     /**
+     * Edit YouTube video metadata
+     * Update the title, description, tags, category, or privacy status of a published YouTube video.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeEditVideo(data: MiscYoutubeEditVideoData = {}): CancelablePromise<MiscYoutubeEditVideoResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/youtube/video',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get YouTube video categories
+     * Retrieve the list of video categories that can be associated with YouTube videos for a specific region.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.regionCode ISO 3166-1 alpha-2 country code (e.g., 'US', 'GB', 'PL'). Defaults to 'US'
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeGetVideoCategories(data: MiscYoutubeGetVideoCategoriesData): CancelablePromise<MiscYoutubeGetVideoCategoriesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/youtube/video-categories',
+            query: {
+                teamId: data.teamId,
+                regionCode: data.regionCode
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get YouTube regions
+     * Retrieve the list of content regions that the YouTube website supports.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeGetRegions(data: MiscYoutubeGetRegionsData): CancelablePromise<MiscYoutubeGetRegionsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/youtube/regions',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Get Linkedin mentionable tags (people & organizations)
      * @param data The data for the request.
      * @param data.teamId
@@ -1249,7 +1328,7 @@ export class MiscService {
     
     /**
      * Build Linkedin text, insert mentions at tag placeholders.
-     * If tag already exists (case insensitive), mentions replace it; otherwise they’re appended to the end.
+     * If tag already exists (case insensitive), mentions replace it; otherwise they're appended to the end.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1259,6 +1338,31 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/misc/linkedin/mentions/builder',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing LinkedIn post
+     * Update the text content of a published LinkedIn post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinEditPost(data: MiscLinkedinEditPostData = {}): CancelablePromise<MiscLinkedinEditPostResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/linkedin/post',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -1339,6 +1443,132 @@ export class MiscService {
                 teamId: data.teamId,
                 subreddit: data.subreddit
             },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing Reddit post
+     * Update the selftext content of a published Reddit text post. Link and media posts cannot be edited.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscRedditEditPost(data: MiscRedditEditPostData = {}): CancelablePromise<MiscRedditEditPostResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/reddit/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing Facebook post
+     * Update the message/content of a published Facebook post or reel. Note: Only text content can be edited, media cannot be changed.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscFacebookEditPost(data: MiscFacebookEditPostData = {}): CancelablePromise<MiscFacebookEditPostResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/facebook/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * @deprecated
+     * [DISABLED] Edit an existing Pinterest pin
+     * Temporarily disabled
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscPinterestEditPin(data: MiscPinterestEditPinData = {}): CancelablePromise<MiscPinterestEditPinResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/pinterest/pin',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing Mastodon status
+     * Update the text content and spoiler text of a published Mastodon status.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscMastodonEditStatus(data: MiscMastodonEditStatusData = {}): CancelablePromise<MiscMastodonEditStatusResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/mastodon/status',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing Slack message
+     * Update the text content of a published Slack message.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscSlackEditMessage(data: MiscSlackEditMessageData = {}): CancelablePromise<MiscSlackEditMessageResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/slack/message',
+            body: data.requestBody,
+            mediaType: 'application/json',
             errors: {
                 400: '400',
                 401: '401',
@@ -1565,6 +1795,85 @@ export class YoutubeService {
         });
     }
     
+    /**
+     * Edit YouTube video metadata
+     * Update the title, description, tags, category, or privacy status of a published YouTube video.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeEditVideo(data: MiscYoutubeEditVideoData = {}): CancelablePromise<MiscYoutubeEditVideoResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/youtube/video',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get YouTube video categories
+     * Retrieve the list of video categories that can be associated with YouTube videos for a specific region.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.regionCode ISO 3166-1 alpha-2 country code (e.g., 'US', 'GB', 'PL'). Defaults to 'US'
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeGetVideoCategories(data: MiscYoutubeGetVideoCategoriesData): CancelablePromise<MiscYoutubeGetVideoCategoriesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/youtube/video-categories',
+            query: {
+                teamId: data.teamId,
+                regionCode: data.regionCode
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get YouTube regions
+     * Retrieve the list of content regions that the YouTube website supports.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeGetRegions(data: MiscYoutubeGetRegionsData): CancelablePromise<MiscYoutubeGetRegionsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/youtube/regions',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
 }
 
 export class LinkedinService {
@@ -1601,7 +1910,7 @@ export class LinkedinService {
     
     /**
      * Build Linkedin text, insert mentions at tag placeholders.
-     * If tag already exists (case insensitive), mentions replace it; otherwise they’re appended to the end.
+     * If tag already exists (case insensitive), mentions replace it; otherwise they're appended to the end.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1611,6 +1920,31 @@ export class LinkedinService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/misc/linkedin/mentions/builder',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing LinkedIn post
+     * Update the text content of a published LinkedIn post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinEditPost(data: MiscLinkedinEditPostData = {}): CancelablePromise<MiscLinkedinEditPostResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/linkedin/post',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -1701,6 +2035,152 @@ export class RedditService {
                 teamId: data.teamId,
                 subreddit: data.subreddit
             },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing Reddit post
+     * Update the selftext content of a published Reddit text post. Link and media posts cannot be edited.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscRedditEditPost(data: MiscRedditEditPostData = {}): CancelablePromise<MiscRedditEditPostResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/reddit/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class FacebookService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Edit an existing Facebook post
+     * Update the message/content of a published Facebook post or reel. Note: Only text content can be edited, media cannot be changed.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscFacebookEditPost(data: MiscFacebookEditPostData = {}): CancelablePromise<MiscFacebookEditPostResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/facebook/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class PinterestService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * @deprecated
+     * [DISABLED] Edit an existing Pinterest pin
+     * Temporarily disabled
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscPinterestEditPin(data: MiscPinterestEditPinData = {}): CancelablePromise<MiscPinterestEditPinResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/pinterest/pin',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class MastodonService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Edit an existing Mastodon status
+     * Update the text content and spoiler text of a published Mastodon status.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscMastodonEditStatus(data: MiscMastodonEditStatusData = {}): CancelablePromise<MiscMastodonEditStatusResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/mastodon/status',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class SlackService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Edit an existing Slack message
+     * Update the text content of a published Slack message.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscSlackEditMessage(data: MiscSlackEditMessageData = {}): CancelablePromise<MiscSlackEditMessageResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/slack/message',
+            body: data.requestBody,
+            mediaType: 'application/json',
             errors: {
                 400: '400',
                 401: '401',

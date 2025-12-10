@@ -1,3 +1,10 @@
+# [2.29.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.28.0...v2.29.0) (2025-12-10)
+
+
+### Features
+
+* post updates in misc endpoints & youtube description formatting ([b9dba4f](https://github.com/bundleglobal/bundlesocial-node/commit/b9dba4f58dcf2a2a9251ef99cf218f8f015c75b5))
+
 # [2.28.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.27.0...v2.28.0) (2025-11-26)
 
 

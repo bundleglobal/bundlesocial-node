@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -1480,6 +1480,34 @@ export class MiscService {
     }
     
     /**
+     * Search for Instagram Business/Creator user by username
+     * Checks if an Instagram user exists and returns their public profile data. Only works for Business and Creator accounts. Returns followers_count, media_count, and profile picture if available.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.username Instagram username to search for
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscInstagramBusinessDiscovery(data: MiscInstagramBusinessDiscoveryData): CancelablePromise<MiscInstagramBusinessDiscoveryResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/instagram/tags',
+            query: {
+                teamId: data.teamId,
+                username: data.username
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Edit an existing Facebook post
      * Update the message/content of a published Facebook post or reel. Note: Only text content can be edited, media cannot be changed.
      * @param data The data for the request.
@@ -2060,6 +2088,39 @@ export class RedditService {
             url: '/api/v1/misc/reddit/post',
             body: data.requestBody,
             mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class InstagramService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Search for Instagram Business/Creator user by username
+     * Checks if an Instagram user exists and returns their public profile data. Only works for Business and Creator accounts. Returns followers_count, media_count, and profile picture if available.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.username Instagram username to search for
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscInstagramBusinessDiscovery(data: MiscInstagramBusinessDiscoveryData): CancelablePromise<MiscInstagramBusinessDiscoveryResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/instagram/tags',
+            query: {
+                teamId: data.teamId,
+                username: data.username
+            },
             errors: {
                 400: '400',
                 401: '401',

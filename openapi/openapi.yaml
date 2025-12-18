@@ -24432,6 +24432,159 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/instagram/tags:
+    get:
+      description: >-
+        Checks if an Instagram user exists and returns their public profile
+        data. Only works for Business and Creator accounts. Returns
+        followers_count, media_count, and profile picture if available.
+      summary: Search for Instagram Business/Creator user by username
+      tags:
+        - misc
+        - instagram
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: username
+          in: query
+          description: Instagram username to search for
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      operationId: misc.instagram.businessDiscovery
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exists:
+                    type: boolean
+                    description: Whether the user exists and is a Business/Creator account
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Instagram User ID
+                      username:
+                        type: string
+                        description: Instagram username
+                      followers_count:
+                        type: number
+                        description: Number of followers
+                      media_count:
+                        type: number
+                        description: Number of media posts
+                      profile_picture_url:
+                        type: string
+                        format: uri
+                        description: Profile picture URL if available
+                      biography:
+                        type: string
+                        description: User biography if available
+                      name:
+                        type: string
+                        description: Full name if available
+                    required:
+                      - id
+                      - username
+                      - followers_count
+                      - media_count
+                    description: User data if exists, null otherwise
+                    nullable: true
+                required:
+                  - exists
+                  - data
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/facebook/post:
     patch:
       description: >-

@@ -7695,6 +7695,54 @@ export type MiscRedditEditPostResponse = {
     permalink: string;
 };
 
+export type MiscInstagramBusinessDiscoveryData = {
+    teamId: string;
+    /**
+     * Instagram username to search for
+     */
+    username: string;
+};
+
+export type MiscInstagramBusinessDiscoveryResponse = {
+    /**
+     * Whether the user exists and is a Business/Creator account
+     */
+    exists: boolean;
+    /**
+     * User data if exists, null otherwise
+     */
+    data: {
+        /**
+         * Instagram User ID
+         */
+        id: string;
+        /**
+         * Instagram username
+         */
+        username: string;
+        /**
+         * Number of followers
+         */
+        followers_count: number;
+        /**
+         * Number of media posts
+         */
+        media_count: number;
+        /**
+         * Profile picture URL if available
+         */
+        profile_picture_url?: string;
+        /**
+         * User biography if available
+         */
+        biography?: string;
+        /**
+         * Full name if available
+         */
+        name?: string;
+    } | null;
+};
+
 export type MiscFacebookEditPostData = {
     /**
      * Body
@@ -16986,6 +17034,95 @@ export type $OpenApiTs = {
                 200: {
                     success: boolean;
                     permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/instagram/tags': {
+        get: {
+            req: MiscInstagramBusinessDiscoveryData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    /**
+                     * Whether the user exists and is a Business/Creator account
+                     */
+                    exists: boolean;
+                    /**
+                     * User data if exists, null otherwise
+                     */
+                    data: {
+                        /**
+                         * Instagram User ID
+                         */
+                        id: string;
+                        /**
+                         * Instagram username
+                         */
+                        username: string;
+                        /**
+                         * Number of followers
+                         */
+                        followers_count: number;
+                        /**
+                         * Number of media posts
+                         */
+                        media_count: number;
+                        /**
+                         * Profile picture URL if available
+                         */
+                        profile_picture_url?: string;
+                        /**
+                         * User biography if available
+                         */
+                        biography?: string;
+                        /**
+                         * Full name if available
+                         */
+                        name?: string;
+                    } | null;
                 };
                 /**
                  * 400

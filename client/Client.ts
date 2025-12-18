@@ -8,6 +8,7 @@ import { AppService } from './services.gen';
 import { CommentService } from './services.gen';
 import { FacebookService } from './services.gen';
 import { GoogleBusinessService } from './services.gen';
+import { InstagramService } from './services.gen';
 import { LinkedinService } from './services.gen';
 import { MastodonService } from './services.gen';
 import { MiscService } from './services.gen';
@@ -30,6 +31,7 @@ export class Client {
 	public readonly comment: CommentService;
 	public readonly facebook: FacebookService;
 	public readonly googleBusiness: GoogleBusinessService;
+	public readonly instagram: InstagramService;
 	public readonly linkedin: LinkedinService;
 	public readonly mastodon: MastodonService;
 	public readonly misc: MiscService;
@@ -67,6 +69,7 @@ export class Client {
 		this.comment = new CommentService(this.request);
 		this.facebook = new FacebookService(this.request);
 		this.googleBusiness = new GoogleBusinessService(this.request);
+		this.instagram = new InstagramService(this.request);
 		this.linkedin = new LinkedinService(this.request);
 		this.mastodon = new MastodonService(this.request);
 		this.misc = new MiscService(this.request);

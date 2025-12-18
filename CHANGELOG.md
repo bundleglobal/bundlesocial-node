@@ -1,3 +1,10 @@
+# [2.30.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.29.0...v2.30.0) (2025-12-18)
+
+
+### Features
+
+* improved linkedin analytics & business account search for instagram ([d22acc4](https://github.com/bundleglobal/bundlesocial-node/commit/d22acc47d8526726db6ebda3bca12b612e6f09ca))
+
 # [2.29.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.28.0...v2.29.0) (2025-12-10)
 
 

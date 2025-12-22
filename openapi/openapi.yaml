@@ -2343,6 +2343,11 @@ paths:
                     - FACEBOOK
                     - INSTAGRAM
                   description: Instagram only - connection method
+                withBusinessScope:
+                  type: boolean
+                  description: >-
+                    Facebook and Instagram only - include business_management,
+                    ads_management, ads_read scopes
               required:
                 - type
                 - teamId

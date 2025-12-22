@@ -533,6 +533,10 @@ export type SocialAccountConnectData = {
          * Instagram only - connection method
          */
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
+        /**
+         * Facebook and Instagram only - include business_management, ads_management, ads_read scopes
+         */
+        withBusinessScope?: boolean;
     };
 };
 

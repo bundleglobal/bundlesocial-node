@@ -1,3 +1,10 @@
+# [2.31.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.30.0...v2.31.0) (2025-12-22)
+
+
+### Features
+
+* facebook and instagram non business connect ([e2db31e](https://github.com/bundleglobal/bundlesocial-node/commit/e2db31e1f0caf544eadd007e8abe4f2c517adea3))
+
 # [2.30.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.29.0...v2.30.0) (2025-12-18)
 
 

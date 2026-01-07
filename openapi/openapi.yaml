@@ -108,7 +108,7 @@ paths:
   /api/v1/organization/:
     get:
       summary: Get organization
-      tags:
+      tags: &ref_0
         - organization
       parameters: []
       operationId: organization.getOrganization
@@ -167,6 +167,9 @@ paths:
                         type: number
                       GOOGLE_BUSINESS:
                         type: number
+                    nullable: true
+                  monthlyImportLimitPerAccount:
+                    type: number
                     nullable: true
                   apiAccess:
                     default: true
@@ -370,6 +373,9 @@ paths:
                         type: number
                         nullable: true
                       maxMonthlyUploads:
+                        type: number
+                        nullable: true
+                      maxMonthlyImportedPosts:
                         type: number
                         nullable: true
                       discountStart:
@@ -751,10 +757,412 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/organization/usage/posts:
+    get:
+      summary: Get organization posts usage
+      tags: *ref_0
+      parameters: []
+      operationId: organization.getPostsUsage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  used:
+                    type: number
+                  limit:
+                    type: number
+                  remaining:
+                    type: number
+                required:
+                  - used
+                  - limit
+                  - remaining
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/organization/usage/uploads:
+    get:
+      summary: Get organization uploads usage
+      tags: *ref_0
+      parameters: []
+      operationId: organization.getUploadsUsage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  used:
+                    type: number
+                  limit:
+                    type: number
+                  remaining:
+                    type: number
+                required:
+                  - used
+                  - limit
+                  - remaining
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/organization/usage/imports:
+    get:
+      summary: Get organization imports usage per social account (paginated)
+      tags: *ref_0
+      parameters:
+        - name: page
+          in: query
+          schema:
+            default: 1
+            type: number
+            minimum: 1
+        - name: pageSize
+          in: query
+          schema:
+            default: 20
+            type: number
+            minimum: 1
+            maximum: 100
+        - name: teamId
+          in: query
+          schema:
+            type: string
+        - name: socialAccountType
+          in: query
+          schema:
+            type: string
+            enum:
+              - TIKTOK
+              - YOUTUBE
+              - INSTAGRAM
+              - FACEBOOK
+              - TWITTER
+              - THREADS
+              - LINKEDIN
+              - PINTEREST
+              - REDDIT
+              - MASTODON
+              - DISCORD
+              - SLACK
+              - BLUESKY
+              - GOOGLE_BUSINESS
+        - name: socialAccountId
+          in: query
+          schema:
+            type: string
+      operationId: organization.getImportsUsage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  limitPerSocialAccount:
+                    type: number
+                  socialAccounts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        username:
+                          type: string
+                          nullable: true
+                        displayName:
+                          type: string
+                          nullable: true
+                        used:
+                          type: number
+                        limit:
+                          type: number
+                        remaining:
+                          type: number
+                      required:
+                        - id
+                        - type
+                        - username
+                        - displayName
+                        - used
+                        - limit
+                        - remaining
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: number
+                      pageSize:
+                        type: number
+                      total:
+                        type: number
+                      totalPages:
+                        type: number
+                    required:
+                      - page
+                      - pageSize
+                      - total
+                      - totalPages
+                required:
+                  - limitPerSocialAccount
+                  - socialAccounts
+                  - pagination
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/team/{id}:
     get:
       summary: Get team
-      tags: &ref_0
+      tags: &ref_1
         - team
       parameters:
         - name: id
@@ -844,6 +1252,9 @@ paths:
                             type: number
                           GOOGLE_BUSINESS:
                             type: number
+                        nullable: true
+                      monthlyImportLimitPerAccount:
+                        type: number
                         nullable: true
                       apiAccess:
                         default: true
@@ -1306,7 +1717,7 @@ paths:
                   - message
     patch:
       summary: Update team
-      tags: *ref_0
+      tags: *ref_1
       parameters:
         - name: id
           in: path
@@ -1451,7 +1862,7 @@ paths:
                   - message
     delete:
       summary: Delete team
-      tags: *ref_0
+      tags: *ref_1
       parameters:
         - name: id
           in: path
@@ -1583,7 +1994,7 @@ paths:
   /api/v1/team/:
     get:
       summary: Get list of teams
-      tags: *ref_0
+      tags: *ref_1
       parameters:
         - name: offset
           in: query
@@ -1684,6 +2095,9 @@ paths:
                                   type: number
                                 GOOGLE_BUSINESS:
                                   type: number
+                              nullable: true
+                            monthlyImportLimitPerAccount:
+                              type: number
                               nullable: true
                             apiAccess:
                               default: true
@@ -2151,7 +2565,7 @@ paths:
                   - message
     post:
       summary: Create new team
-      tags: *ref_0
+      tags: *ref_1
       parameters: []
       operationId: team.createTeam
       requestBody:
@@ -2300,7 +2714,7 @@ paths:
         Generate OAuth URL for social account connection. Redirect user to this
         URL to connect social account.
       summary: Connect social account for team
-      tags: &ref_1
+      tags: &ref_2
         - socialAccount
       parameters: []
       operationId: socialAccount.connect
@@ -2454,7 +2868,7 @@ paths:
     delete:
       description: This will remove the social account from all the scheduled posts too.
       summary: Disconnect social account from team
-      tags: *ref_1
+      tags: *ref_2
       parameters: []
       operationId: socialAccount.disconnect
       requestBody:
@@ -2711,7 +3125,7 @@ paths:
         Needed only for some social account types - Youtube, Instagram, Facebook
         and Linkedin.
       summary: Set channel for social account
-      tags: *ref_1
+      tags: *ref_2
       parameters: []
       operationId: socialAccount.setChannel
       requestBody:
@@ -2962,7 +3376,7 @@ paths:
         Refresh channels saved on socialAccount.channels. This is only needed
         for some social account types - Reddit, Discord, Slack, Pinterest.
       summary: Refresh channels for social account
-      tags: *ref_1
+      tags: *ref_2
       parameters: []
       operationId: socialAccount.refreshChannels
       requestBody:
@@ -3215,7 +3629,7 @@ paths:
         connected social accounts directly on bundle.social platform without
         implementing the logic on your side.
       summary: Create portal link
-      tags: *ref_1
+      tags: *ref_2
       parameters: []
       operationId: socialAccount.createPortalLink
       requestBody:
@@ -3229,6 +3643,7 @@ paths:
                   type: string
                 redirectUrl:
                   type: string
+                  format: uri
                 socialAccountTypes:
                   type: array
                   items:
@@ -3250,8 +3665,10 @@ paths:
                       - GOOGLE_BUSINESS
                 logoUrl:
                   type: string
+                  format: uri
                 userLogoUrl:
                   type: string
+                  format: uri
                 userName:
                   type: string
                 goBackButtonText:
@@ -3389,7 +3806,7 @@ paths:
   /api/v1/social-account/copy:
     post:
       summary: Copy social accounts
-      tags: *ref_1
+      tags: *ref_2
       parameters: []
       operationId: socialAccount.copy
       requestBody:
@@ -3658,7 +4075,7 @@ paths:
   /api/v1/upload/:
     get:
       summary: Get upload list
-      tags: &ref_2
+      tags: &ref_3
         - upload
       parameters:
         - name: teamId
@@ -3873,7 +4290,7 @@ paths:
     post:
       description: Upload a file. This is the only endpoint that uses multipart/form-data.
       summary: Create upload
-      tags: *ref_2
+      tags: *ref_3
       parameters: []
       operationId: upload.create
       requestBody:
@@ -4049,7 +4466,7 @@ paths:
                   - message
     delete:
       summary: Delete many uploads
-      tags: *ref_2
+      tags: *ref_3
       parameters: []
       operationId: upload.deleteMany
       requestBody:
@@ -4228,7 +4645,7 @@ paths:
   /api/v1/upload/{id}:
     get:
       summary: Get upload
-      tags: *ref_2
+      tags: *ref_3
       parameters:
         - name: id
           in: path
@@ -4422,7 +4839,7 @@ paths:
                   - message
     delete:
       summary: Delete upload
-      tags: *ref_2
+      tags: *ref_3
       parameters:
         - name: id
           in: path
@@ -4593,7 +5010,7 @@ paths:
         Initialize large upload, you need to initialize a large upload if your
         file is larger than 90 MB.
       summary: Initialize large upload
-      tags: *ref_2
+      tags: *ref_3
       parameters: []
       operationId: upload.initLargeUpload
       requestBody:
@@ -4721,7 +5138,7 @@ paths:
     post:
       description: Finalize large upload.
       summary: Finalize large upload
-      tags: *ref_2
+      tags: *ref_3
       parameters: []
       operationId: upload.finalizeLargeUpload
       requestBody:
@@ -4898,7 +5315,7 @@ paths:
   /api/v1/post/{id}:
     get:
       summary: Get post
-      tags: &ref_3
+      tags: &ref_4
         - post
       parameters:
         - name: id
@@ -6436,7 +6853,7 @@ paths:
                   - message
     patch:
       summary: Update post
-      tags: *ref_3
+      tags: *ref_4
       parameters:
         - name: id
           in: path
@@ -8332,7 +8749,7 @@ paths:
                   - message
     delete:
       summary: Delete post
-      tags: *ref_3
+      tags: *ref_4
       parameters:
         - name: id
           in: path
@@ -9614,7 +10031,7 @@ paths:
   /api/v1/post/:
     get:
       summary: Get post list
-      tags: *ref_3
+      tags: *ref_4
       parameters:
         - name: teamId
           in: query
@@ -11243,7 +11660,7 @@ paths:
                   - message
     post:
       summary: Create post
-      tags: *ref_3
+      tags: *ref_4
       parameters: []
       operationId: post.create
       requestBody:
@@ -13144,7 +13561,7 @@ paths:
   /api/v1/post/{id}/retry:
     post:
       summary: Retry post
-      tags: *ref_3
+      tags: *ref_4
       parameters:
         - name: id
           in: path
@@ -14426,7 +14843,7 @@ paths:
   /api/v1/analytics/social-account:
     get:
       summary: Get Social Account Analytics
-      tags: &ref_4
+      tags: &ref_5
         - analytics
       parameters:
         - name: teamId
@@ -14736,7 +15153,7 @@ paths:
   /api/v1/analytics/post:
     get:
       summary: Get Post Analytics
-      tags: *ref_4
+      tags: *ref_5
       parameters:
         - name: postId
           in: query
@@ -16107,7 +16524,7 @@ paths:
   /api/v1/analytics/social-account/raw:
     get:
       summary: Get Social Account Analytics Raw
-      tags: *ref_4
+      tags: *ref_5
       parameters:
         - name: teamId
           in: query
@@ -16394,7 +16811,7 @@ paths:
   /api/v1/analytics/post/raw:
     get:
       summary: Get Post Analytics Raw
-      tags: *ref_4
+      tags: *ref_5
       parameters:
         - name: postId
           in: query
@@ -17741,7 +18158,7 @@ paths:
   /api/v1/analytics/social-account/force:
     post:
       summary: Force refresh social account analytics
-      tags: *ref_4
+      tags: *ref_5
       parameters: []
       operationId: analytics.forceSocialAccountAnalytics
       requestBody:
@@ -17915,7 +18332,7 @@ paths:
   /api/v1/analytics/post/force:
     post:
       summary: Force refresh post analytics
-      tags: *ref_4
+      tags: *ref_5
       parameters: []
       operationId: analytics.forcePostAnalytics
       requestBody:
@@ -18091,7 +18508,7 @@ paths:
   /api/v1/comment/{id}:
     get:
       summary: Get comment
-      tags: &ref_5
+      tags: &ref_6
         - comment
       parameters:
         - name: id
@@ -18730,7 +19147,7 @@ paths:
                   - message
     patch:
       summary: Update comment
-      tags: *ref_5
+      tags: *ref_6
       parameters:
         - name: id
           in: path
@@ -19487,7 +19904,7 @@ paths:
                   - message
     delete:
       summary: Delete comment
-      tags: *ref_5
+      tags: *ref_6
       parameters:
         - name: id
           in: path
@@ -20126,7 +20543,7 @@ paths:
   /api/v1/comment/:
     get:
       summary: Get comment list
-      tags: *ref_5
+      tags: *ref_6
       parameters:
         - name: teamId
           in: query
@@ -20839,7 +21256,7 @@ paths:
                   - message
     post:
       summary: Create comment
-      tags: *ref_5
+      tags: *ref_6
       parameters: []
       operationId: comment.create
       requestBody:
@@ -21602,7 +22019,7 @@ paths:
   /api/v1/misc/youtube/thumbnail:
     post:
       summary: Set or change thumbnail for a YouTube video
-      tags: &ref_6
+      tags: &ref_7
         - misc
         - youtube
       parameters: []
@@ -21784,7 +22201,7 @@ paths:
   /api/v1/misc/youtube/playlist:
     get:
       summary: Get channel playlists
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: teamId
           in: query
@@ -22002,7 +22419,7 @@ paths:
                   - message
     post:
       summary: Create a new playlist
-      tags: *ref_6
+      tags: *ref_7
       parameters: []
       operationId: misc.youtube.createNewChannelPlaylist
       requestBody:
@@ -22216,7 +22633,7 @@ paths:
                   - message
     put:
       summary: Update an existing playlist
-      tags: *ref_6
+      tags: *ref_7
       parameters: []
       operationId: misc.youtube.updateChannelPlaylist
       requestBody:
@@ -22434,7 +22851,7 @@ paths:
   /api/v1/misc/youtube/playlist/{playlistId}:
     delete:
       summary: Remove a video from a playlist
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: playlistId
           in: path
@@ -22540,7 +22957,7 @@ paths:
   /api/v1/misc/youtube/playlist-items:
     post:
       summary: Add a video to a playlist
-      tags: *ref_6
+      tags: *ref_7
       parameters: []
       operationId: misc.youtube.addVideoToPlaylist
       requestBody:
@@ -22750,7 +23167,7 @@ paths:
                   - message
     get:
       summary: Get videos from a playlist
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: teamId
           in: query
@@ -22979,7 +23396,7 @@ paths:
   /api/v1/misc/youtube/playlist-items/{playlistItemId}:
     delete:
       summary: Remove a video from a playlist
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: playlistItemId
           in: path
@@ -23089,7 +23506,7 @@ paths:
         Update the title, description, tags, category, or privacy status of a
         published YouTube video.
       summary: Edit YouTube video metadata
-      tags: *ref_6
+      tags: *ref_7
       parameters: []
       operationId: misc.youtube.editVideo
       requestBody:
@@ -23232,7 +23649,7 @@ paths:
         Retrieve the list of video categories that can be associated with
         YouTube videos for a specific region.
       summary: Get YouTube video categories
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: teamId
           in: query
@@ -23367,7 +23784,7 @@ paths:
     get:
       description: Retrieve the list of content regions that the YouTube website supports.
       summary: Get YouTube regions
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: teamId
           in: query
@@ -23492,7 +23909,7 @@ paths:
   /api/v1/misc/linkedin/mentions/tags:
     get:
       summary: Get Linkedin mentionable tags (people & organizations)
-      tags: &ref_7
+      tags: &ref_8
         - misc
         - linkedin
       parameters:
@@ -23660,7 +24077,7 @@ paths:
         If tag already exists (case insensitive), mentions replace it; otherwise
         they're appended to the end.
       summary: Build Linkedin text, insert mentions at tag placeholders.
-      tags: *ref_7
+      tags: *ref_8
       parameters: []
       operationId: misc.linkedin.buildCommentary
       requestBody:
@@ -23785,7 +24202,7 @@ paths:
     patch:
       description: Update the text content of a published LinkedIn post.
       summary: Edit an existing LinkedIn post
-      tags: *ref_7
+      tags: *ref_8
       parameters: []
       operationId: misc.linkedin.editPost
       requestBody:
@@ -24071,7 +24488,7 @@ paths:
   /api/v1/misc/reddit/post-requirements:
     get:
       summary: Get subreddit post requirements (flair required/enabled)
-      tags: &ref_8
+      tags: &ref_9
         - misc
         - reddit
       parameters:
@@ -24187,7 +24604,7 @@ paths:
   /api/v1/misc/reddit/subreddit-flairs:
     get:
       summary: Get subreddit flairs list
-      tags: *ref_8
+      tags: *ref_9
       parameters:
         - name: teamId
           in: query
@@ -24315,7 +24732,7 @@ paths:
         Update the selftext content of a published Reddit text post. Link and
         media posts cannot be edited.
       summary: Edit an existing Reddit post
-      tags: *ref_8
+      tags: *ref_9
       parameters: []
       operationId: misc.reddit.editPost
       requestBody:
@@ -25111,11 +25528,1007 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/post-history-import/:
+    post:
+      summary: Start a new post history import
+      tags: &ref_10
+        - postImport
+      parameters: []
+      operationId: postImport.create
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                socialAccountType:
+                  type: string
+                  enum:
+                    - FACEBOOK
+                    - INSTAGRAM
+                    - THREADS
+                    - TIKTOK
+                    - YOUTUBE
+                    - LINKEDIN
+                    - PINTEREST
+                    - REDDIT
+                    - MASTODON
+                    - BLUESKY
+                count:
+                  type: number
+                  minimum: 1
+                  maximum: 100
+                withAnalytics:
+                  default: true
+                  type: boolean
+              required:
+                - teamId
+                - socialAccountType
+                - count
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  requestedCount:
+                    type: number
+                  withAnalytics:
+                    type: boolean
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING_POSTS
+                      - FETCHING_ANALYTICS
+                      - COMPLETED
+                      - FAILED
+                      - RATE_LIMITED
+                  postsImported:
+                    type: number
+                  analyticsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - requestedCount
+                  - withAnalytics
+                  - status
+                  - postsImported
+                  - analyticsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '409':
+          description: '409'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+    get:
+      summary: Get import status list
+      tags: *ref_10
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: socialAccountType
+          in: query
+          schema:
+            type: string
+            enum:
+              - FACEBOOK
+              - INSTAGRAM
+              - THREADS
+              - TIKTOK
+              - YOUTUBE
+              - LINKEDIN
+              - PINTEREST
+              - REDDIT
+              - MASTODON
+              - BLUESKY
+      operationId: postImport.getStatus
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        teamId:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        requestedCount:
+                          type: number
+                        withAnalytics:
+                          type: boolean
+                        status:
+                          type: string
+                          enum:
+                            - PENDING
+                            - FETCHING_POSTS
+                            - FETCHING_ANALYTICS
+                            - COMPLETED
+                            - FAILED
+                            - RATE_LIMITED
+                        postsImported:
+                          type: number
+                        analyticsImported:
+                          type: number
+                        error:
+                          type: string
+                          nullable: true
+                        rateLimitResetAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        startedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        completedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - teamId
+                        - socialAccountId
+                        - requestedCount
+                        - withAnalytics
+                        - status
+                        - postsImported
+                        - analyticsImported
+                        - createdAt
+                        - updatedAt
+                required:
+                  - imports
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/post-history-import/{importId}:
+    get:
+      summary: Get import by ID
+      tags: *ref_10
+      parameters:
+        - name: importId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: postImport.getById
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  requestedCount:
+                    type: number
+                  withAnalytics:
+                    type: boolean
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING_POSTS
+                      - FETCHING_ANALYTICS
+                      - COMPLETED
+                      - FAILED
+                      - RATE_LIMITED
+                  postsImported:
+                    type: number
+                  analyticsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - requestedCount
+                  - withAnalytics
+                  - status
+                  - postsImported
+                  - analyticsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/post-history-import/posts:
+    get:
+      summary: Get imported posts with analytics for a social account
+      tags: *ref_10
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: socialAccountType
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - FACEBOOK
+              - INSTAGRAM
+              - THREADS
+              - TIKTOK
+              - YOUTUBE
+              - LINKEDIN
+              - PINTEREST
+              - REDDIT
+              - MASTODON
+              - BLUESKY
+        - name: limit
+          in: query
+          schema:
+            default: 50
+            type: number
+            minimum: 1
+            maximum: 100
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: number
+            minimum: 0
+            nullable: true
+      operationId: postImport.getImportedPosts
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  posts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        postId:
+                          type: string
+                          nullable: true
+                        externalId:
+                          type: string
+                          nullable: true
+                        title:
+                          type: string
+                          nullable: true
+                        description:
+                          type: string
+                          nullable: true
+                        smallThumbnail:
+                          type: string
+                          nullable: true
+                        thumbnail:
+                          type: string
+                          nullable: true
+                        permalink:
+                          type: string
+                          nullable: true
+                        subreddit:
+                          type: string
+                          nullable: true
+                        publishedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        type:
+                          type: string
+                          enum:
+                            - POST
+                            - REEL
+                            - STORY
+                            - VIDEO
+                            - IMAGE
+                        internal:
+                          type: boolean
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        analytics:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              profilePostId:
+                                type: string
+                              impressions:
+                                type: number
+                              impressionsUnique:
+                                type: number
+                              views:
+                                type: number
+                              viewsUnique:
+                                type: number
+                              likes:
+                                type: number
+                              dislikes:
+                                type: number
+                              comments:
+                                type: number
+                              shares:
+                                type: number
+                              saves:
+                                type: number
+                              raw:
+                                nullable: true
+                              forced:
+                                type: boolean
+                              createdAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              updatedAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                              deletedAt:
+                                type: string
+                                format: date-time
+                                nullable: true
+                            required:
+                              - id
+                              - profilePostId
+                              - impressions
+                              - impressionsUnique
+                              - views
+                              - viewsUnique
+                              - likes
+                              - dislikes
+                              - comments
+                              - shares
+                              - saves
+                              - forced
+                              - createdAt
+                              - updatedAt
+                      required:
+                        - id
+                        - socialAccountId
+                        - type
+                        - internal
+                        - createdAt
+                        - updatedAt
+                        - analytics
+                  total:
+                    type: number
+                  limit:
+                    type: number
+                  remainingCapacity:
+                    type: number
+                required:
+                  - posts
+                  - total
+                  - limit
+                  - remainingCapacity
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/post-history-import/{importId}/retry:
+    post:
+      summary: Retry a failed import
+      tags: *ref_10
+      parameters:
+        - name: importId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: postImport.retryImport
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+              required:
+                - teamId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  requestedCount:
+                    type: number
+                  withAnalytics:
+                    type: boolean
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING_POSTS
+                      - FETCHING_ANALYTICS
+                      - COMPLETED
+                      - FAILED
+                      - RATE_LIMITED
+                  postsImported:
+                    type: number
+                  analyticsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - requestedCount
+                  - withAnalytics
+                  - status
+                  - postsImported
+                  - analyticsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
 info:
   title: bundle.social API
   description: >-
-    The purpose of this API is to provide an easy way to create & schedule
-    social media posts.
+    REST API for social media management. Perfect for AI assistants, GPTs,
+    automation tools, and integrations. Post to 14+ platforms including Twitter,
+    Instagram, Facebook, LinkedIn, TikTok, Pinterest, Reddit, Discord, Slack,
+    YouTube, Mastodon, Bluesky, Threads, and Google Business. Schedule posts,
+    manage content, analyze performance, and automate your social media workflow
+    across all platforms.
   version: 1.0.0
   contact:
     email: contact@bundle.social

@@ -28,6 +28,7 @@ export type OrganizationGetOrganizationResponse = {
         BLUESKY?: number;
         GOOGLE_BUSINESS?: number;
     } | null;
+    monthlyImportLimitPerAccount?: number | null;
     apiAccess?: boolean;
     analyticsDisabled?: boolean;
     analyticsPostsDisabled?: boolean;
@@ -86,6 +87,7 @@ export type OrganizationGetOrganizationResponse = {
         trialEnd?: string | null;
         maxMonthlyPosts?: number | null;
         maxMonthlyUploads?: number | null;
+        maxMonthlyImportedPosts?: number | null;
         discountStart?: string | null;
         discountEnd?: string | null;
         createdAt: string | null;
@@ -168,6 +170,45 @@ export type OrganizationGetOrganizationResponse = {
     };
 };
 
+export type OrganizationGetPostsUsageResponse = {
+    used: number;
+    limit: number;
+    remaining: number;
+};
+
+export type OrganizationGetUploadsUsageResponse = {
+    used: number;
+    limit: number;
+    remaining: number;
+};
+
+export type OrganizationGetImportsUsageData = {
+    page?: number;
+    pageSize?: number;
+    socialAccountId?: string;
+    socialAccountType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    teamId?: string;
+};
+
+export type OrganizationGetImportsUsageResponse = {
+    limitPerSocialAccount: number;
+    socialAccounts: Array<{
+        id: string;
+        type: string;
+        username: string | null;
+        displayName: string | null;
+        used: number;
+        limit: number;
+        remaining: number;
+    }>;
+    pagination: {
+        page: number;
+        pageSize: number;
+        total: number;
+        totalPages: number;
+    };
+};
+
 export type TeamGetTeamData = {
     id: string;
 };
@@ -204,6 +245,7 @@ export type TeamGetTeamResponse = {
             BLUESKY?: number;
             GOOGLE_BUSINESS?: number;
         } | null;
+        monthlyImportLimitPerAccount?: number | null;
         apiAccess?: boolean;
         analyticsDisabled?: boolean;
         analyticsPostsDisabled?: boolean;
@@ -386,6 +428,7 @@ export type TeamGetListResponse = {
                 BLUESKY?: number;
                 GOOGLE_BUSINESS?: number;
             } | null;
+            monthlyImportLimitPerAccount?: number | null;
             apiAccess?: boolean;
             analyticsDisabled?: boolean;
             analyticsPostsDisabled?: boolean;
@@ -7855,6 +7898,160 @@ export type MiscSlackEditMessageResponse = {
     permalink: string;
 };
 
+export type PostImportCreateData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY';
+        count: number;
+        withAnalytics?: boolean;
+    };
+};
+
+export type PostImportCreateResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    requestedCount: number;
+    withAnalytics: boolean;
+    status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+    postsImported: number;
+    analyticsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type PostImportGetStatusData = {
+    socialAccountType?: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY';
+    teamId: string;
+};
+
+export type PostImportGetStatusResponse = {
+    imports: Array<{
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        requestedCount: number;
+        withAnalytics: boolean;
+        status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+        postsImported: number;
+        analyticsImported: number;
+        error?: string | null;
+        rateLimitResetAt?: string | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+};
+
+export type PostImportGetByIdData = {
+    importId: string;
+};
+
+export type PostImportGetByIdResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    requestedCount: number;
+    withAnalytics: boolean;
+    status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+    postsImported: number;
+    analyticsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type PostImportGetImportedPostsData = {
+    limit?: number;
+    offset?: number | null;
+    socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY';
+    teamId: string;
+};
+
+export type PostImportGetImportedPostsResponse = {
+    posts: Array<{
+        id: string;
+        socialAccountId: string;
+        postId?: string | null;
+        externalId?: string | null;
+        title?: string | null;
+        description?: string | null;
+        smallThumbnail?: string | null;
+        thumbnail?: string | null;
+        permalink?: string | null;
+        subreddit?: string | null;
+        publishedAt?: string | null;
+        type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
+        internal: boolean;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        analytics: Array<{
+            id: string;
+            profilePostId: string;
+            impressions: number;
+            impressionsUnique: number;
+            views: number;
+            viewsUnique: number;
+            likes: number;
+            dislikes: number;
+            comments: number;
+            shares: number;
+            saves: number;
+            raw?: unknown;
+            forced: boolean;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        }>;
+    }>;
+    total: number;
+    limit: number;
+    remainingCapacity: number;
+};
+
+export type PostImportRetryImportData = {
+    importId: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+    };
+};
+
+export type PostImportRetryImportResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    requestedCount: number;
+    withAnalytics: boolean;
+    status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+    postsImported: number;
+    analyticsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
 export type $OpenApiTs = {
     '/api/v1/': {
         get: {
@@ -7938,6 +8135,7 @@ export type $OpenApiTs = {
                         BLUESKY?: number;
                         GOOGLE_BUSINESS?: number;
                     } | null;
+                    monthlyImportLimitPerAccount?: number | null;
                     apiAccess?: boolean;
                     analyticsDisabled?: boolean;
                     analyticsPostsDisabled?: boolean;
@@ -7996,6 +8194,7 @@ export type $OpenApiTs = {
                         trialEnd?: string | null;
                         maxMonthlyPosts?: number | null;
                         maxMonthlyUploads?: number | null;
+                        maxMonthlyImportedPosts?: number | null;
                         discountStart?: string | null;
                         discountEnd?: string | null;
                         createdAt: string | null;
@@ -8120,6 +8319,182 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/organization/usage/posts': {
+        get: {
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    used: number;
+                    limit: number;
+                    remaining: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/organization/usage/uploads': {
+        get: {
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    used: number;
+                    limit: number;
+                    remaining: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/organization/usage/imports': {
+        get: {
+            req: OrganizationGetImportsUsageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    limitPerSocialAccount: number;
+                    socialAccounts: Array<{
+                        id: string;
+                        type: string;
+                        username: string | null;
+                        displayName: string | null;
+                        used: number;
+                        limit: number;
+                        remaining: number;
+                    }>;
+                    pagination: {
+                        page: number;
+                        pageSize: number;
+                        total: number;
+                        totalPages: number;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/team/{id}': {
         get: {
             req: TeamGetTeamData;
@@ -8159,6 +8534,7 @@ export type $OpenApiTs = {
                             BLUESKY?: number;
                             GOOGLE_BUSINESS?: number;
                         } | null;
+                        monthlyImportLimitPerAccount?: number | null;
                         apiAccess?: boolean;
                         analyticsDisabled?: boolean;
                         analyticsPostsDisabled?: boolean;
@@ -8464,6 +8840,7 @@ export type $OpenApiTs = {
                                 BLUESKY?: number;
                                 GOOGLE_BUSINESS?: number;
                             } | null;
+                            monthlyImportLimitPerAccount?: number | null;
                             apiAccess?: boolean;
                             analyticsDisabled?: boolean;
                             analyticsPostsDisabled?: boolean;
@@ -17343,6 +17720,371 @@ export type $OpenApiTs = {
                 200: {
                     success: boolean;
                     permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-history-import/': {
+        post: {
+            req: PostImportCreateData;
+            res: {
+                /**
+                 * 201
+                 */
+                201: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    requestedCount: number;
+                    withAnalytics: boolean;
+                    status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                    postsImported: number;
+                    analyticsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 409
+                 */
+                409: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        get: {
+            req: PostImportGetStatusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    imports: Array<{
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        requestedCount: number;
+                        withAnalytics: boolean;
+                        status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                        postsImported: number;
+                        analyticsImported: number;
+                        error?: string | null;
+                        rateLimitResetAt?: string | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-history-import/{importId}': {
+        get: {
+            req: PostImportGetByIdData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    requestedCount: number;
+                    withAnalytics: boolean;
+                    status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                    postsImported: number;
+                    analyticsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-history-import/posts': {
+        get: {
+            req: PostImportGetImportedPostsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    posts: Array<{
+                        id: string;
+                        socialAccountId: string;
+                        postId?: string | null;
+                        externalId?: string | null;
+                        title?: string | null;
+                        description?: string | null;
+                        smallThumbnail?: string | null;
+                        thumbnail?: string | null;
+                        permalink?: string | null;
+                        subreddit?: string | null;
+                        publishedAt?: string | null;
+                        type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
+                        internal: boolean;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        analytics: Array<{
+                            id: string;
+                            profilePostId: string;
+                            impressions: number;
+                            impressionsUnique: number;
+                            views: number;
+                            viewsUnique: number;
+                            likes: number;
+                            dislikes: number;
+                            comments: number;
+                            shares: number;
+                            saves: number;
+                            raw?: unknown;
+                            forced: boolean;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        }>;
+                    }>;
+                    total: number;
+                    limit: number;
+                    remainingCapacity: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-history-import/{importId}/retry': {
+        post: {
+            req: PostImportRetryImportData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    requestedCount: number;
+                    withAnalytics: boolean;
+                    status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                    postsImported: number;
+                    analyticsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
                 };
                 /**
                  * 400

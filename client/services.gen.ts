@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -41,6 +41,79 @@ export class OrganizationService {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/v1/organization/',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get organization posts usage
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public organizationGetPostsUsage(): CancelablePromise<OrganizationGetPostsUsageResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/organization/usage/posts',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get organization uploads usage
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public organizationGetUploadsUsage(): CancelablePromise<OrganizationGetUploadsUsageResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/organization/usage/uploads',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get organization imports usage per social account (paginated)
+     * @param data The data for the request.
+     * @param data.page
+     * @param data.pageSize
+     * @param data.teamId
+     * @param data.socialAccountType
+     * @param data.socialAccountId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public organizationGetImportsUsage(data: OrganizationGetImportsUsageData = {}): CancelablePromise<OrganizationGetImportsUsageResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/organization/usage/imports',
+            query: {
+                page: data.page,
+                pageSize: data.pageSize,
+                teamId: data.teamId,
+                socialAccountType: data.socialAccountType,
+                socialAccountId: data.socialAccountId
+            },
             errors: {
                 400: '400',
                 401: '401',
@@ -2240,6 +2313,147 @@ export class SlackService {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/v1/misc/slack/message',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class PostImportService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Start a new post history import
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 201
+     * @throws ApiError
+     */
+    public postImportCreate(data: PostImportCreateData = {}): CancelablePromise<PostImportCreateResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/post-history-import/',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                409: '409',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get import status list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.socialAccountType
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public postImportGetStatus(data: PostImportGetStatusData): CancelablePromise<PostImportGetStatusResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/post-history-import/',
+            query: {
+                teamId: data.teamId,
+                socialAccountType: data.socialAccountType
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get import by ID
+     * @param data The data for the request.
+     * @param data.importId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public postImportGetById(data: PostImportGetByIdData): CancelablePromise<PostImportGetByIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/post-history-import/{importId}',
+            path: {
+                importId: data.importId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get imported posts with analytics for a social account
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.socialAccountType
+     * @param data.limit
+     * @param data.offset
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public postImportGetImportedPosts(data: PostImportGetImportedPostsData): CancelablePromise<PostImportGetImportedPostsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/post-history-import/posts',
+            query: {
+                teamId: data.teamId,
+                socialAccountType: data.socialAccountType,
+                limit: data.limit,
+                offset: data.offset
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Retry a failed import
+     * @param data The data for the request.
+     * @param data.importId
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public postImportRetryImport(data: PostImportRetryImportData): CancelablePromise<PostImportRetryImportResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/post-history-import/{importId}/retry',
+            path: {
+                importId: data.importId
+            },
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {

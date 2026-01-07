@@ -1,3 +1,10 @@
+# [2.32.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.31.0...v2.32.0) (2026-01-07)
+
+
+### Features
+
+* post history import ([311048e](https://github.com/bundleglobal/bundlesocial-node/commit/311048ee4cbb260df6abd2c276c5932751d5a573))
+
 # [2.31.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.30.0...v2.31.0) (2025-12-22)
 
 

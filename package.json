@@ -1,6 +1,6 @@
 {
   "name": "bundlesocial",
-  "version": "2.31.0",
+  "version": "2.32.0",
   "description": "Node.js library for the bundle.social API",
   "keywords": [
     "bundle.social",

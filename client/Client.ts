@@ -15,6 +15,7 @@ import { MiscService } from './services.gen';
 import { OrganizationService } from './services.gen';
 import { PinterestService } from './services.gen';
 import { PostService } from './services.gen';
+import { PostImportService } from './services.gen';
 import { RedditService } from './services.gen';
 import { SlackService } from './services.gen';
 import { SocialAccountService } from './services.gen';
@@ -38,6 +39,7 @@ export class Client {
 	public readonly organization: OrganizationService;
 	public readonly pinterest: PinterestService;
 	public readonly post: PostService;
+	public readonly postImport: PostImportService;
 	public readonly reddit: RedditService;
 	public readonly slack: SlackService;
 	public readonly socialAccount: SocialAccountService;
@@ -76,6 +78,7 @@ export class Client {
 		this.organization = new OrganizationService(this.request);
 		this.pinterest = new PinterestService(this.request);
 		this.post = new PostService(this.request);
+		this.postImport = new PostImportService(this.request);
 		this.reddit = new RedditService(this.request);
 		this.slack = new SlackService(this.request);
 		this.socialAccount = new SocialAccountService(this.request);

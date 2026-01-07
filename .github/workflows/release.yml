@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   release:
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -35,3 +36,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release --debug
+
+  skip-release:
+    if: github.event.workflow_run.conclusion != 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip Release
+        run: |
+          echo "::warning::Release workflow skipped because tests workflow did not succeed"
+          echo "Tests workflow conclusion: ${{ github.event.workflow_run.conclusion }}"
+          exit 0

@@ -3706,7 +3706,6 @@ paths:
                   type: number
               required:
                 - teamId
-                - redirectUrl
                 - socialAccountTypes
       responses:
         '200':
@@ -6491,6 +6490,8 @@ paths:
                               available.
                         nullable: true
                     nullable: true
+                  retryCount:
+                    type: number
                   createdAt:
                     type: string
                     format: date-time
@@ -6764,6 +6765,7 @@ paths:
                   - postDate
                   - status
                   - data
+                  - retryCount
                   - createdAt
                   - updatedAt
                   - uploads
@@ -8643,6 +8645,8 @@ paths:
                               available.
                         nullable: true
                     nullable: true
+                  retryCount:
+                    type: number
                   createdAt:
                     type: string
                     format: date-time
@@ -8662,6 +8666,7 @@ paths:
                   - postDate
                   - status
                   - data
+                  - retryCount
                   - createdAt
                   - updatedAt
         '400':
@@ -9924,6 +9929,8 @@ paths:
                               available.
                         nullable: true
                     nullable: true
+                  retryCount:
+                    type: number
                   createdAt:
                     type: string
                     format: date-time
@@ -9943,6 +9950,7 @@ paths:
                   - postDate
                   - status
                   - data
+                  - retryCount
                   - createdAt
                   - updatedAt
         '400':
@@ -11293,6 +11301,8 @@ paths:
                                     available.
                               nullable: true
                           nullable: true
+                        retryCount:
+                          type: number
                         createdAt:
                           type: string
                           format: date-time
@@ -11566,6 +11576,7 @@ paths:
                         - postDate
                         - status
                         - data
+                        - retryCount
                         - createdAt
                         - updatedAt
                         - uploads
@@ -13454,6 +13465,8 @@ paths:
                               available.
                         nullable: true
                     nullable: true
+                  retryCount:
+                    type: number
                   createdAt:
                     type: string
                     format: date-time
@@ -13473,6 +13486,7 @@ paths:
                   - postDate
                   - status
                   - data
+                  - retryCount
                   - createdAt
                   - updatedAt
         '400':
@@ -14736,6 +14750,8 @@ paths:
                               available.
                         nullable: true
                     nullable: true
+                  retryCount:
+                    type: number
                   createdAt:
                     type: string
                     format: date-time
@@ -14755,6 +14771,7 @@ paths:
                   - postDate
                   - status
                   - data
+                  - retryCount
                   - createdAt
                   - updatedAt
         '400':
@@ -16356,6 +16373,8 @@ paths:
                                   available.
                             nullable: true
                         nullable: true
+                      retryCount:
+                        type: number
                       createdAt:
                         type: string
                         format: date-time
@@ -16375,6 +16394,7 @@ paths:
                       - postDate
                       - status
                       - data
+                      - retryCount
                       - createdAt
                       - updatedAt
                   items:
@@ -18014,6 +18034,8 @@ paths:
                                   available.
                             nullable: true
                         nullable: true
+                      retryCount:
+                        type: number
                       createdAt:
                         type: string
                         format: date-time
@@ -18033,6 +18055,7 @@ paths:
                       - postDate
                       - status
                       - data
+                      - retryCount
                       - createdAt
                       - updatedAt
                   items:
@@ -26174,6 +26197,14 @@ paths:
                             - IMAGE
                         internal:
                           type: boolean
+                        importedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        externallyDeletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
                         createdAt:
                           type: string
                           format: date-time

@@ -738,7 +738,7 @@ export type SocialAccountCreatePortalLinkData = {
      */
     requestBody?: {
         teamId: string;
-        redirectUrl: string;
+        redirectUrl?: string;
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
         logoUrl?: string;
         userLogoUrl?: string;
@@ -1510,6 +1510,7 @@ export type PostGetResponse = {
             permalink?: string | null;
         } | null;
     } | null;
+    retryCount: number;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -2365,6 +2366,7 @@ export type PostUpdateResponse = {
             permalink?: string | null;
         } | null;
     } | null;
+    retryCount: number;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -2870,6 +2872,7 @@ export type PostDeleteResponse = {
             permalink?: string | null;
         } | null;
     } | null;
+    retryCount: number;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -3383,6 +3386,7 @@ export type PostGetListResponse = {
                 permalink?: string | null;
             } | null;
         } | null;
+        retryCount: number;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -4240,6 +4244,7 @@ export type PostCreateResponse = {
             permalink?: string | null;
         } | null;
     } | null;
+    retryCount: number;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -4745,6 +4750,7 @@ export type PostRetryResponse = {
             permalink?: string | null;
         } | null;
     } | null;
+    retryCount: number;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -5313,6 +5319,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 permalink?: string | null;
             } | null;
         } | null;
+        retryCount: number;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -5893,6 +5900,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 permalink?: string | null;
             } | null;
         } | null;
+        retryCount: number;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -7997,6 +8005,8 @@ export type PostImportGetImportedPostsResponse = {
         publishedAt?: string | null;
         type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
         internal: boolean;
+        importedAt?: string | null;
+        externallyDeletedAt?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -10488,6 +10498,7 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                         } | null;
                     } | null;
+                    retryCount: number;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -11106,6 +11117,7 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                         } | null;
                     } | null;
+                    retryCount: number;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -11654,6 +11666,7 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                         } | null;
                     } | null;
+                    retryCount: number;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -12205,6 +12218,7 @@ export type $OpenApiTs = {
                                 permalink?: string | null;
                             } | null;
                         } | null;
+                        retryCount: number;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -12825,6 +12839,7 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                         } | null;
                     } | null;
+                    retryCount: number;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -13375,6 +13390,7 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                         } | null;
                     } | null;
+                    retryCount: number;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -14031,6 +14047,7 @@ export type $OpenApiTs = {
                                 permalink?: string | null;
                             } | null;
                         } | null;
+                        retryCount: number;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -14699,6 +14716,7 @@ export type $OpenApiTs = {
                                 permalink?: string | null;
                             } | null;
                         } | null;
+                        retryCount: number;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -17993,6 +18011,8 @@ export type $OpenApiTs = {
                         publishedAt?: string | null;
                         type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
                         internal: boolean;
+                        importedAt?: string | null;
+                        externallyDeletedAt?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;

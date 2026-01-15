@@ -201,41 +201,6 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
-                  teams:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        name:
-                          type: string
-                        avatarUrl:
-                          type: string
-                          nullable: true
-                        organizationId:
-                          type: string
-                        createdById:
-                          type: string
-                        createdAt:
-                          type: string
-                          format: date-time
-                          nullable: true
-                        updatedAt:
-                          type: string
-                          format: date-time
-                          nullable: true
-                        deletedAt:
-                          type: string
-                          format: date-time
-                          nullable: true
-                      required:
-                        - id
-                        - name
-                        - organizationId
-                        - createdById
-                        - createdAt
-                        - updatedAt
                   createdBy:
                     type: object
                     properties:
@@ -666,14 +631,49 @@ paths:
                         type: number
                     required:
                       - monthlyPosts
+                  teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        avatarUrl:
+                          type: string
+                          nullable: true
+                        organizationId:
+                          type: string
+                        createdById:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - name
+                        - organizationId
+                        - createdById
+                        - createdAt
+                        - updatedAt
                 required:
                   - id
                   - createdById
                   - createdAt
                   - updatedAt
-                  - teams
                   - createdBy
                   - usage
+                  - teams
         '400':
           description: '400'
           content:
@@ -2008,6 +2008,11 @@ paths:
             default: 10
             type: number
             nullable: true
+        - name: search
+          in: query
+          schema:
+            type: string
+            nullable: true
       operationId: team.getList
       responses:
         '200':
@@ -2758,6 +2763,7 @@ paths:
                     - INSTAGRAM
                   description: Instagram only - connection method
                 withBusinessScope:
+                  default: false
                   type: boolean
                   description: >-
                     Facebook and Instagram only - include business_management,

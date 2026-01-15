@@ -1,3 +1,10 @@
+## [2.32.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.32.0...v2.32.1) (2026-01-15)
+
+
+### Bug Fixes
+
+* handle externally deleted posts, return retry count ([e1943a2](https://github.com/bundleglobal/bundlesocial-node/commit/e1943a216185189613663a8c3e2a4c83b8652414))
+
 # [2.32.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.31.0...v2.32.0) (2026-01-07)
 
 

@@ -38,16 +38,6 @@ export type OrganizationGetOrganizationResponse = {
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
-    teams: Array<{
-        id: string;
-        name: string;
-        avatarUrl?: string | null;
-        organizationId: string;
-        createdById: string;
-        createdAt: string | null;
-        updatedAt: string | null;
-        deletedAt?: string | null;
-    }>;
     createdBy: {
         id: string;
         externalId: string;
@@ -168,6 +158,16 @@ export type OrganizationGetOrganizationResponse = {
     usage: {
         monthlyPosts: number;
     };
+    teams: Array<{
+        id: string;
+        name: string;
+        avatarUrl?: string | null;
+        organizationId: string;
+        createdById: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
 };
 
 export type OrganizationGetPostsUsageResponse = {
@@ -393,6 +393,7 @@ export type TeamDeleteTeamResponse = {
 export type TeamGetListData = {
     limit?: number | null;
     offset?: number | null;
+    search?: string | null;
 };
 
 export type TeamGetListResponse = {
@@ -8155,16 +8156,6 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
-                    teams: Array<{
-                        id: string;
-                        name: string;
-                        avatarUrl?: string | null;
-                        organizationId: string;
-                        createdById: string;
-                        createdAt: string | null;
-                        updatedAt: string | null;
-                        deletedAt?: string | null;
-                    }>;
                     createdBy: {
                         id: string;
                         externalId: string;
@@ -8285,6 +8276,16 @@ export type $OpenApiTs = {
                     usage: {
                         monthlyPosts: number;
                     };
+                    teams: Array<{
+                        id: string;
+                        name: string;
+                        avatarUrl?: string | null;
+                        organizationId: string;
+                        createdById: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
                 };
                 /**
                  * 400

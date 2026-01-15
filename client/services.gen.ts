@@ -213,6 +213,7 @@ export class TeamService {
      * @param data The data for the request.
      * @param data.offset
      * @param data.limit
+     * @param data.search
      * @returns unknown 200
      * @throws ApiError
      */
@@ -222,7 +223,8 @@ export class TeamService {
             url: '/api/v1/team/',
             query: {
                 offset: data.offset,
-                limit: data.limit
+                limit: data.limit,
+                search: data.search
             },
             errors: {
                 400: '400',

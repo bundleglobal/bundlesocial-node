@@ -1,3 +1,10 @@
+# [2.33.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.32.1...v2.33.0) (2026-01-15)
+
+
+### Features
+
+* team list search ([92ef0fa](https://github.com/bundleglobal/bundlesocial-node/commit/92ef0fac8b2d67f502db6233a23b67a36225802a))
+
 ## [2.32.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.32.0...v2.32.1) (2026-01-15)
 
 

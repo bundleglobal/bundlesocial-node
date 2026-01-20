@@ -172,16 +172,12 @@ paths:
                     type: number
                     nullable: true
                   apiAccess:
-                    default: true
                     type: boolean
                   analyticsDisabled:
-                    default: false
                     type: boolean
                   analyticsPostsDisabled:
-                    default: false
                     type: boolean
                   uploadsCompressionEnabled:
-                    default: false
                     type: boolean
                   analyticsInterval:
                     type: number
@@ -189,6 +185,8 @@ paths:
                   analyticsPostsInterval:
                     type: number
                     nullable: true
+                  showVerboseErrors:
+                    type: boolean
                   createdAt:
                     type: string
                     format: date-time
@@ -669,6 +667,11 @@ paths:
                 required:
                   - id
                   - createdById
+                  - apiAccess
+                  - analyticsDisabled
+                  - analyticsPostsDisabled
+                  - uploadsCompressionEnabled
+                  - showVerboseErrors
                   - createdAt
                   - updatedAt
                   - createdBy
@@ -1257,16 +1260,12 @@ paths:
                         type: number
                         nullable: true
                       apiAccess:
-                        default: true
                         type: boolean
                       analyticsDisabled:
-                        default: false
                         type: boolean
                       analyticsPostsDisabled:
-                        default: false
                         type: boolean
                       uploadsCompressionEnabled:
-                        default: false
                         type: boolean
                       analyticsInterval:
                         type: number
@@ -1274,6 +1273,8 @@ paths:
                       analyticsPostsInterval:
                         type: number
                         nullable: true
+                      showVerboseErrors:
+                        type: boolean
                       createdAt:
                         type: string
                         format: date-time
@@ -1289,6 +1290,11 @@ paths:
                     required:
                       - id
                       - createdById
+                      - apiAccess
+                      - analyticsDisabled
+                      - analyticsPostsDisabled
+                      - uploadsCompressionEnabled
+                      - showVerboseErrors
                       - createdAt
                       - updatedAt
                   createdBy:
@@ -2105,16 +2111,12 @@ paths:
                               type: number
                               nullable: true
                             apiAccess:
-                              default: true
                               type: boolean
                             analyticsDisabled:
-                              default: false
                               type: boolean
                             analyticsPostsDisabled:
-                              default: false
                               type: boolean
                             uploadsCompressionEnabled:
-                              default: false
                               type: boolean
                             analyticsInterval:
                               type: number
@@ -2122,6 +2124,8 @@ paths:
                             analyticsPostsInterval:
                               type: number
                               nullable: true
+                            showVerboseErrors:
+                              type: boolean
                             createdAt:
                               type: string
                               format: date-time
@@ -2137,6 +2141,11 @@ paths:
                           required:
                             - id
                             - createdById
+                            - apiAccess
+                            - analyticsDisabled
+                            - analyticsPostsDisabled
+                            - uploadsCompressionEnabled
+                            - showVerboseErrors
                             - createdAt
                             - updatedAt
                         createdBy:
@@ -6434,6 +6443,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          sessionUri:
+                            type: string
+                            nullable: true
+                            description: >-
+                              YouTube resumable upload session URI for retry
+                              handling
                         nullable: true
                       MASTODON:
                         type: object
@@ -8589,6 +8604,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          sessionUri:
+                            type: string
+                            nullable: true
+                            description: >-
+                              YouTube resumable upload session URI for retry
+                              handling
                         nullable: true
                       MASTODON:
                         type: object
@@ -9873,6 +9894,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          sessionUri:
+                            type: string
+                            nullable: true
+                            description: >-
+                              YouTube resumable upload session URI for retry
+                              handling
                         nullable: true
                       MASTODON:
                         type: object
@@ -11245,6 +11272,12 @@ paths:
                                 thumbnail:
                                   type: string
                                   nullable: true
+                                sessionUri:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    YouTube resumable upload session URI for
+                                    retry handling
                               nullable: true
                             MASTODON:
                               type: object
@@ -13409,6 +13442,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          sessionUri:
+                            type: string
+                            nullable: true
+                            description: >-
+                              YouTube resumable upload session URI for retry
+                              handling
                         nullable: true
                       MASTODON:
                         type: object
@@ -14694,6 +14733,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          sessionUri:
+                            type: string
+                            nullable: true
+                            description: >-
+                              YouTube resumable upload session URI for retry
+                              handling
                         nullable: true
                       MASTODON:
                         type: object
@@ -16317,6 +16362,12 @@ paths:
                               thumbnail:
                                 type: string
                                 nullable: true
+                              sessionUri:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  YouTube resumable upload session URI for retry
+                                  handling
                             nullable: true
                           MASTODON:
                             type: object
@@ -17978,6 +18029,12 @@ paths:
                               thumbnail:
                                 type: string
                                 nullable: true
+                              sessionUri:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  YouTube resumable upload session URI for retry
+                                  handling
                             nullable: true
                           MASTODON:
                             type: object

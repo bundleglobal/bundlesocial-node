@@ -29,12 +29,13 @@ export type OrganizationGetOrganizationResponse = {
         GOOGLE_BUSINESS?: number;
     } | null;
     monthlyImportLimitPerAccount?: number | null;
-    apiAccess?: boolean;
-    analyticsDisabled?: boolean;
-    analyticsPostsDisabled?: boolean;
-    uploadsCompressionEnabled?: boolean;
+    apiAccess: boolean;
+    analyticsDisabled: boolean;
+    analyticsPostsDisabled: boolean;
+    uploadsCompressionEnabled: boolean;
     analyticsInterval?: number | null;
     analyticsPostsInterval?: number | null;
+    showVerboseErrors: boolean;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -246,12 +247,13 @@ export type TeamGetTeamResponse = {
             GOOGLE_BUSINESS?: number;
         } | null;
         monthlyImportLimitPerAccount?: number | null;
-        apiAccess?: boolean;
-        analyticsDisabled?: boolean;
-        analyticsPostsDisabled?: boolean;
-        uploadsCompressionEnabled?: boolean;
+        apiAccess: boolean;
+        analyticsDisabled: boolean;
+        analyticsPostsDisabled: boolean;
+        uploadsCompressionEnabled: boolean;
         analyticsInterval?: number | null;
         analyticsPostsInterval?: number | null;
+        showVerboseErrors: boolean;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -430,12 +432,13 @@ export type TeamGetListResponse = {
                 GOOGLE_BUSINESS?: number;
             } | null;
             monthlyImportLimitPerAccount?: number | null;
-            apiAccess?: boolean;
-            analyticsDisabled?: boolean;
-            analyticsPostsDisabled?: boolean;
-            uploadsCompressionEnabled?: boolean;
+            apiAccess: boolean;
+            analyticsDisabled: boolean;
+            analyticsPostsDisabled: boolean;
+            uploadsCompressionEnabled: boolean;
             analyticsInterval?: number | null;
             analyticsPostsInterval?: number | null;
+            showVerboseErrors: boolean;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -1477,6 +1480,10 @@ export type PostGetResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * YouTube resumable upload session URI for retry handling
+             */
+            sessionUri?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
@@ -2333,6 +2340,10 @@ export type PostUpdateResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * YouTube resumable upload session URI for retry handling
+             */
+            sessionUri?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
@@ -2839,6 +2850,10 @@ export type PostDeleteResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * YouTube resumable upload session URI for retry handling
+             */
+            sessionUri?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
@@ -3353,6 +3368,10 @@ export type PostGetListResponse = {
                 id?: string | null;
                 permalink?: string | null;
                 thumbnail?: string | null;
+                /**
+                 * YouTube resumable upload session URI for retry handling
+                 */
+                sessionUri?: string | null;
             } | null;
             MASTODON?: {
                 id?: string | null;
@@ -4211,6 +4230,10 @@ export type PostCreateResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * YouTube resumable upload session URI for retry handling
+             */
+            sessionUri?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
@@ -4717,6 +4740,10 @@ export type PostRetryResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * YouTube resumable upload session URI for retry handling
+             */
+            sessionUri?: string | null;
         } | null;
         MASTODON?: {
             id?: string | null;
@@ -5286,6 +5313,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 id?: string | null;
                 permalink?: string | null;
                 thumbnail?: string | null;
+                /**
+                 * YouTube resumable upload session URI for retry handling
+                 */
+                sessionUri?: string | null;
             } | null;
             MASTODON?: {
                 id?: string | null;
@@ -5867,6 +5898,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 id?: string | null;
                 permalink?: string | null;
                 thumbnail?: string | null;
+                /**
+                 * YouTube resumable upload session URI for retry handling
+                 */
+                sessionUri?: string | null;
             } | null;
             MASTODON?: {
                 id?: string | null;
@@ -8147,12 +8182,13 @@ export type $OpenApiTs = {
                         GOOGLE_BUSINESS?: number;
                     } | null;
                     monthlyImportLimitPerAccount?: number | null;
-                    apiAccess?: boolean;
-                    analyticsDisabled?: boolean;
-                    analyticsPostsDisabled?: boolean;
-                    uploadsCompressionEnabled?: boolean;
+                    apiAccess: boolean;
+                    analyticsDisabled: boolean;
+                    analyticsPostsDisabled: boolean;
+                    uploadsCompressionEnabled: boolean;
                     analyticsInterval?: number | null;
                     analyticsPostsInterval?: number | null;
+                    showVerboseErrors: boolean;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -8546,12 +8582,13 @@ export type $OpenApiTs = {
                             GOOGLE_BUSINESS?: number;
                         } | null;
                         monthlyImportLimitPerAccount?: number | null;
-                        apiAccess?: boolean;
-                        analyticsDisabled?: boolean;
-                        analyticsPostsDisabled?: boolean;
-                        uploadsCompressionEnabled?: boolean;
+                        apiAccess: boolean;
+                        analyticsDisabled: boolean;
+                        analyticsPostsDisabled: boolean;
+                        uploadsCompressionEnabled: boolean;
                         analyticsInterval?: number | null;
                         analyticsPostsInterval?: number | null;
+                        showVerboseErrors: boolean;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -8852,12 +8889,13 @@ export type $OpenApiTs = {
                                 GOOGLE_BUSINESS?: number;
                             } | null;
                             monthlyImportLimitPerAccount?: number | null;
-                            apiAccess?: boolean;
-                            analyticsDisabled?: boolean;
-                            analyticsPostsDisabled?: boolean;
-                            uploadsCompressionEnabled?: boolean;
+                            apiAccess: boolean;
+                            analyticsDisabled: boolean;
+                            analyticsPostsDisabled: boolean;
+                            uploadsCompressionEnabled: boolean;
                             analyticsInterval?: number | null;
                             analyticsPostsInterval?: number | null;
+                            showVerboseErrors: boolean;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -10465,6 +10503,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * YouTube resumable upload session URI for retry handling
+                             */
+                            sessionUri?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
@@ -11084,6 +11126,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * YouTube resumable upload session URI for retry handling
+                             */
+                            sessionUri?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
@@ -11633,6 +11679,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * YouTube resumable upload session URI for retry handling
+                             */
+                            sessionUri?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
@@ -12185,6 +12235,10 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                                 thumbnail?: string | null;
+                                /**
+                                 * YouTube resumable upload session URI for retry handling
+                                 */
+                                sessionUri?: string | null;
                             } | null;
                             MASTODON?: {
                                 id?: string | null;
@@ -12806,6 +12860,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * YouTube resumable upload session URI for retry handling
+                             */
+                            sessionUri?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
@@ -13357,6 +13415,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * YouTube resumable upload session URI for retry handling
+                             */
+                            sessionUri?: string | null;
                         } | null;
                         MASTODON?: {
                             id?: string | null;
@@ -14014,6 +14076,10 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                                 thumbnail?: string | null;
+                                /**
+                                 * YouTube resumable upload session URI for retry handling
+                                 */
+                                sessionUri?: string | null;
                             } | null;
                             MASTODON?: {
                                 id?: string | null;
@@ -14683,6 +14749,10 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                                 thumbnail?: string | null;
+                                /**
+                                 * YouTube resumable upload session URI for retry handling
+                                 */
+                                sessionUri?: string | null;
                             } | null;
                             MASTODON?: {
                                 id?: string | null;

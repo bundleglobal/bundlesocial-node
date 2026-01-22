@@ -3678,6 +3678,13 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                expiresIn:
+                  type: integer
+                  minimum: 5
+                  maximum: 2880
+                  description: >-
+                    Time in minutes, after which the link will expire. Minimum 5
+                    minutes, maximum 48 hours.
                 logoUrl:
                   type: string
                   format: uri

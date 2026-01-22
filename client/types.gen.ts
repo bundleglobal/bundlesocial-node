@@ -744,6 +744,10 @@ export type SocialAccountCreatePortalLinkData = {
         teamId: string;
         redirectUrl?: string;
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
+        /**
+         * Time in minutes, after which the link will expire. Minimum 5 minutes, maximum 48 hours.
+         */
+        expiresIn?: number;
         logoUrl?: string;
         userLogoUrl?: string;
         userName?: string;

@@ -1,3 +1,10 @@
+# [2.34.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.33.1...v2.34.0) (2026-01-22)
+
+
+### Features
+
+* expiresIn param in create portal link ([fbc883e](https://github.com/bundleglobal/bundlesocial-node/commit/fbc883e0c5a5ff0d7412c0bfbdd02c0e5e487ddd))
+
 ## [2.33.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.33.0...v2.33.1) (2026-01-20)
 
 

@@ -1,3 +1,10 @@
+# [2.35.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.34.0...v2.35.0) (2026-01-24)
+
+
+### Features
+
+* media title ([13b6a25](https://github.com/bundleglobal/bundlesocial-node/commit/13b6a25a993af99d1b45f3441579fb113b99f708))
+
 # [2.34.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.33.1...v2.34.0) (2026-01-22)
 
 

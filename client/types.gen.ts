@@ -1074,6 +1074,10 @@ export type PostGetResponse = {
              */
             thumbnail?: string | null;
             /**
+             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+             */
+            mediaTitle?: string | null;
+            /**
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
@@ -1154,6 +1158,10 @@ export type PostGetResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+             */
+            mediaTitle?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -1652,6 +1660,10 @@ export type PostUpdateData = {
                  */
                 thumbnail?: string | null;
                 /**
+                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                 */
+                mediaTitle?: string | null;
+                /**
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
@@ -1732,6 +1744,10 @@ export type PostUpdateData = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                 */
+                mediaTitle?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -1934,6 +1950,10 @@ export type PostUpdateResponse = {
              */
             thumbnail?: string | null;
             /**
+             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+             */
+            mediaTitle?: string | null;
+            /**
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
@@ -2014,6 +2034,10 @@ export type PostUpdateResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+             */
+            mediaTitle?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -2444,6 +2468,10 @@ export type PostDeleteResponse = {
              */
             thumbnail?: string | null;
             /**
+             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+             */
+            mediaTitle?: string | null;
+            /**
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
@@ -2524,6 +2552,10 @@ export type PostDeleteResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+             */
+            mediaTitle?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -2962,6 +2994,10 @@ export type PostGetListResponse = {
                  */
                 thumbnail?: string | null;
                 /**
+                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                 */
+                mediaTitle?: string | null;
+                /**
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
@@ -3042,6 +3078,10 @@ export type PostGetListResponse = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                 */
+                mediaTitle?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -3542,6 +3582,10 @@ export type PostCreateData = {
                  */
                 thumbnail?: string | null;
                 /**
+                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                 */
+                mediaTitle?: string | null;
+                /**
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
@@ -3622,6 +3666,10 @@ export type PostCreateData = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                 */
+                mediaTitle?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -3824,6 +3872,10 @@ export type PostCreateResponse = {
              */
             thumbnail?: string | null;
             /**
+             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+             */
+            mediaTitle?: string | null;
+            /**
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
@@ -3904,6 +3956,10 @@ export type PostCreateResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+             */
+            mediaTitle?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -4334,6 +4390,10 @@ export type PostRetryResponse = {
              */
             thumbnail?: string | null;
             /**
+             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+             */
+            mediaTitle?: string | null;
+            /**
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
@@ -4414,6 +4474,10 @@ export type PostRetryResponse = {
              * The URL to image uploaded on bundle.social.
              */
             thumbnail?: string | null;
+            /**
+             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+             */
+            mediaTitle?: string | null;
             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
             /**
              * Set to true if the post shouldn't be displayed in the main feed.
@@ -4907,6 +4971,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  */
                 thumbnail?: string | null;
                 /**
+                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                 */
+                mediaTitle?: string | null;
+                /**
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
@@ -4987,6 +5055,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                 */
+                mediaTitle?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -5492,6 +5564,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  */
                 thumbnail?: string | null;
                 /**
+                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                 */
+                mediaTitle?: string | null;
+                /**
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
@@ -5572,6 +5648,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * The URL to image uploaded on bundle.social.
                  */
                 thumbnail?: string | null;
+                /**
+                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                 */
+                mediaTitle?: string | null;
                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                 /**
                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -10097,6 +10177,10 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             /**
+                             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                             */
+                            mediaTitle?: string | null;
+                            /**
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
@@ -10177,6 +10261,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                             */
+                            mediaTitle?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -10720,6 +10808,10 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             /**
+                             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                             */
+                            mediaTitle?: string | null;
+                            /**
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
@@ -10800,6 +10892,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                             */
+                            mediaTitle?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -11273,6 +11369,10 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             /**
+                             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                             */
+                            mediaTitle?: string | null;
+                            /**
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
@@ -11353,6 +11453,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                             */
+                            mediaTitle?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -11829,6 +11933,10 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 /**
+                                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                                 */
+                                mediaTitle?: string | null;
+                                /**
                                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                                  */
                                 nativeScheduleTime?: string | null;
@@ -11909,6 +12017,10 @@ export type $OpenApiTs = {
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
+                                /**
+                                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                                 */
+                                mediaTitle?: string | null;
                                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                                 /**
                                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -12454,6 +12566,10 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             /**
+                             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                             */
+                            mediaTitle?: string | null;
+                            /**
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
@@ -12534,6 +12650,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                             */
+                            mediaTitle?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -13009,6 +13129,10 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             /**
+                             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                             */
+                            mediaTitle?: string | null;
+                            /**
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
@@ -13089,6 +13213,10 @@ export type $OpenApiTs = {
                              * The URL to image uploaded on bundle.social.
                              */
                             thumbnail?: string | null;
+                            /**
+                             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                             */
+                            mediaTitle?: string | null;
                             privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                             /**
                              * Set to true if the post shouldn't be displayed in the main feed.
@@ -13670,6 +13798,10 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 /**
+                                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                                 */
+                                mediaTitle?: string | null;
+                                /**
                                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                                  */
                                 nativeScheduleTime?: string | null;
@@ -13750,6 +13882,10 @@ export type $OpenApiTs = {
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
+                                /**
+                                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                                 */
+                                mediaTitle?: string | null;
                                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                                 /**
                                  * Set to true if the post shouldn't be displayed in the main feed.
@@ -14343,6 +14479,10 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 /**
+                                 * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                                 */
+                                mediaTitle?: string | null;
+                                /**
                                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                                  */
                                 nativeScheduleTime?: string | null;
@@ -14423,6 +14563,10 @@ export type $OpenApiTs = {
                                  * The URL to image uploaded on bundle.social.
                                  */
                                 thumbnail?: string | null;
+                                /**
+                                 * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                                 */
+                                mediaTitle?: string | null;
                                 privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
                                 /**
                                  * Set to true if the post shouldn't be displayed in the main feed.

@@ -5469,6 +5469,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video posts (type POST with video only,
+                              not REEL or STORY). This is displayed as the video
+                              title on Facebook.
                           nativeScheduleTime:
                             type: string
                             format: date-time
@@ -5649,6 +5656,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video or document posts. If not provided
+                              for videos, LinkedIn displays the posting date
+                              under the video.
                           privacy:
                             type: string
                             enum:
@@ -7016,6 +7030,13 @@ paths:
                           type: string
                           nullable: true
                           description: The URL to image uploaded on bundle.social.
+                        mediaTitle:
+                          type: string
+                          nullable: true
+                          description: >-
+                            Title for video posts (type POST with video only,
+                            not REEL or STORY). This is displayed as the video
+                            title on Facebook.
                         nativeScheduleTime:
                           type: string
                           format: date-time
@@ -7196,6 +7217,13 @@ paths:
                           type: string
                           nullable: true
                           description: The URL to image uploaded on bundle.social.
+                        mediaTitle:
+                          type: string
+                          nullable: true
+                          description: >-
+                            Title for video or document posts. If not provided
+                            for videos, LinkedIn displays the posting date under
+                            the video.
                         privacy:
                           type: string
                           enum:
@@ -7630,6 +7658,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video posts (type POST with video only,
+                              not REEL or STORY). This is displayed as the video
+                              title on Facebook.
                           nativeScheduleTime:
                             type: string
                             format: date-time
@@ -7810,6 +7845,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video or document posts. If not provided
+                              for videos, LinkedIn displays the posting date
+                              under the video.
                           privacy:
                             type: string
                             enum:
@@ -8920,6 +8962,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video posts (type POST with video only,
+                              not REEL or STORY). This is displayed as the video
+                              title on Facebook.
                           nativeScheduleTime:
                             type: string
                             format: date-time
@@ -9100,6 +9149,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video or document posts. If not provided
+                              for videos, LinkedIn displays the posting date
+                              under the video.
                           privacy:
                             type: string
                             enum:
@@ -10290,6 +10346,13 @@ paths:
                                   type: string
                                   nullable: true
                                   description: The URL to image uploaded on bundle.social.
+                                mediaTitle:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    Title for video posts (type POST with video
+                                    only, not REEL or STORY). This is displayed
+                                    as the video title on Facebook.
                                 nativeScheduleTime:
                                   type: string
                                   format: date-time
@@ -10472,6 +10535,13 @@ paths:
                                   type: string
                                   nullable: true
                                   description: The URL to image uploaded on bundle.social.
+                                mediaTitle:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    Title for video or document posts. If not
+                                    provided for videos, LinkedIn displays the
+                                    posting date under the video.
                                 privacy:
                                   type: string
                                   enum:
@@ -11847,6 +11917,13 @@ paths:
                           type: string
                           nullable: true
                           description: The URL to image uploaded on bundle.social.
+                        mediaTitle:
+                          type: string
+                          nullable: true
+                          description: >-
+                            Title for video posts (type POST with video only,
+                            not REEL or STORY). This is displayed as the video
+                            title on Facebook.
                         nativeScheduleTime:
                           type: string
                           format: date-time
@@ -12027,6 +12104,13 @@ paths:
                           type: string
                           nullable: true
                           description: The URL to image uploaded on bundle.social.
+                        mediaTitle:
+                          type: string
+                          nullable: true
+                          description: >-
+                            Title for video or document posts. If not provided
+                            for videos, LinkedIn displays the posting date under
+                            the video.
                         privacy:
                           type: string
                           enum:
@@ -12468,6 +12552,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video posts (type POST with video only,
+                              not REEL or STORY). This is displayed as the video
+                              title on Facebook.
                           nativeScheduleTime:
                             type: string
                             format: date-time
@@ -12648,6 +12739,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video or document posts. If not provided
+                              for videos, LinkedIn displays the posting date
+                              under the video.
                           privacy:
                             type: string
                             enum:
@@ -13759,6 +13857,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video posts (type POST with video only,
+                              not REEL or STORY). This is displayed as the video
+                              title on Facebook.
                           nativeScheduleTime:
                             type: string
                             format: date-time
@@ -13939,6 +14044,13 @@ paths:
                             type: string
                             nullable: true
                             description: The URL to image uploaded on bundle.social.
+                          mediaTitle:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Title for video or document posts. If not provided
+                              for videos, LinkedIn displays the posting date
+                              under the video.
                           privacy:
                             type: string
                             enum:
@@ -15381,6 +15493,13 @@ paths:
                                 type: string
                                 nullable: true
                                 description: The URL to image uploaded on bundle.social.
+                              mediaTitle:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Title for video posts (type POST with video
+                                  only, not REEL or STORY). This is displayed as
+                                  the video title on Facebook.
                               nativeScheduleTime:
                                 type: string
                                 format: date-time
@@ -15562,6 +15681,13 @@ paths:
                                 type: string
                                 nullable: true
                                 description: The URL to image uploaded on bundle.social.
+                              mediaTitle:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Title for video or document posts. If not
+                                  provided for videos, LinkedIn displays the
+                                  posting date under the video.
                               privacy:
                                 type: string
                                 enum:
@@ -17048,6 +17174,13 @@ paths:
                                 type: string
                                 nullable: true
                                 description: The URL to image uploaded on bundle.social.
+                              mediaTitle:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Title for video posts (type POST with video
+                                  only, not REEL or STORY). This is displayed as
+                                  the video title on Facebook.
                               nativeScheduleTime:
                                 type: string
                                 format: date-time
@@ -17229,6 +17362,13 @@ paths:
                                 type: string
                                 nullable: true
                                 description: The URL to image uploaded on bundle.social.
+                              mediaTitle:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Title for video or document posts. If not
+                                  provided for videos, LinkedIn displays the
+                                  posting date under the video.
                               privacy:
                                 type: string
                                 enum:

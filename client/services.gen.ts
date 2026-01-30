@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -883,6 +883,38 @@ export class AnalyticsService {
     }
     
     /**
+     * Get Bulk Post Analytics
+     * Retrieve analytics for multiple posts in a single request. Maximum 60 posts per request, paginated with 20 per page.
+     * @param data The data for the request.
+     * @param data.postIds
+     * @param data.platformType
+     * @param data.page
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public analyticsGetBulkPostAnalytics(data: AnalyticsGetBulkPostAnalyticsData): CancelablePromise<AnalyticsGetBulkPostAnalyticsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/analytics/post/bulk',
+            query: {
+                postIds: data.postIds,
+                platformType: data.platformType,
+                page: data.page,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Force refresh social account analytics
      * @param data The data for the request.
      * @param data.requestBody Body
@@ -1319,6 +1351,31 @@ export class MiscService {
     }
     
     /**
+     * Delete a YouTube video
+     * Permanently delete a published YouTube video.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeDeleteVideo(data: MiscYoutubeDeleteVideoData = {}): CancelablePromise<MiscYoutubeDeleteVideoResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/youtube/video',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Get YouTube video categories
      * Retrieve the list of video categories that can be associated with YouTube videos for a specific region.
      * @param data The data for the request.
@@ -1452,6 +1509,31 @@ export class MiscService {
     }
     
     /**
+     * Delete a LinkedIn post
+     * Permanently delete a published LinkedIn post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinDeletePost(data: MiscLinkedinDeletePostData = {}): CancelablePromise<MiscLinkedinDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/linkedin/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Add a media item (photo/video) using uploadId and category
      * @param data The data for the request.
      * @param data.requestBody Body
@@ -1462,6 +1544,31 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/misc/google-business/media',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Google Business post
+     * Permanently delete a published Google Business post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeletePost(data: MiscGoogleBusinessDeletePostData = {}): CancelablePromise<MiscGoogleBusinessDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/post',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -1555,6 +1662,31 @@ export class MiscService {
     }
     
     /**
+     * Delete a Reddit post
+     * Permanently delete a published Reddit post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscRedditDeletePost(data: MiscRedditDeletePostData = {}): CancelablePromise<MiscRedditDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/reddit/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Search for Instagram Business/Creator user by username
      * Checks if an Instagram user exists and returns their public profile data. Only works for Business and Creator accounts. Returns followers_count, media_count, and profile picture if available.
      * @param data The data for the request.
@@ -1608,6 +1740,31 @@ export class MiscService {
     }
     
     /**
+     * Delete a Facebook post
+     * Permanently delete a published Facebook post or reel.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscFacebookDeletePost(data: MiscFacebookDeletePostData = {}): CancelablePromise<MiscFacebookDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/facebook/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * @deprecated
      * [DISABLED] Edit an existing Pinterest pin
      * Temporarily disabled
@@ -1619,6 +1776,31 @@ export class MiscService {
     public miscPinterestEditPin(data: MiscPinterestEditPinData = {}): CancelablePromise<MiscPinterestEditPinResponse> {
         return this.httpRequest.request({
             method: 'PATCH',
+            url: '/api/v1/misc/pinterest/pin',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Pinterest pin
+     * Permanently delete a published Pinterest pin.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscPinterestDeletePin(data: MiscPinterestDeletePinData = {}): CancelablePromise<MiscPinterestDeletePinResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
             url: '/api/v1/misc/pinterest/pin',
             body: data.requestBody,
             mediaType: 'application/json',
@@ -1659,6 +1841,31 @@ export class MiscService {
     }
     
     /**
+     * Delete a Mastodon status
+     * Permanently delete a published Mastodon status.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscMastodonDeleteStatus(data: MiscMastodonDeleteStatusData = {}): CancelablePromise<MiscMastodonDeleteStatusResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/mastodon/status',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Edit an existing Slack message
      * Update the text content of a published Slack message.
      * @param data The data for the request.
@@ -1670,6 +1877,106 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/v1/misc/slack/message',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Slack message
+     * Permanently delete a published Slack message.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscSlackDeleteMessage(data: MiscSlackDeleteMessageData = {}): CancelablePromise<MiscSlackDeleteMessageResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/slack/message',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Bluesky post
+     * Permanently delete a published Bluesky post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscBlueskyDeletePost(data: MiscBlueskyDeletePostData = {}): CancelablePromise<MiscBlueskyDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/bluesky/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Twitter/X tweet
+     * Permanently delete a published Twitter/X tweet.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscTwitterDeleteTweet(data: MiscTwitterDeleteTweetData = {}): CancelablePromise<MiscTwitterDeleteTweetResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/twitter/tweet',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Discord message
+     * Permanently delete a published Discord message.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscDiscordDeleteMessage(data: MiscDiscordDeleteMessageData = {}): CancelablePromise<MiscDiscordDeleteMessageResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/discord/message',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -1924,6 +2231,31 @@ export class YoutubeService {
     }
     
     /**
+     * Delete a YouTube video
+     * Permanently delete a published YouTube video.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeDeleteVideo(data: MiscYoutubeDeleteVideoData = {}): CancelablePromise<MiscYoutubeDeleteVideoResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/youtube/video',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Get YouTube video categories
      * Retrieve the list of video categories that can be associated with YouTube videos for a specific region.
      * @param data The data for the request.
@@ -2061,6 +2393,31 @@ export class LinkedinService {
         });
     }
     
+    /**
+     * Delete a LinkedIn post
+     * Permanently delete a published LinkedIn post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinDeletePost(data: MiscLinkedinDeletePostData = {}): CancelablePromise<MiscLinkedinDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/linkedin/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
 }
 
 export class GoogleBusinessService {
@@ -2077,6 +2434,31 @@ export class GoogleBusinessService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/misc/google-business/media',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Google Business post
+     * Permanently delete a published Google Business post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeletePost(data: MiscGoogleBusinessDeletePostData = {}): CancelablePromise<MiscGoogleBusinessDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/post',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -2174,6 +2556,31 @@ export class RedditService {
         });
     }
     
+    /**
+     * Delete a Reddit post
+     * Permanently delete a published Reddit post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscRedditDeletePost(data: MiscRedditDeletePostData = {}): CancelablePromise<MiscRedditDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/reddit/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
 }
 
 export class InstagramService {
@@ -2237,6 +2644,31 @@ export class FacebookService {
         });
     }
     
+    /**
+     * Delete a Facebook post
+     * Permanently delete a published Facebook post or reel.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscFacebookDeletePost(data: MiscFacebookDeletePostData = {}): CancelablePromise<MiscFacebookDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/facebook/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
 }
 
 export class PinterestService {
@@ -2254,6 +2686,31 @@ export class PinterestService {
     public miscPinterestEditPin(data: MiscPinterestEditPinData = {}): CancelablePromise<MiscPinterestEditPinResponse> {
         return this.httpRequest.request({
             method: 'PATCH',
+            url: '/api/v1/misc/pinterest/pin',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Pinterest pin
+     * Permanently delete a published Pinterest pin.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscPinterestDeletePin(data: MiscPinterestDeletePinData = {}): CancelablePromise<MiscPinterestDeletePinResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
             url: '/api/v1/misc/pinterest/pin',
             body: data.requestBody,
             mediaType: 'application/json',
@@ -2298,6 +2755,31 @@ export class MastodonService {
         });
     }
     
+    /**
+     * Delete a Mastodon status
+     * Permanently delete a published Mastodon status.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscMastodonDeleteStatus(data: MiscMastodonDeleteStatusData = {}): CancelablePromise<MiscMastodonDeleteStatusResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/mastodon/status',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
 }
 
 export class SlackService {
@@ -2315,6 +2797,121 @@ export class SlackService {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/v1/misc/slack/message',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Slack message
+     * Permanently delete a published Slack message.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscSlackDeleteMessage(data: MiscSlackDeleteMessageData = {}): CancelablePromise<MiscSlackDeleteMessageResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/slack/message',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class BlueskyService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Delete a Bluesky post
+     * Permanently delete a published Bluesky post.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscBlueskyDeletePost(data: MiscBlueskyDeletePostData = {}): CancelablePromise<MiscBlueskyDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/bluesky/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class TwitterService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Delete a Twitter/X tweet
+     * Permanently delete a published Twitter/X tweet.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscTwitterDeleteTweet(data: MiscTwitterDeleteTweetData = {}): CancelablePromise<MiscTwitterDeleteTweetResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/twitter/tweet',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class DiscordService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Delete a Discord message
+     * Permanently delete a published Discord message.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscDiscordDeleteMessage(data: MiscDiscordDeleteMessageData = {}): CancelablePromise<MiscDiscordDeleteMessageResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/discord/message',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {

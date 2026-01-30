@@ -6037,6 +6037,44 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
     }>;
 };
 
+export type AnalyticsGetBulkPostAnalyticsData = {
+    limit?: number;
+    page?: number;
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    postIds: Array<(string)>;
+};
+
+export type AnalyticsGetBulkPostAnalyticsResponse = {
+    results: Array<{
+        postId: string;
+        items: Array<{
+            id: string;
+            profilePostId: string;
+            impressions: number;
+            impressionsUnique: number;
+            views: number;
+            viewsUnique: number;
+            likes: number;
+            dislikes: number;
+            comments: number;
+            shares: number;
+            saves: number;
+            raw?: unknown;
+            forced: boolean;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        }>;
+        error: string | null;
+    }>;
+    pagination: {
+        page: number;
+        limit: number;
+        total: number;
+        totalPages: number;
+    };
+};
+
 export type AnalyticsForceSocialAccountAnalyticsData = {
     /**
      * Body
@@ -7697,6 +7735,23 @@ export type MiscYoutubeEditVideoResponse = {
     permalink: string;
 };
 
+export type MiscYoutubeDeleteVideoData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscYoutubeDeleteVideoResponse = {
+    success: boolean;
+};
+
 export type MiscYoutubeGetVideoCategoriesData = {
     /**
      * ISO 3166-1 alpha-2 country code (e.g., 'US', 'GB', 'PL'). Defaults to 'US'
@@ -7800,6 +7855,23 @@ export type MiscLinkedinEditPostResponse = {
     permalink: string;
 };
 
+export type MiscLinkedinDeletePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscLinkedinDeletePostResponse = {
+    success: boolean;
+};
+
 export type MiscGoogleBusinessAddMediaData = {
     /**
      * Body
@@ -7820,6 +7892,23 @@ export type MiscGoogleBusinessAddMediaResponse = {
         priceListItemId?: string;
     };
     description?: string;
+};
+
+export type MiscGoogleBusinessDeletePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscGoogleBusinessDeletePostResponse = {
+    success: boolean;
 };
 
 export type MiscRedditGetPostRequirementsData = {
@@ -7868,6 +7957,23 @@ export type MiscRedditEditPostData = {
 export type MiscRedditEditPostResponse = {
     success: boolean;
     permalink: string;
+};
+
+export type MiscRedditDeletePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscRedditDeletePostResponse = {
+    success: boolean;
 };
 
 export type MiscInstagramBusinessDiscoveryData = {
@@ -7940,6 +8046,23 @@ export type MiscFacebookEditPostResponse = {
     permalink: string;
 };
 
+export type MiscFacebookDeletePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscFacebookDeletePostResponse = {
+    success: boolean;
+};
+
 export type MiscPinterestEditPinData = {
     /**
      * Body
@@ -7978,6 +8101,23 @@ export type MiscPinterestEditPinResponse = {
     permalink: string;
 };
 
+export type MiscPinterestDeletePinData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscPinterestDeletePinResponse = {
+    success: boolean;
+};
+
 export type MiscMastodonEditStatusData = {
     /**
      * Body
@@ -8004,6 +8144,23 @@ export type MiscMastodonEditStatusResponse = {
     permalink: string;
 };
 
+export type MiscMastodonDeleteStatusData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscMastodonDeleteStatusResponse = {
+    success: boolean;
+};
+
 export type MiscSlackEditMessageData = {
     /**
      * Body
@@ -8024,6 +8181,74 @@ export type MiscSlackEditMessageData = {
 export type MiscSlackEditMessageResponse = {
     success: boolean;
     permalink: string;
+};
+
+export type MiscSlackDeleteMessageData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscSlackDeleteMessageResponse = {
+    success: boolean;
+};
+
+export type MiscBlueskyDeletePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscBlueskyDeletePostResponse = {
+    success: boolean;
+};
+
+export type MiscTwitterDeleteTweetData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscTwitterDeleteTweetResponse = {
+    success: boolean;
+};
+
+export type MiscDiscordDeleteMessageData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in Bundle Social
+         */
+        postId: string;
+    };
+};
+
+export type MiscDiscordDeleteMessageResponse = {
+    success: boolean;
 };
 
 export type PostImportCreateData = {
@@ -14994,6 +15219,86 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/analytics/post/bulk': {
+        get: {
+            req: AnalyticsGetBulkPostAnalyticsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    results: Array<{
+                        postId: string;
+                        items: Array<{
+                            id: string;
+                            profilePostId: string;
+                            impressions: number;
+                            impressionsUnique: number;
+                            views: number;
+                            viewsUnique: number;
+                            likes: number;
+                            dislikes: number;
+                            comments: number;
+                            shares: number;
+                            saves: number;
+                            raw?: unknown;
+                            forced: boolean;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        }>;
+                        error: string | null;
+                    }>;
+                    pagination: {
+                        page: number;
+                        limit: number;
+                        total: number;
+                        totalPages: number;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/analytics/social-account/force': {
         post: {
             req: AnalyticsForceSocialAccountAnalyticsData;
@@ -17168,6 +17473,57 @@ export type $OpenApiTs = {
                 };
             };
         };
+        delete: {
+            req: MiscYoutubeDeleteVideoData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
     };
     '/api/v1/misc/youtube/video-categories': {
         get: {
@@ -17468,6 +17824,57 @@ export type $OpenApiTs = {
                 };
             };
         };
+        delete: {
+            req: MiscLinkedinDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
     };
     '/api/v1/misc/google-business/media': {
         post: {
@@ -17484,6 +17891,59 @@ export type $OpenApiTs = {
                         priceListItemId?: string;
                     };
                     description?: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/post': {
+        delete: {
+            req: MiscGoogleBusinessDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
                 };
                 /**
                  * 400
@@ -17695,6 +18155,57 @@ export type $OpenApiTs = {
                 };
             };
         };
+        delete: {
+            req: MiscRedditDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
     };
     '/api/v1/misc/instagram/tags': {
         get: {
@@ -17838,6 +18349,57 @@ export type $OpenApiTs = {
                 };
             };
         };
+        delete: {
+            req: MiscFacebookDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
     };
     '/api/v1/misc/pinterest/pin': {
         patch: {
@@ -17849,6 +18411,57 @@ export type $OpenApiTs = {
                 200: {
                     success: boolean;
                     permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscPinterestDeletePinData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
                 };
                 /**
                  * 400
@@ -17946,6 +18559,57 @@ export type $OpenApiTs = {
                 };
             };
         };
+        delete: {
+            req: MiscMastodonDeleteStatusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
     };
     '/api/v1/misc/slack/message': {
         patch: {
@@ -17957,6 +18621,216 @@ export type $OpenApiTs = {
                 200: {
                     success: boolean;
                     permalink: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscSlackDeleteMessageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/bluesky/post': {
+        delete: {
+            req: MiscBlueskyDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/twitter/tweet': {
+        delete: {
+            req: MiscTwitterDeleteTweetData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/discord/message': {
+        delete: {
+            req: MiscDiscordDeleteMessageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
                 };
                 /**
                  * 400

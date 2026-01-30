@@ -1,3 +1,10 @@
+# [2.36.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.35.0...v2.36.0) (2026-01-30)
+
+
+### Features
+
+* bulk analytics and delete posts ([01231b9](https://github.com/bundleglobal/bundlesocial-node/commit/01231b900785249e287ab5c8b5c709b725616bc1))
+
 # [2.35.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.34.0...v2.35.0) (2026-01-24)
 
 

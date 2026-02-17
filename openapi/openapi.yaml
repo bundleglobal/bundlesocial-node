@@ -5545,6 +5545,20 @@ paths:
                                 - x
                                 - 'y'
                             nullable: true
+                          trialParams:
+                            type: object
+                            properties:
+                              graduationStrategy:
+                                type: string
+                                enum:
+                                  - MANUAL
+                                  - SS_PERFORMANCE
+                            required:
+                              - graduationStrategy
+                            nullable: true
+                            description: >-
+                              For Reels only. Trial reels are only shared to
+                              non-followers.
                         nullable: true
                       THREADS:
                         type: object
@@ -5586,6 +5600,11 @@ paths:
                               - PUBLIC_TO_EVERYONE
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
+                            nullable: true
+                          photoCoverIndex:
+                            default: 0
+                            type: integer
+                            minimum: 0
                             nullable: true
                           isBrandContent:
                             default: false
@@ -5641,6 +5660,55 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          uploadToDraft:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: If set to true, upload post as draft.
+                          musicSoundInfo:
+                            type: object
+                            properties:
+                              musicSoundId:
+                                type: string
+                                minLength: 1
+                                description: >-
+                                  Use song_clip_id from CML trending list
+                                  (full_duration_song_clip or
+                                  trending_song_clip).
+                              musicSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: Commercial sound volume (0-100).
+                              musicSoundStart:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Starting point of the commercial sound in
+                                  milliseconds.
+                              musicSoundEnd:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Ending point of the commercial sound in
+                                  milliseconds.
+                              videoOriginalSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: >-
+                                  Background volume of the original video sound
+                                  (0-100).
+                            required:
+                              - musicSoundId
+                            nullable: true
+                            description: >-
+                              Information about the commercial sound (track)
+                              used for TikTok publishing.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -6394,6 +6462,9 @@ paths:
                             type: string
                             nullable: true
                           permalink:
+                            type: string
+                            nullable: true
+                          status:
                             type: string
                             nullable: true
                         nullable: true
@@ -7106,6 +7177,20 @@ paths:
                               - x
                               - 'y'
                           nullable: true
+                        trialParams:
+                          type: object
+                          properties:
+                            graduationStrategy:
+                              type: string
+                              enum:
+                                - MANUAL
+                                - SS_PERFORMANCE
+                          required:
+                            - graduationStrategy
+                          nullable: true
+                          description: >-
+                            For Reels only. Trial reels are only shared to
+                            non-followers.
                       nullable: true
                     THREADS:
                       type: object
@@ -7147,6 +7232,11 @@ paths:
                             - PUBLIC_TO_EVERYONE
                             - MUTUAL_FOLLOW_FRIENDS
                             - FOLLOWER_OF_CREATOR
+                          nullable: true
+                        photoCoverIndex:
+                          default: 0
+                          type: integer
+                          minimum: 0
                           nullable: true
                         isBrandContent:
                           default: false
@@ -7202,6 +7292,54 @@ paths:
                           description: >-
                             If set to true, TikTok will automatically add music
                             to the photos.
+                        uploadToDraft:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: If set to true, upload post as draft.
+                        musicSoundInfo:
+                          type: object
+                          properties:
+                            musicSoundId:
+                              type: string
+                              minLength: 1
+                              description: >-
+                                Use song_clip_id from CML trending list
+                                (full_duration_song_clip or trending_song_clip).
+                            musicSoundVolume:
+                              type: integer
+                              minimum: 0
+                              maximum: 100
+                              nullable: true
+                              description: Commercial sound volume (0-100).
+                            musicSoundStart:
+                              type: integer
+                              minimum: 0
+                              nullable: true
+                              description: >-
+                                Starting point of the commercial sound in
+                                milliseconds.
+                            musicSoundEnd:
+                              type: integer
+                              minimum: 0
+                              nullable: true
+                              description: >-
+                                Ending point of the commercial sound in
+                                milliseconds.
+                            videoOriginalSoundVolume:
+                              type: integer
+                              minimum: 0
+                              maximum: 100
+                              nullable: true
+                              description: >-
+                                Background volume of the original video sound
+                                (0-100).
+                          required:
+                            - musicSoundId
+                          nullable: true
+                          description: >-
+                            Information about the commercial sound (track) used
+                            for TikTok publishing.
                       nullable: true
                     LINKEDIN:
                       type: object
@@ -7734,6 +7872,20 @@ paths:
                                 - x
                                 - 'y'
                             nullable: true
+                          trialParams:
+                            type: object
+                            properties:
+                              graduationStrategy:
+                                type: string
+                                enum:
+                                  - MANUAL
+                                  - SS_PERFORMANCE
+                            required:
+                              - graduationStrategy
+                            nullable: true
+                            description: >-
+                              For Reels only. Trial reels are only shared to
+                              non-followers.
                         nullable: true
                       THREADS:
                         type: object
@@ -7775,6 +7927,11 @@ paths:
                               - PUBLIC_TO_EVERYONE
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
+                            nullable: true
+                          photoCoverIndex:
+                            default: 0
+                            type: integer
+                            minimum: 0
                             nullable: true
                           isBrandContent:
                             default: false
@@ -7830,6 +7987,55 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          uploadToDraft:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: If set to true, upload post as draft.
+                          musicSoundInfo:
+                            type: object
+                            properties:
+                              musicSoundId:
+                                type: string
+                                minLength: 1
+                                description: >-
+                                  Use song_clip_id from CML trending list
+                                  (full_duration_song_clip or
+                                  trending_song_clip).
+                              musicSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: Commercial sound volume (0-100).
+                              musicSoundStart:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Starting point of the commercial sound in
+                                  milliseconds.
+                              musicSoundEnd:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Ending point of the commercial sound in
+                                  milliseconds.
+                              videoOriginalSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: >-
+                                  Background volume of the original video sound
+                                  (0-100).
+                            required:
+                              - musicSoundId
+                            nullable: true
+                            description: >-
+                              Information about the commercial sound (track)
+                              used for TikTok publishing.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -8583,6 +8789,9 @@ paths:
                             type: string
                             nullable: true
                           permalink:
+                            type: string
+                            nullable: true
+                          status:
                             type: string
                             nullable: true
                         nullable: true
@@ -9038,6 +9247,20 @@ paths:
                                 - x
                                 - 'y'
                             nullable: true
+                          trialParams:
+                            type: object
+                            properties:
+                              graduationStrategy:
+                                type: string
+                                enum:
+                                  - MANUAL
+                                  - SS_PERFORMANCE
+                            required:
+                              - graduationStrategy
+                            nullable: true
+                            description: >-
+                              For Reels only. Trial reels are only shared to
+                              non-followers.
                         nullable: true
                       THREADS:
                         type: object
@@ -9079,6 +9302,11 @@ paths:
                               - PUBLIC_TO_EVERYONE
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
+                            nullable: true
+                          photoCoverIndex:
+                            default: 0
+                            type: integer
+                            minimum: 0
                             nullable: true
                           isBrandContent:
                             default: false
@@ -9134,6 +9362,55 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          uploadToDraft:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: If set to true, upload post as draft.
+                          musicSoundInfo:
+                            type: object
+                            properties:
+                              musicSoundId:
+                                type: string
+                                minLength: 1
+                                description: >-
+                                  Use song_clip_id from CML trending list
+                                  (full_duration_song_clip or
+                                  trending_song_clip).
+                              musicSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: Commercial sound volume (0-100).
+                              musicSoundStart:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Starting point of the commercial sound in
+                                  milliseconds.
+                              musicSoundEnd:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Ending point of the commercial sound in
+                                  milliseconds.
+                              videoOriginalSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: >-
+                                  Background volume of the original video sound
+                                  (0-100).
+                            required:
+                              - musicSoundId
+                            nullable: true
+                            description: >-
+                              Information about the commercial sound (track)
+                              used for TikTok publishing.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -9887,6 +10164,9 @@ paths:
                             type: string
                             nullable: true
                           permalink:
+                            type: string
+                            nullable: true
+                          status:
                             type: string
                             nullable: true
                         nullable: true
@@ -10423,6 +10703,20 @@ paths:
                                       - x
                                       - 'y'
                                   nullable: true
+                                trialParams:
+                                  type: object
+                                  properties:
+                                    graduationStrategy:
+                                      type: string
+                                      enum:
+                                        - MANUAL
+                                        - SS_PERFORMANCE
+                                  required:
+                                    - graduationStrategy
+                                  nullable: true
+                                  description: >-
+                                    For Reels only. Trial reels are only shared
+                                    to non-followers.
                               nullable: true
                             THREADS:
                               type: object
@@ -10464,6 +10758,11 @@ paths:
                                     - PUBLIC_TO_EVERYONE
                                     - MUTUAL_FOLLOW_FRIENDS
                                     - FOLLOWER_OF_CREATOR
+                                  nullable: true
+                                photoCoverIndex:
+                                  default: 0
+                                  type: integer
+                                  minimum: 0
                                   nullable: true
                                 isBrandContent:
                                   default: false
@@ -10520,6 +10819,55 @@ paths:
                                   description: >-
                                     If set to true, TikTok will automatically
                                     add music to the photos.
+                                uploadToDraft:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: If set to true, upload post as draft.
+                                musicSoundInfo:
+                                  type: object
+                                  properties:
+                                    musicSoundId:
+                                      type: string
+                                      minLength: 1
+                                      description: >-
+                                        Use song_clip_id from CML trending list
+                                        (full_duration_song_clip or
+                                        trending_song_clip).
+                                    musicSoundVolume:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 100
+                                      nullable: true
+                                      description: Commercial sound volume (0-100).
+                                    musicSoundStart:
+                                      type: integer
+                                      minimum: 0
+                                      nullable: true
+                                      description: >-
+                                        Starting point of the commercial sound
+                                        in milliseconds.
+                                    musicSoundEnd:
+                                      type: integer
+                                      minimum: 0
+                                      nullable: true
+                                      description: >-
+                                        Ending point of the commercial sound in
+                                        milliseconds.
+                                    videoOriginalSoundVolume:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 100
+                                      nullable: true
+                                      description: >-
+                                        Background volume of the original video
+                                        sound (0-100).
+                                  required:
+                                    - musicSoundId
+                                  nullable: true
+                                  description: >-
+                                    Information about the commercial sound
+                                    (track) used for TikTok publishing.
                               nullable: true
                             LINKEDIN:
                               type: object
@@ -11281,6 +11629,9 @@ paths:
                                 permalink:
                                   type: string
                                   nullable: true
+                                status:
+                                  type: string
+                                  nullable: true
                               nullable: true
                             LINKEDIN:
                               type: object
@@ -11993,6 +12344,20 @@ paths:
                               - x
                               - 'y'
                           nullable: true
+                        trialParams:
+                          type: object
+                          properties:
+                            graduationStrategy:
+                              type: string
+                              enum:
+                                - MANUAL
+                                - SS_PERFORMANCE
+                          required:
+                            - graduationStrategy
+                          nullable: true
+                          description: >-
+                            For Reels only. Trial reels are only shared to
+                            non-followers.
                       nullable: true
                     THREADS:
                       type: object
@@ -12034,6 +12399,11 @@ paths:
                             - PUBLIC_TO_EVERYONE
                             - MUTUAL_FOLLOW_FRIENDS
                             - FOLLOWER_OF_CREATOR
+                          nullable: true
+                        photoCoverIndex:
+                          default: 0
+                          type: integer
+                          minimum: 0
                           nullable: true
                         isBrandContent:
                           default: false
@@ -12089,6 +12459,54 @@ paths:
                           description: >-
                             If set to true, TikTok will automatically add music
                             to the photos.
+                        uploadToDraft:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: If set to true, upload post as draft.
+                        musicSoundInfo:
+                          type: object
+                          properties:
+                            musicSoundId:
+                              type: string
+                              minLength: 1
+                              description: >-
+                                Use song_clip_id from CML trending list
+                                (full_duration_song_clip or trending_song_clip).
+                            musicSoundVolume:
+                              type: integer
+                              minimum: 0
+                              maximum: 100
+                              nullable: true
+                              description: Commercial sound volume (0-100).
+                            musicSoundStart:
+                              type: integer
+                              minimum: 0
+                              nullable: true
+                              description: >-
+                                Starting point of the commercial sound in
+                                milliseconds.
+                            musicSoundEnd:
+                              type: integer
+                              minimum: 0
+                              nullable: true
+                              description: >-
+                                Ending point of the commercial sound in
+                                milliseconds.
+                            videoOriginalSoundVolume:
+                              type: integer
+                              minimum: 0
+                              maximum: 100
+                              nullable: true
+                              description: >-
+                                Background volume of the original video sound
+                                (0-100).
+                          required:
+                            - musicSoundId
+                          nullable: true
+                          description: >-
+                            Information about the commercial sound (track) used
+                            for TikTok publishing.
                       nullable: true
                     LINKEDIN:
                       type: object
@@ -12628,6 +13046,20 @@ paths:
                                 - x
                                 - 'y'
                             nullable: true
+                          trialParams:
+                            type: object
+                            properties:
+                              graduationStrategy:
+                                type: string
+                                enum:
+                                  - MANUAL
+                                  - SS_PERFORMANCE
+                            required:
+                              - graduationStrategy
+                            nullable: true
+                            description: >-
+                              For Reels only. Trial reels are only shared to
+                              non-followers.
                         nullable: true
                       THREADS:
                         type: object
@@ -12669,6 +13101,11 @@ paths:
                               - PUBLIC_TO_EVERYONE
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
+                            nullable: true
+                          photoCoverIndex:
+                            default: 0
+                            type: integer
+                            minimum: 0
                             nullable: true
                           isBrandContent:
                             default: false
@@ -12724,6 +13161,55 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          uploadToDraft:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: If set to true, upload post as draft.
+                          musicSoundInfo:
+                            type: object
+                            properties:
+                              musicSoundId:
+                                type: string
+                                minLength: 1
+                                description: >-
+                                  Use song_clip_id from CML trending list
+                                  (full_duration_song_clip or
+                                  trending_song_clip).
+                              musicSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: Commercial sound volume (0-100).
+                              musicSoundStart:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Starting point of the commercial sound in
+                                  milliseconds.
+                              musicSoundEnd:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Ending point of the commercial sound in
+                                  milliseconds.
+                              videoOriginalSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: >-
+                                  Background volume of the original video sound
+                                  (0-100).
+                            required:
+                              - musicSoundId
+                            nullable: true
+                            description: >-
+                              Information about the commercial sound (track)
+                              used for TikTok publishing.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -13477,6 +13963,9 @@ paths:
                             type: string
                             nullable: true
                           permalink:
+                            type: string
+                            nullable: true
+                          status:
                             type: string
                             nullable: true
                         nullable: true
@@ -13933,6 +14422,20 @@ paths:
                                 - x
                                 - 'y'
                             nullable: true
+                          trialParams:
+                            type: object
+                            properties:
+                              graduationStrategy:
+                                type: string
+                                enum:
+                                  - MANUAL
+                                  - SS_PERFORMANCE
+                            required:
+                              - graduationStrategy
+                            nullable: true
+                            description: >-
+                              For Reels only. Trial reels are only shared to
+                              non-followers.
                         nullable: true
                       THREADS:
                         type: object
@@ -13974,6 +14477,11 @@ paths:
                               - PUBLIC_TO_EVERYONE
                               - MUTUAL_FOLLOW_FRIENDS
                               - FOLLOWER_OF_CREATOR
+                            nullable: true
+                          photoCoverIndex:
+                            default: 0
+                            type: integer
+                            minimum: 0
                             nullable: true
                           isBrandContent:
                             default: false
@@ -14029,6 +14537,55 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          uploadToDraft:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: If set to true, upload post as draft.
+                          musicSoundInfo:
+                            type: object
+                            properties:
+                              musicSoundId:
+                                type: string
+                                minLength: 1
+                                description: >-
+                                  Use song_clip_id from CML trending list
+                                  (full_duration_song_clip or
+                                  trending_song_clip).
+                              musicSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: Commercial sound volume (0-100).
+                              musicSoundStart:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Starting point of the commercial sound in
+                                  milliseconds.
+                              musicSoundEnd:
+                                type: integer
+                                minimum: 0
+                                nullable: true
+                                description: >-
+                                  Ending point of the commercial sound in
+                                  milliseconds.
+                              videoOriginalSoundVolume:
+                                type: integer
+                                minimum: 0
+                                maximum: 100
+                                nullable: true
+                                description: >-
+                                  Background volume of the original video sound
+                                  (0-100).
+                            required:
+                              - musicSoundId
+                            nullable: true
+                            description: >-
+                              Information about the commercial sound (track)
+                              used for TikTok publishing.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -14782,6 +15339,9 @@ paths:
                             type: string
                             nullable: true
                           permalink:
+                            type: string
+                            nullable: true
+                          status:
                             type: string
                             nullable: true
                         nullable: true
@@ -15570,6 +16130,20 @@ paths:
                                     - x
                                     - 'y'
                                 nullable: true
+                              trialParams:
+                                type: object
+                                properties:
+                                  graduationStrategy:
+                                    type: string
+                                    enum:
+                                      - MANUAL
+                                      - SS_PERFORMANCE
+                                required:
+                                  - graduationStrategy
+                                nullable: true
+                                description: >-
+                                  For Reels only. Trial reels are only shared to
+                                  non-followers.
                             nullable: true
                           THREADS:
                             type: object
@@ -15611,6 +16185,11 @@ paths:
                                   - PUBLIC_TO_EVERYONE
                                   - MUTUAL_FOLLOW_FRIENDS
                                   - FOLLOWER_OF_CREATOR
+                                nullable: true
+                              photoCoverIndex:
+                                default: 0
+                                type: integer
+                                minimum: 0
                                 nullable: true
                               isBrandContent:
                                 default: false
@@ -15666,6 +16245,55 @@ paths:
                                 description: >-
                                   If set to true, TikTok will automatically add
                                   music to the photos.
+                              uploadToDraft:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: If set to true, upload post as draft.
+                              musicSoundInfo:
+                                type: object
+                                properties:
+                                  musicSoundId:
+                                    type: string
+                                    minLength: 1
+                                    description: >-
+                                      Use song_clip_id from CML trending list
+                                      (full_duration_song_clip or
+                                      trending_song_clip).
+                                  musicSoundVolume:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 100
+                                    nullable: true
+                                    description: Commercial sound volume (0-100).
+                                  musicSoundStart:
+                                    type: integer
+                                    minimum: 0
+                                    nullable: true
+                                    description: >-
+                                      Starting point of the commercial sound in
+                                      milliseconds.
+                                  musicSoundEnd:
+                                    type: integer
+                                    minimum: 0
+                                    nullable: true
+                                    description: >-
+                                      Ending point of the commercial sound in
+                                      milliseconds.
+                                  videoOriginalSoundVolume:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 100
+                                    nullable: true
+                                    description: >-
+                                      Background volume of the original video
+                                      sound (0-100).
+                                required:
+                                  - musicSoundId
+                                nullable: true
+                                description: >-
+                                  Information about the commercial sound (track)
+                                  used for TikTok publishing.
                             nullable: true
                           LINKEDIN:
                             type: object
@@ -16425,6 +17053,9 @@ paths:
                                 type: string
                                 nullable: true
                               permalink:
+                                type: string
+                                nullable: true
+                              status:
                                 type: string
                                 nullable: true
                             nullable: true
@@ -17251,6 +17882,20 @@ paths:
                                     - x
                                     - 'y'
                                 nullable: true
+                              trialParams:
+                                type: object
+                                properties:
+                                  graduationStrategy:
+                                    type: string
+                                    enum:
+                                      - MANUAL
+                                      - SS_PERFORMANCE
+                                required:
+                                  - graduationStrategy
+                                nullable: true
+                                description: >-
+                                  For Reels only. Trial reels are only shared to
+                                  non-followers.
                             nullable: true
                           THREADS:
                             type: object
@@ -17292,6 +17937,11 @@ paths:
                                   - PUBLIC_TO_EVERYONE
                                   - MUTUAL_FOLLOW_FRIENDS
                                   - FOLLOWER_OF_CREATOR
+                                nullable: true
+                              photoCoverIndex:
+                                default: 0
+                                type: integer
+                                minimum: 0
                                 nullable: true
                               isBrandContent:
                                 default: false
@@ -17347,6 +17997,55 @@ paths:
                                 description: >-
                                   If set to true, TikTok will automatically add
                                   music to the photos.
+                              uploadToDraft:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: If set to true, upload post as draft.
+                              musicSoundInfo:
+                                type: object
+                                properties:
+                                  musicSoundId:
+                                    type: string
+                                    minLength: 1
+                                    description: >-
+                                      Use song_clip_id from CML trending list
+                                      (full_duration_song_clip or
+                                      trending_song_clip).
+                                  musicSoundVolume:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 100
+                                    nullable: true
+                                    description: Commercial sound volume (0-100).
+                                  musicSoundStart:
+                                    type: integer
+                                    minimum: 0
+                                    nullable: true
+                                    description: >-
+                                      Starting point of the commercial sound in
+                                      milliseconds.
+                                  musicSoundEnd:
+                                    type: integer
+                                    minimum: 0
+                                    nullable: true
+                                    description: >-
+                                      Ending point of the commercial sound in
+                                      milliseconds.
+                                  videoOriginalSoundVolume:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 100
+                                    nullable: true
+                                    description: >-
+                                      Background volume of the original video
+                                      sound (0-100).
+                                required:
+                                  - musicSoundId
+                                nullable: true
+                                description: >-
+                                  Information about the commercial sound (track)
+                                  used for TikTok publishing.
                             nullable: true
                           LINKEDIN:
                             type: object
@@ -18106,6 +18805,9 @@ paths:
                                 type: string
                                 nullable: true
                               permalink:
+                                type: string
+                                nullable: true
+                              status:
                                 type: string
                                 nullable: true
                             nullable: true
@@ -25297,6 +25999,1227 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/google-business/reviews/import:
+    post:
+      summary: Start a new Google Reviews import
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.importReviews
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                count:
+                  type: number
+                  minimum: 1
+                  maximum: 100
+              required:
+                - teamId
+                - count
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  requestedCount:
+                    type: number
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING_REVIEWS
+                      - COMPLETED
+                      - FAILED
+                      - RATE_LIMITED
+                  reviewsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - requestedCount
+                  - status
+                  - reviewsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '409':
+          description: '409'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+    get:
+      summary: Get review import status list
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.google_business.getReviewImportStatus
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        teamId:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        requestedCount:
+                          type: number
+                        status:
+                          type: string
+                          enum:
+                            - PENDING
+                            - FETCHING_REVIEWS
+                            - COMPLETED
+                            - FAILED
+                            - RATE_LIMITED
+                        reviewsImported:
+                          type: number
+                        error:
+                          type: string
+                          nullable: true
+                        rateLimitResetAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        startedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        completedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - teamId
+                        - socialAccountId
+                        - requestedCount
+                        - status
+                        - reviewsImported
+                        - createdAt
+                        - updatedAt
+                required:
+                  - imports
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/reviews/import/{importId}:
+    get:
+      summary: Get review import by ID
+      tags: *ref_9
+      parameters:
+        - name: importId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: misc.google_business.getReviewImportById
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  requestedCount:
+                    type: number
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING_REVIEWS
+                      - COMPLETED
+                      - FAILED
+                      - RATE_LIMITED
+                  reviewsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - requestedCount
+                  - status
+                  - reviewsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/reviews:
+    get:
+      summary: List imported Google Reviews
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            default: 50
+            type: number
+            minimum: 1
+            maximum: 100
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: number
+            minimum: 0
+            nullable: true
+      operationId: misc.google_business.getReviews
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reviews:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        teamId:
+                          type: string
+                        externalReviewId:
+                          type: string
+                        reviewerDisplayName:
+                          type: string
+                          nullable: true
+                        reviewerProfilePhotoUrl:
+                          type: string
+                          nullable: true
+                        starRating:
+                          type: string
+                          enum:
+                            - ONE
+                            - TWO
+                            - THREE
+                            - FOUR
+                            - FIVE
+                          nullable: true
+                        comment:
+                          type: string
+                          nullable: true
+                        reviewReplyComment:
+                          type: string
+                          nullable: true
+                        reviewReplyUpdatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createTime:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updateTime:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        importedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - socialAccountId
+                        - teamId
+                        - externalReviewId
+                        - createdAt
+                        - updatedAt
+                  total:
+                    type: number
+                  limit:
+                    type: number
+                  remainingCapacity:
+                    type: number
+                required:
+                  - reviews
+                  - total
+                  - limit
+                  - remainingCapacity
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/reviews/{reviewId}:
+    get:
+      summary: Get a single imported Google Review
+      tags: *ref_9
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.google_business.getReviewById
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  teamId:
+                    type: string
+                  externalReviewId:
+                    type: string
+                  reviewerDisplayName:
+                    type: string
+                    nullable: true
+                  reviewerProfilePhotoUrl:
+                    type: string
+                    nullable: true
+                  starRating:
+                    type: string
+                    enum:
+                      - ONE
+                      - TWO
+                      - THREE
+                      - FOUR
+                      - FIVE
+                    nullable: true
+                  comment:
+                    type: string
+                    nullable: true
+                  reviewReplyComment:
+                    type: string
+                    nullable: true
+                  reviewReplyUpdatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updateTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  importedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - socialAccountId
+                  - teamId
+                  - externalReviewId
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/reviews/{reviewId}/reply:
+    put:
+      summary: Reply to a Google Review (creates or updates the owner reply)
+      tags: *ref_9
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: misc.google_business.replyToReview
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                comment:
+                  type: string
+                  minLength: 1
+                  maxLength: 4096
+              required:
+                - teamId
+                - comment
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  teamId:
+                    type: string
+                  externalReviewId:
+                    type: string
+                  reviewerDisplayName:
+                    type: string
+                    nullable: true
+                  reviewerProfilePhotoUrl:
+                    type: string
+                    nullable: true
+                  starRating:
+                    type: string
+                    enum:
+                      - ONE
+                      - TWO
+                      - THREE
+                      - FOUR
+                      - FIVE
+                    nullable: true
+                  comment:
+                    type: string
+                    nullable: true
+                  reviewReplyComment:
+                    type: string
+                    nullable: true
+                  reviewReplyUpdatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updateTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  importedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - socialAccountId
+                  - teamId
+                  - externalReviewId
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      summary: Delete the owner reply from a Google Review
+      tags: *ref_9
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: misc.google_business.deleteReviewReply
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+              required:
+                - teamId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  teamId:
+                    type: string
+                  externalReviewId:
+                    type: string
+                  reviewerDisplayName:
+                    type: string
+                    nullable: true
+                  reviewerProfilePhotoUrl:
+                    type: string
+                    nullable: true
+                  starRating:
+                    type: string
+                    enum:
+                      - ONE
+                      - TWO
+                      - THREE
+                      - FOUR
+                      - FIVE
+                    nullable: true
+                  comment:
+                    type: string
+                    nullable: true
+                  reviewReplyComment:
+                    type: string
+                    nullable: true
+                  reviewReplyUpdatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updateTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  importedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - socialAccountId
+                  - teamId
+                  - externalReviewId
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/reddit/post-requirements:
     get:
       summary: Get subreddit post requirements (flair required/enabled)
@@ -27194,6 +29117,267 @@ paths:
                     type: boolean
                 required:
                   - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/tiktok/cml/trending-list:
+    get:
+      description: >-
+        Retrieve up to 100 popular tracks pre-cleared for organic content and ad
+        creation from TikTok CML.
+      summary: Get popular tracks from TikTok Commercial Music Library
+      tags:
+        - misc
+        - tiktok
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: genre
+          in: query
+          description: Genre filter for commercial music results.
+          schema:
+            default: POP
+            type: string
+            enum:
+              - ROCK
+              - POP
+              - LATIN
+              - METAL
+              - ELECTRONIC
+              - HIP_HOP/RAP
+              - ALTERNATIVE/INDIE
+              - R&B/SOUL
+              - COUNTRY
+              - CLASSICAL
+              - JAZZ
+              - CHILDHOOD
+              - ALTERNATIVE_HIP_HOP
+              - AMBIENT
+              - BOSSA_NOVA
+              - BRAZILIAN_FUNK_STYLE
+              - CHILL_BEATS
+              - CHILLOUT
+              - CHINESE_POP
+              - CHRISTIAN_MUSIC
+              - COUNTRY_POP
+              - DANCE_POP
+              - DISCO
+              - DJ
+              - DRUM&BASS
+              - DUBSTEP
+              - EDM
+              - FUNK
+              - HOUSE
+              - INDIE_POP
+              - J-POP
+              - K-POP
+              - LATIN_POP
+              - LO-FI
+              - OLD_SCHOOL
+              - PUNK
+              - RUSSIAN_POP
+              - SOUL
+              - SOUNDTRACK
+              - SYNTH_POP
+              - TECHNO
+              - TEEN_POP
+        - name: dateRange
+          in: query
+          description: Timeframe for popular tracks ranking.
+          schema:
+            default: 7DAY
+            type: string
+            enum:
+              - 1DAY
+              - 7DAY
+              - 30DAY
+      operationId: misc.tiktok.getCommercialMusicTrendingList
+      responses:
+        '200':
+          description: List of trending tracks.
+          content:
+            application/json:
+              schema:
+                default: []
+                type: array
+                items:
+                  type: object
+                  properties:
+                    commercial_music_name:
+                      type: string
+                      description: The name of the commercial music track.
+                    duration:
+                      type: integer
+                      description: Track duration in seconds.
+                    thumbnail_url:
+                      type: string
+                      format: uri
+                      description: Thumbnail image URL for the track.
+                    artist:
+                      type: string
+                      description: Artist name.
+                    preview_url:
+                      type: string
+                      format: uri
+                      nullable: true
+                      description: Track preview URL (valid for six hours).
+                    genres:
+                      default: []
+                      type: array
+                      items:
+                        type: string
+                      description: List of genres associated with the track.
+                    rank_position:
+                      type: string
+                      description: Current rank position in the selected region.
+                    trending_history:
+                      default: []
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                            description: Date in YYYY-MM-DD format.
+                          rank_position_daily:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Rank position on a specific date. Can be null if
+                              not ranked.
+                        required:
+                          - date
+                      description: Historical ranking data (up to 30 days).
+                    full_duration_song_clip:
+                      type: object
+                      properties:
+                        preview_url:
+                          type: string
+                          format: uri
+                          nullable: true
+                          description: Track preview URL (valid for six hours).
+                        duration:
+                          type: integer
+                          description: Track duration in seconds.
+                        song_clip_id:
+                          type: string
+                          description: >-
+                            Track clip ID that can be used as music_sound_id in
+                            publish endpoint.
+                      required:
+                        - duration
+                        - song_clip_id
+                      nullable: true
+                    trending_song_clip:
+                      type: object
+                      properties:
+                        preview_url:
+                          type: string
+                          format: uri
+                          nullable: true
+                          description: Track preview URL (valid for six hours).
+                        duration:
+                          type: integer
+                          description: Track duration in seconds.
+                        song_clip_id:
+                          type: string
+                          description: >-
+                            Track clip ID that can be used as music_sound_id in
+                            publish endpoint.
+                      required:
+                        - duration
+                        - song_clip_id
+                      nullable: true
+                  required:
+                    - commercial_music_name
+                    - duration
+                    - thumbnail_url
+                    - artist
+                    - rank_position
+                description: List of trending tracks.
         '400':
           description: '400'
           content:

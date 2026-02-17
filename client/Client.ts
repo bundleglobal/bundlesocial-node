@@ -22,6 +22,7 @@ import { RedditService } from './services.gen';
 import { SlackService } from './services.gen';
 import { SocialAccountService } from './services.gen';
 import { TeamService } from './services.gen';
+import { TiktokService } from './services.gen';
 import { TwitterService } from './services.gen';
 import { UploadService } from './services.gen';
 import { YoutubeService } from './services.gen';
@@ -49,6 +50,7 @@ export class Client {
 	public readonly slack: SlackService;
 	public readonly socialAccount: SocialAccountService;
 	public readonly team: TeamService;
+	public readonly tiktok: TiktokService;
 	public readonly twitter: TwitterService;
 	public readonly upload: UploadService;
 	public readonly youtube: YoutubeService;
@@ -91,6 +93,7 @@ export class Client {
 		this.slack = new SlackService(this.request);
 		this.socialAccount = new SocialAccountService(this.request);
 		this.team = new TeamService(this.request);
+		this.tiktok = new TiktokService(this.request);
 		this.twitter = new TwitterService(this.request);
 		this.upload = new UploadService(this.request);
 		this.youtube = new YoutubeService(this.request);

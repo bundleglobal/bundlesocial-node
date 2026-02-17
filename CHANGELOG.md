@@ -1,3 +1,10 @@
+# [2.37.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.36.0...v2.37.0) (2026-02-17)
+
+
+### Features
+
+* google reviews & tiktok music ([bdd8cd9](https://github.com/bundleglobal/bundlesocial-node/commit/bdd8cd9df7e029e7db81f763f6ddd86611733fee))
+
 # [2.36.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.35.0...v2.36.0) (2026-01-30)
 
 

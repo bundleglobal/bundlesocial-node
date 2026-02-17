@@ -1104,6 +1104,12 @@ export type PostGetResponse = {
                 x: number;
                 y: number;
             }> | null;
+            /**
+             * For Reels only. Trial reels are only shared to non-followers.
+             */
+            trialParams?: {
+                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -1118,6 +1124,7 @@ export type PostGetResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            photoCoverIndex?: number | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
              */
@@ -1150,6 +1157,35 @@ export type PostGetResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            /**
+             * If set to true, upload post as draft.
+             */
+            uploadToDraft?: boolean | null;
+            /**
+             * Information about the commercial sound (track) used for TikTok publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                 */
+                musicSoundId: string;
+                /**
+                 * Commercial sound volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Starting point of the commercial sound in milliseconds.
+                 */
+                musicSoundStart?: number | null;
+                /**
+                 * Ending point of the commercial sound in milliseconds.
+                 */
+                musicSoundEnd?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -1466,6 +1502,7 @@ export type PostGetResponse = {
             id?: string | null;
             shareId?: string | null;
             permalink?: string | null;
+            status?: string | null;
         } | null;
         LINKEDIN?: {
             id?: string | null;
@@ -1690,6 +1727,12 @@ export type PostUpdateData = {
                     x: number;
                     y: number;
                 }> | null;
+                /**
+                 * For Reels only. Trial reels are only shared to non-followers.
+                 */
+                trialParams?: {
+                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -1704,6 +1747,7 @@ export type PostUpdateData = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                photoCoverIndex?: number | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
                  */
@@ -1736,6 +1780,35 @@ export type PostUpdateData = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                /**
+                 * If set to true, upload post as draft.
+                 */
+                uploadToDraft?: boolean | null;
+                /**
+                 * Information about the commercial sound (track) used for TikTok publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Commercial sound volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Starting point of the commercial sound in milliseconds.
+                     */
+                    musicSoundStart?: number | null;
+                    /**
+                     * Ending point of the commercial sound in milliseconds.
+                     */
+                    musicSoundEnd?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
+                } | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -1980,6 +2053,12 @@ export type PostUpdateResponse = {
                 x: number;
                 y: number;
             }> | null;
+            /**
+             * For Reels only. Trial reels are only shared to non-followers.
+             */
+            trialParams?: {
+                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -1994,6 +2073,7 @@ export type PostUpdateResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            photoCoverIndex?: number | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
              */
@@ -2026,6 +2106,35 @@ export type PostUpdateResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            /**
+             * If set to true, upload post as draft.
+             */
+            uploadToDraft?: boolean | null;
+            /**
+             * Information about the commercial sound (track) used for TikTok publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                 */
+                musicSoundId: string;
+                /**
+                 * Commercial sound volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Starting point of the commercial sound in milliseconds.
+                 */
+                musicSoundStart?: number | null;
+                /**
+                 * Ending point of the commercial sound in milliseconds.
+                 */
+                musicSoundEnd?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -2342,6 +2451,7 @@ export type PostUpdateResponse = {
             id?: string | null;
             shareId?: string | null;
             permalink?: string | null;
+            status?: string | null;
         } | null;
         LINKEDIN?: {
             id?: string | null;
@@ -2498,6 +2608,12 @@ export type PostDeleteResponse = {
                 x: number;
                 y: number;
             }> | null;
+            /**
+             * For Reels only. Trial reels are only shared to non-followers.
+             */
+            trialParams?: {
+                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -2512,6 +2628,7 @@ export type PostDeleteResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            photoCoverIndex?: number | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
              */
@@ -2544,6 +2661,35 @@ export type PostDeleteResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            /**
+             * If set to true, upload post as draft.
+             */
+            uploadToDraft?: boolean | null;
+            /**
+             * Information about the commercial sound (track) used for TikTok publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                 */
+                musicSoundId: string;
+                /**
+                 * Commercial sound volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Starting point of the commercial sound in milliseconds.
+                 */
+                musicSoundStart?: number | null;
+                /**
+                 * Ending point of the commercial sound in milliseconds.
+                 */
+                musicSoundEnd?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -2860,6 +3006,7 @@ export type PostDeleteResponse = {
             id?: string | null;
             shareId?: string | null;
             permalink?: string | null;
+            status?: string | null;
         } | null;
         LINKEDIN?: {
             id?: string | null;
@@ -3024,6 +3171,12 @@ export type PostGetListResponse = {
                     x: number;
                     y: number;
                 }> | null;
+                /**
+                 * For Reels only. Trial reels are only shared to non-followers.
+                 */
+                trialParams?: {
+                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -3038,6 +3191,7 @@ export type PostGetListResponse = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                photoCoverIndex?: number | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
                  */
@@ -3070,6 +3224,35 @@ export type PostGetListResponse = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                /**
+                 * If set to true, upload post as draft.
+                 */
+                uploadToDraft?: boolean | null;
+                /**
+                 * Information about the commercial sound (track) used for TikTok publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Commercial sound volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Starting point of the commercial sound in milliseconds.
+                     */
+                    musicSoundStart?: number | null;
+                    /**
+                     * Ending point of the commercial sound in milliseconds.
+                     */
+                    musicSoundEnd?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
+                } | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -3386,6 +3569,7 @@ export type PostGetListResponse = {
                 id?: string | null;
                 shareId?: string | null;
                 permalink?: string | null;
+                status?: string | null;
             } | null;
             LINKEDIN?: {
                 id?: string | null;
@@ -3612,6 +3796,12 @@ export type PostCreateData = {
                     x: number;
                     y: number;
                 }> | null;
+                /**
+                 * For Reels only. Trial reels are only shared to non-followers.
+                 */
+                trialParams?: {
+                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -3626,6 +3816,7 @@ export type PostCreateData = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                photoCoverIndex?: number | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
                  */
@@ -3658,6 +3849,35 @@ export type PostCreateData = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                /**
+                 * If set to true, upload post as draft.
+                 */
+                uploadToDraft?: boolean | null;
+                /**
+                 * Information about the commercial sound (track) used for TikTok publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Commercial sound volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Starting point of the commercial sound in milliseconds.
+                     */
+                    musicSoundStart?: number | null;
+                    /**
+                     * Ending point of the commercial sound in milliseconds.
+                     */
+                    musicSoundEnd?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
+                } | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -3902,6 +4122,12 @@ export type PostCreateResponse = {
                 x: number;
                 y: number;
             }> | null;
+            /**
+             * For Reels only. Trial reels are only shared to non-followers.
+             */
+            trialParams?: {
+                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -3916,6 +4142,7 @@ export type PostCreateResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            photoCoverIndex?: number | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
              */
@@ -3948,6 +4175,35 @@ export type PostCreateResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            /**
+             * If set to true, upload post as draft.
+             */
+            uploadToDraft?: boolean | null;
+            /**
+             * Information about the commercial sound (track) used for TikTok publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                 */
+                musicSoundId: string;
+                /**
+                 * Commercial sound volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Starting point of the commercial sound in milliseconds.
+                 */
+                musicSoundStart?: number | null;
+                /**
+                 * Ending point of the commercial sound in milliseconds.
+                 */
+                musicSoundEnd?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -4264,6 +4520,7 @@ export type PostCreateResponse = {
             id?: string | null;
             shareId?: string | null;
             permalink?: string | null;
+            status?: string | null;
         } | null;
         LINKEDIN?: {
             id?: string | null;
@@ -4420,6 +4677,12 @@ export type PostRetryResponse = {
                 x: number;
                 y: number;
             }> | null;
+            /**
+             * For Reels only. Trial reels are only shared to non-followers.
+             */
+            trialParams?: {
+                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -4434,6 +4697,7 @@ export type PostRetryResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            photoCoverIndex?: number | null;
             /**
              * Set to true if the video is a paid partnership to promote a third-party business.
              */
@@ -4466,6 +4730,35 @@ export type PostRetryResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            /**
+             * If set to true, upload post as draft.
+             */
+            uploadToDraft?: boolean | null;
+            /**
+             * Information about the commercial sound (track) used for TikTok publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                 */
+                musicSoundId: string;
+                /**
+                 * Commercial sound volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Starting point of the commercial sound in milliseconds.
+                 */
+                musicSoundStart?: number | null;
+                /**
+                 * Ending point of the commercial sound in milliseconds.
+                 */
+                musicSoundEnd?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -4782,6 +5075,7 @@ export type PostRetryResponse = {
             id?: string | null;
             shareId?: string | null;
             permalink?: string | null;
+            status?: string | null;
         } | null;
         LINKEDIN?: {
             id?: string | null;
@@ -5001,6 +5295,12 @@ export type AnalyticsGetPostAnalyticsResponse = {
                     x: number;
                     y: number;
                 }> | null;
+                /**
+                 * For Reels only. Trial reels are only shared to non-followers.
+                 */
+                trialParams?: {
+                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -5015,6 +5315,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                photoCoverIndex?: number | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
                  */
@@ -5047,6 +5348,35 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                /**
+                 * If set to true, upload post as draft.
+                 */
+                uploadToDraft?: boolean | null;
+                /**
+                 * Information about the commercial sound (track) used for TikTok publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Commercial sound volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Starting point of the commercial sound in milliseconds.
+                     */
+                    musicSoundStart?: number | null;
+                    /**
+                     * Ending point of the commercial sound in milliseconds.
+                     */
+                    musicSoundEnd?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
+                } | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -5363,6 +5693,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 id?: string | null;
                 shareId?: string | null;
                 permalink?: string | null;
+                status?: string | null;
             } | null;
             LINKEDIN?: {
                 id?: string | null;
@@ -5594,6 +5925,12 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                     x: number;
                     y: number;
                 }> | null;
+                /**
+                 * For Reels only. Trial reels are only shared to non-followers.
+                 */
+                trialParams?: {
+                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -5608,6 +5945,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                photoCoverIndex?: number | null;
                 /**
                  * Set to true if the video is a paid partnership to promote a third-party business.
                  */
@@ -5640,6 +5978,35 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                /**
+                 * If set to true, upload post as draft.
+                 */
+                uploadToDraft?: boolean | null;
+                /**
+                 * Information about the commercial sound (track) used for TikTok publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Commercial sound volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Starting point of the commercial sound in milliseconds.
+                     */
+                    musicSoundStart?: number | null;
+                    /**
+                     * Ending point of the commercial sound in milliseconds.
+                     */
+                    musicSoundEnd?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
+                } | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -5956,6 +6323,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 id?: string | null;
                 shareId?: string | null;
                 permalink?: string | null;
+                status?: string | null;
             } | null;
             LINKEDIN?: {
                 id?: string | null;
@@ -7911,6 +8279,187 @@ export type MiscGoogleBusinessDeletePostResponse = {
     success: boolean;
 };
 
+export type MiscGoogleBusinessImportReviewsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        count: number;
+    };
+};
+
+export type MiscGoogleBusinessImportReviewsResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    requestedCount: number;
+    status: 'PENDING' | 'FETCHING_REVIEWS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+    reviewsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscGoogleBusinessGetReviewImportStatusData = {
+    teamId: string;
+};
+
+export type MiscGoogleBusinessGetReviewImportStatusResponse = {
+    imports: Array<{
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        requestedCount: number;
+        status: 'PENDING' | 'FETCHING_REVIEWS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+        reviewsImported: number;
+        error?: string | null;
+        rateLimitResetAt?: string | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+};
+
+export type MiscGoogleBusinessGetReviewImportByIdData = {
+    importId: string;
+};
+
+export type MiscGoogleBusinessGetReviewImportByIdResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    requestedCount: number;
+    status: 'PENDING' | 'FETCHING_REVIEWS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+    reviewsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscGoogleBusinessGetReviewsData = {
+    limit?: number;
+    offset?: number | null;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessGetReviewsResponse = {
+    reviews: Array<{
+        id: string;
+        socialAccountId: string;
+        teamId: string;
+        externalReviewId: string;
+        reviewerDisplayName?: string | null;
+        reviewerProfilePhotoUrl?: string | null;
+        starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+        comment?: string | null;
+        reviewReplyComment?: string | null;
+        reviewReplyUpdatedAt?: string | null;
+        createTime?: string | null;
+        updateTime?: string | null;
+        importedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+    total: number;
+    limit: number;
+    remainingCapacity: number;
+};
+
+export type MiscGoogleBusinessGetReviewByIdData = {
+    reviewId: string;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessGetReviewByIdResponse = {
+    id: string;
+    socialAccountId: string;
+    teamId: string;
+    externalReviewId: string;
+    reviewerDisplayName?: string | null;
+    reviewerProfilePhotoUrl?: string | null;
+    starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+    comment?: string | null;
+    reviewReplyComment?: string | null;
+    reviewReplyUpdatedAt?: string | null;
+    createTime?: string | null;
+    updateTime?: string | null;
+    importedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscGoogleBusinessReplyToReviewData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        comment: string;
+    };
+    reviewId: string;
+};
+
+export type MiscGoogleBusinessReplyToReviewResponse = {
+    id: string;
+    socialAccountId: string;
+    teamId: string;
+    externalReviewId: string;
+    reviewerDisplayName?: string | null;
+    reviewerProfilePhotoUrl?: string | null;
+    starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+    comment?: string | null;
+    reviewReplyComment?: string | null;
+    reviewReplyUpdatedAt?: string | null;
+    createTime?: string | null;
+    updateTime?: string | null;
+    importedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscGoogleBusinessDeleteReviewReplyData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+    };
+    reviewId: string;
+};
+
+export type MiscGoogleBusinessDeleteReviewReplyResponse = {
+    id: string;
+    socialAccountId: string;
+    teamId: string;
+    externalReviewId: string;
+    reviewerDisplayName?: string | null;
+    reviewerProfilePhotoUrl?: string | null;
+    starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+    comment?: string | null;
+    reviewReplyComment?: string | null;
+    reviewReplyUpdatedAt?: string | null;
+    createTime?: string | null;
+    updateTime?: string | null;
+    importedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
 export type MiscRedditGetPostRequirementsData = {
     subreddit: string;
     teamId: string;
@@ -8250,6 +8799,90 @@ export type MiscDiscordDeleteMessageData = {
 export type MiscDiscordDeleteMessageResponse = {
     success: boolean;
 };
+
+export type MiscTiktokGetCommercialMusicTrendingListData = {
+    /**
+     * Timeframe for popular tracks ranking.
+     */
+    dateRange?: '1DAY' | '7DAY' | '30DAY';
+    /**
+     * Genre filter for commercial music results.
+     */
+    genre?: 'ROCK' | 'POP' | 'LATIN' | 'METAL' | 'ELECTRONIC' | 'HIP_HOP/RAP' | 'ALTERNATIVE/INDIE' | 'R&B/SOUL' | 'COUNTRY' | 'CLASSICAL' | 'JAZZ' | 'CHILDHOOD' | 'ALTERNATIVE_HIP_HOP' | 'AMBIENT' | 'BOSSA_NOVA' | 'BRAZILIAN_FUNK_STYLE' | 'CHILL_BEATS' | 'CHILLOUT' | 'CHINESE_POP' | 'CHRISTIAN_MUSIC' | 'COUNTRY_POP' | 'DANCE_POP' | 'DISCO' | 'DJ' | 'DRUM&BASS' | 'DUBSTEP' | 'EDM' | 'FUNK' | 'HOUSE' | 'INDIE_POP' | 'J-POP' | 'K-POP' | 'LATIN_POP' | 'LO-FI' | 'OLD_SCHOOL' | 'PUNK' | 'RUSSIAN_POP' | 'SOUL' | 'SOUNDTRACK' | 'SYNTH_POP' | 'TECHNO' | 'TEEN_POP';
+    teamId: string;
+};
+
+export type MiscTiktokGetCommercialMusicTrendingListResponse = Array<{
+    /**
+     * The name of the commercial music track.
+     */
+    commercial_music_name: string;
+    /**
+     * Track duration in seconds.
+     */
+    duration: number;
+    /**
+     * Thumbnail image URL for the track.
+     */
+    thumbnail_url: string;
+    /**
+     * Artist name.
+     */
+    artist: string;
+    /**
+     * Track preview URL (valid for six hours).
+     */
+    preview_url?: string | null;
+    /**
+     * List of genres associated with the track.
+     */
+    genres?: Array<(string)>;
+    /**
+     * Current rank position in the selected region.
+     */
+    rank_position: string;
+    /**
+     * Historical ranking data (up to 30 days).
+     */
+    trending_history?: Array<{
+        /**
+         * Date in YYYY-MM-DD format.
+         */
+        date: string;
+        /**
+         * Rank position on a specific date. Can be null if not ranked.
+         */
+        rank_position_daily?: string | null;
+    }>;
+    full_duration_song_clip?: {
+        /**
+         * Track preview URL (valid for six hours).
+         */
+        preview_url?: string | null;
+        /**
+         * Track duration in seconds.
+         */
+        duration: number;
+        /**
+         * Track clip ID that can be used as music_sound_id in publish endpoint.
+         */
+        song_clip_id: string;
+    } | null;
+    trending_song_clip?: {
+        /**
+         * Track preview URL (valid for six hours).
+         */
+        preview_url?: string | null;
+        /**
+         * Track duration in seconds.
+         */
+        duration: number;
+        /**
+         * Track clip ID that can be used as music_sound_id in publish endpoint.
+         */
+        song_clip_id: string;
+    } | null;
+}>;
 
 export type PostImportCreateData = {
     /**
@@ -10432,6 +11065,12 @@ export type $OpenApiTs = {
                                 x: number;
                                 y: number;
                             }> | null;
+                            /**
+                             * For Reels only. Trial reels are only shared to non-followers.
+                             */
+                            trialParams?: {
+                                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -10446,6 +11085,7 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            photoCoverIndex?: number | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
                              */
@@ -10478,6 +11118,35 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            /**
+                             * If set to true, upload post as draft.
+                             */
+                            uploadToDraft?: boolean | null;
+                            /**
+                             * Information about the commercial sound (track) used for TikTok publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Commercial sound volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Starting point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundStart?: number | null;
+                                /**
+                                 * Ending point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundEnd?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -10794,6 +11463,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             shareId?: string | null;
                             permalink?: string | null;
+                            status?: string | null;
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
@@ -11063,6 +11733,12 @@ export type $OpenApiTs = {
                                 x: number;
                                 y: number;
                             }> | null;
+                            /**
+                             * For Reels only. Trial reels are only shared to non-followers.
+                             */
+                            trialParams?: {
+                                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -11077,6 +11753,7 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            photoCoverIndex?: number | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
                              */
@@ -11109,6 +11786,35 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            /**
+                             * If set to true, upload post as draft.
+                             */
+                            uploadToDraft?: boolean | null;
+                            /**
+                             * Information about the commercial sound (track) used for TikTok publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Commercial sound volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Starting point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundStart?: number | null;
+                                /**
+                                 * Ending point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundEnd?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -11425,6 +12131,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             shareId?: string | null;
                             permalink?: string | null;
+                            status?: string | null;
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
@@ -11624,6 +12331,12 @@ export type $OpenApiTs = {
                                 x: number;
                                 y: number;
                             }> | null;
+                            /**
+                             * For Reels only. Trial reels are only shared to non-followers.
+                             */
+                            trialParams?: {
+                                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -11638,6 +12351,7 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            photoCoverIndex?: number | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
                              */
@@ -11670,6 +12384,35 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            /**
+                             * If set to true, upload post as draft.
+                             */
+                            uploadToDraft?: boolean | null;
+                            /**
+                             * Information about the commercial sound (track) used for TikTok publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Commercial sound volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Starting point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundStart?: number | null;
+                                /**
+                                 * Ending point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundEnd?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -11986,6 +12729,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             shareId?: string | null;
                             permalink?: string | null;
+                            status?: string | null;
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
@@ -12188,6 +12932,12 @@ export type $OpenApiTs = {
                                     x: number;
                                     y: number;
                                 }> | null;
+                                /**
+                                 * For Reels only. Trial reels are only shared to non-followers.
+                                 */
+                                trialParams?: {
+                                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                                } | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -12202,6 +12952,7 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                                photoCoverIndex?: number | null;
                                 /**
                                  * Set to true if the video is a paid partnership to promote a third-party business.
                                  */
@@ -12234,6 +12985,35 @@ export type $OpenApiTs = {
                                  * If set to true, TikTok will automatically add music to the photos.
                                  */
                                 autoAddMusic?: boolean | null;
+                                /**
+                                 * If set to true, upload post as draft.
+                                 */
+                                uploadToDraft?: boolean | null;
+                                /**
+                                 * Information about the commercial sound (track) used for TikTok publishing.
+                                 */
+                                musicSoundInfo?: {
+                                    /**
+                                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                     */
+                                    musicSoundId: string;
+                                    /**
+                                     * Commercial sound volume (0-100).
+                                     */
+                                    musicSoundVolume?: number | null;
+                                    /**
+                                     * Starting point of the commercial sound in milliseconds.
+                                     */
+                                    musicSoundStart?: number | null;
+                                    /**
+                                     * Ending point of the commercial sound in milliseconds.
+                                     */
+                                    musicSoundEnd?: number | null;
+                                    /**
+                                     * Background volume of the original video sound (0-100).
+                                     */
+                                    videoOriginalSoundVolume?: number | null;
+                                } | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -12550,6 +13330,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 shareId?: string | null;
                                 permalink?: string | null;
+                                status?: string | null;
                             } | null;
                             LINKEDIN?: {
                                 id?: string | null;
@@ -12821,6 +13602,12 @@ export type $OpenApiTs = {
                                 x: number;
                                 y: number;
                             }> | null;
+                            /**
+                             * For Reels only. Trial reels are only shared to non-followers.
+                             */
+                            trialParams?: {
+                                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -12835,6 +13622,7 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            photoCoverIndex?: number | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
                              */
@@ -12867,6 +13655,35 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            /**
+                             * If set to true, upload post as draft.
+                             */
+                            uploadToDraft?: boolean | null;
+                            /**
+                             * Information about the commercial sound (track) used for TikTok publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Commercial sound volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Starting point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundStart?: number | null;
+                                /**
+                                 * Ending point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundEnd?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -13183,6 +14000,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             shareId?: string | null;
                             permalink?: string | null;
+                            status?: string | null;
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
@@ -13384,6 +14202,12 @@ export type $OpenApiTs = {
                                 x: number;
                                 y: number;
                             }> | null;
+                            /**
+                             * For Reels only. Trial reels are only shared to non-followers.
+                             */
+                            trialParams?: {
+                                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -13398,6 +14222,7 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            photoCoverIndex?: number | null;
                             /**
                              * Set to true if the video is a paid partnership to promote a third-party business.
                              */
@@ -13430,6 +14255,35 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            /**
+                             * If set to true, upload post as draft.
+                             */
+                            uploadToDraft?: boolean | null;
+                            /**
+                             * Information about the commercial sound (track) used for TikTok publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Commercial sound volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Starting point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundStart?: number | null;
+                                /**
+                                 * Ending point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundEnd?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -13746,6 +14600,7 @@ export type $OpenApiTs = {
                             id?: string | null;
                             shareId?: string | null;
                             permalink?: string | null;
+                            status?: string | null;
                         } | null;
                         LINKEDIN?: {
                             id?: string | null;
@@ -14053,6 +14908,12 @@ export type $OpenApiTs = {
                                     x: number;
                                     y: number;
                                 }> | null;
+                                /**
+                                 * For Reels only. Trial reels are only shared to non-followers.
+                                 */
+                                trialParams?: {
+                                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                                } | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -14067,6 +14928,7 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                                photoCoverIndex?: number | null;
                                 /**
                                  * Set to true if the video is a paid partnership to promote a third-party business.
                                  */
@@ -14099,6 +14961,35 @@ export type $OpenApiTs = {
                                  * If set to true, TikTok will automatically add music to the photos.
                                  */
                                 autoAddMusic?: boolean | null;
+                                /**
+                                 * If set to true, upload post as draft.
+                                 */
+                                uploadToDraft?: boolean | null;
+                                /**
+                                 * Information about the commercial sound (track) used for TikTok publishing.
+                                 */
+                                musicSoundInfo?: {
+                                    /**
+                                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                     */
+                                    musicSoundId: string;
+                                    /**
+                                     * Commercial sound volume (0-100).
+                                     */
+                                    musicSoundVolume?: number | null;
+                                    /**
+                                     * Starting point of the commercial sound in milliseconds.
+                                     */
+                                    musicSoundStart?: number | null;
+                                    /**
+                                     * Ending point of the commercial sound in milliseconds.
+                                     */
+                                    musicSoundEnd?: number | null;
+                                    /**
+                                     * Background volume of the original video sound (0-100).
+                                     */
+                                    videoOriginalSoundVolume?: number | null;
+                                } | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -14415,6 +15306,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 shareId?: string | null;
                                 permalink?: string | null;
+                                status?: string | null;
                             } | null;
                             LINKEDIN?: {
                                 id?: string | null;
@@ -14734,6 +15626,12 @@ export type $OpenApiTs = {
                                     x: number;
                                     y: number;
                                 }> | null;
+                                /**
+                                 * For Reels only. Trial reels are only shared to non-followers.
+                                 */
+                                trialParams?: {
+                                    graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                                } | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -14748,6 +15646,7 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                                photoCoverIndex?: number | null;
                                 /**
                                  * Set to true if the video is a paid partnership to promote a third-party business.
                                  */
@@ -14780,6 +15679,35 @@ export type $OpenApiTs = {
                                  * If set to true, TikTok will automatically add music to the photos.
                                  */
                                 autoAddMusic?: boolean | null;
+                                /**
+                                 * If set to true, upload post as draft.
+                                 */
+                                uploadToDraft?: boolean | null;
+                                /**
+                                 * Information about the commercial sound (track) used for TikTok publishing.
+                                 */
+                                musicSoundInfo?: {
+                                    /**
+                                     * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                     */
+                                    musicSoundId: string;
+                                    /**
+                                     * Commercial sound volume (0-100).
+                                     */
+                                    musicSoundVolume?: number | null;
+                                    /**
+                                     * Starting point of the commercial sound in milliseconds.
+                                     */
+                                    musicSoundStart?: number | null;
+                                    /**
+                                     * Ending point of the commercial sound in milliseconds.
+                                     */
+                                    musicSoundEnd?: number | null;
+                                    /**
+                                     * Background volume of the original video sound (0-100).
+                                     */
+                                    videoOriginalSoundVolume?: number | null;
+                                } | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -15096,6 +16024,7 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 shareId?: string | null;
                                 permalink?: string | null;
+                                status?: string | null;
                             } | null;
                             LINKEDIN?: {
                                 id?: string | null;
@@ -17988,6 +18917,482 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/misc/google-business/reviews/import': {
+        post: {
+            req: MiscGoogleBusinessImportReviewsData;
+            res: {
+                /**
+                 * 201
+                 */
+                201: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    requestedCount: number;
+                    status: 'PENDING' | 'FETCHING_REVIEWS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                    reviewsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 409
+                 */
+                409: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        get: {
+            req: MiscGoogleBusinessGetReviewImportStatusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    imports: Array<{
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        requestedCount: number;
+                        status: 'PENDING' | 'FETCHING_REVIEWS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                        reviewsImported: number;
+                        error?: string | null;
+                        rateLimitResetAt?: string | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/reviews/import/{importId}': {
+        get: {
+            req: MiscGoogleBusinessGetReviewImportByIdData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    requestedCount: number;
+                    status: 'PENDING' | 'FETCHING_REVIEWS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                    reviewsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/reviews': {
+        get: {
+            req: MiscGoogleBusinessGetReviewsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    reviews: Array<{
+                        id: string;
+                        socialAccountId: string;
+                        teamId: string;
+                        externalReviewId: string;
+                        reviewerDisplayName?: string | null;
+                        reviewerProfilePhotoUrl?: string | null;
+                        starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+                        comment?: string | null;
+                        reviewReplyComment?: string | null;
+                        reviewReplyUpdatedAt?: string | null;
+                        createTime?: string | null;
+                        updateTime?: string | null;
+                        importedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                    total: number;
+                    limit: number;
+                    remainingCapacity: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/reviews/{reviewId}': {
+        get: {
+            req: MiscGoogleBusinessGetReviewByIdData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    socialAccountId: string;
+                    teamId: string;
+                    externalReviewId: string;
+                    reviewerDisplayName?: string | null;
+                    reviewerProfilePhotoUrl?: string | null;
+                    starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+                    comment?: string | null;
+                    reviewReplyComment?: string | null;
+                    reviewReplyUpdatedAt?: string | null;
+                    createTime?: string | null;
+                    updateTime?: string | null;
+                    importedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/reviews/{reviewId}/reply': {
+        put: {
+            req: MiscGoogleBusinessReplyToReviewData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    socialAccountId: string;
+                    teamId: string;
+                    externalReviewId: string;
+                    reviewerDisplayName?: string | null;
+                    reviewerProfilePhotoUrl?: string | null;
+                    starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+                    comment?: string | null;
+                    reviewReplyComment?: string | null;
+                    reviewReplyUpdatedAt?: string | null;
+                    createTime?: string | null;
+                    updateTime?: string | null;
+                    importedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscGoogleBusinessDeleteReviewReplyData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    socialAccountId: string;
+                    teamId: string;
+                    externalReviewId: string;
+                    reviewerDisplayName?: string | null;
+                    reviewerProfilePhotoUrl?: string | null;
+                    starRating?: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE' | null;
+                    comment?: string | null;
+                    reviewReplyComment?: string | null;
+                    reviewReplyUpdatedAt?: string | null;
+                    createTime?: string | null;
+                    updateTime?: string | null;
+                    importedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/misc/reddit/post-requirements': {
         get: {
             req: MiscRedditGetPostRequirementsData;
@@ -18832,6 +20237,127 @@ export type $OpenApiTs = {
                 200: {
                     success: boolean;
                 };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/tiktok/cml/trending-list': {
+        get: {
+            req: MiscTiktokGetCommercialMusicTrendingListData;
+            res: {
+                /**
+                 * List of trending tracks.
+                 */
+                200: Array<{
+                    /**
+                     * The name of the commercial music track.
+                     */
+                    commercial_music_name: string;
+                    /**
+                     * Track duration in seconds.
+                     */
+                    duration: number;
+                    /**
+                     * Thumbnail image URL for the track.
+                     */
+                    thumbnail_url: string;
+                    /**
+                     * Artist name.
+                     */
+                    artist: string;
+                    /**
+                     * Track preview URL (valid for six hours).
+                     */
+                    preview_url?: string | null;
+                    /**
+                     * List of genres associated with the track.
+                     */
+                    genres?: Array<(string)>;
+                    /**
+                     * Current rank position in the selected region.
+                     */
+                    rank_position: string;
+                    /**
+                     * Historical ranking data (up to 30 days).
+                     */
+                    trending_history?: Array<{
+                        /**
+                         * Date in YYYY-MM-DD format.
+                         */
+                        date: string;
+                        /**
+                         * Rank position on a specific date. Can be null if not ranked.
+                         */
+                        rank_position_daily?: string | null;
+                    }>;
+                    full_duration_song_clip?: {
+                        /**
+                         * Track preview URL (valid for six hours).
+                         */
+                        preview_url?: string | null;
+                        /**
+                         * Track duration in seconds.
+                         */
+                        duration: number;
+                        /**
+                         * Track clip ID that can be used as music_sound_id in publish endpoint.
+                         */
+                        song_clip_id: string;
+                    } | null;
+                    trending_song_clip?: {
+                        /**
+                         * Track preview URL (valid for six hours).
+                         */
+                        preview_url?: string | null;
+                        /**
+                         * Track duration in seconds.
+                         */
+                        duration: number;
+                        /**
+                         * Track clip ID that can be used as music_sound_id in publish endpoint.
+                         */
+                        song_clip_id: string;
+                    } | null;
+                }>;
                 /**
                  * 400
                  */

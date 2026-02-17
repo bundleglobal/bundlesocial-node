@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -1583,6 +1583,195 @@ export class MiscService {
     }
     
     /**
+     * Start a new Google Reviews import
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 201
+     * @throws ApiError
+     */
+    public miscGoogleBusinessImportReviews(data: MiscGoogleBusinessImportReviewsData = {}): CancelablePromise<MiscGoogleBusinessImportReviewsResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/google-business/reviews/import',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                409: '409',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get review import status list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviewImportStatus(data: MiscGoogleBusinessGetReviewImportStatusData): CancelablePromise<MiscGoogleBusinessGetReviewImportStatusResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews/import',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get review import by ID
+     * @param data The data for the request.
+     * @param data.importId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviewImportById(data: MiscGoogleBusinessGetReviewImportByIdData): CancelablePromise<MiscGoogleBusinessGetReviewImportByIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews/import/{importId}',
+            path: {
+                importId: data.importId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List imported Google Reviews
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.limit
+     * @param data.offset
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviews(data: MiscGoogleBusinessGetReviewsData): CancelablePromise<MiscGoogleBusinessGetReviewsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews',
+            query: {
+                teamId: data.teamId,
+                limit: data.limit,
+                offset: data.offset
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get a single imported Google Review
+     * @param data The data for the request.
+     * @param data.reviewId
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviewById(data: MiscGoogleBusinessGetReviewByIdData): CancelablePromise<MiscGoogleBusinessGetReviewByIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews/{reviewId}',
+            path: {
+                reviewId: data.reviewId
+            },
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Reply to a Google Review (creates or updates the owner reply)
+     * @param data The data for the request.
+     * @param data.reviewId
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessReplyToReview(data: MiscGoogleBusinessReplyToReviewData): CancelablePromise<MiscGoogleBusinessReplyToReviewResponse> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/api/v1/misc/google-business/reviews/{reviewId}/reply',
+            path: {
+                reviewId: data.reviewId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete the owner reply from a Google Review
+     * @param data The data for the request.
+     * @param data.reviewId
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeleteReviewReply(data: MiscGoogleBusinessDeleteReviewReplyData): CancelablePromise<MiscGoogleBusinessDeleteReviewReplyResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/reviews/{reviewId}/reply',
+            path: {
+                reviewId: data.reviewId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Get subreddit post requirements (flair required/enabled)
      * @param data The data for the request.
      * @param data.teamId
@@ -1979,6 +2168,36 @@ export class MiscService {
             url: '/api/v1/misc/discord/message',
             body: data.requestBody,
             mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get popular tracks from TikTok Commercial Music Library
+     * Retrieve up to 100 popular tracks pre-cleared for organic content and ad creation from TikTok CML.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.genre Genre filter for commercial music results.
+     * @param data.dateRange Timeframe for popular tracks ranking.
+     * @returns unknown List of trending tracks.
+     * @throws ApiError
+     */
+    public miscTiktokGetCommercialMusicTrendingList(data: MiscTiktokGetCommercialMusicTrendingListData): CancelablePromise<MiscTiktokGetCommercialMusicTrendingListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/tiktok/cml/trending-list',
+            query: {
+                teamId: data.teamId,
+                genre: data.genre,
+                dateRange: data.dateRange
+            },
             errors: {
                 400: '400',
                 401: '401',
@@ -2472,6 +2691,195 @@ export class GoogleBusinessService {
         });
     }
     
+    /**
+     * Start a new Google Reviews import
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 201
+     * @throws ApiError
+     */
+    public miscGoogleBusinessImportReviews(data: MiscGoogleBusinessImportReviewsData = {}): CancelablePromise<MiscGoogleBusinessImportReviewsResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/google-business/reviews/import',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                409: '409',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get review import status list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviewImportStatus(data: MiscGoogleBusinessGetReviewImportStatusData): CancelablePromise<MiscGoogleBusinessGetReviewImportStatusResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews/import',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get review import by ID
+     * @param data The data for the request.
+     * @param data.importId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviewImportById(data: MiscGoogleBusinessGetReviewImportByIdData): CancelablePromise<MiscGoogleBusinessGetReviewImportByIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews/import/{importId}',
+            path: {
+                importId: data.importId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List imported Google Reviews
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.limit
+     * @param data.offset
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviews(data: MiscGoogleBusinessGetReviewsData): CancelablePromise<MiscGoogleBusinessGetReviewsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews',
+            query: {
+                teamId: data.teamId,
+                limit: data.limit,
+                offset: data.offset
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get a single imported Google Review
+     * @param data The data for the request.
+     * @param data.reviewId
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetReviewById(data: MiscGoogleBusinessGetReviewByIdData): CancelablePromise<MiscGoogleBusinessGetReviewByIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/reviews/{reviewId}',
+            path: {
+                reviewId: data.reviewId
+            },
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Reply to a Google Review (creates or updates the owner reply)
+     * @param data The data for the request.
+     * @param data.reviewId
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessReplyToReview(data: MiscGoogleBusinessReplyToReviewData): CancelablePromise<MiscGoogleBusinessReplyToReviewResponse> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/api/v1/misc/google-business/reviews/{reviewId}/reply',
+            path: {
+                reviewId: data.reviewId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete the owner reply from a Google Review
+     * @param data The data for the request.
+     * @param data.reviewId
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeleteReviewReply(data: MiscGoogleBusinessDeleteReviewReplyData): CancelablePromise<MiscGoogleBusinessDeleteReviewReplyResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/reviews/{reviewId}/reply',
+            path: {
+                reviewId: data.reviewId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
 }
 
 export class RedditService {
@@ -2914,6 +3322,41 @@ export class DiscordService {
             url: '/api/v1/misc/discord/message',
             body: data.requestBody,
             mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+}
+
+export class TiktokService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Get popular tracks from TikTok Commercial Music Library
+     * Retrieve up to 100 popular tracks pre-cleared for organic content and ad creation from TikTok CML.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.genre Genre filter for commercial music results.
+     * @param data.dateRange Timeframe for popular tracks ranking.
+     * @returns unknown List of trending tracks.
+     * @throws ApiError
+     */
+    public miscTiktokGetCommercialMusicTrendingList(data: MiscTiktokGetCommercialMusicTrendingListData): CancelablePromise<MiscTiktokGetCommercialMusicTrendingListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/tiktok/cml/trending-list',
+            query: {
+                teamId: data.teamId,
+                genre: data.genre,
+                dateRange: data.dateRange
+            },
             errors: {
                 400: '400',
                 401: '401',

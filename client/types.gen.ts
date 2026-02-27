@@ -36,6 +36,7 @@ export type OrganizationGetOrganizationResponse = {
     analyticsInterval?: number | null;
     analyticsPostsInterval?: number | null;
     showVerboseErrors: boolean;
+    deleteAccountAfter: number;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -254,6 +255,7 @@ export type TeamGetTeamResponse = {
         analyticsInterval?: number | null;
         analyticsPostsInterval?: number | null;
         showVerboseErrors: boolean;
+        deleteAccountAfter: number;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -312,6 +314,7 @@ export type TeamGetTeamResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        deleteOn?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -439,6 +442,7 @@ export type TeamGetListResponse = {
             analyticsInterval?: number | null;
             analyticsPostsInterval?: number | null;
             showVerboseErrors: boolean;
+            deleteAccountAfter: number;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -497,6 +501,7 @@ export type TeamGetListResponse = {
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            deleteOn?: string | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -636,6 +641,7 @@ export type SocialAccountDisconnectResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    deleteOn?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -684,6 +690,55 @@ export type SocialAccountSetChannelResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    deleteOn?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type SocialAccountUnsetChannelData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS';
+        teamId: string;
+    };
+};
+
+export type SocialAccountUnsetChannelResponse = {
+    id: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    teamId: string;
+    username?: string | null;
+    displayName?: string | null;
+    avatarUrl?: string | null;
+    externalId?: string | null;
+    userUsername?: string | null;
+    userDisplayName?: string | null;
+    userId?: string | null;
+    channels?: Array<{
+        id: string;
+        name?: string | null;
+        username?: string | null;
+        avatarUrl?: string | null;
+        webhook?: {
+            id?: string | null;
+            name?: string | null;
+            avatar?: string | null;
+            url?: string | null;
+        } | null;
+        metadata?: {
+            allowImages?: boolean | null;
+            allowVideos?: boolean | null;
+            allowGalleries?: boolean | null;
+            linkFlairEnabled?: boolean | null;
+        } | null;
+    }> | null;
+    mastodonServerId?: string | null;
+    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    deleteOn?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -731,6 +786,7 @@ export type SocialAccountRefreshChannelsResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    deleteOn?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -814,10 +870,62 @@ export type SocialAccountCopyResponse = Array<{
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    deleteOn?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
 }>;
+
+export type SocialAccountGetAccountsToDeleteData = {
+    page?: number;
+    pageSize?: number;
+};
+
+export type SocialAccountGetAccountsToDeleteResponse = {
+    items: Array<{
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        deleteOn?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+    pagination: {
+        page: number;
+        pageSize: number;
+        total: number;
+        totalPages: number;
+    };
+};
 
 export type UploadGetListData = {
     status?: 'USED' | 'UNUSED' | null;
@@ -1034,6 +1142,7 @@ export type PostGetResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -1636,6 +1745,7 @@ export type PostGetResponse = {
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            deleteOn?: string | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -1657,6 +1767,7 @@ export type PostUpdateData = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -1983,6 +2094,7 @@ export type PostUpdateResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -2538,6 +2650,7 @@ export type PostDeleteResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -3101,6 +3214,7 @@ export type PostGetListResponse = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -3703,6 +3817,7 @@ export type PostGetListResponse = {
                 mastodonServerId?: string | null;
                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                deleteOn?: string | null;
                 createdAt: string | null;
                 updatedAt: string | null;
                 deletedAt?: string | null;
@@ -3726,6 +3841,7 @@ export type PostCreateData = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -4052,6 +4168,7 @@ export type PostCreateResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -4607,6 +4724,7 @@ export type PostRetryResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -5184,6 +5302,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        deleteOn?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -5208,8 +5327,9 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
 };
 
 export type AnalyticsGetPostAnalyticsData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
-    postId: string;
+    importedPostId?: string | null;
+    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | null;
+    postId?: string | null;
 };
 
 export type AnalyticsGetPostAnalyticsResponse = {
@@ -5225,6 +5345,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -5759,6 +5880,27 @@ export type AnalyticsGetPostAnalyticsResponse = {
             } | null;
         } | null;
         retryCount: number;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    } | null;
+    profilePost?: {
+        id: string;
+        socialAccountId: string;
+        postId?: string | null;
+        externalId?: string | null;
+        title?: string | null;
+        description?: string | null;
+        smallThumbnail?: string | null;
+        thumbnail?: string | null;
+        permalink?: string | null;
+        extraData?: unknown;
+        subreddit?: string | null;
+        publishedAt?: string | null;
+        type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
+        internal: boolean;
+        importedAt?: string | null;
+        externallyDeletedAt?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -5821,6 +5963,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        deleteOn?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -5838,8 +5981,9 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
 };
 
 export type AnalyticsGetPostAnalyticsRawData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
-    postId: string;
+    importedPostId?: string | null;
+    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | null;
+    postId?: string | null;
 };
 
 export type AnalyticsGetPostAnalyticsRawResponse = {
@@ -5855,6 +5999,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -6389,6 +6534,27 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             } | null;
         } | null;
         retryCount: number;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    } | null;
+    profilePost?: {
+        id: string;
+        socialAccountId: string;
+        postId?: string | null;
+        externalId?: string | null;
+        title?: string | null;
+        description?: string | null;
+        smallThumbnail?: string | null;
+        thumbnail?: string | null;
+        permalink?: string | null;
+        extraData?: unknown;
+        subreddit?: string | null;
+        publishedAt?: string | null;
+        type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
+        internal: boolean;
+        importedAt?: string | null;
+        externallyDeletedAt?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -6476,8 +6642,9 @@ export type AnalyticsForcePostAnalyticsData = {
      * Body
      */
     requestBody?: {
-        postId: string;
-        platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        postId?: string | null;
+        platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | null;
+        importedPostId?: string | null;
     };
 };
 
@@ -8893,6 +9060,9 @@ export type PostImportCreateData = {
         socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY';
         count: number;
         withAnalytics?: boolean;
+        importCarousels?: boolean;
+        surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL';
+        mediaType?: 'VIDEO' | 'IMAGE';
     };
 };
 
@@ -8902,6 +9072,9 @@ export type PostImportCreateResponse = {
     socialAccountId: string;
     requestedCount: number;
     withAnalytics: boolean;
+    importCarousels: boolean;
+    surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+    mediaType?: 'VIDEO' | 'IMAGE' | null;
     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
     postsImported: number;
     analyticsImported: number;
@@ -8926,6 +9099,9 @@ export type PostImportGetStatusResponse = {
         socialAccountId: string;
         requestedCount: number;
         withAnalytics: boolean;
+        importCarousels: boolean;
+        surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+        mediaType?: 'VIDEO' | 'IMAGE' | null;
         status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
         postsImported: number;
         analyticsImported: number;
@@ -8949,6 +9125,9 @@ export type PostImportGetByIdResponse = {
     socialAccountId: string;
     requestedCount: number;
     withAnalytics: boolean;
+    importCarousels: boolean;
+    surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+    mediaType?: 'VIDEO' | 'IMAGE' | null;
     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
     postsImported: number;
     analyticsImported: number;
@@ -8979,6 +9158,7 @@ export type PostImportGetImportedPostsResponse = {
         smallThumbnail?: string | null;
         thumbnail?: string | null;
         permalink?: string | null;
+        extraData?: unknown;
         subreddit?: string | null;
         publishedAt?: string | null;
         type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
@@ -9012,6 +9192,20 @@ export type PostImportGetImportedPostsResponse = {
     remainingCapacity: number;
 };
 
+export type PostImportDeleteImportedPostsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        postIds: Array<(string)>;
+    };
+};
+
+export type PostImportDeleteImportedPostsResponse = {
+    deletedCount: number;
+};
+
 export type PostImportRetryImportData = {
     importId: string;
     /**
@@ -9028,6 +9222,9 @@ export type PostImportRetryImportResponse = {
     socialAccountId: string;
     requestedCount: number;
     withAnalytics: boolean;
+    importCarousels: boolean;
+    surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+    mediaType?: 'VIDEO' | 'IMAGE' | null;
     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
     postsImported: number;
     analyticsImported: number;
@@ -9131,6 +9328,7 @@ export type $OpenApiTs = {
                     analyticsInterval?: number | null;
                     analyticsPostsInterval?: number | null;
                     showVerboseErrors: boolean;
+                    deleteAccountAfter: number;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -9531,6 +9729,7 @@ export type $OpenApiTs = {
                         analyticsInterval?: number | null;
                         analyticsPostsInterval?: number | null;
                         showVerboseErrors: boolean;
+                        deleteAccountAfter: number;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -9589,6 +9788,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        deleteOn?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -9838,6 +10038,7 @@ export type $OpenApiTs = {
                             analyticsInterval?: number | null;
                             analyticsPostsInterval?: number | null;
                             showVerboseErrors: boolean;
+                            deleteAccountAfter: number;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -9896,6 +10097,7 @@ export type $OpenApiTs = {
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            deleteOn?: string | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -10136,6 +10338,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    deleteOn?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -10222,6 +10425,94 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    deleteOn?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/unset-channel': {
+        post: {
+            req: SocialAccountUnsetChannelData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    teamId: string;
+                    username?: string | null;
+                    displayName?: string | null;
+                    avatarUrl?: string | null;
+                    externalId?: string | null;
+                    userUsername?: string | null;
+                    userDisplayName?: string | null;
+                    userId?: string | null;
+                    channels?: Array<{
+                        id: string;
+                        name?: string | null;
+                        username?: string | null;
+                        avatarUrl?: string | null;
+                        webhook?: {
+                            id?: string | null;
+                            name?: string | null;
+                            avatar?: string | null;
+                            url?: string | null;
+                        } | null;
+                        metadata?: {
+                            allowImages?: boolean | null;
+                            allowVideos?: boolean | null;
+                            allowGalleries?: boolean | null;
+                            linkFlairEnabled?: boolean | null;
+                        } | null;
+                    }> | null;
+                    mastodonServerId?: string | null;
+                    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    deleteOn?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -10308,6 +10599,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    deleteOn?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -10447,10 +10739,106 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    deleteOn?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
                 }>;
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/to-delete': {
+        get: {
+            req: SocialAccountGetAccountsToDeleteData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        deleteOn?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                    pagination: {
+                        page: number;
+                        pageSize: number;
+                        total: number;
+                        totalPages: number;
+                    };
+                };
                 /**
                  * 400
                  */
@@ -10995,6 +11383,7 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -11597,6 +11986,7 @@ export type $OpenApiTs = {
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            deleteOn?: string | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -11663,6 +12053,7 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -12261,6 +12652,7 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -12862,6 +13254,7 @@ export type $OpenApiTs = {
                             TWITTER?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                             } | null;
                             PINTEREST?: {
                                 text?: string | null;
@@ -13464,6 +13857,7 @@ export type $OpenApiTs = {
                                 mastodonServerId?: string | null;
                                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                                deleteOn?: string | null;
                                 createdAt: string | null;
                                 updatedAt: string | null;
                                 deletedAt?: string | null;
@@ -13532,6 +13926,7 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -14132,6 +14527,7 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -14753,6 +15149,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        deleteOn?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -14838,6 +15235,7 @@ export type $OpenApiTs = {
                             TWITTER?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                             } | null;
                             PINTEREST?: {
                                 text?: string | null;
@@ -15372,6 +15770,27 @@ export type $OpenApiTs = {
                             } | null;
                         } | null;
                         retryCount: number;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    } | null;
+                    profilePost?: {
+                        id: string;
+                        socialAccountId: string;
+                        postId?: string | null;
+                        externalId?: string | null;
+                        title?: string | null;
+                        description?: string | null;
+                        smallThumbnail?: string | null;
+                        thumbnail?: string | null;
+                        permalink?: string | null;
+                        extraData?: unknown;
+                        subreddit?: string | null;
+                        publishedAt?: string | null;
+                        type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
+                        internal: boolean;
+                        importedAt?: string | null;
+                        externallyDeletedAt?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -15478,6 +15897,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        deleteOn?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -15556,6 +15976,7 @@ export type $OpenApiTs = {
                             TWITTER?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
                             } | null;
                             PINTEREST?: {
                                 text?: string | null;
@@ -16090,6 +16511,27 @@ export type $OpenApiTs = {
                             } | null;
                         } | null;
                         retryCount: number;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    } | null;
+                    profilePost?: {
+                        id: string;
+                        socialAccountId: string;
+                        postId?: string | null;
+                        externalId?: string | null;
+                        title?: string | null;
+                        description?: string | null;
+                        smallThumbnail?: string | null;
+                        thumbnail?: string | null;
+                        permalink?: string | null;
+                        extraData?: unknown;
+                        subreddit?: string | null;
+                        publishedAt?: string | null;
+                        type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
+                        internal: boolean;
+                        importedAt?: string | null;
+                        externallyDeletedAt?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -20414,6 +20856,9 @@ export type $OpenApiTs = {
                     socialAccountId: string;
                     requestedCount: number;
                     withAnalytics: boolean;
+                    importCarousels: boolean;
+                    surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+                    mediaType?: 'VIDEO' | 'IMAGE' | null;
                     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
                     postsImported: number;
                     analyticsImported: number;
@@ -20486,6 +20931,9 @@ export type $OpenApiTs = {
                         socialAccountId: string;
                         requestedCount: number;
                         withAnalytics: boolean;
+                        importCarousels: boolean;
+                        surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+                        mediaType?: 'VIDEO' | 'IMAGE' | null;
                         status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
                         postsImported: number;
                         analyticsImported: number;
@@ -20554,6 +21002,9 @@ export type $OpenApiTs = {
                     socialAccountId: string;
                     requestedCount: number;
                     withAnalytics: boolean;
+                    importCarousels: boolean;
+                    surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+                    mediaType?: 'VIDEO' | 'IMAGE' | null;
                     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
                     postsImported: number;
                     analyticsImported: number;
@@ -20626,6 +21077,7 @@ export type $OpenApiTs = {
                         smallThumbnail?: string | null;
                         thumbnail?: string | null;
                         permalink?: string | null;
+                        extraData?: unknown;
                         subreddit?: string | null;
                         publishedAt?: string | null;
                         type: 'POST' | 'REEL' | 'STORY' | 'VIDEO' | 'IMAGE';
@@ -20700,6 +21152,57 @@ export type $OpenApiTs = {
                 };
             };
         };
+        delete: {
+            req: PostImportDeleteImportedPostsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    deletedCount: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
     };
     '/api/v1/post-history-import/{importId}/retry': {
         post: {
@@ -20714,6 +21217,9 @@ export type $OpenApiTs = {
                     socialAccountId: string;
                     requestedCount: number;
                     withAnalytics: boolean;
+                    importCarousels: boolean;
+                    surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
+                    mediaType?: 'VIDEO' | 'IMAGE' | null;
                     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
                     postsImported: number;
                     analyticsImported: number;

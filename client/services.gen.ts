@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -342,6 +342,31 @@ export class SocialAccountService {
     }
     
     /**
+     * Unset channel for social account
+     * Clear selected channel while keeping social account authorization.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountUnsetChannel(data: SocialAccountUnsetChannelData = {}): CancelablePromise<SocialAccountUnsetChannelResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/social-account/unset-channel',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Refresh channels for social account
      * Refresh channels saved on socialAccount.channels. This is only needed for some social account types - Reddit, Discord, Slack, Pinterest.
      * @param data The data for the request.
@@ -404,6 +429,33 @@ export class SocialAccountService {
             url: '/api/v1/social-account/copy',
             body: data.requestBody,
             mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get paginated social accounts to delete
+     * @param data The data for the request.
+     * @param data.page
+     * @param data.pageSize
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountGetAccountsToDelete(data: SocialAccountGetAccountsToDeleteData = {}): CancelablePromise<SocialAccountGetAccountsToDeleteResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/social-account/to-delete',
+            query: {
+                page: data.page,
+                pageSize: data.pageSize
+            },
             errors: {
                 400: '400',
                 401: '401',
@@ -806,16 +858,18 @@ export class AnalyticsService {
      * @param data The data for the request.
      * @param data.postId
      * @param data.platformType
+     * @param data.importedPostId
      * @returns unknown 200
      * @throws ApiError
      */
-    public analyticsGetPostAnalytics(data: AnalyticsGetPostAnalyticsData): CancelablePromise<AnalyticsGetPostAnalyticsResponse> {
+    public analyticsGetPostAnalytics(data: AnalyticsGetPostAnalyticsData = {}): CancelablePromise<AnalyticsGetPostAnalyticsResponse> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/v1/analytics/post',
             query: {
                 postId: data.postId,
-                platformType: data.platformType
+                platformType: data.platformType,
+                importedPostId: data.importedPostId
             },
             errors: {
                 400: '400',
@@ -860,16 +914,18 @@ export class AnalyticsService {
      * @param data The data for the request.
      * @param data.postId
      * @param data.platformType
+     * @param data.importedPostId
      * @returns unknown 200
      * @throws ApiError
      */
-    public analyticsGetPostAnalyticsRaw(data: AnalyticsGetPostAnalyticsRawData): CancelablePromise<AnalyticsGetPostAnalyticsRawResponse> {
+    public analyticsGetPostAnalyticsRaw(data: AnalyticsGetPostAnalyticsRawData = {}): CancelablePromise<AnalyticsGetPostAnalyticsRawResponse> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/v1/analytics/post/raw',
             query: {
                 postId: data.postId,
-                platformType: data.platformType
+                platformType: data.platformType,
+                importedPostId: data.importedPostId
             },
             errors: {
                 400: '400',
@@ -3470,6 +3526,30 @@ export class PostImportService {
                 limit: data.limit,
                 offset: data.offset
             },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Bulk delete imported posts and their analytics
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public postImportDeleteImportedPosts(data: PostImportDeleteImportedPostsData = {}): CancelablePromise<PostImportDeleteImportedPostsResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/post-history-import/posts',
+            body: data.requestBody,
+            mediaType: 'application/json',
             errors: {
                 400: '400',
                 401: '401',

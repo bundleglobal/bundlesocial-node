@@ -187,6 +187,10 @@ paths:
                     nullable: true
                   showVerboseErrors:
                     type: boolean
+                  deleteAccountAfter:
+                    type: integer
+                    minimum: 0
+                    maximum: 24
                   createdAt:
                     type: string
                     format: date-time
@@ -672,6 +676,7 @@ paths:
                   - analyticsPostsDisabled
                   - uploadsCompressionEnabled
                   - showVerboseErrors
+                  - deleteAccountAfter
                   - createdAt
                   - updatedAt
                   - createdBy
@@ -1275,6 +1280,10 @@ paths:
                         nullable: true
                       showVerboseErrors:
                         type: boolean
+                      deleteAccountAfter:
+                        type: integer
+                        minimum: 0
+                        maximum: 24
                       createdAt:
                         type: string
                         format: date-time
@@ -1295,6 +1304,7 @@ paths:
                       - analyticsPostsDisabled
                       - uploadsCompressionEnabled
                       - showVerboseErrors
+                      - deleteAccountAfter
                       - createdAt
                       - updatedAt
                   createdBy:
@@ -1489,6 +1499,10 @@ paths:
                             - basic
                             - premium
                             - premium_plus
+                          nullable: true
+                        deleteOn:
+                          type: string
+                          format: date-time
                           nullable: true
                         createdAt:
                           type: string
@@ -2126,6 +2140,10 @@ paths:
                               nullable: true
                             showVerboseErrors:
                               type: boolean
+                            deleteAccountAfter:
+                              type: integer
+                              minimum: 0
+                              maximum: 24
                             createdAt:
                               type: string
                               format: date-time
@@ -2146,6 +2164,7 @@ paths:
                             - analyticsPostsDisabled
                             - uploadsCompressionEnabled
                             - showVerboseErrors
+                            - deleteAccountAfter
                             - createdAt
                             - updatedAt
                         createdBy:
@@ -2340,6 +2359,10 @@ paths:
                                   - basic
                                   - premium
                                   - premium_plus
+                                nullable: true
+                              deleteOn:
+                                type: string
+                                format: date-time
                                 nullable: true
                               createdAt:
                                 type: string
@@ -3033,6 +3056,10 @@ paths:
                       - premium
                       - premium_plus
                     nullable: true
+                  deleteOn:
+                    type: string
+                    format: date-time
+                    nullable: true
                   createdAt:
                     type: string
                     format: date-time
@@ -3283,6 +3310,260 @@ paths:
                       - basic
                       - premium
                       - premium_plus
+                    nullable: true
+                  deleteOn:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - type
+                  - teamId
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/social-account/unset-channel:
+    post:
+      description: Clear selected channel while keeping social account authorization.
+      summary: Unset channel for social account
+      tags: *ref_2
+      parameters: []
+      operationId: socialAccount.unsetChannel
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - FACEBOOK
+                    - INSTAGRAM
+                    - LINKEDIN
+                    - YOUTUBE
+                    - GOOGLE_BUSINESS
+                teamId:
+                  type: string
+              required:
+                - type
+                - teamId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - TIKTOK
+                      - YOUTUBE
+                      - INSTAGRAM
+                      - FACEBOOK
+                      - TWITTER
+                      - THREADS
+                      - LINKEDIN
+                      - PINTEREST
+                      - REDDIT
+                      - MASTODON
+                      - DISCORD
+                      - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
+                  teamId:
+                    type: string
+                  username:
+                    type: string
+                    nullable: true
+                  displayName:
+                    type: string
+                    nullable: true
+                  avatarUrl:
+                    type: string
+                    nullable: true
+                  externalId:
+                    type: string
+                    nullable: true
+                  userUsername:
+                    type: string
+                    nullable: true
+                  userDisplayName:
+                    type: string
+                    nullable: true
+                  userId:
+                    type: string
+                    nullable: true
+                  channels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                          nullable: true
+                        username:
+                          type: string
+                          nullable: true
+                        avatarUrl:
+                          type: string
+                          nullable: true
+                        webhook:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              nullable: true
+                            name:
+                              type: string
+                              nullable: true
+                            avatar:
+                              type: string
+                              nullable: true
+                            url:
+                              type: string
+                              nullable: true
+                          nullable: true
+                        metadata:
+                          type: object
+                          properties:
+                            allowImages:
+                              type: boolean
+                              nullable: true
+                            allowVideos:
+                              type: boolean
+                              nullable: true
+                            allowGalleries:
+                              type: boolean
+                              nullable: true
+                            linkFlairEnabled:
+                              type: boolean
+                              nullable: true
+                          nullable: true
+                      required:
+                        - id
+                    nullable: true
+                  mastodonServerId:
+                    type: string
+                    nullable: true
+                  instagramConnectionMethod:
+                    type: string
+                    enum:
+                      - FACEBOOK
+                      - INSTAGRAM
+                    nullable: true
+                  twitterSubType:
+                    type: string
+                    enum:
+                      - none
+                      - basic
+                      - premium
+                      - premium_plus
+                    nullable: true
+                  deleteOn:
+                    type: string
+                    format: date-time
                     nullable: true
                   createdAt:
                     type: string
@@ -3535,6 +3816,10 @@ paths:
                       - basic
                       - premium
                       - premium_plus
+                    nullable: true
+                  deleteOn:
+                    type: string
+                    format: date-time
                     nullable: true
                   createdAt:
                     type: string
@@ -3992,6 +4277,10 @@ paths:
                         - premium
                         - premium_plus
                       nullable: true
+                    deleteOn:
+                      type: string
+                      format: date-time
+                      nullable: true
                     createdAt:
                       type: string
                       format: date-time
@@ -4010,6 +4299,272 @@ paths:
                     - teamId
                     - createdAt
                     - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/social-account/to-delete:
+    get:
+      summary: Get paginated social accounts to delete
+      tags: *ref_2
+      parameters:
+        - name: page
+          in: query
+          schema:
+            default: 1
+            type: number
+            minimum: 1
+        - name: pageSize
+          in: query
+          schema:
+            default: 20
+            type: number
+            minimum: 1
+            maximum: 100
+      operationId: socialAccount.getAccountsToDelete
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                          enum:
+                            - TIKTOK
+                            - YOUTUBE
+                            - INSTAGRAM
+                            - FACEBOOK
+                            - TWITTER
+                            - THREADS
+                            - LINKEDIN
+                            - PINTEREST
+                            - REDDIT
+                            - MASTODON
+                            - DISCORD
+                            - SLACK
+                            - BLUESKY
+                            - GOOGLE_BUSINESS
+                        teamId:
+                          type: string
+                        username:
+                          type: string
+                          nullable: true
+                        displayName:
+                          type: string
+                          nullable: true
+                        avatarUrl:
+                          type: string
+                          nullable: true
+                        externalId:
+                          type: string
+                          nullable: true
+                        userUsername:
+                          type: string
+                          nullable: true
+                        userDisplayName:
+                          type: string
+                          nullable: true
+                        userId:
+                          type: string
+                          nullable: true
+                        channels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                                nullable: true
+                              username:
+                                type: string
+                                nullable: true
+                              avatarUrl:
+                                type: string
+                                nullable: true
+                              webhook:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    nullable: true
+                                  name:
+                                    type: string
+                                    nullable: true
+                                  avatar:
+                                    type: string
+                                    nullable: true
+                                  url:
+                                    type: string
+                                    nullable: true
+                                nullable: true
+                              metadata:
+                                type: object
+                                properties:
+                                  allowImages:
+                                    type: boolean
+                                    nullable: true
+                                  allowVideos:
+                                    type: boolean
+                                    nullable: true
+                                  allowGalleries:
+                                    type: boolean
+                                    nullable: true
+                                  linkFlairEnabled:
+                                    type: boolean
+                                    nullable: true
+                                nullable: true
+                            required:
+                              - id
+                          nullable: true
+                        mastodonServerId:
+                          type: string
+                          nullable: true
+                        instagramConnectionMethod:
+                          type: string
+                          enum:
+                            - FACEBOOK
+                            - INSTAGRAM
+                          nullable: true
+                        twitterSubType:
+                          type: string
+                          enum:
+                            - none
+                            - basic
+                            - premium
+                            - premium_plus
+                          nullable: true
+                        deleteOn:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - type
+                        - teamId
+                        - createdAt
+                        - updatedAt
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: number
+                      pageSize:
+                        type: number
+                      total:
+                        type: number
+                      totalPages:
+                        type: number
+                    required:
+                      - page
+                      - pageSize
+                      - total
+                      - totalPages
+                required:
+                  - items
+                  - pagination
         '400':
           description: '400'
           content:
@@ -5394,6 +5949,15 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          replySettings:
+                            type: string
+                            enum:
+                              - EVERYONE
+                              - FOLLOWING
+                              - MENTIONED_USERS
+                              - SUBSCRIBERS
+                              - VERIFIED
                             nullable: true
                         nullable: true
                       PINTEREST:
@@ -6847,6 +7411,10 @@ paths:
                                 - premium
                                 - premium_plus
                               nullable: true
+                            deleteOn:
+                              type: string
+                              format: date-time
+                              nullable: true
                             createdAt:
                               type: string
                               format: date-time
@@ -7026,6 +7594,15 @@ paths:
                           type: array
                           items:
                             type: string
+                          nullable: true
+                        replySettings:
+                          type: string
+                          enum:
+                            - EVERYONE
+                            - FOLLOWING
+                            - MENTIONED_USERS
+                            - SUBSCRIBERS
+                            - VERIFIED
                           nullable: true
                       nullable: true
                     PINTEREST:
@@ -7721,6 +8298,15 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          replySettings:
+                            type: string
+                            enum:
+                              - EVERYONE
+                              - FOLLOWING
+                              - MENTIONED_USERS
+                              - SUBSCRIBERS
+                              - VERIFIED
                             nullable: true
                         nullable: true
                       PINTEREST:
@@ -9096,6 +9682,15 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          replySettings:
+                            type: string
+                            enum:
+                              - EVERYONE
+                              - FOLLOWING
+                              - MENTIONED_USERS
+                              - SUBSCRIBERS
+                              - VERIFIED
                             nullable: true
                         nullable: true
                       PINTEREST:
@@ -10549,6 +11144,15 @@ paths:
                                   type: array
                                   items:
                                     type: string
+                                  nullable: true
+                                replySettings:
+                                  type: string
+                                  enum:
+                                    - EVERYONE
+                                    - FOLLOWING
+                                    - MENTIONED_USERS
+                                    - SUBSCRIBERS
+                                    - VERIFIED
                                   nullable: true
                               nullable: true
                             PINTEREST:
@@ -12012,6 +12616,10 @@ paths:
                                       - premium
                                       - premium_plus
                                     nullable: true
+                                  deleteOn:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
                                   createdAt:
                                     type: string
                                     format: date-time
@@ -12193,6 +12801,15 @@ paths:
                           type: array
                           items:
                             type: string
+                          nullable: true
+                        replySettings:
+                          type: string
+                          enum:
+                            - EVERYONE
+                            - FOLLOWING
+                            - MENTIONED_USERS
+                            - SUBSCRIBERS
+                            - VERIFIED
                           nullable: true
                       nullable: true
                     PINTEREST:
@@ -12895,6 +13512,15 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          replySettings:
+                            type: string
+                            enum:
+                              - EVERYONE
+                              - FOLLOWING
+                              - MENTIONED_USERS
+                              - SUBSCRIBERS
+                              - VERIFIED
                             nullable: true
                         nullable: true
                       PINTEREST:
@@ -14271,6 +14897,15 @@ paths:
                             type: array
                             items:
                               type: string
+                            nullable: true
+                          replySettings:
+                            type: string
+                            enum:
+                              - EVERYONE
+                              - FOLLOWING
+                              - MENTIONED_USERS
+                              - SUBSCRIBERS
+                              - VERIFIED
                             nullable: true
                         nullable: true
                       PINTEREST:
@@ -15737,6 +16372,10 @@ paths:
                           - premium
                           - premium_plus
                         nullable: true
+                      deleteOn:
+                        type: string
+                        format: date-time
+                        nullable: true
                       createdAt:
                         type: string
                         format: date-time
@@ -15904,12 +16543,11 @@ paths:
       parameters:
         - name: postId
           in: query
-          required: true
           schema:
             type: string
+            nullable: true
         - name: platformType
           in: query
-          required: true
           schema:
             type: string
             enum:
@@ -15924,6 +16562,12 @@ paths:
               - LINKEDIN
               - BLUESKY
               - GOOGLE_BUSINESS
+            nullable: true
+        - name: importedPostId
+          in: query
+          schema:
+            type: string
+            nullable: true
       operationId: analytics.getPostAnalytics
       responses:
         '200':
@@ -15977,6 +16621,15 @@ paths:
                                 type: array
                                 items:
                                   type: string
+                                nullable: true
+                              replySettings:
+                                type: string
+                                enum:
+                                  - EVERYONE
+                                  - FOLLOWING
+                                  - MENTIONED_USERS
+                                  - SUBSCRIBERS
+                                  - VERIFIED
                                 nullable: true
                             nullable: true
                           PINTEREST:
@@ -17216,6 +17869,81 @@ paths:
                       - status
                       - data
                       - retryCount
+                      - createdAt
+                      - updatedAt
+                    nullable: true
+                  profilePost:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      socialAccountId:
+                        type: string
+                      postId:
+                        type: string
+                        nullable: true
+                      externalId:
+                        type: string
+                        nullable: true
+                      title:
+                        type: string
+                        nullable: true
+                      description:
+                        type: string
+                        nullable: true
+                      smallThumbnail:
+                        type: string
+                        nullable: true
+                      thumbnail:
+                        type: string
+                        nullable: true
+                      permalink:
+                        type: string
+                        nullable: true
+                      extraData:
+                        nullable: true
+                      subreddit:
+                        type: string
+                        nullable: true
+                      publishedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      type:
+                        type: string
+                        enum:
+                          - POST
+                          - REEL
+                          - STORY
+                          - VIDEO
+                          - IMAGE
+                      internal:
+                        type: boolean
+                      importedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      externallyDeletedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      createdAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      deletedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                    required:
+                      - id
+                      - socialAccountId
+                      - type
+                      - internal
                       - createdAt
                       - updatedAt
                   items:
@@ -17511,6 +18239,10 @@ paths:
                           - premium
                           - premium_plus
                         nullable: true
+                      deleteOn:
+                        type: string
+                        format: date-time
+                        nullable: true
                       createdAt:
                         type: string
                         format: date-time
@@ -17656,12 +18388,11 @@ paths:
       parameters:
         - name: postId
           in: query
-          required: true
           schema:
             type: string
+            nullable: true
         - name: platformType
           in: query
-          required: true
           schema:
             type: string
             enum:
@@ -17676,6 +18407,12 @@ paths:
               - LINKEDIN
               - BLUESKY
               - GOOGLE_BUSINESS
+            nullable: true
+        - name: importedPostId
+          in: query
+          schema:
+            type: string
+            nullable: true
       operationId: analytics.getPostAnalyticsRaw
       responses:
         '200':
@@ -17729,6 +18466,15 @@ paths:
                                 type: array
                                 items:
                                   type: string
+                                nullable: true
+                              replySettings:
+                                type: string
+                                enum:
+                                  - EVERYONE
+                                  - FOLLOWING
+                                  - MENTIONED_USERS
+                                  - SUBSCRIBERS
+                                  - VERIFIED
                                 nullable: true
                             nullable: true
                           PINTEREST:
@@ -18968,6 +19714,81 @@ paths:
                       - status
                       - data
                       - retryCount
+                      - createdAt
+                      - updatedAt
+                    nullable: true
+                  profilePost:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      socialAccountId:
+                        type: string
+                      postId:
+                        type: string
+                        nullable: true
+                      externalId:
+                        type: string
+                        nullable: true
+                      title:
+                        type: string
+                        nullable: true
+                      description:
+                        type: string
+                        nullable: true
+                      smallThumbnail:
+                        type: string
+                        nullable: true
+                      thumbnail:
+                        type: string
+                        nullable: true
+                      permalink:
+                        type: string
+                        nullable: true
+                      extraData:
+                        nullable: true
+                      subreddit:
+                        type: string
+                        nullable: true
+                      publishedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      type:
+                        type: string
+                        enum:
+                          - POST
+                          - REEL
+                          - STORY
+                          - VIDEO
+                          - IMAGE
+                      internal:
+                        type: boolean
+                      importedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      externallyDeletedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      createdAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      deletedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                    required:
+                      - id
+                      - socialAccountId
+                      - type
+                      - internal
                       - createdAt
                       - updatedAt
                   items:
@@ -19509,6 +20330,7 @@ paths:
               properties:
                 postId:
                   type: string
+                  nullable: true
                 platformType:
                   type: string
                   enum:
@@ -19523,9 +20345,10 @@ paths:
                     - LINKEDIN
                     - BLUESKY
                     - GOOGLE_BUSINESS
-              required:
-                - postId
-                - platformType
+                  nullable: true
+                importedPostId:
+                  type: string
+                  nullable: true
       responses:
         '200':
           description: '200'
@@ -29497,6 +30320,22 @@ paths:
                 withAnalytics:
                   default: true
                   type: boolean
+                importCarousels:
+                  default: false
+                  type: boolean
+                surface:
+                  default: ALL
+                  type: string
+                  enum:
+                    - PROFILE_GRID
+                    - NON_GRID
+                    - STORY
+                    - ALL
+                mediaType:
+                  type: string
+                  enum:
+                    - VIDEO
+                    - IMAGE
               required:
                 - teamId
                 - socialAccountType
@@ -29519,6 +30358,22 @@ paths:
                     type: number
                   withAnalytics:
                     type: boolean
+                  importCarousels:
+                    type: boolean
+                  surface:
+                    type: string
+                    enum:
+                      - PROFILE_GRID
+                      - NON_GRID
+                      - STORY
+                      - ALL
+                    nullable: true
+                  mediaType:
+                    type: string
+                    enum:
+                      - VIDEO
+                      - IMAGE
+                    nullable: true
                   status:
                     type: string
                     enum:
@@ -29565,6 +30420,7 @@ paths:
                   - socialAccountId
                   - requestedCount
                   - withAnalytics
+                  - importCarousels
                   - status
                   - postsImported
                   - analyticsImported
@@ -29712,6 +30568,22 @@ paths:
                           type: number
                         withAnalytics:
                           type: boolean
+                        importCarousels:
+                          type: boolean
+                        surface:
+                          type: string
+                          enum:
+                            - PROFILE_GRID
+                            - NON_GRID
+                            - STORY
+                            - ALL
+                          nullable: true
+                        mediaType:
+                          type: string
+                          enum:
+                            - VIDEO
+                            - IMAGE
+                          nullable: true
                         status:
                           type: string
                           enum:
@@ -29758,6 +30630,7 @@ paths:
                         - socialAccountId
                         - requestedCount
                         - withAnalytics
+                        - importCarousels
                         - status
                         - postsImported
                         - analyticsImported
@@ -29877,6 +30750,22 @@ paths:
                     type: number
                   withAnalytics:
                     type: boolean
+                  importCarousels:
+                    type: boolean
+                  surface:
+                    type: string
+                    enum:
+                      - PROFILE_GRID
+                      - NON_GRID
+                      - STORY
+                      - ALL
+                    nullable: true
+                  mediaType:
+                    type: string
+                    enum:
+                      - VIDEO
+                      - IMAGE
+                    nullable: true
                   status:
                     type: string
                     enum:
@@ -29923,6 +30812,7 @@ paths:
                   - socialAccountId
                   - requestedCount
                   - withAnalytics
+                  - importCarousels
                   - status
                   - postsImported
                   - analyticsImported
@@ -30089,6 +30979,8 @@ paths:
                           nullable: true
                         permalink:
                           type: string
+                          nullable: true
+                        extraData:
                           nullable: true
                         subreddit:
                           type: string
@@ -30287,6 +31179,124 @@ paths:
                     type: string
                 required:
                   - message
+    delete:
+      summary: Bulk delete imported posts and their analytics
+      tags: *ref_15
+      parameters: []
+      operationId: postImport.deleteImportedPosts
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                postIds:
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 100
+              required:
+                - teamId
+                - postIds
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletedCount:
+                    type: number
+                required:
+                  - deletedCount
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/post-history-import/{importId}/retry:
     post:
       summary: Retry a failed import
@@ -30327,6 +31337,22 @@ paths:
                     type: number
                   withAnalytics:
                     type: boolean
+                  importCarousels:
+                    type: boolean
+                  surface:
+                    type: string
+                    enum:
+                      - PROFILE_GRID
+                      - NON_GRID
+                      - STORY
+                      - ALL
+                    nullable: true
+                  mediaType:
+                    type: string
+                    enum:
+                      - VIDEO
+                      - IMAGE
+                    nullable: true
                   status:
                     type: string
                     enum:
@@ -30373,6 +31399,7 @@ paths:
                   - socialAccountId
                   - requestedCount
                   - withAnalytics
+                  - importCarousels
                   - status
                   - postsImported
                   - analyticsImported

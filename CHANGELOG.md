@@ -1,3 +1,10 @@
+# [2.38.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.37.0...v2.38.0) (2026-02-27)
+
+
+### Features
+
+* unsetting channel, disconnected webhook, twitter replies settings, youtube demographics ([4086393](https://github.com/bundleglobal/bundlesocial-node/commit/40863938e1fea740dac9c25929330796b55def28))
+
 # [2.37.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.36.0...v2.37.0) (2026-02-17)
 
 

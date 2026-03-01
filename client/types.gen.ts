@@ -36,6 +36,7 @@ export type OrganizationGetOrganizationResponse = {
     analyticsInterval?: number | null;
     analyticsPostsInterval?: number | null;
     showVerboseErrors: boolean;
+    disconnectCheckEnabled: boolean;
     deleteAccountAfter: number;
     createdAt: string | null;
     updatedAt: string | null;
@@ -255,6 +256,7 @@ export type TeamGetTeamResponse = {
         analyticsInterval?: number | null;
         analyticsPostsInterval?: number | null;
         showVerboseErrors: boolean;
+        disconnectCheckEnabled: boolean;
         deleteAccountAfter: number;
         createdAt: string | null;
         updatedAt: string | null;
@@ -442,6 +444,7 @@ export type TeamGetListResponse = {
             analyticsInterval?: number | null;
             analyticsPostsInterval?: number | null;
             showVerboseErrors: boolean;
+            disconnectCheckEnabled: boolean;
             deleteAccountAfter: number;
             createdAt: string | null;
             updatedAt: string | null;
@@ -821,6 +824,27 @@ export type SocialAccountCreatePortalLinkData = {
 
 export type SocialAccountCreatePortalLinkResponse = {
     url: string;
+};
+
+export type SocialAccountConnectionCheckData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        teamId: string;
+    };
+};
+
+export type SocialAccountConnectionCheckResponse = {
+    success: boolean;
+    message?: string;
+    socialAccountId: string;
+    checkedAt: string;
+    limit: number;
+    used: number;
+    remaining: number;
+    windowSeconds: number;
 };
 
 export type SocialAccountCopyData = {
@@ -9328,6 +9352,7 @@ export type $OpenApiTs = {
                     analyticsInterval?: number | null;
                     analyticsPostsInterval?: number | null;
                     showVerboseErrors: boolean;
+                    disconnectCheckEnabled: boolean;
                     deleteAccountAfter: number;
                     createdAt: string | null;
                     updatedAt: string | null;
@@ -9729,6 +9754,7 @@ export type $OpenApiTs = {
                         analyticsInterval?: number | null;
                         analyticsPostsInterval?: number | null;
                         showVerboseErrors: boolean;
+                        disconnectCheckEnabled: boolean;
                         deleteAccountAfter: number;
                         createdAt: string | null;
                         updatedAt: string | null;
@@ -10038,6 +10064,7 @@ export type $OpenApiTs = {
                             analyticsInterval?: number | null;
                             analyticsPostsInterval?: number | null;
                             showVerboseErrors: boolean;
+                            disconnectCheckEnabled: boolean;
                             deleteAccountAfter: number;
                             createdAt: string | null;
                             updatedAt: string | null;
@@ -10656,6 +10683,66 @@ export type $OpenApiTs = {
                  */
                 200: {
                     url: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    message: string;
+                    issues?: Array<{
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/connection-check': {
+        post: {
+            req: SocialAccountConnectionCheckData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    message?: string;
+                    socialAccountId: string;
+                    checkedAt: string;
+                    limit: number;
+                    used: number;
+                    remaining: number;
+                    windowSeconds: number;
                 };
                 /**
                  * 400

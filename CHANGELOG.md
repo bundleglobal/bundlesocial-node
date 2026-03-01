@@ -1,3 +1,10 @@
+# [2.39.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.38.0...v2.39.0) (2026-03-01)
+
+
+### Features
+
+* improved disconnect check ([e4cc9fa](https://github.com/bundleglobal/bundlesocial-node/commit/e4cc9fab31ba4c34c3cf5d0244de6704bcb1623d))
+
 # [2.38.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.37.0...v2.38.0) (2026-02-27)
 
 

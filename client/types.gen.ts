@@ -1232,11 +1232,22 @@ export type PostGetResponse = {
              */
             shareToFeed?: boolean | null;
             collaborators?: Array<(string)> | null;
+            autoFitImage?: boolean | null;
+            autoCropImage?: boolean | null;
             tagged?: Array<{
                 username: string;
-                x: number;
-                y: number;
+                x?: number;
+                y?: number;
             }> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
+            }> | null;
+            locationId?: string | null;
             /**
              * For Reels only. Trial reels are only shared to non-followers.
              */
@@ -1323,6 +1334,10 @@ export type PostGetResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Optional URL for LinkedIn article preview post.
+             */
+            link?: string | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -1857,11 +1872,22 @@ export type PostUpdateData = {
                  */
                 shareToFeed?: boolean | null;
                 collaborators?: Array<(string)> | null;
+                autoFitImage?: boolean | null;
+                autoCropImage?: boolean | null;
                 tagged?: Array<{
                     username: string;
-                    x: number;
-                    y: number;
+                    x?: number;
+                    y?: number;
                 }> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    tagged?: Array<{
+                        username: string;
+                        x: number;
+                        y: number;
+                    }> | null;
+                }> | null;
+                locationId?: string | null;
                 /**
                  * For Reels only. Trial reels are only shared to non-followers.
                  */
@@ -1948,6 +1974,10 @@ export type PostUpdateData = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Optional URL for LinkedIn article preview post.
+                 */
+                link?: string | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -2184,11 +2214,22 @@ export type PostUpdateResponse = {
              */
             shareToFeed?: boolean | null;
             collaborators?: Array<(string)> | null;
+            autoFitImage?: boolean | null;
+            autoCropImage?: boolean | null;
             tagged?: Array<{
                 username: string;
-                x: number;
-                y: number;
+                x?: number;
+                y?: number;
             }> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
+            }> | null;
+            locationId?: string | null;
             /**
              * For Reels only. Trial reels are only shared to non-followers.
              */
@@ -2275,6 +2316,10 @@ export type PostUpdateResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Optional URL for LinkedIn article preview post.
+             */
+            link?: string | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -2740,11 +2785,22 @@ export type PostDeleteResponse = {
              */
             shareToFeed?: boolean | null;
             collaborators?: Array<(string)> | null;
+            autoFitImage?: boolean | null;
+            autoCropImage?: boolean | null;
             tagged?: Array<{
                 username: string;
-                x: number;
-                y: number;
+                x?: number;
+                y?: number;
             }> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
+            }> | null;
+            locationId?: string | null;
             /**
              * For Reels only. Trial reels are only shared to non-followers.
              */
@@ -2831,6 +2887,10 @@ export type PostDeleteResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Optional URL for LinkedIn article preview post.
+             */
+            link?: string | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -3304,11 +3364,22 @@ export type PostGetListResponse = {
                  */
                 shareToFeed?: boolean | null;
                 collaborators?: Array<(string)> | null;
+                autoFitImage?: boolean | null;
+                autoCropImage?: boolean | null;
                 tagged?: Array<{
                     username: string;
-                    x: number;
-                    y: number;
+                    x?: number;
+                    y?: number;
                 }> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    tagged?: Array<{
+                        username: string;
+                        x: number;
+                        y: number;
+                    }> | null;
+                }> | null;
+                locationId?: string | null;
                 /**
                  * For Reels only. Trial reels are only shared to non-followers.
                  */
@@ -3395,6 +3466,10 @@ export type PostGetListResponse = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Optional URL for LinkedIn article preview post.
+                 */
+                link?: string | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -3931,11 +4006,22 @@ export type PostCreateData = {
                  */
                 shareToFeed?: boolean | null;
                 collaborators?: Array<(string)> | null;
+                autoFitImage?: boolean | null;
+                autoCropImage?: boolean | null;
                 tagged?: Array<{
                     username: string;
-                    x: number;
-                    y: number;
+                    x?: number;
+                    y?: number;
                 }> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    tagged?: Array<{
+                        username: string;
+                        x: number;
+                        y: number;
+                    }> | null;
+                }> | null;
+                locationId?: string | null;
                 /**
                  * For Reels only. Trial reels are only shared to non-followers.
                  */
@@ -4022,6 +4108,10 @@ export type PostCreateData = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Optional URL for LinkedIn article preview post.
+                 */
+                link?: string | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -4258,11 +4348,22 @@ export type PostCreateResponse = {
              */
             shareToFeed?: boolean | null;
             collaborators?: Array<(string)> | null;
+            autoFitImage?: boolean | null;
+            autoCropImage?: boolean | null;
             tagged?: Array<{
                 username: string;
-                x: number;
-                y: number;
+                x?: number;
+                y?: number;
             }> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
+            }> | null;
+            locationId?: string | null;
             /**
              * For Reels only. Trial reels are only shared to non-followers.
              */
@@ -4349,6 +4450,10 @@ export type PostCreateResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Optional URL for LinkedIn article preview post.
+             */
+            link?: string | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -4814,11 +4919,22 @@ export type PostRetryResponse = {
              */
             shareToFeed?: boolean | null;
             collaborators?: Array<(string)> | null;
+            autoFitImage?: boolean | null;
+            autoCropImage?: boolean | null;
             tagged?: Array<{
                 username: string;
-                x: number;
-                y: number;
+                x?: number;
+                y?: number;
             }> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
+            }> | null;
+            locationId?: string | null;
             /**
              * For Reels only. Trial reels are only shared to non-followers.
              */
@@ -4905,6 +5021,10 @@ export type PostRetryResponse = {
         LINKEDIN?: {
             text: string;
             uploadIds?: Array<(string)> | null;
+            /**
+             * Optional URL for LinkedIn article preview post.
+             */
+            link?: string | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -5435,11 +5555,22 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  */
                 shareToFeed?: boolean | null;
                 collaborators?: Array<(string)> | null;
+                autoFitImage?: boolean | null;
+                autoCropImage?: boolean | null;
                 tagged?: Array<{
                     username: string;
-                    x: number;
-                    y: number;
+                    x?: number;
+                    y?: number;
                 }> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    tagged?: Array<{
+                        username: string;
+                        x: number;
+                        y: number;
+                    }> | null;
+                }> | null;
+                locationId?: string | null;
                 /**
                  * For Reels only. Trial reels are only shared to non-followers.
                  */
@@ -5526,6 +5657,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Optional URL for LinkedIn article preview post.
+                 */
+                link?: string | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -6089,11 +6224,22 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  */
                 shareToFeed?: boolean | null;
                 collaborators?: Array<(string)> | null;
+                autoFitImage?: boolean | null;
+                autoCropImage?: boolean | null;
                 tagged?: Array<{
                     username: string;
-                    x: number;
-                    y: number;
+                    x?: number;
+                    y?: number;
                 }> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    tagged?: Array<{
+                        username: string;
+                        x: number;
+                        y: number;
+                    }> | null;
+                }> | null;
+                locationId?: string | null;
                 /**
                  * For Reels only. Trial reels are only shared to non-followers.
                  */
@@ -6180,6 +6326,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             LINKEDIN?: {
                 text: string;
                 uploadIds?: Array<(string)> | null;
+                /**
+                 * Optional URL for LinkedIn article preview post.
+                 */
+                link?: string | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -8726,7 +8876,7 @@ export type MiscInstagramBusinessDiscoveryData = {
 
 export type MiscInstagramBusinessDiscoveryResponse = {
     /**
-     * Whether the user exists and is a Business/Creator account
+     * Whether the user is discoverable via Instagram business_discovery (typically Business/Creator). Personal/private accounts can return false even if taggable in media payload.
      */
     exists: boolean;
     /**
@@ -8762,6 +8912,44 @@ export type MiscInstagramBusinessDiscoveryResponse = {
          */
         name?: string;
     } | null;
+};
+
+export type MiscInstagramSearchLocationsData = {
+    limit?: number;
+    /**
+     * Free-text query used to search location pages
+     */
+    q: string;
+    teamId: string;
+};
+
+export type MiscInstagramSearchLocationsResponse = {
+    items: Array<{
+        /**
+         * Facebook Page ID to pass as data.INSTAGRAM.locationId
+         */
+        locationId: string;
+        /**
+         * Location page name
+         */
+        name: string;
+        /**
+         * Public Facebook Page link
+         */
+        link?: string | null;
+        /**
+         * Physical location metadata
+         */
+        location?: {
+            city?: string | null;
+            country?: string | null;
+            latitude?: number | null;
+            longitude?: number | null;
+            state?: string | null;
+            street?: string | null;
+            zip?: string | null;
+        } | null;
+    }>;
 };
 
 export type MiscFacebookEditPostData = {
@@ -9276,8 +9464,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9286,30 +9476,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -9492,8 +9687,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9502,12 +9699,14 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
@@ -9520,12 +9719,14 @@ export type $OpenApiTs = {
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -9546,8 +9747,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9556,30 +9759,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -9600,8 +9808,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9610,30 +9820,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -9668,8 +9883,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9678,30 +9895,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -9861,8 +10083,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9871,12 +10095,14 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
@@ -9889,12 +10115,14 @@ export type $OpenApiTs = {
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -9919,8 +10147,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9929,30 +10159,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -9977,8 +10212,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -9987,30 +10224,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10173,8 +10415,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10183,30 +10427,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10231,8 +10480,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10241,30 +10492,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10287,8 +10543,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10297,30 +10555,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10374,8 +10637,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10384,30 +10649,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10461,8 +10731,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10471,30 +10743,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10548,8 +10825,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10558,30 +10837,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10635,8 +10919,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10645,30 +10931,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10688,8 +10979,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10698,30 +10991,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10748,8 +11046,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10758,30 +11058,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10835,8 +11140,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10845,30 +11152,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -10930,8 +11242,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -10940,30 +11254,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11007,8 +11326,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -11017,30 +11338,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11075,8 +11401,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -11085,30 +11413,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11143,8 +11476,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -11153,30 +11488,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11220,8 +11560,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -11230,30 +11572,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11288,8 +11635,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -11298,30 +11647,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11342,8 +11696,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -11352,30 +11708,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11412,8 +11773,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -11422,30 +11785,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -11536,11 +11904,22 @@ export type $OpenApiTs = {
                              */
                             shareToFeed?: boolean | null;
                             collaborators?: Array<(string)> | null;
+                            autoFitImage?: boolean | null;
+                            autoCropImage?: boolean | null;
                             tagged?: Array<{
                                 username: string;
-                                x: number;
-                                y: number;
+                                x?: number;
+                                y?: number;
                             }> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
+                            }> | null;
+                            locationId?: string | null;
                             /**
                              * For Reels only. Trial reels are only shared to non-followers.
                              */
@@ -11627,6 +12006,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Optional URL for LinkedIn article preview post.
+                             */
+                            link?: string | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -12084,8 +12467,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -12094,30 +12479,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -12206,11 +12596,22 @@ export type $OpenApiTs = {
                              */
                             shareToFeed?: boolean | null;
                             collaborators?: Array<(string)> | null;
+                            autoFitImage?: boolean | null;
+                            autoCropImage?: boolean | null;
                             tagged?: Array<{
                                 username: string;
-                                x: number;
-                                y: number;
+                                x?: number;
+                                y?: number;
                             }> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
+                            }> | null;
+                            locationId?: string | null;
                             /**
                              * For Reels only. Trial reels are only shared to non-followers.
                              */
@@ -12297,6 +12698,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Optional URL for LinkedIn article preview post.
+                             */
+                            link?: string | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -12683,8 +13088,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -12693,30 +13100,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -12805,11 +13217,22 @@ export type $OpenApiTs = {
                              */
                             shareToFeed?: boolean | null;
                             collaborators?: Array<(string)> | null;
+                            autoFitImage?: boolean | null;
+                            autoCropImage?: boolean | null;
                             tagged?: Array<{
                                 username: string;
-                                x: number;
-                                y: number;
+                                x?: number;
+                                y?: number;
                             }> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
+                            }> | null;
+                            locationId?: string | null;
                             /**
                              * For Reels only. Trial reels are only shared to non-followers.
                              */
@@ -12896,6 +13319,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Optional URL for LinkedIn article preview post.
+                             */
+                            link?: string | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -13282,8 +13709,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -13292,30 +13721,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -13407,11 +13841,22 @@ export type $OpenApiTs = {
                                  */
                                 shareToFeed?: boolean | null;
                                 collaborators?: Array<(string)> | null;
+                                autoFitImage?: boolean | null;
+                                autoCropImage?: boolean | null;
                                 tagged?: Array<{
                                     username: string;
-                                    x: number;
-                                    y: number;
+                                    x?: number;
+                                    y?: number;
                                 }> | null;
+                                carouselItems?: Array<{
+                                    uploadId: string;
+                                    tagged?: Array<{
+                                        username: string;
+                                        x: number;
+                                        y: number;
+                                    }> | null;
+                                }> | null;
+                                locationId?: string | null;
                                 /**
                                  * For Reels only. Trial reels are only shared to non-followers.
                                  */
@@ -13498,6 +13943,10 @@ export type $OpenApiTs = {
                             LINKEDIN?: {
                                 text: string;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Optional URL for LinkedIn article preview post.
+                                 */
+                                link?: string | null;
                                 /**
                                  * The URL to image uploaded on bundle.social.
                                  */
@@ -13957,8 +14406,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -13967,30 +14418,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -14079,11 +14535,22 @@ export type $OpenApiTs = {
                              */
                             shareToFeed?: boolean | null;
                             collaborators?: Array<(string)> | null;
+                            autoFitImage?: boolean | null;
+                            autoCropImage?: boolean | null;
                             tagged?: Array<{
                                 username: string;
-                                x: number;
-                                y: number;
+                                x?: number;
+                                y?: number;
                             }> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
+                            }> | null;
+                            locationId?: string | null;
                             /**
                              * For Reels only. Trial reels are only shared to non-followers.
                              */
@@ -14170,6 +14637,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Optional URL for LinkedIn article preview post.
+                             */
+                            link?: string | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -14556,8 +15027,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -14566,30 +15039,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -14680,11 +15158,22 @@ export type $OpenApiTs = {
                              */
                             shareToFeed?: boolean | null;
                             collaborators?: Array<(string)> | null;
+                            autoFitImage?: boolean | null;
+                            autoCropImage?: boolean | null;
                             tagged?: Array<{
                                 username: string;
-                                x: number;
-                                y: number;
+                                x?: number;
+                                y?: number;
                             }> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
+                            }> | null;
+                            locationId?: string | null;
                             /**
                              * For Reels only. Trial reels are only shared to non-followers.
                              */
@@ -14771,6 +15260,10 @@ export type $OpenApiTs = {
                         LINKEDIN?: {
                             text: string;
                             uploadIds?: Array<(string)> | null;
+                            /**
+                             * Optional URL for LinkedIn article preview post.
+                             */
+                            link?: string | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -15157,8 +15650,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -15167,30 +15662,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -15263,8 +15763,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -15273,30 +15775,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -15388,11 +15895,22 @@ export type $OpenApiTs = {
                                  */
                                 shareToFeed?: boolean | null;
                                 collaborators?: Array<(string)> | null;
+                                autoFitImage?: boolean | null;
+                                autoCropImage?: boolean | null;
                                 tagged?: Array<{
                                     username: string;
-                                    x: number;
-                                    y: number;
+                                    x?: number;
+                                    y?: number;
                                 }> | null;
+                                carouselItems?: Array<{
+                                    uploadId: string;
+                                    tagged?: Array<{
+                                        username: string;
+                                        x: number;
+                                        y: number;
+                                    }> | null;
+                                }> | null;
+                                locationId?: string | null;
                                 /**
                                  * For Reels only. Trial reels are only shared to non-followers.
                                  */
@@ -15479,6 +15997,10 @@ export type $OpenApiTs = {
                             LINKEDIN?: {
                                 text: string;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Optional URL for LinkedIn article preview post.
+                                 */
+                                link?: string | null;
                                 /**
                                  * The URL to image uploaded on bundle.social.
                                  */
@@ -15905,8 +16427,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -15915,30 +16439,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -16004,8 +16533,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -16014,30 +16545,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -16129,11 +16665,22 @@ export type $OpenApiTs = {
                                  */
                                 shareToFeed?: boolean | null;
                                 collaborators?: Array<(string)> | null;
+                                autoFitImage?: boolean | null;
+                                autoCropImage?: boolean | null;
                                 tagged?: Array<{
                                     username: string;
-                                    x: number;
-                                    y: number;
+                                    x?: number;
+                                    y?: number;
                                 }> | null;
+                                carouselItems?: Array<{
+                                    uploadId: string;
+                                    tagged?: Array<{
+                                        username: string;
+                                        x: number;
+                                        y: number;
+                                    }> | null;
+                                }> | null;
+                                locationId?: string | null;
                                 /**
                                  * For Reels only. Trial reels are only shared to non-followers.
                                  */
@@ -16220,6 +16767,10 @@ export type $OpenApiTs = {
                             LINKEDIN?: {
                                 text: string;
                                 uploadIds?: Array<(string)> | null;
+                                /**
+                                 * Optional URL for LinkedIn article preview post.
+                                 */
+                                link?: string | null;
                                 /**
                                  * The URL to image uploaded on bundle.social.
                                  */
@@ -16638,8 +17189,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -16648,30 +17201,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -16718,8 +17276,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -16728,30 +17288,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -16785,8 +17350,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -16795,30 +17362,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -16853,8 +17425,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -16863,30 +17437,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -17112,8 +17691,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -17122,30 +17703,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -17369,8 +17955,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -17379,30 +17967,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -17626,8 +18219,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -17636,30 +18231,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -17888,8 +18488,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -17898,30 +18500,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18145,8 +18752,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18155,30 +18764,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18224,8 +18838,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18234,30 +18850,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18333,8 +18954,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18343,30 +18966,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18430,8 +19058,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18440,30 +19070,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18527,8 +19162,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18537,30 +19174,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18578,8 +19220,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18588,30 +19232,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18679,8 +19328,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18689,30 +19340,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18788,8 +19444,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18798,30 +19456,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18839,8 +19502,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18849,30 +19514,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18893,8 +19563,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18903,30 +19575,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -18944,8 +19621,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -18954,30 +19633,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19008,8 +19692,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19018,30 +19704,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19071,8 +19762,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19081,30 +19774,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19137,8 +19835,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19147,30 +19847,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19190,8 +19895,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19200,30 +19907,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19244,8 +19956,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19254,30 +19968,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19295,8 +20014,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19305,30 +20026,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19354,8 +20080,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19364,30 +20092,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19407,8 +20140,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19417,30 +20152,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19472,8 +20212,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19482,36 +20224,42 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 409
                  */
                 409: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19543,8 +20291,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19553,30 +20303,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19608,8 +20363,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19618,30 +20375,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19681,8 +20443,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19691,30 +20455,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19749,8 +20518,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19759,30 +20530,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19817,8 +20593,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19827,30 +20605,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19883,8 +20666,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19893,30 +20678,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19937,8 +20727,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -19947,30 +20739,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -19997,8 +20794,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20007,30 +20806,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20051,8 +20855,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20061,30 +20867,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20102,8 +20913,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20112,30 +20925,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20150,7 +20968,7 @@ export type $OpenApiTs = {
                  */
                 200: {
                     /**
-                     * Whether the user exists and is a Business/Creator account
+                     * Whether the user is discoverable via Instagram business_discovery (typically Business/Creator). Personal/private accounts can return false even if taggable in media payload.
                      */
                     exists: boolean;
                     /**
@@ -20191,8 +21009,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20201,30 +21021,120 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/instagram/locations': {
+        get: {
+            req: MiscInstagramSearchLocationsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        /**
+                         * Facebook Page ID to pass as data.INSTAGRAM.locationId
+                         */
+                        locationId: string;
+                        /**
+                         * Location page name
+                         */
+                        name: string;
+                        /**
+                         * Public Facebook Page link
+                         */
+                        link?: string | null;
+                        /**
+                         * Physical location metadata
+                         */
+                        location?: {
+                            city?: string | null;
+                            country?: string | null;
+                            latitude?: number | null;
+                            longitude?: number | null;
+                            state?: string | null;
+                            street?: string | null;
+                            zip?: string | null;
+                        } | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20245,8 +21155,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20255,30 +21167,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20296,8 +21213,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20306,30 +21225,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20350,8 +21274,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20360,30 +21286,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20401,8 +21332,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20411,30 +21344,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20455,8 +21393,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20465,30 +21405,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20506,8 +21451,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20516,30 +21463,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20560,8 +21512,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20570,30 +21524,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20611,8 +21570,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20621,30 +21582,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20664,8 +21630,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20674,30 +21642,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20717,8 +21690,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20727,30 +21702,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20770,8 +21750,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20780,30 +21762,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20891,8 +21878,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20901,30 +21890,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -20961,8 +21955,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -20971,36 +21967,42 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 409
                  */
                 409: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -21037,8 +22039,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -21047,30 +22051,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -21107,8 +22116,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -21117,30 +22128,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -21201,8 +22217,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -21211,30 +22229,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -21252,8 +22275,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -21262,30 +22287,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };
@@ -21322,8 +22352,10 @@ export type $OpenApiTs = {
                  * 400
                  */
                 400: {
+                    statusCode?: number | null;
                     message: string;
                     issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
                         path?: Array<(string | number)> | null;
                     }> | null;
@@ -21332,30 +22364,35 @@ export type $OpenApiTs = {
                  * 401
                  */
                 401: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 403
                  */
                 403: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 429
                  */
                 429: {
+                    statusCode?: number | null;
                     message: string;
                 };
                 /**
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
                     message: string;
                 };
             };

@@ -1,3 +1,10 @@
+# [2.40.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.39.0...v2.40.0) (2026-03-09)
+
+
+### Features
+
+* ig image fit and linkedin link building ([ffc936c](https://github.com/bundleglobal/bundlesocial-node/commit/ffc936c3f0a18606460e39e1dc4c2f3d2629fc6f))
+
 # [2.39.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.38.0...v2.39.0) (2026-03-01)
 
 

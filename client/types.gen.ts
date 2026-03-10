@@ -585,6 +585,10 @@ export type SocialAccountConnectData = {
          */
         serverUrl?: string;
         /**
+         * Optional. When true, adds provider-specific flags to avoid automatic login/auto-approval where supported.
+         */
+        disableAutoLogin?: boolean;
+        /**
          * Instagram only - connection method
          */
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
@@ -803,6 +807,10 @@ export type SocialAccountCreatePortalLinkData = {
         teamId: string;
         redirectUrl?: string;
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
+        /**
+         * Optional. If true, portal will request provider-specific anti-auto-login behavior where supported.
+         */
+        disableAutoLogin?: boolean;
         /**
          * Time in minutes, after which the link will expire. Minimum 5 minutes, maximum 48 hours.
          */

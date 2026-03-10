@@ -3171,6 +3171,12 @@ paths:
                   type: string
                   format: uri
                   description: Mastodon or Bluesky only
+                disableAutoLogin:
+                  default: false
+                  type: boolean
+                  description: >-
+                    Optional. When true, adds provider-specific flags to avoid
+                    automatic login/auto-approval where supported.
                 instagramConnectionMethod:
                   type: string
                   enum:
@@ -4536,6 +4542,12 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                disableAutoLogin:
+                  default: false
+                  type: boolean
+                  description: >-
+                    Optional. If true, portal will request provider-specific
+                    anti-auto-login behavior where supported.
                 expiresIn:
                   type: integer
                   minimum: 5

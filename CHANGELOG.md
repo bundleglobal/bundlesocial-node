@@ -1,3 +1,10 @@
+# [2.41.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.40.0...v2.41.0) (2026-03-10)
+
+
+### Features
+
+* disable auto login ([3d3c74e](https://github.com/bundleglobal/bundlesocial-node/commit/3d3c74efece727c03b115ad81d83e6c23569dc2e))
+
 # [2.40.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.39.0...v2.40.0) (2026-03-09)
 
 

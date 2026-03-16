@@ -7416,6 +7416,10 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          autoScale:
+                            default: false
+                            type: boolean
+                            nullable: true
                           uploadToDraft:
                             default: false
                             type: boolean
@@ -9138,6 +9142,10 @@ paths:
                           description: >-
                             If set to true, TikTok will automatically add music
                             to the photos.
+                        autoScale:
+                          default: false
+                          type: boolean
+                          nullable: true
                         uploadToDraft:
                           default: false
                           type: boolean
@@ -9881,6 +9889,10 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          autoScale:
+                            default: false
+                            type: boolean
+                            nullable: true
                           uploadToDraft:
                             default: false
                             type: boolean
@@ -11342,6 +11354,10 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          autoScale:
+                            default: false
+                            type: boolean
+                            nullable: true
                           uploadToDraft:
                             default: false
                             type: boolean
@@ -12885,6 +12901,10 @@ paths:
                                   description: >-
                                     If set to true, TikTok will automatically
                                     add music to the photos.
+                                autoScale:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
                                 uploadToDraft:
                                   default: false
                                   type: boolean
@@ -14617,6 +14637,10 @@ paths:
                           description: >-
                             If set to true, TikTok will automatically add music
                             to the photos.
+                        autoScale:
+                          default: false
+                          type: boolean
+                          nullable: true
                         uploadToDraft:
                           default: false
                           type: boolean
@@ -15367,6 +15391,10 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          autoScale:
+                            default: false
+                            type: boolean
+                            nullable: true
                           uploadToDraft:
                             default: false
                             type: boolean
@@ -16829,6 +16857,10 @@ paths:
                             description: >-
                               If set to true, TikTok will automatically add
                               music to the photos.
+                          autoScale:
+                            default: false
+                            type: boolean
+                            nullable: true
                           uploadToDraft:
                             default: false
                             type: boolean
@@ -18670,6 +18702,10 @@ paths:
                                 description: >-
                                   If set to true, TikTok will automatically add
                                   music to the photos.
+                              autoScale:
+                                default: false
+                                type: boolean
+                                nullable: true
                               uploadToDraft:
                                 default: false
                                 type: boolean
@@ -20632,6 +20668,10 @@ paths:
                                 description: >-
                                   If set to true, TikTok will automatically add
                                   music to the photos.
+                              autoScale:
+                                default: false
+                                type: boolean
+                                nullable: true
                               uploadToDraft:
                                 default: false
                                 type: boolean

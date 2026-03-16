@@ -1,3 +1,10 @@
+# [2.42.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.41.0...v2.42.0) (2026-03-16)
+
+
+### Features
+
+* autoScale and ig improvements ([9ac12df](https://github.com/bundleglobal/bundlesocial-node/commit/9ac12dfccb54b84a24e9b5b8ba95c3fd60154ef9))
+
 # [2.41.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.40.0...v2.41.0) (2026-03-10)
 
 

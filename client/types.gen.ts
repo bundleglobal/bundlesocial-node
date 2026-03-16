@@ -1309,6 +1309,7 @@ export type PostGetResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            autoScale?: boolean | null;
             /**
              * If set to true, upload post as draft.
              */
@@ -1949,6 +1950,7 @@ export type PostUpdateData = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                autoScale?: boolean | null;
                 /**
                  * If set to true, upload post as draft.
                  */
@@ -2291,6 +2293,7 @@ export type PostUpdateResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            autoScale?: boolean | null;
             /**
              * If set to true, upload post as draft.
              */
@@ -2862,6 +2865,7 @@ export type PostDeleteResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            autoScale?: boolean | null;
             /**
              * If set to true, upload post as draft.
              */
@@ -3441,6 +3445,7 @@ export type PostGetListResponse = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                autoScale?: boolean | null;
                 /**
                  * If set to true, upload post as draft.
                  */
@@ -4083,6 +4088,7 @@ export type PostCreateData = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                autoScale?: boolean | null;
                 /**
                  * If set to true, upload post as draft.
                  */
@@ -4425,6 +4431,7 @@ export type PostCreateResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            autoScale?: boolean | null;
             /**
              * If set to true, upload post as draft.
              */
@@ -4996,6 +5003,7 @@ export type PostRetryResponse = {
              * If set to true, TikTok will automatically add music to the photos.
              */
             autoAddMusic?: boolean | null;
+            autoScale?: boolean | null;
             /**
              * If set to true, upload post as draft.
              */
@@ -5632,6 +5640,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                autoScale?: boolean | null;
                 /**
                  * If set to true, upload post as draft.
                  */
@@ -6301,6 +6310,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * If set to true, TikTok will automatically add music to the photos.
                  */
                 autoAddMusic?: boolean | null;
+                autoScale?: boolean | null;
                 /**
                  * If set to true, upload post as draft.
                  */
@@ -11981,6 +11991,7 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            autoScale?: boolean | null;
                             /**
                              * If set to true, upload post as draft.
                              */
@@ -12673,6 +12684,7 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            autoScale?: boolean | null;
                             /**
                              * If set to true, upload post as draft.
                              */
@@ -13294,6 +13306,7 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            autoScale?: boolean | null;
                             /**
                              * If set to true, upload post as draft.
                              */
@@ -13918,6 +13931,7 @@ export type $OpenApiTs = {
                                  * If set to true, TikTok will automatically add music to the photos.
                                  */
                                 autoAddMusic?: boolean | null;
+                                autoScale?: boolean | null;
                                 /**
                                  * If set to true, upload post as draft.
                                  */
@@ -14612,6 +14626,7 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            autoScale?: boolean | null;
                             /**
                              * If set to true, upload post as draft.
                              */
@@ -15235,6 +15250,7 @@ export type $OpenApiTs = {
                              * If set to true, TikTok will automatically add music to the photos.
                              */
                             autoAddMusic?: boolean | null;
+                            autoScale?: boolean | null;
                             /**
                              * If set to true, upload post as draft.
                              */
@@ -15972,6 +15988,7 @@ export type $OpenApiTs = {
                                  * If set to true, TikTok will automatically add music to the photos.
                                  */
                                 autoAddMusic?: boolean | null;
+                                autoScale?: boolean | null;
                                 /**
                                  * If set to true, upload post as draft.
                                  */
@@ -16742,6 +16759,7 @@ export type $OpenApiTs = {
                                  * If set to true, TikTok will automatically add music to the photos.
                                  */
                                 autoAddMusic?: boolean | null;
+                                autoScale?: boolean | null;
                                 /**
                                  * If set to true, upload post as draft.
                                  */

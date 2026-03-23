@@ -1,3 +1,10 @@
+## [2.42.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.42.0...v2.42.1) (2026-03-23)
+
+
+### Bug Fixes
+
+* reauth ([8e27368](https://github.com/bundleglobal/bundlesocial-node/commit/8e273688312d1dcbd189dbc38ed5978c2006daa0))
+
 # [2.42.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.41.0...v2.42.0) (2026-03-16)
 
 

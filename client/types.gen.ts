@@ -818,6 +818,10 @@ export type SocialAccountCreatePortalLinkData = {
          */
         disableAutoLogin?: boolean;
         /**
+         * Optional. Facebook and Instagram only - when provided, portal skips business scope selection modal for Facebook login paths.
+         */
+        withBusinessScope?: boolean;
+        /**
          * Time in minutes, after which the link will expire. Minimum 5 minutes, maximum 48 hours.
          */
         expiresIn?: number;
@@ -859,6 +863,109 @@ export type SocialAccountConnectionCheckResponse = {
     used: number;
     remaining: number;
     windowSeconds: number;
+};
+
+export type SocialAccountProfileRefreshData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        teamId: string;
+    };
+};
+
+export type SocialAccountProfileRefreshResponse = {
+    success: boolean;
+    message?: string;
+    socialAccountId: string;
+    socialAccount: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+    refreshedAt: string;
+    limit: number;
+    used: number;
+    remaining: number;
+    windowSeconds: number;
+};
+
+export type SocialAccountGetByTypeData = {
+    teamId: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+};
+
+export type SocialAccountGetByTypeResponse = {
+    id: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    teamId: string;
+    username?: string | null;
+    displayName?: string | null;
+    avatarUrl?: string | null;
+    externalId?: string | null;
+    userUsername?: string | null;
+    userDisplayName?: string | null;
+    userId?: string | null;
+    channels?: Array<{
+        id: string;
+        name?: string | null;
+        username?: string | null;
+        avatarUrl?: string | null;
+        webhook?: {
+            id?: string | null;
+            name?: string | null;
+            avatar?: string | null;
+            url?: string | null;
+        } | null;
+        metadata?: {
+            allowImages?: boolean | null;
+            allowVideos?: boolean | null;
+            allowGalleries?: boolean | null;
+            linkFlairEnabled?: boolean | null;
+        } | null;
+    }> | null;
+    mastodonServerId?: string | null;
+    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    disconnectedCheckTryAt?: string | null;
+    deleteOn?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
 };
 
 export type SocialAccountCopyData = {
@@ -980,6 +1087,7 @@ export type UploadGetListResponse = Array<{
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
+    externalLink?: string | null;
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
@@ -1018,6 +1126,7 @@ export type UploadCreateResponse = {
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
+    externalLink?: string | null;
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
@@ -1048,6 +1157,7 @@ export type UploadDeleteManyResponse = Array<{
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
+    externalLink?: string | null;
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
@@ -1073,6 +1183,7 @@ export type UploadGetResponse = {
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
+    externalLink?: string | null;
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
@@ -1105,6 +1216,39 @@ export type UploadDeleteResponse = {
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
+    externalLink?: string | null;
+    iconPath?: string | null;
+    thumbnailPath?: string | null;
+    path?: string | null;
+    type: 'image' | 'video' | 'document';
+    width?: number | null;
+    height?: number | null;
+    fileSize?: number | null;
+    videoLength?: number | null;
+    mime?: string | null;
+    ext?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+};
+
+export type UploadCreateFromUrlData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string | null;
+        url: string;
+    };
+};
+
+export type UploadCreateFromUrlResponse = {
+    id: string;
+    teamId?: string | null;
+    organizationId?: string | null;
+    iconUrl?: string | null;
+    thumbnailUrl?: string | null;
+    url?: string | null;
+    externalLink?: string | null;
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
@@ -1152,6 +1296,7 @@ export type UploadFinalizeLargeUploadResponse = {
     iconUrl?: string | null;
     thumbnailUrl?: string | null;
     url?: string | null;
+    externalLink?: string | null;
     iconPath?: string | null;
     thumbnailPath?: string | null;
     path?: string | null;
@@ -1214,6 +1359,10 @@ export type PostGetResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
             /**
              * The URL to which the post will link to. Only available for type POST.
              */
@@ -1236,6 +1385,10 @@ export type PostGetResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * Alternative text for a single image post.
+             */
+            altText?: string | null;
+            /**
              * Choose a frame of the published video as the cover photo in ms
              */
             thumbnailOffset?: number | null;
@@ -1257,6 +1410,7 @@ export type PostGetResponse = {
             }> | null;
             carouselItems?: Array<{
                 uploadId: string;
+                altText?: string | null;
                 tagged?: Array<{
                     username: string;
                     x: number;
@@ -1274,6 +1428,10 @@ export type PostGetResponse = {
         THREADS?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -1749,6 +1907,7 @@ export type PostGetResponse = {
             iconUrl?: string | null;
             thumbnailUrl?: string | null;
             url?: string | null;
+            externalLink?: string | null;
             iconPath?: string | null;
             thumbnailPath?: string | null;
             path?: string | null;
@@ -1856,6 +2015,10 @@ export type PostUpdateData = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
                 /**
                  * The URL to which the post will link to. Only available for type POST.
                  */
@@ -1878,6 +2041,10 @@ export type PostUpdateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * Alternative text for a single image post.
+                 */
+                altText?: string | null;
+                /**
                  * Choose a frame of the published video as the cover photo in ms
                  */
                 thumbnailOffset?: number | null;
@@ -1899,6 +2066,7 @@ export type PostUpdateData = {
                 }> | null;
                 carouselItems?: Array<{
                     uploadId: string;
+                    altText?: string | null;
                     tagged?: Array<{
                         username: string;
                         x: number;
@@ -1916,6 +2084,10 @@ export type PostUpdateData = {
             THREADS?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -2199,6 +2371,10 @@ export type PostUpdateResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
             /**
              * The URL to which the post will link to. Only available for type POST.
              */
@@ -2221,6 +2397,10 @@ export type PostUpdateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * Alternative text for a single image post.
+             */
+            altText?: string | null;
+            /**
              * Choose a frame of the published video as the cover photo in ms
              */
             thumbnailOffset?: number | null;
@@ -2242,6 +2422,7 @@ export type PostUpdateResponse = {
             }> | null;
             carouselItems?: Array<{
                 uploadId: string;
+                altText?: string | null;
                 tagged?: Array<{
                     username: string;
                     x: number;
@@ -2259,6 +2440,10 @@ export type PostUpdateResponse = {
         THREADS?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -2771,6 +2956,10 @@ export type PostDeleteResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
             /**
              * The URL to which the post will link to. Only available for type POST.
              */
@@ -2793,6 +2982,10 @@ export type PostDeleteResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * Alternative text for a single image post.
+             */
+            altText?: string | null;
+            /**
              * Choose a frame of the published video as the cover photo in ms
              */
             thumbnailOffset?: number | null;
@@ -2814,6 +3007,7 @@ export type PostDeleteResponse = {
             }> | null;
             carouselItems?: Array<{
                 uploadId: string;
+                altText?: string | null;
                 tagged?: Array<{
                     username: string;
                     x: number;
@@ -2831,6 +3025,10 @@ export type PostDeleteResponse = {
         THREADS?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -3301,6 +3499,8 @@ export type PostGetListData = {
     order?: 'ASC' | 'DESC' | null;
     orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
     platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')> | null;
+    postDateFrom?: string | null;
+    postDateTo?: string | null;
     q?: string | null;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING' | null;
     teamId: string;
@@ -3351,6 +3551,10 @@ export type PostGetListResponse = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
                 /**
                  * The URL to which the post will link to. Only available for type POST.
                  */
@@ -3373,6 +3577,10 @@ export type PostGetListResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * Alternative text for a single image post.
+                 */
+                altText?: string | null;
+                /**
                  * Choose a frame of the published video as the cover photo in ms
                  */
                 thumbnailOffset?: number | null;
@@ -3394,6 +3602,7 @@ export type PostGetListResponse = {
                 }> | null;
                 carouselItems?: Array<{
                     uploadId: string;
+                    altText?: string | null;
                     tagged?: Array<{
                         username: string;
                         x: number;
@@ -3411,6 +3620,10 @@ export type PostGetListResponse = {
             THREADS?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -3886,6 +4099,7 @@ export type PostGetListResponse = {
                 iconUrl?: string | null;
                 thumbnailUrl?: string | null;
                 url?: string | null;
+                externalLink?: string | null;
                 iconPath?: string | null;
                 thumbnailPath?: string | null;
                 path?: string | null;
@@ -3995,6 +4209,10 @@ export type PostCreateData = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
                 /**
                  * The URL to which the post will link to. Only available for type POST.
                  */
@@ -4017,6 +4235,10 @@ export type PostCreateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * Alternative text for a single image post.
+                 */
+                altText?: string | null;
+                /**
                  * Choose a frame of the published video as the cover photo in ms
                  */
                 thumbnailOffset?: number | null;
@@ -4038,6 +4260,7 @@ export type PostCreateData = {
                 }> | null;
                 carouselItems?: Array<{
                     uploadId: string;
+                    altText?: string | null;
                     tagged?: Array<{
                         username: string;
                         x: number;
@@ -4055,6 +4278,10 @@ export type PostCreateData = {
             THREADS?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -4338,6 +4565,10 @@ export type PostCreateResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
             /**
              * The URL to which the post will link to. Only available for type POST.
              */
@@ -4360,6 +4591,10 @@ export type PostCreateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * Alternative text for a single image post.
+             */
+            altText?: string | null;
+            /**
              * Choose a frame of the published video as the cover photo in ms
              */
             thumbnailOffset?: number | null;
@@ -4381,6 +4616,7 @@ export type PostCreateResponse = {
             }> | null;
             carouselItems?: Array<{
                 uploadId: string;
+                altText?: string | null;
                 tagged?: Array<{
                     username: string;
                     x: number;
@@ -4398,6 +4634,10 @@ export type PostCreateResponse = {
         THREADS?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -4910,6 +5150,10 @@ export type PostRetryResponse = {
             type?: 'POST' | 'REEL' | 'STORY';
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
             /**
              * The URL to which the post will link to. Only available for type POST.
              */
@@ -4932,6 +5176,10 @@ export type PostRetryResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             /**
+             * Alternative text for a single image post.
+             */
+            altText?: string | null;
+            /**
              * Choose a frame of the published video as the cover photo in ms
              */
             thumbnailOffset?: number | null;
@@ -4953,6 +5201,7 @@ export type PostRetryResponse = {
             }> | null;
             carouselItems?: Array<{
                 uploadId: string;
+                altText?: string | null;
                 tagged?: Array<{
                     username: string;
                     x: number;
@@ -4970,6 +5219,10 @@ export type PostRetryResponse = {
         THREADS?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -5548,6 +5801,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
                 /**
                  * The URL to which the post will link to. Only available for type POST.
                  */
@@ -5570,6 +5827,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * Alternative text for a single image post.
+                 */
+                altText?: string | null;
+                /**
                  * Choose a frame of the published video as the cover photo in ms
                  */
                 thumbnailOffset?: number | null;
@@ -5591,6 +5852,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 }> | null;
                 carouselItems?: Array<{
                     uploadId: string;
+                    altText?: string | null;
                     tagged?: Array<{
                         username: string;
                         x: number;
@@ -5608,6 +5870,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
             THREADS?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -6219,6 +6485,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 type?: 'POST' | 'REEL' | 'STORY';
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
                 /**
                  * The URL to which the post will link to. Only available for type POST.
                  */
@@ -6241,6 +6511,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 /**
+                 * Alternative text for a single image post.
+                 */
+                altText?: string | null;
+                /**
                  * Choose a frame of the published video as the cover photo in ms
                  */
                 thumbnailOffset?: number | null;
@@ -6262,6 +6536,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 }> | null;
                 carouselItems?: Array<{
                     uploadId: string;
+                    altText?: string | null;
                     tagged?: Array<{
                         username: string;
                         x: number;
@@ -6279,6 +6554,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             THREADS?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    altText?: string | null;
+                }> | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -9479,6 +9758,125 @@ export type PostImportRetryImportResponse = {
     deletedAt?: string | null;
 };
 
+export type PostCsvCreateData = {
+    /**
+     * Body
+     */
+    formData?: {
+        file?: (Blob | File) | null;
+    };
+};
+
+export type PostCsvCreateResponse = {
+    id: string;
+    teamId: string;
+    organizationId: string;
+    status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+    fileName: string;
+    totalRows: number;
+    processedRows: number;
+    successRows: number;
+    failedRows: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type PostCsvGetListData = {
+    limit?: number | null;
+    offset?: number | null;
+};
+
+export type PostCsvGetListResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        organizationId: string;
+        status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+        fileName: string;
+        totalRows: number;
+        processedRows: number;
+        successRows: number;
+        failedRows: number;
+        error?: string | null;
+        rateLimitResetAt?: string | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+    total: number;
+};
+
+export type PostCsvGetByIdData = {
+    importId: string;
+};
+
+export type PostCsvGetByIdResponse = {
+    id: string;
+    teamId: string;
+    organizationId: string;
+    status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+    fileName: string;
+    totalRows: number;
+    processedRows: number;
+    successRows: number;
+    failedRows: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type PostCsvGetStatusData = {
+    importId: string;
+};
+
+export type PostCsvGetStatusResponse = {
+    id: string;
+    status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+    totalRows: number;
+    processedRows: number;
+    successRows: number;
+    failedRows: number;
+    error?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    updatedAt: string | null;
+};
+
+export type PostCsvGetRowsData = {
+    importId: string;
+    limit?: number | null;
+    offset?: number | null;
+    status?: 'SUCCESS' | 'FAILED';
+};
+
+export type PostCsvGetRowsResponse = {
+    items: Array<{
+        id: string;
+        importId: string;
+        rowNumber: number;
+        status: 'SUCCESS' | 'FAILED';
+        postId?: string | null;
+        rawRow?: {
+            [key: string]: (string);
+        } | null;
+        normalizedPayload?: unknown;
+        error?: string | null;
+        createdAt: string | null;
+    }>;
+    total: number;
+};
+
 export type $OpenApiTs = {
     '/api/v1/': {
         get: {
@@ -11128,6 +11526,206 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/social-account/profile-refresh': {
+        post: {
+            req: SocialAccountProfileRefreshData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    message?: string;
+                    socialAccountId: string;
+                    socialAccount: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                    refreshedAt: string;
+                    limit: number;
+                    used: number;
+                    remaining: number;
+                    windowSeconds: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/by-type': {
+        get: {
+            req: SocialAccountGetByTypeData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    teamId: string;
+                    username?: string | null;
+                    displayName?: string | null;
+                    avatarUrl?: string | null;
+                    externalId?: string | null;
+                    userUsername?: string | null;
+                    userDisplayName?: string | null;
+                    userId?: string | null;
+                    channels?: Array<{
+                        id: string;
+                        name?: string | null;
+                        username?: string | null;
+                        avatarUrl?: string | null;
+                        webhook?: {
+                            id?: string | null;
+                            name?: string | null;
+                            avatar?: string | null;
+                            url?: string | null;
+                        } | null;
+                        metadata?: {
+                            allowImages?: boolean | null;
+                            allowVideos?: boolean | null;
+                            allowGalleries?: boolean | null;
+                            linkFlairEnabled?: boolean | null;
+                        } | null;
+                    }> | null;
+                    mastodonServerId?: string | null;
+                    instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    disconnectedCheckTryAt?: string | null;
+                    deleteOn?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/social-account/copy': {
         post: {
             req: SocialAccountCopyData;
@@ -11340,6 +11938,7 @@ export type $OpenApiTs = {
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
+                    externalLink?: string | null;
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
@@ -11422,6 +12021,7 @@ export type $OpenApiTs = {
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
+                    externalLink?: string | null;
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
@@ -11497,6 +12097,7 @@ export type $OpenApiTs = {
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
+                    externalLink?: string | null;
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
@@ -11574,6 +12175,7 @@ export type $OpenApiTs = {
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
+                    externalLink?: string | null;
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
@@ -11656,6 +12258,85 @@ export type $OpenApiTs = {
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
+                    externalLink?: string | null;
+                    iconPath?: string | null;
+                    thumbnailPath?: string | null;
+                    path?: string | null;
+                    type: 'image' | 'video' | 'document';
+                    width?: number | null;
+                    height?: number | null;
+                    fileSize?: number | null;
+                    videoLength?: number | null;
+                    mime?: string | null;
+                    ext?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/from-url': {
+        post: {
+            req: UploadCreateFromUrlData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
+                    iconUrl?: string | null;
+                    thumbnailUrl?: string | null;
+                    url?: string | null;
+                    externalLink?: string | null;
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
@@ -11794,6 +12475,7 @@ export type $OpenApiTs = {
                     iconUrl?: string | null;
                     thumbnailUrl?: string | null;
                     url?: string | null;
+                    externalLink?: string | null;
                     iconPath?: string | null;
                     thumbnailPath?: string | null;
                     path?: string | null;
@@ -11908,6 +12590,10 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                             /**
                              * The URL to which the post will link to. Only available for type POST.
                              */
@@ -11930,6 +12616,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * Alternative text for a single image post.
+                             */
+                            altText?: string | null;
+                            /**
                              * Choose a frame of the published video as the cover photo in ms
                              */
                             thumbnailOffset?: number | null;
@@ -11951,6 +12641,7 @@ export type $OpenApiTs = {
                             }> | null;
                             carouselItems?: Array<{
                                 uploadId: string;
+                                altText?: string | null;
                                 tagged?: Array<{
                                     username: string;
                                     x: number;
@@ -11968,6 +12659,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -12443,6 +13138,7 @@ export type $OpenApiTs = {
                             iconUrl?: string | null;
                             thumbnailUrl?: string | null;
                             url?: string | null;
+                            externalLink?: string | null;
                             iconPath?: string | null;
                             thumbnailPath?: string | null;
                             path?: string | null;
@@ -12602,6 +13298,10 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                             /**
                              * The URL to which the post will link to. Only available for type POST.
                              */
@@ -12624,6 +13324,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * Alternative text for a single image post.
+                             */
+                            altText?: string | null;
+                            /**
                              * Choose a frame of the published video as the cover photo in ms
                              */
                             thumbnailOffset?: number | null;
@@ -12645,6 +13349,7 @@ export type $OpenApiTs = {
                             }> | null;
                             carouselItems?: Array<{
                                 uploadId: string;
+                                altText?: string | null;
                                 tagged?: Array<{
                                     username: string;
                                     x: number;
@@ -12662,6 +13367,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -13224,6 +13933,10 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                             /**
                              * The URL to which the post will link to. Only available for type POST.
                              */
@@ -13246,6 +13959,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * Alternative text for a single image post.
+                             */
+                            altText?: string | null;
+                            /**
                              * Choose a frame of the published video as the cover photo in ms
                              */
                             thumbnailOffset?: number | null;
@@ -13267,6 +13984,7 @@ export type $OpenApiTs = {
                             }> | null;
                             carouselItems?: Array<{
                                 uploadId: string;
+                                altText?: string | null;
                                 tagged?: Array<{
                                     username: string;
                                     x: number;
@@ -13284,6 +14002,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -13849,6 +14571,10 @@ export type $OpenApiTs = {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    altText?: string | null;
+                                }> | null;
                                 /**
                                  * The URL to which the post will link to. Only available for type POST.
                                  */
@@ -13871,6 +14597,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 /**
+                                 * Alternative text for a single image post.
+                                 */
+                                altText?: string | null;
+                                /**
                                  * Choose a frame of the published video as the cover photo in ms
                                  */
                                 thumbnailOffset?: number | null;
@@ -13892,6 +14622,7 @@ export type $OpenApiTs = {
                                 }> | null;
                                 carouselItems?: Array<{
                                     uploadId: string;
+                                    altText?: string | null;
                                     tagged?: Array<{
                                         username: string;
                                         x: number;
@@ -13909,6 +14640,10 @@ export type $OpenApiTs = {
                             THREADS?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    altText?: string | null;
+                                }> | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -14384,6 +15119,7 @@ export type $OpenApiTs = {
                                 iconUrl?: string | null;
                                 thumbnailUrl?: string | null;
                                 url?: string | null;
+                                externalLink?: string | null;
                                 iconPath?: string | null;
                                 thumbnailPath?: string | null;
                                 path?: string | null;
@@ -14545,6 +15281,10 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                             /**
                              * The URL to which the post will link to. Only available for type POST.
                              */
@@ -14567,6 +15307,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * Alternative text for a single image post.
+                             */
+                            altText?: string | null;
+                            /**
                              * Choose a frame of the published video as the cover photo in ms
                              */
                             thumbnailOffset?: number | null;
@@ -14588,6 +15332,7 @@ export type $OpenApiTs = {
                             }> | null;
                             carouselItems?: Array<{
                                 uploadId: string;
+                                altText?: string | null;
                                 tagged?: Array<{
                                     username: string;
                                     x: number;
@@ -14605,6 +15350,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -15169,6 +15918,10 @@ export type $OpenApiTs = {
                             type?: 'POST' | 'REEL' | 'STORY';
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                             /**
                              * The URL to which the post will link to. Only available for type POST.
                              */
@@ -15191,6 +15944,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             /**
+                             * Alternative text for a single image post.
+                             */
+                            altText?: string | null;
+                            /**
                              * Choose a frame of the published video as the cover photo in ms
                              */
                             thumbnailOffset?: number | null;
@@ -15212,6 +15969,7 @@ export type $OpenApiTs = {
                             }> | null;
                             carouselItems?: Array<{
                                 uploadId: string;
+                                altText?: string | null;
                                 tagged?: Array<{
                                     username: string;
                                     x: number;
@@ -15229,6 +15987,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -15908,6 +16670,10 @@ export type $OpenApiTs = {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    altText?: string | null;
+                                }> | null;
                                 /**
                                  * The URL to which the post will link to. Only available for type POST.
                                  */
@@ -15930,6 +16696,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 /**
+                                 * Alternative text for a single image post.
+                                 */
+                                altText?: string | null;
+                                /**
                                  * Choose a frame of the published video as the cover photo in ms
                                  */
                                 thumbnailOffset?: number | null;
@@ -15951,6 +16721,7 @@ export type $OpenApiTs = {
                                 }> | null;
                                 carouselItems?: Array<{
                                     uploadId: string;
+                                    altText?: string | null;
                                     tagged?: Array<{
                                         username: string;
                                         x: number;
@@ -15968,6 +16739,10 @@ export type $OpenApiTs = {
                             THREADS?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    altText?: string | null;
+                                }> | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -16680,6 +17455,10 @@ export type $OpenApiTs = {
                                 type?: 'POST' | 'REEL' | 'STORY';
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    altText?: string | null;
+                                }> | null;
                                 /**
                                  * The URL to which the post will link to. Only available for type POST.
                                  */
@@ -16702,6 +17481,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 /**
+                                 * Alternative text for a single image post.
+                                 */
+                                altText?: string | null;
+                                /**
                                  * Choose a frame of the published video as the cover photo in ms
                                  */
                                 thumbnailOffset?: number | null;
@@ -16723,6 +17506,7 @@ export type $OpenApiTs = {
                                 }> | null;
                                 carouselItems?: Array<{
                                     uploadId: string;
+                                    altText?: string | null;
                                     tagged?: Array<{
                                         username: string;
                                         x: number;
@@ -16740,6 +17524,10 @@ export type $OpenApiTs = {
                             THREADS?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    altText?: string | null;
+                                }> | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -22397,6 +23185,374 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-csv-import/': {
+        post: {
+            req: PostCsvCreateData;
+            res: {
+                /**
+                 * 201
+                 */
+                201: {
+                    id: string;
+                    teamId: string;
+                    organizationId: string;
+                    status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+                    fileName: string;
+                    totalRows: number;
+                    processedRows: number;
+                    successRows: number;
+                    failedRows: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        get: {
+            req: PostCsvGetListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        organizationId: string;
+                        status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+                        fileName: string;
+                        totalRows: number;
+                        processedRows: number;
+                        successRows: number;
+                        failedRows: number;
+                        error?: string | null;
+                        rateLimitResetAt?: string | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-csv-import/{importId}': {
+        get: {
+            req: PostCsvGetByIdData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId: string;
+                    status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+                    fileName: string;
+                    totalRows: number;
+                    processedRows: number;
+                    successRows: number;
+                    failedRows: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-csv-import/{importId}/status': {
+        get: {
+            req: PostCsvGetStatusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'COMPLETED_WITH_ERRORS' | 'FAILED' | 'RATE_LIMITED';
+                    totalRows: number;
+                    processedRows: number;
+                    successRows: number;
+                    failedRows: number;
+                    error?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post-csv-import/{importId}/rows': {
+        get: {
+            req: PostCsvGetRowsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        importId: string;
+                        rowNumber: number;
+                        status: 'SUCCESS' | 'FAILED';
+                        postId?: string | null;
+                        rawRow?: {
+                            [key: string]: (string);
+                        } | null;
+                        normalizedPayload?: unknown;
+                        error?: string | null;
+                        createdAt: string | null;
+                    }>;
+                    total: number;
                 };
                 /**
                  * 400

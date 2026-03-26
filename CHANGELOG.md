@@ -1,3 +1,10 @@
+# [2.43.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.42.1...v2.43.0) (2026-03-26)
+
+
+### Features
+
+* bulk upload and upload via media url ([b85850a](https://github.com/bundleglobal/bundlesocial-node/commit/b85850a9eb4d21aced1ded8f146764be67a3ea46))
+
 ## [2.42.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.42.0...v2.42.1) (2026-03-23)
 
 

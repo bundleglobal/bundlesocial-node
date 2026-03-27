@@ -69,6 +69,7 @@ export type OrganizationGetOrganizationResponse = {
         metadata?: unknown;
         stripePriceId: string;
         tier: 'PRO' | 'BUSINESS';
+        billingInterval: 'MONTHLY' | 'YEARLY';
         cancelAtPeriodEnd: boolean;
         created: string | null;
         currentPeriodStart: string | null;
@@ -10008,6 +10009,7 @@ export type $OpenApiTs = {
                         metadata?: unknown;
                         stripePriceId: string;
                         tier: 'PRO' | 'BUSINESS';
+                        billingInterval: 'MONTHLY' | 'YEARLY';
                         cancelAtPeriodEnd: boolean;
                         created: string | null;
                         currentPeriodStart: string | null;

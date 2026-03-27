@@ -342,6 +342,11 @@ paths:
                         enum:
                           - PRO
                           - BUSINESS
+                      billingInterval:
+                        type: string
+                        enum:
+                          - MONTHLY
+                          - YEARLY
                       cancelAtPeriodEnd:
                         type: boolean
                       created:
@@ -576,6 +581,7 @@ paths:
                       - status
                       - stripePriceId
                       - tier
+                      - billingInterval
                       - cancelAtPeriodEnd
                       - created
                       - currentPeriodStart

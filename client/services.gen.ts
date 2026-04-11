@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -1717,6 +1717,59 @@ export class MiscService {
     }
     
     /**
+     * List Google Business media items
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.pageSize
+     * @param data.pageToken
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListMedia(data: MiscGoogleBusinessListMediaData): CancelablePromise<MiscGoogleBusinessListMediaResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/media',
+            query: {
+                teamId: data.teamId,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete Google Business media item
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeleteMedia(data: MiscGoogleBusinessDeleteMediaData = {}): CancelablePromise<MiscGoogleBusinessDeleteMediaResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/media',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Delete a Google Business post
      * Permanently delete a published Google Business post.
      * @param data The data for the request.
@@ -1728,6 +1781,409 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/google-business/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business location profile
+     * Use typed query param `fields`. Supports both comma-separated values (`fields=name,title`) and repeated params (`fields=name&fields=title`).
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.fields
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetLocation(data: MiscGoogleBusinessGetLocationData): CancelablePromise<MiscGoogleBusinessGetLocationResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location',
+            query: {
+                teamId: data.teamId,
+                fields: data.fields
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business location profile fields
+     * Field mask is derived automatically from provided fields.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateLocation(data: MiscGoogleBusinessUpdateLocationData = {}): CancelablePromise<MiscGoogleBusinessUpdateLocationResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business regular/special/more hours
+     * Body requires `fields` (`regularHours`, `specialHours`, `moreHours`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateHours(data: MiscGoogleBusinessUpdateHoursData = {}): CancelablePromise<MiscGoogleBusinessUpdateHoursResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/hours',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business location attributes
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetAttributes(data: MiscGoogleBusinessGetAttributesData): CancelablePromise<MiscGoogleBusinessGetAttributesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/attributes',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business location attributes
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateAttributes(data: MiscGoogleBusinessUpdateAttributesData = {}): CancelablePromise<MiscGoogleBusinessUpdateAttributesResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/attributes',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List available Google Business attributes
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.languageCode
+     * @param data.regionCode
+     * @param data.pageSize
+     * @param data.pageToken
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListAvailableAttributes(data: MiscGoogleBusinessListAvailableAttributesData): CancelablePromise<MiscGoogleBusinessListAvailableAttributesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/attributes/available',
+            query: {
+                teamId: data.teamId,
+                languageCode: data.languageCode,
+                regionCode: data.regionCode,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List available Google Business categories
+     * Requires `regionCode` and `languageCode`. Default `view=BASIC`. Page size is fixed at 50. Optional `filter` supports `displayName` prefix search.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.regionCode
+     * @param data.languageCode
+     * @param data.filter
+     * @param data.pageSize
+     * @param data.pageToken
+     * @param data.view
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListCategories(data: MiscGoogleBusinessListCategoriesData): CancelablePromise<MiscGoogleBusinessListCategoriesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/categories/available',
+            query: {
+                teamId: data.teamId,
+                regionCode: data.regionCode,
+                languageCode: data.languageCode,
+                filter: data.filter,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken,
+                view: data.view
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business service list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetServiceList(data: MiscGoogleBusinessGetServiceListData): CancelablePromise<MiscGoogleBusinessGetServiceListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/service-list',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business service list
+     * Body requires `fields` (`serviceItems`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateServiceList(data: MiscGoogleBusinessUpdateServiceListData = {}): CancelablePromise<MiscGoogleBusinessUpdateServiceListResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/service-list',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business food menus
+     * Use typed query param `fields`. Supports both comma-separated values (`fields=name,menus`) and repeated params (`fields=name&fields=menus`).
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.fields
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetFoodMenus(data: MiscGoogleBusinessGetFoodMenusData): CancelablePromise<MiscGoogleBusinessGetFoodMenusResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/food-menus',
+            query: {
+                teamId: data.teamId,
+                fields: data.fields
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business food menus
+     * Body requires `fields` (`menus`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateFoodMenus(data: MiscGoogleBusinessUpdateFoodMenusData = {}): CancelablePromise<MiscGoogleBusinessUpdateFoodMenusResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/food-menus',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List Google Business place action links
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.pageSize
+     * @param data.pageToken
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListPlaceActionLinks(data: MiscGoogleBusinessListPlaceActionLinksData): CancelablePromise<MiscGoogleBusinessListPlaceActionLinksResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/place-action-links',
+            query: {
+                teamId: data.teamId,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Create Google Business place action link
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessCreatePlaceActionLink(data: MiscGoogleBusinessCreatePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessCreatePlaceActionLinkResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/google-business/location/place-action-links',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business place action link
+     * Body requires `fields` (`uri`, `placeActionType`, `isPreferred`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdatePlaceActionLink(data: MiscGoogleBusinessUpdatePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessUpdatePlaceActionLinkResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/place-action-links',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete Google Business place action link
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeletePlaceActionLink(data: MiscGoogleBusinessDeletePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessDeletePlaceActionLinkResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/location/place-action-links',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -2856,6 +3312,59 @@ export class GoogleBusinessService {
     }
     
     /**
+     * List Google Business media items
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.pageSize
+     * @param data.pageToken
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListMedia(data: MiscGoogleBusinessListMediaData): CancelablePromise<MiscGoogleBusinessListMediaResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/media',
+            query: {
+                teamId: data.teamId,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete Google Business media item
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeleteMedia(data: MiscGoogleBusinessDeleteMediaData = {}): CancelablePromise<MiscGoogleBusinessDeleteMediaResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/media',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Delete a Google Business post
      * Permanently delete a published Google Business post.
      * @param data The data for the request.
@@ -2867,6 +3376,409 @@ export class GoogleBusinessService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/google-business/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business location profile
+     * Use typed query param `fields`. Supports both comma-separated values (`fields=name,title`) and repeated params (`fields=name&fields=title`).
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.fields
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetLocation(data: MiscGoogleBusinessGetLocationData): CancelablePromise<MiscGoogleBusinessGetLocationResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location',
+            query: {
+                teamId: data.teamId,
+                fields: data.fields
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business location profile fields
+     * Field mask is derived automatically from provided fields.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateLocation(data: MiscGoogleBusinessUpdateLocationData = {}): CancelablePromise<MiscGoogleBusinessUpdateLocationResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business regular/special/more hours
+     * Body requires `fields` (`regularHours`, `specialHours`, `moreHours`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateHours(data: MiscGoogleBusinessUpdateHoursData = {}): CancelablePromise<MiscGoogleBusinessUpdateHoursResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/hours',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business location attributes
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetAttributes(data: MiscGoogleBusinessGetAttributesData): CancelablePromise<MiscGoogleBusinessGetAttributesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/attributes',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business location attributes
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateAttributes(data: MiscGoogleBusinessUpdateAttributesData = {}): CancelablePromise<MiscGoogleBusinessUpdateAttributesResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/attributes',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List available Google Business attributes
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.languageCode
+     * @param data.regionCode
+     * @param data.pageSize
+     * @param data.pageToken
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListAvailableAttributes(data: MiscGoogleBusinessListAvailableAttributesData): CancelablePromise<MiscGoogleBusinessListAvailableAttributesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/attributes/available',
+            query: {
+                teamId: data.teamId,
+                languageCode: data.languageCode,
+                regionCode: data.regionCode,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List available Google Business categories
+     * Requires `regionCode` and `languageCode`. Default `view=BASIC`. Page size is fixed at 50. Optional `filter` supports `displayName` prefix search.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.regionCode
+     * @param data.languageCode
+     * @param data.filter
+     * @param data.pageSize
+     * @param data.pageToken
+     * @param data.view
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListCategories(data: MiscGoogleBusinessListCategoriesData): CancelablePromise<MiscGoogleBusinessListCategoriesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/categories/available',
+            query: {
+                teamId: data.teamId,
+                regionCode: data.regionCode,
+                languageCode: data.languageCode,
+                filter: data.filter,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken,
+                view: data.view
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business service list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetServiceList(data: MiscGoogleBusinessGetServiceListData): CancelablePromise<MiscGoogleBusinessGetServiceListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/service-list',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business service list
+     * Body requires `fields` (`serviceItems`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateServiceList(data: MiscGoogleBusinessUpdateServiceListData = {}): CancelablePromise<MiscGoogleBusinessUpdateServiceListResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/service-list',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get Google Business food menus
+     * Use typed query param `fields`. Supports both comma-separated values (`fields=name,menus`) and repeated params (`fields=name&fields=menus`).
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.fields
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessGetFoodMenus(data: MiscGoogleBusinessGetFoodMenusData): CancelablePromise<MiscGoogleBusinessGetFoodMenusResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/food-menus',
+            query: {
+                teamId: data.teamId,
+                fields: data.fields
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business food menus
+     * Body requires `fields` (`menus`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdateFoodMenus(data: MiscGoogleBusinessUpdateFoodMenusData = {}): CancelablePromise<MiscGoogleBusinessUpdateFoodMenusResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/food-menus',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * List Google Business place action links
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.pageSize
+     * @param data.pageToken
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessListPlaceActionLinks(data: MiscGoogleBusinessListPlaceActionLinksData): CancelablePromise<MiscGoogleBusinessListPlaceActionLinksResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/google-business/location/place-action-links',
+            query: {
+                teamId: data.teamId,
+                pageSize: data.pageSize,
+                pageToken: data.pageToken
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Create Google Business place action link
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessCreatePlaceActionLink(data: MiscGoogleBusinessCreatePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessCreatePlaceActionLinkResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/google-business/location/place-action-links',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Update Google Business place action link
+     * Body requires `fields` (`uri`, `placeActionType`, `isPreferred`).
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessUpdatePlaceActionLink(data: MiscGoogleBusinessUpdatePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessUpdatePlaceActionLinkResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/google-business/location/place-action-links',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete Google Business place action link
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscGoogleBusinessDeletePlaceActionLink(data: MiscGoogleBusinessDeletePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessDeletePlaceActionLinkResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/google-business/location/place-action-links',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {

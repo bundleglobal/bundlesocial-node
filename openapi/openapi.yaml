@@ -209,6 +209,12 @@ paths:
                   monthlyImportLimitPerAccount:
                     type: number
                     nullable: true
+                  monthlyReviewImportLimitPerAccount:
+                    type: number
+                    nullable: true
+                  reviewImportRequestLimitPerAccount:
+                    type: number
+                    nullable: true
                   apiAccess:
                     type: boolean
                   analyticsDisabled:
@@ -342,6 +348,11 @@ paths:
                         enum:
                           - PRO
                           - BUSINESS
+                      billingInterval:
+                        type: string
+                        enum:
+                          - MONTHLY
+                          - YEARLY
                       cancelAtPeriodEnd:
                         type: boolean
                       created:
@@ -576,6 +587,7 @@ paths:
                       - status
                       - stripePriceId
                       - tier
+                      - billingInterval
                       - cancelAtPeriodEnd
                       - created
                       - currentPeriodStart
@@ -1454,6 +1466,12 @@ paths:
                       monthlyImportLimitPerAccount:
                         type: number
                         nullable: true
+                      monthlyReviewImportLimitPerAccount:
+                        type: number
+                        nullable: true
+                      reviewImportRequestLimitPerAccount:
+                        type: number
+                        nullable: true
                       apiAccess:
                         type: boolean
                       analyticsDisabled:
@@ -1636,6 +1654,9 @@ paths:
                                 type: string
                                 nullable: true
                               username:
+                                type: string
+                                nullable: true
+                              address:
                                 type: string
                                 nullable: true
                               avatarUrl:
@@ -2432,6 +2453,12 @@ paths:
                             monthlyImportLimitPerAccount:
                               type: number
                               nullable: true
+                            monthlyReviewImportLimitPerAccount:
+                              type: number
+                              nullable: true
+                            reviewImportRequestLimitPerAccount:
+                              type: number
+                              nullable: true
                             apiAccess:
                               type: boolean
                             analyticsDisabled:
@@ -2614,6 +2641,9 @@ paths:
                                       type: string
                                       nullable: true
                                     username:
+                                      type: string
+                                      nullable: true
+                                    address:
                                       type: string
                                       nullable: true
                                     avatarUrl:
@@ -3436,6 +3466,9 @@ paths:
                         username:
                           type: string
                           nullable: true
+                        address:
+                          type: string
+                          nullable: true
                         avatarUrl:
                           type: string
                           nullable: true
@@ -3733,6 +3766,9 @@ paths:
                         username:
                           type: string
                           nullable: true
+                        address:
+                          type: string
+                          nullable: true
                         avatarUrl:
                           type: string
                           nullable: true
@@ -4023,6 +4059,9 @@ paths:
                           type: string
                           nullable: true
                         username:
+                          type: string
+                          nullable: true
+                        address:
                           type: string
                           nullable: true
                         avatarUrl:
@@ -4321,6 +4360,9 @@ paths:
                           type: string
                           nullable: true
                         username:
+                          type: string
+                          nullable: true
+                        address:
                           type: string
                           nullable: true
                         avatarUrl:
@@ -5061,6 +5103,9 @@ paths:
                             username:
                               type: string
                               nullable: true
+                            address:
+                              type: string
+                              nullable: true
                             avatarUrl:
                               type: string
                               nullable: true
@@ -5380,6 +5425,9 @@ paths:
                         username:
                           type: string
                           nullable: true
+                        address:
+                          type: string
+                          nullable: true
                         avatarUrl:
                           type: string
                           nullable: true
@@ -5695,6 +5743,9 @@ paths:
                           username:
                             type: string
                             nullable: true
+                          address:
+                            type: string
+                            nullable: true
                           avatarUrl:
                             type: string
                             nullable: true
@@ -5982,6 +6033,9 @@ paths:
                                 type: string
                                 nullable: true
                               username:
+                                type: string
+                                nullable: true
+                              address:
                                 type: string
                                 nullable: true
                               avatarUrl:
@@ -9502,6 +9556,9 @@ paths:
                                     type: string
                                     nullable: true
                                   username:
+                                    type: string
+                                    nullable: true
+                                  address:
                                     type: string
                                     nullable: true
                                   avatarUrl:
@@ -15149,6 +15206,9 @@ paths:
                                         username:
                                           type: string
                                           nullable: true
+                                        address:
+                                          type: string
+                                          nullable: true
                                         avatarUrl:
                                           type: string
                                           nullable: true
@@ -19251,6 +19311,9 @@ paths:
                             username:
                               type: string
                               nullable: true
+                            address:
+                              type: string
+                              nullable: true
                             avatarUrl:
                               type: string
                               nullable: true
@@ -21274,6 +21337,9 @@ paths:
                               type: string
                               nullable: true
                             username:
+                              type: string
+                              nullable: true
+                            address:
                               type: string
                               nullable: true
                             avatarUrl:
@@ -30747,6 +30813,7 @@ paths:
               required:
                 - teamId
                 - uploadId
+              additionalProperties: false
       responses:
         '200':
           description: '200'
@@ -30758,6 +30825,17 @@ paths:
                   name:
                     type: string
                   googleUrl:
+                    type: string
+                    format: uri
+                  mediaFormat:
+                    type: string
+                    enum:
+                      - PHOTO
+                      - VIDEO
+                  sourceUrl:
+                    type: string
+                    format: uri
+                  thumbnailUrl:
                     type: string
                     format: uri
                   locationAssociation:
@@ -30784,6 +30862,361 @@ paths:
                         type: string
                   description:
                     type: string
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    get:
+      summary: List Google Business media items
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 250
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      operationId: misc.google_business.listMedia
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mediaItems:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        googleUrl:
+                          type: string
+                          format: uri
+                        mediaFormat:
+                          type: string
+                          enum:
+                            - PHOTO
+                            - VIDEO
+                        sourceUrl:
+                          type: string
+                          format: uri
+                        thumbnailUrl:
+                          type: string
+                          format: uri
+                        locationAssociation:
+                          type: object
+                          properties:
+                            category:
+                              type: string
+                              enum:
+                                - CATEGORY_UNSPECIFIED
+                                - COVER
+                                - PROFILE
+                                - LOGO
+                                - EXTERIOR
+                                - INTERIOR
+                                - PRODUCT
+                                - AT_WORK
+                                - FOOD_AND_DRINK
+                                - MENU
+                                - COMMON_AREA
+                                - ROOMS
+                                - TEAMS
+                                - ADDITIONAL
+                            priceListItemId:
+                              type: string
+                        description:
+                          type: string
+                      additionalProperties: true
+                  nextPageToken:
+                    type: string
+                  totalMediaItemCount:
+                    type: number
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      summary: Delete Google Business media item
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.deleteMedia
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                mediaName:
+                  type: string
+              required:
+                - teamId
+                - mediaName
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
         '400':
           description: '400'
           content:
@@ -30927,6 +31360,3180 @@ paths:
               required:
                 - teamId
                 - postId
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location:
+    get:
+      description: >-
+        Use typed query param `fields`. Supports both comma-separated values
+        (`fields=name,title`) and repeated params (`fields=name&fields=title`).
+      summary: Get Google Business location profile
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: fields
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - name
+                - languageCode
+                - storeCode
+                - title
+                - phoneNumbers
+                - categories
+                - storefrontAddress
+                - websiteUri
+                - regularHours
+                - specialHours
+                - serviceArea
+                - labels
+                - adWordsLocationExtensions
+                - latlng
+                - openInfo
+                - metadata
+                - profile
+                - relationshipData
+                - moreHours
+                - serviceItems
+            minItems: 1
+            maxItems: 20
+            nullable: true
+      operationId: misc.google_business.getLocation
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    patch:
+      description: Field mask is derived automatically from provided fields.
+      summary: Update Google Business location profile fields
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.updateLocation
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                validateOnly:
+                  type: boolean
+                title:
+                  type: string
+                  maxLength: 255
+                  nullable: true
+                profile:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      maxLength: 1500
+                  additionalProperties: false
+                  nullable: true
+                websiteUri:
+                  type: string
+                  format: uri
+                  nullable: true
+                phoneNumbers:
+                  type: object
+                  properties:
+                    primaryPhone:
+                      type: string
+                    additionalPhones:
+                      type: array
+                      items:
+                        type: string
+                  additionalProperties: false
+                  nullable: true
+                categories:
+                  type: object
+                  properties:
+                    primaryCategory:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                      additionalProperties: false
+                    additionalCategories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                        additionalProperties: false
+                  additionalProperties: false
+                  nullable: true
+                storefrontAddress:
+                  type: object
+                  properties:
+                    regionCode:
+                      type: string
+                    languageCode:
+                      type: string
+                    postalCode:
+                      type: string
+                    administrativeArea:
+                      type: string
+                    locality:
+                      type: string
+                    addressLines:
+                      type: array
+                      items:
+                        type: string
+                  additionalProperties: false
+                  nullable: true
+                regularHours:
+                  type: object
+                  properties:
+                    periods:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          openDay:
+                            type: string
+                            enum:
+                              - MONDAY
+                              - TUESDAY
+                              - WEDNESDAY
+                              - THURSDAY
+                              - FRIDAY
+                              - SATURDAY
+                              - SUNDAY
+                          openTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          closeDay:
+                            type: string
+                            enum:
+                              - MONDAY
+                              - TUESDAY
+                              - WEDNESDAY
+                              - THURSDAY
+                              - FRIDAY
+                              - SATURDAY
+                              - SUNDAY
+                          closeTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                        additionalProperties: false
+                  additionalProperties: false
+                  nullable: true
+                specialHours:
+                  type: object
+                  properties:
+                    specialHourPeriods:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          startDate:
+                            type: object
+                            properties:
+                              year:
+                                type: integer
+                              month:
+                                type: integer
+                                minimum: 1
+                                maximum: 12
+                              day:
+                                type: integer
+                                minimum: 1
+                                maximum: 31
+                            additionalProperties: false
+                          endDate:
+                            type: object
+                            properties:
+                              year:
+                                type: integer
+                              month:
+                                type: integer
+                                minimum: 1
+                                maximum: 12
+                              day:
+                                type: integer
+                                minimum: 1
+                                maximum: 31
+                            additionalProperties: false
+                          openTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          closeTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          closed:
+                            type: boolean
+                        additionalProperties: false
+                  additionalProperties: false
+                  nullable: true
+                moreHours:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      hoursTypeId:
+                        type: string
+                      periods:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            openDay:
+                              type: string
+                              enum:
+                                - MONDAY
+                                - TUESDAY
+                                - WEDNESDAY
+                                - THURSDAY
+                                - FRIDAY
+                                - SATURDAY
+                                - SUNDAY
+                            openTime:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    hours:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 23
+                                    minutes:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    seconds:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    nanos:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 999999999
+                                  additionalProperties: false
+                                - type: string
+                                  pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                            closeDay:
+                              type: string
+                              enum:
+                                - MONDAY
+                                - TUESDAY
+                                - WEDNESDAY
+                                - THURSDAY
+                                - FRIDAY
+                                - SATURDAY
+                                - SUNDAY
+                            closeTime:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    hours:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 23
+                                    minutes:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    seconds:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    nanos:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 999999999
+                                  additionalProperties: false
+                                - type: string
+                                  pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          additionalProperties: false
+                    additionalProperties: false
+                  nullable: true
+                openInfo:
+                  type: object
+                  properties: {}
+                  additionalProperties: true
+                  nullable: true
+                serviceArea:
+                  type: object
+                  properties: {}
+                  additionalProperties: true
+                  nullable: true
+                latlng:
+                  type: object
+                  properties:
+                    latitude:
+                      type: number
+                    longitude:
+                      type: number
+                  additionalProperties: false
+                  nullable: true
+              required:
+                - teamId
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/hours:
+    patch:
+      description: Body requires `fields` (`regularHours`, `specialHours`, `moreHours`).
+      summary: Update Google Business regular/special/more hours
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.updateHours
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                validateOnly:
+                  type: boolean
+                fields:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - regularHours
+                      - specialHours
+                      - moreHours
+                  minItems: 1
+                  maxItems: 3
+                regularHours:
+                  type: object
+                  properties:
+                    periods:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          openDay:
+                            type: string
+                            enum:
+                              - MONDAY
+                              - TUESDAY
+                              - WEDNESDAY
+                              - THURSDAY
+                              - FRIDAY
+                              - SATURDAY
+                              - SUNDAY
+                          openTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          closeDay:
+                            type: string
+                            enum:
+                              - MONDAY
+                              - TUESDAY
+                              - WEDNESDAY
+                              - THURSDAY
+                              - FRIDAY
+                              - SATURDAY
+                              - SUNDAY
+                          closeTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                        additionalProperties: false
+                  additionalProperties: false
+                  nullable: true
+                specialHours:
+                  type: object
+                  properties:
+                    specialHourPeriods:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          startDate:
+                            type: object
+                            properties:
+                              year:
+                                type: integer
+                              month:
+                                type: integer
+                                minimum: 1
+                                maximum: 12
+                              day:
+                                type: integer
+                                minimum: 1
+                                maximum: 31
+                            additionalProperties: false
+                          endDate:
+                            type: object
+                            properties:
+                              year:
+                                type: integer
+                              month:
+                                type: integer
+                                minimum: 1
+                                maximum: 12
+                              day:
+                                type: integer
+                                minimum: 1
+                                maximum: 31
+                            additionalProperties: false
+                          openTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          closeTime:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  hours:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 23
+                                  minutes:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  seconds:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 59
+                                  nanos:
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 999999999
+                                additionalProperties: false
+                              - type: string
+                                pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          closed:
+                            type: boolean
+                        additionalProperties: false
+                  additionalProperties: false
+                  nullable: true
+                moreHours:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      hoursTypeId:
+                        type: string
+                      periods:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            openDay:
+                              type: string
+                              enum:
+                                - MONDAY
+                                - TUESDAY
+                                - WEDNESDAY
+                                - THURSDAY
+                                - FRIDAY
+                                - SATURDAY
+                                - SUNDAY
+                            openTime:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    hours:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 23
+                                    minutes:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    seconds:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    nanos:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 999999999
+                                  additionalProperties: false
+                                - type: string
+                                  pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                            closeDay:
+                              type: string
+                              enum:
+                                - MONDAY
+                                - TUESDAY
+                                - WEDNESDAY
+                                - THURSDAY
+                                - FRIDAY
+                                - SATURDAY
+                                - SUNDAY
+                            closeTime:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    hours:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 23
+                                    minutes:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    seconds:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 59
+                                    nanos:
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 999999999
+                                  additionalProperties: false
+                                - type: string
+                                  pattern: ^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$
+                          additionalProperties: false
+                    additionalProperties: false
+                  nullable: true
+              required:
+                - teamId
+                - fields
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/attributes:
+    get:
+      summary: Get Google Business location attributes
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.google_business.getAttributes
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  attributes:
+                    default: &ref_10 []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        values:
+                          type: array
+                          items:
+                            nullable: true
+                        repeatedEnumValue:
+                          type: object
+                          properties:
+                            setValues:
+                              type: array
+                              items:
+                                type: string
+                          additionalProperties: true
+                        uriValues:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - name
+                      additionalProperties: true
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    patch:
+      summary: Update Google Business location attributes
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.updateAttributes
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                attributeMask:
+                  type: string
+                attributes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      values:
+                        type: array
+                        items:
+                          nullable: true
+                      repeatedEnumValue:
+                        type: object
+                        properties:
+                          setValues:
+                            type: array
+                            items:
+                              type: string
+                        additionalProperties: false
+                      uriValues:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - name
+                    additionalProperties: false
+                  nullable: true
+              required:
+                - teamId
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  attributes:
+                    default: *ref_10
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        values:
+                          type: array
+                          items:
+                            nullable: true
+                        repeatedEnumValue:
+                          type: object
+                          properties:
+                            setValues:
+                              type: array
+                              items:
+                                type: string
+                          additionalProperties: true
+                        uriValues:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - name
+                      additionalProperties: true
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/attributes/available:
+    get:
+      summary: List available Google Business attributes
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: languageCode
+          in: query
+          schema:
+            type: string
+        - name: regionCode
+          in: query
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      operationId: misc.google_business.listAvailableAttributes
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attributes:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: true
+                  nextPageToken:
+                    type: string
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/categories/available:
+    get:
+      description: >-
+        Requires `regionCode` and `languageCode`. Default `view=BASIC`. Page
+        size is fixed at 50. Optional `filter` supports `displayName` prefix
+        search.
+      summary: List available Google Business categories
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: regionCode
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 2
+            maxLength: 2
+        - name: languageCode
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            default: 50
+            type: integer
+            minimum: 50
+            maximum: 50
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: view
+          in: query
+          schema:
+            default: BASIC
+            type: string
+            enum:
+              - CATEGORY_VIEW_UNSPECIFIED
+              - BASIC
+              - FULL
+      operationId: misc.google_business.listCategories
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: true
+                  nextPageToken:
+                    type: string
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/service-list:
+    get:
+      summary: Get Google Business service list
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.google_business.getServiceList
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  serviceItems:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: true
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    patch:
+      description: Body requires `fields` (`serviceItems`).
+      summary: Update Google Business service list
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.updateServiceList
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                fields:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - serviceItems
+                  minItems: 1
+                  maxItems: 1
+                serviceItems:
+                  type: array
+                  items:
+                    type: object
+                    properties: {}
+                    additionalProperties: true
+                  nullable: true
+              required:
+                - teamId
+                - fields
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  serviceItems:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: true
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/food-menus:
+    get:
+      description: >-
+        Use typed query param `fields`. Supports both comma-separated values
+        (`fields=name,menus`) and repeated params (`fields=name&fields=menus`).
+      summary: Get Google Business food menus
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: fields
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - name
+                - menus
+            minItems: 1
+            maxItems: 2
+            nullable: true
+      operationId: misc.google_business.getFoodMenus
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  menus:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: true
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    patch:
+      description: Body requires `fields` (`menus`).
+      summary: Update Google Business food menus
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.updateFoodMenus
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                fields:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - menus
+                  minItems: 1
+                  maxItems: 1
+                menus:
+                  type: array
+                  items:
+                    type: object
+                    properties: {}
+                    additionalProperties: true
+                  nullable: true
+              required:
+                - teamId
+                - fields
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  menus:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: true
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/place-action-links:
+    get:
+      summary: List Google Business place action links
+      tags: *ref_9
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      operationId: misc.google_business.listPlaceActionLinks
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  placeActionLinks:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        uri:
+                          type: string
+                          format: uri
+                        placeActionType:
+                          type: string
+                          enum:
+                            - APPOINTMENT
+                            - ONLINE_APPOINTMENT
+                            - DINING_RESERVATION
+                            - FOOD_ORDERING
+                            - FOOD_DELIVERY
+                            - FOOD_TAKEOUT
+                            - SHOP_ONLINE
+                        isPreferred:
+                          type: boolean
+                      additionalProperties: true
+                  nextPageToken:
+                    type: string
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    post:
+      summary: Create Google Business place action link
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.createPlaceActionLink
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                placeActionLink:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    uri:
+                      type: string
+                      format: uri
+                    placeActionType:
+                      type: string
+                      enum:
+                        - APPOINTMENT
+                        - ONLINE_APPOINTMENT
+                        - DINING_RESERVATION
+                        - FOOD_ORDERING
+                        - FOOD_DELIVERY
+                        - FOOD_TAKEOUT
+                        - SHOP_ONLINE
+                    isPreferred:
+                      type: boolean
+                  additionalProperties: false
+              required:
+                - teamId
+                - placeActionLink
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  uri:
+                    type: string
+                    format: uri
+                  placeActionType:
+                    type: string
+                    enum:
+                      - APPOINTMENT
+                      - ONLINE_APPOINTMENT
+                      - DINING_RESERVATION
+                      - FOOD_ORDERING
+                      - FOOD_DELIVERY
+                      - FOOD_TAKEOUT
+                      - SHOP_ONLINE
+                  isPreferred:
+                    type: boolean
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    patch:
+      description: Body requires `fields` (`uri`, `placeActionType`, `isPreferred`).
+      summary: Update Google Business place action link
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.updatePlaceActionLink
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                placeActionLink:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    uri:
+                      type: string
+                      format: uri
+                    placeActionType:
+                      type: string
+                      enum:
+                        - APPOINTMENT
+                        - ONLINE_APPOINTMENT
+                        - DINING_RESERVATION
+                        - FOOD_ORDERING
+                        - FOOD_DELIVERY
+                        - FOOD_TAKEOUT
+                        - SHOP_ONLINE
+                    isPreferred:
+                      type: boolean
+                  additionalProperties: false
+                name:
+                  type: string
+                fields:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - uri
+                      - placeActionType
+                      - isPreferred
+                  minItems: 1
+                  maxItems: 3
+              required:
+                - teamId
+                - placeActionLink
+                - name
+                - fields
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  uri:
+                    type: string
+                    format: uri
+                  placeActionType:
+                    type: string
+                    enum:
+                      - APPOINTMENT
+                      - ONLINE_APPOINTMENT
+                      - DINING_RESERVATION
+                      - FOOD_ORDERING
+                      - FOOD_DELIVERY
+                      - FOOD_TAKEOUT
+                      - SHOP_ONLINE
+                  isPreferred:
+                    type: boolean
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      summary: Delete Google Business place action link
+      tags: *ref_9
+      parameters: []
+      operationId: misc.google_business.deletePlaceActionLink
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                name:
+                  type: string
+              required:
+                - teamId
+                - name
+              additionalProperties: false
       responses:
         '200':
           description: '200'
@@ -31076,9 +34683,8 @@ paths:
                 teamId:
                   type: string
                 count:
-                  type: number
+                  type: integer
                   minimum: 1
-                  maximum: 100
               required:
                 - teamId
                 - count
@@ -32553,7 +36159,7 @@ paths:
   /api/v1/misc/reddit/post-requirements:
     get:
       summary: Get subreddit post requirements (flair required/enabled)
-      tags: &ref_10
+      tags: &ref_11
         - misc
         - reddit
       parameters:
@@ -32707,7 +36313,7 @@ paths:
   /api/v1/misc/reddit/subreddit-flairs:
     get:
       summary: Get subreddit flairs list
-      tags: *ref_10
+      tags: *ref_11
       parameters:
         - name: teamId
           in: query
@@ -32873,7 +36479,7 @@ paths:
         Update the selftext content of a published Reddit text post. Link and
         media posts cannot be edited.
       summary: Edit an existing Reddit post
-      tags: *ref_10
+      tags: *ref_11
       parameters: []
       operationId: misc.reddit.editPost
       requestBody:
@@ -33036,7 +36642,7 @@ paths:
     delete:
       description: Permanently delete a published Reddit post.
       summary: Delete a Reddit post
-      tags: *ref_10
+      tags: *ref_11
       parameters: []
       operationId: misc.reddit.deletePost
       requestBody:
@@ -33195,7 +36801,7 @@ paths:
         Instagram is connected via Facebook Login. Returns followers_count,
         media_count, and profile picture if available.
       summary: Search for Instagram Business/Creator user by username
-      tags: &ref_11
+      tags: &ref_12
         - misc
         - instagram
       parameters:
@@ -33389,7 +36995,7 @@ paths:
         Searches Facebook Pages with physical location data and returns IDs that
         can be used as data.INSTAGRAM.locationId.
       summary: Search Instagram location IDs
-      tags: *ref_11
+      tags: *ref_12
       parameters:
         - name: teamId
           in: query
@@ -33594,7 +37200,7 @@ paths:
         Update the message/content of a published Facebook post or reel. Note:
         Only text content can be edited, media cannot be changed.
       summary: Edit an existing Facebook post
-      tags: &ref_12
+      tags: &ref_13
         - misc
         - facebook
       parameters: []
@@ -33756,7 +37362,7 @@ paths:
     delete:
       description: Permanently delete a published Facebook post or reel.
       summary: Delete a Facebook post
-      tags: *ref_12
+      tags: *ref_13
       parameters: []
       operationId: misc.facebook.deletePost
       requestBody:
@@ -33912,7 +37518,7 @@ paths:
       description: Temporarily disabled
       summary: '[DISABLED] Edit an existing Pinterest pin'
       deprecated: true
-      tags: &ref_13
+      tags: &ref_14
         - misc
         - pinterest
       parameters: []
@@ -34087,7 +37693,7 @@ paths:
     delete:
       description: Permanently delete a published Pinterest pin.
       summary: Delete a Pinterest pin
-      tags: *ref_13
+      tags: *ref_14
       parameters: []
       operationId: misc.pinterest.deletePin
       requestBody:
@@ -34242,7 +37848,7 @@ paths:
     patch:
       description: Update the text content and spoiler text of a published Mastodon status.
       summary: Edit an existing Mastodon status
-      tags: &ref_14
+      tags: &ref_15
         - misc
         - mastodon
       parameters: []
@@ -34408,7 +38014,7 @@ paths:
     delete:
       description: Permanently delete a published Mastodon status.
       summary: Delete a Mastodon status
-      tags: *ref_14
+      tags: *ref_15
       parameters: []
       operationId: misc.mastodon.deleteStatus
       requestBody:
@@ -34563,7 +38169,7 @@ paths:
     patch:
       description: Update the text content of a published Slack message.
       summary: Edit an existing Slack message
-      tags: &ref_15
+      tags: &ref_16
         - misc
         - slack
       parameters: []
@@ -34726,7 +38332,7 @@ paths:
     delete:
       description: Permanently delete a published Slack message.
       summary: Delete a Slack message
-      tags: *ref_15
+      tags: *ref_16
       parameters: []
       operationId: misc.slack.deleteMessage
       requestBody:
@@ -35650,7 +39256,7 @@ paths:
   /api/v1/post-history-import/:
     post:
       summary: Start a new post history import
-      tags: &ref_16
+      tags: &ref_17
         - postImport
       parameters: []
       operationId: postImport.create
@@ -35926,7 +39532,7 @@ paths:
                   - message
     get:
       summary: Get import status list
-      tags: *ref_16
+      tags: *ref_17
       parameters:
         - name: teamId
           in: query
@@ -36166,7 +39772,7 @@ paths:
   /api/v1/post-history-import/{importId}:
     get:
       summary: Get import by ID
-      tags: *ref_16
+      tags: *ref_17
       parameters:
         - name: importId
           in: path
@@ -36384,7 +39990,7 @@ paths:
   /api/v1/post-history-import/posts:
     get:
       summary: Get imported posts with analytics for a social account
-      tags: *ref_16
+      tags: *ref_17
       parameters:
         - name: teamId
           in: query
@@ -36699,7 +40305,7 @@ paths:
                   - message
     delete:
       summary: Bulk delete imported posts and their analytics
-      tags: *ref_16
+      tags: *ref_17
       parameters: []
       operationId: postImport.deleteImportedPosts
       requestBody:
@@ -36856,7 +40462,7 @@ paths:
   /api/v1/post-history-import/{importId}/retry:
     post:
       summary: Retry a failed import
-      tags: *ref_16
+      tags: *ref_17
       parameters:
         - name: importId
           in: path
@@ -37086,7 +40692,7 @@ paths:
     post:
       description: Upload CSV for async bulk post import.
       summary: Create post CSV import
-      tags: &ref_17
+      tags: &ref_18
         - postCSV
       parameters: []
       operationId: postCSV.create
@@ -37296,7 +40902,7 @@ paths:
                   - message
     get:
       summary: Get post CSV import history
-      tags: *ref_17
+      tags: *ref_18
       parameters:
         - name: offset
           in: query
@@ -37517,7 +41123,7 @@ paths:
   /api/v1/post-csv-import/{importId}:
     get:
       summary: Get post CSV import details
-      tags: *ref_17
+      tags: *ref_18
       parameters:
         - name: importId
           in: path
@@ -37721,7 +41327,7 @@ paths:
   /api/v1/post-csv-import/{importId}/status:
     get:
       summary: Get post CSV import processing status
-      tags: *ref_17
+      tags: *ref_18
       parameters:
         - name: importId
           in: path
@@ -37903,7 +41509,7 @@ paths:
   /api/v1/post-csv-import/{importId}/rows:
     get:
       summary: Get post CSV import row results
-      tags: *ref_17
+      tags: *ref_18
       parameters:
         - name: importId
           in: path

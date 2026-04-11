@@ -29,6 +29,8 @@ export type OrganizationGetOrganizationResponse = {
         GOOGLE_BUSINESS?: number;
     } | null;
     monthlyImportLimitPerAccount?: number | null;
+    monthlyReviewImportLimitPerAccount?: number | null;
+    reviewImportRequestLimitPerAccount?: number | null;
     apiAccess: boolean;
     analyticsDisabled: boolean;
     analyticsPostsDisabled: boolean;
@@ -69,6 +71,7 @@ export type OrganizationGetOrganizationResponse = {
         metadata?: unknown;
         stripePriceId: string;
         tier: 'PRO' | 'BUSINESS';
+        billingInterval: 'MONTHLY' | 'YEARLY';
         cancelAtPeriodEnd: boolean;
         created: string | null;
         currentPeriodStart: string | null;
@@ -249,6 +252,8 @@ export type TeamGetTeamResponse = {
             GOOGLE_BUSINESS?: number;
         } | null;
         monthlyImportLimitPerAccount?: number | null;
+        monthlyReviewImportLimitPerAccount?: number | null;
+        reviewImportRequestLimitPerAccount?: number | null;
         apiAccess: boolean;
         analyticsDisabled: boolean;
         analyticsPostsDisabled: boolean;
@@ -299,6 +304,7 @@ export type TeamGetTeamResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            address?: string | null;
             avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
@@ -438,6 +444,8 @@ export type TeamGetListResponse = {
                 GOOGLE_BUSINESS?: number;
             } | null;
             monthlyImportLimitPerAccount?: number | null;
+            monthlyReviewImportLimitPerAccount?: number | null;
+            reviewImportRequestLimitPerAccount?: number | null;
             apiAccess: boolean;
             analyticsDisabled: boolean;
             analyticsPostsDisabled: boolean;
@@ -488,6 +496,7 @@ export type TeamGetListResponse = {
                 id: string;
                 name?: string | null;
                 username?: string | null;
+                address?: string | null;
                 avatarUrl?: string | null;
                 webhook?: {
                     id?: string | null;
@@ -633,6 +642,7 @@ export type SocialAccountDisconnectResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        address?: string | null;
         avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
@@ -683,6 +693,7 @@ export type SocialAccountSetChannelResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        address?: string | null;
         avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
@@ -732,6 +743,7 @@ export type SocialAccountUnsetChannelResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        address?: string | null;
         avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
@@ -781,6 +793,7 @@ export type SocialAccountRefreshChannelsResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        address?: string | null;
         avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
@@ -894,6 +907,7 @@ export type SocialAccountProfileRefreshResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            address?: string | null;
             avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
@@ -944,6 +958,7 @@ export type SocialAccountGetByTypeResponse = {
         id: string;
         name?: string | null;
         username?: string | null;
+        address?: string | null;
         avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
@@ -998,6 +1013,7 @@ export type SocialAccountCopyResponse = Array<{
         id: string;
         name?: string | null;
         username?: string | null;
+        address?: string | null;
         avatarUrl?: string | null;
         webhook?: {
             id?: string | null;
@@ -1043,6 +1059,7 @@ export type SocialAccountGetAccountsToDeleteResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            address?: string | null;
             avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
@@ -1943,6 +1960,7 @@ export type PostGetResponse = {
                 id: string;
                 name?: string | null;
                 username?: string | null;
+                address?: string | null;
                 avatarUrl?: string | null;
                 webhook?: {
                     id?: string | null;
@@ -4135,6 +4153,7 @@ export type PostGetListResponse = {
                     id: string;
                     name?: string | null;
                     username?: string | null;
+                    address?: string | null;
                     avatarUrl?: string | null;
                     webhook?: {
                         id?: string | null;
@@ -5708,6 +5727,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            address?: string | null;
             avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
@@ -6399,6 +6419,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
             id: string;
             name?: string | null;
             username?: string | null;
+            address?: string | null;
             avatarUrl?: string | null;
             webhook?: {
                 id?: string | null;
@@ -8905,11 +8926,54 @@ export type MiscGoogleBusinessAddMediaData = {
 export type MiscGoogleBusinessAddMediaResponse = {
     name?: string;
     googleUrl?: string;
+    mediaFormat?: 'PHOTO' | 'VIDEO';
+    sourceUrl?: string;
+    thumbnailUrl?: string;
     locationAssociation?: {
         category?: 'CATEGORY_UNSPECIFIED' | 'COVER' | 'PROFILE' | 'LOGO' | 'EXTERIOR' | 'INTERIOR' | 'PRODUCT' | 'AT_WORK' | 'FOOD_AND_DRINK' | 'MENU' | 'COMMON_AREA' | 'ROOMS' | 'TEAMS' | 'ADDITIONAL';
         priceListItemId?: string;
     };
     description?: string;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessListMediaData = {
+    pageSize?: number;
+    pageToken?: string;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessListMediaResponse = {
+    mediaItems?: Array<{
+        name?: string;
+        googleUrl?: string;
+        mediaFormat?: 'PHOTO' | 'VIDEO';
+        sourceUrl?: string;
+        thumbnailUrl?: string;
+        locationAssociation?: {
+            category?: 'CATEGORY_UNSPECIFIED' | 'COVER' | 'PROFILE' | 'LOGO' | 'EXTERIOR' | 'INTERIOR' | 'PRODUCT' | 'AT_WORK' | 'FOOD_AND_DRINK' | 'MENU' | 'COMMON_AREA' | 'ROOMS' | 'TEAMS' | 'ADDITIONAL';
+            priceListItemId?: string;
+        };
+        description?: string;
+        [key: string]: unknown | string;
+    }>;
+    nextPageToken?: string;
+    totalMediaItemCount?: number;
+    [key: string]: unknown | string | number;
+};
+
+export type MiscGoogleBusinessDeleteMediaData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        mediaName: string;
+    };
+};
+
+export type MiscGoogleBusinessDeleteMediaResponse = {
+    success: boolean;
 };
 
 export type MiscGoogleBusinessDeletePostData = {
@@ -8926,6 +8990,447 @@ export type MiscGoogleBusinessDeletePostData = {
 };
 
 export type MiscGoogleBusinessDeletePostResponse = {
+    success: boolean;
+};
+
+export type MiscGoogleBusinessGetLocationData = {
+    fields?: Array<('name' | 'languageCode' | 'storeCode' | 'title' | 'phoneNumbers' | 'categories' | 'storefrontAddress' | 'websiteUri' | 'regularHours' | 'specialHours' | 'serviceArea' | 'labels' | 'adWordsLocationExtensions' | 'latlng' | 'openInfo' | 'metadata' | 'profile' | 'relationshipData' | 'moreHours' | 'serviceItems')> | null;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessGetLocationResponse = {
+    name?: string;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessUpdateLocationData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        validateOnly?: boolean;
+        title?: string | null;
+        profile?: {
+            description?: string;
+        } | null;
+        websiteUri?: string | null;
+        phoneNumbers?: {
+            primaryPhone?: string;
+            additionalPhones?: Array<(string)>;
+        } | null;
+        categories?: {
+            primaryCategory?: {
+                name?: string;
+            };
+            additionalCategories?: Array<{
+                name?: string;
+            }>;
+        } | null;
+        storefrontAddress?: {
+            regionCode?: string;
+            languageCode?: string;
+            postalCode?: string;
+            administrativeArea?: string;
+            locality?: string;
+            addressLines?: Array<(string)>;
+        } | null;
+        regularHours?: {
+            periods?: Array<{
+                openDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                openTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closeDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                closeTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+            }>;
+        } | null;
+        specialHours?: {
+            specialHourPeriods?: Array<{
+                startDate?: {
+                    year?: number;
+                    month?: number;
+                    day?: number;
+                };
+                endDate?: {
+                    year?: number;
+                    month?: number;
+                    day?: number;
+                };
+                openTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closeTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closed?: boolean;
+            }>;
+        } | null;
+        moreHours?: Array<{
+            hoursTypeId?: string;
+            periods?: Array<{
+                openDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                openTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closeDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                closeTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+            }>;
+        }> | null;
+        openInfo?: {
+            [key: string]: unknown;
+        } | null;
+        serviceArea?: {
+            [key: string]: unknown;
+        } | null;
+        latlng?: {
+            latitude?: number;
+            longitude?: number;
+        } | null;
+    };
+};
+
+export type MiscGoogleBusinessUpdateLocationResponse = {
+    name?: string;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessUpdateHoursData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        validateOnly?: boolean;
+        fields: Array<('regularHours' | 'specialHours' | 'moreHours')>;
+        regularHours?: {
+            periods?: Array<{
+                openDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                openTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closeDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                closeTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+            }>;
+        } | null;
+        specialHours?: {
+            specialHourPeriods?: Array<{
+                startDate?: {
+                    year?: number;
+                    month?: number;
+                    day?: number;
+                };
+                endDate?: {
+                    year?: number;
+                    month?: number;
+                    day?: number;
+                };
+                openTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closeTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closed?: boolean;
+            }>;
+        } | null;
+        moreHours?: Array<{
+            hoursTypeId?: string;
+            periods?: Array<{
+                openDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                openTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+                closeDay?: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+                closeTime?: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    nanos?: number;
+} | string;
+            }>;
+        }> | null;
+    };
+};
+
+export type MiscGoogleBusinessUpdateHoursResponse = {
+    name?: string;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessGetAttributesData = {
+    teamId: string;
+};
+
+export type MiscGoogleBusinessGetAttributesResponse = {
+    name?: string;
+    attributes?: Array<{
+        name: string;
+        values?: Array<unknown>;
+        repeatedEnumValue?: {
+            setValues?: Array<(string)>;
+            [key: string]: unknown | string;
+        };
+        uriValues?: Array<(string)>;
+        [key: string]: unknown | string;
+    }>;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessUpdateAttributesData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        attributeMask?: string;
+        attributes?: Array<{
+            name: string;
+            values?: Array<unknown>;
+            repeatedEnumValue?: {
+                setValues?: Array<(string)>;
+            };
+            uriValues?: Array<(string)>;
+        }> | null;
+    };
+};
+
+export type MiscGoogleBusinessUpdateAttributesResponse = {
+    name?: string;
+    attributes?: Array<{
+        name: string;
+        values?: Array<unknown>;
+        repeatedEnumValue?: {
+            setValues?: Array<(string)>;
+            [key: string]: unknown | string;
+        };
+        uriValues?: Array<(string)>;
+        [key: string]: unknown | string;
+    }>;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessListAvailableAttributesData = {
+    languageCode?: string;
+    pageSize?: number;
+    pageToken?: string;
+    regionCode?: string;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessListAvailableAttributesResponse = {
+    attributes?: Array<{
+        [key: string]: unknown;
+    }>;
+    nextPageToken?: string;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessListCategoriesData = {
+    filter?: string;
+    languageCode: string;
+    pageSize?: number;
+    pageToken?: string;
+    regionCode: string;
+    teamId: string;
+    view?: 'CATEGORY_VIEW_UNSPECIFIED' | 'BASIC' | 'FULL';
+};
+
+export type MiscGoogleBusinessListCategoriesResponse = {
+    categories?: Array<{
+        [key: string]: unknown;
+    }>;
+    nextPageToken?: string;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessGetServiceListData = {
+    teamId: string;
+};
+
+export type MiscGoogleBusinessGetServiceListResponse = {
+    name?: string;
+    serviceItems?: Array<{
+        [key: string]: unknown;
+    }>;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessUpdateServiceListData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        fields: [
+            'serviceItems'
+        ];
+        serviceItems?: Array<{
+            [key: string]: unknown;
+        }> | null;
+    };
+};
+
+export type MiscGoogleBusinessUpdateServiceListResponse = {
+    name?: string;
+    serviceItems?: Array<{
+        [key: string]: unknown;
+    }>;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessGetFoodMenusData = {
+    fields?: Array<('name' | 'menus')> | null;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessGetFoodMenusResponse = {
+    name?: string;
+    menus?: Array<{
+        [key: string]: unknown;
+    }>;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessUpdateFoodMenusData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        fields: [
+            'menus'
+        ];
+        menus?: Array<{
+            [key: string]: unknown;
+        }> | null;
+    };
+};
+
+export type MiscGoogleBusinessUpdateFoodMenusResponse = {
+    name?: string;
+    menus?: Array<{
+        [key: string]: unknown;
+    }>;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessListPlaceActionLinksData = {
+    pageSize?: number;
+    pageToken?: string;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessListPlaceActionLinksResponse = {
+    placeActionLinks?: Array<{
+        name?: string;
+        uri?: string;
+        placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+        isPreferred?: boolean;
+        [key: string]: unknown | string | boolean;
+    }>;
+    nextPageToken?: string;
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessCreatePlaceActionLinkData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        placeActionLink: {
+            name?: string;
+            uri?: string;
+            placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+            isPreferred?: boolean;
+        };
+    };
+};
+
+export type MiscGoogleBusinessCreatePlaceActionLinkResponse = {
+    name?: string;
+    uri?: string;
+    placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+    isPreferred?: boolean;
+    [key: string]: unknown | string | boolean;
+};
+
+export type MiscGoogleBusinessUpdatePlaceActionLinkData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        placeActionLink: {
+            name?: string;
+            uri?: string;
+            placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+            isPreferred?: boolean;
+        };
+        name: string;
+        fields: Array<('uri' | 'placeActionType' | 'isPreferred')>;
+    };
+};
+
+export type MiscGoogleBusinessUpdatePlaceActionLinkResponse = {
+    name?: string;
+    uri?: string;
+    placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+    isPreferred?: boolean;
+    [key: string]: unknown | string | boolean;
+};
+
+export type MiscGoogleBusinessDeletePlaceActionLinkData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        name: string;
+    };
+};
+
+export type MiscGoogleBusinessDeletePlaceActionLinkResponse = {
     success: boolean;
 };
 
@@ -9968,6 +10473,8 @@ export type $OpenApiTs = {
                         GOOGLE_BUSINESS?: number;
                     } | null;
                     monthlyImportLimitPerAccount?: number | null;
+                    monthlyReviewImportLimitPerAccount?: number | null;
+                    reviewImportRequestLimitPerAccount?: number | null;
                     apiAccess: boolean;
                     analyticsDisabled: boolean;
                     analyticsPostsDisabled: boolean;
@@ -10008,6 +10515,7 @@ export type $OpenApiTs = {
                         metadata?: unknown;
                         stripePriceId: string;
                         tier: 'PRO' | 'BUSINESS';
+                        billingInterval: 'MONTHLY' | 'YEARLY';
                         cancelAtPeriodEnd: boolean;
                         created: string | null;
                         currentPeriodStart: string | null;
@@ -10397,6 +10905,8 @@ export type $OpenApiTs = {
                             GOOGLE_BUSINESS?: number;
                         } | null;
                         monthlyImportLimitPerAccount?: number | null;
+                        monthlyReviewImportLimitPerAccount?: number | null;
+                        reviewImportRequestLimitPerAccount?: number | null;
                         apiAccess: boolean;
                         analyticsDisabled: boolean;
                         analyticsPostsDisabled: boolean;
@@ -10447,6 +10957,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            address?: string | null;
                             avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
@@ -10728,6 +11239,8 @@ export type $OpenApiTs = {
                                 GOOGLE_BUSINESS?: number;
                             } | null;
                             monthlyImportLimitPerAccount?: number | null;
+                            monthlyReviewImportLimitPerAccount?: number | null;
+                            reviewImportRequestLimitPerAccount?: number | null;
                             apiAccess: boolean;
                             analyticsDisabled: boolean;
                             analyticsPostsDisabled: boolean;
@@ -10778,6 +11291,7 @@ export type $OpenApiTs = {
                                 id: string;
                                 name?: string | null;
                                 username?: string | null;
+                                address?: string | null;
                                 avatarUrl?: string | null;
                                 webhook?: {
                                     id?: string | null;
@@ -11041,6 +11555,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        address?: string | null;
                         avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
@@ -11136,6 +11651,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        address?: string | null;
                         avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
@@ -11231,6 +11747,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        address?: string | null;
                         avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
@@ -11326,6 +11843,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        address?: string | null;
                         avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
@@ -11552,6 +12070,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            address?: string | null;
                             avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
@@ -11653,6 +12172,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        address?: string | null;
                         avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
@@ -11748,6 +12268,7 @@ export type $OpenApiTs = {
                         id: string;
                         name?: string | null;
                         username?: string | null;
+                        address?: string | null;
                         avatarUrl?: string | null;
                         webhook?: {
                             id?: string | null;
@@ -11844,6 +12365,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            address?: string | null;
                             avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
@@ -13174,6 +13696,7 @@ export type $OpenApiTs = {
                                 id: string;
                                 name?: string | null;
                                 username?: string | null;
+                                address?: string | null;
                                 avatarUrl?: string | null;
                                 webhook?: {
                                     id?: string | null;
@@ -15155,6 +15678,7 @@ export type $OpenApiTs = {
                                     id: string;
                                     name?: string | null;
                                     username?: string | null;
+                                    address?: string | null;
                                     avatarUrl?: string | null;
                                     webhook?: {
                                         id?: string | null;
@@ -16527,6 +17051,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            address?: string | null;
                             avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
@@ -17319,6 +17844,7 @@ export type $OpenApiTs = {
                             id: string;
                             name?: string | null;
                             username?: string | null;
+                            address?: string | null;
                             avatarUrl?: string | null;
                             webhook?: {
                                 id?: string | null;
@@ -20908,11 +21434,146 @@ export type $OpenApiTs = {
                 200: {
                     name?: string;
                     googleUrl?: string;
+                    mediaFormat?: 'PHOTO' | 'VIDEO';
+                    sourceUrl?: string;
+                    thumbnailUrl?: string;
                     locationAssociation?: {
                         category?: 'CATEGORY_UNSPECIFIED' | 'COVER' | 'PROFILE' | 'LOGO' | 'EXTERIOR' | 'INTERIOR' | 'PRODUCT' | 'AT_WORK' | 'FOOD_AND_DRINK' | 'MENU' | 'COMMON_AREA' | 'ROOMS' | 'TEAMS' | 'ADDITIONAL';
                         priceListItemId?: string;
                     };
                     description?: string;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        get: {
+            req: MiscGoogleBusinessListMediaData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    mediaItems?: Array<{
+                        name?: string;
+                        googleUrl?: string;
+                        mediaFormat?: 'PHOTO' | 'VIDEO';
+                        sourceUrl?: string;
+                        thumbnailUrl?: string;
+                        locationAssociation?: {
+                            category?: 'CATEGORY_UNSPECIFIED' | 'COVER' | 'PROFILE' | 'LOGO' | 'EXTERIOR' | 'INTERIOR' | 'PRODUCT' | 'AT_WORK' | 'FOOD_AND_DRINK' | 'MENU' | 'COMMON_AREA' | 'ROOMS' | 'TEAMS' | 'ADDITIONAL';
+                            priceListItemId?: string;
+                        };
+                        description?: string;
+                        [key: string]: unknown | string;
+                    }>;
+                    nextPageToken?: string;
+                    totalMediaItemCount?: number;
+                    [key: string]: unknown | string | number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscGoogleBusinessDeleteMediaData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
                 };
                 /**
                  * 400
@@ -20967,6 +21628,957 @@ export type $OpenApiTs = {
     '/api/v1/misc/google-business/post': {
         delete: {
             req: MiscGoogleBusinessDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location': {
+        get: {
+            req: MiscGoogleBusinessGetLocationData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: MiscGoogleBusinessUpdateLocationData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/hours': {
+        patch: {
+            req: MiscGoogleBusinessUpdateHoursData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/attributes': {
+        get: {
+            req: MiscGoogleBusinessGetAttributesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    attributes?: Array<{
+                        name: string;
+                        values?: Array<unknown>;
+                        repeatedEnumValue?: {
+                            setValues?: Array<(string)>;
+                            [key: string]: unknown | string;
+                        };
+                        uriValues?: Array<(string)>;
+                        [key: string]: unknown | string;
+                    }>;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: MiscGoogleBusinessUpdateAttributesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    attributes?: Array<{
+                        name: string;
+                        values?: Array<unknown>;
+                        repeatedEnumValue?: {
+                            setValues?: Array<(string)>;
+                            [key: string]: unknown | string;
+                        };
+                        uriValues?: Array<(string)>;
+                        [key: string]: unknown | string;
+                    }>;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/attributes/available': {
+        get: {
+            req: MiscGoogleBusinessListAvailableAttributesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    attributes?: Array<{
+                        [key: string]: unknown;
+                    }>;
+                    nextPageToken?: string;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/categories/available': {
+        get: {
+            req: MiscGoogleBusinessListCategoriesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    categories?: Array<{
+                        [key: string]: unknown;
+                    }>;
+                    nextPageToken?: string;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/service-list': {
+        get: {
+            req: MiscGoogleBusinessGetServiceListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    serviceItems?: Array<{
+                        [key: string]: unknown;
+                    }>;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: MiscGoogleBusinessUpdateServiceListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    serviceItems?: Array<{
+                        [key: string]: unknown;
+                    }>;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/food-menus': {
+        get: {
+            req: MiscGoogleBusinessGetFoodMenusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    menus?: Array<{
+                        [key: string]: unknown;
+                    }>;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: MiscGoogleBusinessUpdateFoodMenusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    menus?: Array<{
+                        [key: string]: unknown;
+                    }>;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/place-action-links': {
+        get: {
+            req: MiscGoogleBusinessListPlaceActionLinksData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    placeActionLinks?: Array<{
+                        name?: string;
+                        uri?: string;
+                        placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+                        isPreferred?: boolean;
+                        [key: string]: unknown | string | boolean;
+                    }>;
+                    nextPageToken?: string;
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        post: {
+            req: MiscGoogleBusinessCreatePlaceActionLinkData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    uri?: string;
+                    placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+                    isPreferred?: boolean;
+                    [key: string]: unknown | string | boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: MiscGoogleBusinessUpdatePlaceActionLinkData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    name?: string;
+                    uri?: string;
+                    placeActionType?: 'APPOINTMENT' | 'ONLINE_APPOINTMENT' | 'DINING_RESERVATION' | 'FOOD_ORDERING' | 'FOOD_DELIVERY' | 'FOOD_TAKEOUT' | 'SHOP_ONLINE';
+                    isPreferred?: boolean;
+                    [key: string]: unknown | string | boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscGoogleBusinessDeletePlaceActionLinkData;
             res: {
                 /**
                  * 200

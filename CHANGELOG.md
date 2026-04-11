@@ -1,3 +1,10 @@
+# [2.44.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.43.0...v2.44.0) (2026-04-11)
+
+
+### Features
+
+* additional misc endpoints ([0d1cdba](https://github.com/bundleglobal/bundlesocial-node/commit/0d1cdbaeceb63d12c35c7edc634f56a73d551fc8))
+
 # [2.43.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.42.1...v2.43.0) (2026-03-26)
 
 

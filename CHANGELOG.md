@@ -1,3 +1,10 @@
+# [2.45.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.44.0...v2.45.0) (2026-04-13)
+
+
+### Features
+
+* comments ([9be2eb5](https://github.com/bundleglobal/bundlesocial-node/commit/9be2eb54a481007bcefe7426feea5c2f38db2583))
+
 # [2.44.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.43.0...v2.44.0) (2026-04-11)
 
 

@@ -206,13 +206,45 @@ paths:
                       GOOGLE_BUSINESS:
                         type: number
                     nullable: true
+                  dailyCommentLimit:
+                    type: object
+                    properties:
+                      TWITTER:
+                        type: number
+                      FACEBOOK:
+                        type: number
+                      INSTAGRAM:
+                        type: number
+                      LINKEDIN:
+                        type: number
+                      YOUTUBE:
+                        type: number
+                      TIKTOK:
+                        type: number
+                      THREADS:
+                        type: number
+                      PINTEREST:
+                        type: number
+                      REDDIT:
+                        type: number
+                      DISCORD:
+                        type: number
+                      SLACK:
+                        type: number
+                      MASTODON:
+                        type: number
+                      BLUESKY:
+                        type: number
+                      GOOGLE_BUSINESS:
+                        type: number
+                    nullable: true
                   monthlyImportLimitPerAccount:
                     type: number
                     nullable: true
-                  monthlyReviewImportLimitPerAccount:
+                  commentImportLimitPerPost:
                     type: number
                     nullable: true
-                  reviewImportRequestLimitPerAccount:
+                  monthlyReviewImportLimitPerAccount:
                     type: number
                     nullable: true
                   apiAccess:
@@ -388,6 +420,9 @@ paths:
                         format: date-time
                         nullable: true
                       maxMonthlyPosts:
+                        type: number
+                        nullable: true
+                      maxMonthlyComments:
                         type: number
                         nullable: true
                       maxMonthlyUploads:
@@ -678,13 +713,6 @@ paths:
                       - updatedAt
                       - coupon
                     nullable: true
-                  usage:
-                    type: object
-                    properties:
-                      monthlyPosts:
-                        type: number
-                    required:
-                      - monthlyPosts
                   teams:
                     type: array
                     items:
@@ -733,7 +761,6 @@ paths:
                   - createdAt
                   - updatedAt
                   - createdBy
-                  - usage
                   - teams
         '400':
           description: '400'
@@ -859,6 +886,151 @@ paths:
       tags: *ref_0
       parameters: []
       operationId: organization.getPostsUsage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  used:
+                    type: number
+                  limit:
+                    type: number
+                  remaining:
+                    type: number
+                required:
+                  - used
+                  - limit
+                  - remaining
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/organization/usage/comments:
+    get:
+      summary: Get organization comments usage
+      tags: *ref_0
+      parameters: []
+      operationId: organization.getCommentsUsage
       responses:
         '200':
           description: '200'
@@ -1463,13 +1635,45 @@ paths:
                           GOOGLE_BUSINESS:
                             type: number
                         nullable: true
+                      dailyCommentLimit:
+                        type: object
+                        properties:
+                          TWITTER:
+                            type: number
+                          FACEBOOK:
+                            type: number
+                          INSTAGRAM:
+                            type: number
+                          LINKEDIN:
+                            type: number
+                          YOUTUBE:
+                            type: number
+                          TIKTOK:
+                            type: number
+                          THREADS:
+                            type: number
+                          PINTEREST:
+                            type: number
+                          REDDIT:
+                            type: number
+                          DISCORD:
+                            type: number
+                          SLACK:
+                            type: number
+                          MASTODON:
+                            type: number
+                          BLUESKY:
+                            type: number
+                          GOOGLE_BUSINESS:
+                            type: number
+                        nullable: true
                       monthlyImportLimitPerAccount:
                         type: number
                         nullable: true
-                      monthlyReviewImportLimitPerAccount:
+                      commentImportLimitPerPost:
                         type: number
                         nullable: true
-                      reviewImportRequestLimitPerAccount:
+                      monthlyReviewImportLimitPerAccount:
                         type: number
                         nullable: true
                       apiAccess:
@@ -2450,13 +2654,45 @@ paths:
                                 GOOGLE_BUSINESS:
                                   type: number
                               nullable: true
+                            dailyCommentLimit:
+                              type: object
+                              properties:
+                                TWITTER:
+                                  type: number
+                                FACEBOOK:
+                                  type: number
+                                INSTAGRAM:
+                                  type: number
+                                LINKEDIN:
+                                  type: number
+                                YOUTUBE:
+                                  type: number
+                                TIKTOK:
+                                  type: number
+                                THREADS:
+                                  type: number
+                                PINTEREST:
+                                  type: number
+                                REDDIT:
+                                  type: number
+                                DISCORD:
+                                  type: number
+                                SLACK:
+                                  type: number
+                                MASTODON:
+                                  type: number
+                                BLUESKY:
+                                  type: number
+                                GOOGLE_BUSINESS:
+                                  type: number
+                              nullable: true
                             monthlyImportLimitPerAccount:
                               type: number
                               nullable: true
-                            monthlyReviewImportLimitPerAccount:
+                            commentImportLimitPerPost:
                               type: number
                               nullable: true
-                            reviewImportRequestLimitPerAccount:
+                            monthlyReviewImportLimitPerAccount:
                               type: number
                               nullable: true
                             apiAccess:
@@ -5950,7 +6186,7 @@ paths:
                   - message
   /api/v1/social-account/to-delete:
     get:
-      summary: Get paginated social accounts to delete
+      summary: Get paginated social accounts scheduled to delete
       tags: *ref_2
       parameters:
         - name: page
@@ -23923,11 +24159,970 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/comment/import:
+    post:
+      summary: Start a new comment import for a post
+      tags: &ref_6
+        - comment
+      parameters: []
+      operationId: comment.importCreate
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                postId:
+                  type: string
+                socialAccountType:
+                  type: string
+                  enum:
+                    - FACEBOOK
+                    - INSTAGRAM
+                    - LINKEDIN
+                    - YOUTUBE
+                    - TIKTOK
+                    - REDDIT
+                    - THREADS
+                    - MASTODON
+                    - BLUESKY
+              required:
+                - teamId
+                - postId
+                - socialAccountType
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  organizationId:
+                    type: string
+                    nullable: true
+                  socialAccountId:
+                    type: string
+                  postId:
+                    type: string
+                  platform:
+                    type: string
+                    enum:
+                      - FACEBOOK
+                      - INSTAGRAM
+                      - LINKEDIN
+                      - YOUTUBE
+                      - TIKTOK
+                      - REDDIT
+                      - THREADS
+                      - MASTODON
+                      - BLUESKY
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING
+                      - RETRYING
+                      - COMPLETED
+                      - SKIPPED
+                      - FAILED
+                      - RATE_LIMITED
+                  commentsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - postId
+                  - platform
+                  - status
+                  - commentsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '409':
+          description: '409'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    get:
+      summary: Get comment import list
+      tags: *ref_6
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: postId
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - PENDING
+              - FETCHING
+              - RETRYING
+              - COMPLETED
+              - SKIPPED
+              - FAILED
+              - RATE_LIMITED
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: number
+            nullable: true
+        - name: limit
+          in: query
+          schema:
+            default: 10
+            type: number
+            nullable: true
+      operationId: comment.importGetList
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        teamId:
+                          type: string
+                        organizationId:
+                          type: string
+                          nullable: true
+                        socialAccountId:
+                          type: string
+                        postId:
+                          type: string
+                        platform:
+                          type: string
+                          enum:
+                            - FACEBOOK
+                            - INSTAGRAM
+                            - LINKEDIN
+                            - YOUTUBE
+                            - TIKTOK
+                            - REDDIT
+                            - THREADS
+                            - MASTODON
+                            - BLUESKY
+                        status:
+                          type: string
+                          enum:
+                            - PENDING
+                            - FETCHING
+                            - RETRYING
+                            - COMPLETED
+                            - SKIPPED
+                            - FAILED
+                            - RATE_LIMITED
+                        commentsImported:
+                          type: number
+                        error:
+                          type: string
+                          nullable: true
+                        rateLimitResetAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        startedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        completedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - teamId
+                        - socialAccountId
+                        - postId
+                        - platform
+                        - status
+                        - commentsImported
+                        - createdAt
+                        - updatedAt
+                required:
+                  - imports
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/comment/import/comments:
+    get:
+      summary: Get fetched comments for a post
+      tags: *ref_6
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: postId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: platform
+          in: query
+          schema:
+            type: string
+            enum:
+              - FACEBOOK
+              - INSTAGRAM
+              - LINKEDIN
+              - YOUTUBE
+              - TIKTOK
+              - REDDIT
+              - THREADS
+              - MASTODON
+              - BLUESKY
+        - name: socialAccountId
+          in: query
+          schema:
+            type: string
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: number
+            nullable: true
+        - name: limit
+          in: query
+          schema:
+            default: 10
+            type: number
+            nullable: true
+      operationId: comment.importGetFetchedComments
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        teamId:
+                          type: string
+                        organizationId:
+                          type: string
+                          nullable: true
+                        postId:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        importId:
+                          type: string
+                        platform:
+                          type: string
+                          enum:
+                            - FACEBOOK
+                            - INSTAGRAM
+                            - LINKEDIN
+                            - YOUTUBE
+                            - TIKTOK
+                            - REDDIT
+                            - THREADS
+                            - MASTODON
+                            - BLUESKY
+                        externalId:
+                          type: string
+                        externalParentId:
+                          type: string
+                          nullable: true
+                        externalPostId:
+                          type: string
+                          nullable: true
+                        authorName:
+                          type: string
+                          nullable: true
+                        authorExternalId:
+                          type: string
+                          nullable: true
+                        authorProfileUrl:
+                          type: string
+                          nullable: true
+                        authorAvatarUrl:
+                          type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        likesCount:
+                          type: number
+                        repliesCount:
+                          type: number
+                        publishedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - teamId
+                        - postId
+                        - socialAccountId
+                        - importId
+                        - platform
+                        - externalId
+                        - likesCount
+                        - repliesCount
+                        - createdAt
+                        - updatedAt
+                  total:
+                    type: number
+                required:
+                  - items
+                  - total
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/comment/import/{importId}:
+    get:
+      summary: Get comment import by ID
+      tags: *ref_6
+      parameters:
+        - name: importId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: comment.importGetById
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  organizationId:
+                    type: string
+                    nullable: true
+                  socialAccountId:
+                    type: string
+                  postId:
+                    type: string
+                  platform:
+                    type: string
+                    enum:
+                      - FACEBOOK
+                      - INSTAGRAM
+                      - LINKEDIN
+                      - YOUTUBE
+                      - TIKTOK
+                      - REDDIT
+                      - THREADS
+                      - MASTODON
+                      - BLUESKY
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING
+                      - RETRYING
+                      - COMPLETED
+                      - SKIPPED
+                      - FAILED
+                      - RATE_LIMITED
+                  commentsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - postId
+                  - platform
+                  - status
+                  - commentsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/comment/{id}:
     get:
       summary: Get comment
-      tags: &ref_6
-        - comment
+      tags: *ref_6
       parameters:
         - name: id
           in: path
@@ -23953,6 +25148,9 @@ paths:
                   internalPostId:
                     type: string
                   internalParentCommentId:
+                    type: string
+                    nullable: true
+                  fetchedParentCommentId:
                     type: string
                     nullable: true
                   title:
@@ -24626,6 +25824,9 @@ paths:
                 internalParentCommentId:
                   type: string
                   nullable: true
+                fetchedParentCommentId:
+                  type: string
+                  nullable: true
                 postDate:
                   type: string
                 status:
@@ -24730,6 +25931,10 @@ paths:
                           type: string
                           nullable: true
                       nullable: true
+                text:
+                  type: string
+                  minLength: 1
+                  maxLength: 10000
       responses:
         '200':
           description: '200'
@@ -24748,6 +25953,9 @@ paths:
                   internalPostId:
                     type: string
                   internalParentCommentId:
+                    type: string
+                    nullable: true
+                  fetchedParentCommentId:
                     type: string
                     nullable: true
                   title:
@@ -25424,6 +26632,9 @@ paths:
                   internalPostId:
                     type: string
                   internalParentCommentId:
+                    type: string
+                    nullable: true
+                  fetchedParentCommentId:
                     type: string
                     nullable: true
                   title:
@@ -26173,6 +27384,9 @@ paths:
                         internalParentCommentId:
                           type: string
                           nullable: true
+                        fetchedParentCommentId:
+                          type: string
+                          nullable: true
                         title:
                           type: string
                         postDate:
@@ -26846,6 +28060,9 @@ paths:
                 internalParentCommentId:
                   type: string
                   nullable: true
+                fetchedParentCommentId:
+                  type: string
+                  nullable: true
                 postDate:
                   type: string
                 status:
@@ -26950,14 +28167,12 @@ paths:
                           type: string
                           nullable: true
                       nullable: true
+                text:
+                  type: string
+                  minLength: 1
+                  maxLength: 10000
               required:
                 - teamId
-                - title
-                - internalPostId
-                - postDate
-                - status
-                - socialAccountTypes
-                - data
       responses:
         '200':
           description: '200'
@@ -26976,6 +28191,9 @@ paths:
                   internalPostId:
                     type: string
                   internalParentCommentId:
+                    type: string
+                    nullable: true
+                  fetchedParentCommentId:
                     type: string
                     nullable: true
                   title:
@@ -27627,9 +28845,8 @@ paths:
   /api/v1/misc/youtube/thumbnail:
     post:
       summary: Set or change thumbnail for a YouTube video
-      tags: &ref_7
+      tags:
         - misc
-        - youtube
       parameters: []
       operationId: misc.youtube.setThumbnail
       requestBody:
@@ -27847,7 +29064,8 @@ paths:
   /api/v1/misc/youtube/playlist:
     get:
       summary: Get channel playlists
-      tags: *ref_7
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -28103,7 +29321,8 @@ paths:
                   - message
     post:
       summary: Create a new playlist
-      tags: *ref_7
+      tags:
+        - misc
       parameters: []
       operationId: misc.youtube.createNewChannelPlaylist
       requestBody:
@@ -28355,7 +29574,8 @@ paths:
                   - message
     put:
       summary: Update an existing playlist
-      tags: *ref_7
+      tags:
+        - misc
       parameters: []
       operationId: misc.youtube.updateChannelPlaylist
       requestBody:
@@ -28611,7 +29831,8 @@ paths:
   /api/v1/misc/youtube/playlist/{playlistId}:
     delete:
       summary: Remove a video from a playlist
-      tags: *ref_7
+      tags:
+        - misc
       parameters:
         - name: playlistId
           in: path
@@ -28755,7 +29976,8 @@ paths:
   /api/v1/misc/youtube/playlist-items:
     post:
       summary: Add a video to a playlist
-      tags: *ref_7
+      tags:
+        - misc
       parameters: []
       operationId: misc.youtube.addVideoToPlaylist
       requestBody:
@@ -29003,7 +30225,8 @@ paths:
                   - message
     get:
       summary: Get videos from a playlist
-      tags: *ref_7
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -29270,7 +30493,8 @@ paths:
   /api/v1/misc/youtube/playlist-items/{playlistItemId}:
     delete:
       summary: Remove a video from a playlist
-      tags: *ref_7
+      tags:
+        - misc
       parameters:
         - name: playlistItemId
           in: path
@@ -29418,7 +30642,8 @@ paths:
         Update the title, description, tags, category, or privacy status of a
         published YouTube video.
       summary: Edit YouTube video metadata
-      tags: *ref_7
+      tags:
+        - misc
       parameters: []
       operationId: misc.youtube.editVideo
       requestBody:
@@ -29596,7 +30821,8 @@ paths:
     delete:
       description: Permanently delete a published YouTube video.
       summary: Delete a YouTube video
-      tags: *ref_7
+      tags:
+        - misc
       parameters: []
       operationId: misc.youtube.deleteVideo
       requestBody:
@@ -29747,13 +30973,333 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/youtube/comment:
+    patch:
+      description: Update the text content of a published YouTube comment.
+      summary: Edit YouTube comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.youtube.editComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+                text:
+                  type: string
+                  minLength: 1
+                  description: The updated comment text
+              required:
+                - teamId
+                - commentId
+                - text
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  permalink:
+                    type: string
+                    nullable: true
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      description: Permanently delete a published YouTube comment.
+      summary: Delete a YouTube comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.youtube.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/youtube/video-categories:
     get:
       description: >-
         Retrieve the list of video categories that can be associated with
         YouTube videos for a specific region.
       summary: Get YouTube video categories
-      tags: *ref_7
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -29926,7 +31472,8 @@ paths:
     get:
       description: Retrieve the list of content regions that the YouTube website supports.
       summary: Get YouTube regions
-      tags: *ref_7
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -30089,9 +31636,8 @@ paths:
   /api/v1/misc/linkedin/mentions/tags:
     get:
       summary: Get Linkedin mentionable tags (people & organizations)
-      tags: &ref_8
+      tags:
         - misc
-        - linkedin
       parameters:
         - name: teamId
           in: query
@@ -30295,7 +31841,8 @@ paths:
         If tag already exists (case insensitive), mentions replace it; otherwise
         they're appended to the end.
       summary: Build Linkedin text, insert mentions at tag placeholders.
-      tags: *ref_8
+      tags:
+        - misc
       parameters: []
       operationId: misc.linkedin.buildCommentary
       requestBody:
@@ -30458,7 +32005,8 @@ paths:
     patch:
       description: Update the text content of a published LinkedIn post.
       summary: Edit an existing LinkedIn post
-      tags: *ref_8
+      tags:
+        - misc
       parameters: []
       operationId: misc.linkedin.editPost
       requestBody:
@@ -30619,7 +32167,8 @@ paths:
     delete:
       description: Permanently delete a published LinkedIn post.
       summary: Delete a LinkedIn post
-      tags: *ref_8
+      tags:
+        - misc
       parameters: []
       operationId: misc.linkedin.deletePost
       requestBody:
@@ -30770,12 +32319,331 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/linkedin/comment:
+    patch:
+      description: Update the text content of a published LinkedIn comment.
+      summary: Edit an existing LinkedIn comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.linkedin.editComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+                text:
+                  type: string
+                  minLength: 1
+                  maxLength: 1250
+                  description: The updated comment text
+              required:
+                - teamId
+                - commentId
+                - text
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  permalink:
+                    type: string
+                    nullable: true
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      description: Permanently delete a published LinkedIn comment.
+      summary: Delete a LinkedIn comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.linkedin.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/google-business/media:
     post:
       summary: Add a media item (photo/video) using uploadId and category
-      tags: &ref_9
+      tags:
         - misc
-        - google_business
       parameters: []
       operationId: misc.google_business.addMedia
       requestBody:
@@ -30986,7 +32854,8 @@ paths:
                   - message
     get:
       summary: List Google Business media items
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -31187,7 +33056,8 @@ paths:
                   - message
     delete:
       summary: Delete Google Business media item
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.deleteMedia
       requestBody:
@@ -31342,7 +33212,8 @@ paths:
     delete:
       description: Permanently delete a published Google Business post.
       summary: Delete a Google Business post
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.deletePost
       requestBody:
@@ -31500,7 +33371,8 @@ paths:
         Use typed query param `fields`. Supports both comma-separated values
         (`fields=name,title`) and repeated params (`fields=name&fields=title`).
       summary: Get Google Business location profile
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -31673,7 +33545,8 @@ paths:
     patch:
       description: Field mask is derived automatically from provided fields.
       summary: Update Google Business location profile fields
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.updateLocation
       requestBody:
@@ -32155,7 +34028,8 @@ paths:
     patch:
       description: Body requires `fields` (`regularHours`, `specialHours`, `moreHours`).
       summary: Update Google Business regular/special/more hours
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.updateHours
       requestBody:
@@ -32563,7 +34437,8 @@ paths:
   /api/v1/misc/google-business/location/attributes:
     get:
       summary: Get Google Business location attributes
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -32582,7 +34457,7 @@ paths:
                   name:
                     type: string
                   attributes:
-                    default: &ref_10 []
+                    default: &ref_7 []
                     type: array
                     items:
                       type: object
@@ -32732,7 +34607,8 @@ paths:
                   - message
     patch:
       summary: Update Google Business location attributes
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.updateAttributes
       requestBody:
@@ -32787,7 +34663,7 @@ paths:
                   name:
                     type: string
                   attributes:
-                    default: *ref_10
+                    default: *ref_7
                     type: array
                     items:
                       type: object
@@ -32938,7 +34814,8 @@ paths:
   /api/v1/misc/google-business/location/attributes/available:
     get:
       summary: List available Google Business attributes
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -33110,7 +34987,8 @@ paths:
         size is fixed at 50. Optional `filter` supports `displayName` prefix
         search.
       summary: List available Google Business categories
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -33296,7 +35174,8 @@ paths:
   /api/v1/misc/google-business/location/service-list:
     get:
       summary: Get Google Business service list
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -33445,7 +35324,8 @@ paths:
     patch:
       description: Body requires `fields` (`serviceItems`).
       summary: Update Google Business service list
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.updateServiceList
       requestBody:
@@ -33620,7 +35500,8 @@ paths:
         Use typed query param `fields`. Supports both comma-separated values
         (`fields=name,menus`) and repeated params (`fields=name&fields=menus`).
       summary: Get Google Business food menus
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -33781,7 +35662,8 @@ paths:
     patch:
       description: Body requires `fields` (`menus`).
       summary: Update Google Business food menus
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.updateFoodMenus
       requestBody:
@@ -33953,7 +35835,8 @@ paths:
   /api/v1/misc/google-business/location/place-action-links:
     get:
       summary: List Google Business place action links
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -34129,7 +36012,8 @@ paths:
                   - message
     post:
       summary: Create Google Business place action link
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.createPlaceActionLink
       requestBody:
@@ -34316,7 +36200,8 @@ paths:
     patch:
       description: Body requires `fields` (`uri`, `placeActionType`, `isPreferred`).
       summary: Update Google Business place action link
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.updatePlaceActionLink
       requestBody:
@@ -34516,7 +36401,8 @@ paths:
                   - message
     delete:
       summary: Delete Google Business place action link
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.deletePlaceActionLink
       requestBody:
@@ -34670,7 +36556,8 @@ paths:
   /api/v1/misc/google-business/reviews/import:
     post:
       summary: Start a new Google Reviews import
-      tags: *ref_9
+      tags:
+        - misc
       parameters: []
       operationId: misc.google_business.importReviews
       requestBody:
@@ -34887,7 +36774,8 @@ paths:
                   - message
     get:
       summary: Get review import status list
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -35088,7 +36976,8 @@ paths:
   /api/v1/misc/google-business/reviews/import/{importId}:
     get:
       summary: Get review import by ID
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: importId
           in: path
@@ -35282,7 +37171,8 @@ paths:
   /api/v1/misc/google-business/reviews:
     get:
       summary: List imported Google Reviews
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -35516,7 +37406,8 @@ paths:
   /api/v1/misc/google-business/reviews/{reviewId}:
     get:
       summary: Get a single imported Google Review
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: reviewId
           in: path
@@ -35725,7 +37616,8 @@ paths:
   /api/v1/misc/google-business/reviews/{reviewId}/reply:
     put:
       summary: Reply to a Google Review (creates or updates the owner reply)
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: reviewId
           in: path
@@ -35944,7 +37836,8 @@ paths:
                   - message
     delete:
       summary: Delete the owner reply from a Google Review
-      tags: *ref_9
+      tags:
+        - misc
       parameters:
         - name: reviewId
           in: path
@@ -36159,9 +38052,8 @@ paths:
   /api/v1/misc/reddit/post-requirements:
     get:
       summary: Get subreddit post requirements (flair required/enabled)
-      tags: &ref_11
+      tags:
         - misc
-        - reddit
       parameters:
         - name: teamId
           in: query
@@ -36313,7 +38205,8 @@ paths:
   /api/v1/misc/reddit/subreddit-flairs:
     get:
       summary: Get subreddit flairs list
-      tags: *ref_11
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -36479,7 +38372,8 @@ paths:
         Update the selftext content of a published Reddit text post. Link and
         media posts cannot be edited.
       summary: Edit an existing Reddit post
-      tags: *ref_11
+      tags:
+        - misc
       parameters: []
       operationId: misc.reddit.editPost
       requestBody:
@@ -36642,7 +38536,8 @@ paths:
     delete:
       description: Permanently delete a published Reddit post.
       summary: Delete a Reddit post
-      tags: *ref_11
+      tags:
+        - misc
       parameters: []
       operationId: misc.reddit.deletePost
       requestBody:
@@ -36793,6 +38688,326 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/reddit/comment:
+    patch:
+      description: Update the text content of a published Reddit comment.
+      summary: Edit an existing Reddit comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.reddit.editComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+                text:
+                  type: string
+                  minLength: 1
+                  maxLength: 10000
+                  description: The updated comment text
+              required:
+                - teamId
+                - commentId
+                - text
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  permalink:
+                    type: string
+                    nullable: true
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      description: Permanently delete a published Reddit comment.
+      summary: Delete a Reddit comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.reddit.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/instagram/tags:
     get:
       description: >-
@@ -36801,9 +39016,8 @@ paths:
         Instagram is connected via Facebook Login. Returns followers_count,
         media_count, and profile picture if available.
       summary: Search for Instagram Business/Creator user by username
-      tags: &ref_12
+      tags:
         - misc
-        - instagram
       parameters:
         - name: teamId
           in: query
@@ -36995,7 +39209,8 @@ paths:
         Searches Facebook Pages with physical location data and returns IDs that
         can be used as data.INSTAGRAM.locationId.
       summary: Search Instagram location IDs
-      tags: *ref_12
+      tags:
+        - misc
       parameters:
         - name: teamId
           in: query
@@ -37194,15 +39409,170 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/instagram/comment:
+    delete:
+      description: Permanently delete a published Instagram comment.
+      summary: Delete an Instagram comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.instagram.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/facebook/post:
     patch:
       description: >-
         Update the message/content of a published Facebook post or reel. Note:
         Only text content can be edited, media cannot be changed.
       summary: Edit an existing Facebook post
-      tags: &ref_13
+      tags:
         - misc
-        - facebook
       parameters: []
       operationId: misc.facebook.editPost
       requestBody:
@@ -37362,7 +39732,8 @@ paths:
     delete:
       description: Permanently delete a published Facebook post or reel.
       summary: Delete a Facebook post
-      tags: *ref_13
+      tags:
+        - misc
       parameters: []
       operationId: misc.facebook.deletePost
       requestBody:
@@ -37513,14 +39884,333 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/facebook/comment:
+    patch:
+      description: Update the text content of a published Facebook comment.
+      summary: Edit a Facebook comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.facebook.editComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+                text:
+                  type: string
+                  minLength: 1
+                  maxLength: 8000
+                  description: The updated comment text
+              required:
+                - teamId
+                - commentId
+                - text
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  permalink:
+                    type: string
+                    nullable: true
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      description: Permanently delete a published Facebook comment.
+      summary: Delete a Facebook comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.facebook.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/pinterest/pin:
     patch:
       description: Temporarily disabled
       summary: '[DISABLED] Edit an existing Pinterest pin'
       deprecated: true
-      tags: &ref_14
+      tags:
         - misc
-        - pinterest
       parameters: []
       operationId: misc.pinterest.editPin
       requestBody:
@@ -37693,7 +40383,8 @@ paths:
     delete:
       description: Permanently delete a published Pinterest pin.
       summary: Delete a Pinterest pin
-      tags: *ref_14
+      tags:
+        - misc
       parameters: []
       operationId: misc.pinterest.deletePin
       requestBody:
@@ -37848,9 +40539,8 @@ paths:
     patch:
       description: Update the text content and spoiler text of a published Mastodon status.
       summary: Edit an existing Mastodon status
-      tags: &ref_15
+      tags:
         - misc
-        - mastodon
       parameters: []
       operationId: misc.mastodon.editStatus
       requestBody:
@@ -38014,7 +40704,8 @@ paths:
     delete:
       description: Permanently delete a published Mastodon status.
       summary: Delete a Mastodon status
-      tags: *ref_15
+      tags:
+        - misc
       parameters: []
       operationId: misc.mastodon.deleteStatus
       requestBody:
@@ -38165,13 +40856,336 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/mastodon/comment:
+    patch:
+      description: Update the text content of a published Mastodon reply/comment.
+      summary: Edit a Mastodon comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.mastodon.editComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+                text:
+                  type: string
+                  minLength: 1
+                  maxLength: 500
+                  description: The updated comment text
+                spoilerText:
+                  type: string
+                  maxLength: 500
+                  description: The updated spoiler/content warning text
+              required:
+                - teamId
+                - commentId
+                - text
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  permalink:
+                    type: string
+                    nullable: true
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    delete:
+      description: Permanently delete a published Mastodon reply/comment.
+      summary: Delete a Mastodon comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.mastodon.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/slack/message:
     patch:
       description: Update the text content of a published Slack message.
       summary: Edit an existing Slack message
-      tags: &ref_16
+      tags:
         - misc
-        - slack
       parameters: []
       operationId: misc.slack.editMessage
       requestBody:
@@ -38332,7 +41346,8 @@ paths:
     delete:
       description: Permanently delete a published Slack message.
       summary: Delete a Slack message
-      tags: *ref_16
+      tags:
+        - misc
       parameters: []
       operationId: misc.slack.deleteMessage
       requestBody:
@@ -38489,7 +41504,6 @@ paths:
       summary: Delete a Bluesky post
       tags:
         - misc
-        - bluesky
       parameters: []
       operationId: misc.bluesky.deletePost
       requestBody:
@@ -38640,13 +41654,168 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/bluesky/comment:
+    delete:
+      description: Permanently delete a published Bluesky reply/comment.
+      summary: Delete a Bluesky comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.bluesky.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/twitter/tweet:
     delete:
       description: Permanently delete a published Twitter/X tweet.
       summary: Delete a Twitter/X tweet
       tags:
         - misc
-        - twitter
       parameters: []
       operationId: misc.twitter.deleteTweet
       requestBody:
@@ -38803,7 +41972,6 @@ paths:
       summary: Delete a Discord message
       tags:
         - misc
-        - discord
       parameters: []
       operationId: misc.discord.deleteMessage
       requestBody:
@@ -38962,7 +42130,6 @@ paths:
       summary: Get popular tracks from TikTok Commercial Music Library
       tags:
         - misc
-        - tiktok
       parameters:
         - name: teamId
           in: query
@@ -39253,10 +42420,166 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/tiktok/comment:
+    delete:
+      description: Delete a published TikTok comment.
+      summary: Delete a TikTok comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.tiktok.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in Bundle Social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/post-history-import/:
     post:
       summary: Start a new post history import
-      tags: &ref_17
+      tags: &ref_8
         - postImport
       parameters: []
       operationId: postImport.create
@@ -39283,9 +42606,8 @@ paths:
                     - MASTODON
                     - BLUESKY
                 count:
-                  type: number
+                  type: integer
                   minimum: 1
-                  maximum: 100
                 withAnalytics:
                   default: true
                   type: boolean
@@ -39532,7 +42854,7 @@ paths:
                   - message
     get:
       summary: Get import status list
-      tags: *ref_17
+      tags: *ref_8
       parameters:
         - name: teamId
           in: query
@@ -39772,7 +43094,7 @@ paths:
   /api/v1/post-history-import/{importId}:
     get:
       summary: Get import by ID
-      tags: *ref_17
+      tags: *ref_8
       parameters:
         - name: importId
           in: path
@@ -39990,7 +43312,7 @@ paths:
   /api/v1/post-history-import/posts:
     get:
       summary: Get imported posts with analytics for a social account
-      tags: *ref_17
+      tags: *ref_8
       parameters:
         - name: teamId
           in: query
@@ -40305,7 +43627,7 @@ paths:
                   - message
     delete:
       summary: Bulk delete imported posts and their analytics
-      tags: *ref_17
+      tags: *ref_8
       parameters: []
       operationId: postImport.deleteImportedPosts
       requestBody:
@@ -40462,7 +43784,7 @@ paths:
   /api/v1/post-history-import/{importId}/retry:
     post:
       summary: Retry a failed import
-      tags: *ref_17
+      tags: *ref_8
       parameters:
         - name: importId
           in: path
@@ -40692,7 +44014,7 @@ paths:
     post:
       description: Upload CSV for async bulk post import.
       summary: Create post CSV import
-      tags: &ref_18
+      tags: &ref_9
         - postCSV
       parameters: []
       operationId: postCSV.create
@@ -40902,7 +44224,7 @@ paths:
                   - message
     get:
       summary: Get post CSV import history
-      tags: *ref_18
+      tags: *ref_9
       parameters:
         - name: offset
           in: query
@@ -41123,7 +44445,7 @@ paths:
   /api/v1/post-csv-import/{importId}:
     get:
       summary: Get post CSV import details
-      tags: *ref_18
+      tags: *ref_9
       parameters:
         - name: importId
           in: path
@@ -41327,7 +44649,7 @@ paths:
   /api/v1/post-csv-import/{importId}/status:
     get:
       summary: Get post CSV import processing status
-      tags: *ref_18
+      tags: *ref_9
       parameters:
         - name: importId
           in: path
@@ -41509,7 +44831,7 @@ paths:
   /api/v1/post-csv-import/{importId}/rows:
     get:
       summary: Get post CSV import row results
-      tags: *ref_18
+      tags: *ref_9
       parameters:
         - name: importId
           in: path
@@ -41733,3 +45055,15 @@ components:
       in: header
 security:
   - ApiKeyAuth: []
+tags:
+  - name: app
+  - name: organization
+  - name: team
+  - name: socialAccount
+  - name: upload
+  - name: post
+  - name: postImport
+  - name: analytics
+  - name: comment
+  - name: misc
+  - name: postCSV

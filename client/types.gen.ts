@@ -28,9 +28,25 @@ export type OrganizationGetOrganizationResponse = {
         BLUESKY?: number;
         GOOGLE_BUSINESS?: number;
     } | null;
+    dailyCommentLimit?: {
+        TWITTER?: number;
+        FACEBOOK?: number;
+        INSTAGRAM?: number;
+        LINKEDIN?: number;
+        YOUTUBE?: number;
+        TIKTOK?: number;
+        THREADS?: number;
+        PINTEREST?: number;
+        REDDIT?: number;
+        DISCORD?: number;
+        SLACK?: number;
+        MASTODON?: number;
+        BLUESKY?: number;
+        GOOGLE_BUSINESS?: number;
+    } | null;
     monthlyImportLimitPerAccount?: number | null;
+    commentImportLimitPerPost?: number | null;
     monthlyReviewImportLimitPerAccount?: number | null;
-    reviewImportRequestLimitPerAccount?: number | null;
     apiAccess: boolean;
     analyticsDisabled: boolean;
     analyticsPostsDisabled: boolean;
@@ -82,6 +98,7 @@ export type OrganizationGetOrganizationResponse = {
         trialStart?: string | null;
         trialEnd?: string | null;
         maxMonthlyPosts?: number | null;
+        maxMonthlyComments?: number | null;
         maxMonthlyUploads?: number | null;
         maxMonthlyImportedPosts?: number | null;
         discountStart?: string | null;
@@ -161,9 +178,6 @@ export type OrganizationGetOrganizationResponse = {
             updatedAt: string | null;
         };
     } | null;
-    usage: {
-        monthlyPosts: number;
-    };
     teams: Array<{
         id: string;
         name: string;
@@ -177,6 +191,12 @@ export type OrganizationGetOrganizationResponse = {
 };
 
 export type OrganizationGetPostsUsageResponse = {
+    used: number;
+    limit: number;
+    remaining: number;
+};
+
+export type OrganizationGetCommentsUsageResponse = {
     used: number;
     limit: number;
     remaining: number;
@@ -251,9 +271,25 @@ export type TeamGetTeamResponse = {
             BLUESKY?: number;
             GOOGLE_BUSINESS?: number;
         } | null;
+        dailyCommentLimit?: {
+            TWITTER?: number;
+            FACEBOOK?: number;
+            INSTAGRAM?: number;
+            LINKEDIN?: number;
+            YOUTUBE?: number;
+            TIKTOK?: number;
+            THREADS?: number;
+            PINTEREST?: number;
+            REDDIT?: number;
+            DISCORD?: number;
+            SLACK?: number;
+            MASTODON?: number;
+            BLUESKY?: number;
+            GOOGLE_BUSINESS?: number;
+        } | null;
         monthlyImportLimitPerAccount?: number | null;
+        commentImportLimitPerPost?: number | null;
         monthlyReviewImportLimitPerAccount?: number | null;
-        reviewImportRequestLimitPerAccount?: number | null;
         apiAccess: boolean;
         analyticsDisabled: boolean;
         analyticsPostsDisabled: boolean;
@@ -443,9 +479,25 @@ export type TeamGetListResponse = {
                 BLUESKY?: number;
                 GOOGLE_BUSINESS?: number;
             } | null;
+            dailyCommentLimit?: {
+                TWITTER?: number;
+                FACEBOOK?: number;
+                INSTAGRAM?: number;
+                LINKEDIN?: number;
+                YOUTUBE?: number;
+                TIKTOK?: number;
+                THREADS?: number;
+                PINTEREST?: number;
+                REDDIT?: number;
+                DISCORD?: number;
+                SLACK?: number;
+                MASTODON?: number;
+                BLUESKY?: number;
+                GOOGLE_BUSINESS?: number;
+            } | null;
             monthlyImportLimitPerAccount?: number | null;
+            commentImportLimitPerPost?: number | null;
             monthlyReviewImportLimitPerAccount?: number | null;
-            reviewImportRequestLimitPerAccount?: number | null;
             apiAccess: boolean;
             analyticsDisabled: boolean;
             analyticsPostsDisabled: boolean;
@@ -7171,6 +7223,118 @@ export type AnalyticsForcePostAnalyticsResponse = {
     deletedAt?: string | null;
 };
 
+export type CommentImportCreateData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        postId: string;
+        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+    };
+};
+
+export type CommentImportCreateResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    socialAccountId: string;
+    postId: string;
+    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+    status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
+    commentsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+};
+
+export type CommentImportGetListData = {
+    limit?: number | null;
+    offset?: number | null;
+    postId?: string;
+    status?: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
+    teamId: string;
+};
+
+export type CommentImportGetListResponse = {
+    imports: Array<{
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        socialAccountId: string;
+        postId: string;
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+        status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
+        commentsImported: number;
+        error?: string | null;
+        rateLimitResetAt?: string | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+    }>;
+};
+
+export type CommentImportGetFetchedCommentsData = {
+    limit?: number | null;
+    offset?: number | null;
+    platform?: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+    postId: string;
+    socialAccountId?: string;
+    teamId: string;
+};
+
+export type CommentImportGetFetchedCommentsResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        postId: string;
+        socialAccountId: string;
+        importId: string;
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+        externalId: string;
+        externalParentId?: string | null;
+        externalPostId?: string | null;
+        authorName?: string | null;
+        authorExternalId?: string | null;
+        authorProfileUrl?: string | null;
+        authorAvatarUrl?: string | null;
+        text?: string | null;
+        likesCount: number;
+        repliesCount: number;
+        publishedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+    total: number;
+};
+
+export type CommentImportGetByIdData = {
+    importId: string;
+};
+
+export type CommentImportGetByIdResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    socialAccountId: string;
+    postId: string;
+    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+    status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
+    commentsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+};
+
 export type CommentGetData = {
     id: string;
 };
@@ -7181,6 +7345,7 @@ export type CommentGetResponse = {
     organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
+    fetchedParentCommentId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -7394,6 +7559,7 @@ export type CommentUpdateData = {
         title?: string;
         internalPostId?: string;
         internalParentCommentId?: string | null;
+        fetchedParentCommentId?: string | null;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
         socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
@@ -7432,6 +7598,7 @@ export type CommentUpdateData = {
                 text?: string | null;
             } | null;
         };
+        text?: string;
     };
 };
 
@@ -7441,6 +7608,7 @@ export type CommentUpdateResponse = {
     organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
+    fetchedParentCommentId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -7655,6 +7823,7 @@ export type CommentDeleteResponse = {
     organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
+    fetchedParentCommentId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -7878,6 +8047,7 @@ export type CommentGetListResponse = {
         organizationId?: string | null;
         internalPostId: string;
         internalParentCommentId?: string | null;
+        fetchedParentCommentId?: string | null;
         title: string;
         postDate: string | null;
         postedDate?: string | null;
@@ -8090,13 +8260,14 @@ export type CommentCreateData = {
      */
     requestBody?: {
         teamId: string;
-        title: string;
-        internalPostId: string;
+        title?: string;
+        internalPostId?: string;
         internalParentCommentId?: string | null;
-        postDate: string;
-        status: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
-        data: {
+        fetchedParentCommentId?: string | null;
+        postDate?: string;
+        status?: 'DRAFT' | 'SCHEDULED';
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
+        data?: {
             FACEBOOK?: {
                 text?: string | null;
             } | null;
@@ -8131,6 +8302,7 @@ export type CommentCreateData = {
                 text?: string | null;
             } | null;
         };
+        text?: string;
     };
 };
 
@@ -8140,6 +8312,7 @@ export type CommentCreateResponse = {
     organizationId?: string | null;
     internalPostId: string;
     internalParentCommentId?: string | null;
+    fetchedParentCommentId?: string | null;
     title: string;
     postDate: string | null;
     postedDate?: string | null;
@@ -8791,6 +8964,45 @@ export type MiscYoutubeDeleteVideoResponse = {
     success: boolean;
 };
 
+export type MiscYoutubeEditCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+        /**
+         * The updated comment text
+         */
+        text: string;
+    };
+};
+
+export type MiscYoutubeEditCommentResponse = {
+    success: boolean;
+    permalink?: string | null;
+};
+
+export type MiscYoutubeDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscYoutubeDeleteCommentResponse = {
+    success: boolean;
+};
+
 export type MiscYoutubeGetVideoCategoriesData = {
     /**
      * ISO 3166-1 alpha-2 country code (e.g., 'US', 'GB', 'PL'). Defaults to 'US'
@@ -8908,6 +9120,45 @@ export type MiscLinkedinDeletePostData = {
 };
 
 export type MiscLinkedinDeletePostResponse = {
+    success: boolean;
+};
+
+export type MiscLinkedinEditCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+        /**
+         * The updated comment text
+         */
+        text: string;
+    };
+};
+
+export type MiscLinkedinEditCommentResponse = {
+    success: boolean;
+    permalink?: string | null;
+};
+
+export type MiscLinkedinDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscLinkedinDeleteCommentResponse = {
     success: boolean;
 };
 
@@ -9680,6 +9931,45 @@ export type MiscRedditDeletePostResponse = {
     success: boolean;
 };
 
+export type MiscRedditEditCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+        /**
+         * The updated comment text
+         */
+        text: string;
+    };
+};
+
+export type MiscRedditEditCommentResponse = {
+    success: boolean;
+    permalink?: string | null;
+};
+
+export type MiscRedditDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscRedditDeleteCommentResponse = {
+    success: boolean;
+};
+
 export type MiscInstagramBusinessDiscoveryData = {
     teamId: string;
     /**
@@ -9766,6 +10056,23 @@ export type MiscInstagramSearchLocationsResponse = {
     }>;
 };
 
+export type MiscInstagramDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscInstagramDeleteCommentResponse = {
+    success: boolean;
+};
+
 export type MiscFacebookEditPostData = {
     /**
      * Body
@@ -9802,6 +10109,45 @@ export type MiscFacebookDeletePostData = {
 };
 
 export type MiscFacebookDeletePostResponse = {
+    success: boolean;
+};
+
+export type MiscFacebookEditCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+        /**
+         * The updated comment text
+         */
+        text: string;
+    };
+};
+
+export type MiscFacebookEditCommentResponse = {
+    success: boolean;
+    permalink?: string | null;
+};
+
+export type MiscFacebookDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscFacebookDeleteCommentResponse = {
     success: boolean;
 };
 
@@ -9903,6 +10249,49 @@ export type MiscMastodonDeleteStatusResponse = {
     success: boolean;
 };
 
+export type MiscMastodonEditCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+        /**
+         * The updated comment text
+         */
+        text: string;
+        /**
+         * The updated spoiler/content warning text
+         */
+        spoilerText?: string;
+    };
+};
+
+export type MiscMastodonEditCommentResponse = {
+    success: boolean;
+    permalink?: string | null;
+};
+
+export type MiscMastodonDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscMastodonDeleteCommentResponse = {
+    success: boolean;
+};
+
 export type MiscSlackEditMessageData = {
     /**
      * Body
@@ -9956,6 +10345,23 @@ export type MiscBlueskyDeletePostData = {
 };
 
 export type MiscBlueskyDeletePostResponse = {
+    success: boolean;
+};
+
+export type MiscBlueskyDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscBlueskyDeleteCommentResponse = {
     success: boolean;
 };
 
@@ -10076,6 +10482,23 @@ export type MiscTiktokGetCommercialMusicTrendingListResponse = Array<{
         song_clip_id: string;
     } | null;
 }>;
+
+export type MiscTiktokDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in Bundle Social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscTiktokDeleteCommentResponse = {
+    success: boolean;
+};
 
 export type PostImportCreateData = {
     /**
@@ -10472,9 +10895,25 @@ export type $OpenApiTs = {
                         BLUESKY?: number;
                         GOOGLE_BUSINESS?: number;
                     } | null;
+                    dailyCommentLimit?: {
+                        TWITTER?: number;
+                        FACEBOOK?: number;
+                        INSTAGRAM?: number;
+                        LINKEDIN?: number;
+                        YOUTUBE?: number;
+                        TIKTOK?: number;
+                        THREADS?: number;
+                        PINTEREST?: number;
+                        REDDIT?: number;
+                        DISCORD?: number;
+                        SLACK?: number;
+                        MASTODON?: number;
+                        BLUESKY?: number;
+                        GOOGLE_BUSINESS?: number;
+                    } | null;
                     monthlyImportLimitPerAccount?: number | null;
+                    commentImportLimitPerPost?: number | null;
                     monthlyReviewImportLimitPerAccount?: number | null;
-                    reviewImportRequestLimitPerAccount?: number | null;
                     apiAccess: boolean;
                     analyticsDisabled: boolean;
                     analyticsPostsDisabled: boolean;
@@ -10526,6 +10965,7 @@ export type $OpenApiTs = {
                         trialStart?: string | null;
                         trialEnd?: string | null;
                         maxMonthlyPosts?: number | null;
+                        maxMonthlyComments?: number | null;
                         maxMonthlyUploads?: number | null;
                         maxMonthlyImportedPosts?: number | null;
                         discountStart?: string | null;
@@ -10605,9 +11045,6 @@ export type $OpenApiTs = {
                             updatedAt: string | null;
                         };
                     } | null;
-                    usage: {
-                        monthlyPosts: number;
-                    };
                     teams: Array<{
                         id: string;
                         name: string;
@@ -10669,6 +11106,67 @@ export type $OpenApiTs = {
         };
     };
     '/api/v1/organization/usage/posts': {
+        get: {
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    used: number;
+                    limit: number;
+                    remaining: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/organization/usage/comments': {
         get: {
             res: {
                 /**
@@ -10904,9 +11402,25 @@ export type $OpenApiTs = {
                             BLUESKY?: number;
                             GOOGLE_BUSINESS?: number;
                         } | null;
+                        dailyCommentLimit?: {
+                            TWITTER?: number;
+                            FACEBOOK?: number;
+                            INSTAGRAM?: number;
+                            LINKEDIN?: number;
+                            YOUTUBE?: number;
+                            TIKTOK?: number;
+                            THREADS?: number;
+                            PINTEREST?: number;
+                            REDDIT?: number;
+                            DISCORD?: number;
+                            SLACK?: number;
+                            MASTODON?: number;
+                            BLUESKY?: number;
+                            GOOGLE_BUSINESS?: number;
+                        } | null;
                         monthlyImportLimitPerAccount?: number | null;
+                        commentImportLimitPerPost?: number | null;
                         monthlyReviewImportLimitPerAccount?: number | null;
-                        reviewImportRequestLimitPerAccount?: number | null;
                         apiAccess: boolean;
                         analyticsDisabled: boolean;
                         analyticsPostsDisabled: boolean;
@@ -11238,9 +11752,25 @@ export type $OpenApiTs = {
                                 BLUESKY?: number;
                                 GOOGLE_BUSINESS?: number;
                             } | null;
+                            dailyCommentLimit?: {
+                                TWITTER?: number;
+                                FACEBOOK?: number;
+                                INSTAGRAM?: number;
+                                LINKEDIN?: number;
+                                YOUTUBE?: number;
+                                TIKTOK?: number;
+                                THREADS?: number;
+                                PINTEREST?: number;
+                                REDDIT?: number;
+                                DISCORD?: number;
+                                SLACK?: number;
+                                MASTODON?: number;
+                                BLUESKY?: number;
+                                GOOGLE_BUSINESS?: number;
+                            } | null;
                             monthlyImportLimitPerAccount?: number | null;
+                            commentImportLimitPerPost?: number | null;
                             monthlyReviewImportLimitPerAccount?: number | null;
-                            reviewImportRequestLimitPerAccount?: number | null;
                             apiAccess: boolean;
                             analyticsDisabled: boolean;
                             analyticsPostsDisabled: boolean;
@@ -18835,6 +19365,315 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/comment/import': {
+        post: {
+            req: CommentImportCreateData;
+            res: {
+                /**
+                 * 201
+                 */
+                201: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    socialAccountId: string;
+                    postId: string;
+                    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                    status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
+                    commentsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 409
+                 */
+                409: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        get: {
+            req: CommentImportGetListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    imports: Array<{
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        socialAccountId: string;
+                        postId: string;
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                        status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
+                        commentsImported: number;
+                        error?: string | null;
+                        rateLimitResetAt?: string | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/comment/import/comments': {
+        get: {
+            req: CommentImportGetFetchedCommentsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        postId: string;
+                        socialAccountId: string;
+                        importId: string;
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                        externalId: string;
+                        externalParentId?: string | null;
+                        externalPostId?: string | null;
+                        authorName?: string | null;
+                        authorExternalId?: string | null;
+                        authorProfileUrl?: string | null;
+                        authorAvatarUrl?: string | null;
+                        text?: string | null;
+                        likesCount: number;
+                        repliesCount: number;
+                        publishedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/comment/import/{importId}': {
+        get: {
+            req: CommentImportGetByIdData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    socialAccountId: string;
+                    postId: string;
+                    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                    status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
+                    commentsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/comment/{id}': {
         get: {
             req: CommentGetData;
@@ -18848,6 +19687,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
+                    fetchedParentCommentId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -19112,6 +19952,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
+                    fetchedParentCommentId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -19376,6 +20217,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
+                    fetchedParentCommentId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -19643,6 +20485,7 @@ export type $OpenApiTs = {
                         organizationId?: string | null;
                         internalPostId: string;
                         internalParentCommentId?: string | null;
+                        fetchedParentCommentId?: string | null;
                         title: string;
                         postDate: string | null;
                         postedDate?: string | null;
@@ -19909,6 +20752,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId: string;
                     internalParentCommentId?: string | null;
+                    fetchedParentCommentId?: string | null;
                     title: string;
                     postDate: string | null;
                     postedDate?: string | null;
@@ -21031,6 +21875,125 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/misc/youtube/comment': {
+        patch: {
+            req: MiscYoutubeEditCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscYoutubeDeleteCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/misc/youtube/video-categories': {
         get: {
             req: MiscYoutubeGetVideoCategoriesData;
@@ -21367,6 +22330,125 @@ export type $OpenApiTs = {
         };
         delete: {
             req: MiscLinkedinDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/linkedin/comment': {
+        patch: {
+            req: MiscLinkedinEditCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscLinkedinDeleteCommentData;
             res: {
                 /**
                  * 200
@@ -23409,6 +24491,125 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/misc/reddit/comment': {
+        patch: {
+            req: MiscRedditEditCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscRedditDeleteCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/misc/instagram/tags': {
         get: {
             req: MiscInstagramBusinessDiscoveryData;
@@ -23590,6 +24791,66 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/misc/instagram/comment': {
+        delete: {
+            req: MiscInstagramDeleteCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/misc/facebook/post': {
         patch: {
             req: MiscFacebookEditPostData;
@@ -23652,6 +24913,125 @@ export type $OpenApiTs = {
         };
         delete: {
             req: MiscFacebookDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/comment': {
+        patch: {
+            req: MiscFacebookEditCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscFacebookDeleteCommentData;
             res: {
                 /**
                  * 200
@@ -23947,6 +25327,125 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/misc/mastodon/comment': {
+        patch: {
+            req: MiscMastodonEditCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    permalink?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscMastodonDeleteCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/misc/slack/message': {
         patch: {
             req: MiscSlackEditMessageData;
@@ -24069,6 +25568,66 @@ export type $OpenApiTs = {
     '/api/v1/misc/bluesky/post': {
         delete: {
             req: MiscBlueskyDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/bluesky/comment': {
+        delete: {
+            req: MiscBlueskyDeleteCommentData;
             res: {
                 /**
                  * 200
@@ -24324,6 +25883,66 @@ export type $OpenApiTs = {
                         song_clip_id: string;
                     } | null;
                 }>;
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/tiktok/comment': {
+        delete: {
+            req: MiscTiktokDeleteCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
                 /**
                  * 400
                  */

@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetCommentsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentImportCreateData, CommentImportCreateResponse, CommentImportGetListData, CommentImportGetListResponse, CommentImportGetFetchedCommentsData, CommentImportGetFetchedCommentsResponse, CommentImportGetByIdData, CommentImportGetByIdResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeEditCommentData, MiscYoutubeEditCommentResponse, MiscYoutubeDeleteCommentData, MiscYoutubeDeleteCommentResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscLinkedinEditCommentData, MiscLinkedinEditCommentResponse, MiscLinkedinDeleteCommentData, MiscLinkedinDeleteCommentResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscRedditEditCommentData, MiscRedditEditCommentResponse, MiscRedditDeleteCommentData, MiscRedditDeleteCommentResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscInstagramDeleteCommentData, MiscInstagramDeleteCommentResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscFacebookEditCommentData, MiscFacebookEditCommentResponse, MiscFacebookDeleteCommentData, MiscFacebookDeleteCommentResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscMastodonEditCommentData, MiscMastodonEditCommentResponse, MiscMastodonDeleteCommentData, MiscMastodonDeleteCommentResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscBlueskyDeleteCommentData, MiscBlueskyDeleteCommentResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, MiscTiktokDeleteCommentData, MiscTiktokDeleteCommentResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -61,6 +61,26 @@ export class OrganizationService {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/v1/organization/usage/posts',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get organization comments usage
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public organizationGetCommentsUsage(): CancelablePromise<OrganizationGetCommentsUsageResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/organization/usage/comments',
             errors: {
                 400: '400',
                 401: '401',
@@ -516,7 +536,7 @@ export class SocialAccountService {
     }
     
     /**
-     * Get paginated social accounts to delete
+     * Get paginated social accounts scheduled to delete
      * @param data The data for the request.
      * @param data.page
      * @param data.pageSize
@@ -1127,6 +1147,124 @@ export class CommentService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
     
     /**
+     * Start a new comment import for a post
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 201
+     * @throws ApiError
+     */
+    public commentImportCreate(data: CommentImportCreateData = {}): CancelablePromise<CommentImportCreateResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/comment/import',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                409: '409',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get comment import list
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.postId
+     * @param data.status
+     * @param data.offset
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentImportGetList(data: CommentImportGetListData): CancelablePromise<CommentImportGetListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/comment/import',
+            query: {
+                teamId: data.teamId,
+                postId: data.postId,
+                status: data.status,
+                offset: data.offset,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get fetched comments for a post
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.postId
+     * @param data.platform
+     * @param data.socialAccountId
+     * @param data.offset
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentImportGetFetchedComments(data: CommentImportGetFetchedCommentsData): CancelablePromise<CommentImportGetFetchedCommentsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/comment/import/comments',
+            query: {
+                teamId: data.teamId,
+                postId: data.postId,
+                platform: data.platform,
+                socialAccountId: data.socialAccountId,
+                offset: data.offset,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Get comment import by ID
+     * @param data The data for the request.
+     * @param data.importId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentImportGetById(data: CommentImportGetByIdData): CancelablePromise<CommentImportGetByIdResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/comment/import/{importId}',
+            path: {
+                importId: data.importId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Get comment
      * @param data The data for the request.
      * @param data.id
@@ -1535,6 +1673,56 @@ export class MiscService {
     }
     
     /**
+     * Edit YouTube comment
+     * Update the text content of a published YouTube comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeEditComment(data: MiscYoutubeEditCommentData = {}): CancelablePromise<MiscYoutubeEditCommentResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/youtube/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a YouTube comment
+     * Permanently delete a published YouTube comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscYoutubeDeleteComment(data: MiscYoutubeDeleteCommentData = {}): CancelablePromise<MiscYoutubeDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/youtube/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Get YouTube video categories
      * Retrieve the list of video categories that can be associated with YouTube videos for a specific region.
      * @param data The data for the request.
@@ -1679,6 +1867,56 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/linkedin/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit an existing LinkedIn comment
+     * Update the text content of a published LinkedIn comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinEditComment(data: MiscLinkedinEditCommentData = {}): CancelablePromise<MiscLinkedinEditCommentResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/linkedin/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a LinkedIn comment
+     * Permanently delete a published LinkedIn comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscLinkedinDeleteComment(data: MiscLinkedinDeleteCommentData = {}): CancelablePromise<MiscLinkedinDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/linkedin/comment',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -2491,6 +2729,56 @@ export class MiscService {
     }
     
     /**
+     * Edit an existing Reddit comment
+     * Update the text content of a published Reddit comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscRedditEditComment(data: MiscRedditEditCommentData = {}): CancelablePromise<MiscRedditEditCommentResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/reddit/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Reddit comment
+     * Permanently delete a published Reddit comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscRedditDeleteComment(data: MiscRedditDeleteCommentData = {}): CancelablePromise<MiscRedditDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/reddit/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Search for Instagram Business/Creator user by username
      * Checks if an Instagram user exists and returns their public profile data. Only works for Business and Creator accounts and only when Instagram is connected via Facebook Login. Returns followers_count, media_count, and profile picture if available.
      * @param data The data for the request.
@@ -2549,6 +2837,31 @@ export class MiscService {
     }
     
     /**
+     * Delete an Instagram comment
+     * Permanently delete a published Instagram comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscInstagramDeleteComment(data: MiscInstagramDeleteCommentData = {}): CancelablePromise<MiscInstagramDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/instagram/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Edit an existing Facebook post
      * Update the message/content of a published Facebook post or reel. Note: Only text content can be edited, media cannot be changed.
      * @param data The data for the request.
@@ -2585,6 +2898,56 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/facebook/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Edit a Facebook comment
+     * Update the text content of a published Facebook comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscFacebookEditComment(data: MiscFacebookEditCommentData = {}): CancelablePromise<MiscFacebookEditCommentResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/facebook/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Facebook comment
+     * Permanently delete a published Facebook comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscFacebookDeleteComment(data: MiscFacebookDeleteCommentData = {}): CancelablePromise<MiscFacebookDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/facebook/comment',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -2700,6 +3063,56 @@ export class MiscService {
     }
     
     /**
+     * Edit a Mastodon comment
+     * Update the text content of a published Mastodon reply/comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscMastodonEditComment(data: MiscMastodonEditCommentData = {}): CancelablePromise<MiscMastodonEditCommentResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/misc/mastodon/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Mastodon comment
+     * Permanently delete a published Mastodon reply/comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscMastodonDeleteComment(data: MiscMastodonDeleteCommentData = {}): CancelablePromise<MiscMastodonDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/mastodon/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
      * Edit an existing Slack message
      * Update the text content of a published Slack message.
      * @param data The data for the request.
@@ -2761,6 +3174,31 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/bluesky/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Bluesky comment
+     * Permanently delete a published Bluesky reply/comment.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscBlueskyDeleteComment(data: MiscBlueskyDeleteCommentData = {}): CancelablePromise<MiscBlueskyDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/bluesky/comment',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -2854,1640 +3292,20 @@ export class MiscService {
         });
     }
     
-}
-
-export class YoutubeService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
     /**
-     * Set or change thumbnail for a YouTube video
+     * Delete a TikTok comment
+     * Delete a published TikTok comment.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
      * @throws ApiError
      */
-    public miscYoutubeSetThumbnail(data: MiscYoutubeSetThumbnailData = {}): CancelablePromise<MiscYoutubeSetThumbnailResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/misc/youtube/thumbnail',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get channel playlists
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.maxResults
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeGetChannelPlaylist(data: MiscYoutubeGetChannelPlaylistData): CancelablePromise<MiscYoutubeGetChannelPlaylistResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/youtube/playlist',
-            query: {
-                teamId: data.teamId,
-                maxResults: data.maxResults
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Create a new playlist
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeCreateNewChannelPlaylist(data: MiscYoutubeCreateNewChannelPlaylistData = {}): CancelablePromise<MiscYoutubeCreateNewChannelPlaylistResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/misc/youtube/playlist',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Update an existing playlist
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeUpdateChannelPlaylist(data: MiscYoutubeUpdateChannelPlaylistData = {}): CancelablePromise<MiscYoutubeUpdateChannelPlaylistResponse> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/v1/misc/youtube/playlist',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Remove a video from a playlist
-     * @param data The data for the request.
-     * @param data.playlistId
-     * @param data.teamId
-     * @returns boolean 200
-     * @throws ApiError
-     */
-    public miscYoutubeDeleteChannelPlaylist(data: MiscYoutubeDeleteChannelPlaylistData): CancelablePromise<MiscYoutubeDeleteChannelPlaylistResponse> {
+    public miscTiktokDeleteComment(data: MiscTiktokDeleteCommentData = {}): CancelablePromise<MiscTiktokDeleteCommentResponse> {
         return this.httpRequest.request({
             method: 'DELETE',
-            url: '/api/v1/misc/youtube/playlist/{playlistId}',
-            path: {
-                playlistId: data.playlistId
-            },
-            query: {
-                teamId: data.teamId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Add a video to a playlist
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeAddVideoToPlaylist(data: MiscYoutubeAddVideoToPlaylistData = {}): CancelablePromise<MiscYoutubeAddVideoToPlaylistResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/misc/youtube/playlist-items',
+            url: '/api/v1/misc/tiktok/comment',
             body: data.requestBody,
             mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get videos from a playlist
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.playlistId
-     * @param data.maxResults
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeGetVideosFromPlaylist(data: MiscYoutubeGetVideosFromPlaylistData): CancelablePromise<MiscYoutubeGetVideosFromPlaylistResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/youtube/playlist-items',
-            query: {
-                teamId: data.teamId,
-                playlistId: data.playlistId,
-                maxResults: data.maxResults
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Remove a video from a playlist
-     * @param data The data for the request.
-     * @param data.playlistItemId Playlist item ID (not video ID)
-     * @param data.teamId
-     * @returns boolean 200
-     * @throws ApiError
-     */
-    public miscYoutubeDeleteVideoFromPlaylist(data: MiscYoutubeDeleteVideoFromPlaylistData): CancelablePromise<MiscYoutubeDeleteVideoFromPlaylistResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/youtube/playlist-items/{playlistItemId}',
-            path: {
-                playlistItemId: data.playlistItemId
-            },
-            query: {
-                teamId: data.teamId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Edit YouTube video metadata
-     * Update the title, description, tags, category, or privacy status of a published YouTube video.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeEditVideo(data: MiscYoutubeEditVideoData = {}): CancelablePromise<MiscYoutubeEditVideoResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/youtube/video',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a YouTube video
-     * Permanently delete a published YouTube video.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeDeleteVideo(data: MiscYoutubeDeleteVideoData = {}): CancelablePromise<MiscYoutubeDeleteVideoResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/youtube/video',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get YouTube video categories
-     * Retrieve the list of video categories that can be associated with YouTube videos for a specific region.
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.regionCode ISO 3166-1 alpha-2 country code (e.g., 'US', 'GB', 'PL'). Defaults to 'US'
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeGetVideoCategories(data: MiscYoutubeGetVideoCategoriesData): CancelablePromise<MiscYoutubeGetVideoCategoriesResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/youtube/video-categories',
-            query: {
-                teamId: data.teamId,
-                regionCode: data.regionCode
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get YouTube regions
-     * Retrieve the list of content regions that the YouTube website supports.
-     * @param data The data for the request.
-     * @param data.teamId
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscYoutubeGetRegions(data: MiscYoutubeGetRegionsData): CancelablePromise<MiscYoutubeGetRegionsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/youtube/regions',
-            query: {
-                teamId: data.teamId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class LinkedinService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Get Linkedin mentionable tags (people & organizations)
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.q
-     * @param data.scope
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscLinkedinGetTags(data: MiscLinkedinGetTagsData): CancelablePromise<MiscLinkedinGetTagsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/linkedin/mentions/tags',
-            query: {
-                teamId: data.teamId,
-                q: data.q,
-                scope: data.scope
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Build Linkedin text, insert mentions at tag placeholders.
-     * If tag already exists (case insensitive), mentions replace it; otherwise they're appended to the end.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscLinkedinBuildCommentary(data: MiscLinkedinBuildCommentaryData = {}): CancelablePromise<MiscLinkedinBuildCommentaryResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/misc/linkedin/mentions/builder',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Edit an existing LinkedIn post
-     * Update the text content of a published LinkedIn post.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscLinkedinEditPost(data: MiscLinkedinEditPostData = {}): CancelablePromise<MiscLinkedinEditPostResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/linkedin/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a LinkedIn post
-     * Permanently delete a published LinkedIn post.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscLinkedinDeletePost(data: MiscLinkedinDeletePostData = {}): CancelablePromise<MiscLinkedinDeletePostResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/linkedin/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class GoogleBusinessService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Add a media item (photo/video) using uploadId and category
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessAddMedia(data: MiscGoogleBusinessAddMediaData = {}): CancelablePromise<MiscGoogleBusinessAddMediaResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/misc/google-business/media',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * List Google Business media items
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.pageSize
-     * @param data.pageToken
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessListMedia(data: MiscGoogleBusinessListMediaData): CancelablePromise<MiscGoogleBusinessListMediaResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/media',
-            query: {
-                teamId: data.teamId,
-                pageSize: data.pageSize,
-                pageToken: data.pageToken
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete Google Business media item
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessDeleteMedia(data: MiscGoogleBusinessDeleteMediaData = {}): CancelablePromise<MiscGoogleBusinessDeleteMediaResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/google-business/media',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a Google Business post
-     * Permanently delete a published Google Business post.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessDeletePost(data: MiscGoogleBusinessDeletePostData = {}): CancelablePromise<MiscGoogleBusinessDeletePostResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/google-business/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get Google Business location profile
-     * Use typed query param `fields`. Supports both comma-separated values (`fields=name,title`) and repeated params (`fields=name&fields=title`).
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.fields
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetLocation(data: MiscGoogleBusinessGetLocationData): CancelablePromise<MiscGoogleBusinessGetLocationResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/location',
-            query: {
-                teamId: data.teamId,
-                fields: data.fields
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Update Google Business location profile fields
-     * Field mask is derived automatically from provided fields.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessUpdateLocation(data: MiscGoogleBusinessUpdateLocationData = {}): CancelablePromise<MiscGoogleBusinessUpdateLocationResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/google-business/location',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Update Google Business regular/special/more hours
-     * Body requires `fields` (`regularHours`, `specialHours`, `moreHours`).
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessUpdateHours(data: MiscGoogleBusinessUpdateHoursData = {}): CancelablePromise<MiscGoogleBusinessUpdateHoursResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/google-business/location/hours',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get Google Business location attributes
-     * @param data The data for the request.
-     * @param data.teamId
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetAttributes(data: MiscGoogleBusinessGetAttributesData): CancelablePromise<MiscGoogleBusinessGetAttributesResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/location/attributes',
-            query: {
-                teamId: data.teamId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Update Google Business location attributes
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessUpdateAttributes(data: MiscGoogleBusinessUpdateAttributesData = {}): CancelablePromise<MiscGoogleBusinessUpdateAttributesResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/google-business/location/attributes',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * List available Google Business attributes
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.languageCode
-     * @param data.regionCode
-     * @param data.pageSize
-     * @param data.pageToken
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessListAvailableAttributes(data: MiscGoogleBusinessListAvailableAttributesData): CancelablePromise<MiscGoogleBusinessListAvailableAttributesResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/location/attributes/available',
-            query: {
-                teamId: data.teamId,
-                languageCode: data.languageCode,
-                regionCode: data.regionCode,
-                pageSize: data.pageSize,
-                pageToken: data.pageToken
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * List available Google Business categories
-     * Requires `regionCode` and `languageCode`. Default `view=BASIC`. Page size is fixed at 50. Optional `filter` supports `displayName` prefix search.
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.regionCode
-     * @param data.languageCode
-     * @param data.filter
-     * @param data.pageSize
-     * @param data.pageToken
-     * @param data.view
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessListCategories(data: MiscGoogleBusinessListCategoriesData): CancelablePromise<MiscGoogleBusinessListCategoriesResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/location/categories/available',
-            query: {
-                teamId: data.teamId,
-                regionCode: data.regionCode,
-                languageCode: data.languageCode,
-                filter: data.filter,
-                pageSize: data.pageSize,
-                pageToken: data.pageToken,
-                view: data.view
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get Google Business service list
-     * @param data The data for the request.
-     * @param data.teamId
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetServiceList(data: MiscGoogleBusinessGetServiceListData): CancelablePromise<MiscGoogleBusinessGetServiceListResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/location/service-list',
-            query: {
-                teamId: data.teamId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Update Google Business service list
-     * Body requires `fields` (`serviceItems`).
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessUpdateServiceList(data: MiscGoogleBusinessUpdateServiceListData = {}): CancelablePromise<MiscGoogleBusinessUpdateServiceListResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/google-business/location/service-list',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get Google Business food menus
-     * Use typed query param `fields`. Supports both comma-separated values (`fields=name,menus`) and repeated params (`fields=name&fields=menus`).
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.fields
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetFoodMenus(data: MiscGoogleBusinessGetFoodMenusData): CancelablePromise<MiscGoogleBusinessGetFoodMenusResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/location/food-menus',
-            query: {
-                teamId: data.teamId,
-                fields: data.fields
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Update Google Business food menus
-     * Body requires `fields` (`menus`).
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessUpdateFoodMenus(data: MiscGoogleBusinessUpdateFoodMenusData = {}): CancelablePromise<MiscGoogleBusinessUpdateFoodMenusResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/google-business/location/food-menus',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * List Google Business place action links
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.pageSize
-     * @param data.pageToken
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessListPlaceActionLinks(data: MiscGoogleBusinessListPlaceActionLinksData): CancelablePromise<MiscGoogleBusinessListPlaceActionLinksResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/location/place-action-links',
-            query: {
-                teamId: data.teamId,
-                pageSize: data.pageSize,
-                pageToken: data.pageToken
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Create Google Business place action link
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessCreatePlaceActionLink(data: MiscGoogleBusinessCreatePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessCreatePlaceActionLinkResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/misc/google-business/location/place-action-links',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Update Google Business place action link
-     * Body requires `fields` (`uri`, `placeActionType`, `isPreferred`).
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessUpdatePlaceActionLink(data: MiscGoogleBusinessUpdatePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessUpdatePlaceActionLinkResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/google-business/location/place-action-links',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete Google Business place action link
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessDeletePlaceActionLink(data: MiscGoogleBusinessDeletePlaceActionLinkData = {}): CancelablePromise<MiscGoogleBusinessDeletePlaceActionLinkResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/google-business/location/place-action-links',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Start a new Google Reviews import
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 201
-     * @throws ApiError
-     */
-    public miscGoogleBusinessImportReviews(data: MiscGoogleBusinessImportReviewsData = {}): CancelablePromise<MiscGoogleBusinessImportReviewsResponse> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/v1/misc/google-business/reviews/import',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                409: '409',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get review import status list
-     * @param data The data for the request.
-     * @param data.teamId
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetReviewImportStatus(data: MiscGoogleBusinessGetReviewImportStatusData): CancelablePromise<MiscGoogleBusinessGetReviewImportStatusResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/reviews/import',
-            query: {
-                teamId: data.teamId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get review import by ID
-     * @param data The data for the request.
-     * @param data.importId
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetReviewImportById(data: MiscGoogleBusinessGetReviewImportByIdData): CancelablePromise<MiscGoogleBusinessGetReviewImportByIdResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/reviews/import/{importId}',
-            path: {
-                importId: data.importId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * List imported Google Reviews
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.limit
-     * @param data.offset
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetReviews(data: MiscGoogleBusinessGetReviewsData): CancelablePromise<MiscGoogleBusinessGetReviewsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/reviews',
-            query: {
-                teamId: data.teamId,
-                limit: data.limit,
-                offset: data.offset
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get a single imported Google Review
-     * @param data The data for the request.
-     * @param data.reviewId
-     * @param data.teamId
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessGetReviewById(data: MiscGoogleBusinessGetReviewByIdData): CancelablePromise<MiscGoogleBusinessGetReviewByIdResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/google-business/reviews/{reviewId}',
-            path: {
-                reviewId: data.reviewId
-            },
-            query: {
-                teamId: data.teamId
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Reply to a Google Review (creates or updates the owner reply)
-     * @param data The data for the request.
-     * @param data.reviewId
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessReplyToReview(data: MiscGoogleBusinessReplyToReviewData): CancelablePromise<MiscGoogleBusinessReplyToReviewResponse> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/v1/misc/google-business/reviews/{reviewId}/reply',
-            path: {
-                reviewId: data.reviewId
-            },
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete the owner reply from a Google Review
-     * @param data The data for the request.
-     * @param data.reviewId
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscGoogleBusinessDeleteReviewReply(data: MiscGoogleBusinessDeleteReviewReplyData): CancelablePromise<MiscGoogleBusinessDeleteReviewReplyResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/google-business/reviews/{reviewId}/reply',
-            path: {
-                reviewId: data.reviewId
-            },
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class RedditService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Get subreddit post requirements (flair required/enabled)
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.subreddit
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscRedditGetPostRequirements(data: MiscRedditGetPostRequirementsData): CancelablePromise<MiscRedditGetPostRequirementsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/reddit/post-requirements',
-            query: {
-                teamId: data.teamId,
-                subreddit: data.subreddit
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Get subreddit flairs list
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.subreddit
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscRedditGetSubredditFlairs(data: MiscRedditGetSubredditFlairsData): CancelablePromise<MiscRedditGetSubredditFlairsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/reddit/subreddit-flairs',
-            query: {
-                teamId: data.teamId,
-                subreddit: data.subreddit
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Edit an existing Reddit post
-     * Update the selftext content of a published Reddit text post. Link and media posts cannot be edited.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscRedditEditPost(data: MiscRedditEditPostData = {}): CancelablePromise<MiscRedditEditPostResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/reddit/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a Reddit post
-     * Permanently delete a published Reddit post.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscRedditDeletePost(data: MiscRedditDeletePostData = {}): CancelablePromise<MiscRedditDeletePostResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/reddit/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class InstagramService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Search for Instagram Business/Creator user by username
-     * Checks if an Instagram user exists and returns their public profile data. Only works for Business and Creator accounts and only when Instagram is connected via Facebook Login. Returns followers_count, media_count, and profile picture if available.
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.username Instagram username to search for
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscInstagramBusinessDiscovery(data: MiscInstagramBusinessDiscoveryData): CancelablePromise<MiscInstagramBusinessDiscoveryResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/instagram/tags',
-            query: {
-                teamId: data.teamId,
-                username: data.username
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Search Instagram location IDs
-     * Searches Facebook Pages with physical location data and returns IDs that can be used as data.INSTAGRAM.locationId.
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.q Free-text query used to search location pages
-     * @param data.limit
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscInstagramSearchLocations(data: MiscInstagramSearchLocationsData): CancelablePromise<MiscInstagramSearchLocationsResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/instagram/locations',
-            query: {
-                teamId: data.teamId,
-                q: data.q,
-                limit: data.limit
-            },
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class FacebookService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Edit an existing Facebook post
-     * Update the message/content of a published Facebook post or reel. Note: Only text content can be edited, media cannot be changed.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscFacebookEditPost(data: MiscFacebookEditPostData = {}): CancelablePromise<MiscFacebookEditPostResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/facebook/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a Facebook post
-     * Permanently delete a published Facebook post or reel.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscFacebookDeletePost(data: MiscFacebookDeletePostData = {}): CancelablePromise<MiscFacebookDeletePostResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/facebook/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class PinterestService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * @deprecated
-     * [DISABLED] Edit an existing Pinterest pin
-     * Temporarily disabled
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscPinterestEditPin(data: MiscPinterestEditPinData = {}): CancelablePromise<MiscPinterestEditPinResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/pinterest/pin',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a Pinterest pin
-     * Permanently delete a published Pinterest pin.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscPinterestDeletePin(data: MiscPinterestDeletePinData = {}): CancelablePromise<MiscPinterestDeletePinResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/pinterest/pin',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class MastodonService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Edit an existing Mastodon status
-     * Update the text content and spoiler text of a published Mastodon status.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscMastodonEditStatus(data: MiscMastodonEditStatusData = {}): CancelablePromise<MiscMastodonEditStatusResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/mastodon/status',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a Mastodon status
-     * Permanently delete a published Mastodon status.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscMastodonDeleteStatus(data: MiscMastodonDeleteStatusData = {}): CancelablePromise<MiscMastodonDeleteStatusResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/mastodon/status',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class SlackService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Edit an existing Slack message
-     * Update the text content of a published Slack message.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscSlackEditMessage(data: MiscSlackEditMessageData = {}): CancelablePromise<MiscSlackEditMessageResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/v1/misc/slack/message',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-    /**
-     * Delete a Slack message
-     * Permanently delete a published Slack message.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscSlackDeleteMessage(data: MiscSlackDeleteMessageData = {}): CancelablePromise<MiscSlackDeleteMessageResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/slack/message',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class BlueskyService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Delete a Bluesky post
-     * Permanently delete a published Bluesky post.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscBlueskyDeletePost(data: MiscBlueskyDeletePostData = {}): CancelablePromise<MiscBlueskyDeletePostResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/bluesky/post',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class TwitterService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Delete a Twitter/X tweet
-     * Permanently delete a published Twitter/X tweet.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscTwitterDeleteTweet(data: MiscTwitterDeleteTweetData = {}): CancelablePromise<MiscTwitterDeleteTweetResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/twitter/tweet',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class DiscordService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Delete a Discord message
-     * Permanently delete a published Discord message.
-     * @param data The data for the request.
-     * @param data.requestBody Body
-     * @returns unknown 200
-     * @throws ApiError
-     */
-    public miscDiscordDeleteMessage(data: MiscDiscordDeleteMessageData = {}): CancelablePromise<MiscDiscordDeleteMessageResponse> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/v1/misc/discord/message',
-            body: data.requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: '400',
-                401: '401',
-                403: '403',
-                404: '404',
-                429: '429',
-                500: '500',
-            }
-        });
-    }
-    
-}
-
-export class TiktokService {
-    constructor(public readonly httpRequest: BaseHttpRequest) { }
-    
-    /**
-     * Get popular tracks from TikTok Commercial Music Library
-     * Retrieve up to 100 popular tracks pre-cleared for organic content and ad creation from TikTok CML.
-     * @param data The data for the request.
-     * @param data.teamId
-     * @param data.genre Genre filter for commercial music results.
-     * @param data.dateRange Timeframe for popular tracks ranking.
-     * @returns unknown List of trending tracks.
-     * @throws ApiError
-     */
-    public miscTiktokGetCommercialMusicTrendingList(data: MiscTiktokGetCommercialMusicTrendingListData): CancelablePromise<MiscTiktokGetCommercialMusicTrendingListResponse> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/v1/misc/tiktok/cml/trending-list',
-            query: {
-                teamId: data.teamId,
-                genre: data.genre,
-                dateRange: data.dateRange
-            },
             errors: {
                 400: '400',
                 401: '401',

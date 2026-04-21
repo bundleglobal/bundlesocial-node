@@ -1,3 +1,10 @@
+# [2.46.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.45.0...v2.46.0) (2026-04-21)
+
+
+### Features
+
+* facebook reviews ([6057d12](https://github.com/bundleglobal/bundlesocial-node/commit/6057d12ada4ecdf0a4f30cab23595a9a6d90f47b))
+
 # [2.45.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.44.0...v2.45.0) (2026-04-13)
 
 

@@ -67,6 +67,7 @@ export type OrganizationGetOrganizationResponse = {
         firstName?: string | null;
         lastName?: string | null;
         avatarUrl?: string | null;
+        timezone?: string | null;
         role: 'ADMIN' | 'CUSTOMER';
         createdAt: string | null;
         updatedAt: string | null;
@@ -116,66 +117,24 @@ export type OrganizationGetOrganizationResponse = {
             valid: boolean;
             createdAt: string | null;
             updatedAt: string | null;
-            promotionCodes: Array<{
-                id: string;
-                couponId: string;
-                code: string;
-                active: boolean;
-                expiresAt?: string | null;
-                maxRedemptions?: number | null;
-                firstTimeTransaction: boolean;
-                minimumAmount?: number | null;
-                createdAt: string | null;
-                updatedAt: string | null;
-            }>;
         } | null;
         promotionCode?: {
-            id: string;
-            couponId: string;
             code: string;
-            active: boolean;
-            expiresAt?: string | null;
-            maxRedemptions?: number | null;
-            firstTimeTransaction: boolean;
-            minimumAmount?: number | null;
-            createdAt: string | null;
-            updatedAt: string | null;
             coupon: {
-                id: string;
-                name?: string | null;
-                amountOff?: number | null;
-                percentOff?: number | null;
+                percentOff: number;
                 duration: 'forever' | 'once' | 'repeating';
                 durationInMonths?: number | null;
-                maxRedemptions?: number | null;
                 valid: boolean;
-                createdAt: string | null;
-                updatedAt: string | null;
             };
         } | null;
     } | null;
     promotionCode?: {
-        id: string;
-        couponId: string;
         code: string;
-        active: boolean;
-        expiresAt?: string | null;
-        maxRedemptions?: number | null;
-        firstTimeTransaction: boolean;
-        minimumAmount?: number | null;
-        createdAt: string | null;
-        updatedAt: string | null;
         coupon: {
-            id: string;
-            name?: string | null;
-            amountOff?: number | null;
-            percentOff?: number | null;
+            percentOff: number;
             duration: 'forever' | 'once' | 'repeating';
             durationInMonths?: number | null;
-            maxRedemptions?: number | null;
             valid: boolean;
-            createdAt: string | null;
-            updatedAt: string | null;
         };
     } | null;
     teams: Array<{
@@ -311,6 +270,7 @@ export type TeamGetTeamResponse = {
         firstName?: string | null;
         lastName?: string | null;
         avatarUrl?: string | null;
+        timezone?: string | null;
         role: 'ADMIN' | 'CUSTOMER';
         createdAt: string | null;
         updatedAt: string | null;
@@ -519,6 +479,7 @@ export type TeamGetListResponse = {
             firstName?: string | null;
             lastName?: string | null;
             avatarUrl?: string | null;
+            timezone?: string | null;
             role: 'ADMIN' | 'CUSTOMER';
             createdAt: string | null;
             updatedAt: string | null;
@@ -10073,6 +10034,212 @@ export type MiscInstagramDeleteCommentResponse = {
     success: boolean;
 };
 
+export type MiscFacebookImportRecommendationsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        count: number;
+    };
+};
+
+export type MiscFacebookImportRecommendationsResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    requestedCount: number;
+    status: 'PENDING' | 'FETCHING_RECOMMENDATIONS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+    itemsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscFacebookGetRecommendationImportStatusData = {
+    teamId: string;
+};
+
+export type MiscFacebookGetRecommendationImportStatusResponse = {
+    imports: Array<{
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        requestedCount: number;
+        status: 'PENDING' | 'FETCHING_RECOMMENDATIONS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+        itemsImported: number;
+        error?: string | null;
+        rateLimitResetAt?: string | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+};
+
+export type MiscFacebookGetRecommendationImportByIdData = {
+    importId: string;
+};
+
+export type MiscFacebookGetRecommendationImportByIdResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    requestedCount: number;
+    status: 'PENDING' | 'FETCHING_RECOMMENDATIONS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+    itemsImported: number;
+    error?: string | null;
+    rateLimitResetAt?: string | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscFacebookGetRecommendationsData = {
+    limit?: number;
+    offset?: number | null;
+    teamId: string;
+};
+
+export type MiscFacebookGetRecommendationsResponse = {
+    recommendations: Array<{
+        id: string;
+        socialAccountId: string;
+        teamId: string;
+        externalRecommendationId: string;
+        openGraphStoryId?: string | null;
+        reviewerDisplayName?: string | null;
+        reviewerProfilePhotoUrl?: string | null;
+        recommendationValue?: 'RECOMMEND' | 'NOT_RECOMMEND' | 'UNKNOWN' | null;
+        rating?: number | null;
+        comment?: string | null;
+        hasMedia: boolean;
+        mediaSummary?: Array<(string)> | null;
+        ownerReplyComment?: string | null;
+        ownerReplyCommentId?: string | null;
+        ownerReplyUpdatedAt?: string | null;
+        createTime?: string | null;
+        updateTime?: string | null;
+        importedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    }>;
+    total: number;
+    limit: number;
+    remainingCapacity: number;
+};
+
+export type MiscFacebookGetRecommendationByIdData = {
+    recommendationId: string;
+    teamId: string;
+};
+
+export type MiscFacebookGetRecommendationByIdResponse = {
+    id: string;
+    socialAccountId: string;
+    teamId: string;
+    externalRecommendationId: string;
+    openGraphStoryId?: string | null;
+    reviewerDisplayName?: string | null;
+    reviewerProfilePhotoUrl?: string | null;
+    recommendationValue?: 'RECOMMEND' | 'NOT_RECOMMEND' | 'UNKNOWN' | null;
+    rating?: number | null;
+    comment?: string | null;
+    hasMedia: boolean;
+    mediaSummary?: Array<(string)> | null;
+    ownerReplyComment?: string | null;
+    ownerReplyCommentId?: string | null;
+    ownerReplyUpdatedAt?: string | null;
+    createTime?: string | null;
+    updateTime?: string | null;
+    importedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscFacebookGetRecommendationCommentsData = {
+    recommendationId: string;
+    teamId: string;
+};
+
+export type MiscFacebookGetRecommendationCommentsResponse = {
+    comments: Array<{
+        id: string;
+        recommendationId: string;
+        rootObjectId: string;
+        parentCommentId?: string | null;
+        authorName?: string | null;
+        authorExternalId?: string | null;
+        authorAvatarUrl?: string | null;
+        text?: string | null;
+        likesCount: number;
+        repliesCount: number;
+        canReply?: boolean | null;
+        createdTime?: string | null;
+    }>;
+    total: number;
+};
+
+export type MiscFacebookReplyToRecommendationData = {
+    recommendationId: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        comment: string;
+    };
+};
+
+export type MiscFacebookReplyToRecommendationResponse = {
+    id: string;
+    socialAccountId: string;
+    teamId: string;
+    externalRecommendationId: string;
+    openGraphStoryId?: string | null;
+    reviewerDisplayName?: string | null;
+    reviewerProfilePhotoUrl?: string | null;
+    recommendationValue?: 'RECOMMEND' | 'NOT_RECOMMEND' | 'UNKNOWN' | null;
+    rating?: number | null;
+    comment?: string | null;
+    hasMedia: boolean;
+    mediaSummary?: Array<(string)> | null;
+    ownerReplyComment?: string | null;
+    ownerReplyCommentId?: string | null;
+    ownerReplyUpdatedAt?: string | null;
+    createTime?: string | null;
+    updateTime?: string | null;
+    importedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type MiscFacebookReplyToRecommendationCommentData = {
+    commentId: string;
+    recommendationId: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        comment: string;
+    };
+};
+
+export type MiscFacebookReplyToRecommendationCommentResponse = {
+    id: string;
+};
+
 export type MiscFacebookEditPostData = {
     /**
      * Body
@@ -10934,6 +11101,7 @@ export type $OpenApiTs = {
                         firstName?: string | null;
                         lastName?: string | null;
                         avatarUrl?: string | null;
+                        timezone?: string | null;
                         role: 'ADMIN' | 'CUSTOMER';
                         createdAt: string | null;
                         updatedAt: string | null;
@@ -10983,66 +11151,24 @@ export type $OpenApiTs = {
                             valid: boolean;
                             createdAt: string | null;
                             updatedAt: string | null;
-                            promotionCodes: Array<{
-                                id: string;
-                                couponId: string;
-                                code: string;
-                                active: boolean;
-                                expiresAt?: string | null;
-                                maxRedemptions?: number | null;
-                                firstTimeTransaction: boolean;
-                                minimumAmount?: number | null;
-                                createdAt: string | null;
-                                updatedAt: string | null;
-                            }>;
                         } | null;
                         promotionCode?: {
-                            id: string;
-                            couponId: string;
                             code: string;
-                            active: boolean;
-                            expiresAt?: string | null;
-                            maxRedemptions?: number | null;
-                            firstTimeTransaction: boolean;
-                            minimumAmount?: number | null;
-                            createdAt: string | null;
-                            updatedAt: string | null;
                             coupon: {
-                                id: string;
-                                name?: string | null;
-                                amountOff?: number | null;
-                                percentOff?: number | null;
+                                percentOff: number;
                                 duration: 'forever' | 'once' | 'repeating';
                                 durationInMonths?: number | null;
-                                maxRedemptions?: number | null;
                                 valid: boolean;
-                                createdAt: string | null;
-                                updatedAt: string | null;
                             };
                         } | null;
                     } | null;
                     promotionCode?: {
-                        id: string;
-                        couponId: string;
                         code: string;
-                        active: boolean;
-                        expiresAt?: string | null;
-                        maxRedemptions?: number | null;
-                        firstTimeTransaction: boolean;
-                        minimumAmount?: number | null;
-                        createdAt: string | null;
-                        updatedAt: string | null;
                         coupon: {
-                            id: string;
-                            name?: string | null;
-                            amountOff?: number | null;
-                            percentOff?: number | null;
+                            percentOff: number;
                             duration: 'forever' | 'once' | 'repeating';
                             durationInMonths?: number | null;
-                            maxRedemptions?: number | null;
                             valid: boolean;
-                            createdAt: string | null;
-                            updatedAt: string | null;
                         };
                     } | null;
                     teams: Array<{
@@ -11442,6 +11568,7 @@ export type $OpenApiTs = {
                         firstName?: string | null;
                         lastName?: string | null;
                         avatarUrl?: string | null;
+                        timezone?: string | null;
                         role: 'ADMIN' | 'CUSTOMER';
                         createdAt: string | null;
                         updatedAt: string | null;
@@ -11792,6 +11919,7 @@ export type $OpenApiTs = {
                             firstName?: string | null;
                             lastName?: string | null;
                             avatarUrl?: string | null;
+                            timezone?: string | null;
                             role: 'ADMIN' | 'CUSTOMER';
                             createdAt: string | null;
                             updatedAt: string | null;
@@ -24800,6 +24928,608 @@ export type $OpenApiTs = {
                  */
                 200: {
                     success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/recommendations/import': {
+        post: {
+            req: MiscFacebookImportRecommendationsData;
+            res: {
+                /**
+                 * 201
+                 */
+                201: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    requestedCount: number;
+                    status: 'PENDING' | 'FETCHING_RECOMMENDATIONS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                    itemsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 409
+                 */
+                409: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        get: {
+            req: MiscFacebookGetRecommendationImportStatusData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    imports: Array<{
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        requestedCount: number;
+                        status: 'PENDING' | 'FETCHING_RECOMMENDATIONS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                        itemsImported: number;
+                        error?: string | null;
+                        rateLimitResetAt?: string | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/recommendations/import/{importId}': {
+        get: {
+            req: MiscFacebookGetRecommendationImportByIdData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    requestedCount: number;
+                    status: 'PENDING' | 'FETCHING_RECOMMENDATIONS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
+                    itemsImported: number;
+                    error?: string | null;
+                    rateLimitResetAt?: string | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/recommendations': {
+        get: {
+            req: MiscFacebookGetRecommendationsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    recommendations: Array<{
+                        id: string;
+                        socialAccountId: string;
+                        teamId: string;
+                        externalRecommendationId: string;
+                        openGraphStoryId?: string | null;
+                        reviewerDisplayName?: string | null;
+                        reviewerProfilePhotoUrl?: string | null;
+                        recommendationValue?: 'RECOMMEND' | 'NOT_RECOMMEND' | 'UNKNOWN' | null;
+                        rating?: number | null;
+                        comment?: string | null;
+                        hasMedia: boolean;
+                        mediaSummary?: Array<(string)> | null;
+                        ownerReplyComment?: string | null;
+                        ownerReplyCommentId?: string | null;
+                        ownerReplyUpdatedAt?: string | null;
+                        createTime?: string | null;
+                        updateTime?: string | null;
+                        importedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    }>;
+                    total: number;
+                    limit: number;
+                    remainingCapacity: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/recommendations/{recommendationId}': {
+        get: {
+            req: MiscFacebookGetRecommendationByIdData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    socialAccountId: string;
+                    teamId: string;
+                    externalRecommendationId: string;
+                    openGraphStoryId?: string | null;
+                    reviewerDisplayName?: string | null;
+                    reviewerProfilePhotoUrl?: string | null;
+                    recommendationValue?: 'RECOMMEND' | 'NOT_RECOMMEND' | 'UNKNOWN' | null;
+                    rating?: number | null;
+                    comment?: string | null;
+                    hasMedia: boolean;
+                    mediaSummary?: Array<(string)> | null;
+                    ownerReplyComment?: string | null;
+                    ownerReplyCommentId?: string | null;
+                    ownerReplyUpdatedAt?: string | null;
+                    createTime?: string | null;
+                    updateTime?: string | null;
+                    importedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/recommendations/{recommendationId}/comments': {
+        get: {
+            req: MiscFacebookGetRecommendationCommentsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    comments: Array<{
+                        id: string;
+                        recommendationId: string;
+                        rootObjectId: string;
+                        parentCommentId?: string | null;
+                        authorName?: string | null;
+                        authorExternalId?: string | null;
+                        authorAvatarUrl?: string | null;
+                        text?: string | null;
+                        likesCount: number;
+                        repliesCount: number;
+                        canReply?: boolean | null;
+                        createdTime?: string | null;
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/recommendations/{recommendationId}/reply': {
+        put: {
+            req: MiscFacebookReplyToRecommendationData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    socialAccountId: string;
+                    teamId: string;
+                    externalRecommendationId: string;
+                    openGraphStoryId?: string | null;
+                    reviewerDisplayName?: string | null;
+                    reviewerProfilePhotoUrl?: string | null;
+                    recommendationValue?: 'RECOMMEND' | 'NOT_RECOMMEND' | 'UNKNOWN' | null;
+                    rating?: number | null;
+                    comment?: string | null;
+                    hasMedia: boolean;
+                    mediaSummary?: Array<(string)> | null;
+                    ownerReplyComment?: string | null;
+                    ownerReplyCommentId?: string | null;
+                    ownerReplyUpdatedAt?: string | null;
+                    createTime?: string | null;
+                    updateTime?: string | null;
+                    importedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/recommendations/{recommendationId}/comments/{commentId}/reply': {
+        put: {
+            req: MiscFacebookReplyToRecommendationCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
                 };
                 /**
                  * 400

@@ -303,6 +303,9 @@ paths:
                       avatarUrl:
                         type: string
                         nullable: true
+                      timezone:
+                        type: string
+                        nullable: true
                       role:
                         type: string
                         enum:
@@ -483,100 +486,23 @@ paths:
                             type: string
                             format: date-time
                             nullable: true
-                          promotionCodes:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                id:
-                                  type: string
-                                couponId:
-                                  type: string
-                                code:
-                                  type: string
-                                active:
-                                  type: boolean
-                                expiresAt:
-                                  type: string
-                                  format: date-time
-                                  nullable: true
-                                maxRedemptions:
-                                  type: number
-                                  nullable: true
-                                firstTimeTransaction:
-                                  type: boolean
-                                minimumAmount:
-                                  type: number
-                                  nullable: true
-                                createdAt:
-                                  type: string
-                                  format: date-time
-                                  nullable: true
-                                updatedAt:
-                                  type: string
-                                  format: date-time
-                                  nullable: true
-                              required:
-                                - id
-                                - couponId
-                                - code
-                                - active
-                                - firstTimeTransaction
-                                - createdAt
-                                - updatedAt
                         required:
                           - id
                           - duration
                           - valid
                           - createdAt
                           - updatedAt
-                          - promotionCodes
                         nullable: true
                       promotionCode:
                         type: object
                         properties:
-                          id:
-                            type: string
-                          couponId:
-                            type: string
                           code:
                             type: string
-                          active:
-                            type: boolean
-                          expiresAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          maxRedemptions:
-                            type: number
-                            nullable: true
-                          firstTimeTransaction:
-                            type: boolean
-                          minimumAmount:
-                            type: number
-                            nullable: true
-                          createdAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          updatedAt:
-                            type: string
-                            format: date-time
-                            nullable: true
                           coupon:
                             type: object
                             properties:
-                              id:
-                                type: string
-                              name:
-                                type: string
-                                nullable: true
-                              amountOff:
-                                type: number
-                                nullable: true
                               percentOff:
                                 type: number
-                                nullable: true
                               duration:
                                 type: string
                                 enum:
@@ -586,33 +512,14 @@ paths:
                               durationInMonths:
                                 type: number
                                 nullable: true
-                              maxRedemptions:
-                                type: number
-                                nullable: true
                               valid:
                                 type: boolean
-                              createdAt:
-                                type: string
-                                format: date-time
-                                nullable: true
-                              updatedAt:
-                                type: string
-                                format: date-time
-                                nullable: true
                             required:
-                              - id
+                              - percentOff
                               - duration
                               - valid
-                              - createdAt
-                              - updatedAt
                         required:
-                          - id
-                          - couponId
                           - code
-                          - active
-                          - firstTimeTransaction
-                          - createdAt
-                          - updatedAt
                           - coupon
                         nullable: true
                     required:
@@ -633,48 +540,13 @@ paths:
                   promotionCode:
                     type: object
                     properties:
-                      id:
-                        type: string
-                      couponId:
-                        type: string
                       code:
                         type: string
-                      active:
-                        type: boolean
-                      expiresAt:
-                        type: string
-                        format: date-time
-                        nullable: true
-                      maxRedemptions:
-                        type: number
-                        nullable: true
-                      firstTimeTransaction:
-                        type: boolean
-                      minimumAmount:
-                        type: number
-                        nullable: true
-                      createdAt:
-                        type: string
-                        format: date-time
-                        nullable: true
-                      updatedAt:
-                        type: string
-                        format: date-time
-                        nullable: true
                       coupon:
                         type: object
                         properties:
-                          id:
-                            type: string
-                          name:
-                            type: string
-                            nullable: true
-                          amountOff:
-                            type: number
-                            nullable: true
                           percentOff:
                             type: number
-                            nullable: true
                           duration:
                             type: string
                             enum:
@@ -684,33 +556,14 @@ paths:
                           durationInMonths:
                             type: number
                             nullable: true
-                          maxRedemptions:
-                            type: number
-                            nullable: true
                           valid:
                             type: boolean
-                          createdAt:
-                            type: string
-                            format: date-time
-                            nullable: true
-                          updatedAt:
-                            type: string
-                            format: date-time
-                            nullable: true
                         required:
-                          - id
+                          - percentOff
                           - duration
                           - valid
-                          - createdAt
-                          - updatedAt
                     required:
-                      - id
-                      - couponId
                       - code
-                      - active
-                      - firstTimeTransaction
-                      - createdAt
-                      - updatedAt
                       - coupon
                     nullable: true
                   teams:
@@ -1744,6 +1597,9 @@ paths:
                       avatarUrl:
                         type: string
                         nullable: true
+                      timezone:
+                        type: string
+                        nullable: true
                       role:
                         type: string
                         enum:
@@ -2761,6 +2617,9 @@ paths:
                               type: string
                               nullable: true
                             avatarUrl:
+                              type: string
+                              nullable: true
+                            timezone:
                               type: string
                               nullable: true
                             role:
@@ -39444,6 +39303,1693 @@ paths:
                     type: boolean
                 required:
                   - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/recommendations/import:
+    post:
+      summary: Start a new Facebook recommendations import
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.facebook.importRecommendations
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                count:
+                  type: integer
+                  minimum: 1
+                  maximum: 250
+              required:
+                - teamId
+                - count
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  requestedCount:
+                    type: number
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING_RECOMMENDATIONS
+                      - COMPLETED
+                      - FAILED
+                      - RATE_LIMITED
+                  itemsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - requestedCount
+                  - status
+                  - itemsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '409':
+          description: '409'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+    get:
+      summary: Get Facebook recommendations import status list
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.facebook.getRecommendationImportStatus
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        teamId:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        requestedCount:
+                          type: number
+                        status:
+                          type: string
+                          enum:
+                            - PENDING
+                            - FETCHING_RECOMMENDATIONS
+                            - COMPLETED
+                            - FAILED
+                            - RATE_LIMITED
+                        itemsImported:
+                          type: number
+                        error:
+                          type: string
+                          nullable: true
+                        rateLimitResetAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        startedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        completedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - teamId
+                        - socialAccountId
+                        - requestedCount
+                        - status
+                        - itemsImported
+                        - createdAt
+                        - updatedAt
+                required:
+                  - imports
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/recommendations/import/{importId}:
+    get:
+      summary: Get Facebook recommendations import by ID
+      tags:
+        - misc
+      parameters:
+        - name: importId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: misc.facebook.getRecommendationImportById
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  teamId:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  requestedCount:
+                    type: number
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - FETCHING_RECOMMENDATIONS
+                      - COMPLETED
+                      - FAILED
+                      - RATE_LIMITED
+                  itemsImported:
+                    type: number
+                  error:
+                    type: string
+                    nullable: true
+                  rateLimitResetAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  startedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  completedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - teamId
+                  - socialAccountId
+                  - requestedCount
+                  - status
+                  - itemsImported
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/recommendations:
+    get:
+      summary: List imported Facebook recommendations
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            default: 50
+            type: number
+            minimum: 1
+            maximum: 100
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: number
+            minimum: 0
+            nullable: true
+      operationId: misc.facebook.getRecommendations
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recommendations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        teamId:
+                          type: string
+                        externalRecommendationId:
+                          type: string
+                        openGraphStoryId:
+                          type: string
+                          nullable: true
+                        reviewerDisplayName:
+                          type: string
+                          nullable: true
+                        reviewerProfilePhotoUrl:
+                          type: string
+                          nullable: true
+                        recommendationValue:
+                          type: string
+                          enum:
+                            - RECOMMEND
+                            - NOT_RECOMMEND
+                            - UNKNOWN
+                          nullable: true
+                        rating:
+                          type: number
+                          nullable: true
+                        comment:
+                          type: string
+                          nullable: true
+                        hasMedia:
+                          type: boolean
+                        mediaSummary:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        ownerReplyComment:
+                          type: string
+                          nullable: true
+                        ownerReplyCommentId:
+                          type: string
+                          nullable: true
+                        ownerReplyUpdatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createTime:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updateTime:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        importedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - socialAccountId
+                        - teamId
+                        - externalRecommendationId
+                        - hasMedia
+                        - createdAt
+                        - updatedAt
+                  total:
+                    type: number
+                  limit:
+                    type: number
+                  remainingCapacity:
+                    type: number
+                required:
+                  - recommendations
+                  - total
+                  - limit
+                  - remainingCapacity
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/recommendations/{recommendationId}:
+    get:
+      summary: Get a single imported Facebook recommendation
+      tags:
+        - misc
+      parameters:
+        - name: recommendationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.facebook.getRecommendationById
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  teamId:
+                    type: string
+                  externalRecommendationId:
+                    type: string
+                  openGraphStoryId:
+                    type: string
+                    nullable: true
+                  reviewerDisplayName:
+                    type: string
+                    nullable: true
+                  reviewerProfilePhotoUrl:
+                    type: string
+                    nullable: true
+                  recommendationValue:
+                    type: string
+                    enum:
+                      - RECOMMEND
+                      - NOT_RECOMMEND
+                      - UNKNOWN
+                    nullable: true
+                  rating:
+                    type: number
+                    nullable: true
+                  comment:
+                    type: string
+                    nullable: true
+                  hasMedia:
+                    type: boolean
+                  mediaSummary:
+                    type: array
+                    items:
+                      type: string
+                    nullable: true
+                  ownerReplyComment:
+                    type: string
+                    nullable: true
+                  ownerReplyCommentId:
+                    type: string
+                    nullable: true
+                  ownerReplyUpdatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updateTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  importedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - socialAccountId
+                  - teamId
+                  - externalRecommendationId
+                  - hasMedia
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/recommendations/{recommendationId}/comments:
+    get:
+      summary: Get recommendation thread comments
+      tags:
+        - misc
+      parameters:
+        - name: recommendationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.facebook.getRecommendationComments
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        recommendationId:
+                          type: string
+                        rootObjectId:
+                          type: string
+                        parentCommentId:
+                          type: string
+                          nullable: true
+                        authorName:
+                          type: string
+                          nullable: true
+                        authorExternalId:
+                          type: string
+                          nullable: true
+                        authorAvatarUrl:
+                          type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        likesCount:
+                          type: number
+                        repliesCount:
+                          type: number
+                        canReply:
+                          type: boolean
+                          nullable: true
+                        createdTime:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - recommendationId
+                        - rootObjectId
+                        - likesCount
+                        - repliesCount
+                  total:
+                    type: number
+                required:
+                  - comments
+                  - total
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/recommendations/{recommendationId}/reply:
+    put:
+      summary: Reply to a Facebook recommendation
+      tags:
+        - misc
+      parameters:
+        - name: recommendationId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: misc.facebook.replyToRecommendation
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                comment:
+                  type: string
+                  minLength: 1
+                  maxLength: 4096
+              required:
+                - teamId
+                - comment
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  teamId:
+                    type: string
+                  externalRecommendationId:
+                    type: string
+                  openGraphStoryId:
+                    type: string
+                    nullable: true
+                  reviewerDisplayName:
+                    type: string
+                    nullable: true
+                  reviewerProfilePhotoUrl:
+                    type: string
+                    nullable: true
+                  recommendationValue:
+                    type: string
+                    enum:
+                      - RECOMMEND
+                      - NOT_RECOMMEND
+                      - UNKNOWN
+                    nullable: true
+                  rating:
+                    type: number
+                    nullable: true
+                  comment:
+                    type: string
+                    nullable: true
+                  hasMedia:
+                    type: boolean
+                  mediaSummary:
+                    type: array
+                    items:
+                      type: string
+                    nullable: true
+                  ownerReplyComment:
+                    type: string
+                    nullable: true
+                  ownerReplyCommentId:
+                    type: string
+                    nullable: true
+                  ownerReplyUpdatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updateTime:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  importedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  createdAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  deletedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - id
+                  - socialAccountId
+                  - teamId
+                  - externalRecommendationId
+                  - hasMedia
+                  - createdAt
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/recommendations/{recommendationId}/comments/{commentId}/reply:
+    put:
+      summary: Reply to a Facebook recommendation thread comment
+      tags:
+        - misc
+      parameters:
+        - name: recommendationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: misc.facebook.replyToRecommendationComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                comment:
+                  type: string
+                  minLength: 1
+                  maxLength: 4096
+              required:
+                - teamId
+                - comment
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
         '400':
           description: '400'
           content:

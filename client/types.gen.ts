@@ -3,6 +3,65 @@
 export type AppGetHealthResponse = {
     status: string;
     createdAt: string;
+    note: string;
+    platforms: {
+        FACEBOOK: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        INSTAGRAM: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        TIKTOK: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        YOUTUBE: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        TWITTER: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        PINTEREST: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        REDDIT: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        MASTODON: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        DISCORD: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        SLACK: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        BLUESKY: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        GOOGLE_BUSINESS: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        LINKEDIN: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+        THREADS: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
+    };
 };
 
 export type OrganizationGetOrganizationResponse = {
@@ -102,6 +161,11 @@ export type OrganizationGetOrganizationResponse = {
         maxMonthlyComments?: number | null;
         maxMonthlyUploads?: number | null;
         maxMonthlyImportedPosts?: number | null;
+        pendingTier?: 'PRO' | 'BUSINESS' | null;
+        pendingBillingInterval?: 'MONTHLY' | 'YEARLY' | null;
+        pendingPriceId?: string | null;
+        pendingEffectiveAt?: string | null;
+        pendingScheduleId?: string | null;
         discountStart?: string | null;
         discountEnd?: string | null;
         createdAt: string | null;
@@ -613,6 +677,10 @@ export type SocialAccountConnectData = {
          */
         disableAutoLogin?: boolean;
         /**
+         * Optional. Instagram only. When true, direct Instagram connections on phones will try to force browser login to avoid the Instagram iOS app deep-link bug.
+         */
+        forceBrowserOAuth?: boolean;
+        /**
          * Instagram only - connection method
          */
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
@@ -843,6 +911,10 @@ export type SocialAccountCreatePortalLinkData = {
          * Optional. If true, portal will request provider-specific anti-auto-login behavior where supported.
          */
         disableAutoLogin?: boolean;
+        /**
+         * Optional. Instagram only. When true, direct Instagram connections on phones will try to force browser login to avoid the Instagram iOS app deep-link bug.
+         */
+        forceBrowserOAuth?: boolean;
         /**
          * Optional. Facebook and Instagram only - when provided, portal skips business scope selection modal for Facebook login paths.
          */
@@ -8915,7 +8987,7 @@ export type MiscYoutubeDeleteVideoData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -8932,7 +9004,7 @@ export type MiscYoutubeEditCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
         /**
@@ -8954,7 +9026,7 @@ export type MiscYoutubeDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -9074,7 +9146,7 @@ export type MiscLinkedinDeletePostData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -9091,7 +9163,7 @@ export type MiscLinkedinEditCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
         /**
@@ -9113,7 +9185,7 @@ export type MiscLinkedinDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -9195,7 +9267,7 @@ export type MiscGoogleBusinessDeletePostData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -9882,7 +9954,7 @@ export type MiscRedditDeletePostData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -9899,7 +9971,7 @@ export type MiscRedditEditCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
         /**
@@ -9921,7 +9993,7 @@ export type MiscRedditDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -10024,7 +10096,7 @@ export type MiscInstagramDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -10269,7 +10341,7 @@ export type MiscFacebookDeletePostData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -10286,7 +10358,7 @@ export type MiscFacebookEditCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
         /**
@@ -10308,7 +10380,7 @@ export type MiscFacebookDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -10363,7 +10435,7 @@ export type MiscPinterestDeletePinData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -10406,7 +10478,7 @@ export type MiscMastodonDeleteStatusData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -10423,7 +10495,7 @@ export type MiscMastodonEditCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
         /**
@@ -10449,7 +10521,7 @@ export type MiscMastodonDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -10488,7 +10560,7 @@ export type MiscSlackDeleteMessageData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -10505,7 +10577,7 @@ export type MiscBlueskyDeletePostData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -10522,7 +10594,7 @@ export type MiscBlueskyDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -10539,7 +10611,7 @@ export type MiscTwitterDeleteTweetData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -10556,7 +10628,7 @@ export type MiscDiscordDeleteMessageData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the post in Bundle Social
+         * The ID of the post in bundle.social
          */
         postId: string;
     };
@@ -10657,7 +10729,7 @@ export type MiscTiktokDeleteCommentData = {
     requestBody?: {
         teamId: string;
         /**
-         * The ID of the comment in Bundle Social
+         * The ID of the comment in bundle.social
          */
         commentId: string;
     };
@@ -10982,6 +11054,65 @@ export type $OpenApiTs = {
                 200: {
                     status: string;
                     createdAt: string;
+                    note: string;
+                    platforms: {
+                        FACEBOOK: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        INSTAGRAM: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        TIKTOK: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        YOUTUBE: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        TWITTER: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        PINTEREST: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        REDDIT: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        MASTODON: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        DISCORD: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        SLACK: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        BLUESKY: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        GOOGLE_BUSINESS: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        LINKEDIN: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                        THREADS: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
+                    };
                 };
                 /**
                  * 400
@@ -11136,6 +11267,11 @@ export type $OpenApiTs = {
                         maxMonthlyComments?: number | null;
                         maxMonthlyUploads?: number | null;
                         maxMonthlyImportedPosts?: number | null;
+                        pendingTier?: 'PRO' | 'BUSINESS' | null;
+                        pendingBillingInterval?: 'MONTHLY' | 'YEARLY' | null;
+                        pendingPriceId?: string | null;
+                        pendingEffectiveAt?: string | null;
+                        pendingScheduleId?: string | null;
                         discountStart?: string | null;
                         discountEnd?: string | null;
                         createdAt: string | null;

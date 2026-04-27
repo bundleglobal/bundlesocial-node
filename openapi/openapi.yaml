@@ -19,9 +19,241 @@ paths:
                     type: string
                   createdAt:
                     type: string
+                  note:
+                    type: string
+                  platforms:
+                    type: object
+                    properties:
+                      FACEBOOK:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      INSTAGRAM:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      TIKTOK:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      YOUTUBE:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      TWITTER:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      PINTEREST:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      REDDIT:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      MASTODON:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      DISCORD:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      SLACK:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      BLUESKY:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      GOOGLE_BUSINESS:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      LINKEDIN:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                      THREADS:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
+                    required:
+                      - FACEBOOK
+                      - INSTAGRAM
+                      - TIKTOK
+                      - YOUTUBE
+                      - TWITTER
+                      - PINTEREST
+                      - REDDIT
+                      - MASTODON
+                      - DISCORD
+                      - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
+                      - LINKEDIN
+                      - THREADS
                 required:
                   - status
                   - createdAt
+                  - note
+                  - platforms
         '400':
           description: '400'
           content:
@@ -433,6 +665,28 @@ paths:
                         nullable: true
                       maxMonthlyImportedPosts:
                         type: number
+                        nullable: true
+                      pendingTier:
+                        type: string
+                        enum:
+                          - PRO
+                          - BUSINESS
+                        nullable: true
+                      pendingBillingInterval:
+                        type: string
+                        enum:
+                          - MONTHLY
+                          - YEARLY
+                        nullable: true
+                      pendingPriceId:
+                        type: string
+                        nullable: true
+                      pendingEffectiveAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      pendingScheduleId:
+                        type: string
                         nullable: true
                       discountStart:
                         type: string
@@ -3310,6 +3564,13 @@ paths:
                   description: >-
                     Optional. When true, adds provider-specific flags to avoid
                     automatic login/auto-approval where supported.
+                forceBrowserOAuth:
+                  default: false
+                  type: boolean
+                  description: >-
+                    Optional. Instagram only. When true, direct Instagram
+                    connections on phones will try to force browser login to
+                    avoid the Instagram iOS app deep-link bug.
                 instagramConnectionMethod:
                   type: string
                   enum:
@@ -4709,6 +4970,13 @@ paths:
                   description: >-
                     Optional. If true, portal will request provider-specific
                     anti-auto-login behavior where supported.
+                forceBrowserOAuth:
+                  default: false
+                  type: boolean
+                  description: >-
+                    Optional. Instagram only. When true, direct Instagram
+                    connections on phones will try to force browser login to
+                    avoid the Instagram iOS app deep-link bug.
                 withBusinessScope:
                   type: boolean
                   description: >-
@@ -30695,7 +30963,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -30851,7 +31119,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
                 text:
                   type: string
                   minLength: 1
@@ -31014,7 +31282,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId
@@ -32041,7 +32309,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -32197,7 +32465,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
                 text:
                   type: string
                   minLength: 1
@@ -32361,7 +32629,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId
@@ -33086,7 +33354,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -38410,7 +38678,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -38566,7 +38834,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
                 text:
                   type: string
                   minLength: 1
@@ -38730,7 +38998,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId
@@ -39287,7 +39555,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId
@@ -41293,7 +41561,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -41449,7 +41717,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
                 text:
                   type: string
                   minLength: 1
@@ -41613,7 +41881,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId
@@ -41944,7 +42212,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -42265,7 +42533,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -42421,7 +42689,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
                 text:
                   type: string
                   minLength: 1
@@ -42589,7 +42857,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId
@@ -42907,7 +43175,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -43063,7 +43331,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -43219,7 +43487,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId
@@ -43375,7 +43643,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -43531,7 +43799,7 @@ paths:
                   type: string
                 postId:
                   type: string
-                  description: The ID of the post in Bundle Social
+                  description: The ID of the post in bundle.social
               required:
                 - teamId
                 - postId
@@ -43985,7 +44253,7 @@ paths:
                   type: string
                 commentId:
                   type: string
-                  description: The ID of the comment in Bundle Social
+                  description: The ID of the comment in bundle.social
               required:
                 - teamId
                 - commentId

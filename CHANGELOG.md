@@ -1,3 +1,10 @@
+# [2.47.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.46.0...v2.47.0) (2026-04-27)
+
+
+### Features
+
+* force browser oauth ([af2c44d](https://github.com/bundleglobal/bundlesocial-node/commit/af2c44dc84c5c341f5b7ba112636676794f6a91a))
+
 # [2.46.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.45.0...v2.46.0) (2026-04-21)
 
 

@@ -1,3 +1,10 @@
+# [2.48.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.47.0...v2.48.0) (2026-05-11)
+
+
+### Features
+
+* tiktok metadata and error retryability ([f2d5f45](https://github.com/bundleglobal/bundlesocial-node/commit/f2d5f45a180869cfb63c791fb026fa7ee5f94ea9))
+
 # [2.47.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.46.0...v2.47.0) (2026-04-27)
 
 

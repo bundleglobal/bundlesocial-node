@@ -2028,6 +2028,9 @@ paths:
                             - premium
                             - premium_plus
                           nullable: true
+                        isTiktokBusinessAccount:
+                          type: boolean
+                          nullable: true
                         disconnectedCheckTryAt:
                           type: string
                           format: date-time
@@ -3050,6 +3053,9 @@ paths:
                                   - premium
                                   - premium_plus
                                 nullable: true
+                              isTiktokBusinessAccount:
+                                type: boolean
+                                nullable: true
                               disconnectedCheckTryAt:
                                 type: string
                                 format: date-time
@@ -3880,6 +3886,9 @@ paths:
                       - premium
                       - premium_plus
                     nullable: true
+                  isTiktokBusinessAccount:
+                    type: boolean
+                    nullable: true
                   disconnectedCheckTryAt:
                     type: string
                     format: date-time
@@ -4180,6 +4189,9 @@ paths:
                       - premium
                       - premium_plus
                     nullable: true
+                  isTiktokBusinessAccount:
+                    type: boolean
+                    nullable: true
                   disconnectedCheckTryAt:
                     type: string
                     format: date-time
@@ -4474,6 +4486,9 @@ paths:
                       - basic
                       - premium
                       - premium_plus
+                    nullable: true
+                  isTiktokBusinessAccount:
+                    type: boolean
                     nullable: true
                   disconnectedCheckTryAt:
                     type: string
@@ -4775,6 +4790,9 @@ paths:
                       - basic
                       - premium
                       - premium_plus
+                    nullable: true
+                  isTiktokBusinessAccount:
+                    type: boolean
                     nullable: true
                   disconnectedCheckTryAt:
                     type: string
@@ -5524,6 +5542,9 @@ paths:
                           - premium
                           - premium_plus
                         nullable: true
+                      isTiktokBusinessAccount:
+                        type: boolean
+                        nullable: true
                       disconnectedCheckTryAt:
                         type: string
                         format: date-time
@@ -5846,6 +5867,9 @@ paths:
                       - premium
                       - premium_plus
                     nullable: true
+                  isTiktokBusinessAccount:
+                    type: boolean
+                    nullable: true
                   disconnectedCheckTryAt:
                     type: string
                     format: date-time
@@ -6164,6 +6188,9 @@ paths:
                         - premium
                         - premium_plus
                       nullable: true
+                    isTiktokBusinessAccount:
+                      type: boolean
+                      nullable: true
                     disconnectedCheckTryAt:
                       type: string
                       format: date-time
@@ -6455,6 +6482,9 @@ paths:
                             - basic
                             - premium
                             - premium_plus
+                          nullable: true
+                        isTiktokBusinessAccount:
+                          type: boolean
                           nullable: true
                         disconnectedCheckTryAt:
                           type: string
@@ -9236,6 +9266,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -9256,6 +9293,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -9278,6 +9322,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -9298,6 +9349,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -9320,6 +9378,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -9340,6 +9405,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -9362,6 +9434,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -9382,6 +9461,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -9404,6 +9490,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -9424,6 +9517,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -9446,6 +9546,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -9466,6 +9573,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -9488,6 +9602,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -9508,6 +9629,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -9584,6 +9712,9 @@ paths:
                             type: string
                             nullable: true
                           shareId:
+                            type: string
+                            nullable: true
+                          requestId:
                             type: string
                             nullable: true
                           permalink:
@@ -9978,6 +10109,9 @@ paths:
                                 - basic
                                 - premium
                                 - premium_plus
+                              nullable: true
+                            isTiktokBusinessAccount:
+                              type: boolean
                               nullable: true
                             disconnectedCheckTryAt:
                               type: string
@@ -11786,6 +11920,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -11806,6 +11947,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -11828,6 +11976,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -11848,6 +12003,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -11870,6 +12032,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -11890,6 +12059,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -11912,6 +12088,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -11932,6 +12115,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -11954,6 +12144,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -11974,6 +12171,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -11996,6 +12200,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -12016,6 +12227,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -12038,6 +12256,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -12058,6 +12283,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -12134,6 +12366,9 @@ paths:
                             type: string
                             nullable: true
                           shareId:
+                            type: string
+                            nullable: true
+                          requestId:
                             type: string
                             nullable: true
                           permalink:
@@ -13284,6 +13519,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -13304,6 +13546,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -13326,6 +13575,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -13346,6 +13602,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -13368,6 +13631,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -13388,6 +13658,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -13410,6 +13687,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -13430,6 +13714,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -13452,6 +13743,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -13472,6 +13770,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -13494,6 +13799,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -13514,6 +13826,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -13536,6 +13855,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -13556,6 +13882,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -13632,6 +13965,9 @@ paths:
                             type: string
                             nullable: true
                           shareId:
+                            type: string
+                            nullable: true
+                          requestId:
                             type: string
                             nullable: true
                           permalink:
@@ -14884,6 +15220,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -14904,6 +15247,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -14926,6 +15276,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -14946,6 +15303,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -14968,6 +15332,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -14988,6 +15359,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -15010,6 +15388,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -15030,6 +15415,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -15052,6 +15444,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -15072,6 +15471,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -15094,6 +15500,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -15114,6 +15527,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -15136,6 +15556,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -15156,6 +15583,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -15232,6 +15666,9 @@ paths:
                                   type: string
                                   nullable: true
                                 shareId:
+                                  type: string
+                                  nullable: true
+                                requestId:
                                   type: string
                                   nullable: true
                                 permalink:
@@ -15626,6 +16063,9 @@ paths:
                                       - basic
                                       - premium
                                       - premium_plus
+                                    nullable: true
+                                  isTiktokBusinessAccount:
+                                    type: boolean
                                     nullable: true
                                   disconnectedCheckTryAt:
                                     type: string
@@ -17443,6 +17883,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -17463,6 +17910,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -17485,6 +17939,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -17505,6 +17966,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -17527,6 +17995,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -17547,6 +18022,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -17569,6 +18051,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -17589,6 +18078,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -17611,6 +18107,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -17631,6 +18134,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -17653,6 +18163,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -17673,6 +18190,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -17695,6 +18219,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -17715,6 +18246,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -17791,6 +18329,9 @@ paths:
                             type: string
                             nullable: true
                           shareId:
+                            type: string
+                            nullable: true
+                          requestId:
                             type: string
                             nullable: true
                           permalink:
@@ -18942,6 +19483,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -18962,6 +19510,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -18984,6 +19539,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -19004,6 +19566,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -19026,6 +19595,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -19046,6 +19622,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -19068,6 +19651,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -19088,6 +19678,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -19110,6 +19707,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -19130,6 +19734,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -19152,6 +19763,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -19172,6 +19790,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -19194,6 +19819,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -19214,6 +19846,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -19290,6 +19929,9 @@ paths:
                             type: string
                             nullable: true
                           shareId:
+                            type: string
+                            nullable: true
+                          requestId:
                             type: string
                             nullable: true
                           permalink:
@@ -19731,6 +20373,9 @@ paths:
                           - basic
                           - premium
                           - premium_plus
+                        nullable: true
+                      isTiktokBusinessAccount:
+                        type: boolean
                         nullable: true
                       disconnectedCheckTryAt:
                         type: string
@@ -20835,6 +21480,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -20855,6 +21507,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -20877,6 +21536,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -20897,6 +21563,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -20919,6 +21592,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -20939,6 +21619,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -20961,6 +21648,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -20981,6 +21675,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -21003,6 +21704,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -21023,6 +21731,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -21045,6 +21760,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -21065,6 +21787,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -21087,6 +21816,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -21107,6 +21843,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -21183,6 +21926,9 @@ paths:
                                 type: string
                                 nullable: true
                               shareId:
+                                type: string
+                                nullable: true
+                              requestId:
                                 type: string
                                 nullable: true
                               permalink:
@@ -21759,6 +22505,9 @@ paths:
                           - basic
                           - premium
                           - premium_plus
+                        nullable: true
+                      isTiktokBusinessAccount:
+                        type: boolean
                         nullable: true
                       disconnectedCheckTryAt:
                         type: string
@@ -22841,6 +23590,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -22861,6 +23617,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -22883,6 +23646,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -22903,6 +23673,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -22925,6 +23702,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -22945,6 +23729,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -22967,6 +23758,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -22987,6 +23785,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -23009,6 +23814,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -23029,6 +23841,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -23051,6 +23870,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -23071,6 +23897,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -23093,6 +23926,13 @@ paths:
                               isTransient:
                                 type: boolean
                                 nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
                               httpStatus:
                                 type: number
                                 nullable: true
@@ -23113,6 +23953,13 @@ paths:
                                 nullable: true
                               isTransient:
                                 type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
                                 nullable: true
                               httpStatus:
                                 type: number
@@ -23189,6 +24036,9 @@ paths:
                                 type: string
                                 nullable: true
                               shareId:
+                                type: string
+                                nullable: true
+                              requestId:
                                 type: string
                                 nullable: true
                               permalink:
@@ -25435,6 +26285,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -25455,6 +26312,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -25477,6 +26341,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -25497,6 +26368,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -25519,6 +26397,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -25539,6 +26424,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -25561,6 +26453,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -25581,6 +26480,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -25603,6 +26509,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -25624,6 +26537,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -25644,6 +26564,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -26240,6 +27167,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26260,6 +27194,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -26282,6 +27223,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26302,6 +27250,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -26324,6 +27279,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26344,6 +27306,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -26366,6 +27335,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26386,6 +27362,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -26408,6 +27391,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26429,6 +27419,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26449,6 +27446,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -26919,6 +27923,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26939,6 +27950,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -26961,6 +27979,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -26981,6 +28006,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -27003,6 +28035,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -27023,6 +28062,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -27045,6 +28091,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -27065,6 +28118,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -27087,6 +28147,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -27108,6 +28175,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -27128,6 +28202,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -27669,6 +28750,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -27689,6 +28777,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -27711,6 +28806,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -27731,6 +28833,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -27753,6 +28862,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -27773,6 +28889,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -27795,6 +28918,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -27815,6 +28945,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -27837,6 +28974,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -27858,6 +29002,13 @@ paths:
                                 isTransient:
                                   type: boolean
                                   nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
                                 httpStatus:
                                   type: number
                                   nullable: true
@@ -27878,6 +29029,13 @@ paths:
                                   nullable: true
                                 isTransient:
                                   type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
                                   nullable: true
                                 httpStatus:
                                   type: number
@@ -28478,6 +29636,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -28498,6 +29663,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -28520,6 +29692,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -28540,6 +29719,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -28562,6 +29748,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -28582,6 +29775,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -28604,6 +29804,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -28624,6 +29831,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number
@@ -28646,6 +29860,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -28667,6 +29888,13 @@ paths:
                           isTransient:
                             type: boolean
                             nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
                           httpStatus:
                             type: number
                             nullable: true
@@ -28687,6 +29915,13 @@ paths:
                             nullable: true
                           isTransient:
                             type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
                             nullable: true
                           httpStatus:
                             type: number

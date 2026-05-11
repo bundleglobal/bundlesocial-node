@@ -382,6 +382,7 @@ export type TeamGetTeamResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
         createdAt: string | null;
@@ -591,6 +592,7 @@ export type TeamGetListResponse = {
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
             deleteOn?: string | null;
             createdAt: string | null;
@@ -741,6 +743,7 @@ export type SocialAccountDisconnectResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
     createdAt: string | null;
@@ -792,6 +795,7 @@ export type SocialAccountSetChannelResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
     createdAt: string | null;
@@ -842,6 +846,7 @@ export type SocialAccountUnsetChannelResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
     createdAt: string | null;
@@ -892,6 +897,7 @@ export type SocialAccountRefreshChannelsResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
     createdAt: string | null;
@@ -1010,6 +1016,7 @@ export type SocialAccountProfileRefreshResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
         createdAt: string | null;
@@ -1061,6 +1068,7 @@ export type SocialAccountGetByTypeResponse = {
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
     createdAt: string | null;
@@ -1116,6 +1124,7 @@ export type SocialAccountCopyResponse = Array<{
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+    isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
     createdAt: string | null;
@@ -1162,6 +1171,7 @@ export type SocialAccountGetAccountsToDeleteResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
         createdAt: string | null;
@@ -1792,6 +1802,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1800,6 +1811,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1808,6 +1820,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1816,6 +1829,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1824,6 +1838,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1832,6 +1847,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1840,6 +1856,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1848,6 +1865,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1856,6 +1874,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1864,6 +1883,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1872,6 +1892,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1880,6 +1901,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1888,6 +1910,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1896,6 +1919,7 @@ export type PostGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -1926,6 +1950,7 @@ export type PostGetResponse = {
         TIKTOK?: {
             id?: string | null;
             shareId?: string | null;
+            requestId?: string | null;
             permalink?: string | null;
             status?: string | null;
         } | null;
@@ -2063,6 +2088,7 @@ export type PostGetResponse = {
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
             deleteOn?: string | null;
             createdAt: string | null;
@@ -2805,6 +2831,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2813,6 +2840,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2821,6 +2849,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2829,6 +2858,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2837,6 +2867,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2845,6 +2876,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2853,6 +2885,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2861,6 +2894,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2869,6 +2903,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2877,6 +2912,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2885,6 +2921,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2893,6 +2930,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2901,6 +2939,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2909,6 +2948,7 @@ export type PostUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -2939,6 +2979,7 @@ export type PostUpdateResponse = {
         TIKTOK?: {
             id?: string | null;
             shareId?: string | null;
+            requestId?: string | null;
             permalink?: string | null;
             status?: string | null;
         } | null;
@@ -3390,6 +3431,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3398,6 +3440,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3406,6 +3449,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3414,6 +3458,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3422,6 +3467,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3430,6 +3476,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3438,6 +3485,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3446,6 +3494,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3454,6 +3503,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3462,6 +3512,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3470,6 +3521,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3478,6 +3530,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3486,6 +3539,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3494,6 +3548,7 @@ export type PostDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -3524,6 +3579,7 @@ export type PostDeleteResponse = {
         TIKTOK?: {
             id?: string | null;
             shareId?: string | null;
+            requestId?: string | null;
             permalink?: string | null;
             status?: string | null;
         } | null;
@@ -3985,6 +4041,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -3993,6 +4050,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4001,6 +4059,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4009,6 +4068,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4017,6 +4077,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4025,6 +4086,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4033,6 +4095,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4041,6 +4104,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4049,6 +4113,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4057,6 +4122,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4065,6 +4131,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4073,6 +4140,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4081,6 +4149,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4089,6 +4158,7 @@ export type PostGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -4119,6 +4189,7 @@ export type PostGetListResponse = {
             TIKTOK?: {
                 id?: string | null;
                 shareId?: string | null;
+                requestId?: string | null;
                 permalink?: string | null;
                 status?: string | null;
             } | null;
@@ -4256,6 +4327,7 @@ export type PostGetListResponse = {
                 mastodonServerId?: string | null;
                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                isTiktokBusinessAccount?: boolean | null;
                 disconnectedCheckTryAt?: string | null;
                 deleteOn?: string | null;
                 createdAt: string | null;
@@ -5000,6 +5072,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5008,6 +5081,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5016,6 +5090,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5024,6 +5099,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5032,6 +5108,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5040,6 +5117,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5048,6 +5126,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5056,6 +5135,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5064,6 +5144,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5072,6 +5153,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5080,6 +5162,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5088,6 +5171,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5096,6 +5180,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5104,6 +5189,7 @@ export type PostCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5134,6 +5220,7 @@ export type PostCreateResponse = {
         TIKTOK?: {
             id?: string | null;
             shareId?: string | null;
+            requestId?: string | null;
             permalink?: string | null;
             status?: string | null;
         } | null;
@@ -5585,6 +5672,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5593,6 +5681,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5601,6 +5690,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5609,6 +5699,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5617,6 +5708,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5625,6 +5717,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5633,6 +5726,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5641,6 +5735,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5649,6 +5744,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5657,6 +5753,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5665,6 +5762,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5673,6 +5771,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5681,6 +5780,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5689,6 +5789,7 @@ export type PostRetryResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -5719,6 +5820,7 @@ export type PostRetryResponse = {
         TIKTOK?: {
             id?: string | null;
             shareId?: string | null;
+            requestId?: string | null;
             permalink?: string | null;
             status?: string | null;
         } | null;
@@ -5830,6 +5932,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
         createdAt: string | null;
@@ -6237,6 +6340,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6245,6 +6349,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6253,6 +6358,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6261,6 +6367,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6269,6 +6376,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6277,6 +6385,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6285,6 +6394,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6293,6 +6403,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6301,6 +6412,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6309,6 +6421,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6317,6 +6430,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6325,6 +6439,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6333,6 +6448,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6341,6 +6457,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6371,6 +6488,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
             TIKTOK?: {
                 id?: string | null;
                 shareId?: string | null;
+                requestId?: string | null;
                 permalink?: string | null;
                 status?: string | null;
             } | null;
@@ -6522,6 +6640,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
         createdAt: string | null;
@@ -6922,6 +7041,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6930,6 +7050,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6938,6 +7059,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6946,6 +7068,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6954,6 +7077,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6962,6 +7086,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6970,6 +7095,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6978,6 +7104,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6986,6 +7113,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -6994,6 +7122,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -7002,6 +7131,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -7010,6 +7140,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -7018,6 +7149,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -7026,6 +7158,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -7056,6 +7189,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             TIKTOK?: {
                 id?: string | null;
                 shareId?: string | null;
+                requestId?: string | null;
                 permalink?: string | null;
                 status?: string | null;
             } | null;
@@ -7437,6 +7571,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7445,6 +7580,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7453,6 +7589,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7461,6 +7598,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7469,6 +7607,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7477,6 +7616,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7485,6 +7625,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7493,6 +7634,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7501,6 +7643,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7509,6 +7652,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7517,6 +7661,7 @@ export type CommentGetResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7700,6 +7845,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7708,6 +7854,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7716,6 +7863,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7724,6 +7872,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7732,6 +7881,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7740,6 +7890,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7748,6 +7899,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7756,6 +7908,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7764,6 +7917,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7772,6 +7926,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7780,6 +7935,7 @@ export type CommentUpdateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7915,6 +8071,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7923,6 +8080,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7931,6 +8089,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7939,6 +8098,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7947,6 +8107,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7955,6 +8116,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7963,6 +8125,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7971,6 +8134,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7979,6 +8143,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7987,6 +8152,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -7995,6 +8161,7 @@ export type CommentDeleteResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8139,6 +8306,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8147,6 +8315,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8155,6 +8324,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8163,6 +8333,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8171,6 +8342,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8179,6 +8351,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8187,6 +8360,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8195,6 +8369,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8203,6 +8378,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8211,6 +8387,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8219,6 +8396,7 @@ export type CommentGetListResponse = {
                 code?: string | null;
                 errorMessage?: string | null;
                 isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                 httpStatus?: number | null;
                 meta?: unknown;
                 userFacingMessage?: string | null;
@@ -8404,6 +8582,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8412,6 +8591,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8420,6 +8600,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8428,6 +8609,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8436,6 +8618,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8444,6 +8627,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8452,6 +8636,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8460,6 +8645,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8468,6 +8654,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8476,6 +8663,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -8484,6 +8672,7 @@ export type CommentCreateResponse = {
             code?: string | null;
             errorMessage?: string | null;
             isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
             httpStatus?: number | null;
             meta?: unknown;
             userFacingMessage?: string | null;
@@ -11752,6 +11941,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
                         createdAt: string | null;
@@ -12103,6 +12293,7 @@ export type $OpenApiTs = {
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
                             deleteOn?: string | null;
                             createdAt: string | null;
@@ -12367,6 +12558,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
                     createdAt: string | null;
@@ -12463,6 +12655,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
                     createdAt: string | null;
@@ -12559,6 +12752,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
                     createdAt: string | null;
@@ -12655,6 +12849,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
                     createdAt: string | null;
@@ -12882,6 +13077,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
                         createdAt: string | null;
@@ -12984,6 +13180,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
                     createdAt: string | null;
@@ -13080,6 +13277,7 @@ export type $OpenApiTs = {
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                    isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
                     createdAt: string | null;
@@ -13177,6 +13375,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
                         createdAt: string | null;
@@ -14237,6 +14436,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14245,6 +14445,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14253,6 +14454,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14261,6 +14463,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14269,6 +14472,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14277,6 +14481,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14285,6 +14490,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14293,6 +14499,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14301,6 +14508,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14309,6 +14517,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14317,6 +14526,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14325,6 +14535,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14333,6 +14544,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14341,6 +14553,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14371,6 +14584,7 @@ export type $OpenApiTs = {
                         TIKTOK?: {
                             id?: string | null;
                             shareId?: string | null;
+                            requestId?: string | null;
                             permalink?: string | null;
                             status?: string | null;
                         } | null;
@@ -14508,6 +14722,7 @@ export type $OpenApiTs = {
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
                             deleteOn?: string | null;
                             createdAt: string | null;
@@ -14946,6 +15161,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14954,6 +15170,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14962,6 +15179,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14970,6 +15188,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14978,6 +15197,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14986,6 +15206,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -14994,6 +15215,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15002,6 +15224,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15010,6 +15233,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15018,6 +15242,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15026,6 +15251,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15034,6 +15260,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15042,6 +15269,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15050,6 +15278,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15080,6 +15309,7 @@ export type $OpenApiTs = {
                         TIKTOK?: {
                             id?: string | null;
                             shareId?: string | null;
+                            requestId?: string | null;
                             permalink?: string | null;
                             status?: string | null;
                         } | null;
@@ -15581,6 +15811,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15589,6 +15820,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15597,6 +15829,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15605,6 +15838,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15613,6 +15847,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15621,6 +15856,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15629,6 +15865,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15637,6 +15874,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15645,6 +15883,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15653,6 +15892,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15661,6 +15901,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15669,6 +15910,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15677,6 +15919,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15685,6 +15928,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -15715,6 +15959,7 @@ export type $OpenApiTs = {
                         TIKTOK?: {
                             id?: string | null;
                             shareId?: string | null;
+                            requestId?: string | null;
                             permalink?: string | null;
                             status?: string | null;
                         } | null;
@@ -16219,6 +16464,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16227,6 +16473,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16235,6 +16482,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16243,6 +16491,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16251,6 +16500,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16259,6 +16509,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16267,6 +16518,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16275,6 +16527,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16283,6 +16536,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16291,6 +16545,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16299,6 +16554,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16307,6 +16563,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16315,6 +16572,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16323,6 +16581,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -16353,6 +16612,7 @@ export type $OpenApiTs = {
                             TIKTOK?: {
                                 id?: string | null;
                                 shareId?: string | null;
+                                requestId?: string | null;
                                 permalink?: string | null;
                                 status?: string | null;
                             } | null;
@@ -16490,6 +16750,7 @@ export type $OpenApiTs = {
                                 mastodonServerId?: string | null;
                                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                                isTiktokBusinessAccount?: boolean | null;
                                 disconnectedCheckTryAt?: string | null;
                                 deleteOn?: string | null;
                                 createdAt: string | null;
@@ -16930,6 +17191,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16938,6 +17200,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16946,6 +17209,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16954,6 +17218,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16962,6 +17227,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16970,6 +17236,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16978,6 +17245,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16986,6 +17254,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -16994,6 +17263,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17002,6 +17272,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17010,6 +17281,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17018,6 +17290,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17026,6 +17299,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17034,6 +17308,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17064,6 +17339,7 @@ export type $OpenApiTs = {
                         TIKTOK?: {
                             id?: string | null;
                             shareId?: string | null;
+                            requestId?: string | null;
                             permalink?: string | null;
                             status?: string | null;
                         } | null;
@@ -17567,6 +17843,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17575,6 +17852,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17583,6 +17861,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17591,6 +17870,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17599,6 +17879,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17607,6 +17888,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17615,6 +17897,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17623,6 +17906,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17631,6 +17915,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17639,6 +17924,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17647,6 +17933,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17655,6 +17942,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17663,6 +17951,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17671,6 +17960,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -17701,6 +17991,7 @@ export type $OpenApiTs = {
                         TIKTOK?: {
                             id?: string | null;
                             shareId?: string | null;
+                            requestId?: string | null;
                             permalink?: string | null;
                             status?: string | null;
                         } | null;
@@ -17863,6 +18154,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
                         createdAt: string | null;
@@ -18320,6 +18612,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18328,6 +18621,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18336,6 +18630,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18344,6 +18639,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18352,6 +18648,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18360,6 +18657,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18368,6 +18666,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18376,6 +18675,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18384,6 +18684,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18392,6 +18693,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18400,6 +18702,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18408,6 +18711,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18416,6 +18720,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18424,6 +18729,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -18454,6 +18760,7 @@ export type $OpenApiTs = {
                             TIKTOK?: {
                                 id?: string | null;
                                 shareId?: string | null;
+                                requestId?: string | null;
                                 permalink?: string | null;
                                 status?: string | null;
                             } | null;
@@ -18656,6 +18963,7 @@ export type $OpenApiTs = {
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
                         createdAt: string | null;
@@ -19106,6 +19414,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19114,6 +19423,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19122,6 +19432,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19130,6 +19441,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19138,6 +19450,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19146,6 +19459,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19154,6 +19468,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19162,6 +19477,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19170,6 +19486,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19178,6 +19495,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19186,6 +19504,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19194,6 +19513,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19202,6 +19522,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19210,6 +19531,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -19240,6 +19562,7 @@ export type $OpenApiTs = {
                             TIKTOK?: {
                                 id?: string | null;
                                 shareId?: string | null;
+                                requestId?: string | null;
                                 permalink?: string | null;
                                 status?: string | null;
                             } | null;
@@ -20010,6 +20333,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20018,6 +20342,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20026,6 +20351,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20034,6 +20360,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20042,6 +20369,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20050,6 +20378,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20058,6 +20387,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20066,6 +20396,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20074,6 +20405,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20082,6 +20414,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20090,6 +20423,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20275,6 +20609,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20283,6 +20618,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20291,6 +20627,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20299,6 +20636,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20307,6 +20645,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20315,6 +20654,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20323,6 +20663,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20331,6 +20672,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20339,6 +20681,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20347,6 +20690,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20355,6 +20699,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20540,6 +20885,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20548,6 +20894,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20556,6 +20903,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20564,6 +20912,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20572,6 +20921,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20580,6 +20930,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20588,6 +20939,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20596,6 +20948,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20604,6 +20957,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20612,6 +20966,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20620,6 +20975,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -20808,6 +21164,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20816,6 +21173,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20824,6 +21182,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20832,6 +21191,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20840,6 +21200,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20848,6 +21209,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20856,6 +21218,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20864,6 +21227,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20872,6 +21236,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20880,6 +21245,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -20888,6 +21254,7 @@ export type $OpenApiTs = {
                                 code?: string | null;
                                 errorMessage?: string | null;
                                 isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                                 httpStatus?: number | null;
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
@@ -21075,6 +21442,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21083,6 +21451,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21091,6 +21460,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21099,6 +21469,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21107,6 +21478,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21115,6 +21487,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21123,6 +21496,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21131,6 +21505,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21139,6 +21514,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21147,6 +21523,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;
@@ -21155,6 +21532,7 @@ export type $OpenApiTs = {
                             code?: string | null;
                             errorMessage?: string | null;
                             isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
                             httpStatus?: number | null;
                             meta?: unknown;
                             userFacingMessage?: string | null;

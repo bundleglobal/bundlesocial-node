@@ -669,6 +669,9 @@ export type SocialAccountConnectData = {
     requestBody?: {
         type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
         teamId: string;
+        /**
+         * Client-provided return URL. After the OAuth flow completes (success or error), the user will be redirected here with success/error query params appended. Must be a well-formed http/https URL.
+         */
         redirectUrl: string;
         /**
          * Mastodon or Bluesky only
@@ -1382,7 +1385,7 @@ export type UploadInitLargeUploadData = {
     requestBody?: {
         teamId?: string | null;
         fileName: string;
-        mimeType: 'image/jpg' | 'image/jpeg' | 'image/png' | 'image/gif' | 'video/mp4' | 'application/pdf';
+        mimeType: 'image/jpg' | 'image/jpeg' | 'image/png' | 'image/gif' | 'video/mp4' | 'video/quicktime' | 'application/pdf';
     };
 };
 
@@ -7473,12 +7476,98 @@ export type CommentImportGetFetchedCommentsResponse = {
         text?: string | null;
         likesCount: number;
         repliesCount: number;
+        platformData?: {
+            canDelete?: boolean | null;
+            canHide?: boolean | null;
+            canLike?: boolean | null;
+            canModerate?: boolean | null;
+            hidden?: boolean | null;
+            likedByMe?: boolean | null;
+            reactionsCount?: number | null;
+            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+            owner?: boolean | null;
+            hideStatus?: string | null;
+            moderationStatus?: string | null;
+            approvalStatus?: string | null;
+            status?: string | null;
+            attachmentType?: string | null;
+            attachmentUrl?: string | null;
+            cid?: string | null;
+            origin?: 'platform' | 'bundle' | null;
+            bundleCommentId?: string | null;
+            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+            disabledReason?: string | null;
+            [key: string]: (unknown | boolean | number | string | null) | undefined;
+        };
         publishedAt?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
     }>;
     total: number;
+};
+
+export type CommentImportActionFetchedCommentData = {
+    commentId: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        action: 'DELETE' | 'HIDE' | 'UNHIDE' | 'LIKE' | 'UNLIKE' | 'APPROVE' | 'REJECT';
+        reason?: string;
+        banAuthor?: boolean;
+    };
+};
+
+export type CommentImportActionFetchedCommentResponse = {
+    success: boolean;
+    item: {
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        postId: string;
+        socialAccountId: string;
+        importId: string;
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+        externalId: string;
+        externalParentId?: string | null;
+        externalPostId?: string | null;
+        authorName?: string | null;
+        authorExternalId?: string | null;
+        authorProfileUrl?: string | null;
+        authorAvatarUrl?: string | null;
+        text?: string | null;
+        likesCount: number;
+        repliesCount: number;
+        platformData?: {
+            canDelete?: boolean | null;
+            canHide?: boolean | null;
+            canLike?: boolean | null;
+            canModerate?: boolean | null;
+            hidden?: boolean | null;
+            likedByMe?: boolean | null;
+            reactionsCount?: number | null;
+            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+            owner?: boolean | null;
+            hideStatus?: string | null;
+            moderationStatus?: string | null;
+            approvalStatus?: string | null;
+            status?: string | null;
+            attachmentType?: string | null;
+            attachmentUrl?: string | null;
+            cid?: string | null;
+            origin?: 'platform' | 'bundle' | null;
+            bundleCommentId?: string | null;
+            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+            disabledReason?: string | null;
+            [key: string]: (unknown | boolean | number | string | null) | undefined;
+        };
+        publishedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
 };
 
 export type CommentImportGetByIdData = {
@@ -10293,6 +10382,28 @@ export type MiscInstagramDeleteCommentData = {
 
 export type MiscInstagramDeleteCommentResponse = {
     success: boolean;
+};
+
+export type MiscFacebookGetTokenDebugData = {
+    teamId: string;
+};
+
+export type MiscFacebookGetTokenDebugResponse = {
+    type?: 'USER' | 'PAGE';
+    application?: string;
+    data_access_expires_at?: number;
+    is_valid: boolean;
+    issued_at?: number;
+    scopes: Array<(string)>;
+    granular_scopes: Array<{
+        scope: string;
+        target_ids?: Array<(string)>;
+    }>;
+    error?: {
+        code: number;
+        message: string;
+        subcode?: number;
+    };
 };
 
 export type MiscFacebookImportRecommendationsData = {
@@ -20131,12 +20242,141 @@ export type $OpenApiTs = {
                         text?: string | null;
                         likesCount: number;
                         repliesCount: number;
+                        platformData?: {
+                            canDelete?: boolean | null;
+                            canHide?: boolean | null;
+                            canLike?: boolean | null;
+                            canModerate?: boolean | null;
+                            hidden?: boolean | null;
+                            likedByMe?: boolean | null;
+                            reactionsCount?: number | null;
+                            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+                            owner?: boolean | null;
+                            hideStatus?: string | null;
+                            moderationStatus?: string | null;
+                            approvalStatus?: string | null;
+                            status?: string | null;
+                            attachmentType?: string | null;
+                            attachmentUrl?: string | null;
+                            cid?: string | null;
+                            origin?: 'platform' | 'bundle' | null;
+                            bundleCommentId?: string | null;
+                            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+                            disabledReason?: string | null;
+                            [key: string]: (unknown | boolean | number | string | null) | undefined;
+                        };
                         publishedAt?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
                     }>;
                     total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/comment/import/comments/{commentId}/action': {
+        post: {
+            req: CommentImportActionFetchedCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    item: {
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        postId: string;
+                        socialAccountId: string;
+                        importId: string;
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                        externalId: string;
+                        externalParentId?: string | null;
+                        externalPostId?: string | null;
+                        authorName?: string | null;
+                        authorExternalId?: string | null;
+                        authorProfileUrl?: string | null;
+                        authorAvatarUrl?: string | null;
+                        text?: string | null;
+                        likesCount: number;
+                        repliesCount: number;
+                        platformData?: {
+                            canDelete?: boolean | null;
+                            canHide?: boolean | null;
+                            canLike?: boolean | null;
+                            canModerate?: boolean | null;
+                            hidden?: boolean | null;
+                            likedByMe?: boolean | null;
+                            reactionsCount?: number | null;
+                            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+                            owner?: boolean | null;
+                            hideStatus?: string | null;
+                            moderationStatus?: string | null;
+                            approvalStatus?: string | null;
+                            status?: string | null;
+                            attachmentType?: string | null;
+                            attachmentUrl?: string | null;
+                            cid?: string | null;
+                            origin?: 'platform' | 'bundle' | null;
+                            bundleCommentId?: string | null;
+                            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+                            disabledReason?: string | null;
+                            [key: string]: (unknown | boolean | number | string | null) | undefined;
+                        };
+                        publishedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
                 };
                 /**
                  * 400
@@ -25442,6 +25682,80 @@ export type $OpenApiTs = {
                  */
                 200: {
                     success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/token-debug': {
+        get: {
+            req: MiscFacebookGetTokenDebugData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    type?: 'USER' | 'PAGE';
+                    application?: string;
+                    data_access_expires_at?: number;
+                    is_valid: boolean;
+                    issued_at?: number;
+                    scopes: Array<(string)>;
+                    granular_scopes: Array<{
+                        scope: string;
+                        target_ids?: Array<(string)>;
+                    }>;
+                    error?: {
+                        code: number;
+                        message: string;
+                        subcode?: number;
+                    };
                 };
                 /**
                  * 400

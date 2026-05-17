@@ -3558,6 +3558,11 @@ paths:
                 teamId:
                   type: string
                 redirectUrl:
+                  description: >-
+                    Client-provided return URL. After the OAuth flow completes
+                    (success or error), the user will be redirected here with
+                    success/error query params appended. Must be a well-formed
+                    http/https URL.
                   type: string
                   format: uri
                 serverUrl:
@@ -8043,6 +8048,7 @@ paths:
                     - image/png
                     - image/gif
                     - video/mp4
+                    - video/quicktime
                     - application/pdf
               required:
                 - fileName
@@ -25734,6 +25740,93 @@ paths:
                           type: number
                         repliesCount:
                           type: number
+                        platformData:
+                          default: &ref_7 {}
+                          type: object
+                          properties:
+                            canDelete:
+                              type: boolean
+                              nullable: true
+                            canHide:
+                              type: boolean
+                              nullable: true
+                            canLike:
+                              type: boolean
+                              nullable: true
+                            canModerate:
+                              type: boolean
+                              nullable: true
+                            hidden:
+                              type: boolean
+                              nullable: true
+                            likedByMe:
+                              type: boolean
+                              nullable: true
+                            reactionsCount:
+                              type: number
+                              nullable: true
+                            reactionType:
+                              type: string
+                              enum:
+                                - LIKE
+                                - LOVE
+                                - WOW
+                                - HAHA
+                                - SAD
+                                - ANGRY
+                              nullable: true
+                            owner:
+                              type: boolean
+                              nullable: true
+                            hideStatus:
+                              type: string
+                              nullable: true
+                            moderationStatus:
+                              type: string
+                              nullable: true
+                            approvalStatus:
+                              type: string
+                              nullable: true
+                            status:
+                              type: string
+                              nullable: true
+                            attachmentType:
+                              type: string
+                              nullable: true
+                            attachmentUrl:
+                              type: string
+                              nullable: true
+                            cid:
+                              type: string
+                              nullable: true
+                            origin:
+                              type: string
+                              enum:
+                                - platform
+                                - bundle
+                              nullable: true
+                            bundleCommentId:
+                              type: string
+                              nullable: true
+                            displayState:
+                              type: string
+                              enum:
+                                - active
+                                - thread_deleted
+                                - platform_missing
+                              nullable: true
+                            disabledReason:
+                              type: string
+                              nullable: true
+                          additionalProperties:
+                            oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                              - type: string
+                                format: 'null'
+                                nullable: true
+                            nullable: true
                         publishedAt:
                           type: string
                           format: date-time
@@ -25767,6 +25860,348 @@ paths:
                 required:
                   - items
                   - total
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/comment/import/comments/{commentId}/action:
+    post:
+      summary: Run an action on a fetched comment
+      tags: *ref_6
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: comment.importActionFetchedComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                action:
+                  type: string
+                  enum:
+                    - DELETE
+                    - HIDE
+                    - UNHIDE
+                    - LIKE
+                    - UNLIKE
+                    - APPROVE
+                    - REJECT
+                reason:
+                  type: string
+                  maxLength: 500
+                banAuthor:
+                  type: boolean
+              required:
+                - teamId
+                - action
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  item:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      teamId:
+                        type: string
+                      organizationId:
+                        type: string
+                        nullable: true
+                      postId:
+                        type: string
+                      socialAccountId:
+                        type: string
+                      importId:
+                        type: string
+                      platform:
+                        type: string
+                        enum:
+                          - FACEBOOK
+                          - INSTAGRAM
+                          - LINKEDIN
+                          - YOUTUBE
+                          - TIKTOK
+                          - REDDIT
+                          - THREADS
+                          - MASTODON
+                          - BLUESKY
+                      externalId:
+                        type: string
+                      externalParentId:
+                        type: string
+                        nullable: true
+                      externalPostId:
+                        type: string
+                        nullable: true
+                      authorName:
+                        type: string
+                        nullable: true
+                      authorExternalId:
+                        type: string
+                        nullable: true
+                      authorProfileUrl:
+                        type: string
+                        nullable: true
+                      authorAvatarUrl:
+                        type: string
+                        nullable: true
+                      text:
+                        type: string
+                        nullable: true
+                      likesCount:
+                        type: number
+                      repliesCount:
+                        type: number
+                      platformData:
+                        default: *ref_7
+                        type: object
+                        properties:
+                          canDelete:
+                            type: boolean
+                            nullable: true
+                          canHide:
+                            type: boolean
+                            nullable: true
+                          canLike:
+                            type: boolean
+                            nullable: true
+                          canModerate:
+                            type: boolean
+                            nullable: true
+                          hidden:
+                            type: boolean
+                            nullable: true
+                          likedByMe:
+                            type: boolean
+                            nullable: true
+                          reactionsCount:
+                            type: number
+                            nullable: true
+                          reactionType:
+                            type: string
+                            enum:
+                              - LIKE
+                              - LOVE
+                              - WOW
+                              - HAHA
+                              - SAD
+                              - ANGRY
+                            nullable: true
+                          owner:
+                            type: boolean
+                            nullable: true
+                          hideStatus:
+                            type: string
+                            nullable: true
+                          moderationStatus:
+                            type: string
+                            nullable: true
+                          approvalStatus:
+                            type: string
+                            nullable: true
+                          status:
+                            type: string
+                            nullable: true
+                          attachmentType:
+                            type: string
+                            nullable: true
+                          attachmentUrl:
+                            type: string
+                            nullable: true
+                          cid:
+                            type: string
+                            nullable: true
+                          origin:
+                            type: string
+                            enum:
+                              - platform
+                              - bundle
+                            nullable: true
+                          bundleCommentId:
+                            type: string
+                            nullable: true
+                          displayState:
+                            type: string
+                            enum:
+                              - active
+                              - thread_deleted
+                              - platform_missing
+                            nullable: true
+                          disabledReason:
+                            type: string
+                            nullable: true
+                        additionalProperties:
+                          oneOf:
+                            - type: string
+                            - type: number
+                            - type: boolean
+                            - type: string
+                              format: 'null'
+                              nullable: true
+                          nullable: true
+                      publishedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      createdAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      deletedAt:
+                        type: string
+                        format: date-time
+                        nullable: true
+                    required:
+                      - id
+                      - teamId
+                      - postId
+                      - socialAccountId
+                      - importId
+                      - platform
+                      - externalId
+                      - likesCount
+                      - repliesCount
+                      - createdAt
+                      - updatedAt
+                required:
+                  - success
+                  - item
         '400':
           description: '400'
           content:
@@ -35819,7 +36254,7 @@ paths:
                   name:
                     type: string
                   attributes:
-                    default: &ref_7 []
+                    default: &ref_8 []
                     type: array
                     items:
                       type: object
@@ -36025,7 +36460,7 @@ paths:
                   name:
                     type: string
                   attributes:
-                    default: *ref_7
+                    default: *ref_8
                     type: array
                     items:
                       type: object
@@ -40927,6 +41362,193 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/misc/facebook/token-debug:
+    get:
+      summary: Get Facebook token debug details
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+      operationId: misc.facebook.getTokenDebug
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - USER
+                      - PAGE
+                  application:
+                    type: string
+                  data_access_expires_at:
+                    type: number
+                  is_valid:
+                    type: boolean
+                  issued_at:
+                    type: number
+                  scopes:
+                    type: array
+                    items:
+                      type: string
+                  granular_scopes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        scope:
+                          type: string
+                        target_ids:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - scope
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: number
+                      message:
+                        type: string
+                      subcode:
+                        type: number
+                    required:
+                      - code
+                      - message
+                required:
+                  - is_valid
+                  - scopes
+                  - granular_scopes
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/misc/facebook/recommendations/import:
     post:
       summary: Start a new Facebook recommendations import
@@ -45628,7 +46250,7 @@ paths:
   /api/v1/post-history-import/:
     post:
       summary: Start a new post history import
-      tags: &ref_8
+      tags: &ref_9
         - postImport
       parameters: []
       operationId: postImport.create
@@ -45903,7 +46525,7 @@ paths:
                   - message
     get:
       summary: Get import status list
-      tags: *ref_8
+      tags: *ref_9
       parameters:
         - name: teamId
           in: query
@@ -46143,7 +46765,7 @@ paths:
   /api/v1/post-history-import/{importId}:
     get:
       summary: Get import by ID
-      tags: *ref_8
+      tags: *ref_9
       parameters:
         - name: importId
           in: path
@@ -46361,7 +46983,7 @@ paths:
   /api/v1/post-history-import/posts:
     get:
       summary: Get imported posts with analytics for a social account
-      tags: *ref_8
+      tags: *ref_9
       parameters:
         - name: teamId
           in: query
@@ -46676,7 +47298,7 @@ paths:
                   - message
     delete:
       summary: Bulk delete imported posts and their analytics
-      tags: *ref_8
+      tags: *ref_9
       parameters: []
       operationId: postImport.deleteImportedPosts
       requestBody:
@@ -46833,7 +47455,7 @@ paths:
   /api/v1/post-history-import/{importId}/retry:
     post:
       summary: Retry a failed import
-      tags: *ref_8
+      tags: *ref_9
       parameters:
         - name: importId
           in: path
@@ -47063,7 +47685,7 @@ paths:
     post:
       description: Upload CSV for async bulk post import.
       summary: Create post CSV import
-      tags: &ref_9
+      tags: &ref_10
         - postCSV
       parameters: []
       operationId: postCSV.create
@@ -47273,7 +47895,7 @@ paths:
                   - message
     get:
       summary: Get post CSV import history
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: offset
           in: query
@@ -47494,7 +48116,7 @@ paths:
   /api/v1/post-csv-import/{importId}:
     get:
       summary: Get post CSV import details
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: importId
           in: path
@@ -47698,7 +48320,7 @@ paths:
   /api/v1/post-csv-import/{importId}/status:
     get:
       summary: Get post CSV import processing status
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: importId
           in: path
@@ -47880,7 +48502,7 @@ paths:
   /api/v1/post-csv-import/{importId}/rows:
     get:
       summary: Get post CSV import row results
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: importId
           in: path

@@ -1,3 +1,10 @@
+# [2.49.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.48.0...v2.49.0) (2026-05-17)
+
+
+### Features
+
+* comment import and mov uploads ([a71a082](https://github.com/bundleglobal/bundlesocial-node/commit/a71a082636186aeef63a00abd756a7fb7a928d20))
+
 # [2.48.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.47.0...v2.48.0) (2026-05-11)
 
 

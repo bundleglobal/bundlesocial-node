@@ -1,3 +1,10 @@
+# [2.50.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.49.0...v2.50.0) (2026-05-19)
+
+
+### Features
+
+* instagram audio ([9eca796](https://github.com/bundleglobal/bundlesocial-node/commit/9eca7960b2ac9d738e0508f322cf293c17e19f9b))
+
 # [2.49.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.48.0...v2.49.0) (2026-05-17)
 
 

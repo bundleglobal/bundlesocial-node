@@ -148,6 +148,10 @@ export type OrganizationGetOrganizationResponse = {
         stripePriceId: string;
         tier: 'PRO' | 'BUSINESS';
         billingInterval: 'MONTHLY' | 'YEARLY';
+        isCustomPrice: boolean;
+        customPriceLabel?: string | null;
+        customUnitAmount?: number | null;
+        customCurrency?: string | null;
         cancelAtPeriodEnd: boolean;
         created: string | null;
         currentPeriodStart: string | null;
@@ -1539,6 +1543,23 @@ export type PostGetResponse = {
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
             } | null;
+            /**
+             * Information about the Instagram audio asset used for Reels publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use audio_id from Instagram Audio API search endpoint.
+                 */
+                musicSoundId: string;
+                /**
+                 * Audio volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -2212,6 +2233,23 @@ export type PostUpdateData = {
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                 } | null;
+                /**
+                 * Information about the Instagram audio asset used for Reels publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use audio_id from Instagram Audio API search endpoint.
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Audio volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
+                } | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -2567,6 +2605,23 @@ export type PostUpdateResponse = {
              */
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
+            /**
+             * Information about the Instagram audio asset used for Reels publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use audio_id from Instagram Audio API search endpoint.
+                 */
+                musicSoundId: string;
+                /**
+                 * Audio volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
             } | null;
         } | null;
         THREADS?: {
@@ -3167,6 +3222,23 @@ export type PostDeleteResponse = {
              */
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
+            /**
+             * Information about the Instagram audio asset used for Reels publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use audio_id from Instagram Audio API search endpoint.
+                 */
+                musicSoundId: string;
+                /**
+                 * Audio volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
             } | null;
         } | null;
         THREADS?: {
@@ -3777,6 +3849,23 @@ export type PostGetListResponse = {
                  */
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
+                /**
+                 * Information about the Instagram audio asset used for Reels publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use audio_id from Instagram Audio API search endpoint.
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Audio volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
                 } | null;
             } | null;
             THREADS?: {
@@ -4453,6 +4542,23 @@ export type PostCreateData = {
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                 } | null;
+                /**
+                 * Information about the Instagram audio asset used for Reels publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use audio_id from Instagram Audio API search endpoint.
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Audio volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
+                } | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -4808,6 +4914,23 @@ export type PostCreateResponse = {
              */
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
+            /**
+             * Information about the Instagram audio asset used for Reels publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use audio_id from Instagram Audio API search endpoint.
+                 */
+                musicSoundId: string;
+                /**
+                 * Audio volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
             } | null;
         } | null;
         THREADS?: {
@@ -5408,6 +5531,23 @@ export type PostRetryResponse = {
              */
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
+            /**
+             * Information about the Instagram audio asset used for Reels publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use audio_id from Instagram Audio API search endpoint.
+                 */
+                musicSoundId: string;
+                /**
+                 * Audio volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
             } | null;
         } | null;
         THREADS?: {
@@ -6076,6 +6216,23 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  */
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
+                /**
+                 * Information about the Instagram audio asset used for Reels publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use audio_id from Instagram Audio API search endpoint.
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Audio volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
                 } | null;
             } | null;
             THREADS?: {
@@ -6777,6 +6934,23 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  */
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                } | null;
+                /**
+                 * Information about the Instagram audio asset used for Reels publishing.
+                 */
+                musicSoundInfo?: {
+                    /**
+                     * Use audio_id from Instagram Audio API search endpoint.
+                     */
+                    musicSoundId: string;
+                    /**
+                     * Audio volume (0-100).
+                     */
+                    musicSoundVolume?: number | null;
+                    /**
+                     * Background volume of the original video sound (0-100).
+                     */
+                    videoOriginalSoundVolume?: number | null;
                 } | null;
             } | null;
             THREADS?: {
@@ -10367,6 +10541,33 @@ export type MiscInstagramSearchLocationsResponse = {
     }>;
 };
 
+export type MiscInstagramSearchAudioData = {
+    /**
+     * The type of Instagram audio to search for.
+     */
+    audioType: 'original_sound' | 'music';
+    /**
+     * Optional keyword search query.
+     */
+    searchQuery?: string;
+    teamId: string;
+};
+
+export type MiscInstagramSearchAudioResponse = {
+    audio?: Array<{
+        audio_id: string;
+        cover_artwork_thumbnail_uri?: string | null;
+        cover_artwork_thumbnail_url?: string | null;
+        display_artist?: string | null;
+        duration_in_ms?: number | null;
+        audio_type: 'original_sound' | 'music';
+        title?: string | null;
+        download_url?: string | null;
+        ig_username?: string | null;
+        profile_picture_url?: string | null;
+    }>;
+};
+
 export type MiscInstagramDeleteCommentData = {
     /**
      * Body
@@ -11554,6 +11755,10 @@ export type $OpenApiTs = {
                         stripePriceId: string;
                         tier: 'PRO' | 'BUSINESS';
                         billingInterval: 'MONTHLY' | 'YEARLY';
+                        isCustomPrice: boolean;
+                        customPriceLabel?: string | null;
+                        customUnitAmount?: number | null;
+                        customCurrency?: string | null;
                         cancelAtPeriodEnd: boolean;
                         created: string | null;
                         currentPeriodStart: string | null;
@@ -14281,6 +14486,23 @@ export type $OpenApiTs = {
                             trialParams?: {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
+                            /**
+                             * Information about the Instagram audio asset used for Reels publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use audio_id from Instagram Audio API search endpoint.
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Audio volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -15006,6 +15228,23 @@ export type $OpenApiTs = {
                             trialParams?: {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
+                            /**
+                             * Information about the Instagram audio asset used for Reels publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use audio_id from Instagram Audio API search endpoint.
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Audio volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -15655,6 +15894,23 @@ export type $OpenApiTs = {
                              */
                             trialParams?: {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
+                            /**
+                             * Information about the Instagram audio asset used for Reels publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use audio_id from Instagram Audio API search endpoint.
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Audio volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
                             } | null;
                         } | null;
                         THREADS?: {
@@ -16308,6 +16564,23 @@ export type $OpenApiTs = {
                                  */
                                 trialParams?: {
                                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                                } | null;
+                                /**
+                                 * Information about the Instagram audio asset used for Reels publishing.
+                                 */
+                                musicSoundInfo?: {
+                                    /**
+                                     * Use audio_id from Instagram Audio API search endpoint.
+                                     */
+                                    musicSoundId: string;
+                                    /**
+                                     * Audio volume (0-100).
+                                     */
+                                    musicSoundVolume?: number | null;
+                                    /**
+                                     * Background volume of the original video sound (0-100).
+                                     */
+                                    videoOriginalSoundVolume?: number | null;
                                 } | null;
                             } | null;
                             THREADS?: {
@@ -17036,6 +17309,23 @@ export type $OpenApiTs = {
                             trialParams?: {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
+                            /**
+                             * Information about the Instagram audio asset used for Reels publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use audio_id from Instagram Audio API search endpoint.
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Audio volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -17687,6 +17977,23 @@ export type $OpenApiTs = {
                              */
                             trialParams?: {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
+                            /**
+                             * Information about the Instagram audio asset used for Reels publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use audio_id from Instagram Audio API search endpoint.
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Audio volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
                             } | null;
                         } | null;
                         THREADS?: {
@@ -18456,6 +18763,23 @@ export type $OpenApiTs = {
                                  */
                                 trialParams?: {
                                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                                } | null;
+                                /**
+                                 * Information about the Instagram audio asset used for Reels publishing.
+                                 */
+                                musicSoundInfo?: {
+                                    /**
+                                     * Use audio_id from Instagram Audio API search endpoint.
+                                     */
+                                    musicSoundId: string;
+                                    /**
+                                     * Audio volume (0-100).
+                                     */
+                                    musicSoundVolume?: number | null;
+                                    /**
+                                     * Background volume of the original video sound (0-100).
+                                     */
+                                    videoOriginalSoundVolume?: number | null;
                                 } | null;
                             } | null;
                             THREADS?: {
@@ -19258,6 +19582,23 @@ export type $OpenApiTs = {
                                  */
                                 trialParams?: {
                                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                                } | null;
+                                /**
+                                 * Information about the Instagram audio asset used for Reels publishing.
+                                 */
+                                musicSoundInfo?: {
+                                    /**
+                                     * Use audio_id from Instagram Audio API search endpoint.
+                                     */
+                                    musicSoundId: string;
+                                    /**
+                                     * Audio volume (0-100).
+                                     */
+                                    musicSoundVolume?: number | null;
+                                    /**
+                                     * Background volume of the original video sound (0-100).
+                                     */
+                                    videoOriginalSoundVolume?: number | null;
                                 } | null;
                             } | null;
                             THREADS?: {
@@ -25621,6 +25962,77 @@ export type $OpenApiTs = {
                             street?: string | null;
                             zip?: string | null;
                         } | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/instagram/audio': {
+        get: {
+            req: MiscInstagramSearchAudioData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    audio?: Array<{
+                        audio_id: string;
+                        cover_artwork_thumbnail_uri?: string | null;
+                        cover_artwork_thumbnail_url?: string | null;
+                        display_artist?: string | null;
+                        duration_in_ms?: number | null;
+                        audio_type: 'original_sound' | 'music';
+                        title?: string | null;
+                        download_url?: string | null;
+                        ig_username?: string | null;
+                        profile_picture_url?: string | null;
                     }>;
                 };
                 /**

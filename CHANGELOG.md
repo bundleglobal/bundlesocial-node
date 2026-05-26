@@ -1,3 +1,10 @@
+# [2.51.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.50.0...v2.51.0) (2026-05-26)
+
+
+### Features
+
+* reconnect accounts to posts ([4093d0d](https://github.com/bundleglobal/bundlesocial-node/commit/4093d0d8b962058a57ca7ab39224e22a3d1a57a9))
+
 # [2.50.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.49.0...v2.50.0) (2026-05-19)
 
 

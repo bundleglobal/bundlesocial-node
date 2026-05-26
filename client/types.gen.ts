@@ -1430,6 +1430,50 @@ export type UploadFinalizeLargeUploadResponse = {
     updatedAt: string | null;
 };
 
+export type PostGetReconnectSocialAccountCandidatesData = {
+    limit?: number | null;
+    offset?: number | null;
+    teamId: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+};
+
+export type PostGetReconnectSocialAccountCandidatesResponse = {
+    items: Array<{
+        id: string;
+        title: string;
+        postDate: string | null;
+        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+        createdAt: string | null;
+        updatedAt: string | null;
+    }>;
+    total: number;
+};
+
+export type PostReconnectSocialAccountData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        postIds?: Array<(string)>;
+    };
+};
+
+export type PostReconnectSocialAccountResponse = {
+    total: number;
+    succeeded: number;
+    failed: number;
+    results: Array<{
+        postId: string;
+        title?: string | null;
+        success: boolean;
+        statusBefore?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+        statusAfter?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+        message?: string;
+    }>;
+};
+
 export type PostGetData = {
     id: string;
 };
@@ -14319,6 +14363,144 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post/reconnect-social-account/candidates': {
+        get: {
+            req: PostGetReconnectSocialAccountCandidatesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        title: string;
+                        postDate: string | null;
+                        status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/post/reconnect-social-account': {
+        post: {
+            req: PostReconnectSocialAccountData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    total: number;
+                    succeeded: number;
+                    failed: number;
+                    results: Array<{
+                        postId: string;
+                        title?: string | null;
+                        success: boolean;
+                        statusBefore?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+                        statusAfter?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+                        message?: string;
+                    }>;
                 };
                 /**
                  * 400

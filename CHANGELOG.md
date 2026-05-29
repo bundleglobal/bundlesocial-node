@@ -1,3 +1,10 @@
+# [2.52.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.51.0...v2.52.0) (2026-05-29)
+
+
+### Features
+
+* comment retry ([6155d82](https://github.com/bundleglobal/bundlesocial-node/commit/6155d82161a9e1956c79538690983cf7ef70fb0b))
+
 # [2.51.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.50.0...v2.51.0) (2026-05-26)
 
 

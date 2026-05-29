@@ -921,6 +921,10 @@ export type SocialAccountCreatePortalLinkData = {
         redirectUrl?: string;
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
         /**
+         * Mastodon or Bluesky only
+         */
+        serverUrl?: string;
+        /**
          * Optional. If true, portal will request provider-specific anti-auto-login behavior where supported.
          */
         disableAutoLogin?: boolean;
@@ -928,6 +932,10 @@ export type SocialAccountCreatePortalLinkData = {
          * Optional. Instagram only. When true, direct Instagram connections on phones will try to force browser login to avoid the Instagram iOS app deep-link bug.
          */
         forceBrowserOAuth?: boolean;
+        /**
+         * Instagram only - connection method
+         */
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
         /**
          * Optional. Facebook and Instagram only - when provided, portal skips business scope selection modal for Facebook login paths.
          */
@@ -8825,6 +8833,232 @@ export type CommentCreateData = {
 };
 
 export type CommentCreateResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    internalPostId: string;
+    internalParentCommentId?: string | null;
+    fetchedParentCommentId?: string | null;
+    title: string;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
+    data: {
+        FACEBOOK?: {
+            text?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            text?: string | null;
+        } | null;
+        THREADS?: {
+            text?: string | null;
+        } | null;
+        TIKTOK?: {
+            text?: string | null;
+        } | null;
+        LINKEDIN?: {
+            text?: string | null;
+        } | null;
+        YOUTUBE?: {
+            text?: string | null;
+        } | null;
+        REDDIT?: {
+            text?: string | null;
+        } | null;
+        MASTODON?: {
+            text?: string | null;
+        } | null;
+        DISCORD?: {
+            text?: string | null;
+        } | null;
+        SLACK?: {
+            text?: string | null;
+        } | null;
+        BLUESKY?: {
+            text?: string | null;
+        } | null;
+    };
+    error?: string | null;
+    errors?: {
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        YOUTUBE?: string | null;
+        MASTODON?: string | null;
+        THREADS?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        BLUESKY?: string | null;
+    } | null;
+    errorsVerbose?: {
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+    } | null;
+    externalData?: {
+        FACEBOOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            commentUrn?: string | null;
+            permalink?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        MASTODON?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        SLACK?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+};
+
+export type CommentRetryData = {
+    id: string;
+};
+
+export type CommentRetryResponse = {
     id: string;
     teamId: string;
     organizationId?: string | null;
@@ -22136,6 +22370,284 @@ export type $OpenApiTs = {
         };
         post: {
             req: CommentCreateData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    internalPostId: string;
+                    internalParentCommentId?: string | null;
+                    fetchedParentCommentId?: string | null;
+                    title: string;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
+                    data: {
+                        FACEBOOK?: {
+                            text?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            text?: string | null;
+                        } | null;
+                        THREADS?: {
+                            text?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            text?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            text?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            text?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            text?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            text?: string | null;
+                        } | null;
+                        SLACK?: {
+                            text?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                        } | null;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        YOUTUBE?: string | null;
+                        MASTODON?: string | null;
+                        THREADS?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        BLUESKY?: string | null;
+                    } | null;
+                    errorsVerbose?: {
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                    } | null;
+                    externalData?: {
+                        FACEBOOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            commentUrn?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        SLACK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
+                        } | null;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/comment/{id}/retry': {
+        post: {
+            req: CommentRetryData;
             res: {
                 /**
                  * 200

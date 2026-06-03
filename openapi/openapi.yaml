@@ -9104,8 +9104,12 @@ paths:
                                   type: string
                                 x:
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                                 'y':
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                               required:
                                 - username
                             nullable: true
@@ -9128,8 +9132,12 @@ paths:
                                         type: string
                                       x:
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                       'y':
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                     required:
                                       - username
                                       - x
@@ -9433,6 +9441,20 @@ paths:
                               - PUBLIC
                               - UNLISTED
                             nullable: true
+                          defaultLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's title and
+                              description, e.g. "en" or "pl".
+                          defaultAudioLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's default audio
+                              track, e.g. "en" or "pl".
                           madeForKids:
                             default: false
                             type: boolean
@@ -11007,8 +11029,12 @@ paths:
                                 type: string
                               x:
                                 type: number
+                                minimum: 0
+                                maximum: 1
                               'y':
                                 type: number
+                                minimum: 0
+                                maximum: 1
                             required:
                               - username
                           nullable: true
@@ -11031,8 +11057,12 @@ paths:
                                       type: string
                                     x:
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                     'y':
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                   required:
                                     - username
                                     - x
@@ -11335,6 +11365,20 @@ paths:
                             - PUBLIC
                             - UNLISTED
                           nullable: true
+                        defaultLanguage:
+                          type: string
+                          maxLength: 35
+                          nullable: true
+                          description: >-
+                            BCP-47 language code for the video's title and
+                            description, e.g. "en" or "pl".
+                        defaultAudioLanguage:
+                          type: string
+                          maxLength: 35
+                          nullable: true
+                          description: >-
+                            BCP-47 language code for the video's default audio
+                            track, e.g. "en" or "pl".
                         madeForKids:
                           default: false
                           type: boolean
@@ -11816,8 +11860,12 @@ paths:
                                   type: string
                                 x:
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                                 'y':
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                               required:
                                 - username
                             nullable: true
@@ -11840,8 +11888,12 @@ paths:
                                         type: string
                                       x:
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                       'y':
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                     required:
                                       - username
                                       - x
@@ -12145,6 +12197,20 @@ paths:
                               - PUBLIC
                               - UNLISTED
                             nullable: true
+                          defaultLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's title and
+                              description, e.g. "en" or "pl".
+                          defaultAudioLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's default audio
+                              track, e.g. "en" or "pl".
                           madeForKids:
                             default: false
                             type: boolean
@@ -13444,8 +13510,12 @@ paths:
                                   type: string
                                 x:
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                                 'y':
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                               required:
                                 - username
                             nullable: true
@@ -13468,8 +13538,12 @@ paths:
                                         type: string
                                       x:
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                       'y':
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                     required:
                                       - username
                                       - x
@@ -13773,6 +13847,20 @@ paths:
                               - PUBLIC
                               - UNLISTED
                             nullable: true
+                          defaultLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's title and
+                              description, e.g. "en" or "pl".
+                          defaultAudioLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's default audio
+                              track, e.g. "en" or "pl".
                           madeForKids:
                             default: false
                             type: boolean
@@ -15165,8 +15253,12 @@ paths:
                                         type: string
                                       x:
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                       'y':
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                     required:
                                       - username
                                   nullable: true
@@ -15189,8 +15281,12 @@ paths:
                                               type: string
                                             x:
                                               type: number
+                                              minimum: 0
+                                              maximum: 1
                                             'y':
                                               type: number
+                                              minimum: 0
+                                              maximum: 1
                                           required:
                                             - username
                                             - x
@@ -15497,6 +15593,20 @@ paths:
                                     - PUBLIC
                                     - UNLISTED
                                   nullable: true
+                                defaultLanguage:
+                                  type: string
+                                  maxLength: 35
+                                  nullable: true
+                                  description: >-
+                                    BCP-47 language code for the video's title
+                                    and description, e.g. "en" or "pl".
+                                defaultAudioLanguage:
+                                  type: string
+                                  maxLength: 35
+                                  nullable: true
+                                  description: >-
+                                    BCP-47 language code for the video's default
+                                    audio track, e.g. "en" or "pl".
                                 madeForKids:
                                   default: false
                                   type: boolean
@@ -17079,8 +17189,12 @@ paths:
                                 type: string
                               x:
                                 type: number
+                                minimum: 0
+                                maximum: 1
                               'y':
                                 type: number
+                                minimum: 0
+                                maximum: 1
                             required:
                               - username
                           nullable: true
@@ -17103,8 +17217,12 @@ paths:
                                       type: string
                                     x:
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                     'y':
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                   required:
                                     - username
                                     - x
@@ -17407,6 +17525,20 @@ paths:
                             - PUBLIC
                             - UNLISTED
                           nullable: true
+                        defaultLanguage:
+                          type: string
+                          maxLength: 35
+                          nullable: true
+                          description: >-
+                            BCP-47 language code for the video's title and
+                            description, e.g. "en" or "pl".
+                        defaultAudioLanguage:
+                          type: string
+                          maxLength: 35
+                          nullable: true
+                          description: >-
+                            BCP-47 language code for the video's default audio
+                            track, e.g. "en" or "pl".
                         madeForKids:
                           default: false
                           type: boolean
@@ -17895,8 +18027,12 @@ paths:
                                   type: string
                                 x:
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                                 'y':
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                               required:
                                 - username
                             nullable: true
@@ -17919,8 +18055,12 @@ paths:
                                         type: string
                                       x:
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                       'y':
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                     required:
                                       - username
                                       - x
@@ -18224,6 +18364,20 @@ paths:
                               - PUBLIC
                               - UNLISTED
                             nullable: true
+                          defaultLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's title and
+                              description, e.g. "en" or "pl".
+                          defaultAudioLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's default audio
+                              track, e.g. "en" or "pl".
                           madeForKids:
                             default: false
                             type: boolean
@@ -19524,8 +19678,12 @@ paths:
                                   type: string
                                 x:
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                                 'y':
                                   type: number
+                                  minimum: 0
+                                  maximum: 1
                               required:
                                 - username
                             nullable: true
@@ -19548,8 +19706,12 @@ paths:
                                         type: string
                                       x:
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                       'y':
                                         type: number
+                                        minimum: 0
+                                        maximum: 1
                                     required:
                                       - username
                                       - x
@@ -19853,6 +20015,20 @@ paths:
                               - PUBLIC
                               - UNLISTED
                             nullable: true
+                          defaultLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's title and
+                              description, e.g. "en" or "pl".
+                          defaultAudioLanguage:
+                            type: string
+                            maxLength: 35
+                            nullable: true
+                            description: >-
+                              BCP-47 language code for the video's default audio
+                              track, e.g. "en" or "pl".
                           madeForKids:
                             default: false
                             type: boolean
@@ -21542,8 +21718,12 @@ paths:
                                       type: string
                                     x:
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                     'y':
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                   required:
                                     - username
                                 nullable: true
@@ -21566,8 +21746,12 @@ paths:
                                             type: string
                                           x:
                                             type: number
+                                            minimum: 0
+                                            maximum: 1
                                           'y':
                                             type: number
+                                            minimum: 0
+                                            maximum: 1
                                         required:
                                           - username
                                           - x
@@ -21873,6 +22057,20 @@ paths:
                                   - PUBLIC
                                   - UNLISTED
                                 nullable: true
+                              defaultLanguage:
+                                type: string
+                                maxLength: 35
+                                nullable: true
+                                description: >-
+                                  BCP-47 language code for the video's title and
+                                  description, e.g. "en" or "pl".
+                              defaultAudioLanguage:
+                                type: string
+                                maxLength: 35
+                                nullable: true
+                                description: >-
+                                  BCP-47 language code for the video's default
+                                  audio track, e.g. "en" or "pl".
                               madeForKids:
                                 default: false
                                 type: boolean
@@ -23681,8 +23879,12 @@ paths:
                                       type: string
                                     x:
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                     'y':
                                       type: number
+                                      minimum: 0
+                                      maximum: 1
                                   required:
                                     - username
                                 nullable: true
@@ -23705,8 +23907,12 @@ paths:
                                             type: string
                                           x:
                                             type: number
+                                            minimum: 0
+                                            maximum: 1
                                           'y':
                                             type: number
+                                            minimum: 0
+                                            maximum: 1
                                         required:
                                           - username
                                           - x
@@ -24012,6 +24218,20 @@ paths:
                                   - PUBLIC
                                   - UNLISTED
                                 nullable: true
+                              defaultLanguage:
+                                type: string
+                                maxLength: 35
+                                nullable: true
+                                description: >-
+                                  BCP-47 language code for the video's title and
+                                  description, e.g. "en" or "pl".
+                              defaultAudioLanguage:
+                                type: string
+                                maxLength: 35
+                                nullable: true
+                                description: >-
+                                  BCP-47 language code for the video's default
+                                  audio track, e.g. "en" or "pl".
                               madeForKids:
                                 default: false
                                 type: boolean
@@ -33979,6 +34199,18 @@ paths:
                     - unlisted
                     - private
                   description: The updated privacy status
+                defaultLanguage:
+                  type: string
+                  maxLength: 35
+                  description: >-
+                    BCP-47 language code for the video's title and description,
+                    e.g. "en" or "pl".
+                defaultAudioLanguage:
+                  type: string
+                  maxLength: 35
+                  description: >-
+                    BCP-47 language code for the video's default audio track,
+                    e.g. "en" or "pl".
               required:
                 - teamId
                 - postId

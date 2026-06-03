@@ -1730,6 +1730,14 @@ export type PostGetResponse = {
             thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
             /**
+             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+             */
+            defaultLanguage?: string | null;
+            /**
+             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+             */
+            defaultAudioLanguage?: string | null;
+            /**
              * Set to true if the video is made for kids.
              */
             madeForKids?: boolean | null;
@@ -2420,6 +2428,14 @@ export type PostUpdateData = {
                 thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                 /**
+                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                 */
+                defaultLanguage?: string | null;
+                /**
+                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                 */
+                defaultAudioLanguage?: string | null;
+                /**
                  * Set to true if the video is made for kids.
                  */
                 madeForKids?: boolean | null;
@@ -2792,6 +2808,14 @@ export type PostUpdateResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+             */
+            defaultLanguage?: string | null;
+            /**
+             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+             */
+            defaultAudioLanguage?: string | null;
             /**
              * Set to true if the video is made for kids.
              */
@@ -3409,6 +3433,14 @@ export type PostDeleteResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+             */
+            defaultLanguage?: string | null;
+            /**
+             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+             */
+            defaultAudioLanguage?: string | null;
             /**
              * Set to true if the video is made for kids.
              */
@@ -4036,6 +4068,14 @@ export type PostGetListResponse = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                 */
+                defaultLanguage?: string | null;
+                /**
+                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                 */
+                defaultAudioLanguage?: string | null;
                 /**
                  * Set to true if the video is made for kids.
                  */
@@ -4729,6 +4769,14 @@ export type PostCreateData = {
                 thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                 /**
+                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                 */
+                defaultLanguage?: string | null;
+                /**
+                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                 */
+                defaultAudioLanguage?: string | null;
+                /**
                  * Set to true if the video is made for kids.
                  */
                 madeForKids?: boolean | null;
@@ -5101,6 +5149,14 @@ export type PostCreateResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+             */
+            defaultLanguage?: string | null;
+            /**
+             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+             */
+            defaultAudioLanguage?: string | null;
             /**
              * Set to true if the video is made for kids.
              */
@@ -5718,6 +5774,14 @@ export type PostRetryResponse = {
              */
             thumbnail?: string | null;
             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+             */
+            defaultLanguage?: string | null;
+            /**
+             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+             */
+            defaultAudioLanguage?: string | null;
             /**
              * Set to true if the video is made for kids.
              */
@@ -6403,6 +6467,14 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                 */
+                defaultLanguage?: string | null;
+                /**
+                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                 */
+                defaultAudioLanguage?: string | null;
                 /**
                  * Set to true if the video is made for kids.
                  */
@@ -7121,6 +7193,14 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  */
                 thumbnail?: string | null;
                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                /**
+                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                 */
+                defaultLanguage?: string | null;
+                /**
+                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                 */
+                defaultAudioLanguage?: string | null;
                 /**
                  * Set to true if the video is made for kids.
                  */
@@ -9702,6 +9782,14 @@ export type MiscYoutubeEditVideoData = {
          * The updated privacy status
          */
         privacyStatus?: 'public' | 'unlisted' | 'private';
+        /**
+         * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+         */
+        defaultLanguage?: string;
+        /**
+         * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+         */
+        defaultAudioLanguage?: string;
     };
 };
 
@@ -15037,6 +15125,14 @@ export type $OpenApiTs = {
                             thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                             /**
+                             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                             */
+                            defaultLanguage?: string | null;
+                            /**
+                             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                             */
+                            defaultAudioLanguage?: string | null;
+                            /**
                              * Set to true if the video is made for kids.
                              */
                             madeForKids?: boolean | null;
@@ -15779,6 +15875,14 @@ export type $OpenApiTs = {
                             thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                             /**
+                             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                             */
+                            defaultLanguage?: string | null;
+                            /**
+                             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                             */
+                            defaultAudioLanguage?: string | null;
+                            /**
                              * Set to true if the video is made for kids.
                              */
                             madeForKids?: boolean | null;
@@ -16445,6 +16549,14 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                             */
+                            defaultLanguage?: string | null;
+                            /**
+                             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                             */
+                            defaultAudioLanguage?: string | null;
                             /**
                              * Set to true if the video is made for kids.
                              */
@@ -17115,6 +17227,14 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                                /**
+                                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                                 */
+                                defaultLanguage?: string | null;
+                                /**
+                                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                                 */
+                                defaultAudioLanguage?: string | null;
                                 /**
                                  * Set to true if the video is made for kids.
                                  */
@@ -17860,6 +17980,14 @@ export type $OpenApiTs = {
                             thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
                             /**
+                             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                             */
+                            defaultLanguage?: string | null;
+                            /**
+                             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                             */
+                            defaultAudioLanguage?: string | null;
+                            /**
                              * Set to true if the video is made for kids.
                              */
                             madeForKids?: boolean | null;
@@ -18528,6 +18656,14 @@ export type $OpenApiTs = {
                              */
                             thumbnail?: string | null;
                             privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                             */
+                            defaultLanguage?: string | null;
+                            /**
+                             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                             */
+                            defaultAudioLanguage?: string | null;
                             /**
                              * Set to true if the video is made for kids.
                              */
@@ -19314,6 +19450,14 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                                /**
+                                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                                 */
+                                defaultLanguage?: string | null;
+                                /**
+                                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                                 */
+                                defaultAudioLanguage?: string | null;
                                 /**
                                  * Set to true if the video is made for kids.
                                  */
@@ -20133,6 +20277,14 @@ export type $OpenApiTs = {
                                  */
                                 thumbnail?: string | null;
                                 privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                                /**
+                                 * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                                 */
+                                defaultLanguage?: string | null;
+                                /**
+                                 * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                                 */
+                                defaultAudioLanguage?: string | null;
                                 /**
                                  * Set to true if the video is made for kids.
                                  */

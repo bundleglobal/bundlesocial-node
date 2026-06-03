@@ -1,3 +1,10 @@
+# [2.53.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.52.0...v2.53.0) (2026-06-03)
+
+
+### Features
+
+* youtube description and audio language ([839c383](https://github.com/bundleglobal/bundlesocial-node/commit/839c3832463224d80e6b294b56415754c77c992f))
+
 # [2.52.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.51.0...v2.52.0) (2026-05-29)
 
 

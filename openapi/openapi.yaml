@@ -29955,6 +29955,7 @@ paths:
                 - DISCORD
                 - SLACK
                 - BLUESKY
+            nullable: true
         - name: offset
           in: query
           schema:

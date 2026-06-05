@@ -8628,7 +8628,7 @@ export type CommentGetListData = {
     offset?: number | null;
     order?: 'ASC' | 'DESC';
     orderBy?: 'createdAt' | 'updatedAt' | 'deletedAt';
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')> | null;
     postId?: string;
     q?: string;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';

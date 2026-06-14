@@ -118,6 +118,7 @@ export type OrganizationGetOrganizationResponse = {
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
+    suspended?: boolean;
     createdBy: {
         id: string;
         externalId: string;
@@ -235,6 +236,27 @@ export type OrganizationGetUploadsUsageResponse = {
     remaining: number;
 };
 
+export type OrganizationGetDailyLimitsUsageData = {
+    date?: string | null;
+    socialAccountId: string;
+};
+
+export type OrganizationGetDailyLimitsUsageResponse = {
+    date: string;
+    socialAccountId: string;
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    posts: {
+        used: number;
+        limit: number;
+        remaining: number;
+    };
+    comments: {
+        used: number;
+        limit: number;
+        remaining: number;
+    };
+};
+
 export type OrganizationGetImportsUsageData = {
     page?: number;
     pageSize?: number;
@@ -329,6 +351,7 @@ export type TeamGetTeamResponse = {
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
+        suspended?: boolean;
     };
     createdBy: {
         id: string;
@@ -539,6 +562,7 @@ export type TeamGetListResponse = {
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
+            suspended?: boolean;
         };
         createdBy: {
             id: string;
@@ -7705,7 +7729,8 @@ export type CommentImportCreateData = {
      */
     requestBody?: {
         teamId: string;
-        postId: string;
+        postId?: string;
+        importedPostId?: string;
         socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
     };
 };
@@ -7715,7 +7740,8 @@ export type CommentImportCreateResponse = {
     teamId: string;
     organizationId?: string | null;
     socialAccountId: string;
-    postId: string;
+    postId?: string | null;
+    importedPostId?: string | null;
     platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
     commentsImported: number;
@@ -7728,6 +7754,7 @@ export type CommentImportCreateResponse = {
 };
 
 export type CommentImportGetListData = {
+    importedPostId?: string;
     limit?: number | null;
     offset?: number | null;
     postId?: string;
@@ -7741,7 +7768,8 @@ export type CommentImportGetListResponse = {
         teamId: string;
         organizationId?: string | null;
         socialAccountId: string;
-        postId: string;
+        postId?: string | null;
+        importedPostId?: string | null;
         platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
         status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
         commentsImported: number;
@@ -7755,10 +7783,11 @@ export type CommentImportGetListResponse = {
 };
 
 export type CommentImportGetFetchedCommentsData = {
+    importedPostId?: string;
     limit?: number | null;
     offset?: number | null;
     platform?: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
-    postId: string;
+    postId?: string;
     socialAccountId?: string;
     teamId: string;
 };
@@ -7768,7 +7797,8 @@ export type CommentImportGetFetchedCommentsResponse = {
         id: string;
         teamId: string;
         organizationId?: string | null;
-        postId: string;
+        postId?: string | null;
+        importedPostId?: string | null;
         socialAccountId: string;
         importId: string;
         platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
@@ -7832,7 +7862,8 @@ export type CommentImportActionFetchedCommentResponse = {
         id: string;
         teamId: string;
         organizationId?: string | null;
-        postId: string;
+        postId?: string | null;
+        importedPostId?: string | null;
         socialAccountId: string;
         importId: string;
         platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
@@ -7885,7 +7916,8 @@ export type CommentImportGetByIdResponse = {
     teamId: string;
     organizationId?: string | null;
     socialAccountId: string;
-    postId: string;
+    postId?: string | null;
+    importedPostId?: string | null;
     platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
     commentsImported: number;
@@ -7905,7 +7937,8 @@ export type CommentGetResponse = {
     id: string;
     teamId: string;
     organizationId?: string | null;
-    internalPostId: string;
+    internalPostId?: string | null;
+    importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title: string;
@@ -8131,6 +8164,7 @@ export type CommentUpdateData = {
     requestBody?: {
         title?: string;
         internalPostId?: string;
+        importedPostId?: string;
         internalParentCommentId?: string | null;
         fetchedParentCommentId?: string | null;
         postDate?: string;
@@ -8179,7 +8213,8 @@ export type CommentUpdateResponse = {
     id: string;
     teamId: string;
     organizationId?: string | null;
-    internalPostId: string;
+    internalPostId?: string | null;
+    importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title: string;
@@ -8405,7 +8440,8 @@ export type CommentDeleteResponse = {
     id: string;
     teamId: string;
     organizationId?: string | null;
-    internalPostId: string;
+    internalPostId?: string | null;
+    importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title: string;
@@ -8624,11 +8660,12 @@ export type CommentDeleteResponse = {
 };
 
 export type CommentGetListData = {
+    importedPostId?: string;
     limit?: number | null;
     offset?: number | null;
     order?: 'ASC' | 'DESC';
     orderBy?: 'createdAt' | 'updatedAt' | 'deletedAt';
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')> | null;
     postId?: string;
     q?: string;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
@@ -8640,7 +8677,8 @@ export type CommentGetListResponse = {
         id: string;
         teamId: string;
         organizationId?: string | null;
-        internalPostId: string;
+        internalPostId?: string | null;
+        importedPostId?: string | null;
         internalParentCommentId?: string | null;
         fetchedParentCommentId?: string | null;
         title: string;
@@ -8868,6 +8906,7 @@ export type CommentCreateData = {
         teamId: string;
         title?: string;
         internalPostId?: string;
+        importedPostId?: string;
         internalParentCommentId?: string | null;
         fetchedParentCommentId?: string | null;
         postDate?: string;
@@ -8916,7 +8955,8 @@ export type CommentCreateResponse = {
     id: string;
     teamId: string;
     organizationId?: string | null;
-    internalPostId: string;
+    internalPostId?: string | null;
+    importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title: string;
@@ -9142,7 +9182,8 @@ export type CommentRetryResponse = {
     id: string;
     teamId: string;
     organizationId?: string | null;
-    internalPostId: string;
+    internalPostId?: string | null;
+    importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title: string;
@@ -9896,9 +9937,11 @@ export type MiscYoutubeGetRegionsResponse = {
 };
 
 export type MiscLinkedinGetTagsData = {
-    q: string;
+    displayName?: string;
+    q?: string;
     scope?: 'people' | 'organizations' | 'all';
     teamId: string;
+    url?: string;
 };
 
 export type MiscLinkedinGetTagsResponse = {
@@ -12091,6 +12134,7 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
+                    suspended?: boolean;
                     createdBy: {
                         id: string;
                         externalId: string;
@@ -12421,6 +12465,78 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/organization/usage/daily-limits': {
+        get: {
+            req: OrganizationGetDailyLimitsUsageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    date: string;
+                    socialAccountId: string;
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    posts: {
+                        used: number;
+                        limit: number;
+                        remaining: number;
+                    };
+                    comments: {
+                        used: number;
+                        limit: number;
+                        remaining: number;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/organization/usage/imports': {
         get: {
             req: OrganizationGetImportsUsageData;
@@ -12566,6 +12682,7 @@ export type $OpenApiTs = {
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
+                        suspended?: boolean;
                     };
                     createdBy: {
                         id: string;
@@ -12918,6 +13035,7 @@ export type $OpenApiTs = {
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
+                            suspended?: boolean;
                         };
                         createdBy: {
                             id: string;
@@ -20984,7 +21102,8 @@ export type $OpenApiTs = {
                     teamId: string;
                     organizationId?: string | null;
                     socialAccountId: string;
-                    postId: string;
+                    postId?: string | null;
+                    importedPostId?: string | null;
                     platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
                     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
                     commentsImported: number;
@@ -21063,7 +21182,8 @@ export type $OpenApiTs = {
                         teamId: string;
                         organizationId?: string | null;
                         socialAccountId: string;
-                        postId: string;
+                        postId?: string | null;
+                        importedPostId?: string | null;
                         platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
                         status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
                         commentsImported: number;
@@ -21137,7 +21257,8 @@ export type $OpenApiTs = {
                         id: string;
                         teamId: string;
                         organizationId?: string | null;
-                        postId: string;
+                        postId?: string | null;
+                        importedPostId?: string | null;
                         socialAccountId: string;
                         importId: string;
                         platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
@@ -21244,7 +21365,8 @@ export type $OpenApiTs = {
                         id: string;
                         teamId: string;
                         organizationId?: string | null;
-                        postId: string;
+                        postId?: string | null;
+                        importedPostId?: string | null;
                         socialAccountId: string;
                         importId: string;
                         platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
@@ -21349,7 +21471,8 @@ export type $OpenApiTs = {
                     teamId: string;
                     organizationId?: string | null;
                     socialAccountId: string;
-                    postId: string;
+                    postId?: string | null;
+                    importedPostId?: string | null;
                     platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
                     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
                     commentsImported: number;
@@ -21421,7 +21544,8 @@ export type $OpenApiTs = {
                     id: string;
                     teamId: string;
                     organizationId?: string | null;
-                    internalPostId: string;
+                    internalPostId?: string | null;
+                    importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title: string;
@@ -21697,7 +21821,8 @@ export type $OpenApiTs = {
                     id: string;
                     teamId: string;
                     organizationId?: string | null;
-                    internalPostId: string;
+                    internalPostId?: string | null;
+                    importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title: string;
@@ -21973,7 +22098,8 @@ export type $OpenApiTs = {
                     id: string;
                     teamId: string;
                     organizationId?: string | null;
-                    internalPostId: string;
+                    internalPostId?: string | null;
+                    importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title: string;
@@ -22252,7 +22378,8 @@ export type $OpenApiTs = {
                         id: string;
                         teamId: string;
                         organizationId?: string | null;
-                        internalPostId: string;
+                        internalPostId?: string | null;
+                        importedPostId?: string | null;
                         internalParentCommentId?: string | null;
                         fetchedParentCommentId?: string | null;
                         title: string;
@@ -22530,7 +22657,8 @@ export type $OpenApiTs = {
                     id: string;
                     teamId: string;
                     organizationId?: string | null;
-                    internalPostId: string;
+                    internalPostId?: string | null;
+                    importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title: string;
@@ -22808,7 +22936,8 @@ export type $OpenApiTs = {
                     id: string;
                     teamId: string;
                     organizationId?: string | null;
-                    internalPostId: string;
+                    internalPostId?: string | null;
+                    importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title: string;

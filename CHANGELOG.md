@@ -1,3 +1,10 @@
+# [2.54.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.53.0...v2.54.0) (2026-06-14)
+
+
+### Features
+
+* daily limits and analytics for imported posts ([fdf285c](https://github.com/bundleglobal/bundlesocial-node/commit/fdf285c1e0bd8f2cb2fd2cb50e38c5d7fe4cd1bc))
+
 # [2.53.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.52.0...v2.53.0) (2026-06-03)
 
 

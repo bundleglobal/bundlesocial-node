@@ -513,6 +513,8 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
+                  suspended:
+                    type: boolean
                   createdBy:
                     type: object
                     properties:
@@ -1434,6 +1436,205 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/organization/usage/daily-limits:
+    get:
+      summary: Get daily limits usage for one social account on a given day
+      tags: *ref_0
+      parameters:
+        - name: socialAccountId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date-time
+            nullable: true
+      operationId: organization.getDailyLimitsUsage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                  socialAccountId:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - TIKTOK
+                      - YOUTUBE
+                      - INSTAGRAM
+                      - FACEBOOK
+                      - TWITTER
+                      - THREADS
+                      - LINKEDIN
+                      - PINTEREST
+                      - REDDIT
+                      - MASTODON
+                      - DISCORD
+                      - SLACK
+                      - BLUESKY
+                      - GOOGLE_BUSINESS
+                  posts:
+                    type: object
+                    properties:
+                      used:
+                        type: number
+                      limit:
+                        type: number
+                      remaining:
+                        type: number
+                    required:
+                      - used
+                      - limit
+                      - remaining
+                  comments:
+                    type: object
+                    properties:
+                      used:
+                        type: number
+                      limit:
+                        type: number
+                      remaining:
+                        type: number
+                    required:
+                      - used
+                      - limit
+                      - remaining
+                required:
+                  - date
+                  - socialAccountId
+                  - type
+                  - posts
+                  - comments
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/organization/usage/imports:
     get:
       summary: Get organization imports usage per social account (paginated)
@@ -1829,6 +2030,8 @@ paths:
                         type: string
                         format: date-time
                         nullable: true
+                      suspended:
+                        type: boolean
                     required:
                       - id
                       - createdById
@@ -2854,6 +3057,8 @@ paths:
                               type: string
                               format: date-time
                               nullable: true
+                            suspended:
+                              type: boolean
                           required:
                             - id
                             - createdById
@@ -26126,6 +26331,8 @@ paths:
                   type: string
                 postId:
                   type: string
+                importedPostId:
+                  type: string
                 socialAccountType:
                   type: string
                   enum:
@@ -26140,7 +26347,6 @@ paths:
                     - BLUESKY
               required:
                 - teamId
-                - postId
                 - socialAccountType
       responses:
         '201':
@@ -26161,6 +26367,10 @@ paths:
                     type: string
                   postId:
                     type: string
+                    nullable: true
+                  importedPostId:
+                    type: string
+                    nullable: true
                   platform:
                     type: string
                     enum:
@@ -26212,7 +26422,6 @@ paths:
                   - id
                   - teamId
                   - socialAccountId
-                  - postId
                   - platform
                   - status
                   - commentsImported
@@ -26366,6 +26575,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: importedPostId
+          in: query
+          schema:
+            type: string
         - name: status
           in: query
           schema:
@@ -26415,6 +26628,10 @@ paths:
                           type: string
                         postId:
                           type: string
+                          nullable: true
+                        importedPostId:
+                          type: string
+                          nullable: true
                         platform:
                           type: string
                           enum:
@@ -26466,7 +26683,6 @@ paths:
                         - id
                         - teamId
                         - socialAccountId
-                        - postId
                         - platform
                         - status
                         - commentsImported
@@ -26607,7 +26823,10 @@ paths:
             type: string
         - name: postId
           in: query
-          required: true
+          schema:
+            type: string
+        - name: importedPostId
+          in: query
           schema:
             type: string
         - name: platform
@@ -26663,6 +26882,10 @@ paths:
                           nullable: true
                         postId:
                           type: string
+                          nullable: true
+                        importedPostId:
+                          type: string
+                          nullable: true
                         socialAccountId:
                           type: string
                         importId:
@@ -26812,7 +27035,6 @@ paths:
                       required:
                         - id
                         - teamId
-                        - postId
                         - socialAccountId
                         - importId
                         - platform
@@ -27007,6 +27229,10 @@ paths:
                         nullable: true
                       postId:
                         type: string
+                        nullable: true
+                      importedPostId:
+                        type: string
+                        nullable: true
                       socialAccountId:
                         type: string
                       importId:
@@ -27156,7 +27382,6 @@ paths:
                     required:
                       - id
                       - teamId
-                      - postId
                       - socialAccountId
                       - importId
                       - platform
@@ -27319,6 +27544,10 @@ paths:
                     type: string
                   postId:
                     type: string
+                    nullable: true
+                  importedPostId:
+                    type: string
+                    nullable: true
                   platform:
                     type: string
                     enum:
@@ -27370,7 +27599,6 @@ paths:
                   - id
                   - teamId
                   - socialAccountId
-                  - postId
                   - platform
                   - status
                   - commentsImported
@@ -27525,6 +27753,10 @@ paths:
                     nullable: true
                   internalPostId:
                     type: string
+                    nullable: true
+                  importedPostId:
+                    type: string
+                    nullable: true
                   internalParentCommentId:
                     type: string
                     nullable: true
@@ -28126,7 +28358,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - internalPostId
                   - title
                   - postDate
                   - status
@@ -28276,6 +28507,8 @@ paths:
                   minLength: 1
                 internalPostId:
                   type: string
+                importedPostId:
+                  type: string
                 internalParentCommentId:
                   type: string
                   nullable: true
@@ -28407,6 +28640,10 @@ paths:
                     nullable: true
                   internalPostId:
                     type: string
+                    nullable: true
+                  importedPostId:
+                    type: string
+                    nullable: true
                   internalParentCommentId:
                     type: string
                     nullable: true
@@ -29008,7 +29245,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - internalPostId
                   - title
                   - postDate
                   - status
@@ -29163,6 +29399,10 @@ paths:
                     nullable: true
                   internalPostId:
                     type: string
+                    nullable: true
+                  importedPostId:
+                    type: string
+                    nullable: true
                   internalParentCommentId:
                     type: string
                     nullable: true
@@ -29764,7 +30004,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - internalPostId
                   - title
                   - postDate
                   - status
@@ -29906,6 +30145,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: importedPostId
+          in: query
+          schema:
+            type: string
         - name: status
           in: query
           schema:
@@ -29955,6 +30198,7 @@ paths:
                 - DISCORD
                 - SLACK
                 - BLUESKY
+            nullable: true
         - name: offset
           in: query
           schema:
@@ -29990,6 +30234,10 @@ paths:
                           nullable: true
                         internalPostId:
                           type: string
+                          nullable: true
+                        importedPostId:
+                          type: string
+                          nullable: true
                         internalParentCommentId:
                           type: string
                           nullable: true
@@ -30591,7 +30839,6 @@ paths:
                       required:
                         - id
                         - teamId
-                        - internalPostId
                         - title
                         - postDate
                         - status
@@ -30743,6 +30990,8 @@ paths:
                   minLength: 1
                 internalPostId:
                   type: string
+                importedPostId:
+                  type: string
                 internalParentCommentId:
                   type: string
                   nullable: true
@@ -30876,6 +31125,10 @@ paths:
                     nullable: true
                   internalPostId:
                     type: string
+                    nullable: true
+                  importedPostId:
+                    type: string
+                    nullable: true
                   internalParentCommentId:
                     type: string
                     nullable: true
@@ -31477,7 +31730,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - internalPostId
                   - title
                   - postDate
                   - status
@@ -31633,6 +31885,10 @@ paths:
                     nullable: true
                   internalPostId:
                     type: string
+                    nullable: true
+                  importedPostId:
+                    type: string
+                    nullable: true
                   internalParentCommentId:
                     type: string
                     nullable: true
@@ -32234,7 +32490,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - internalPostId
                   - title
                   - postDate
                   - status
@@ -35178,10 +35433,21 @@ paths:
             type: string
         - name: q
           in: query
-          required: true
           schema:
             type: string
             minLength: 1
+        - name: url
+          in: query
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 2048
+        - name: displayName
+          in: query
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 200
         - name: scope
           in: query
           schema:

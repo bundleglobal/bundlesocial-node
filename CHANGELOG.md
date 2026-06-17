@@ -1,3 +1,10 @@
+# [2.55.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.54.0...v2.55.0) (2026-06-17)
+
+
+### Features
+
+* post reference key ([aa669c1](https://github.com/bundleglobal/bundlesocial-node/commit/aa669c106bd19c2c58cb9cf4db9240ed6f09abe7))
+
 # [2.54.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.53.0...v2.54.0) (2026-06-14)
 
 

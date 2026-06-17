@@ -1506,6 +1506,707 @@ export type PostReconnectSocialAccountResponse = {
     }>;
 };
 
+export type PostGetByReferenceKeyData = {
+    referenceKey: string;
+};
+
+export type PostGetByReferenceKeyResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    title: string;
+    referenceKey?: string | null;
+    postDate: string | null;
+    postedDate?: string | null;
+    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+    data: {
+        TWITTER?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+        } | null;
+        PINTEREST?: {
+            text?: string | null;
+            description?: string | null;
+            boardName: string;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * The URL to which the Pin will link to.
+             */
+            link?: string | null;
+            /**
+             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+             */
+            altText?: string | null;
+            /**
+             * A note about the Pin. This is not visible to the public.
+             */
+            note?: string | null;
+            /**
+             * The dominant color of the image. This is used to display the image before it's loaded.
+             */
+            dominantColor?: string | null;
+        } | null;
+        FACEBOOK?: {
+            type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
+            /**
+             * The URL to which the post will link to. Only available for type POST.
+             */
+            link?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+             */
+            mediaTitle?: string | null;
+            /**
+             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+             */
+            nativeScheduleTime?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            type?: 'POST' | 'REEL' | 'STORY';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Alternative text for a single image post.
+             */
+            altText?: string | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+             */
+            shareToFeed?: boolean | null;
+            collaborators?: Array<(string)> | null;
+            autoFitImage?: boolean | null;
+            autoCropImage?: boolean | null;
+            tagged?: Array<{
+                username: string;
+                x?: number;
+                y?: number;
+            }> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+                tagged?: Array<{
+                    username: string;
+                    x: number;
+                    y: number;
+                }> | null;
+            }> | null;
+            locationId?: string | null;
+            /**
+             * For Reels only. Trial reels are only shared to non-followers.
+             */
+            trialParams?: {
+                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+            } | null;
+            /**
+             * Information about the Instagram audio asset used for Reels publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use audio_id from Instagram Audio API search endpoint.
+                 */
+                musicSoundId: string;
+                /**
+                 * Audio volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
+        } | null;
+        THREADS?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                altText?: string | null;
+            }> | null;
+        } | null;
+        TIKTOK?: {
+            type?: 'VIDEO' | 'IMAGE';
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+            photoCoverIndex?: number | null;
+            /**
+             * Set to true if the video is a paid partnership to promote a third-party business.
+             */
+            isBrandContent?: boolean | null;
+            /**
+             * Set to true if this video is promoting the creator's own business.
+             */
+            isOrganicBrandContent?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make comments on this post.
+             */
+            disableComments?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+             */
+            disableDuet?: boolean | null;
+            /**
+             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+             */
+            disableStitch?: boolean | null;
+            /**
+             * Choose a frame of the published video as the cover photo in ms
+             */
+            thumbnailOffset?: number | null;
+            /**
+             * Set to true if this video is AI generated.
+             */
+            isAiGenerated?: boolean | null;
+            /**
+             * If set to true, TikTok will automatically add music to the photos.
+             */
+            autoAddMusic?: boolean | null;
+            autoScale?: boolean | null;
+            /**
+             * If set to true, upload post as draft.
+             */
+            uploadToDraft?: boolean | null;
+            /**
+             * Information about the commercial sound (track) used for TikTok publishing.
+             */
+            musicSoundInfo?: {
+                /**
+                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                 */
+                musicSoundId: string;
+                /**
+                 * Commercial sound volume (0-100).
+                 */
+                musicSoundVolume?: number | null;
+                /**
+                 * Starting point of the commercial sound in milliseconds.
+                 */
+                musicSoundStart?: number | null;
+                /**
+                 * Ending point of the commercial sound in milliseconds.
+                 */
+                musicSoundEnd?: number | null;
+                /**
+                 * Background volume of the original video sound (0-100).
+                 */
+                videoOriginalSoundVolume?: number | null;
+            } | null;
+        } | null;
+        LINKEDIN?: {
+            text: string;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Optional URL for LinkedIn article preview post.
+             */
+            link?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            /**
+             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+             */
+            mediaTitle?: string | null;
+            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+            /**
+             * Set to true if the post shouldn't be displayed in the main feed.
+             */
+            hideFromFeed?: boolean | null;
+            /**
+             * Set to true if the post is not allowed to be reshared.
+             */
+            disableReshare?: boolean | null;
+        } | null;
+        YOUTUBE?: {
+            type?: 'VIDEO' | 'SHORT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+            /**
+             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+             */
+            defaultLanguage?: string | null;
+            /**
+             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+             */
+            defaultAudioLanguage?: string | null;
+            /**
+             * Set to true if the video is made for kids.
+             */
+            madeForKids?: boolean | null;
+            /**
+             * Set to true if video contains AI generated content
+             */
+            containsSyntheticMedia?: boolean | null;
+            /**
+             * Set to true if video has paid product placement
+             */
+            hasPaidProductPlacement?: boolean | null;
+        } | null;
+        REDDIT?: {
+            /**
+             * Subreddit name. Example: r/subredditName or u/username
+             */
+            sr: string;
+            text: string;
+            description?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to which the post will link to.
+             */
+            link?: string | null;
+            /**
+             * Set to true if the post is NSFW.
+             */
+            nsfw?: boolean | null;
+            /**
+             * Flair ID for the post. Required if the subreddit requires flair selection.
+             */
+            flairId?: string | null;
+        } | null;
+        DISCORD?: {
+            channelId: string;
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
+            username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
+            avatarUrl?: string | null;
+        } | null;
+        SLACK?: {
+            channelId: string;
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The username to display as the author of the message.
+             */
+            username?: string | null;
+            /**
+             * Avatar url to display as the author of the message.
+             */
+            avatarUrl?: string | null;
+        } | null;
+        MASTODON?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * The URL to image uploaded on bundle.social.
+             */
+            thumbnail?: string | null;
+            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+            spoiler?: string | null;
+        } | null;
+        BLUESKY?: {
+            text?: string | null;
+            uploadIds?: Array<(string)> | null;
+            /**
+             * Extra hashtags (without #), up to 8.
+             */
+            tags?: Array<(string)> | null;
+            /**
+             * Self-labels (content warnings) applied to the post.
+             */
+            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+            /**
+             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+             */
+            quoteUri?: string;
+            /**
+             * Target URL for the external link card
+             */
+            externalUrl?: string | null;
+            /**
+             * Card title for the external link card
+             */
+            externalTitle?: string | null;
+            /**
+             * Card description for the external link card
+             */
+            externalDescription?: string | null;
+            /**
+             * Alt text for the video embed.
+             */
+            videoAlt?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            text?: string | null;
+            /**
+             * IDs of images/videos uploaded to bundle.social.
+             */
+            uploadIds?: Array<(string)> | null;
+            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+            /**
+             * Language tag like 'en' or 'en-US'.
+             */
+            languageCode?: string | null;
+            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+            callToActionUrl?: string | null;
+            eventTitle?: string | null;
+            eventStartDate?: string | null;
+            eventEndDate?: string | null;
+            offerCouponCode?: string | null;
+            offerRedeemOnlineUrl?: string | null;
+            offerTermsConditions?: string | null;
+            /**
+             * Alert type for ALERT posts.
+             */
+            alertType?: 'COVID_19' | null;
+        } | null;
+    };
+    error?: string | null;
+    errors?: {
+        TWITTER?: string | null;
+        PINTEREST?: string | null;
+        FACEBOOK?: string | null;
+        INSTAGRAM?: string | null;
+        TIKTOK?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        YOUTUBE?: string | null;
+        MASTODON?: string | null;
+        THREADS?: string | null;
+        BLUESKY?: string | null;
+        GOOGLE_BUSINESS?: string | null;
+    } | null;
+    errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        PINTEREST?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        FACEBOOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        TIKTOK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        LINKEDIN?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        REDDIT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        DISCORD?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        SLACK?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        YOUTUBE?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        MASTODON?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        THREADS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        BLUESKY?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
+    } | null;
+    externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        PINTEREST?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        FACEBOOK?: {
+            id?: string | null;
+            postId?: string | null;
+            videoId?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        INSTAGRAM?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        TIKTOK?: {
+            id?: string | null;
+            shareId?: string | null;
+            requestId?: string | null;
+            permalink?: string | null;
+            status?: string | null;
+        } | null;
+        LINKEDIN?: {
+            id?: string | null;
+            activity?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        REDDIT?: {
+            id?: string | null;
+            permalink?: string | null;
+            subreddit_name?: string | null;
+        } | null;
+        DISCORD?: {
+            id?: string | null;
+            permalink?: string | null;
+            channelId?: string | null;
+        } | null;
+        SLACK?: {
+            id?: string | null;
+            permalink?: string | null;
+            channelId?: string | null;
+        } | null;
+        YOUTUBE?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+            /**
+             * YouTube resumable upload session URI for retry handling
+             */
+            sessionUri?: string | null;
+        } | null;
+        MASTODON?: {
+            id?: string | null;
+            permalink?: string | null;
+            thumbnail?: string | null;
+        } | null;
+        THREADS?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
+        BLUESKY?: {
+            id?: string | null;
+            uri?: string | null;
+            /**
+             * Content ID of the created record
+             */
+            cid?: string | null;
+            permalink?: string | null;
+            /**
+             * Author DID (owner of the record)
+             */
+            did?: string | null;
+        } | null;
+        GOOGLE_BUSINESS?: {
+            /**
+             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+             */
+            id?: string | null;
+            /**
+             * Public link to the post (searchUrl) when available.
+             */
+            permalink?: string | null;
+        } | null;
+    } | null;
+    retryCount: number;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    uploads: Array<{
+        postId: string;
+        uploadId: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        upload: {
+            id: string;
+            teamId?: string | null;
+            organizationId?: string | null;
+            iconUrl?: string | null;
+            thumbnailUrl?: string | null;
+            url?: string | null;
+            externalLink?: string | null;
+            iconPath?: string | null;
+            thumbnailPath?: string | null;
+            path?: string | null;
+            type: 'image' | 'video' | 'document';
+            width?: number | null;
+            height?: number | null;
+            fileSize?: number | null;
+            videoLength?: number | null;
+            mime?: string | null;
+            ext?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+        };
+    }>;
+    socialAccounts: Array<{
+        postId: string;
+        socialAccountId: string;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        socialAccount: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    }>;
+};
+
 export type PostGetData = {
     id: string;
 };
@@ -1515,6 +2216,7 @@ export type PostGetResponse = {
     teamId: string;
     organizationId?: string | null;
     title: string;
+    referenceKey?: string | null;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -2213,6 +2915,7 @@ export type PostUpdateData = {
      */
     requestBody?: {
         title?: string;
+        referenceKey?: string | null;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
         socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
@@ -2594,6 +3297,7 @@ export type PostUpdateResponse = {
     teamId: string;
     organizationId?: string | null;
     title: string;
+    referenceKey?: string | null;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -3219,6 +3923,7 @@ export type PostDeleteResponse = {
     teamId: string;
     organizationId?: string | null;
     title: string;
+    referenceKey?: string | null;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -3854,6 +4559,7 @@ export type PostGetListResponse = {
         teamId: string;
         organizationId?: string | null;
         title: string;
+        referenceKey?: string | null;
         postDate: string | null;
         postedDate?: string | null;
         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -4554,6 +5260,7 @@ export type PostCreateData = {
     requestBody?: {
         teamId: string;
         title: string;
+        referenceKey?: string | null;
         postDate: string;
         status: 'DRAFT' | 'SCHEDULED';
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
@@ -4935,6 +5642,7 @@ export type PostCreateResponse = {
     teamId: string;
     organizationId?: string | null;
     title: string;
+    referenceKey?: string | null;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -5560,6 +6268,7 @@ export type PostRetryResponse = {
     teamId: string;
     organizationId?: string | null;
     title: string;
+    referenceKey?: string | null;
     postDate: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -6253,6 +6962,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
         teamId: string;
         organizationId?: string | null;
         title: string;
+        referenceKey?: string | null;
         postDate: string | null;
         postedDate?: string | null;
         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -6979,6 +7689,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
         teamId: string;
         organizationId?: string | null;
         title: string;
+        referenceKey?: string | null;
         postDate: string | null;
         postedDate?: string | null;
         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -14992,6 +15703,759 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/post/reference-key/{referenceKey}': {
+        get: {
+            req: PostGetByReferenceKeyData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    title: string;
+                    referenceKey?: string | null;
+                    postDate: string | null;
+                    postedDate?: string | null;
+                    status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
+                    data: {
+                        TWITTER?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                        } | null;
+                        PINTEREST?: {
+                            text?: string | null;
+                            description?: string | null;
+                            boardName: string;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * The URL to which the Pin will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * The alt text for the image. This is used by screen readers and when the image can't be loaded.
+                             */
+                            altText?: string | null;
+                            /**
+                             * A note about the Pin. This is not visible to the public.
+                             */
+                            note?: string | null;
+                            /**
+                             * The dominant color of the image. This is used to display the image before it's loaded.
+                             */
+                            dominantColor?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            type?: 'POST' | 'REEL' | 'STORY';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
+                            /**
+                             * The URL to which the post will link to. Only available for type POST.
+                             */
+                            link?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * Title for video posts (type POST with video only, not REEL or STORY). This is displayed as the video title on Facebook.
+                             */
+                            mediaTitle?: string | null;
+                            /**
+                             * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
+                             */
+                            nativeScheduleTime?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            type?: 'POST' | 'REEL' | 'STORY';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Alternative text for a single image post.
+                             */
+                            altText?: string | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * For Reels only.When true, indicates that the reel can appear in both the Feed and Reels tabs.When false, indicates the reel can only appear in the Reels tab.
+                             */
+                            shareToFeed?: boolean | null;
+                            collaborators?: Array<(string)> | null;
+                            autoFitImage?: boolean | null;
+                            autoCropImage?: boolean | null;
+                            tagged?: Array<{
+                                username: string;
+                                x?: number;
+                                y?: number;
+                            }> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                                tagged?: Array<{
+                                    username: string;
+                                    x: number;
+                                    y: number;
+                                }> | null;
+                            }> | null;
+                            locationId?: string | null;
+                            /**
+                             * For Reels only. Trial reels are only shared to non-followers.
+                             */
+                            trialParams?: {
+                                graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
+                            } | null;
+                            /**
+                             * Information about the Instagram audio asset used for Reels publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use audio_id from Instagram Audio API search endpoint.
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Audio volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
+                        } | null;
+                        THREADS?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                altText?: string | null;
+                            }> | null;
+                        } | null;
+                        TIKTOK?: {
+                            type?: 'VIDEO' | 'IMAGE';
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            privacy?: 'SELF_ONLY' | 'PUBLIC_TO_EVERYONE' | 'MUTUAL_FOLLOW_FRIENDS' | 'FOLLOWER_OF_CREATOR' | null;
+                            photoCoverIndex?: number | null;
+                            /**
+                             * Set to true if the video is a paid partnership to promote a third-party business.
+                             */
+                            isBrandContent?: boolean | null;
+                            /**
+                             * Set to true if this video is promoting the creator's own business.
+                             */
+                            isOrganicBrandContent?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make comments on this post.
+                             */
+                            disableComments?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Stitches using this post.
+                             */
+                            disableDuet?: boolean | null;
+                            /**
+                             * If set to true, other TikTok users will not be allowed to make Duets using this post.
+                             */
+                            disableStitch?: boolean | null;
+                            /**
+                             * Choose a frame of the published video as the cover photo in ms
+                             */
+                            thumbnailOffset?: number | null;
+                            /**
+                             * Set to true if this video is AI generated.
+                             */
+                            isAiGenerated?: boolean | null;
+                            /**
+                             * If set to true, TikTok will automatically add music to the photos.
+                             */
+                            autoAddMusic?: boolean | null;
+                            autoScale?: boolean | null;
+                            /**
+                             * If set to true, upload post as draft.
+                             */
+                            uploadToDraft?: boolean | null;
+                            /**
+                             * Information about the commercial sound (track) used for TikTok publishing.
+                             */
+                            musicSoundInfo?: {
+                                /**
+                                 * Use song_clip_id from CML trending list (full_duration_song_clip or trending_song_clip).
+                                 */
+                                musicSoundId: string;
+                                /**
+                                 * Commercial sound volume (0-100).
+                                 */
+                                musicSoundVolume?: number | null;
+                                /**
+                                 * Starting point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundStart?: number | null;
+                                /**
+                                 * Ending point of the commercial sound in milliseconds.
+                                 */
+                                musicSoundEnd?: number | null;
+                                /**
+                                 * Background volume of the original video sound (0-100).
+                                 */
+                                videoOriginalSoundVolume?: number | null;
+                            } | null;
+                        } | null;
+                        LINKEDIN?: {
+                            text: string;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Optional URL for LinkedIn article preview post.
+                             */
+                            link?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            /**
+                             * Title for video or document posts. If not provided for videos, LinkedIn displays the posting date under the video.
+                             */
+                            mediaTitle?: string | null;
+                            privacy?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+                            /**
+                             * Set to true if the post shouldn't be displayed in the main feed.
+                             */
+                            hideFromFeed?: boolean | null;
+                            /**
+                             * Set to true if the post is not allowed to be reshared.
+                             */
+                            disableReshare?: boolean | null;
+                        } | null;
+                        YOUTUBE?: {
+                            type?: 'VIDEO' | 'SHORT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            privacy?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED' | null;
+                            /**
+                             * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
+                             */
+                            defaultLanguage?: string | null;
+                            /**
+                             * BCP-47 language code for the video's default audio track, e.g. "en" or "pl".
+                             */
+                            defaultAudioLanguage?: string | null;
+                            /**
+                             * Set to true if the video is made for kids.
+                             */
+                            madeForKids?: boolean | null;
+                            /**
+                             * Set to true if video contains AI generated content
+                             */
+                            containsSyntheticMedia?: boolean | null;
+                            /**
+                             * Set to true if video has paid product placement
+                             */
+                            hasPaidProductPlacement?: boolean | null;
+                        } | null;
+                        REDDIT?: {
+                            /**
+                             * Subreddit name. Example: r/subredditName or u/username
+                             */
+                            sr: string;
+                            text: string;
+                            description?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to which the post will link to.
+                             */
+                            link?: string | null;
+                            /**
+                             * Set to true if the post is NSFW.
+                             */
+                            nsfw?: boolean | null;
+                            /**
+                             * Flair ID for the post. Required if the subreddit requires flair selection.
+                             */
+                            flairId?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            channelId: string;
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
+                            username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
+                            avatarUrl?: string | null;
+                        } | null;
+                        SLACK?: {
+                            channelId: string;
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The username to display as the author of the message.
+                             */
+                            username?: string | null;
+                            /**
+                             * Avatar url to display as the author of the message.
+                             */
+                            avatarUrl?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * The URL to image uploaded on bundle.social.
+                             */
+                            thumbnail?: string | null;
+                            privacy?: 'PUBLIC' | 'UNLISTED' | 'PRIVATE' | 'DIRECT' | null;
+                            spoiler?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            text?: string | null;
+                            uploadIds?: Array<(string)> | null;
+                            /**
+                             * Extra hashtags (without #), up to 8.
+                             */
+                            tags?: Array<(string)> | null;
+                            /**
+                             * Self-labels (content warnings) applied to the post.
+                             */
+                            labels?: Array<('!no-unauthenticated' | 'porn' | 'sexual' | 'nudity' | 'graphic-media')> | null;
+                            /**
+                             * AT-URI of the post to quote (e.g. at://did.../app.bsky.feed.post/<rkey>).
+                             */
+                            quoteUri?: string;
+                            /**
+                             * Target URL for the external link card
+                             */
+                            externalUrl?: string | null;
+                            /**
+                             * Card title for the external link card
+                             */
+                            externalTitle?: string | null;
+                            /**
+                             * Card description for the external link card
+                             */
+                            externalDescription?: string | null;
+                            /**
+                             * Alt text for the video embed.
+                             */
+                            videoAlt?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            text?: string | null;
+                            /**
+                             * IDs of images/videos uploaded to bundle.social.
+                             */
+                            uploadIds?: Array<(string)> | null;
+                            topicType?: 'STANDARD' | 'EVENT' | 'OFFER' | 'ALERT' | null;
+                            /**
+                             * Language tag like 'en' or 'en-US'.
+                             */
+                            languageCode?: string | null;
+                            callToActionType?: 'BOOK' | 'ORDER' | 'SHOP' | 'LEARN_MORE' | 'SIGN_UP' | 'CALL' | null;
+                            callToActionUrl?: string | null;
+                            eventTitle?: string | null;
+                            eventStartDate?: string | null;
+                            eventEndDate?: string | null;
+                            offerCouponCode?: string | null;
+                            offerRedeemOnlineUrl?: string | null;
+                            offerTermsConditions?: string | null;
+                            /**
+                             * Alert type for ALERT posts.
+                             */
+                            alertType?: 'COVID_19' | null;
+                        } | null;
+                    };
+                    error?: string | null;
+                    errors?: {
+                        TWITTER?: string | null;
+                        PINTEREST?: string | null;
+                        FACEBOOK?: string | null;
+                        INSTAGRAM?: string | null;
+                        TIKTOK?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        YOUTUBE?: string | null;
+                        MASTODON?: string | null;
+                        THREADS?: string | null;
+                        BLUESKY?: string | null;
+                        GOOGLE_BUSINESS?: string | null;
+                    } | null;
+                    errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        SLACK?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        THREADS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
+                    } | null;
+                    externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        PINTEREST?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        FACEBOOK?: {
+                            id?: string | null;
+                            postId?: string | null;
+                            videoId?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        INSTAGRAM?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        TIKTOK?: {
+                            id?: string | null;
+                            shareId?: string | null;
+                            requestId?: string | null;
+                            permalink?: string | null;
+                            status?: string | null;
+                        } | null;
+                        LINKEDIN?: {
+                            id?: string | null;
+                            activity?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        REDDIT?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            subreddit_name?: string | null;
+                        } | null;
+                        DISCORD?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            channelId?: string | null;
+                        } | null;
+                        SLACK?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            channelId?: string | null;
+                        } | null;
+                        YOUTUBE?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                            /**
+                             * YouTube resumable upload session URI for retry handling
+                             */
+                            sessionUri?: string | null;
+                        } | null;
+                        MASTODON?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                            thumbnail?: string | null;
+                        } | null;
+                        THREADS?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
+                        BLUESKY?: {
+                            id?: string | null;
+                            uri?: string | null;
+                            /**
+                             * Content ID of the created record
+                             */
+                            cid?: string | null;
+                            permalink?: string | null;
+                            /**
+                             * Author DID (owner of the record)
+                             */
+                            did?: string | null;
+                        } | null;
+                        GOOGLE_BUSINESS?: {
+                            /**
+                             * Resource name of the Local Post, e.g. 'accounts/{accountId}/locations/{locationId}/localPosts/{postId}'.
+                             */
+                            id?: string | null;
+                            /**
+                             * Public link to the post (searchUrl) when available.
+                             */
+                            permalink?: string | null;
+                        } | null;
+                    } | null;
+                    retryCount: number;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    uploads: Array<{
+                        postId: string;
+                        uploadId: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        upload: {
+                            id: string;
+                            teamId?: string | null;
+                            organizationId?: string | null;
+                            iconUrl?: string | null;
+                            thumbnailUrl?: string | null;
+                            url?: string | null;
+                            externalLink?: string | null;
+                            iconPath?: string | null;
+                            thumbnailPath?: string | null;
+                            path?: string | null;
+                            type: 'image' | 'video' | 'document';
+                            width?: number | null;
+                            height?: number | null;
+                            fileSize?: number | null;
+                            videoLength?: number | null;
+                            mime?: string | null;
+                            ext?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                        };
+                    }>;
+                    socialAccounts: Array<{
+                        postId: string;
+                        socialAccountId: string;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        socialAccount: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/post/{id}': {
         get: {
             req: PostGetData;
@@ -15004,6 +16468,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     organizationId?: string | null;
                     title: string;
+                    referenceKey?: string | null;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -15754,6 +17219,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     organizationId?: string | null;
                     title: string;
+                    referenceKey?: string | null;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -16403,6 +17869,13 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 409
+                 */
+                409: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
                  * 429
                  */
                 429: {
@@ -16429,6 +17902,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     organizationId?: string | null;
                     title: string;
+                    referenceKey?: string | null;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -17107,6 +18581,7 @@ export type $OpenApiTs = {
                         teamId: string;
                         organizationId?: string | null;
                         title: string;
+                        referenceKey?: string | null;
                         postDate: string | null;
                         postedDate?: string | null;
                         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -17859,6 +19334,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     organizationId?: string | null;
                     title: string;
+                    referenceKey?: string | null;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -18508,6 +19984,13 @@ export type $OpenApiTs = {
                     message: string;
                 };
                 /**
+                 * 409
+                 */
+                409: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
                  * 429
                  */
                 429: {
@@ -18536,6 +20019,7 @@ export type $OpenApiTs = {
                     teamId: string;
                     organizationId?: string | null;
                     title: string;
+                    referenceKey?: string | null;
                     postDate: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -19330,6 +20814,7 @@ export type $OpenApiTs = {
                         teamId: string;
                         organizationId?: string | null;
                         title: string;
+                        referenceKey?: string | null;
                         postDate: string | null;
                         postedDate?: string | null;
                         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';
@@ -20157,6 +21642,7 @@ export type $OpenApiTs = {
                         teamId: string;
                         organizationId?: string | null;
                         title: string;
+                        referenceKey?: string | null;
                         postDate: string | null;
                         postedDate?: string | null;
                         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'REVIEW' | 'RETRYING';

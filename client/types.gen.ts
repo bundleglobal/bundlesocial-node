@@ -1860,6 +1860,10 @@ export type PostGetByReferenceKeyResponse = {
              */
             externalDescription?: string | null;
             /**
+             * This should be URL to publicly available image uploaded to bundle.social account.
+             */
+            thumbnail?: string | null;
+            /**
              * Alt text for the video embed.
              */
             videoAlt?: string | null;
@@ -2561,6 +2565,10 @@ export type PostGetResponse = {
              */
             externalDescription?: string | null;
             /**
+             * This should be URL to publicly available image uploaded to bundle.social account.
+             */
+            thumbnail?: string | null;
+            /**
              * Alt text for the video embed.
              */
             videoAlt?: string | null;
@@ -3260,6 +3268,10 @@ export type PostUpdateData = {
                  */
                 externalDescription?: string | null;
                 /**
+                 * This should be URL to publicly available image uploaded to bundle.social account.
+                 */
+                thumbnail?: string | null;
+                /**
                  * Alt text for the video embed.
                  */
                 videoAlt?: string | null;
@@ -3641,6 +3653,10 @@ export type PostUpdateResponse = {
              * Card description for the external link card
              */
             externalDescription?: string | null;
+            /**
+             * This should be URL to publicly available image uploaded to bundle.social account.
+             */
+            thumbnail?: string | null;
             /**
              * Alt text for the video embed.
              */
@@ -4267,6 +4283,10 @@ export type PostDeleteResponse = {
              * Card description for the external link card
              */
             externalDescription?: string | null;
+            /**
+             * This should be URL to publicly available image uploaded to bundle.social account.
+             */
+            thumbnail?: string | null;
             /**
              * Alt text for the video embed.
              */
@@ -4903,6 +4923,10 @@ export type PostGetListResponse = {
                  * Card description for the external link card
                  */
                 externalDescription?: string | null;
+                /**
+                 * This should be URL to publicly available image uploaded to bundle.social account.
+                 */
+                thumbnail?: string | null;
                 /**
                  * Alt text for the video embed.
                  */
@@ -5605,6 +5629,10 @@ export type PostCreateData = {
                  */
                 externalDescription?: string | null;
                 /**
+                 * This should be URL to publicly available image uploaded to bundle.social account.
+                 */
+                thumbnail?: string | null;
+                /**
                  * Alt text for the video embed.
                  */
                 videoAlt?: string | null;
@@ -5986,6 +6014,10 @@ export type PostCreateResponse = {
              * Card description for the external link card
              */
             externalDescription?: string | null;
+            /**
+             * This should be URL to publicly available image uploaded to bundle.social account.
+             */
+            thumbnail?: string | null;
             /**
              * Alt text for the video embed.
              */
@@ -6612,6 +6644,10 @@ export type PostRetryResponse = {
              * Card description for the external link card
              */
             externalDescription?: string | null;
+            /**
+             * This should be URL to publicly available image uploaded to bundle.social account.
+             */
+            thumbnail?: string | null;
             /**
              * Alt text for the video embed.
              */
@@ -7306,6 +7342,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * Card description for the external link card
                  */
                 externalDescription?: string | null;
+                /**
+                 * This should be URL to publicly available image uploaded to bundle.social account.
+                 */
+                thumbnail?: string | null;
                 /**
                  * Alt text for the video embed.
                  */
@@ -8033,6 +8073,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * Card description for the external link card
                  */
                 externalDescription?: string | null;
+                /**
+                 * This should be URL to publicly available image uploaded to bundle.social account.
+                 */
+                thumbnail?: string | null;
                 /**
                  * Alt text for the video embed.
                  */
@@ -10687,6 +10731,29 @@ export type MiscLinkedinBuildCommentaryData = {
 
 export type MiscLinkedinBuildCommentaryResponse = {
     commentary: string;
+};
+
+export type MiscLinkedinResharePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * LinkedIn post URN to reshare
+         */
+        parentPostUrn: string;
+        commentary: string;
+        visibility?: 'CONNECTIONS' | 'PUBLIC' | 'LOGGED_IN' | 'CONTAINER' | null;
+        disableReshare?: boolean | null;
+    };
+};
+
+export type MiscLinkedinResharePostResponse = {
+    success: boolean;
+    id: string;
+    activity?: string | null;
+    permalink?: string | null;
 };
 
 export type MiscLinkedinEditPostData = {
@@ -16060,6 +16127,10 @@ export type $OpenApiTs = {
                              */
                             externalDescription?: string | null;
                             /**
+                             * This should be URL to publicly available image uploaded to bundle.social account.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * Alt text for the video embed.
                              */
                             videoAlt?: string | null;
@@ -16813,6 +16884,10 @@ export type $OpenApiTs = {
                              */
                             externalDescription?: string | null;
                             /**
+                             * This should be URL to publicly available image uploaded to bundle.social account.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * Alt text for the video embed.
                              */
                             videoAlt?: string | null;
@@ -17564,6 +17639,10 @@ export type $OpenApiTs = {
                              */
                             externalDescription?: string | null;
                             /**
+                             * This should be URL to publicly available image uploaded to bundle.social account.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * Alt text for the video embed.
                              */
                             videoAlt?: string | null;
@@ -18247,6 +18326,10 @@ export type $OpenApiTs = {
                              */
                             externalDescription?: string | null;
                             /**
+                             * This should be URL to publicly available image uploaded to bundle.social account.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * Alt text for the video embed.
                              */
                             videoAlt?: string | null;
@@ -18925,6 +19008,10 @@ export type $OpenApiTs = {
                                  * Card description for the external link card
                                  */
                                 externalDescription?: string | null;
+                                /**
+                                 * This should be URL to publicly available image uploaded to bundle.social account.
+                                 */
+                                thumbnail?: string | null;
                                 /**
                                  * Alt text for the video embed.
                                  */
@@ -19679,6 +19766,10 @@ export type $OpenApiTs = {
                              */
                             externalDescription?: string | null;
                             /**
+                             * This should be URL to publicly available image uploaded to bundle.social account.
+                             */
+                            thumbnail?: string | null;
+                            /**
                              * Alt text for the video embed.
                              */
                             videoAlt?: string | null;
@@ -20363,6 +20454,10 @@ export type $OpenApiTs = {
                              * Card description for the external link card
                              */
                             externalDescription?: string | null;
+                            /**
+                             * This should be URL to publicly available image uploaded to bundle.social account.
+                             */
+                            thumbnail?: string | null;
                             /**
                              * Alt text for the video embed.
                              */
@@ -21158,6 +21253,10 @@ export type $OpenApiTs = {
                                  * Card description for the external link card
                                  */
                                 externalDescription?: string | null;
+                                /**
+                                 * This should be URL to publicly available image uploaded to bundle.social account.
+                                 */
+                                thumbnail?: string | null;
                                 /**
                                  * Alt text for the video embed.
                                  */
@@ -21986,6 +22085,10 @@ export type $OpenApiTs = {
                                  * Card description for the external link card
                                  */
                                 externalDescription?: string | null;
+                                /**
+                                 * This should be URL to publicly available image uploaded to bundle.social account.
+                                 */
+                                thumbnail?: string | null;
                                 /**
                                  * Alt text for the video embed.
                                  */
@@ -25932,6 +26035,76 @@ export type $OpenApiTs = {
                  * 404
                  */
                 404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/linkedin/post/reshare': {
+        post: {
+            req: MiscLinkedinResharePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                    id: string;
+                    activity?: string | null;
+                    permalink?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 422
+                 */
+                422: {
                     statusCode?: number | null;
                     message: string;
                 };

@@ -1,3 +1,10 @@
+# [2.56.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.55.0...v2.56.0) (2026-06-23)
+
+
+### Features
+
+* linkedin reshare and bluesky thumbnails ([7e452a1](https://github.com/bundleglobal/bundlesocial-node/commit/7e452a1ccaf5b7353b5755bf39b1ab26996a8899))
+
 # [2.55.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.54.0...v2.55.0) (2026-06-17)
 
 

@@ -2392,11 +2392,12 @@ export class MiscService {
     
     /**
      * List available Google Business categories
-     * Requires `regionCode` and `languageCode`. Default `view=BASIC`. Page size is fixed at 50. Optional `filter` supports `displayName` prefix search.
+     * Requires `regionCode` and `languageCode`. Default `view=BASIC`. Optional `names` fetches exact category IDs through `categories:batchGet`; otherwise `filter` supports `displayName` prefix search.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.regionCode
      * @param data.languageCode
+     * @param data.names
      * @param data.filter
      * @param data.pageSize
      * @param data.pageToken
@@ -2412,6 +2413,7 @@ export class MiscService {
                 teamId: data.teamId,
                 regionCode: data.regionCode,
                 languageCode: data.languageCode,
+                names: data.names,
                 filter: data.filter,
                 pageSize: data.pageSize,
                 pageToken: data.pageToken,

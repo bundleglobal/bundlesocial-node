@@ -11133,7 +11133,9 @@ export type MiscGoogleBusinessGetAttributesResponse = {
             setValues?: Array<(string)>;
             [key: string]: unknown | string;
         };
-        uriValues?: Array<(string)>;
+        uriValues?: Array<{
+            uri: string;
+        }>;
         [key: string]: unknown | string;
     }>;
     [key: string]: unknown | string;
@@ -11152,7 +11154,9 @@ export type MiscGoogleBusinessUpdateAttributesData = {
             repeatedEnumValue?: {
                 setValues?: Array<(string)>;
             };
-            uriValues?: Array<(string)>;
+            uriValues?: Array<{
+                uri: string;
+            }>;
         }> | null;
     };
 };
@@ -11166,7 +11170,9 @@ export type MiscGoogleBusinessUpdateAttributesResponse = {
             setValues?: Array<(string)>;
             [key: string]: unknown | string;
         };
-        uriValues?: Array<(string)>;
+        uriValues?: Array<{
+            uri: string;
+        }>;
         [key: string]: unknown | string;
     }>;
     [key: string]: unknown | string;
@@ -11191,6 +11197,7 @@ export type MiscGoogleBusinessListAvailableAttributesResponse = {
 export type MiscGoogleBusinessListCategoriesData = {
     filter?: string;
     languageCode: string;
+    names?: Array<(string)>;
     pageSize?: number;
     pageToken?: string;
     regionCode: string;
@@ -26821,7 +26828,9 @@ export type $OpenApiTs = {
                             setValues?: Array<(string)>;
                             [key: string]: unknown | string;
                         };
-                        uriValues?: Array<(string)>;
+                        uriValues?: Array<{
+                            uri: string;
+                        }>;
                         [key: string]: unknown | string;
                     }>;
                     [key: string]: unknown | string;
@@ -26890,7 +26899,9 @@ export type $OpenApiTs = {
                             setValues?: Array<(string)>;
                             [key: string]: unknown | string;
                         };
-                        uriValues?: Array<(string)>;
+                        uriValues?: Array<{
+                            uri: string;
+                        }>;
                         [key: string]: unknown | string;
                     }>;
                     [key: string]: unknown | string;

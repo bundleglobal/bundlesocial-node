@@ -40555,7 +40555,13 @@ paths:
                         uriValues:
                           type: array
                           items:
-                            type: string
+                            type: object
+                            properties:
+                              uri:
+                                type: string
+                            required:
+                              - uri
+                            additionalProperties: false
                       required:
                         - name
                       additionalProperties: true
@@ -40720,7 +40726,13 @@ paths:
                       uriValues:
                         type: array
                         items:
-                          type: string
+                          type: object
+                          properties:
+                            uri:
+                              type: string
+                          required:
+                            - uri
+                          additionalProperties: false
                     required:
                       - name
                     additionalProperties: false
@@ -40761,7 +40773,13 @@ paths:
                         uriValues:
                           type: array
                           items:
-                            type: string
+                            type: object
+                            properties:
+                              uri:
+                                type: string
+                            required:
+                              - uri
+                            additionalProperties: false
                       required:
                         - name
                       additionalProperties: true
@@ -41059,9 +41077,9 @@ paths:
   /api/v1/misc/google-business/location/categories/available:
     get:
       description: >-
-        Requires `regionCode` and `languageCode`. Default `view=BASIC`. Page
-        size is fixed at 50. Optional `filter` supports `displayName` prefix
-        search.
+        Requires `regionCode` and `languageCode`. Default `view=BASIC`. Optional
+        `names` fetches exact category IDs through `categories:batchGet`;
+        otherwise `filter` supports `displayName` prefix search.
       summary: List available Google Business categories
       tags:
         - misc
@@ -41083,6 +41101,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: names
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            minItems: 1
+            maxItems: 100
         - name: filter
           in: query
           schema:

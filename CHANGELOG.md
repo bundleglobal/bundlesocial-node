@@ -1,3 +1,10 @@
+## [2.56.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.56.0...v2.56.1) (2026-06-28)
+
+
+### Bug Fixes
+
+* gbp attributes ([048a8b6](https://github.com/bundleglobal/bundlesocial-node/commit/048a8b6983c9fc3206704b39151f184a1843e471))
+
 # [2.56.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.55.0...v2.56.0) (2026-06-23)
 
 

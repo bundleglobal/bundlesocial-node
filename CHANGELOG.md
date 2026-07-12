@@ -1,3 +1,10 @@
+# [2.57.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.56.1...v2.57.0) (2026-07-12)
+
+
+### Features
+
+* snapchat integration and analytics fixes ([d4f8111](https://github.com/bundleglobal/bundlesocial-node/commit/d4f8111742a14c55cb000d85eae6ba3ce037a7c5))
+
 ## [2.56.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.56.0...v2.56.1) (2026-06-28)
 
 

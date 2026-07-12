@@ -234,6 +234,21 @@ paths:
                         required:
                           - status
                           - note
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                              - operational
+                              - degraded
+                              - outage
+                              - maintenance
+                          note:
+                            type: string
+                        required:
+                          - status
+                          - note
                     required:
                       - FACEBOOK
                       - INSTAGRAM
@@ -249,6 +264,7 @@ paths:
                       - GOOGLE_BUSINESS
                       - LINKEDIN
                       - THREADS
+                      - SNAPCHAT
                 required:
                   - status
                   - createdAt
@@ -437,6 +453,8 @@ paths:
                         type: number
                       GOOGLE_BUSINESS:
                         type: number
+                      SNAPCHAT:
+                        type: number
                     nullable: true
                   dailyCommentLimit:
                     type: object
@@ -468,6 +486,8 @@ paths:
                       BLUESKY:
                         type: number
                       GOOGLE_BUSINESS:
+                        type: number
+                      SNAPCHAT:
                         type: number
                     nullable: true
                   monthlyImportLimitPerAccount:
@@ -1482,6 +1502,7 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   posts:
                     type: object
                     properties:
@@ -1676,6 +1697,7 @@ paths:
               - SLACK
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
         - name: socialAccountId
           in: query
           schema:
@@ -1954,6 +1976,8 @@ paths:
                             type: number
                           GOOGLE_BUSINESS:
                             type: number
+                          SNAPCHAT:
+                            type: number
                         nullable: true
                       dailyCommentLimit:
                         type: object
@@ -1985,6 +2009,8 @@ paths:
                           BLUESKY:
                             type: number
                           GOOGLE_BUSINESS:
+                            type: number
+                          SNAPCHAT:
                             type: number
                         nullable: true
                       monthlyImportLimitPerAccount:
@@ -2149,12 +2175,16 @@ paths:
                             - SLACK
                             - BLUESKY
                             - GOOGLE_BUSINESS
+                            - SNAPCHAT
                         teamId:
                           type: string
                         username:
                           type: string
                           nullable: true
                         displayName:
+                          type: string
+                          nullable: true
+                        bio:
                           type: string
                           nullable: true
                         avatarUrl:
@@ -2981,6 +3011,8 @@ paths:
                                   type: number
                                 GOOGLE_BUSINESS:
                                   type: number
+                                SNAPCHAT:
+                                  type: number
                               nullable: true
                             dailyCommentLimit:
                               type: object
@@ -3012,6 +3044,8 @@ paths:
                                 BLUESKY:
                                   type: number
                                 GOOGLE_BUSINESS:
+                                  type: number
+                                SNAPCHAT:
                                   type: number
                               nullable: true
                             monthlyImportLimitPerAccount:
@@ -3176,12 +3210,16 @@ paths:
                                   - SLACK
                                   - BLUESKY
                                   - GOOGLE_BUSINESS
+                                  - SNAPCHAT
                               teamId:
                                 type: string
                               username:
                                 type: string
                                 nullable: true
                               displayName:
+                                type: string
+                                nullable: true
+                              bio:
                                 type: string
                                 nullable: true
                               avatarUrl:
@@ -3772,6 +3810,7 @@ paths:
                     - SLACK
                     - BLUESKY
                     - GOOGLE_BUSINESS
+                    - SNAPCHAT
                 teamId:
                   type: string
                 redirectUrl:
@@ -3792,6 +3831,13 @@ paths:
                   description: >-
                     Optional. When true, adds provider-specific flags to avoid
                     automatic login/auto-approval where supported.
+                tiktokForceLogin:
+                  default: false
+                  type: boolean
+                  description: >-
+                    Optional and experimental. TikTok only. When true, routes
+                    authorization through TikTok logout to request a fresh login
+                    session.
                 forceBrowserOAuth:
                   default: false
                   type: boolean
@@ -3982,6 +4028,7 @@ paths:
                     - SLACK
                     - BLUESKY
                     - GOOGLE_BUSINESS
+                    - SNAPCHAT
                 teamId:
                   type: string
               required:
@@ -4014,12 +4061,16 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   teamId:
                     type: string
                   username:
                     type: string
                     nullable: true
                   displayName:
+                    type: string
+                    nullable: true
+                  bio:
                     type: string
                     nullable: true
                   avatarUrl:
@@ -4317,12 +4368,16 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   teamId:
                     type: string
                   username:
                     type: string
                     nullable: true
                   displayName:
+                    type: string
+                    nullable: true
+                  bio:
                     type: string
                     nullable: true
                   avatarUrl:
@@ -4615,12 +4670,16 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   teamId:
                     type: string
                   username:
                     type: string
                     nullable: true
                   displayName:
+                    type: string
+                    nullable: true
+                  bio:
                     type: string
                     nullable: true
                   avatarUrl:
@@ -4919,12 +4978,16 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   teamId:
                     type: string
                   username:
                     type: string
                     nullable: true
                   displayName:
+                    type: string
+                    nullable: true
+                  bio:
                     type: string
                     nullable: true
                   avatarUrl:
@@ -5204,6 +5267,7 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                 serverUrl:
                   type: string
                   format: uri
@@ -5214,6 +5278,13 @@ paths:
                   description: >-
                     Optional. If true, portal will request provider-specific
                     anti-auto-login behavior where supported.
+                tiktokForceLogin:
+                  default: false
+                  type: boolean
+                  description: >-
+                    Optional and experimental. TikTok only. When true, portal
+                    routes TikTok authorization through logout to request a
+                    fresh login session.
                 forceBrowserOAuth:
                   default: false
                   type: boolean
@@ -5447,6 +5518,7 @@ paths:
                     - SLACK
                     - BLUESKY
                     - GOOGLE_BUSINESS
+                    - SNAPCHAT
                 teamId:
                   type: string
               required:
@@ -5639,6 +5711,7 @@ paths:
                     - SLACK
                     - BLUESKY
                     - GOOGLE_BUSINESS
+                    - SNAPCHAT
                 teamId:
                   type: string
               required:
@@ -5680,12 +5753,16 @@ paths:
                           - SLACK
                           - BLUESKY
                           - GOOGLE_BUSINESS
+                          - SNAPCHAT
                       teamId:
                         type: string
                       username:
                         type: string
                         nullable: true
                       displayName:
+                        type: string
+                        nullable: true
+                      bio:
                         type: string
                         nullable: true
                       avatarUrl:
@@ -5972,6 +6049,7 @@ paths:
               - SLACK
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
         - name: teamId
           in: query
           required: true
@@ -6005,12 +6083,16 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   teamId:
                     type: string
                   username:
                     type: string
                     nullable: true
                   displayName:
+                    type: string
+                    nullable: true
+                  bio:
                     type: string
                     nullable: true
                   avatarUrl:
@@ -6292,6 +6374,7 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   minItems: 1
               required:
                 - fromTeamId
@@ -6326,12 +6409,16 @@ paths:
                         - SLACK
                         - BLUESKY
                         - GOOGLE_BUSINESS
+                        - SNAPCHAT
                     teamId:
                       type: string
                     username:
                       type: string
                       nullable: true
                     displayName:
+                      type: string
+                      nullable: true
+                    bio:
                       type: string
                       nullable: true
                     avatarUrl:
@@ -6621,12 +6708,16 @@ paths:
                             - SLACK
                             - BLUESKY
                             - GOOGLE_BUSINESS
+                            - SNAPCHAT
                         teamId:
                           type: string
                         username:
                           type: string
                           nullable: true
                         displayName:
+                          type: string
+                          nullable: true
+                        bio:
                           type: string
                           nullable: true
                         avatarUrl:
@@ -8667,6 +8758,7 @@ paths:
               - SLACK
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
         - name: offset
           in: query
           schema:
@@ -8885,6 +8977,7 @@ paths:
                     - SLACK
                     - BLUESKY
                     - GOOGLE_BUSINESS
+                    - SNAPCHAT
                 postIds:
                   type: array
                   items:
@@ -9933,6 +10026,34 @@ paths:
                             nullable: true
                             description: Alert type for ALERT posts.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          type:
+                            default: STORY
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          locale:
+                            type: string
+                            nullable: true
+                          skipSaveToProfile:
+                            default: false
+                            type: boolean
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -9979,6 +10100,9 @@ paths:
                         type: string
                         nullable: true
                       GOOGLE_BUSINESS:
+                        type: string
+                        nullable: true
+                      SNAPCHAT:
                         type: string
                         nullable: true
                     nullable: true
@@ -10377,6 +10501,34 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                     nullable: true
                   externalData:
                     type: object
@@ -10589,6 +10741,38 @@ paths:
                               Public link to the post (searchUrl) when
                               available.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          mediaId:
+                            type: string
+                            nullable: true
+                          type:
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                            nullable: true
+                          profileId:
+                            type: string
+                            nullable: true
+                          sourceUploadId:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                          status:
+                            type: string
+                            enum:
+                              - MEDIA_UPLOADED
+                              - MEDIA_PROCESSING
+                              - PUBLISHED
+                            nullable: true
+                        nullable: true
                     nullable: true
                   retryCount:
                     type: number
@@ -10747,12 +10931,16 @@ paths:
                                 - SLACK
                                 - BLUESKY
                                 - GOOGLE_BUSINESS
+                                - SNAPCHAT
                             teamId:
                               type: string
                             username:
                               type: string
                               nullable: true
                             displayName:
+                              type: string
+                              nullable: true
+                            bio:
                               type: string
                               nullable: true
                             avatarUrl:
@@ -11869,6 +12057,34 @@ paths:
                             nullable: true
                             description: Alert type for ALERT posts.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          type:
+                            default: STORY
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          locale:
+                            type: string
+                            nullable: true
+                          skipSaveToProfile:
+                            default: false
+                            type: boolean
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -11915,6 +12131,9 @@ paths:
                         type: string
                         nullable: true
                       GOOGLE_BUSINESS:
+                        type: string
+                        nullable: true
+                      SNAPCHAT:
                         type: string
                         nullable: true
                     nullable: true
@@ -12313,6 +12532,34 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                     nullable: true
                   externalData:
                     type: object
@@ -12525,6 +12772,38 @@ paths:
                               Public link to the post (searchUrl) when
                               available.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          mediaId:
+                            type: string
+                            nullable: true
+                          type:
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                            nullable: true
+                          profileId:
+                            type: string
+                            nullable: true
+                          sourceUploadId:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                          status:
+                            type: string
+                            enum:
+                              - MEDIA_UPLOADED
+                              - MEDIA_PROCESSING
+                              - PUBLISHED
+                            nullable: true
+                        nullable: true
                     nullable: true
                   retryCount:
                     type: number
@@ -12683,12 +12962,16 @@ paths:
                                 - SLACK
                                 - BLUESKY
                                 - GOOGLE_BUSINESS
+                                - SNAPCHAT
                             teamId:
                               type: string
                             username:
                               type: string
                               nullable: true
                             displayName:
+                              type: string
+                              nullable: true
+                            bio:
                               type: string
                               nullable: true
                             avatarUrl:
@@ -12996,6 +13279,7 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   minItems: 1
                 data:
                   type: object
@@ -13799,6 +14083,34 @@ paths:
                             - COVID_19
                           nullable: true
                           description: Alert type for ALERT posts.
+                      nullable: true
+                    SNAPCHAT:
+                      type: object
+                      properties:
+                        type:
+                          default: STORY
+                          type: string
+                          enum:
+                            - STORY
+                            - SPOTLIGHT
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        description:
+                          type: string
+                          nullable: true
+                        locale:
+                          type: string
+                          nullable: true
+                        skipSaveToProfile:
+                          default: false
+                          type: boolean
+                          nullable: true
                       nullable: true
       responses:
         '200':
@@ -14649,6 +14961,34 @@ paths:
                             nullable: true
                             description: Alert type for ALERT posts.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          type:
+                            default: STORY
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          locale:
+                            type: string
+                            nullable: true
+                          skipSaveToProfile:
+                            default: false
+                            type: boolean
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -14695,6 +15035,9 @@ paths:
                         type: string
                         nullable: true
                       GOOGLE_BUSINESS:
+                        type: string
+                        nullable: true
+                      SNAPCHAT:
                         type: string
                         nullable: true
                     nullable: true
@@ -15093,6 +15436,34 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                     nullable: true
                   externalData:
                     type: object
@@ -15304,6 +15675,38 @@ paths:
                             description: >-
                               Public link to the post (searchUrl) when
                               available.
+                        nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          mediaId:
+                            type: string
+                            nullable: true
+                          type:
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                            nullable: true
+                          profileId:
+                            type: string
+                            nullable: true
+                          sourceUploadId:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                          status:
+                            type: string
+                            enum:
+                              - MEDIA_UPLOADED
+                              - MEDIA_PROCESSING
+                              - PUBLISHED
+                            nullable: true
                         nullable: true
                     nullable: true
                   retryCount:
@@ -16324,6 +16727,34 @@ paths:
                             nullable: true
                             description: Alert type for ALERT posts.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          type:
+                            default: STORY
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          locale:
+                            type: string
+                            nullable: true
+                          skipSaveToProfile:
+                            default: false
+                            type: boolean
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -16370,6 +16801,9 @@ paths:
                         type: string
                         nullable: true
                       GOOGLE_BUSINESS:
+                        type: string
+                        nullable: true
+                      SNAPCHAT:
                         type: string
                         nullable: true
                     nullable: true
@@ -16768,6 +17202,34 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                     nullable: true
                   externalData:
                     type: object
@@ -16979,6 +17441,38 @@ paths:
                             description: >-
                               Public link to the post (searchUrl) when
                               available.
+                        nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          mediaId:
+                            type: string
+                            nullable: true
+                          type:
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                            nullable: true
+                          profileId:
+                            type: string
+                            nullable: true
+                          sourceUploadId:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                          status:
+                            type: string
+                            enum:
+                              - MEDIA_UPLOADED
+                              - MEDIA_PROCESSING
+                              - PUBLISHED
+                            nullable: true
                         nullable: true
                     nullable: true
                   retryCount:
@@ -17195,6 +17689,7 @@ paths:
                 - SLACK
                 - BLUESKY
                 - GOOGLE_BUSINESS
+                - SNAPCHAT
             nullable: true
         - name: postDateFrom
           in: query
@@ -18087,6 +18582,34 @@ paths:
                                   nullable: true
                                   description: Alert type for ALERT posts.
                               nullable: true
+                            SNAPCHAT:
+                              type: object
+                              properties:
+                                type:
+                                  default: STORY
+                                  type: string
+                                  enum:
+                                    - STORY
+                                    - SPOTLIGHT
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                text:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                locale:
+                                  type: string
+                                  nullable: true
+                                skipSaveToProfile:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                              nullable: true
                         error:
                           type: string
                           nullable: true
@@ -18133,6 +18656,9 @@ paths:
                               type: string
                               nullable: true
                             GOOGLE_BUSINESS:
+                              type: string
+                              nullable: true
+                            SNAPCHAT:
                               type: string
                               nullable: true
                           nullable: true
@@ -18531,6 +19057,34 @@ paths:
                                   type: string
                                   nullable: true
                               nullable: true
+                            SNAPCHAT:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  nullable: true
+                                errorMessage:
+                                  type: string
+                                  nullable: true
+                                isTransient:
+                                  type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
+                                httpStatus:
+                                  type: number
+                                  nullable: true
+                                meta:
+                                  nullable: true
+                                userFacingMessage:
+                                  type: string
+                                  nullable: true
+                              nullable: true
                           nullable: true
                         externalData:
                           type: object
@@ -18743,6 +19297,38 @@ paths:
                                     Public link to the post (searchUrl) when
                                     available.
                               nullable: true
+                            SNAPCHAT:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  nullable: true
+                                mediaId:
+                                  type: string
+                                  nullable: true
+                                type:
+                                  type: string
+                                  enum:
+                                    - STORY
+                                    - SPOTLIGHT
+                                  nullable: true
+                                profileId:
+                                  type: string
+                                  nullable: true
+                                sourceUploadId:
+                                  type: string
+                                  nullable: true
+                                permalink:
+                                  type: string
+                                  nullable: true
+                                status:
+                                  type: string
+                                  enum:
+                                    - MEDIA_UPLOADED
+                                    - MEDIA_PROCESSING
+                                    - PUBLISHED
+                                  nullable: true
+                              nullable: true
                           nullable: true
                         retryCount:
                           type: number
@@ -18901,12 +19487,16 @@ paths:
                                       - SLACK
                                       - BLUESKY
                                       - GOOGLE_BUSINESS
+                                      - SNAPCHAT
                                   teamId:
                                     type: string
                                   username:
                                     type: string
                                     nullable: true
                                   displayName:
+                                    type: string
+                                    nullable: true
+                                  bio:
                                     type: string
                                     nullable: true
                                   avatarUrl:
@@ -19216,6 +19806,7 @@ paths:
                       - SLACK
                       - BLUESKY
                       - GOOGLE_BUSINESS
+                      - SNAPCHAT
                   minItems: 1
                 data:
                   type: object
@@ -20019,6 +20610,34 @@ paths:
                             - COVID_19
                           nullable: true
                           description: Alert type for ALERT posts.
+                      nullable: true
+                    SNAPCHAT:
+                      type: object
+                      properties:
+                        type:
+                          default: STORY
+                          type: string
+                          enum:
+                            - STORY
+                            - SPOTLIGHT
+                        uploadIds:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        description:
+                          type: string
+                          nullable: true
+                        locale:
+                          type: string
+                          nullable: true
+                        skipSaveToProfile:
+                          default: false
+                          type: boolean
+                          nullable: true
                       nullable: true
               required:
                 - teamId
@@ -20876,6 +21495,34 @@ paths:
                             nullable: true
                             description: Alert type for ALERT posts.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          type:
+                            default: STORY
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          locale:
+                            type: string
+                            nullable: true
+                          skipSaveToProfile:
+                            default: false
+                            type: boolean
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -20922,6 +21569,9 @@ paths:
                         type: string
                         nullable: true
                       GOOGLE_BUSINESS:
+                        type: string
+                        nullable: true
+                      SNAPCHAT:
                         type: string
                         nullable: true
                     nullable: true
@@ -21320,6 +21970,34 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                     nullable: true
                   externalData:
                     type: object
@@ -21531,6 +22209,38 @@ paths:
                             description: >-
                               Public link to the post (searchUrl) when
                               available.
+                        nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          mediaId:
+                            type: string
+                            nullable: true
+                          type:
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                            nullable: true
+                          profileId:
+                            type: string
+                            nullable: true
+                          sourceUploadId:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                          status:
+                            type: string
+                            enum:
+                              - MEDIA_UPLOADED
+                              - MEDIA_PROCESSING
+                              - PUBLISHED
+                            nullable: true
                         nullable: true
                     nullable: true
                   retryCount:
@@ -22552,6 +23262,34 @@ paths:
                             nullable: true
                             description: Alert type for ALERT posts.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          type:
+                            default: STORY
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                          uploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          text:
+                            type: string
+                            nullable: true
+                          description:
+                            type: string
+                            nullable: true
+                          locale:
+                            type: string
+                            nullable: true
+                          skipSaveToProfile:
+                            default: false
+                            type: boolean
+                            nullable: true
+                        nullable: true
                   error:
                     type: string
                     nullable: true
@@ -22598,6 +23336,9 @@ paths:
                         type: string
                         nullable: true
                       GOOGLE_BUSINESS:
+                        type: string
+                        nullable: true
+                      SNAPCHAT:
                         type: string
                         nullable: true
                     nullable: true
@@ -22996,6 +23737,34 @@ paths:
                             type: string
                             nullable: true
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                     nullable: true
                   externalData:
                     type: object
@@ -23208,6 +23977,38 @@ paths:
                               Public link to the post (searchUrl) when
                               available.
                         nullable: true
+                      SNAPCHAT:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          mediaId:
+                            type: string
+                            nullable: true
+                          type:
+                            type: string
+                            enum:
+                              - STORY
+                              - SPOTLIGHT
+                            nullable: true
+                          profileId:
+                            type: string
+                            nullable: true
+                          sourceUploadId:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                          status:
+                            type: string
+                            enum:
+                              - MEDIA_UPLOADED
+                              - MEDIA_PROCESSING
+                              - PUBLISHED
+                            nullable: true
+                        nullable: true
                     nullable: true
                   retryCount:
                     type: number
@@ -23382,6 +24183,7 @@ paths:
               - LINKEDIN
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
       operationId: analytics.getSocialAccountAnalytics
       responses:
         '200':
@@ -23413,12 +24215,16 @@ paths:
                           - SLACK
                           - BLUESKY
                           - GOOGLE_BUSINESS
+                          - SNAPCHAT
                       teamId:
                         type: string
                       username:
                         type: string
                         nullable: true
                       displayName:
+                        type: string
+                        nullable: true
+                      bio:
                         type: string
                         nullable: true
                       avatarUrl:
@@ -23742,6 +24548,7 @@ paths:
               - LINKEDIN
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
             nullable: true
         - name: importedPostId
           in: query
@@ -24611,6 +25418,34 @@ paths:
                                 nullable: true
                                 description: Alert type for ALERT posts.
                             nullable: true
+                          SNAPCHAT:
+                            type: object
+                            properties:
+                              type:
+                                default: STORY
+                                type: string
+                                enum:
+                                  - STORY
+                                  - SPOTLIGHT
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              text:
+                                type: string
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              locale:
+                                type: string
+                                nullable: true
+                              skipSaveToProfile:
+                                default: false
+                                type: boolean
+                                nullable: true
+                            nullable: true
                       error:
                         type: string
                         nullable: true
@@ -24657,6 +25492,9 @@ paths:
                             type: string
                             nullable: true
                           GOOGLE_BUSINESS:
+                            type: string
+                            nullable: true
+                          SNAPCHAT:
                             type: string
                             nullable: true
                         nullable: true
@@ -25055,6 +25893,34 @@ paths:
                                 type: string
                                 nullable: true
                             nullable: true
+                          SNAPCHAT:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                                nullable: true
+                              errorMessage:
+                                type: string
+                                nullable: true
+                              isTransient:
+                                type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
+                              httpStatus:
+                                type: number
+                                nullable: true
+                              meta:
+                                nullable: true
+                              userFacingMessage:
+                                type: string
+                                nullable: true
+                            nullable: true
                         nullable: true
                       externalData:
                         type: object
@@ -25266,6 +26132,38 @@ paths:
                                 description: >-
                                   Public link to the post (searchUrl) when
                                   available.
+                            nullable: true
+                          SNAPCHAT:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                nullable: true
+                              mediaId:
+                                type: string
+                                nullable: true
+                              type:
+                                type: string
+                                enum:
+                                  - STORY
+                                  - SPOTLIGHT
+                                nullable: true
+                              profileId:
+                                type: string
+                                nullable: true
+                              sourceUploadId:
+                                type: string
+                                nullable: true
+                              permalink:
+                                type: string
+                                nullable: true
+                              status:
+                                type: string
+                                enum:
+                                  - MEDIA_UPLOADED
+                                  - MEDIA_PROCESSING
+                                  - PUBLISHED
+                                nullable: true
                             nullable: true
                         nullable: true
                       retryCount:
@@ -25576,6 +26474,7 @@ paths:
               - LINKEDIN
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
       operationId: analytics.getSocialAccountAnalyticsRaw
       responses:
         '200':
@@ -25607,12 +26506,16 @@ paths:
                           - SLACK
                           - BLUESKY
                           - GOOGLE_BUSINESS
+                          - SNAPCHAT
                       teamId:
                         type: string
                       username:
                         type: string
                         nullable: true
                       displayName:
+                        type: string
+                        nullable: true
+                      bio:
                         type: string
                         nullable: true
                       avatarUrl:
@@ -25914,6 +26817,7 @@ paths:
               - LINKEDIN
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
             nullable: true
         - name: importedPostId
           in: query
@@ -26783,6 +27687,34 @@ paths:
                                 nullable: true
                                 description: Alert type for ALERT posts.
                             nullable: true
+                          SNAPCHAT:
+                            type: object
+                            properties:
+                              type:
+                                default: STORY
+                                type: string
+                                enum:
+                                  - STORY
+                                  - SPOTLIGHT
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              text:
+                                type: string
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              locale:
+                                type: string
+                                nullable: true
+                              skipSaveToProfile:
+                                default: false
+                                type: boolean
+                                nullable: true
+                            nullable: true
                       error:
                         type: string
                         nullable: true
@@ -26829,6 +27761,9 @@ paths:
                             type: string
                             nullable: true
                           GOOGLE_BUSINESS:
+                            type: string
+                            nullable: true
+                          SNAPCHAT:
                             type: string
                             nullable: true
                         nullable: true
@@ -27227,6 +28162,34 @@ paths:
                                 type: string
                                 nullable: true
                             nullable: true
+                          SNAPCHAT:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                                nullable: true
+                              errorMessage:
+                                type: string
+                                nullable: true
+                              isTransient:
+                                type: boolean
+                                nullable: true
+                              retryability:
+                                type: string
+                                enum:
+                                  - retryable
+                                  - non_retryable
+                                  - unknown
+                                nullable: true
+                              httpStatus:
+                                type: number
+                                nullable: true
+                              meta:
+                                nullable: true
+                              userFacingMessage:
+                                type: string
+                                nullable: true
+                            nullable: true
                         nullable: true
                       externalData:
                         type: object
@@ -27438,6 +28401,38 @@ paths:
                                 description: >-
                                   Public link to the post (searchUrl) when
                                   available.
+                            nullable: true
+                          SNAPCHAT:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                nullable: true
+                              mediaId:
+                                type: string
+                                nullable: true
+                              type:
+                                type: string
+                                enum:
+                                  - STORY
+                                  - SPOTLIGHT
+                                nullable: true
+                              profileId:
+                                type: string
+                                nullable: true
+                              sourceUploadId:
+                                type: string
+                                nullable: true
+                              permalink:
+                                type: string
+                                nullable: true
+                              status:
+                                type: string
+                                enum:
+                                  - MEDIA_UPLOADED
+                                  - MEDIA_PROCESSING
+                                  - PUBLISHED
+                                nullable: true
                             nullable: true
                         nullable: true
                       retryCount:
@@ -27731,6 +28726,7 @@ paths:
               - LINKEDIN
               - BLUESKY
               - GOOGLE_BUSINESS
+              - SNAPCHAT
         - name: page
           in: query
           schema:
@@ -27994,6 +28990,7 @@ paths:
                     - LINKEDIN
                     - BLUESKY
                     - GOOGLE_BUSINESS
+                    - SNAPCHAT
               required:
                 - teamId
                 - platformType
@@ -28207,6 +29204,7 @@ paths:
                     - LINKEDIN
                     - BLUESKY
                     - GOOGLE_BUSINESS
+                    - SNAPCHAT
                   nullable: true
                 importedPostId:
                   type: string
@@ -45174,6 +46172,38 @@ paths:
                       name:
                         type: string
                         description: Full name if available
+                      media:
+                        type: object
+                        properties:
+                          data:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  description: Instagram Media ID
+                                media_type:
+                                  type: string
+                                  description: Instagram media type
+                                like_count:
+                                  type: number
+                                  description: Number of likes if available
+                                comments_count:
+                                  type: number
+                                  description: Number of comments if available
+                                timestamp:
+                                  type: string
+                                  description: Media publication timestamp
+                                caption:
+                                  type: string
+                                  description: Media caption if available
+                              required:
+                                - id
+                                - media_type
+                        required:
+                          - data
+                        description: Up to 12 recent public media items
                     required:
                       - id
                       - username
@@ -50385,6 +51415,7 @@ paths:
                   properties:
                     commercial_music_name:
                       type: string
+                      nullable: true
                       description: The name of the commercial music track.
                     duration:
                       type: integer
@@ -50469,7 +51500,6 @@ paths:
                         - song_clip_id
                       nullable: true
                   required:
-                    - commercial_music_name
                     - duration
                     - thumbnail_url
                     - artist

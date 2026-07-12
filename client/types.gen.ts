@@ -61,6 +61,10 @@ export type AppGetHealthResponse = {
             status: 'operational' | 'degraded' | 'outage' | 'maintenance';
             note: string;
         };
+        SNAPCHAT: {
+            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+            note: string;
+        };
     };
 };
 
@@ -86,6 +90,7 @@ export type OrganizationGetOrganizationResponse = {
         MASTODON?: number;
         BLUESKY?: number;
         GOOGLE_BUSINESS?: number;
+        SNAPCHAT?: number;
     } | null;
     dailyCommentLimit?: {
         TWITTER?: number;
@@ -102,6 +107,7 @@ export type OrganizationGetOrganizationResponse = {
         MASTODON?: number;
         BLUESKY?: number;
         GOOGLE_BUSINESS?: number;
+        SNAPCHAT?: number;
     } | null;
     monthlyImportLimitPerAccount?: number | null;
     commentImportLimitPerPost?: number | null;
@@ -244,7 +250,7 @@ export type OrganizationGetDailyLimitsUsageData = {
 export type OrganizationGetDailyLimitsUsageResponse = {
     date: string;
     socialAccountId: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     posts: {
         used: number;
         limit: number;
@@ -261,7 +267,7 @@ export type OrganizationGetImportsUsageData = {
     page?: number;
     pageSize?: number;
     socialAccountId?: string;
-    socialAccountType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    socialAccountType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId?: string;
 };
 
@@ -319,6 +325,7 @@ export type TeamGetTeamResponse = {
             MASTODON?: number;
             BLUESKY?: number;
             GOOGLE_BUSINESS?: number;
+            SNAPCHAT?: number;
         } | null;
         dailyCommentLimit?: {
             TWITTER?: number;
@@ -335,6 +342,7 @@ export type TeamGetTeamResponse = {
             MASTODON?: number;
             BLUESKY?: number;
             GOOGLE_BUSINESS?: number;
+            SNAPCHAT?: number;
         } | null;
         monthlyImportLimitPerAccount?: number | null;
         commentImportLimitPerPost?: number | null;
@@ -378,10 +386,11 @@ export type TeamGetTeamResponse = {
     }>;
     socialAccounts: Array<{
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
@@ -530,6 +539,7 @@ export type TeamGetListResponse = {
                 MASTODON?: number;
                 BLUESKY?: number;
                 GOOGLE_BUSINESS?: number;
+                SNAPCHAT?: number;
             } | null;
             dailyCommentLimit?: {
                 TWITTER?: number;
@@ -546,6 +556,7 @@ export type TeamGetListResponse = {
                 MASTODON?: number;
                 BLUESKY?: number;
                 GOOGLE_BUSINESS?: number;
+                SNAPCHAT?: number;
             } | null;
             monthlyImportLimitPerAccount?: number | null;
             commentImportLimitPerPost?: number | null;
@@ -589,10 +600,11 @@ export type TeamGetListResponse = {
         }>;
         socialAccounts: Array<{
             id: string;
-            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
             teamId: string;
             username?: string | null;
             displayName?: string | null;
+            bio?: string | null;
             avatarUrl?: string | null;
             externalId?: string | null;
             userUsername?: string | null;
@@ -695,7 +707,7 @@ export type SocialAccountConnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
         /**
          * Client-provided return URL. After the OAuth flow completes (success or error), the user will be redirected here with success/error query params appended. Must be a well-formed http/https URL.
@@ -709,6 +721,10 @@ export type SocialAccountConnectData = {
          * Optional. When true, adds provider-specific flags to avoid automatic login/auto-approval where supported.
          */
         disableAutoLogin?: boolean;
+        /**
+         * Optional and experimental. TikTok only. When true, routes authorization through TikTok logout to request a fresh login session.
+         */
+        tiktokForceLogin?: boolean;
         /**
          * Optional. Instagram only. When true, direct Instagram connections on phones will try to force browser login to avoid the Instagram iOS app deep-link bug.
          */
@@ -736,17 +752,18 @@ export type SocialAccountDisconnectData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
     };
 };
 
 export type SocialAccountDisconnectResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
@@ -795,10 +812,11 @@ export type SocialAccountSetChannelData = {
 
 export type SocialAccountSetChannelResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
@@ -846,10 +864,11 @@ export type SocialAccountUnsetChannelData = {
 
 export type SocialAccountUnsetChannelResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
@@ -897,10 +916,11 @@ export type SocialAccountRefreshChannelsData = {
 
 export type SocialAccountRefreshChannelsResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
@@ -943,7 +963,7 @@ export type SocialAccountCreatePortalLinkData = {
     requestBody?: {
         teamId: string;
         redirectUrl?: string;
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT')>;
         /**
          * Mastodon or Bluesky only
          */
@@ -952,6 +972,10 @@ export type SocialAccountCreatePortalLinkData = {
          * Optional. If true, portal will request provider-specific anti-auto-login behavior where supported.
          */
         disableAutoLogin?: boolean;
+        /**
+         * Optional and experimental. TikTok only. When true, portal routes TikTok authorization through logout to request a fresh login session.
+         */
+        tiktokForceLogin?: boolean;
         /**
          * Optional. Instagram only. When true, direct Instagram connections on phones will try to force browser login to avoid the Instagram iOS app deep-link bug.
          */
@@ -992,7 +1016,7 @@ export type SocialAccountConnectionCheckData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
     };
 };
@@ -1013,7 +1037,7 @@ export type SocialAccountProfileRefreshData = {
      * Body
      */
     requestBody?: {
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
     };
 };
@@ -1024,10 +1048,11 @@ export type SocialAccountProfileRefreshResponse = {
     socialAccountId: string;
     socialAccount: {
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
@@ -1071,15 +1096,16 @@ export type SocialAccountProfileRefreshResponse = {
 
 export type SocialAccountGetByTypeData = {
     teamId: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
 };
 
 export type SocialAccountGetByTypeResponse = {
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
@@ -1126,16 +1152,17 @@ export type SocialAccountCopyData = {
          * If you set that to true, selected page will not be transferred automatically. The user will have to select the page themselves again. This only applies to Facebook, Instagram, Linkedin and Youtube.
          */
         resetChannel?: boolean;
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT')>;
     };
 };
 
 export type SocialAccountCopyResponse = Array<{
     id: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
     username?: string | null;
     displayName?: string | null;
+    bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
     userUsername?: string | null;
@@ -1179,10 +1206,11 @@ export type SocialAccountGetAccountsToDeleteData = {
 export type SocialAccountGetAccountsToDeleteResponse = {
     items: Array<{
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
@@ -1466,7 +1494,7 @@ export type PostGetReconnectSocialAccountCandidatesData = {
     limit?: number | null;
     offset?: number | null;
     teamId: string;
-    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
 };
 
 export type PostGetReconnectSocialAccountCandidatesResponse = {
@@ -1487,7 +1515,7 @@ export type PostReconnectSocialAccountData = {
      */
     requestBody?: {
         teamId: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         postIds?: Array<(string)>;
     };
 };
@@ -1892,6 +1920,14 @@ export type PostGetByReferenceKeyResponse = {
              */
             alertType?: 'COVID_19' | null;
         } | null;
+        SNAPCHAT?: {
+            type?: 'STORY' | 'SPOTLIGHT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            locale?: string | null;
+            skipSaveToProfile?: boolean | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -1909,6 +1945,7 @@ export type PostGetByReferenceKeyResponse = {
         THREADS?: string | null;
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
+        SNAPCHAT?: string | null;
     } | null;
     errorsVerbose?: {
         TWITTER?: {
@@ -2037,6 +2074,15 @@ export type PostGetByReferenceKeyResponse = {
             meta?: unknown;
             userFacingMessage?: string | null;
         } | null;
+        SNAPCHAT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -2129,6 +2175,15 @@ export type PostGetByReferenceKeyResponse = {
              */
             permalink?: string | null;
         } | null;
+        SNAPCHAT?: {
+            id?: string | null;
+            mediaId?: string | null;
+            type?: 'STORY' | 'SPOTLIGHT' | null;
+            profileId?: string | null;
+            sourceUploadId?: string | null;
+            permalink?: string | null;
+            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+        } | null;
     } | null;
     retryCount: number;
     createdAt: string | null;
@@ -2170,10 +2225,11 @@ export type PostGetByReferenceKeyResponse = {
         deletedAt?: string | null;
         socialAccount: {
             id: string;
-            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
             teamId: string;
             username?: string | null;
             displayName?: string | null;
+            bio?: string | null;
             avatarUrl?: string | null;
             externalId?: string | null;
             userUsername?: string | null;
@@ -2597,6 +2653,14 @@ export type PostGetResponse = {
              */
             alertType?: 'COVID_19' | null;
         } | null;
+        SNAPCHAT?: {
+            type?: 'STORY' | 'SPOTLIGHT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            locale?: string | null;
+            skipSaveToProfile?: boolean | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -2614,6 +2678,7 @@ export type PostGetResponse = {
         THREADS?: string | null;
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
+        SNAPCHAT?: string | null;
     } | null;
     errorsVerbose?: {
         TWITTER?: {
@@ -2742,6 +2807,15 @@ export type PostGetResponse = {
             meta?: unknown;
             userFacingMessage?: string | null;
         } | null;
+        SNAPCHAT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -2834,6 +2908,15 @@ export type PostGetResponse = {
              */
             permalink?: string | null;
         } | null;
+        SNAPCHAT?: {
+            id?: string | null;
+            mediaId?: string | null;
+            type?: 'STORY' | 'SPOTLIGHT' | null;
+            profileId?: string | null;
+            sourceUploadId?: string | null;
+            permalink?: string | null;
+            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+        } | null;
     } | null;
     retryCount: number;
     createdAt: string | null;
@@ -2875,10 +2958,11 @@ export type PostGetResponse = {
         deletedAt?: string | null;
         socialAccount: {
             id: string;
-            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
             teamId: string;
             username?: string | null;
             displayName?: string | null;
+            bio?: string | null;
             avatarUrl?: string | null;
             externalId?: string | null;
             userUsername?: string | null;
@@ -2926,7 +3010,7 @@ export type PostUpdateData = {
         referenceKey?: string | null;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT')>;
         data?: {
             TWITTER?: {
                 text?: string | null;
@@ -3299,6 +3383,14 @@ export type PostUpdateData = {
                  * Alert type for ALERT posts.
                  */
                 alertType?: 'COVID_19' | null;
+            } | null;
+            SNAPCHAT?: {
+                type?: 'STORY' | 'SPOTLIGHT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                locale?: string | null;
+                skipSaveToProfile?: boolean | null;
             } | null;
         };
     };
@@ -3686,6 +3778,14 @@ export type PostUpdateResponse = {
              */
             alertType?: 'COVID_19' | null;
         } | null;
+        SNAPCHAT?: {
+            type?: 'STORY' | 'SPOTLIGHT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            locale?: string | null;
+            skipSaveToProfile?: boolean | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -3703,6 +3803,7 @@ export type PostUpdateResponse = {
         THREADS?: string | null;
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
+        SNAPCHAT?: string | null;
     } | null;
     errorsVerbose?: {
         TWITTER?: {
@@ -3831,6 +3932,15 @@ export type PostUpdateResponse = {
             meta?: unknown;
             userFacingMessage?: string | null;
         } | null;
+        SNAPCHAT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -3922,6 +4032,15 @@ export type PostUpdateResponse = {
              * Public link to the post (searchUrl) when available.
              */
             permalink?: string | null;
+        } | null;
+        SNAPCHAT?: {
+            id?: string | null;
+            mediaId?: string | null;
+            type?: 'STORY' | 'SPOTLIGHT' | null;
+            profileId?: string | null;
+            sourceUploadId?: string | null;
+            permalink?: string | null;
+            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
     } | null;
     retryCount: number;
@@ -4316,6 +4435,14 @@ export type PostDeleteResponse = {
              */
             alertType?: 'COVID_19' | null;
         } | null;
+        SNAPCHAT?: {
+            type?: 'STORY' | 'SPOTLIGHT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            locale?: string | null;
+            skipSaveToProfile?: boolean | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -4333,6 +4460,7 @@ export type PostDeleteResponse = {
         THREADS?: string | null;
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
+        SNAPCHAT?: string | null;
     } | null;
     errorsVerbose?: {
         TWITTER?: {
@@ -4461,6 +4589,15 @@ export type PostDeleteResponse = {
             meta?: unknown;
             userFacingMessage?: string | null;
         } | null;
+        SNAPCHAT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -4553,6 +4690,15 @@ export type PostDeleteResponse = {
              */
             permalink?: string | null;
         } | null;
+        SNAPCHAT?: {
+            id?: string | null;
+            mediaId?: string | null;
+            type?: 'STORY' | 'SPOTLIGHT' | null;
+            profileId?: string | null;
+            sourceUploadId?: string | null;
+            permalink?: string | null;
+            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+        } | null;
     } | null;
     retryCount: number;
     createdAt: string | null;
@@ -4565,7 +4711,7 @@ export type PostGetListData = {
     offset?: number | null;
     order?: 'ASC' | 'DESC' | null;
     orderBy?: 'createdAt' | 'updatedAt' | 'postDate' | 'postedDate' | 'deletedAt' | null;
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')> | null;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT')> | null;
     postDateFrom?: string | null;
     postDateTo?: string | null;
     q?: string | null;
@@ -4956,6 +5102,14 @@ export type PostGetListResponse = {
                  */
                 alertType?: 'COVID_19' | null;
             } | null;
+            SNAPCHAT?: {
+                type?: 'STORY' | 'SPOTLIGHT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                locale?: string | null;
+                skipSaveToProfile?: boolean | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -4973,6 +5127,7 @@ export type PostGetListResponse = {
             THREADS?: string | null;
             BLUESKY?: string | null;
             GOOGLE_BUSINESS?: string | null;
+            SNAPCHAT?: string | null;
         } | null;
         errorsVerbose?: {
             TWITTER?: {
@@ -5101,6 +5256,15 @@ export type PostGetListResponse = {
                 meta?: unknown;
                 userFacingMessage?: string | null;
             } | null;
+            SNAPCHAT?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
         } | null;
         externalData?: {
             TWITTER?: {
@@ -5193,6 +5357,15 @@ export type PostGetListResponse = {
                  */
                 permalink?: string | null;
             } | null;
+            SNAPCHAT?: {
+                id?: string | null;
+                mediaId?: string | null;
+                type?: 'STORY' | 'SPOTLIGHT' | null;
+                profileId?: string | null;
+                sourceUploadId?: string | null;
+                permalink?: string | null;
+                status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+            } | null;
         } | null;
         retryCount: number;
         createdAt: string | null;
@@ -5234,10 +5407,11 @@ export type PostGetListResponse = {
             deletedAt?: string | null;
             socialAccount: {
                 id: string;
-                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                 teamId: string;
                 username?: string | null;
                 displayName?: string | null;
+                bio?: string | null;
                 avatarUrl?: string | null;
                 externalId?: string | null;
                 userUsername?: string | null;
@@ -5287,7 +5461,7 @@ export type PostCreateData = {
         referenceKey?: string | null;
         postDate: string;
         status: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS')>;
+        socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT')>;
         data: {
             TWITTER?: {
                 text?: string | null;
@@ -5660,6 +5834,14 @@ export type PostCreateData = {
                  * Alert type for ALERT posts.
                  */
                 alertType?: 'COVID_19' | null;
+            } | null;
+            SNAPCHAT?: {
+                type?: 'STORY' | 'SPOTLIGHT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                locale?: string | null;
+                skipSaveToProfile?: boolean | null;
             } | null;
         };
     };
@@ -6047,6 +6229,14 @@ export type PostCreateResponse = {
              */
             alertType?: 'COVID_19' | null;
         } | null;
+        SNAPCHAT?: {
+            type?: 'STORY' | 'SPOTLIGHT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            locale?: string | null;
+            skipSaveToProfile?: boolean | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -6064,6 +6254,7 @@ export type PostCreateResponse = {
         THREADS?: string | null;
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
+        SNAPCHAT?: string | null;
     } | null;
     errorsVerbose?: {
         TWITTER?: {
@@ -6192,6 +6383,15 @@ export type PostCreateResponse = {
             meta?: unknown;
             userFacingMessage?: string | null;
         } | null;
+        SNAPCHAT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -6283,6 +6483,15 @@ export type PostCreateResponse = {
              * Public link to the post (searchUrl) when available.
              */
             permalink?: string | null;
+        } | null;
+        SNAPCHAT?: {
+            id?: string | null;
+            mediaId?: string | null;
+            type?: 'STORY' | 'SPOTLIGHT' | null;
+            profileId?: string | null;
+            sourceUploadId?: string | null;
+            permalink?: string | null;
+            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
     } | null;
     retryCount: number;
@@ -6677,6 +6886,14 @@ export type PostRetryResponse = {
              */
             alertType?: 'COVID_19' | null;
         } | null;
+        SNAPCHAT?: {
+            type?: 'STORY' | 'SPOTLIGHT';
+            uploadIds?: Array<(string)> | null;
+            text?: string | null;
+            description?: string | null;
+            locale?: string | null;
+            skipSaveToProfile?: boolean | null;
+        } | null;
     };
     error?: string | null;
     errors?: {
@@ -6694,6 +6911,7 @@ export type PostRetryResponse = {
         THREADS?: string | null;
         BLUESKY?: string | null;
         GOOGLE_BUSINESS?: string | null;
+        SNAPCHAT?: string | null;
     } | null;
     errorsVerbose?: {
         TWITTER?: {
@@ -6822,6 +7040,15 @@ export type PostRetryResponse = {
             meta?: unknown;
             userFacingMessage?: string | null;
         } | null;
+        SNAPCHAT?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
     } | null;
     externalData?: {
         TWITTER?: {
@@ -6914,6 +7141,15 @@ export type PostRetryResponse = {
              */
             permalink?: string | null;
         } | null;
+        SNAPCHAT?: {
+            id?: string | null;
+            mediaId?: string | null;
+            type?: 'STORY' | 'SPOTLIGHT' | null;
+            profileId?: string | null;
+            sourceUploadId?: string | null;
+            permalink?: string | null;
+            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+        } | null;
     } | null;
     retryCount: number;
     createdAt: string | null;
@@ -6922,17 +7158,18 @@ export type PostRetryResponse = {
 };
 
 export type AnalyticsGetSocialAccountAnalyticsData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
 };
 
 export type AnalyticsGetSocialAccountAnalyticsResponse = {
     socialAccount: {
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
@@ -6988,7 +7225,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
 
 export type AnalyticsGetPostAnalyticsData = {
     importedPostId?: string | null;
-    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | null;
+    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | null;
     postId?: string | null;
 };
 
@@ -7375,6 +7612,14 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  */
                 alertType?: 'COVID_19' | null;
             } | null;
+            SNAPCHAT?: {
+                type?: 'STORY' | 'SPOTLIGHT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                locale?: string | null;
+                skipSaveToProfile?: boolean | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -7392,6 +7637,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
             THREADS?: string | null;
             BLUESKY?: string | null;
             GOOGLE_BUSINESS?: string | null;
+            SNAPCHAT?: string | null;
         } | null;
         errorsVerbose?: {
             TWITTER?: {
@@ -7520,6 +7766,15 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 meta?: unknown;
                 userFacingMessage?: string | null;
             } | null;
+            SNAPCHAT?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
         } | null;
         externalData?: {
             TWITTER?: {
@@ -7612,6 +7867,15 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  */
                 permalink?: string | null;
             } | null;
+            SNAPCHAT?: {
+                id?: string | null;
+                mediaId?: string | null;
+                type?: 'STORY' | 'SPOTLIGHT' | null;
+                profileId?: string | null;
+                sourceUploadId?: string | null;
+                permalink?: string | null;
+                status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+            } | null;
         } | null;
         retryCount: number;
         createdAt: string | null;
@@ -7660,17 +7924,18 @@ export type AnalyticsGetPostAnalyticsResponse = {
 };
 
 export type AnalyticsGetSocialAccountAnalyticsRawData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     teamId: string;
 };
 
 export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
     socialAccount: {
         id: string;
-        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
         username?: string | null;
         displayName?: string | null;
+        bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
         userUsername?: string | null;
@@ -7719,7 +7984,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
 
 export type AnalyticsGetPostAnalyticsRawData = {
     importedPostId?: string | null;
-    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | null;
+    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | null;
     postId?: string | null;
 };
 
@@ -8106,6 +8371,14 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  */
                 alertType?: 'COVID_19' | null;
             } | null;
+            SNAPCHAT?: {
+                type?: 'STORY' | 'SPOTLIGHT';
+                uploadIds?: Array<(string)> | null;
+                text?: string | null;
+                description?: string | null;
+                locale?: string | null;
+                skipSaveToProfile?: boolean | null;
+            } | null;
         };
         error?: string | null;
         errors?: {
@@ -8123,6 +8396,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             THREADS?: string | null;
             BLUESKY?: string | null;
             GOOGLE_BUSINESS?: string | null;
+            SNAPCHAT?: string | null;
         } | null;
         errorsVerbose?: {
             TWITTER?: {
@@ -8251,6 +8525,15 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 meta?: unknown;
                 userFacingMessage?: string | null;
             } | null;
+            SNAPCHAT?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
         } | null;
         externalData?: {
             TWITTER?: {
@@ -8343,6 +8626,15 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  */
                 permalink?: string | null;
             } | null;
+            SNAPCHAT?: {
+                id?: string | null;
+                mediaId?: string | null;
+                type?: 'STORY' | 'SPOTLIGHT' | null;
+                profileId?: string | null;
+                sourceUploadId?: string | null;
+                permalink?: string | null;
+                status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+            } | null;
         } | null;
         retryCount: number;
         createdAt: string | null;
@@ -8385,7 +8677,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
 export type AnalyticsGetBulkPostAnalyticsData = {
     limit?: number;
     page?: number;
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     postIds: Array<(string)>;
 };
 
@@ -8426,7 +8718,7 @@ export type AnalyticsForceSocialAccountAnalyticsData = {
      */
     requestBody?: {
         teamId: string;
-        platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+        platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
     };
 };
 
@@ -8454,7 +8746,7 @@ export type AnalyticsForcePostAnalyticsData = {
      */
     requestBody?: {
         postId?: string | null;
-        platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | null;
+        platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | null;
         importedPostId?: string | null;
     };
 };
@@ -11694,6 +11986,37 @@ export type MiscInstagramBusinessDiscoveryResponse = {
          * Full name if available
          */
         name?: string;
+        /**
+         * Up to 12 recent public media items
+         */
+        media?: {
+            data: Array<{
+                /**
+                 * Instagram Media ID
+                 */
+                id: string;
+                /**
+                 * Instagram media type
+                 */
+                media_type: string;
+                /**
+                 * Number of likes if available
+                 */
+                like_count?: number;
+                /**
+                 * Number of comments if available
+                 */
+                comments_count?: number;
+                /**
+                 * Media publication timestamp
+                 */
+                timestamp?: string;
+                /**
+                 * Media caption if available
+                 */
+                caption?: string;
+            }>;
+        };
     } | null;
 };
 
@@ -12349,7 +12672,7 @@ export type MiscTiktokGetCommercialMusicTrendingListResponse = Array<{
     /**
      * The name of the commercial music track.
      */
-    commercial_music_name: string;
+    commercial_music_name?: string | null;
     /**
      * Track duration in seconds.
      */
@@ -12807,6 +13130,10 @@ export type $OpenApiTs = {
                             status: 'operational' | 'degraded' | 'outage' | 'maintenance';
                             note: string;
                         };
+                        SNAPCHAT: {
+                            status: 'operational' | 'degraded' | 'outage' | 'maintenance';
+                            note: string;
+                        };
                     };
                 };
                 /**
@@ -12887,6 +13214,7 @@ export type $OpenApiTs = {
                         MASTODON?: number;
                         BLUESKY?: number;
                         GOOGLE_BUSINESS?: number;
+                        SNAPCHAT?: number;
                     } | null;
                     dailyCommentLimit?: {
                         TWITTER?: number;
@@ -12903,6 +13231,7 @@ export type $OpenApiTs = {
                         MASTODON?: number;
                         BLUESKY?: number;
                         GOOGLE_BUSINESS?: number;
+                        SNAPCHAT?: number;
                     } | null;
                     monthlyImportLimitPerAccount?: number | null;
                     commentImportLimitPerPost?: number | null;
@@ -13260,7 +13589,7 @@ export type $OpenApiTs = {
                 200: {
                     date: string;
                     socialAccountId: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                     posts: {
                         used: number;
                         limit: number;
@@ -13435,6 +13764,7 @@ export type $OpenApiTs = {
                             MASTODON?: number;
                             BLUESKY?: number;
                             GOOGLE_BUSINESS?: number;
+                            SNAPCHAT?: number;
                         } | null;
                         dailyCommentLimit?: {
                             TWITTER?: number;
@@ -13451,6 +13781,7 @@ export type $OpenApiTs = {
                             MASTODON?: number;
                             BLUESKY?: number;
                             GOOGLE_BUSINESS?: number;
+                            SNAPCHAT?: number;
                         } | null;
                         monthlyImportLimitPerAccount?: number | null;
                         commentImportLimitPerPost?: number | null;
@@ -13494,10 +13825,11 @@ export type $OpenApiTs = {
                     }>;
                     socialAccounts: Array<{
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
@@ -13788,6 +14120,7 @@ export type $OpenApiTs = {
                                 MASTODON?: number;
                                 BLUESKY?: number;
                                 GOOGLE_BUSINESS?: number;
+                                SNAPCHAT?: number;
                             } | null;
                             dailyCommentLimit?: {
                                 TWITTER?: number;
@@ -13804,6 +14137,7 @@ export type $OpenApiTs = {
                                 MASTODON?: number;
                                 BLUESKY?: number;
                                 GOOGLE_BUSINESS?: number;
+                                SNAPCHAT?: number;
                             } | null;
                             monthlyImportLimitPerAccount?: number | null;
                             commentImportLimitPerPost?: number | null;
@@ -13847,10 +14181,11 @@ export type $OpenApiTs = {
                         }>;
                         socialAccounts: Array<{
                             id: string;
-                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
+                            bio?: string | null;
                             avatarUrl?: string | null;
                             externalId?: string | null;
                             userUsername?: string | null;
@@ -14112,10 +14447,11 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
@@ -14209,10 +14545,11 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
@@ -14306,10 +14643,11 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
@@ -14403,10 +14741,11 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
@@ -14631,10 +14970,11 @@ export type $OpenApiTs = {
                     socialAccountId: string;
                     socialAccount: {
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
@@ -14734,10 +15074,11 @@ export type $OpenApiTs = {
                  */
                 200: {
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
@@ -14831,10 +15172,11 @@ export type $OpenApiTs = {
                  */
                 200: Array<{
                     id: string;
-                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                    type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                     teamId: string;
                     username?: string | null;
                     displayName?: string | null;
+                    bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
                     userUsername?: string | null;
@@ -14929,10 +15271,11 @@ export type $OpenApiTs = {
                 200: {
                     items: Array<{
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
@@ -16166,6 +16509,14 @@ export type $OpenApiTs = {
                              */
                             alertType?: 'COVID_19' | null;
                         } | null;
+                        SNAPCHAT?: {
+                            type?: 'STORY' | 'SPOTLIGHT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            locale?: string | null;
+                            skipSaveToProfile?: boolean | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -16183,6 +16534,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
+                        SNAPCHAT?: string | null;
                     } | null;
                     errorsVerbose?: {
                         TWITTER?: {
@@ -16311,6 +16663,15 @@ export type $OpenApiTs = {
                             meta?: unknown;
                             userFacingMessage?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -16403,6 +16764,15 @@ export type $OpenApiTs = {
                              */
                             permalink?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            id?: string | null;
+                            mediaId?: string | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            profileId?: string | null;
+                            sourceUploadId?: string | null;
+                            permalink?: string | null;
+                            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+                        } | null;
                     } | null;
                     retryCount: number;
                     createdAt: string | null;
@@ -16444,10 +16814,11 @@ export type $OpenApiTs = {
                         deletedAt?: string | null;
                         socialAccount: {
                             id: string;
-                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
+                            bio?: string | null;
                             avatarUrl?: string | null;
                             externalId?: string | null;
                             userUsername?: string | null;
@@ -16923,6 +17294,14 @@ export type $OpenApiTs = {
                              */
                             alertType?: 'COVID_19' | null;
                         } | null;
+                        SNAPCHAT?: {
+                            type?: 'STORY' | 'SPOTLIGHT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            locale?: string | null;
+                            skipSaveToProfile?: boolean | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -16940,6 +17319,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
+                        SNAPCHAT?: string | null;
                     } | null;
                     errorsVerbose?: {
                         TWITTER?: {
@@ -17068,6 +17448,15 @@ export type $OpenApiTs = {
                             meta?: unknown;
                             userFacingMessage?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -17160,6 +17549,15 @@ export type $OpenApiTs = {
                              */
                             permalink?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            id?: string | null;
+                            mediaId?: string | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            profileId?: string | null;
+                            sourceUploadId?: string | null;
+                            permalink?: string | null;
+                            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+                        } | null;
                     } | null;
                     retryCount: number;
                     createdAt: string | null;
@@ -17201,10 +17599,11 @@ export type $OpenApiTs = {
                         deletedAt?: string | null;
                         socialAccount: {
                             id: string;
-                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                             teamId: string;
                             username?: string | null;
                             displayName?: string | null;
+                            bio?: string | null;
                             avatarUrl?: string | null;
                             externalId?: string | null;
                             userUsername?: string | null;
@@ -17678,6 +18077,14 @@ export type $OpenApiTs = {
                              */
                             alertType?: 'COVID_19' | null;
                         } | null;
+                        SNAPCHAT?: {
+                            type?: 'STORY' | 'SPOTLIGHT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            locale?: string | null;
+                            skipSaveToProfile?: boolean | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -17695,6 +18102,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
+                        SNAPCHAT?: string | null;
                     } | null;
                     errorsVerbose?: {
                         TWITTER?: {
@@ -17823,6 +18231,15 @@ export type $OpenApiTs = {
                             meta?: unknown;
                             userFacingMessage?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -17914,6 +18331,15 @@ export type $OpenApiTs = {
                              * Public link to the post (searchUrl) when available.
                              */
                             permalink?: string | null;
+                        } | null;
+                        SNAPCHAT?: {
+                            id?: string | null;
+                            mediaId?: string | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            profileId?: string | null;
+                            sourceUploadId?: string | null;
+                            permalink?: string | null;
+                            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
                     } | null;
                     retryCount: number;
@@ -18365,6 +18791,14 @@ export type $OpenApiTs = {
                              */
                             alertType?: 'COVID_19' | null;
                         } | null;
+                        SNAPCHAT?: {
+                            type?: 'STORY' | 'SPOTLIGHT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            locale?: string | null;
+                            skipSaveToProfile?: boolean | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -18382,6 +18816,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
+                        SNAPCHAT?: string | null;
                     } | null;
                     errorsVerbose?: {
                         TWITTER?: {
@@ -18510,6 +18945,15 @@ export type $OpenApiTs = {
                             meta?: unknown;
                             userFacingMessage?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -18601,6 +19045,15 @@ export type $OpenApiTs = {
                              * Public link to the post (searchUrl) when available.
                              */
                             permalink?: string | null;
+                        } | null;
+                        SNAPCHAT?: {
+                            id?: string | null;
+                            mediaId?: string | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            profileId?: string | null;
+                            sourceUploadId?: string | null;
+                            permalink?: string | null;
+                            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
                     } | null;
                     retryCount: number;
@@ -19048,6 +19501,14 @@ export type $OpenApiTs = {
                                  */
                                 alertType?: 'COVID_19' | null;
                             } | null;
+                            SNAPCHAT?: {
+                                type?: 'STORY' | 'SPOTLIGHT';
+                                uploadIds?: Array<(string)> | null;
+                                text?: string | null;
+                                description?: string | null;
+                                locale?: string | null;
+                                skipSaveToProfile?: boolean | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -19065,6 +19526,7 @@ export type $OpenApiTs = {
                             THREADS?: string | null;
                             BLUESKY?: string | null;
                             GOOGLE_BUSINESS?: string | null;
+                            SNAPCHAT?: string | null;
                         } | null;
                         errorsVerbose?: {
                             TWITTER?: {
@@ -19193,6 +19655,15 @@ export type $OpenApiTs = {
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
                             } | null;
+                            SNAPCHAT?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
                         } | null;
                         externalData?: {
                             TWITTER?: {
@@ -19285,6 +19756,15 @@ export type $OpenApiTs = {
                                  */
                                 permalink?: string | null;
                             } | null;
+                            SNAPCHAT?: {
+                                id?: string | null;
+                                mediaId?: string | null;
+                                type?: 'STORY' | 'SPOTLIGHT' | null;
+                                profileId?: string | null;
+                                sourceUploadId?: string | null;
+                                permalink?: string | null;
+                                status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+                            } | null;
                         } | null;
                         retryCount: number;
                         createdAt: string | null;
@@ -19326,10 +19806,11 @@ export type $OpenApiTs = {
                             deletedAt?: string | null;
                             socialAccount: {
                                 id: string;
-                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                                 teamId: string;
                                 username?: string | null;
                                 displayName?: string | null;
+                                bio?: string | null;
                                 avatarUrl?: string | null;
                                 externalId?: string | null;
                                 userUsername?: string | null;
@@ -19805,6 +20286,14 @@ export type $OpenApiTs = {
                              */
                             alertType?: 'COVID_19' | null;
                         } | null;
+                        SNAPCHAT?: {
+                            type?: 'STORY' | 'SPOTLIGHT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            locale?: string | null;
+                            skipSaveToProfile?: boolean | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -19822,6 +20311,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
+                        SNAPCHAT?: string | null;
                     } | null;
                     errorsVerbose?: {
                         TWITTER?: {
@@ -19950,6 +20440,15 @@ export type $OpenApiTs = {
                             meta?: unknown;
                             userFacingMessage?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -20041,6 +20540,15 @@ export type $OpenApiTs = {
                              * Public link to the post (searchUrl) when available.
                              */
                             permalink?: string | null;
+                        } | null;
+                        SNAPCHAT?: {
+                            id?: string | null;
+                            mediaId?: string | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            profileId?: string | null;
+                            sourceUploadId?: string | null;
+                            permalink?: string | null;
+                            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
                     } | null;
                     retryCount: number;
@@ -20494,6 +21002,14 @@ export type $OpenApiTs = {
                              */
                             alertType?: 'COVID_19' | null;
                         } | null;
+                        SNAPCHAT?: {
+                            type?: 'STORY' | 'SPOTLIGHT';
+                            uploadIds?: Array<(string)> | null;
+                            text?: string | null;
+                            description?: string | null;
+                            locale?: string | null;
+                            skipSaveToProfile?: boolean | null;
+                        } | null;
                     };
                     error?: string | null;
                     errors?: {
@@ -20511,6 +21027,7 @@ export type $OpenApiTs = {
                         THREADS?: string | null;
                         BLUESKY?: string | null;
                         GOOGLE_BUSINESS?: string | null;
+                        SNAPCHAT?: string | null;
                     } | null;
                     errorsVerbose?: {
                         TWITTER?: {
@@ -20639,6 +21156,15 @@ export type $OpenApiTs = {
                             meta?: unknown;
                             userFacingMessage?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                     } | null;
                     externalData?: {
                         TWITTER?: {
@@ -20731,6 +21257,15 @@ export type $OpenApiTs = {
                              */
                             permalink?: string | null;
                         } | null;
+                        SNAPCHAT?: {
+                            id?: string | null;
+                            mediaId?: string | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            profileId?: string | null;
+                            sourceUploadId?: string | null;
+                            permalink?: string | null;
+                            status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
+                        } | null;
                     } | null;
                     retryCount: number;
                     createdAt: string | null;
@@ -20797,10 +21332,11 @@ export type $OpenApiTs = {
                 200: {
                     socialAccount: {
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
@@ -21293,6 +21829,14 @@ export type $OpenApiTs = {
                                  */
                                 alertType?: 'COVID_19' | null;
                             } | null;
+                            SNAPCHAT?: {
+                                type?: 'STORY' | 'SPOTLIGHT';
+                                uploadIds?: Array<(string)> | null;
+                                text?: string | null;
+                                description?: string | null;
+                                locale?: string | null;
+                                skipSaveToProfile?: boolean | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -21310,6 +21854,7 @@ export type $OpenApiTs = {
                             THREADS?: string | null;
                             BLUESKY?: string | null;
                             GOOGLE_BUSINESS?: string | null;
+                            SNAPCHAT?: string | null;
                         } | null;
                         errorsVerbose?: {
                             TWITTER?: {
@@ -21438,6 +21983,15 @@ export type $OpenApiTs = {
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
                             } | null;
+                            SNAPCHAT?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
                         } | null;
                         externalData?: {
                             TWITTER?: {
@@ -21529,6 +22083,15 @@ export type $OpenApiTs = {
                                  * Public link to the post (searchUrl) when available.
                                  */
                                 permalink?: string | null;
+                            } | null;
+                            SNAPCHAT?: {
+                                id?: string | null;
+                                mediaId?: string | null;
+                                type?: 'STORY' | 'SPOTLIGHT' | null;
+                                profileId?: string | null;
+                                sourceUploadId?: string | null;
+                                permalink?: string | null;
+                                status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                             } | null;
                         } | null;
                         retryCount: number;
@@ -21636,10 +22199,11 @@ export type $OpenApiTs = {
                 200: {
                     socialAccount: {
                         id: string;
-                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS';
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
                         teamId: string;
                         username?: string | null;
                         displayName?: string | null;
+                        bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
                         userUsername?: string | null;
@@ -22125,6 +22689,14 @@ export type $OpenApiTs = {
                                  */
                                 alertType?: 'COVID_19' | null;
                             } | null;
+                            SNAPCHAT?: {
+                                type?: 'STORY' | 'SPOTLIGHT';
+                                uploadIds?: Array<(string)> | null;
+                                text?: string | null;
+                                description?: string | null;
+                                locale?: string | null;
+                                skipSaveToProfile?: boolean | null;
+                            } | null;
                         };
                         error?: string | null;
                         errors?: {
@@ -22142,6 +22714,7 @@ export type $OpenApiTs = {
                             THREADS?: string | null;
                             BLUESKY?: string | null;
                             GOOGLE_BUSINESS?: string | null;
+                            SNAPCHAT?: string | null;
                         } | null;
                         errorsVerbose?: {
                             TWITTER?: {
@@ -22270,6 +22843,15 @@ export type $OpenApiTs = {
                                 meta?: unknown;
                                 userFacingMessage?: string | null;
                             } | null;
+                            SNAPCHAT?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
                         } | null;
                         externalData?: {
                             TWITTER?: {
@@ -22361,6 +22943,15 @@ export type $OpenApiTs = {
                                  * Public link to the post (searchUrl) when available.
                                  */
                                 permalink?: string | null;
+                            } | null;
+                            SNAPCHAT?: {
+                                id?: string | null;
+                                mediaId?: string | null;
+                                type?: 'STORY' | 'SPOTLIGHT' | null;
+                                profileId?: string | null;
+                                sourceUploadId?: string | null;
+                                permalink?: string | null;
+                                status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                             } | null;
                         } | null;
                         retryCount: number;
@@ -28522,6 +29113,37 @@ export type $OpenApiTs = {
                          * Full name if available
                          */
                         name?: string;
+                        /**
+                         * Up to 12 recent public media items
+                         */
+                        media?: {
+                            data: Array<{
+                                /**
+                                 * Instagram Media ID
+                                 */
+                                id: string;
+                                /**
+                                 * Instagram media type
+                                 */
+                                media_type: string;
+                                /**
+                                 * Number of likes if available
+                                 */
+                                like_count?: number;
+                                /**
+                                 * Number of comments if available
+                                 */
+                                comments_count?: number;
+                                /**
+                                 * Media publication timestamp
+                                 */
+                                timestamp?: string;
+                                /**
+                                 * Media caption if available
+                                 */
+                                caption?: string;
+                            }>;
+                        };
                     } | null;
                 };
                 /**
@@ -30431,7 +31053,7 @@ export type $OpenApiTs = {
                     /**
                      * The name of the commercial music track.
                      */
-                    commercial_music_name: string;
+                    commercial_music_name?: string | null;
                     /**
                      * Track duration in seconds.
                      */

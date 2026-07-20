@@ -3855,8 +3855,10 @@ paths:
                   default: false
                   type: boolean
                   description: >-
-                    Facebook and Instagram only - include business_management,
-                    ads_management, ads_read scopes
+                    Facebook and Instagram: include business_management,
+                    ads_management, ads_read scopes. YouTube: include the
+                    monetary analytics scope (enables revenue/monetization
+                    data).
               required:
                 - type
                 - teamId
@@ -9520,6 +9522,62 @@ paths:
                               required:
                                 - uploadId
                             nullable: true
+                          topicTag:
+                            type: string
+                            nullable: true
+                          replyControl:
+                            type: string
+                            enum:
+                              - everyone
+                              - accounts_you_follow
+                              - mentioned_only
+                              - parent_post_author_only
+                              - followers_only
+                            nullable: true
+                          linkAttachment:
+                            type: string
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              optionA:
+                                type: string
+                              optionB:
+                                type: string
+                              optionC:
+                                type: string
+                                nullable: true
+                              optionD:
+                                type: string
+                                nullable: true
+                            required:
+                              - optionA
+                              - optionB
+                            nullable: true
+                          gif:
+                            type: object
+                            properties:
+                              gifId:
+                                type: string
+                              provider:
+                                default: GIPHY
+                                type: string
+                                enum:
+                                  - GIPHY
+                            required:
+                              - gifId
+                            nullable: true
+                          allowlistedCountryCodes:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          crosspostToInstagramStory:
+                            type: boolean
+                            nullable: true
+                          crosspostToInstagramStoryDarkMode:
+                            type: boolean
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -10587,6 +10645,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       TIKTOK:
                         type: object
@@ -10703,6 +10767,12 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       BLUESKY:
                         type: object
@@ -11551,6 +11621,62 @@ paths:
                               required:
                                 - uploadId
                             nullable: true
+                          topicTag:
+                            type: string
+                            nullable: true
+                          replyControl:
+                            type: string
+                            enum:
+                              - everyone
+                              - accounts_you_follow
+                              - mentioned_only
+                              - parent_post_author_only
+                              - followers_only
+                            nullable: true
+                          linkAttachment:
+                            type: string
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              optionA:
+                                type: string
+                              optionB:
+                                type: string
+                              optionC:
+                                type: string
+                                nullable: true
+                              optionD:
+                                type: string
+                                nullable: true
+                            required:
+                              - optionA
+                              - optionB
+                            nullable: true
+                          gif:
+                            type: object
+                            properties:
+                              gifId:
+                                type: string
+                              provider:
+                                default: GIPHY
+                                type: string
+                                enum:
+                                  - GIPHY
+                            required:
+                              - gifId
+                            nullable: true
+                          allowlistedCountryCodes:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          crosspostToInstagramStory:
+                            type: boolean
+                            nullable: true
+                          crosspostToInstagramStoryDarkMode:
+                            type: boolean
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -12618,6 +12744,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       TIKTOK:
                         type: object
@@ -12734,6 +12866,12 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       BLUESKY:
                         type: object
@@ -13584,6 +13722,62 @@ paths:
                                 nullable: true
                             required:
                               - uploadId
+                          nullable: true
+                        topicTag:
+                          type: string
+                          nullable: true
+                        replyControl:
+                          type: string
+                          enum:
+                            - everyone
+                            - accounts_you_follow
+                            - mentioned_only
+                            - parent_post_author_only
+                            - followers_only
+                          nullable: true
+                        linkAttachment:
+                          type: string
+                          nullable: true
+                        poll:
+                          type: object
+                          properties:
+                            optionA:
+                              type: string
+                            optionB:
+                              type: string
+                            optionC:
+                              type: string
+                              nullable: true
+                            optionD:
+                              type: string
+                              nullable: true
+                          required:
+                            - optionA
+                            - optionB
+                          nullable: true
+                        gif:
+                          type: object
+                          properties:
+                            gifId:
+                              type: string
+                            provider:
+                              default: GIPHY
+                              type: string
+                              enum:
+                                - GIPHY
+                          required:
+                            - gifId
+                          nullable: true
+                        allowlistedCountryCodes:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        crosspostToInstagramStory:
+                          type: boolean
+                          nullable: true
+                        crosspostToInstagramStoryDarkMode:
+                          type: boolean
                           nullable: true
                       nullable: true
                     TIKTOK:
@@ -14455,6 +14649,62 @@ paths:
                               required:
                                 - uploadId
                             nullable: true
+                          topicTag:
+                            type: string
+                            nullable: true
+                          replyControl:
+                            type: string
+                            enum:
+                              - everyone
+                              - accounts_you_follow
+                              - mentioned_only
+                              - parent_post_author_only
+                              - followers_only
+                            nullable: true
+                          linkAttachment:
+                            type: string
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              optionA:
+                                type: string
+                              optionB:
+                                type: string
+                              optionC:
+                                type: string
+                                nullable: true
+                              optionD:
+                                type: string
+                                nullable: true
+                            required:
+                              - optionA
+                              - optionB
+                            nullable: true
+                          gif:
+                            type: object
+                            properties:
+                              gifId:
+                                type: string
+                              provider:
+                                default: GIPHY
+                                type: string
+                                enum:
+                                  - GIPHY
+                            required:
+                              - gifId
+                            nullable: true
+                          allowlistedCountryCodes:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          crosspostToInstagramStory:
+                            type: boolean
+                            nullable: true
+                          crosspostToInstagramStoryDarkMode:
+                            type: boolean
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -15522,6 +15772,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       TIKTOK:
                         type: object
@@ -15638,6 +15894,12 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       BLUESKY:
                         type: object
@@ -16221,6 +16483,62 @@ paths:
                               required:
                                 - uploadId
                             nullable: true
+                          topicTag:
+                            type: string
+                            nullable: true
+                          replyControl:
+                            type: string
+                            enum:
+                              - everyone
+                              - accounts_you_follow
+                              - mentioned_only
+                              - parent_post_author_only
+                              - followers_only
+                            nullable: true
+                          linkAttachment:
+                            type: string
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              optionA:
+                                type: string
+                              optionB:
+                                type: string
+                              optionC:
+                                type: string
+                                nullable: true
+                              optionD:
+                                type: string
+                                nullable: true
+                            required:
+                              - optionA
+                              - optionB
+                            nullable: true
+                          gif:
+                            type: object
+                            properties:
+                              gifId:
+                                type: string
+                              provider:
+                                default: GIPHY
+                                type: string
+                                enum:
+                                  - GIPHY
+                            required:
+                              - gifId
+                            nullable: true
+                          allowlistedCountryCodes:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          crosspostToInstagramStory:
+                            type: boolean
+                            nullable: true
+                          crosspostToInstagramStoryDarkMode:
+                            type: boolean
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -17288,6 +17606,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       TIKTOK:
                         type: object
@@ -17404,6 +17728,12 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       BLUESKY:
                         type: object
@@ -18066,6 +18396,62 @@ paths:
                                         nullable: true
                                     required:
                                       - uploadId
+                                  nullable: true
+                                topicTag:
+                                  type: string
+                                  nullable: true
+                                replyControl:
+                                  type: string
+                                  enum:
+                                    - everyone
+                                    - accounts_you_follow
+                                    - mentioned_only
+                                    - parent_post_author_only
+                                    - followers_only
+                                  nullable: true
+                                linkAttachment:
+                                  type: string
+                                  nullable: true
+                                poll:
+                                  type: object
+                                  properties:
+                                    optionA:
+                                      type: string
+                                    optionB:
+                                      type: string
+                                    optionC:
+                                      type: string
+                                      nullable: true
+                                    optionD:
+                                      type: string
+                                      nullable: true
+                                  required:
+                                    - optionA
+                                    - optionB
+                                  nullable: true
+                                gif:
+                                  type: object
+                                  properties:
+                                    gifId:
+                                      type: string
+                                    provider:
+                                      default: GIPHY
+                                      type: string
+                                      enum:
+                                        - GIPHY
+                                  required:
+                                    - gifId
+                                  nullable: true
+                                allowlistedCountryCodes:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                crosspostToInstagramStory:
+                                  type: boolean
+                                  nullable: true
+                                crosspostToInstagramStoryDarkMode:
+                                  type: boolean
                                   nullable: true
                               nullable: true
                             TIKTOK:
@@ -19143,6 +19529,12 @@ paths:
                                 thumbnail:
                                   type: string
                                   nullable: true
+                                creationId:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    Media container id; lets a retry detect a
+                                    container Meta already published.
                               nullable: true
                             TIKTOK:
                               type: object
@@ -19259,6 +19651,12 @@ paths:
                                 permalink:
                                   type: string
                                   nullable: true
+                                creationId:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    Media container id; lets a retry detect a
+                                    container Meta already published.
                               nullable: true
                             BLUESKY:
                               type: object
@@ -20111,6 +20509,62 @@ paths:
                                 nullable: true
                             required:
                               - uploadId
+                          nullable: true
+                        topicTag:
+                          type: string
+                          nullable: true
+                        replyControl:
+                          type: string
+                          enum:
+                            - everyone
+                            - accounts_you_follow
+                            - mentioned_only
+                            - parent_post_author_only
+                            - followers_only
+                          nullable: true
+                        linkAttachment:
+                          type: string
+                          nullable: true
+                        poll:
+                          type: object
+                          properties:
+                            optionA:
+                              type: string
+                            optionB:
+                              type: string
+                            optionC:
+                              type: string
+                              nullable: true
+                            optionD:
+                              type: string
+                              nullable: true
+                          required:
+                            - optionA
+                            - optionB
+                          nullable: true
+                        gif:
+                          type: object
+                          properties:
+                            gifId:
+                              type: string
+                            provider:
+                              default: GIPHY
+                              type: string
+                              enum:
+                                - GIPHY
+                          required:
+                            - gifId
+                          nullable: true
+                        allowlistedCountryCodes:
+                          type: array
+                          items:
+                            type: string
+                          nullable: true
+                        crosspostToInstagramStory:
+                          type: boolean
+                          nullable: true
+                        crosspostToInstagramStoryDarkMode:
+                          type: boolean
                           nullable: true
                       nullable: true
                     TIKTOK:
@@ -20989,6 +21443,62 @@ paths:
                               required:
                                 - uploadId
                             nullable: true
+                          topicTag:
+                            type: string
+                            nullable: true
+                          replyControl:
+                            type: string
+                            enum:
+                              - everyone
+                              - accounts_you_follow
+                              - mentioned_only
+                              - parent_post_author_only
+                              - followers_only
+                            nullable: true
+                          linkAttachment:
+                            type: string
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              optionA:
+                                type: string
+                              optionB:
+                                type: string
+                              optionC:
+                                type: string
+                                nullable: true
+                              optionD:
+                                type: string
+                                nullable: true
+                            required:
+                              - optionA
+                              - optionB
+                            nullable: true
+                          gif:
+                            type: object
+                            properties:
+                              gifId:
+                                type: string
+                              provider:
+                                default: GIPHY
+                                type: string
+                                enum:
+                                  - GIPHY
+                            required:
+                              - gifId
+                            nullable: true
+                          allowlistedCountryCodes:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          crosspostToInstagramStory:
+                            type: boolean
+                            nullable: true
+                          crosspostToInstagramStoryDarkMode:
+                            type: boolean
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -22056,6 +22566,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       TIKTOK:
                         type: object
@@ -22172,6 +22688,12 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       BLUESKY:
                         type: object
@@ -22756,6 +23278,62 @@ paths:
                               required:
                                 - uploadId
                             nullable: true
+                          topicTag:
+                            type: string
+                            nullable: true
+                          replyControl:
+                            type: string
+                            enum:
+                              - everyone
+                              - accounts_you_follow
+                              - mentioned_only
+                              - parent_post_author_only
+                              - followers_only
+                            nullable: true
+                          linkAttachment:
+                            type: string
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              optionA:
+                                type: string
+                              optionB:
+                                type: string
+                              optionC:
+                                type: string
+                                nullable: true
+                              optionD:
+                                type: string
+                                nullable: true
+                            required:
+                              - optionA
+                              - optionB
+                            nullable: true
+                          gif:
+                            type: object
+                            properties:
+                              gifId:
+                                type: string
+                              provider:
+                                default: GIPHY
+                                type: string
+                                enum:
+                                  - GIPHY
+                            required:
+                              - gifId
+                            nullable: true
+                          allowlistedCountryCodes:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          crosspostToInstagramStory:
+                            type: boolean
+                            nullable: true
+                          crosspostToInstagramStoryDarkMode:
+                            type: boolean
+                            nullable: true
                         nullable: true
                       TIKTOK:
                         type: object
@@ -23823,6 +24401,12 @@ paths:
                           thumbnail:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       TIKTOK:
                         type: object
@@ -23939,6 +24523,12 @@ paths:
                           permalink:
                             type: string
                             nullable: true
+                          creationId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Media container id; lets a retry detect a
+                              container Meta already published.
                         nullable: true
                       BLUESKY:
                         type: object
@@ -24903,6 +25493,62 @@ paths:
                                       nullable: true
                                   required:
                                     - uploadId
+                                nullable: true
+                              topicTag:
+                                type: string
+                                nullable: true
+                              replyControl:
+                                type: string
+                                enum:
+                                  - everyone
+                                  - accounts_you_follow
+                                  - mentioned_only
+                                  - parent_post_author_only
+                                  - followers_only
+                                nullable: true
+                              linkAttachment:
+                                type: string
+                                nullable: true
+                              poll:
+                                type: object
+                                properties:
+                                  optionA:
+                                    type: string
+                                  optionB:
+                                    type: string
+                                  optionC:
+                                    type: string
+                                    nullable: true
+                                  optionD:
+                                    type: string
+                                    nullable: true
+                                required:
+                                  - optionA
+                                  - optionB
+                                nullable: true
+                              gif:
+                                type: object
+                                properties:
+                                  gifId:
+                                    type: string
+                                  provider:
+                                    default: GIPHY
+                                    type: string
+                                    enum:
+                                      - GIPHY
+                                required:
+                                  - gifId
+                                nullable: true
+                              allowlistedCountryCodes:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              crosspostToInstagramStory:
+                                type: boolean
+                                nullable: true
+                              crosspostToInstagramStoryDarkMode:
+                                type: boolean
                                 nullable: true
                             nullable: true
                           TIKTOK:
@@ -25979,6 +26625,12 @@ paths:
                               thumbnail:
                                 type: string
                                 nullable: true
+                              creationId:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Media container id; lets a retry detect a
+                                  container Meta already published.
                             nullable: true
                           TIKTOK:
                             type: object
@@ -26095,6 +26747,12 @@ paths:
                               permalink:
                                 type: string
                                 nullable: true
+                              creationId:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Media container id; lets a retry detect a
+                                  container Meta already published.
                             nullable: true
                           BLUESKY:
                             type: object
@@ -27173,6 +27831,62 @@ paths:
                                   required:
                                     - uploadId
                                 nullable: true
+                              topicTag:
+                                type: string
+                                nullable: true
+                              replyControl:
+                                type: string
+                                enum:
+                                  - everyone
+                                  - accounts_you_follow
+                                  - mentioned_only
+                                  - parent_post_author_only
+                                  - followers_only
+                                nullable: true
+                              linkAttachment:
+                                type: string
+                                nullable: true
+                              poll:
+                                type: object
+                                properties:
+                                  optionA:
+                                    type: string
+                                  optionB:
+                                    type: string
+                                  optionC:
+                                    type: string
+                                    nullable: true
+                                  optionD:
+                                    type: string
+                                    nullable: true
+                                required:
+                                  - optionA
+                                  - optionB
+                                nullable: true
+                              gif:
+                                type: object
+                                properties:
+                                  gifId:
+                                    type: string
+                                  provider:
+                                    default: GIPHY
+                                    type: string
+                                    enum:
+                                      - GIPHY
+                                required:
+                                  - gifId
+                                nullable: true
+                              allowlistedCountryCodes:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              crosspostToInstagramStory:
+                                type: boolean
+                                nullable: true
+                              crosspostToInstagramStoryDarkMode:
+                                type: boolean
+                                nullable: true
                             nullable: true
                           TIKTOK:
                             type: object
@@ -28248,6 +28962,12 @@ paths:
                               thumbnail:
                                 type: string
                                 nullable: true
+                              creationId:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Media container id; lets a retry detect a
+                                  container Meta already published.
                             nullable: true
                           TIKTOK:
                             type: object
@@ -28364,6 +29084,12 @@ paths:
                               permalink:
                                 type: string
                                 nullable: true
+                              creationId:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Media container id; lets a retry detect a
+                                  container Meta already published.
                             nullable: true
                           BLUESKY:
                             type: object

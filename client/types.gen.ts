@@ -734,7 +734,7 @@ export type SocialAccountConnectData = {
          */
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
         /**
-         * Facebook and Instagram only - include business_management, ads_management, ads_read scopes
+         * Facebook and Instagram: include business_management, ads_management, ads_read scopes. YouTube: include the monetary analytics scope (enables revenue/monetization data).
          */
         withBusinessScope?: boolean;
     };
@@ -1673,6 +1673,22 @@ export type PostGetByReferenceKeyResponse = {
                 uploadId: string;
                 altText?: string | null;
             }> | null;
+            topicTag?: string | null;
+            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            linkAttachment?: string | null;
+            poll?: {
+                optionA: string;
+                optionB: string;
+                optionC?: string | null;
+                optionD?: string | null;
+            } | null;
+            gif?: {
+                gifId: string;
+                provider?: 'GIPHY';
+            } | null;
+            allowlistedCountryCodes?: Array<(string)> | null;
+            crosspostToInstagramStory?: boolean | null;
+            crosspostToInstagramStoryDarkMode?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -2105,6 +2121,10 @@ export type PostGetByReferenceKeyResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -2151,6 +2171,10 @@ export type PostGetByReferenceKeyResponse = {
         THREADS?: {
             id?: string | null;
             permalink?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         BLUESKY?: {
             id?: string | null;
@@ -2406,6 +2430,22 @@ export type PostGetResponse = {
                 uploadId: string;
                 altText?: string | null;
             }> | null;
+            topicTag?: string | null;
+            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            linkAttachment?: string | null;
+            poll?: {
+                optionA: string;
+                optionB: string;
+                optionC?: string | null;
+                optionD?: string | null;
+            } | null;
+            gif?: {
+                gifId: string;
+                provider?: 'GIPHY';
+            } | null;
+            allowlistedCountryCodes?: Array<(string)> | null;
+            crosspostToInstagramStory?: boolean | null;
+            crosspostToInstagramStoryDarkMode?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -2838,6 +2878,10 @@ export type PostGetResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -2884,6 +2928,10 @@ export type PostGetResponse = {
         THREADS?: {
             id?: string | null;
             permalink?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         BLUESKY?: {
             id?: string | null;
@@ -3137,6 +3185,22 @@ export type PostUpdateData = {
                     uploadId: string;
                     altText?: string | null;
                 }> | null;
+                topicTag?: string | null;
+                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                linkAttachment?: string | null;
+                poll?: {
+                    optionA: string;
+                    optionB: string;
+                    optionC?: string | null;
+                    optionD?: string | null;
+                } | null;
+                gif?: {
+                    gifId: string;
+                    provider?: 'GIPHY';
+                } | null;
+                allowlistedCountryCodes?: Array<(string)> | null;
+                crosspostToInstagramStory?: boolean | null;
+                crosspostToInstagramStoryDarkMode?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -3531,6 +3595,22 @@ export type PostUpdateResponse = {
                 uploadId: string;
                 altText?: string | null;
             }> | null;
+            topicTag?: string | null;
+            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            linkAttachment?: string | null;
+            poll?: {
+                optionA: string;
+                optionB: string;
+                optionC?: string | null;
+                optionD?: string | null;
+            } | null;
+            gif?: {
+                gifId: string;
+                provider?: 'GIPHY';
+            } | null;
+            allowlistedCountryCodes?: Array<(string)> | null;
+            crosspostToInstagramStory?: boolean | null;
+            crosspostToInstagramStoryDarkMode?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -3963,6 +4043,10 @@ export type PostUpdateResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -4009,6 +4093,10 @@ export type PostUpdateResponse = {
         THREADS?: {
             id?: string | null;
             permalink?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         BLUESKY?: {
             id?: string | null;
@@ -4188,6 +4276,22 @@ export type PostDeleteResponse = {
                 uploadId: string;
                 altText?: string | null;
             }> | null;
+            topicTag?: string | null;
+            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            linkAttachment?: string | null;
+            poll?: {
+                optionA: string;
+                optionB: string;
+                optionC?: string | null;
+                optionD?: string | null;
+            } | null;
+            gif?: {
+                gifId: string;
+                provider?: 'GIPHY';
+            } | null;
+            allowlistedCountryCodes?: Array<(string)> | null;
+            crosspostToInstagramStory?: boolean | null;
+            crosspostToInstagramStoryDarkMode?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -4620,6 +4724,10 @@ export type PostDeleteResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -4666,6 +4774,10 @@ export type PostDeleteResponse = {
         THREADS?: {
             id?: string | null;
             permalink?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         BLUESKY?: {
             id?: string | null;
@@ -4855,6 +4967,22 @@ export type PostGetListResponse = {
                     uploadId: string;
                     altText?: string | null;
                 }> | null;
+                topicTag?: string | null;
+                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                linkAttachment?: string | null;
+                poll?: {
+                    optionA: string;
+                    optionB: string;
+                    optionC?: string | null;
+                    optionD?: string | null;
+                } | null;
+                gif?: {
+                    gifId: string;
+                    provider?: 'GIPHY';
+                } | null;
+                allowlistedCountryCodes?: Array<(string)> | null;
+                crosspostToInstagramStory?: boolean | null;
+                crosspostToInstagramStoryDarkMode?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -5287,6 +5415,10 @@ export type PostGetListResponse = {
                 id?: string | null;
                 permalink?: string | null;
                 thumbnail?: string | null;
+                /**
+                 * Media container id; lets a retry detect a container Meta already published.
+                 */
+                creationId?: string | null;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -5333,6 +5465,10 @@ export type PostGetListResponse = {
             THREADS?: {
                 id?: string | null;
                 permalink?: string | null;
+                /**
+                 * Media container id; lets a retry detect a container Meta already published.
+                 */
+                creationId?: string | null;
             } | null;
             BLUESKY?: {
                 id?: string | null;
@@ -5588,6 +5724,22 @@ export type PostCreateData = {
                     uploadId: string;
                     altText?: string | null;
                 }> | null;
+                topicTag?: string | null;
+                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                linkAttachment?: string | null;
+                poll?: {
+                    optionA: string;
+                    optionB: string;
+                    optionC?: string | null;
+                    optionD?: string | null;
+                } | null;
+                gif?: {
+                    gifId: string;
+                    provider?: 'GIPHY';
+                } | null;
+                allowlistedCountryCodes?: Array<(string)> | null;
+                crosspostToInstagramStory?: boolean | null;
+                crosspostToInstagramStoryDarkMode?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -5982,6 +6134,22 @@ export type PostCreateResponse = {
                 uploadId: string;
                 altText?: string | null;
             }> | null;
+            topicTag?: string | null;
+            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            linkAttachment?: string | null;
+            poll?: {
+                optionA: string;
+                optionB: string;
+                optionC?: string | null;
+                optionD?: string | null;
+            } | null;
+            gif?: {
+                gifId: string;
+                provider?: 'GIPHY';
+            } | null;
+            allowlistedCountryCodes?: Array<(string)> | null;
+            crosspostToInstagramStory?: boolean | null;
+            crosspostToInstagramStoryDarkMode?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -6414,6 +6582,10 @@ export type PostCreateResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -6460,6 +6632,10 @@ export type PostCreateResponse = {
         THREADS?: {
             id?: string | null;
             permalink?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         BLUESKY?: {
             id?: string | null;
@@ -6639,6 +6815,22 @@ export type PostRetryResponse = {
                 uploadId: string;
                 altText?: string | null;
             }> | null;
+            topicTag?: string | null;
+            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            linkAttachment?: string | null;
+            poll?: {
+                optionA: string;
+                optionB: string;
+                optionC?: string | null;
+                optionD?: string | null;
+            } | null;
+            gif?: {
+                gifId: string;
+                provider?: 'GIPHY';
+            } | null;
+            allowlistedCountryCodes?: Array<(string)> | null;
+            crosspostToInstagramStory?: boolean | null;
+            crosspostToInstagramStoryDarkMode?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -7071,6 +7263,10 @@ export type PostRetryResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         TIKTOK?: {
             id?: string | null;
@@ -7117,6 +7313,10 @@ export type PostRetryResponse = {
         THREADS?: {
             id?: string | null;
             permalink?: string | null;
+            /**
+             * Media container id; lets a retry detect a container Meta already published.
+             */
+            creationId?: string | null;
         } | null;
         BLUESKY?: {
             id?: string | null;
@@ -7365,6 +7565,22 @@ export type AnalyticsGetPostAnalyticsResponse = {
                     uploadId: string;
                     altText?: string | null;
                 }> | null;
+                topicTag?: string | null;
+                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                linkAttachment?: string | null;
+                poll?: {
+                    optionA: string;
+                    optionB: string;
+                    optionC?: string | null;
+                    optionD?: string | null;
+                } | null;
+                gif?: {
+                    gifId: string;
+                    provider?: 'GIPHY';
+                } | null;
+                allowlistedCountryCodes?: Array<(string)> | null;
+                crosspostToInstagramStory?: boolean | null;
+                crosspostToInstagramStoryDarkMode?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -7797,6 +8013,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 id?: string | null;
                 permalink?: string | null;
                 thumbnail?: string | null;
+                /**
+                 * Media container id; lets a retry detect a container Meta already published.
+                 */
+                creationId?: string | null;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -7843,6 +8063,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
             THREADS?: {
                 id?: string | null;
                 permalink?: string | null;
+                /**
+                 * Media container id; lets a retry detect a container Meta already published.
+                 */
+                creationId?: string | null;
             } | null;
             BLUESKY?: {
                 id?: string | null;
@@ -8124,6 +8348,22 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                     uploadId: string;
                     altText?: string | null;
                 }> | null;
+                topicTag?: string | null;
+                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                linkAttachment?: string | null;
+                poll?: {
+                    optionA: string;
+                    optionB: string;
+                    optionC?: string | null;
+                    optionD?: string | null;
+                } | null;
+                gif?: {
+                    gifId: string;
+                    provider?: 'GIPHY';
+                } | null;
+                allowlistedCountryCodes?: Array<(string)> | null;
+                crosspostToInstagramStory?: boolean | null;
+                crosspostToInstagramStoryDarkMode?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -8556,6 +8796,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 id?: string | null;
                 permalink?: string | null;
                 thumbnail?: string | null;
+                /**
+                 * Media container id; lets a retry detect a container Meta already published.
+                 */
+                creationId?: string | null;
             } | null;
             TIKTOK?: {
                 id?: string | null;
@@ -8602,6 +8846,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             THREADS?: {
                 id?: string | null;
                 permalink?: string | null;
+                /**
+                 * Media container id; lets a retry detect a container Meta already published.
+                 */
+                creationId?: string | null;
             } | null;
             BLUESKY?: {
                 id?: string | null;
@@ -16262,6 +16510,22 @@ export type $OpenApiTs = {
                                 uploadId: string;
                                 altText?: string | null;
                             }> | null;
+                            topicTag?: string | null;
+                            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            linkAttachment?: string | null;
+                            poll?: {
+                                optionA: string;
+                                optionB: string;
+                                optionC?: string | null;
+                                optionD?: string | null;
+                            } | null;
+                            gif?: {
+                                gifId: string;
+                                provider?: 'GIPHY';
+                            } | null;
+                            allowlistedCountryCodes?: Array<(string)> | null;
+                            crosspostToInstagramStory?: boolean | null;
+                            crosspostToInstagramStoryDarkMode?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -16694,6 +16958,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -16740,6 +17008,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             id?: string | null;
                             permalink?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         BLUESKY?: {
                             id?: string | null;
@@ -17047,6 +17319,22 @@ export type $OpenApiTs = {
                                 uploadId: string;
                                 altText?: string | null;
                             }> | null;
+                            topicTag?: string | null;
+                            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            linkAttachment?: string | null;
+                            poll?: {
+                                optionA: string;
+                                optionB: string;
+                                optionC?: string | null;
+                                optionD?: string | null;
+                            } | null;
+                            gif?: {
+                                gifId: string;
+                                provider?: 'GIPHY';
+                            } | null;
+                            allowlistedCountryCodes?: Array<(string)> | null;
+                            crosspostToInstagramStory?: boolean | null;
+                            crosspostToInstagramStoryDarkMode?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -17479,6 +17767,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -17525,6 +17817,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             id?: string | null;
                             permalink?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         BLUESKY?: {
                             id?: string | null;
@@ -17830,6 +18126,22 @@ export type $OpenApiTs = {
                                 uploadId: string;
                                 altText?: string | null;
                             }> | null;
+                            topicTag?: string | null;
+                            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            linkAttachment?: string | null;
+                            poll?: {
+                                optionA: string;
+                                optionB: string;
+                                optionC?: string | null;
+                                optionD?: string | null;
+                            } | null;
+                            gif?: {
+                                gifId: string;
+                                provider?: 'GIPHY';
+                            } | null;
+                            allowlistedCountryCodes?: Array<(string)> | null;
+                            crosspostToInstagramStory?: boolean | null;
+                            crosspostToInstagramStoryDarkMode?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -18262,6 +18574,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -18308,6 +18624,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             id?: string | null;
                             permalink?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         BLUESKY?: {
                             id?: string | null;
@@ -18544,6 +18864,22 @@ export type $OpenApiTs = {
                                 uploadId: string;
                                 altText?: string | null;
                             }> | null;
+                            topicTag?: string | null;
+                            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            linkAttachment?: string | null;
+                            poll?: {
+                                optionA: string;
+                                optionB: string;
+                                optionC?: string | null;
+                                optionD?: string | null;
+                            } | null;
+                            gif?: {
+                                gifId: string;
+                                provider?: 'GIPHY';
+                            } | null;
+                            allowlistedCountryCodes?: Array<(string)> | null;
+                            crosspostToInstagramStory?: boolean | null;
+                            crosspostToInstagramStoryDarkMode?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -18976,6 +19312,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -19022,6 +19362,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             id?: string | null;
                             permalink?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         BLUESKY?: {
                             id?: string | null;
@@ -19254,6 +19598,22 @@ export type $OpenApiTs = {
                                     uploadId: string;
                                     altText?: string | null;
                                 }> | null;
+                                topicTag?: string | null;
+                                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                                linkAttachment?: string | null;
+                                poll?: {
+                                    optionA: string;
+                                    optionB: string;
+                                    optionC?: string | null;
+                                    optionD?: string | null;
+                                } | null;
+                                gif?: {
+                                    gifId: string;
+                                    provider?: 'GIPHY';
+                                } | null;
+                                allowlistedCountryCodes?: Array<(string)> | null;
+                                crosspostToInstagramStory?: boolean | null;
+                                crosspostToInstagramStoryDarkMode?: boolean | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -19686,6 +20046,10 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                                 thumbnail?: string | null;
+                                /**
+                                 * Media container id; lets a retry detect a container Meta already published.
+                                 */
+                                creationId?: string | null;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -19732,6 +20096,10 @@ export type $OpenApiTs = {
                             THREADS?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                /**
+                                 * Media container id; lets a retry detect a container Meta already published.
+                                 */
+                                creationId?: string | null;
                             } | null;
                             BLUESKY?: {
                                 id?: string | null;
@@ -20039,6 +20407,22 @@ export type $OpenApiTs = {
                                 uploadId: string;
                                 altText?: string | null;
                             }> | null;
+                            topicTag?: string | null;
+                            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            linkAttachment?: string | null;
+                            poll?: {
+                                optionA: string;
+                                optionB: string;
+                                optionC?: string | null;
+                                optionD?: string | null;
+                            } | null;
+                            gif?: {
+                                gifId: string;
+                                provider?: 'GIPHY';
+                            } | null;
+                            allowlistedCountryCodes?: Array<(string)> | null;
+                            crosspostToInstagramStory?: boolean | null;
+                            crosspostToInstagramStoryDarkMode?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -20471,6 +20855,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -20517,6 +20905,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             id?: string | null;
                             permalink?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         BLUESKY?: {
                             id?: string | null;
@@ -20755,6 +21147,22 @@ export type $OpenApiTs = {
                                 uploadId: string;
                                 altText?: string | null;
                             }> | null;
+                            topicTag?: string | null;
+                            replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            linkAttachment?: string | null;
+                            poll?: {
+                                optionA: string;
+                                optionB: string;
+                                optionC?: string | null;
+                                optionD?: string | null;
+                            } | null;
+                            gif?: {
+                                gifId: string;
+                                provider?: 'GIPHY';
+                            } | null;
+                            allowlistedCountryCodes?: Array<(string)> | null;
+                            crosspostToInstagramStory?: boolean | null;
+                            crosspostToInstagramStoryDarkMode?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -21187,6 +21595,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         TIKTOK?: {
                             id?: string | null;
@@ -21233,6 +21645,10 @@ export type $OpenApiTs = {
                         THREADS?: {
                             id?: string | null;
                             permalink?: string | null;
+                            /**
+                             * Media container id; lets a retry detect a container Meta already published.
+                             */
+                            creationId?: string | null;
                         } | null;
                         BLUESKY?: {
                             id?: string | null;
@@ -21582,6 +21998,22 @@ export type $OpenApiTs = {
                                     uploadId: string;
                                     altText?: string | null;
                                 }> | null;
+                                topicTag?: string | null;
+                                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                                linkAttachment?: string | null;
+                                poll?: {
+                                    optionA: string;
+                                    optionB: string;
+                                    optionC?: string | null;
+                                    optionD?: string | null;
+                                } | null;
+                                gif?: {
+                                    gifId: string;
+                                    provider?: 'GIPHY';
+                                } | null;
+                                allowlistedCountryCodes?: Array<(string)> | null;
+                                crosspostToInstagramStory?: boolean | null;
+                                crosspostToInstagramStoryDarkMode?: boolean | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -22014,6 +22446,10 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                                 thumbnail?: string | null;
+                                /**
+                                 * Media container id; lets a retry detect a container Meta already published.
+                                 */
+                                creationId?: string | null;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -22060,6 +22496,10 @@ export type $OpenApiTs = {
                             THREADS?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                /**
+                                 * Media container id; lets a retry detect a container Meta already published.
+                                 */
+                                creationId?: string | null;
                             } | null;
                             BLUESKY?: {
                                 id?: string | null;
@@ -22442,6 +22882,22 @@ export type $OpenApiTs = {
                                     uploadId: string;
                                     altText?: string | null;
                                 }> | null;
+                                topicTag?: string | null;
+                                replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                                linkAttachment?: string | null;
+                                poll?: {
+                                    optionA: string;
+                                    optionB: string;
+                                    optionC?: string | null;
+                                    optionD?: string | null;
+                                } | null;
+                                gif?: {
+                                    gifId: string;
+                                    provider?: 'GIPHY';
+                                } | null;
+                                allowlistedCountryCodes?: Array<(string)> | null;
+                                crosspostToInstagramStory?: boolean | null;
+                                crosspostToInstagramStoryDarkMode?: boolean | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -22874,6 +23330,10 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                                 thumbnail?: string | null;
+                                /**
+                                 * Media container id; lets a retry detect a container Meta already published.
+                                 */
+                                creationId?: string | null;
                             } | null;
                             TIKTOK?: {
                                 id?: string | null;
@@ -22920,6 +23380,10 @@ export type $OpenApiTs = {
                             THREADS?: {
                                 id?: string | null;
                                 permalink?: string | null;
+                                /**
+                                 * Media container id; lets a retry detect a container Meta already published.
+                                 */
+                                creationId?: string | null;
                             } | null;
                             BLUESKY?: {
                                 id?: string | null;

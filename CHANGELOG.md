@@ -1,3 +1,10 @@
+# [2.58.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.57.0...v2.58.0) (2026-07-20)
+
+
+### Features
+
+* additional analytics data for youtube and threads ([4d35fc2](https://github.com/bundleglobal/bundlesocial-node/commit/4d35fc25446863c4b81e522286364cc15f8693ac))
+
 # [2.57.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.56.1...v2.57.0) (2026-07-12)
 
 

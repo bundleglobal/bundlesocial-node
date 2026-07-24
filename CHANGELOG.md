@@ -1,3 +1,10 @@
+# [2.59.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.58.0...v2.59.0) (2026-07-24)
+
+
+### Features
+
+* branded content instagram ([2fa58cf](https://github.com/bundleglobal/bundlesocial-node/commit/2fa58cf752e7a81e8943269fdd359eb47cd1ada7))
+
 # [2.58.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.57.0...v2.58.0) (2026-07-20)
 
 

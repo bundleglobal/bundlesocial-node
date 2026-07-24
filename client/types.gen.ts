@@ -1002,7 +1002,7 @@ export type SocialAccountCreatePortalLinkData = {
         hideUserName?: boolean;
         hideLanguageSwitcher?: boolean;
         showModalOnConnectSuccess?: boolean;
-        language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv' | 'de' | 'es' | 'it' | 'nl' | 'pt' | 'ru' | 'tr' | 'zh';
+        language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv' | 'de' | 'es' | 'it' | 'nl' | 'pt' | 'ru' | 'tr' | 'zh' | 'da' | 'th' | 'ko' | 'he';
         maxSocialAccountsConnected?: number;
     };
 };
@@ -1648,6 +1648,14 @@ export type PostGetByReferenceKeyResponse = {
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
             } | null;
+            /**
+             * Enables the native "Paid partnership" disclosure label.
+             */
+            isPaidPartnership?: boolean | null;
+            /**
+             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+             */
+            brandedContentSponsors?: Array<(string)> | null;
             /**
              * Information about the Instagram audio asset used for Reels publishing.
              */
@@ -2406,6 +2414,14 @@ export type PostGetResponse = {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
             } | null;
             /**
+             * Enables the native "Paid partnership" disclosure label.
+             */
+            isPaidPartnership?: boolean | null;
+            /**
+             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+             */
+            brandedContentSponsors?: Array<(string)> | null;
+            /**
              * Information about the Instagram audio asset used for Reels publishing.
              */
             musicSoundInfo?: {
@@ -3161,6 +3177,14 @@ export type PostUpdateData = {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                 } | null;
                 /**
+                 * Enables the native "Paid partnership" disclosure label.
+                 */
+                isPaidPartnership?: boolean | null;
+                /**
+                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                 */
+                brandedContentSponsors?: Array<(string)> | null;
+                /**
                  * Information about the Instagram audio asset used for Reels publishing.
                  */
                 musicSoundInfo?: {
@@ -3570,6 +3594,14 @@ export type PostUpdateResponse = {
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
             } | null;
+            /**
+             * Enables the native "Paid partnership" disclosure label.
+             */
+            isPaidPartnership?: boolean | null;
+            /**
+             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+             */
+            brandedContentSponsors?: Array<(string)> | null;
             /**
              * Information about the Instagram audio asset used for Reels publishing.
              */
@@ -4251,6 +4283,14 @@ export type PostDeleteResponse = {
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
             } | null;
+            /**
+             * Enables the native "Paid partnership" disclosure label.
+             */
+            isPaidPartnership?: boolean | null;
+            /**
+             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+             */
+            brandedContentSponsors?: Array<(string)> | null;
             /**
              * Information about the Instagram audio asset used for Reels publishing.
              */
@@ -4942,6 +4982,14 @@ export type PostGetListResponse = {
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                 } | null;
+                /**
+                 * Enables the native "Paid partnership" disclosure label.
+                 */
+                isPaidPartnership?: boolean | null;
+                /**
+                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                 */
+                brandedContentSponsors?: Array<(string)> | null;
                 /**
                  * Information about the Instagram audio asset used for Reels publishing.
                  */
@@ -5700,6 +5748,14 @@ export type PostCreateData = {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                 } | null;
                 /**
+                 * Enables the native "Paid partnership" disclosure label.
+                 */
+                isPaidPartnership?: boolean | null;
+                /**
+                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                 */
+                brandedContentSponsors?: Array<(string)> | null;
+                /**
                  * Information about the Instagram audio asset used for Reels publishing.
                  */
                 musicSoundInfo?: {
@@ -6109,6 +6165,14 @@ export type PostCreateResponse = {
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
             } | null;
+            /**
+             * Enables the native "Paid partnership" disclosure label.
+             */
+            isPaidPartnership?: boolean | null;
+            /**
+             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+             */
+            brandedContentSponsors?: Array<(string)> | null;
             /**
              * Information about the Instagram audio asset used for Reels publishing.
              */
@@ -6790,6 +6854,14 @@ export type PostRetryResponse = {
             trialParams?: {
                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
             } | null;
+            /**
+             * Enables the native "Paid partnership" disclosure label.
+             */
+            isPaidPartnership?: boolean | null;
+            /**
+             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+             */
+            brandedContentSponsors?: Array<(string)> | null;
             /**
              * Information about the Instagram audio asset used for Reels publishing.
              */
@@ -7540,6 +7612,14 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                 } | null;
+                /**
+                 * Enables the native "Paid partnership" disclosure label.
+                 */
+                isPaidPartnership?: boolean | null;
+                /**
+                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                 */
+                brandedContentSponsors?: Array<(string)> | null;
                 /**
                  * Information about the Instagram audio asset used for Reels publishing.
                  */
@@ -8323,6 +8403,14 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 trialParams?: {
                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                 } | null;
+                /**
+                 * Enables the native "Paid partnership" disclosure label.
+                 */
+                isPaidPartnership?: boolean | null;
+                /**
+                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                 */
+                brandedContentSponsors?: Array<(string)> | null;
                 /**
                  * Information about the Instagram audio asset used for Reels publishing.
                  */
@@ -16486,6 +16574,14 @@ export type $OpenApiTs = {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
                             /**
+                             * Enables the native "Paid partnership" disclosure label.
+                             */
+                            isPaidPartnership?: boolean | null;
+                            /**
+                             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                             */
+                            brandedContentSponsors?: Array<(string)> | null;
+                            /**
                              * Information about the Instagram audio asset used for Reels publishing.
                              */
                             musicSoundInfo?: {
@@ -17295,6 +17391,14 @@ export type $OpenApiTs = {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
                             /**
+                             * Enables the native "Paid partnership" disclosure label.
+                             */
+                            isPaidPartnership?: boolean | null;
+                            /**
+                             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                             */
+                            brandedContentSponsors?: Array<(string)> | null;
+                            /**
                              * Information about the Instagram audio asset used for Reels publishing.
                              */
                             musicSoundInfo?: {
@@ -18102,6 +18206,14 @@ export type $OpenApiTs = {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
                             /**
+                             * Enables the native "Paid partnership" disclosure label.
+                             */
+                            isPaidPartnership?: boolean | null;
+                            /**
+                             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                             */
+                            brandedContentSponsors?: Array<(string)> | null;
+                            /**
                              * Information about the Instagram audio asset used for Reels publishing.
                              */
                             musicSoundInfo?: {
@@ -18840,6 +18952,14 @@ export type $OpenApiTs = {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
                             /**
+                             * Enables the native "Paid partnership" disclosure label.
+                             */
+                            isPaidPartnership?: boolean | null;
+                            /**
+                             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                             */
+                            brandedContentSponsors?: Array<(string)> | null;
+                            /**
                              * Information about the Instagram audio asset used for Reels publishing.
                              */
                             musicSoundInfo?: {
@@ -19573,6 +19693,14 @@ export type $OpenApiTs = {
                                 trialParams?: {
                                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                                 } | null;
+                                /**
+                                 * Enables the native "Paid partnership" disclosure label.
+                                 */
+                                isPaidPartnership?: boolean | null;
+                                /**
+                                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                                 */
+                                brandedContentSponsors?: Array<(string)> | null;
                                 /**
                                  * Information about the Instagram audio asset used for Reels publishing.
                                  */
@@ -20383,6 +20511,14 @@ export type $OpenApiTs = {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
                             /**
+                             * Enables the native "Paid partnership" disclosure label.
+                             */
+                            isPaidPartnership?: boolean | null;
+                            /**
+                             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                             */
+                            brandedContentSponsors?: Array<(string)> | null;
+                            /**
                              * Information about the Instagram audio asset used for Reels publishing.
                              */
                             musicSoundInfo?: {
@@ -21122,6 +21258,14 @@ export type $OpenApiTs = {
                             trialParams?: {
                                 graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                             } | null;
+                            /**
+                             * Enables the native "Paid partnership" disclosure label.
+                             */
+                            isPaidPartnership?: boolean | null;
+                            /**
+                             * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                             */
+                            brandedContentSponsors?: Array<(string)> | null;
                             /**
                              * Information about the Instagram audio asset used for Reels publishing.
                              */
@@ -21973,6 +22117,14 @@ export type $OpenApiTs = {
                                 trialParams?: {
                                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                                 } | null;
+                                /**
+                                 * Enables the native "Paid partnership" disclosure label.
+                                 */
+                                isPaidPartnership?: boolean | null;
+                                /**
+                                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                                 */
+                                brandedContentSponsors?: Array<(string)> | null;
                                 /**
                                  * Information about the Instagram audio asset used for Reels publishing.
                                  */
@@ -22857,6 +23009,14 @@ export type $OpenApiTs = {
                                 trialParams?: {
                                     graduationStrategy: 'MANUAL' | 'SS_PERFORMANCE';
                                 } | null;
+                                /**
+                                 * Enables the native "Paid partnership" disclosure label.
+                                 */
+                                isPaidPartnership?: boolean | null;
+                                /**
+                                 * Up to 2 Instagram usernames of the brands tagged as paid-partnership sponsors.
+                                 */
+                                brandedContentSponsors?: Array<(string)> | null;
                                 /**
                                  * Information about the Instagram audio asset used for Reels publishing.
                                  */

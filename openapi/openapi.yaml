@@ -5352,6 +5352,10 @@ paths:
                     - ru
                     - tr
                     - zh
+                    - da
+                    - th
+                    - ko
+                    - he
                 maxSocialAccountsConnected:
                   type: number
               required:
@@ -9468,6 +9472,24 @@ paths:
                             description: >-
                               For Reels only. Trial reels are only shared to
                               non-followers.
+                          isPaidPartnership:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Enables the native "Paid partnership" disclosure
+                              label.
+                          brandedContentSponsors:
+                            type: array
+                            items:
+                              type: string
+                              minLength: 1
+                              maxLength: 30
+                            maxItems: 2
+                            nullable: true
+                            description: >-
+                              Up to 2 Instagram usernames of the brands tagged
+                              as paid-partnership sponsors.
                           musicSoundInfo:
                             type: object
                             properties:
@@ -11567,6 +11589,24 @@ paths:
                             description: >-
                               For Reels only. Trial reels are only shared to
                               non-followers.
+                          isPaidPartnership:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Enables the native "Paid partnership" disclosure
+                              label.
+                          brandedContentSponsors:
+                            type: array
+                            items:
+                              type: string
+                              minLength: 1
+                              maxLength: 30
+                            maxItems: 2
+                            nullable: true
+                            description: >-
+                              Up to 2 Instagram usernames of the brands tagged
+                              as paid-partnership sponsors.
                           musicSoundInfo:
                             type: object
                             properties:
@@ -13669,6 +13709,24 @@ paths:
                           description: >-
                             For Reels only. Trial reels are only shared to
                             non-followers.
+                        isPaidPartnership:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Enables the native "Paid partnership" disclosure
+                            label.
+                        brandedContentSponsors:
+                          type: array
+                          items:
+                            type: string
+                            minLength: 1
+                            maxLength: 30
+                          maxItems: 2
+                          nullable: true
+                          description: >-
+                            Up to 2 Instagram usernames of the brands tagged as
+                            paid-partnership sponsors.
                         musicSoundInfo:
                           type: object
                           properties:
@@ -14595,6 +14653,24 @@ paths:
                             description: >-
                               For Reels only. Trial reels are only shared to
                               non-followers.
+                          isPaidPartnership:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Enables the native "Paid partnership" disclosure
+                              label.
+                          brandedContentSponsors:
+                            type: array
+                            items:
+                              type: string
+                              minLength: 1
+                              maxLength: 30
+                            maxItems: 2
+                            nullable: true
+                            description: >-
+                              Up to 2 Instagram usernames of the brands tagged
+                              as paid-partnership sponsors.
                           musicSoundInfo:
                             type: object
                             properties:
@@ -16429,6 +16505,24 @@ paths:
                             description: >-
                               For Reels only. Trial reels are only shared to
                               non-followers.
+                          isPaidPartnership:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Enables the native "Paid partnership" disclosure
+                              label.
+                          brandedContentSponsors:
+                            type: array
+                            items:
+                              type: string
+                              minLength: 1
+                              maxLength: 30
+                            maxItems: 2
+                            nullable: true
+                            description: >-
+                              Up to 2 Instagram usernames of the brands tagged
+                              as paid-partnership sponsors.
                           musicSoundInfo:
                             type: object
                             properties:
@@ -18343,6 +18437,24 @@ paths:
                                   description: >-
                                     For Reels only. Trial reels are only shared
                                     to non-followers.
+                                isPaidPartnership:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Enables the native "Paid partnership"
+                                    disclosure label.
+                                brandedContentSponsors:
+                                  type: array
+                                  items:
+                                    type: string
+                                    minLength: 1
+                                    maxLength: 30
+                                  maxItems: 2
+                                  nullable: true
+                                  description: >-
+                                    Up to 2 Instagram usernames of the brands
+                                    tagged as paid-partnership sponsors.
                                 musicSoundInfo:
                                   type: object
                                   properties:
@@ -20456,6 +20568,24 @@ paths:
                           description: >-
                             For Reels only. Trial reels are only shared to
                             non-followers.
+                        isPaidPartnership:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Enables the native "Paid partnership" disclosure
+                            label.
+                        brandedContentSponsors:
+                          type: array
+                          items:
+                            type: string
+                            minLength: 1
+                            maxLength: 30
+                          maxItems: 2
+                          nullable: true
+                          description: >-
+                            Up to 2 Instagram usernames of the brands tagged as
+                            paid-partnership sponsors.
                         musicSoundInfo:
                           type: object
                           properties:
@@ -21389,6 +21519,24 @@ paths:
                             description: >-
                               For Reels only. Trial reels are only shared to
                               non-followers.
+                          isPaidPartnership:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Enables the native "Paid partnership" disclosure
+                              label.
+                          brandedContentSponsors:
+                            type: array
+                            items:
+                              type: string
+                              minLength: 1
+                              maxLength: 30
+                            maxItems: 2
+                            nullable: true
+                            description: >-
+                              Up to 2 Instagram usernames of the brands tagged
+                              as paid-partnership sponsors.
                           musicSoundInfo:
                             type: object
                             properties:
@@ -23224,6 +23372,24 @@ paths:
                             description: >-
                               For Reels only. Trial reels are only shared to
                               non-followers.
+                          isPaidPartnership:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Enables the native "Paid partnership" disclosure
+                              label.
+                          brandedContentSponsors:
+                            type: array
+                            items:
+                              type: string
+                              minLength: 1
+                              maxLength: 30
+                            maxItems: 2
+                            nullable: true
+                            description: >-
+                              Up to 2 Instagram usernames of the brands tagged
+                              as paid-partnership sponsors.
                           musicSoundInfo:
                             type: object
                             properties:
@@ -25440,6 +25606,24 @@ paths:
                                 description: >-
                                   For Reels only. Trial reels are only shared to
                                   non-followers.
+                              isPaidPartnership:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Enables the native "Paid partnership"
+                                  disclosure label.
+                              brandedContentSponsors:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                maxItems: 2
+                                nullable: true
+                                description: >-
+                                  Up to 2 Instagram usernames of the brands
+                                  tagged as paid-partnership sponsors.
                               musicSoundInfo:
                                 type: object
                                 properties:
@@ -27777,6 +27961,24 @@ paths:
                                 description: >-
                                   For Reels only. Trial reels are only shared to
                                   non-followers.
+                              isPaidPartnership:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Enables the native "Paid partnership"
+                                  disclosure label.
+                              brandedContentSponsors:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                maxItems: 2
+                                nullable: true
+                                description: >-
+                                  Up to 2 Instagram usernames of the brands
+                                  tagged as paid-partnership sponsors.
                               musicSoundInfo:
                                 type: object
                                 properties:

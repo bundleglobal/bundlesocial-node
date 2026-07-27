@@ -1552,6 +1552,10 @@ export type PostGetByReferenceKeyResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            /**
+             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -1578,6 +1582,10 @@ export type PostGetByReferenceKeyResponse = {
              * The dominant color of the image. This is used to display the image before it's loaded.
              */
             dominantColor?: string | null;
+            /**
+             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         FACEBOOK?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -1673,6 +1681,10 @@ export type PostGetByReferenceKeyResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -2317,6 +2329,10 @@ export type PostGetResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            /**
+             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -2343,6 +2359,10 @@ export type PostGetResponse = {
              * The dominant color of the image. This is used to display the image before it's loaded.
              */
             dominantColor?: string | null;
+            /**
+             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         FACEBOOK?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -2438,6 +2458,10 @@ export type PostGetResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -3080,6 +3104,10 @@ export type PostUpdateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                /**
+                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -3106,6 +3134,10 @@ export type PostUpdateData = {
                  * The dominant color of the image. This is used to display the image before it's loaded.
                  */
                 dominantColor?: string | null;
+                /**
+                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             FACEBOOK?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -3201,6 +3233,10 @@ export type PostUpdateData = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -3498,6 +3534,10 @@ export type PostUpdateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            /**
+             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -3524,6 +3564,10 @@ export type PostUpdateResponse = {
              * The dominant color of the image. This is used to display the image before it's loaded.
              */
             dominantColor?: string | null;
+            /**
+             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         FACEBOOK?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -3619,6 +3663,10 @@ export type PostUpdateResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -4187,6 +4235,10 @@ export type PostDeleteResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            /**
+             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -4213,6 +4265,10 @@ export type PostDeleteResponse = {
              * The dominant color of the image. This is used to display the image before it's loaded.
              */
             dominantColor?: string | null;
+            /**
+             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         FACEBOOK?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -4308,6 +4364,10 @@ export type PostDeleteResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -4886,6 +4946,10 @@ export type PostGetListResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                /**
+                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -4912,6 +4976,10 @@ export type PostGetListResponse = {
                  * The dominant color of the image. This is used to display the image before it's loaded.
                  */
                 dominantColor?: string | null;
+                /**
+                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             FACEBOOK?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -5007,6 +5075,10 @@ export type PostGetListResponse = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -5651,6 +5723,10 @@ export type PostCreateData = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                /**
+                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -5677,6 +5753,10 @@ export type PostCreateData = {
                  * The dominant color of the image. This is used to display the image before it's loaded.
                  */
                 dominantColor?: string | null;
+                /**
+                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             FACEBOOK?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -5772,6 +5852,10 @@ export type PostCreateData = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -6069,6 +6153,10 @@ export type PostCreateResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            /**
+             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -6095,6 +6183,10 @@ export type PostCreateResponse = {
              * The dominant color of the image. This is used to display the image before it's loaded.
              */
             dominantColor?: string | null;
+            /**
+             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         FACEBOOK?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -6190,6 +6282,10 @@ export type PostCreateResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -6758,6 +6854,10 @@ export type PostRetryResponse = {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            /**
+             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         PINTEREST?: {
             text?: string | null;
@@ -6784,6 +6884,10 @@ export type PostRetryResponse = {
              * The dominant color of the image. This is used to display the image before it's loaded.
              */
             dominantColor?: string | null;
+            /**
+             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         FACEBOOK?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -6879,6 +6983,10 @@ export type PostRetryResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         THREADS?: {
             text?: string | null;
@@ -7516,6 +7624,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                /**
+                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -7542,6 +7654,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * The dominant color of the image. This is used to display the image before it's loaded.
                  */
                 dominantColor?: string | null;
+                /**
+                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             FACEBOOK?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -7637,6 +7753,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -8307,6 +8427,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                /**
+                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             PINTEREST?: {
                 text?: string | null;
@@ -8333,6 +8457,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * The dominant color of the image. This is used to display the image before it's loaded.
                  */
                 dominantColor?: string | null;
+                /**
+                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             FACEBOOK?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -8428,6 +8556,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             THREADS?: {
                 text?: string | null;
@@ -16477,6 +16609,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            /**
+                             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -16503,6 +16639,10 @@ export type $OpenApiTs = {
                              * The dominant color of the image. This is used to display the image before it's loaded.
                              */
                             dominantColor?: string | null;
+                            /**
+                             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         FACEBOOK?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -16598,6 +16738,10 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -17294,6 +17438,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            /**
+                             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -17320,6 +17468,10 @@ export type $OpenApiTs = {
                              * The dominant color of the image. This is used to display the image before it's loaded.
                              */
                             dominantColor?: string | null;
+                            /**
+                             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         FACEBOOK?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -17415,6 +17567,10 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -18109,6 +18265,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            /**
+                             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -18135,6 +18295,10 @@ export type $OpenApiTs = {
                              * The dominant color of the image. This is used to display the image before it's loaded.
                              */
                             dominantColor?: string | null;
+                            /**
+                             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         FACEBOOK?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -18230,6 +18394,10 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -18855,6 +19023,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            /**
+                             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -18881,6 +19053,10 @@ export type $OpenApiTs = {
                              * The dominant color of the image. This is used to display the image before it's loaded.
                              */
                             dominantColor?: string | null;
+                            /**
+                             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         FACEBOOK?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -18976,6 +19152,10 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -19597,6 +19777,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                                /**
+                                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             PINTEREST?: {
                                 text?: string | null;
@@ -19623,6 +19807,10 @@ export type $OpenApiTs = {
                                  * The dominant color of the image. This is used to display the image before it's loaded.
                                  */
                                 dominantColor?: string | null;
+                                /**
+                                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             FACEBOOK?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -19718,6 +19906,10 @@ export type $OpenApiTs = {
                                      */
                                     videoOriginalSoundVolume?: number | null;
                                 } | null;
+                                /**
+                                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -20414,6 +20606,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            /**
+                             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -20440,6 +20636,10 @@ export type $OpenApiTs = {
                              * The dominant color of the image. This is used to display the image before it's loaded.
                              */
                             dominantColor?: string | null;
+                            /**
+                             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         FACEBOOK?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -20535,6 +20735,10 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -21162,6 +21366,10 @@ export type $OpenApiTs = {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            /**
+                             * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         PINTEREST?: {
                             text?: string | null;
@@ -21188,6 +21396,10 @@ export type $OpenApiTs = {
                              * The dominant color of the image. This is used to display the image before it's loaded.
                              */
                             dominantColor?: string | null;
+                            /**
+                             * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         FACEBOOK?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -21283,6 +21495,10 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         THREADS?: {
                             text?: string | null;
@@ -22021,6 +22237,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                                /**
+                                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             PINTEREST?: {
                                 text?: string | null;
@@ -22047,6 +22267,10 @@ export type $OpenApiTs = {
                                  * The dominant color of the image. This is used to display the image before it's loaded.
                                  */
                                 dominantColor?: string | null;
+                                /**
+                                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             FACEBOOK?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -22142,6 +22366,10 @@ export type $OpenApiTs = {
                                      */
                                     videoOriginalSoundVolume?: number | null;
                                 } | null;
+                                /**
+                                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;
@@ -22913,6 +23141,10 @@ export type $OpenApiTs = {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
                                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                                /**
+                                 * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             PINTEREST?: {
                                 text?: string | null;
@@ -22939,6 +23171,10 @@ export type $OpenApiTs = {
                                  * The dominant color of the image. This is used to display the image before it's loaded.
                                  */
                                 dominantColor?: string | null;
+                                /**
+                                 * Set to true if the Pin content was generated or modified by AI. Adds Pinterest's AI disclosure label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             FACEBOOK?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -23034,6 +23270,10 @@ export type $OpenApiTs = {
                                      */
                                     videoOriginalSoundVolume?: number | null;
                                 } | null;
+                                /**
+                                 * Set to true if the content was generated or modified by AI. Adds Instagram's AI content label.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             THREADS?: {
                                 text?: string | null;

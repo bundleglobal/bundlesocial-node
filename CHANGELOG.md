@@ -1,3 +1,10 @@
+# [2.60.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.59.0...v2.60.0) (2026-07-27)
+
+
+### Features
+
+* ai generated content ([c5ef06b](https://github.com/bundleglobal/bundlesocial-node/commit/c5ef06b3da10d73030c8ef2eecf9a03942a4b65e))
+
 # [2.59.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.58.0...v2.59.0) (2026-07-24)
 
 

@@ -9245,6 +9245,13 @@ paths:
                               - SUBSCRIBERS
                               - VERIFIED
                             nullable: true
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post contains AI-generated
+                              media. Adds X's 'made with AI' label.
                         nullable: true
                       PINTEREST:
                         type: object
@@ -9288,6 +9295,14 @@ paths:
                             description: >-
                               The dominant color of the image. This is used to
                               display the image before it's loaded.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the Pin content was generated or
+                              modified by AI. Adds Pinterest's AI disclosure
+                              label.
                         required:
                           - boardName
                         nullable: true
@@ -9519,6 +9534,13 @@ paths:
                             description: >-
                               Information about the Instagram audio asset used
                               for Reels publishing.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the content was generated or
+                              modified by AI. Adds Instagram's AI content label.
                         nullable: true
                       THREADS:
                         type: object
@@ -11362,6 +11384,13 @@ paths:
                               - SUBSCRIBERS
                               - VERIFIED
                             nullable: true
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post contains AI-generated
+                              media. Adds X's 'made with AI' label.
                         nullable: true
                       PINTEREST:
                         type: object
@@ -11405,6 +11434,14 @@ paths:
                             description: >-
                               The dominant color of the image. This is used to
                               display the image before it's loaded.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the Pin content was generated or
+                              modified by AI. Adds Pinterest's AI disclosure
+                              label.
                         required:
                           - boardName
                         nullable: true
@@ -11636,6 +11673,13 @@ paths:
                             description: >-
                               Information about the Instagram audio asset used
                               for Reels publishing.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the content was generated or
+                              modified by AI. Adds Instagram's AI content label.
                         nullable: true
                       THREADS:
                         type: object
@@ -13482,6 +13526,13 @@ paths:
                             - SUBSCRIBERS
                             - VERIFIED
                           nullable: true
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the post contains AI-generated media.
+                            Adds X's 'made with AI' label.
                       nullable: true
                     PINTEREST:
                       type: object
@@ -13525,6 +13576,14 @@ paths:
                           description: >-
                             The dominant color of the image. This is used to
                             display the image before it's loaded.
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the Pin content was generated or
+                            modified by AI. Adds Pinterest's AI disclosure
+                            label.
                       required:
                         - boardName
                       nullable: true
@@ -13756,6 +13815,13 @@ paths:
                           description: >-
                             Information about the Instagram audio asset used for
                             Reels publishing.
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the content was generated or modified
+                            by AI. Adds Instagram's AI content label.
                       nullable: true
                     THREADS:
                       type: object
@@ -14426,6 +14492,13 @@ paths:
                               - SUBSCRIBERS
                               - VERIFIED
                             nullable: true
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post contains AI-generated
+                              media. Adds X's 'made with AI' label.
                         nullable: true
                       PINTEREST:
                         type: object
@@ -14469,6 +14542,14 @@ paths:
                             description: >-
                               The dominant color of the image. This is used to
                               display the image before it's loaded.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the Pin content was generated or
+                              modified by AI. Adds Pinterest's AI disclosure
+                              label.
                         required:
                           - boardName
                         nullable: true
@@ -14700,6 +14781,13 @@ paths:
                             description: >-
                               Information about the Instagram audio asset used
                               for Reels publishing.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the content was generated or
+                              modified by AI. Adds Instagram's AI content label.
                         nullable: true
                       THREADS:
                         type: object
@@ -16278,6 +16366,13 @@ paths:
                               - SUBSCRIBERS
                               - VERIFIED
                             nullable: true
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post contains AI-generated
+                              media. Adds X's 'made with AI' label.
                         nullable: true
                       PINTEREST:
                         type: object
@@ -16321,6 +16416,14 @@ paths:
                             description: >-
                               The dominant color of the image. This is used to
                               display the image before it's loaded.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the Pin content was generated or
+                              modified by AI. Adds Pinterest's AI disclosure
+                              label.
                         required:
                           - boardName
                         nullable: true
@@ -16552,6 +16655,13 @@ paths:
                             description: >-
                               Information about the Instagram audio asset used
                               for Reels publishing.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the content was generated or
+                              modified by AI. Adds Instagram's AI content label.
                         nullable: true
                       THREADS:
                         type: object
@@ -18207,6 +18317,14 @@ paths:
                                     - SUBSCRIBERS
                                     - VERIFIED
                                   nullable: true
+                                isAiGenerated:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if the post contains
+                                    AI-generated media. Adds X's 'made with AI'
+                                    label.
                               nullable: true
                             PINTEREST:
                               type: object
@@ -18252,6 +18370,14 @@ paths:
                                     The dominant color of the image. This is
                                     used to display the image before it's
                                     loaded.
+                                isAiGenerated:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if the Pin content was generated
+                                    or modified by AI. Adds Pinterest's AI
+                                    disclosure label.
                               required:
                                 - boardName
                               nullable: true
@@ -18484,6 +18610,14 @@ paths:
                                   description: >-
                                     Information about the Instagram audio asset
                                     used for Reels publishing.
+                                isAiGenerated:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if the content was generated or
+                                    modified by AI. Adds Instagram's AI content
+                                    label.
                               nullable: true
                             THREADS:
                               type: object
@@ -20341,6 +20475,13 @@ paths:
                             - SUBSCRIBERS
                             - VERIFIED
                           nullable: true
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the post contains AI-generated media.
+                            Adds X's 'made with AI' label.
                       nullable: true
                     PINTEREST:
                       type: object
@@ -20384,6 +20525,14 @@ paths:
                           description: >-
                             The dominant color of the image. This is used to
                             display the image before it's loaded.
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the Pin content was generated or
+                            modified by AI. Adds Pinterest's AI disclosure
+                            label.
                       required:
                         - boardName
                       nullable: true
@@ -20615,6 +20764,13 @@ paths:
                           description: >-
                             Information about the Instagram audio asset used for
                             Reels publishing.
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the content was generated or modified
+                            by AI. Adds Instagram's AI content label.
                       nullable: true
                     THREADS:
                       type: object
@@ -21292,6 +21448,13 @@ paths:
                               - SUBSCRIBERS
                               - VERIFIED
                             nullable: true
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post contains AI-generated
+                              media. Adds X's 'made with AI' label.
                         nullable: true
                       PINTEREST:
                         type: object
@@ -21335,6 +21498,14 @@ paths:
                             description: >-
                               The dominant color of the image. This is used to
                               display the image before it's loaded.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the Pin content was generated or
+                              modified by AI. Adds Pinterest's AI disclosure
+                              label.
                         required:
                           - boardName
                         nullable: true
@@ -21566,6 +21737,13 @@ paths:
                             description: >-
                               Information about the Instagram audio asset used
                               for Reels publishing.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the content was generated or
+                              modified by AI. Adds Instagram's AI content label.
                         nullable: true
                       THREADS:
                         type: object
@@ -23145,6 +23323,13 @@ paths:
                               - SUBSCRIBERS
                               - VERIFIED
                             nullable: true
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the post contains AI-generated
+                              media. Adds X's 'made with AI' label.
                         nullable: true
                       PINTEREST:
                         type: object
@@ -23188,6 +23373,14 @@ paths:
                             description: >-
                               The dominant color of the image. This is used to
                               display the image before it's loaded.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the Pin content was generated or
+                              modified by AI. Adds Pinterest's AI disclosure
+                              label.
                         required:
                           - boardName
                         nullable: true
@@ -23419,6 +23612,13 @@ paths:
                             description: >-
                               Information about the Instagram audio asset used
                               for Reels publishing.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the content was generated or
+                              modified by AI. Adds Instagram's AI content label.
                         nullable: true
                       THREADS:
                         type: object
@@ -25377,6 +25577,13 @@ paths:
                                   - SUBSCRIBERS
                                   - VERIFIED
                                 nullable: true
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the post contains AI-generated
+                                  media. Adds X's 'made with AI' label.
                             nullable: true
                           PINTEREST:
                             type: object
@@ -25421,6 +25628,14 @@ paths:
                                 description: >-
                                   The dominant color of the image. This is used
                                   to display the image before it's loaded.
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the Pin content was generated
+                                  or modified by AI. Adds Pinterest's AI
+                                  disclosure label.
                             required:
                               - boardName
                             nullable: true
@@ -25653,6 +25868,14 @@ paths:
                                 description: >-
                                   Information about the Instagram audio asset
                                   used for Reels publishing.
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the content was generated or
+                                  modified by AI. Adds Instagram's AI content
+                                  label.
                             nullable: true
                           THREADS:
                             type: object
@@ -27732,6 +27955,13 @@ paths:
                                   - SUBSCRIBERS
                                   - VERIFIED
                                 nullable: true
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the post contains AI-generated
+                                  media. Adds X's 'made with AI' label.
                             nullable: true
                           PINTEREST:
                             type: object
@@ -27776,6 +28006,14 @@ paths:
                                 description: >-
                                   The dominant color of the image. This is used
                                   to display the image before it's loaded.
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the Pin content was generated
+                                  or modified by AI. Adds Pinterest's AI
+                                  disclosure label.
                             required:
                               - boardName
                             nullable: true
@@ -28008,6 +28246,14 @@ paths:
                                 description: >-
                                   Information about the Instagram audio asset
                                   used for Reels publishing.
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the content was generated or
+                                  modified by AI. Adds Instagram's AI content
+                                  label.
                             nullable: true
                           THREADS:
                             type: object

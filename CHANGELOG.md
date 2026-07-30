@@ -1,3 +1,10 @@
+# [2.61.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.60.0...v2.61.0) (2026-07-30)
+
+
+### Features
+
+* first comment ([38780dc](https://github.com/bundleglobal/bundlesocial-node/commit/38780dc2bd764d5358663a53e0af2a8a6b9186a7))
+
 # [2.60.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.59.0...v2.60.0) (2026-07-27)
 
 

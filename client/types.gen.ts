@@ -2233,6 +2233,19 @@ export type PostGetByReferenceKeyResponse = {
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
+    firstComment?: {
+        TIKTOK?: string | null;
+        YOUTUBE?: string | null;
+        INSTAGRAM?: string | null;
+        FACEBOOK?: string | null;
+        THREADS?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        MASTODON?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        BLUESKY?: string | null;
+    } | null;
     uploads: Array<{
         postId: string;
         uploadId: string;
@@ -3010,6 +3023,19 @@ export type PostGetResponse = {
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
+    firstComment?: {
+        TIKTOK?: string | null;
+        YOUTUBE?: string | null;
+        INSTAGRAM?: string | null;
+        FACEBOOK?: string | null;
+        THREADS?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        MASTODON?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        BLUESKY?: string | null;
+    } | null;
     uploads: Array<{
         postId: string;
         uploadId: string;
@@ -3517,6 +3543,19 @@ export type PostUpdateData = {
                 skipSaveToProfile?: boolean | null;
             } | null;
         };
+        firstComment?: {
+            TIKTOK?: string | null;
+            YOUTUBE?: string | null;
+            INSTAGRAM?: string | null;
+            FACEBOOK?: string | null;
+            THREADS?: string | null;
+            LINKEDIN?: string | null;
+            REDDIT?: string | null;
+            MASTODON?: string | null;
+            DISCORD?: string | null;
+            SLACK?: string | null;
+            BLUESKY?: string | null;
+        } | null;
     };
 };
 
@@ -4215,6 +4254,19 @@ export type PostUpdateResponse = {
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
+    firstComment?: {
+        TIKTOK?: string | null;
+        YOUTUBE?: string | null;
+        INSTAGRAM?: string | null;
+        FACEBOOK?: string | null;
+        THREADS?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        MASTODON?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        BLUESKY?: string | null;
+    } | null;
 };
 
 export type PostDeleteData = {
@@ -5627,6 +5679,19 @@ export type PostGetListResponse = {
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
+        firstComment?: {
+            TIKTOK?: string | null;
+            YOUTUBE?: string | null;
+            INSTAGRAM?: string | null;
+            FACEBOOK?: string | null;
+            THREADS?: string | null;
+            LINKEDIN?: string | null;
+            REDDIT?: string | null;
+            MASTODON?: string | null;
+            DISCORD?: string | null;
+            SLACK?: string | null;
+            BLUESKY?: string | null;
+        } | null;
         uploads: Array<{
             postId: string;
             uploadId: string;
@@ -6136,6 +6201,19 @@ export type PostCreateData = {
                 skipSaveToProfile?: boolean | null;
             } | null;
         };
+        firstComment?: {
+            TIKTOK?: string | null;
+            YOUTUBE?: string | null;
+            INSTAGRAM?: string | null;
+            FACEBOOK?: string | null;
+            THREADS?: string | null;
+            LINKEDIN?: string | null;
+            REDDIT?: string | null;
+            MASTODON?: string | null;
+            DISCORD?: string | null;
+            SLACK?: string | null;
+            BLUESKY?: string | null;
+        } | null;
     };
 };
 
@@ -6834,6 +6912,19 @@ export type PostCreateResponse = {
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
+    firstComment?: {
+        TIKTOK?: string | null;
+        YOUTUBE?: string | null;
+        INSTAGRAM?: string | null;
+        FACEBOOK?: string | null;
+        THREADS?: string | null;
+        LINKEDIN?: string | null;
+        REDDIT?: string | null;
+        MASTODON?: string | null;
+        DISCORD?: string | null;
+        SLACK?: string | null;
+        BLUESKY?: string | null;
+    } | null;
 };
 
 export type PostRetryData = {
@@ -17290,6 +17381,19 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
+                    firstComment?: {
+                        TIKTOK?: string | null;
+                        YOUTUBE?: string | null;
+                        INSTAGRAM?: string | null;
+                        FACEBOOK?: string | null;
+                        THREADS?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        MASTODON?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        BLUESKY?: string | null;
+                    } | null;
                     uploads: Array<{
                         postId: string;
                         uploadId: string;
@@ -18119,6 +18223,19 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
+                    firstComment?: {
+                        TIKTOK?: string | null;
+                        YOUTUBE?: string | null;
+                        INSTAGRAM?: string | null;
+                        FACEBOOK?: string | null;
+                        THREADS?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        MASTODON?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        BLUESKY?: string | null;
+                    } | null;
                     uploads: Array<{
                         postId: string;
                         uploadId: string;
@@ -18946,6 +19063,19 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
+                    firstComment?: {
+                        TIKTOK?: string | null;
+                        YOUTUBE?: string | null;
+                        INSTAGRAM?: string | null;
+                        FACEBOOK?: string | null;
+                        THREADS?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        MASTODON?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        BLUESKY?: string | null;
+                    } | null;
                 };
                 /**
                  * 400
@@ -20458,6 +20588,19 @@ export type $OpenApiTs = {
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
+                        firstComment?: {
+                            TIKTOK?: string | null;
+                            YOUTUBE?: string | null;
+                            INSTAGRAM?: string | null;
+                            FACEBOOK?: string | null;
+                            THREADS?: string | null;
+                            LINKEDIN?: string | null;
+                            REDDIT?: string | null;
+                            MASTODON?: string | null;
+                            DISCORD?: string | null;
+                            SLACK?: string | null;
+                            BLUESKY?: string | null;
+                        } | null;
                         uploads: Array<{
                             postId: string;
                             uploadId: string;
@@ -21287,6 +21430,19 @@ export type $OpenApiTs = {
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
+                    firstComment?: {
+                        TIKTOK?: string | null;
+                        YOUTUBE?: string | null;
+                        INSTAGRAM?: string | null;
+                        FACEBOOK?: string | null;
+                        THREADS?: string | null;
+                        LINKEDIN?: string | null;
+                        REDDIT?: string | null;
+                        MASTODON?: string | null;
+                        DISCORD?: string | null;
+                        SLACK?: string | null;
+                        BLUESKY?: string | null;
+                    } | null;
                 };
                 /**
                  * 400

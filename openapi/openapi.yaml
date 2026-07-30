@@ -2,6 +2,11 @@ openapi: 3.0.2
 paths:
   /api/v1/:
     get:
+      description: >-
+        Check whether the bundle.social API is reachable and see the current
+        operational status of every supported social platform. Use this endpoint
+        for uptime monitoring and to detect platform-side outages before
+        publishing.
       summary: Get health
       tags:
         - app
@@ -393,6 +398,10 @@ paths:
                   - message
   /api/v1/organization/:
     get:
+      description: >-
+        Retrieve your organization's details, plan, and the teams it contains.
+        Use this as the entry point for discovering the team IDs you need for
+        other endpoints.
       summary: Get organization
       tags: &ref_0
         - organization
@@ -1023,6 +1032,10 @@ paths:
                   - message
   /api/v1/organization/usage/posts:
     get:
+      description: >-
+        See how many posts your organization has consumed against its plan limit
+        for the current billing period. Use it to monitor quota before
+        scheduling large batches.
       summary: Get organization posts usage
       tags: *ref_0
       parameters: []
@@ -1168,6 +1181,9 @@ paths:
                   - message
   /api/v1/organization/usage/comments:
     get:
+      description: >-
+        See how many comments your organization has consumed against its plan
+        limit for the current billing period.
       summary: Get organization comments usage
       tags: *ref_0
       parameters: []
@@ -1313,6 +1329,9 @@ paths:
                   - message
   /api/v1/organization/usage/uploads:
     get:
+      description: >-
+        See how much upload capacity your organization has consumed against its
+        plan limit for the current billing period.
       summary: Get organization uploads usage
       tags: *ref_0
       parameters: []
@@ -1458,6 +1477,10 @@ paths:
                   - message
   /api/v1/organization/usage/daily-limits:
     get:
+      description: >-
+        Check how many posts a single social account has already published on a
+        specific day versus the platform's own daily cap. Use this to avoid
+        hitting platform-side publishing limits.
       summary: Get daily limits usage for one social account on a given day
       tags: *ref_0
       parameters:
@@ -1658,6 +1681,10 @@ paths:
                   - message
   /api/v1/organization/usage/imports:
     get:
+      description: >-
+        See how much import capacity each social account has consumed, paginated
+        and filterable by team or platform. Use it to track post history and
+        review import quota.
       summary: Get organization imports usage per social account (paginated)
       tags: *ref_0
       parameters:
@@ -1885,6 +1912,10 @@ paths:
                   - message
   /api/v1/team/{id}:
     get:
+      description: >-
+        Retrieve a single team with its connected social accounts and settings.
+        Teams are the container that social accounts, posts, and uploads belong
+        to.
       summary: Get team
       tags: &ref_1
         - team
@@ -2551,6 +2582,9 @@ paths:
                 required:
                   - message
     patch:
+      description: >-
+        Update a team's name, avatar, time zone, or other settings. Only the
+        fields you send are changed.
       summary: Update team
       tags: *ref_1
       parameters:
@@ -2734,6 +2768,9 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Permanently delete a team along with its connected social accounts,
+        posts, and uploads. This cannot be undone.
       summary: Delete team
       tags: *ref_1
       parameters:
@@ -2904,6 +2941,10 @@ paths:
                   - message
   /api/v1/team/:
     get:
+      description: >-
+        List the teams in your organization with pagination. Use this to
+        discover team IDs, which are required by most publishing and analytics
+        endpoints.
       summary: Get list of teams
       tags: *ref_1
       parameters:
@@ -3594,6 +3635,10 @@ paths:
                 required:
                   - message
     post:
+      description: >-
+        Create a new team in your organization. Create one team per brand,
+        client, or workspace you want to keep separate, then connect social
+        accounts to it.
       summary: Create new team
       tags: *ref_1
       parameters: []
@@ -5496,6 +5541,10 @@ paths:
                   - message
   /api/v1/social-account/connection-check:
     post:
+      description: >-
+        Force an immediate check of whether a social account's authorization is
+        still valid, instead of waiting for the scheduled check. Use it to
+        surface expired tokens before a scheduled post fails.
       summary: Manually run connection/disconnect check
       tags: *ref_2
       parameters: []
@@ -5689,6 +5738,10 @@ paths:
                   - message
   /api/v1/social-account/profile-refresh:
     post:
+      description: >-
+        Pull the latest profile name, handle, and avatar from the platform for a
+        connected account. Use it to keep your own UI in sync after a user
+        renames their profile.
       summary: Manually refresh social account profile info
       tags: *ref_2
       parameters: []
@@ -6032,6 +6085,10 @@ paths:
                   - message
   /api/v1/social-account/by-type:
     get:
+      description: >-
+        Look up a team's connected account for a specific platform without
+        listing every account first. Useful when you already know which platform
+        you want to publish to.
       summary: Get social account by team and type
       tags: *ref_2
       parameters:
@@ -6339,6 +6396,9 @@ paths:
                   - message
   /api/v1/social-account/copy:
     post:
+      description: >-
+        Copy connected social accounts from one team to another so you can reuse
+        an existing authorization without sending the user through OAuth again.
       summary: Copy social accounts
       tags: *ref_2
       parameters: []
@@ -6665,6 +6725,9 @@ paths:
                   - message
   /api/v1/social-account/to-delete:
     get:
+      description: >-
+        List social accounts queued for deletion, with pagination. Use it to
+        warn users before an account and its data are permanently removed.
       summary: Get paginated social accounts scheduled to delete
       tags: *ref_2
       parameters:
@@ -6983,6 +7046,10 @@ paths:
                   - message
   /api/v1/upload/:
     get:
+      description: >-
+        List the media files in your team's library, filterable and including
+        the posts each file is used in. Use it to reuse existing media instead
+        of uploading duplicates.
       summary: Get upload list
       tags: &ref_3
         - upload
@@ -7458,6 +7525,9 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Permanently delete several media files in one request. Use it to clean
+        up your library in bulk instead of calling delete per file.
       summary: Delete many uploads
       tags: *ref_3
       parameters: []
@@ -7679,6 +7749,9 @@ paths:
                   - message
   /api/v1/upload/{id}:
     get:
+      description: >-
+        Retrieve a single media file with its processing status, dimensions,
+        duration, and the posts it is attached to.
       summary: Get upload
       tags: *ref_3
       parameters:
@@ -7915,6 +7988,9 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Permanently delete a single media file from your library. Files still
+        attached to scheduled posts should be replaced first.
       summary: Delete upload
       tags: *ref_3
       parameters:
@@ -8125,6 +8201,10 @@ paths:
                   - message
   /api/v1/upload/from-url:
     post:
+      description: >-
+        Add an image or video to your media library by giving bundle.social a
+        public URL to fetch, instead of uploading the bytes yourself. Useful
+        when your media already lives in a CDN or S3 bucket.
       summary: Create upload from URL
       tags: *ref_3
       parameters: []
@@ -8735,6 +8815,10 @@ paths:
                   - message
   /api/v1/post/reconnect-social-account/candidates:
     get:
+      description: >-
+        List posts that lost their link to a social account after a disconnect,
+        and that can be reattached to a newly connected account of the same
+        platform.
       summary: Get posts that can be reconnected to a social account
       tags: &ref_4
         - post
@@ -8953,6 +9037,10 @@ paths:
                   - message
   /api/v1/post/reconnect-social-account:
     post:
+      description: >-
+        Reattach a newly connected social account to posts that were orphaned
+        when the previous account was disconnected, so scheduled posts publish
+        instead of failing.
       summary: Reconnect social account to matching posts
       tags: *ref_4
       parameters: []
@@ -9172,6 +9260,11 @@ paths:
                   - message
   /api/v1/post/reference-key/{referenceKey}:
     get:
+      description: >-
+        Retrieve a single post using your own reference key instead of the
+        bundle.social post ID. Useful when you store your own identifier on
+        create and want to look the post up later without keeping a mapping
+        table.
       summary: Get post by reference key
       tags: *ref_4
       parameters:
@@ -10902,6 +10995,43 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
+                  firstComment:
+                    type: object
+                    properties:
+                      TIKTOK:
+                        type: string
+                        nullable: true
+                      YOUTUBE:
+                        type: string
+                        nullable: true
+                      INSTAGRAM:
+                        type: string
+                        nullable: true
+                      FACEBOOK:
+                        type: string
+                        nullable: true
+                      THREADS:
+                        type: string
+                        nullable: true
+                      LINKEDIN:
+                        type: string
+                        nullable: true
+                      REDDIT:
+                        type: string
+                        nullable: true
+                      MASTODON:
+                        type: string
+                        nullable: true
+                      DISCORD:
+                        type: string
+                        nullable: true
+                      SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                    nullable: true
                   uploads:
                     type: array
                     items:
@@ -11313,6 +11443,9 @@ paths:
                   - message
   /api/v1/post/{id}:
     get:
+      description: >-
+        Retrieve a single post by ID, including its per-platform status,
+        scheduled time, media, and any publishing errors.
       summary: Get post
       tags: *ref_4
       parameters:
@@ -13041,6 +13174,43 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
+                  firstComment:
+                    type: object
+                    properties:
+                      TIKTOK:
+                        type: string
+                        nullable: true
+                      YOUTUBE:
+                        type: string
+                        nullable: true
+                      INSTAGRAM:
+                        type: string
+                        nullable: true
+                      FACEBOOK:
+                        type: string
+                        nullable: true
+                      THREADS:
+                        type: string
+                        nullable: true
+                      LINKEDIN:
+                        type: string
+                        nullable: true
+                      REDDIT:
+                        type: string
+                        nullable: true
+                      MASTODON:
+                        type: string
+                        nullable: true
+                      DISCORD:
+                        type: string
+                        nullable: true
+                      SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                    nullable: true
                   uploads:
                     type: array
                     items:
@@ -13451,6 +13621,9 @@ paths:
                 required:
                   - message
     patch:
+      description: >-
+        Change the content, media, scheduled time, or target platforms of a post
+        that has not published yet. Only the fields you send are modified.
       summary: Update post
       tags: *ref_4
       parameters:
@@ -14430,6 +14603,54 @@ paths:
                           type: boolean
                           nullable: true
                       nullable: true
+                firstComment:
+                  type: object
+                  properties:
+                    TIKTOK:
+                      type: string
+                      maxLength: 150
+                      nullable: true
+                    YOUTUBE:
+                      type: string
+                      maxLength: 10000
+                      nullable: true
+                    INSTAGRAM:
+                      type: string
+                      maxLength: 2200
+                      nullable: true
+                    FACEBOOK:
+                      type: string
+                      maxLength: 8000
+                      nullable: true
+                    THREADS:
+                      type: string
+                      maxLength: 500
+                      nullable: true
+                    LINKEDIN:
+                      type: string
+                      maxLength: 1250
+                      nullable: true
+                    REDDIT:
+                      type: string
+                      maxLength: 10000
+                      nullable: true
+                    MASTODON:
+                      type: string
+                      maxLength: 500
+                      nullable: true
+                    DISCORD:
+                      type: string
+                      maxLength: 2000
+                      nullable: true
+                    SLACK:
+                      type: string
+                      maxLength: 30000
+                      nullable: true
+                    BLUESKY:
+                      type: string
+                      maxLength: 300
+                      nullable: true
+                  nullable: true
       responses:
         '200':
           description: '200'
@@ -16149,6 +16370,43 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
+                  firstComment:
+                    type: object
+                    properties:
+                      TIKTOK:
+                        type: string
+                        nullable: true
+                      YOUTUBE:
+                        type: string
+                        nullable: true
+                      INSTAGRAM:
+                        type: string
+                        nullable: true
+                      FACEBOOK:
+                        type: string
+                        nullable: true
+                      THREADS:
+                        type: string
+                        nullable: true
+                      LINKEDIN:
+                        type: string
+                        nullable: true
+                      REDDIT:
+                        type: string
+                        nullable: true
+                      MASTODON:
+                        type: string
+                        nullable: true
+                      DISCORD:
+                        type: string
+                        nullable: true
+                      SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                    nullable: true
                 required:
                   - id
                   - teamId
@@ -16295,6 +16553,10 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Permanently delete a post from bundle.social. Deleting a scheduled post
+        cancels it; deleting an already-published post does not remove it from
+        the social platform.
       summary: Delete post
       tags: *ref_4
       parameters:
@@ -18156,6 +18418,10 @@ paths:
                   - message
   /api/v1/post/:
     get:
+      description: >-
+        List and filter posts across a team by status, platform, or date range
+        with pagination. Use this to build a content calendar or reconcile your
+        own database with bundle.social.
       summary: Get post list
       tags: *ref_4
       parameters:
@@ -19988,6 +20254,43 @@ paths:
                           type: string
                           format: date-time
                           nullable: true
+                        firstComment:
+                          type: object
+                          properties:
+                            TIKTOK:
+                              type: string
+                              nullable: true
+                            YOUTUBE:
+                              type: string
+                              nullable: true
+                            INSTAGRAM:
+                              type: string
+                              nullable: true
+                            FACEBOOK:
+                              type: string
+                              nullable: true
+                            THREADS:
+                              type: string
+                              nullable: true
+                            LINKEDIN:
+                              type: string
+                              nullable: true
+                            REDDIT:
+                              type: string
+                              nullable: true
+                            MASTODON:
+                              type: string
+                              nullable: true
+                            DISCORD:
+                              type: string
+                              nullable: true
+                            SLACK:
+                              type: string
+                              nullable: true
+                            BLUESKY:
+                              type: string
+                              nullable: true
+                          nullable: true
                         uploads:
                           type: array
                           items:
@@ -20403,6 +20706,11 @@ paths:
                 required:
                   - message
     post:
+      description: >-
+        Schedule or immediately publish a post to one or more connected social
+        accounts in a single request. Supply shared content plus optional
+        per-platform overrides for captions, media, and platform-specific
+        options.
       summary: Create post
       tags: *ref_4
       parameters: []
@@ -21379,6 +21687,54 @@ paths:
                           type: boolean
                           nullable: true
                       nullable: true
+                firstComment:
+                  type: object
+                  properties:
+                    TIKTOK:
+                      type: string
+                      maxLength: 150
+                      nullable: true
+                    YOUTUBE:
+                      type: string
+                      maxLength: 10000
+                      nullable: true
+                    INSTAGRAM:
+                      type: string
+                      maxLength: 2200
+                      nullable: true
+                    FACEBOOK:
+                      type: string
+                      maxLength: 8000
+                      nullable: true
+                    THREADS:
+                      type: string
+                      maxLength: 500
+                      nullable: true
+                    LINKEDIN:
+                      type: string
+                      maxLength: 1250
+                      nullable: true
+                    REDDIT:
+                      type: string
+                      maxLength: 10000
+                      nullable: true
+                    MASTODON:
+                      type: string
+                      maxLength: 500
+                      nullable: true
+                    DISCORD:
+                      type: string
+                      maxLength: 2000
+                      nullable: true
+                    SLACK:
+                      type: string
+                      maxLength: 30000
+                      nullable: true
+                    BLUESKY:
+                      type: string
+                      maxLength: 300
+                      nullable: true
+                  nullable: true
               required:
                 - teamId
                 - title
@@ -23105,6 +23461,43 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
+                  firstComment:
+                    type: object
+                    properties:
+                      TIKTOK:
+                        type: string
+                        nullable: true
+                      YOUTUBE:
+                        type: string
+                        nullable: true
+                      INSTAGRAM:
+                        type: string
+                        nullable: true
+                      FACEBOOK:
+                        type: string
+                        nullable: true
+                      THREADS:
+                        type: string
+                        nullable: true
+                      LINKEDIN:
+                        type: string
+                        nullable: true
+                      REDDIT:
+                        type: string
+                        nullable: true
+                      MASTODON:
+                        type: string
+                        nullable: true
+                      DISCORD:
+                        type: string
+                        nullable: true
+                      SLACK:
+                        type: string
+                        nullable: true
+                      BLUESKY:
+                        type: string
+                        nullable: true
+                    nullable: true
                 required:
                   - id
                   - teamId
@@ -23252,6 +23645,10 @@ paths:
                   - message
   /api/v1/post/{id}/retry:
     post:
+      description: >-
+        Re-attempt publishing a post that failed, for example after a token
+        expired or a platform outage. Fix the underlying cause first, then
+        retry.
       summary: Retry post
       tags: *ref_4
       parameters:
@@ -25113,6 +25510,11 @@ paths:
                   - message
   /api/v1/analytics/social-account:
     get:
+      description: >-
+        Retrieve normalized profile-level metrics such as followers, reach, and
+        impressions for a connected social account over a date range. Metric
+        names are unified across platforms so you can chart accounts side by
+        side.
       summary: Get Social Account Analytics
       tags: &ref_5
         - analytics
@@ -25480,6 +25882,10 @@ paths:
                   - message
   /api/v1/analytics/post:
     get:
+      description: >-
+        Retrieve normalized engagement metrics such as likes, comments, shares,
+        and views for a single published post. Metric names are unified across
+        platforms for easier reporting.
       summary: Get Post Analytics
       tags: *ref_5
       parameters:
@@ -27514,6 +27920,10 @@ paths:
                   - message
   /api/v1/analytics/social-account/raw:
     get:
+      description: >-
+        Retrieve profile-level analytics exactly as returned by the social
+        platform, without bundle.social's normalization. Use this when you need
+        a platform-specific metric that the normalized response does not expose.
       summary: Get Social Account Analytics Raw
       tags: *ref_5
       parameters:
@@ -27858,6 +28268,10 @@ paths:
                   - message
   /api/v1/analytics/post/raw:
     get:
+      description: >-
+        Retrieve post analytics exactly as returned by the social platform,
+        without bundle.social's normalization. Use this when you need a
+        platform-specific metric that the normalized response does not expose.
       summary: Get Post Analytics Raw
       tags: *ref_5
       parameters:
@@ -30137,6 +30551,10 @@ paths:
                   - message
   /api/v1/analytics/social-account/force:
     post:
+      description: >-
+        Trigger an immediate fetch of fresh profile analytics from the platform
+        instead of waiting for the scheduled refresh. Use sparingly, as it
+        consumes platform rate limits.
       summary: Force refresh social account analytics
       tags: *ref_5
       parameters: []
@@ -30350,6 +30768,10 @@ paths:
                   - message
   /api/v1/analytics/post/force:
     post:
+      description: >-
+        Trigger an immediate fetch of fresh analytics for a single post instead
+        of waiting for the scheduled refresh. Use sparingly, as it consumes
+        platform rate limits.
       summary: Force refresh post analytics
       tags: *ref_5
       parameters: []
@@ -30567,6 +30989,10 @@ paths:
                   - message
   /api/v1/comment/import:
     post:
+      description: >-
+        Kick off an asynchronous import that pulls existing comments from a
+        published post on the social platform into bundle.social so you can read
+        and reply to them through the API.
       summary: Start a new comment import for a post
       tags: &ref_6
         - comment
@@ -30815,6 +31241,9 @@ paths:
                 required:
                   - message
     get:
+      description: >-
+        List comment import jobs for a team so you can monitor which imports are
+        queued, running, finished, or failed.
       summary: Get comment import list
       tags: *ref_6
       parameters:
@@ -31065,6 +31494,9 @@ paths:
                   - message
   /api/v1/comment/import/comments:
     get:
+      description: >-
+        List the comments pulled in by a comment import, with pagination. Use
+        this to read audience replies and decide which ones need a response.
       summary: Get fetched comments for a post
       tags: *ref_6
       parameters:
@@ -31423,6 +31855,10 @@ paths:
                   - message
   /api/v1/comment/import/comments/{commentId}/action:
     post:
+      description: >-
+        Reply to, hide, like, or delete an imported comment directly on the
+        social platform. Use this to moderate and engage without leaving your
+        own app.
       summary: Run an action on a fetched comment
       tags: *ref_6
       parameters:
@@ -31768,6 +32204,7 @@ paths:
                   - message
   /api/v1/comment/import/{importId}:
     get:
+      description: Check the status, progress, and result of a single comment import job.
       summary: Get comment import by ID
       tags: *ref_6
       parameters:
@@ -31979,6 +32416,9 @@ paths:
                   - message
   /api/v1/comment/{id}:
     get:
+      description: >-
+        Retrieve a single comment you created through bundle.social, including
+        its publishing status and any error details.
       summary: Get comment
       tags: *ref_6
       parameters:
@@ -32738,6 +33178,9 @@ paths:
                 required:
                   - message
     patch:
+      description: >-
+        Change the content or scheduled time of a comment that has not published
+        yet.
       summary: Update comment
       tags: *ref_6
       parameters:
@@ -33625,6 +34068,9 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Permanently delete a comment from bundle.social. Deleting a scheduled
+        comment cancels it before it publishes.
       summary: Delete comment
       tags: *ref_6
       parameters:
@@ -34385,6 +34831,10 @@ paths:
                   - message
   /api/v1/comment/:
     get:
+      description: >-
+        List and filter the comments your organization has created, with
+        pagination. Use it to track which scheduled comments published
+        successfully.
       summary: Get comment list
       tags: *ref_6
       parameters:
@@ -35224,6 +35674,10 @@ paths:
                 required:
                   - message
     post:
+      description: >-
+        Publish a comment or a reply on one of your published posts. Use it to
+        schedule the first comment on Instagram or LinkedIn, or to respond to
+        your audience programmatically.
       summary: Create comment
       tags: *ref_6
       parameters: []
@@ -36111,6 +36565,9 @@ paths:
                   - message
   /api/v1/comment/{id}/retry:
     post:
+      description: >-
+        Re-attempt publishing a comment that failed, for example after a token
+        expired or a platform outage.
       summary: Retry comment
       tags: *ref_6
       parameters:
@@ -36871,6 +37328,10 @@ paths:
                   - message
   /api/v1/misc/youtube/thumbnail:
     post:
+      description: >-
+        Upload a custom thumbnail for a published YouTube video. Custom
+        thumbnails require a verified channel and strongly influence
+        click-through rate.
       summary: Set or change thumbnail for a YouTube video
       tags:
         - misc
@@ -37090,6 +37551,9 @@ paths:
                   - message
   /api/v1/misc/youtube/playlist:
     get:
+      description: >-
+        List the playlists on a connected YouTube channel, with their IDs,
+        titles, and privacy status.
       summary: Get channel playlists
       tags:
         - misc
@@ -37347,6 +37811,10 @@ paths:
                 required:
                   - message
     post:
+      description: >-
+        Create a playlist on a connected YouTube channel with a title,
+        description, and privacy status. Playlists group related videos and
+        increase session watch time.
       summary: Create a new playlist
       tags:
         - misc
@@ -37600,6 +38068,10 @@ paths:
                 required:
                   - message
     put:
+      description: >-
+        Change the title, description, or privacy status of a YouTube playlist
+        on a connected channel. Send the playlist ID together with the fields
+        you want to update.
       summary: Update an existing playlist
       tags:
         - misc
@@ -37857,7 +38329,10 @@ paths:
                   - message
   /api/v1/misc/youtube/playlist/{playlistId}:
     delete:
-      summary: Remove a video from a playlist
+      description: >-
+        Permanently delete a playlist from a connected YouTube channel. The
+        videos themselves are not deleted.
+      summary: Delete a channel playlist
       tags:
         - misc
       parameters:
@@ -38002,6 +38477,7 @@ paths:
                   - message
   /api/v1/misc/youtube/playlist-items:
     post:
+      description: Append a video to a YouTube playlist on a connected channel.
       summary: Add a video to a playlist
       tags:
         - misc
@@ -38251,6 +38727,9 @@ paths:
                 required:
                   - message
     get:
+      description: >-
+        List the videos in a YouTube playlist, including the playlist item IDs
+        required to remove individual entries.
       summary: Get videos from a playlist
       tags:
         - misc
@@ -38519,6 +38998,9 @@ paths:
                   - message
   /api/v1/misc/youtube/playlist-items/{playlistItemId}:
     delete:
+      description: >-
+        Remove a single video from a YouTube playlist. Pass the playlist item
+        ID, not the video ID. The video itself stays on the channel.
       summary: Remove a video from a playlist
       tags:
         - misc
@@ -39674,6 +40156,9 @@ paths:
                   - message
   /api/v1/misc/linkedin/mentions/tags:
     get:
+      description: >-
+        Search for LinkedIn people and organizations that can be @-mentioned,
+        and get the tag IDs needed to insert them into post text.
       summary: Get Linkedin mentionable tags (people & organizations)
       tags:
         - misc
@@ -40889,6 +41374,10 @@ paths:
                   - message
   /api/v1/misc/google-business/media:
     post:
+      description: >-
+        Publish a photo or video to your Google Business Profile from a
+        bundle.social upload, tagged with a category such as exterior, interior,
+        or product. Fresh photos are a local ranking and conversion signal.
       summary: Add a media item (photo/video) using uploadId and category
       tags:
         - misc
@@ -41101,6 +41590,9 @@ paths:
                 required:
                   - message
     get:
+      description: >-
+        List the photos and videos on your Google Business Profile, with paging.
+        Use it to audit which images are live before adding or removing media.
       summary: List Google Business media items
       tags:
         - misc
@@ -41303,6 +41795,7 @@ paths:
                 required:
                   - message
     delete:
+      description: Remove a photo or video from your Google Business Profile.
       summary: Delete Google Business media item
       tags:
         - misc
@@ -42684,6 +43177,9 @@ paths:
                   - message
   /api/v1/misc/google-business/location/attributes:
     get:
+      description: >-
+        Retrieve the attributes currently set on your Google Business Profile
+        location, such as accessibility, payment options, or amenities.
       summary: Get Google Business location attributes
       tags:
         - misc
@@ -42860,6 +43356,10 @@ paths:
                 required:
                   - message
     patch:
+      description: >-
+        Set or change attributes on your Google Business Profile location.
+        Complete attributes help your listing surface for more specific local
+        searches.
       summary: Update Google Business location attributes
       tags:
         - misc
@@ -43079,6 +43579,10 @@ paths:
                   - message
   /api/v1/misc/google-business/location/attributes/available:
     get:
+      description: >-
+        List the attributes Google allows for your location's category and
+        country. Check this before updating attributes, since the valid set
+        differs per business category.
       summary: List available Google Business attributes
       tags:
         - misc
@@ -43447,6 +43951,9 @@ paths:
                   - message
   /api/v1/misc/google-business/location/service-list:
     get:
+      description: >-
+        Retrieve the services listed on your Google Business Profile, including
+        custom services and prices.
       summary: Get Google Business service list
       tags:
         - misc
@@ -44108,6 +44615,9 @@ paths:
                   - message
   /api/v1/misc/google-business/location/place-action-links:
     get:
+      description: >-
+        List the action links on your Google Business Profile, such as booking,
+        ordering, or reservation URLs.
       summary: List Google Business place action links
       tags:
         - misc
@@ -44285,6 +44795,9 @@ paths:
                 required:
                   - message
     post:
+      description: >-
+        Add an action link such as Book, Order online, or Reserve to your Google
+        Business Profile so customers can convert straight from the listing.
       summary: Create Google Business place action link
       tags:
         - misc
@@ -44674,6 +45187,9 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Remove an action link from your Google Business Profile, for example
+        when a booking URL is retired.
       summary: Delete Google Business place action link
       tags:
         - misc
@@ -44829,6 +45345,10 @@ paths:
                   - message
   /api/v1/misc/google-business/reviews/import:
     post:
+      description: >-
+        Kick off an asynchronous import that pulls your Google Business Profile
+        reviews into bundle.social so you can read and reply to them through the
+        API.
       summary: Start a new Google Reviews import
       tags:
         - misc
@@ -45047,6 +45567,9 @@ paths:
                 required:
                   - message
     get:
+      description: >-
+        List Google Review import jobs for a team so you can monitor which
+        imports are queued, running, finished, or failed.
       summary: Get review import status list
       tags:
         - misc
@@ -45249,6 +45772,9 @@ paths:
                   - message
   /api/v1/misc/google-business/reviews/import/{importId}:
     get:
+      description: >-
+        Check the status, progress, and result of a single Google Reviews import
+        job.
       summary: Get review import by ID
       tags:
         - misc
@@ -45444,6 +45970,10 @@ paths:
                   - message
   /api/v1/misc/google-business/reviews:
     get:
+      description: >-
+        List the Google Reviews pulled in by an import, with paging and your
+        remaining import capacity. Use it to build a review inbox or monitor
+        rating trends.
       summary: List imported Google Reviews
       tags:
         - misc
@@ -45679,6 +46209,9 @@ paths:
                   - message
   /api/v1/misc/google-business/reviews/{reviewId}:
     get:
+      description: >-
+        Retrieve one imported Google Review with its star rating, text,
+        reviewer, and any existing owner reply.
       summary: Get a single imported Google Review
       tags:
         - misc
@@ -45889,6 +46422,9 @@ paths:
                   - message
   /api/v1/misc/google-business/reviews/{reviewId}/reply:
     put:
+      description: >-
+        Publish or update the owner reply on a Google Review. Google allows one
+        owner reply per review, so sending again overwrites the previous text.
       summary: Reply to a Google Review (creates or updates the owner reply)
       tags:
         - misc
@@ -46109,6 +46645,9 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Remove your owner reply from a Google Review, leaving the customer's
+        review in place.
       summary: Delete the owner reply from a Google Review
       tags:
         - misc
@@ -46325,6 +46864,10 @@ paths:
                   - message
   /api/v1/misc/reddit/post-requirements:
     get:
+      description: >-
+        Check a subreddit's posting rules before publishing, including whether
+        flair is enabled or mandatory. Call this first to avoid rejected
+        submissions.
       summary: Get subreddit post requirements (flair required/enabled)
       tags:
         - misc
@@ -46478,6 +47021,9 @@ paths:
                   - message
   /api/v1/misc/reddit/subreddit-flairs:
     get:
+      description: >-
+        List the flairs available in a subreddit so you can attach a valid flair
+        ID when creating a Reddit post.
       summary: Get subreddit flairs list
       tags:
         - misc
@@ -48073,6 +48619,10 @@ paths:
                   - message
   /api/v1/misc/facebook/token-debug:
     get:
+      description: >-
+        Inspect a connected Facebook account's access token, including its
+        scopes and expiry. Use it to diagnose permission errors when publishing
+        fails.
       summary: Get Facebook token debug details
       tags:
         - misc
@@ -48260,6 +48810,10 @@ paths:
                   - message
   /api/v1/misc/facebook/recommendations/import:
     post:
+      description: >-
+        Kick off an asynchronous import that pulls recommendations left on your
+        Facebook Page into bundle.social so you can read and reply to them
+        through the API.
       summary: Start a new Facebook recommendations import
       tags:
         - misc
@@ -48479,6 +49033,9 @@ paths:
                 required:
                   - message
     get:
+      description: >-
+        List Facebook recommendation import jobs for a team so you can monitor
+        which imports are queued, running, finished, or failed.
       summary: Get Facebook recommendations import status list
       tags:
         - misc
@@ -48681,6 +49238,9 @@ paths:
                   - message
   /api/v1/misc/facebook/recommendations/import/{importId}:
     get:
+      description: >-
+        Check the status, progress, and result of a single Facebook
+        recommendations import job.
       summary: Get Facebook recommendations import by ID
       tags:
         - misc
@@ -48876,6 +49436,10 @@ paths:
                   - message
   /api/v1/misc/facebook/recommendations:
     get:
+      description: >-
+        List the Facebook Page recommendations pulled in by an import, with
+        paging and your remaining import capacity. Use it to build a
+        reputation-management inbox.
       summary: List imported Facebook recommendations
       tags:
         - misc
@@ -49126,6 +49690,9 @@ paths:
                   - message
   /api/v1/misc/facebook/recommendations/{recommendationId}:
     get:
+      description: >-
+        Retrieve one imported Facebook recommendation with its rating, text,
+        author, and existing replies.
       summary: Get a single imported Facebook recommendation
       tags:
         - misc
@@ -49351,6 +49918,9 @@ paths:
                   - message
   /api/v1/misc/facebook/recommendations/{recommendationId}/comments:
     get:
+      description: >-
+        List the comments in a Facebook recommendation thread so you can see the
+        full conversation before replying.
       summary: Get recommendation thread comments
       tags:
         - misc
@@ -49545,6 +50115,9 @@ paths:
                   - message
   /api/v1/misc/facebook/recommendations/{recommendationId}/reply:
     put:
+      description: >-
+        Publish a Page reply to a Facebook recommendation. Use it to respond to
+        reviews programmatically instead of through Meta Business Suite.
       summary: Reply to a Facebook recommendation
       tags:
         - misc
@@ -49781,6 +50354,9 @@ paths:
                   - message
   /api/v1/misc/facebook/recommendations/{recommendationId}/comments/{commentId}/reply:
     put:
+      description: >-
+        Publish a reply to a specific comment inside a Facebook recommendation
+        thread.
       summary: Reply to a Facebook recommendation thread comment
       tags:
         - misc
@@ -52958,6 +53534,10 @@ paths:
                   - message
   /api/v1/post-history-import/:
     post:
+      description: >-
+        Kick off an asynchronous import that backfills posts a social account
+        published before it was connected to bundle.social, together with their
+        analytics. Use it to get historical reporting from day one.
       summary: Start a new post history import
       tags: &ref_9
         - postImport
@@ -53233,6 +53813,9 @@ paths:
                 required:
                   - message
     get:
+      description: >-
+        List post history import jobs for a team so you can monitor which
+        backfills are queued, running, finished, or failed.
       summary: Get import status list
       tags: *ref_9
       parameters:
@@ -53473,6 +54056,9 @@ paths:
                   - message
   /api/v1/post-history-import/{importId}:
     get:
+      description: >-
+        Check the status, progress, and result of a single post history import
+        job.
       summary: Get import by ID
       tags: *ref_9
       parameters:
@@ -53691,6 +54277,10 @@ paths:
                   - message
   /api/v1/post-history-import/posts:
     get:
+      description: >-
+        List the historical posts pulled in by an import, with their analytics
+        and your remaining import capacity. Use it to report on performance from
+        before the account was connected.
       summary: Get imported posts with analytics for a social account
       tags: *ref_9
       parameters:
@@ -54006,6 +54596,9 @@ paths:
                 required:
                   - message
     delete:
+      description: >-
+        Permanently delete up to 100 imported historical posts and their
+        analytics in one request, freeing import capacity.
       summary: Bulk delete imported posts and their analytics
       tags: *ref_9
       parameters: []
@@ -54163,6 +54756,9 @@ paths:
                   - message
   /api/v1/post-history-import/{importId}/retry:
     post:
+      description: >-
+        Re-run a post history import that failed, for example after a token
+        expired or the platform rate-limited the request.
       summary: Retry a failed import
       tags: *ref_9
       parameters:
@@ -54603,6 +55199,9 @@ paths:
                 required:
                   - message
     get:
+      description: >-
+        List your team's bulk CSV post imports with pagination, so you can see
+        what was uploaded and when.
       summary: Get post CSV import history
       tags: *ref_10
       parameters:
@@ -54824,6 +55423,7 @@ paths:
                   - message
   /api/v1/post-csv-import/{importId}:
     get:
+      description: Retrieve a single CSV import with its summary counts and configuration.
       summary: Get post CSV import details
       tags: *ref_10
       parameters:
@@ -55028,6 +55628,9 @@ paths:
                   - message
   /api/v1/post-csv-import/{importId}/status:
     get:
+      description: >-
+        Poll the progress of a bulk CSV post import, including how many rows are
+        processed, succeeded, and failed.
       summary: Get post CSV import processing status
       tags: *ref_10
       parameters:
@@ -55210,6 +55813,10 @@ paths:
                   - message
   /api/v1/post-csv-import/{importId}/rows:
     get:
+      description: >-
+        List the per-row outcome of a CSV import with pagination, showing which
+        rows created posts and which failed validation and why. Use it to report
+        errors back to the person who uploaded the file.
       summary: Get post CSV import row results
       tags: *ref_10
       parameters:

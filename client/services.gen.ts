@@ -9,6 +9,7 @@ export class AppService {
     
     /**
      * Get health
+     * Check whether the bundle.social API is reachable and see the current operational status of every supported social platform. Use this endpoint for uptime monitoring and to detect platform-side outages before publishing.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -34,6 +35,7 @@ export class OrganizationService {
     
     /**
      * Get organization
+     * Retrieve your organization's details, plan, and the teams it contains. Use this as the entry point for discovering the team IDs you need for other endpoints.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -54,6 +56,7 @@ export class OrganizationService {
     
     /**
      * Get organization posts usage
+     * See how many posts your organization has consumed against its plan limit for the current billing period. Use it to monitor quota before scheduling large batches.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -74,6 +77,7 @@ export class OrganizationService {
     
     /**
      * Get organization comments usage
+     * See how many comments your organization has consumed against its plan limit for the current billing period.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -94,6 +98,7 @@ export class OrganizationService {
     
     /**
      * Get organization uploads usage
+     * See how much upload capacity your organization has consumed against its plan limit for the current billing period.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -114,6 +119,7 @@ export class OrganizationService {
     
     /**
      * Get daily limits usage for one social account on a given day
+     * Check how many posts a single social account has already published on a specific day versus the platform's own daily cap. Use this to avoid hitting platform-side publishing limits.
      * @param data The data for the request.
      * @param data.socialAccountId
      * @param data.date
@@ -141,6 +147,7 @@ export class OrganizationService {
     
     /**
      * Get organization imports usage per social account (paginated)
+     * See how much import capacity each social account has consumed, paginated and filterable by team or platform. Use it to track post history and review import quota.
      * @param data The data for the request.
      * @param data.page
      * @param data.pageSize
@@ -179,6 +186,7 @@ export class TeamService {
     
     /**
      * Get team
+     * Retrieve a single team with its connected social accounts and settings. Teams are the container that social accounts, posts, and uploads belong to.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -204,6 +212,7 @@ export class TeamService {
     
     /**
      * Update team
+     * Update a team's name, avatar, time zone, or other settings. Only the fields you send are changed.
      * @param data The data for the request.
      * @param data.id
      * @param data.requestBody Body
@@ -232,6 +241,7 @@ export class TeamService {
     
     /**
      * Delete team
+     * Permanently delete a team along with its connected social accounts, posts, and uploads. This cannot be undone.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -257,6 +267,7 @@ export class TeamService {
     
     /**
      * Get list of teams
+     * List the teams in your organization with pagination. Use this to discover team IDs, which are required by most publishing and analytics endpoints.
      * @param data The data for the request.
      * @param data.offset
      * @param data.limit
@@ -286,6 +297,7 @@ export class TeamService {
     
     /**
      * Create new team
+     * Create a new team in your organization. Create one team per brand, client, or workspace you want to keep separate, then connect social accounts to it.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -465,6 +477,7 @@ export class SocialAccountService {
     
     /**
      * Manually run connection/disconnect check
+     * Force an immediate check of whether a social account's authorization is still valid, instead of waiting for the scheduled check. Use it to surface expired tokens before a scheduled post fails.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -489,6 +502,7 @@ export class SocialAccountService {
     
     /**
      * Manually refresh social account profile info
+     * Pull the latest profile name, handle, and avatar from the platform for a connected account. Use it to keep your own UI in sync after a user renames their profile.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -513,6 +527,7 @@ export class SocialAccountService {
     
     /**
      * Get social account by team and type
+     * Look up a team's connected account for a specific platform without listing every account first. Useful when you already know which platform you want to publish to.
      * @param data The data for the request.
      * @param data.type
      * @param data.teamId
@@ -540,6 +555,7 @@ export class SocialAccountService {
     
     /**
      * Copy social accounts
+     * Copy connected social accounts from one team to another so you can reuse an existing authorization without sending the user through OAuth again.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -564,6 +580,7 @@ export class SocialAccountService {
     
     /**
      * Get paginated social accounts scheduled to delete
+     * List social accounts queued for deletion, with pagination. Use it to warn users before an account and its data are permanently removed.
      * @param data The data for the request.
      * @param data.page
      * @param data.pageSize
@@ -596,6 +613,7 @@ export class UploadService {
     
     /**
      * Get upload list
+     * List the media files in your team's library, filterable and including the posts each file is used in. Use it to reuse existing media instead of uploading duplicates.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.type
@@ -650,6 +668,7 @@ export class UploadService {
     
     /**
      * Delete many uploads
+     * Permanently delete several media files in one request. Use it to clean up your library in bulk instead of calling delete per file.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -674,6 +693,7 @@ export class UploadService {
     
     /**
      * Get upload
+     * Retrieve a single media file with its processing status, dimensions, duration, and the posts it is attached to.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -699,6 +719,7 @@ export class UploadService {
     
     /**
      * Delete upload
+     * Permanently delete a single media file from your library. Files still attached to scheduled posts should be replaced first.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -724,6 +745,7 @@ export class UploadService {
     
     /**
      * Create upload from URL
+     * Add an image or video to your media library by giving bundle.social a public URL to fetch, instead of uploading the bytes yourself. Useful when your media already lives in a CDN or S3 bucket.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -803,6 +825,7 @@ export class PostService {
     
     /**
      * Get posts that can be reconnected to a social account
+     * List posts that lost their link to a social account after a disconnect, and that can be reattached to a newly connected account of the same platform.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.type
@@ -834,6 +857,7 @@ export class PostService {
     
     /**
      * Reconnect social account to matching posts
+     * Reattach a newly connected social account to posts that were orphaned when the previous account was disconnected, so scheduled posts publish instead of failing.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -858,6 +882,7 @@ export class PostService {
     
     /**
      * Get post by reference key
+     * Retrieve a single post using your own reference key instead of the bundle.social post ID. Useful when you store your own identifier on create and want to look the post up later without keeping a mapping table.
      * @param data The data for the request.
      * @param data.referenceKey
      * @returns unknown 200
@@ -883,6 +908,7 @@ export class PostService {
     
     /**
      * Get post
+     * Retrieve a single post by ID, including its per-platform status, scheduled time, media, and any publishing errors.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -908,6 +934,7 @@ export class PostService {
     
     /**
      * Update post
+     * Change the content, media, scheduled time, or target platforms of a post that has not published yet. Only the fields you send are modified.
      * @param data The data for the request.
      * @param data.id
      * @param data.requestBody Body
@@ -937,6 +964,7 @@ export class PostService {
     
     /**
      * Delete post
+     * Permanently delete a post from bundle.social. Deleting a scheduled post cancels it; deleting an already-published post does not remove it from the social platform.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -962,6 +990,7 @@ export class PostService {
     
     /**
      * Get post list
+     * List and filter posts across a team by status, platform, or date range with pagination. Use this to build a content calendar or reconcile your own database with bundle.social.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.status
@@ -1005,6 +1034,7 @@ export class PostService {
     
     /**
      * Create post
+     * Schedule or immediately publish a post to one or more connected social accounts in a single request. Supply shared content plus optional per-platform overrides for captions, media, and platform-specific options.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1030,6 +1060,7 @@ export class PostService {
     
     /**
      * Retry post
+     * Re-attempt publishing a post that failed, for example after a token expired or a platform outage. Fix the underlying cause first, then retry.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -1060,6 +1091,7 @@ export class AnalyticsService {
     
     /**
      * Get Social Account Analytics
+     * Retrieve normalized profile-level metrics such as followers, reach, and impressions for a connected social account over a date range. Metric names are unified across platforms so you can chart accounts side by side.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.platformType
@@ -1087,6 +1119,7 @@ export class AnalyticsService {
     
     /**
      * Get Post Analytics
+     * Retrieve normalized engagement metrics such as likes, comments, shares, and views for a single published post. Metric names are unified across platforms for easier reporting.
      * @param data The data for the request.
      * @param data.postId
      * @param data.platformType
@@ -1116,6 +1149,7 @@ export class AnalyticsService {
     
     /**
      * Get Social Account Analytics Raw
+     * Retrieve profile-level analytics exactly as returned by the social platform, without bundle.social's normalization. Use this when you need a platform-specific metric that the normalized response does not expose.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.platformType
@@ -1143,6 +1177,7 @@ export class AnalyticsService {
     
     /**
      * Get Post Analytics Raw
+     * Retrieve post analytics exactly as returned by the social platform, without bundle.social's normalization. Use this when you need a platform-specific metric that the normalized response does not expose.
      * @param data The data for the request.
      * @param data.postId
      * @param data.platformType
@@ -1204,6 +1239,7 @@ export class AnalyticsService {
     
     /**
      * Force refresh social account analytics
+     * Trigger an immediate fetch of fresh profile analytics from the platform instead of waiting for the scheduled refresh. Use sparingly, as it consumes platform rate limits.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1228,6 +1264,7 @@ export class AnalyticsService {
     
     /**
      * Force refresh post analytics
+     * Trigger an immediate fetch of fresh analytics for a single post instead of waiting for the scheduled refresh. Use sparingly, as it consumes platform rate limits.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1257,6 +1294,7 @@ export class CommentService {
     
     /**
      * Start a new comment import for a post
+     * Kick off an asynchronous import that pulls existing comments from a published post on the social platform into bundle.social so you can read and reply to them through the API.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 201
@@ -1282,6 +1320,7 @@ export class CommentService {
     
     /**
      * Get comment import list
+     * List comment import jobs for a team so you can monitor which imports are queued, running, finished, or failed.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.postId
@@ -1317,6 +1356,7 @@ export class CommentService {
     
     /**
      * Get fetched comments for a post
+     * List the comments pulled in by a comment import, with pagination. Use this to read audience replies and decide which ones need a response.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.postId
@@ -1354,6 +1394,7 @@ export class CommentService {
     
     /**
      * Run an action on a fetched comment
+     * Reply to, hide, like, or delete an imported comment directly on the social platform. Use this to moderate and engage without leaving your own app.
      * @param data The data for the request.
      * @param data.commentId
      * @param data.requestBody Body
@@ -1382,6 +1423,7 @@ export class CommentService {
     
     /**
      * Get comment import by ID
+     * Check the status, progress, and result of a single comment import job.
      * @param data The data for the request.
      * @param data.importId
      * @returns unknown 200
@@ -1407,6 +1449,7 @@ export class CommentService {
     
     /**
      * Get comment
+     * Retrieve a single comment you created through bundle.social, including its publishing status and any error details.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -1432,6 +1475,7 @@ export class CommentService {
     
     /**
      * Update comment
+     * Change the content or scheduled time of a comment that has not published yet.
      * @param data The data for the request.
      * @param data.id
      * @param data.requestBody Body
@@ -1460,6 +1504,7 @@ export class CommentService {
     
     /**
      * Delete comment
+     * Permanently delete a comment from bundle.social. Deleting a scheduled comment cancels it before it publishes.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -1485,6 +1530,7 @@ export class CommentService {
     
     /**
      * Get comment list
+     * List and filter the comments your organization has created, with pagination. Use it to track which scheduled comments published successfully.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.postId
@@ -1528,6 +1574,7 @@ export class CommentService {
     
     /**
      * Create comment
+     * Publish a comment or a reply on one of your published posts. Use it to schedule the first comment on Instagram or LinkedIn, or to respond to your audience programmatically.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1552,6 +1599,7 @@ export class CommentService {
     
     /**
      * Retry comment
+     * Re-attempt publishing a comment that failed, for example after a token expired or a platform outage.
      * @param data The data for the request.
      * @param data.id
      * @returns unknown 200
@@ -1582,6 +1630,7 @@ export class MiscService {
     
     /**
      * Set or change thumbnail for a YouTube video
+     * Upload a custom thumbnail for a published YouTube video. Custom thumbnails require a verified channel and strongly influence click-through rate.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1606,6 +1655,7 @@ export class MiscService {
     
     /**
      * Get channel playlists
+     * List the playlists on a connected YouTube channel, with their IDs, titles, and privacy status.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.maxResults
@@ -1633,6 +1683,7 @@ export class MiscService {
     
     /**
      * Create a new playlist
+     * Create a playlist on a connected YouTube channel with a title, description, and privacy status. Playlists group related videos and increase session watch time.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1657,6 +1708,7 @@ export class MiscService {
     
     /**
      * Update an existing playlist
+     * Change the title, description, or privacy status of a YouTube playlist on a connected channel. Send the playlist ID together with the fields you want to update.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1680,7 +1732,8 @@ export class MiscService {
     }
     
     /**
-     * Remove a video from a playlist
+     * Delete a channel playlist
+     * Permanently delete a playlist from a connected YouTube channel. The videos themselves are not deleted.
      * @param data The data for the request.
      * @param data.playlistId
      * @param data.teamId
@@ -1710,6 +1763,7 @@ export class MiscService {
     
     /**
      * Add a video to a playlist
+     * Append a video to a YouTube playlist on a connected channel.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -1734,6 +1788,7 @@ export class MiscService {
     
     /**
      * Get videos from a playlist
+     * List the videos in a YouTube playlist, including the playlist item IDs required to remove individual entries.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.playlistId
@@ -1763,6 +1818,7 @@ export class MiscService {
     
     /**
      * Remove a video from a playlist
+     * Remove a single video from a YouTube playlist. Pass the playlist item ID, not the video ID. The video itself stays on the channel.
      * @param data The data for the request.
      * @param data.playlistItemId Playlist item ID (not video ID)
      * @param data.teamId
@@ -1946,6 +2002,7 @@ export class MiscService {
     
     /**
      * Get Linkedin mentionable tags (people & organizations)
+     * Search for LinkedIn people and organizations that can be @-mentioned, and get the tag IDs needed to insert them into post text.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.q
@@ -2130,6 +2187,7 @@ export class MiscService {
     
     /**
      * Add a media item (photo/video) using uploadId and category
+     * Publish a photo or video to your Google Business Profile from a bundle.social upload, tagged with a category such as exterior, interior, or product. Fresh photos are a local ranking and conversion signal.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -2154,6 +2212,7 @@ export class MiscService {
     
     /**
      * List Google Business media items
+     * List the photos and videos on your Google Business Profile, with paging. Use it to audit which images are live before adding or removing media.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.pageSize
@@ -2183,6 +2242,7 @@ export class MiscService {
     
     /**
      * Delete Google Business media item
+     * Remove a photo or video from your Google Business Profile.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -2310,6 +2370,7 @@ export class MiscService {
     
     /**
      * Get Google Business location attributes
+     * Retrieve the attributes currently set on your Google Business Profile location, such as accessibility, payment options, or amenities.
      * @param data The data for the request.
      * @param data.teamId
      * @returns unknown 200
@@ -2335,6 +2396,7 @@ export class MiscService {
     
     /**
      * Update Google Business location attributes
+     * Set or change attributes on your Google Business Profile location. Complete attributes help your listing surface for more specific local searches.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -2359,6 +2421,7 @@ export class MiscService {
     
     /**
      * List available Google Business attributes
+     * List the attributes Google allows for your location's category and country. Check this before updating attributes, since the valid set differs per business category.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.languageCode
@@ -2432,6 +2495,7 @@ export class MiscService {
     
     /**
      * Get Google Business service list
+     * Retrieve the services listed on your Google Business Profile, including custom services and prices.
      * @param data The data for the request.
      * @param data.teamId
      * @returns unknown 200
@@ -2535,6 +2599,7 @@ export class MiscService {
     
     /**
      * List Google Business place action links
+     * List the action links on your Google Business Profile, such as booking, ordering, or reservation URLs.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.pageSize
@@ -2564,6 +2629,7 @@ export class MiscService {
     
     /**
      * Create Google Business place action link
+     * Add an action link such as Book, Order online, or Reserve to your Google Business Profile so customers can convert straight from the listing.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -2613,6 +2679,7 @@ export class MiscService {
     
     /**
      * Delete Google Business place action link
+     * Remove an action link from your Google Business Profile, for example when a booking URL is retired.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -2637,6 +2704,7 @@ export class MiscService {
     
     /**
      * Start a new Google Reviews import
+     * Kick off an asynchronous import that pulls your Google Business Profile reviews into bundle.social so you can read and reply to them through the API.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 201
@@ -2662,6 +2730,7 @@ export class MiscService {
     
     /**
      * Get review import status list
+     * List Google Review import jobs for a team so you can monitor which imports are queued, running, finished, or failed.
      * @param data The data for the request.
      * @param data.teamId
      * @returns unknown 200
@@ -2687,6 +2756,7 @@ export class MiscService {
     
     /**
      * Get review import by ID
+     * Check the status, progress, and result of a single Google Reviews import job.
      * @param data The data for the request.
      * @param data.importId
      * @returns unknown 200
@@ -2712,6 +2782,7 @@ export class MiscService {
     
     /**
      * List imported Google Reviews
+     * List the Google Reviews pulled in by an import, with paging and your remaining import capacity. Use it to build a review inbox or monitor rating trends.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.limit
@@ -2741,6 +2812,7 @@ export class MiscService {
     
     /**
      * Get a single imported Google Review
+     * Retrieve one imported Google Review with its star rating, text, reviewer, and any existing owner reply.
      * @param data The data for the request.
      * @param data.reviewId
      * @param data.teamId
@@ -2770,6 +2842,7 @@ export class MiscService {
     
     /**
      * Reply to a Google Review (creates or updates the owner reply)
+     * Publish or update the owner reply on a Google Review. Google allows one owner reply per review, so sending again overwrites the previous text.
      * @param data The data for the request.
      * @param data.reviewId
      * @param data.requestBody Body
@@ -2798,6 +2871,7 @@ export class MiscService {
     
     /**
      * Delete the owner reply from a Google Review
+     * Remove your owner reply from a Google Review, leaving the customer's review in place.
      * @param data The data for the request.
      * @param data.reviewId
      * @param data.requestBody Body
@@ -2826,6 +2900,7 @@ export class MiscService {
     
     /**
      * Get subreddit post requirements (flair required/enabled)
+     * Check a subreddit's posting rules before publishing, including whether flair is enabled or mandatory. Call this first to avoid rejected submissions.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.subreddit
@@ -2853,6 +2928,7 @@ export class MiscService {
     
     /**
      * Get subreddit flairs list
+     * List the flairs available in a subreddit so you can attach a valid flair ID when creating a Reddit post.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.subreddit
@@ -3093,6 +3169,7 @@ export class MiscService {
     
     /**
      * Get Facebook token debug details
+     * Inspect a connected Facebook account's access token, including its scopes and expiry. Use it to diagnose permission errors when publishing fails.
      * @param data The data for the request.
      * @param data.teamId
      * @returns unknown 200
@@ -3118,6 +3195,7 @@ export class MiscService {
     
     /**
      * Start a new Facebook recommendations import
+     * Kick off an asynchronous import that pulls recommendations left on your Facebook Page into bundle.social so you can read and reply to them through the API.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 201
@@ -3143,6 +3221,7 @@ export class MiscService {
     
     /**
      * Get Facebook recommendations import status list
+     * List Facebook recommendation import jobs for a team so you can monitor which imports are queued, running, finished, or failed.
      * @param data The data for the request.
      * @param data.teamId
      * @returns unknown 200
@@ -3168,6 +3247,7 @@ export class MiscService {
     
     /**
      * Get Facebook recommendations import by ID
+     * Check the status, progress, and result of a single Facebook recommendations import job.
      * @param data The data for the request.
      * @param data.importId
      * @returns unknown 200
@@ -3193,6 +3273,7 @@ export class MiscService {
     
     /**
      * List imported Facebook recommendations
+     * List the Facebook Page recommendations pulled in by an import, with paging and your remaining import capacity. Use it to build a reputation-management inbox.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.limit
@@ -3222,6 +3303,7 @@ export class MiscService {
     
     /**
      * Get a single imported Facebook recommendation
+     * Retrieve one imported Facebook recommendation with its rating, text, author, and existing replies.
      * @param data The data for the request.
      * @param data.recommendationId
      * @param data.teamId
@@ -3251,6 +3333,7 @@ export class MiscService {
     
     /**
      * Get recommendation thread comments
+     * List the comments in a Facebook recommendation thread so you can see the full conversation before replying.
      * @param data The data for the request.
      * @param data.recommendationId
      * @param data.teamId
@@ -3280,6 +3363,7 @@ export class MiscService {
     
     /**
      * Reply to a Facebook recommendation
+     * Publish a Page reply to a Facebook recommendation. Use it to respond to reviews programmatically instead of through Meta Business Suite.
      * @param data The data for the request.
      * @param data.recommendationId
      * @param data.requestBody Body
@@ -3308,6 +3392,7 @@ export class MiscService {
     
     /**
      * Reply to a Facebook recommendation thread comment
+     * Publish a reply to a specific comment inside a Facebook recommendation thread.
      * @param data The data for the request.
      * @param data.recommendationId
      * @param data.commentId
@@ -3799,6 +3884,7 @@ export class PostImportService {
     
     /**
      * Start a new post history import
+     * Kick off an asynchronous import that backfills posts a social account published before it was connected to bundle.social, together with their analytics. Use it to get historical reporting from day one.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 201
@@ -3824,6 +3910,7 @@ export class PostImportService {
     
     /**
      * Get import status list
+     * List post history import jobs for a team so you can monitor which backfills are queued, running, finished, or failed.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.socialAccountType
@@ -3851,6 +3938,7 @@ export class PostImportService {
     
     /**
      * Get import by ID
+     * Check the status, progress, and result of a single post history import job.
      * @param data The data for the request.
      * @param data.importId
      * @returns unknown 200
@@ -3876,6 +3964,7 @@ export class PostImportService {
     
     /**
      * Get imported posts with analytics for a social account
+     * List the historical posts pulled in by an import, with their analytics and your remaining import capacity. Use it to report on performance from before the account was connected.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.socialAccountType
@@ -3907,6 +3996,7 @@ export class PostImportService {
     
     /**
      * Bulk delete imported posts and their analytics
+     * Permanently delete up to 100 imported historical posts and their analytics in one request, freeing import capacity.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -3931,6 +4021,7 @@ export class PostImportService {
     
     /**
      * Retry a failed import
+     * Re-run a post history import that failed, for example after a token expired or the platform rate-limited the request.
      * @param data The data for the request.
      * @param data.importId
      * @param data.requestBody Body
@@ -3989,6 +4080,7 @@ export class PostCsvService {
     
     /**
      * Get post CSV import history
+     * List your team's bulk CSV post imports with pagination, so you can see what was uploaded and when.
      * @param data The data for the request.
      * @param data.offset
      * @param data.limit
@@ -4016,6 +4108,7 @@ export class PostCsvService {
     
     /**
      * Get post CSV import details
+     * Retrieve a single CSV import with its summary counts and configuration.
      * @param data The data for the request.
      * @param data.importId
      * @returns unknown 200
@@ -4041,6 +4134,7 @@ export class PostCsvService {
     
     /**
      * Get post CSV import processing status
+     * Poll the progress of a bulk CSV post import, including how many rows are processed, succeeded, and failed.
      * @param data The data for the request.
      * @param data.importId
      * @returns unknown 200
@@ -4066,6 +4160,7 @@ export class PostCsvService {
     
     /**
      * Get post CSV import row results
+     * List the per-row outcome of a CSV import with pagination, showing which rows created posts and which failed validation and why. Use it to report errors back to the person who uploaded the file.
      * @param data The data for the request.
      * @param data.importId
      * @param data.status

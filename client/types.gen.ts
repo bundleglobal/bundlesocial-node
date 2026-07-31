@@ -11554,9 +11554,16 @@ export type MiscLinkedinGetTagsResponse = {
     people?: Array<{
         kind: 'person';
         urn: string;
+        /**
+         * Text to render the mention with. Empty when LinkedIn did not give us the member's name — see needsDisplayName.
+         */
         display: string;
         headline?: string;
         photoUrl?: string;
+        /**
+         * True when the member was resolved but their name was not. Supply the name yourself: LinkedIn only renders a mention when the text matches the member's name exactly (case sensitive), so a vanity slug never works.
+         */
+        needsDisplayName?: boolean;
     }>;
     organizations?: Array<{
         kind: 'organization';
@@ -27551,9 +27558,16 @@ export type $OpenApiTs = {
                     people?: Array<{
                         kind: 'person';
                         urn: string;
+                        /**
+                         * Text to render the mention with. Empty when LinkedIn did not give us the member's name — see needsDisplayName.
+                         */
                         display: string;
                         headline?: string;
                         photoUrl?: string;
+                        /**
+                         * True when the member was resolved but their name was not. Supply the name yourself: LinkedIn only renders a mention when the text matches the member's name exactly (case sensitive), so a vanity slug never works.
+                         */
+                        needsDisplayName?: boolean;
                     }>;
                     organizations?: Array<{
                         kind: 'organization';

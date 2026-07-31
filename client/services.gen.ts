@@ -2002,7 +2002,7 @@ export class MiscService {
     
     /**
      * Get Linkedin mentionable tags (people & organizations)
-     * Search for LinkedIn people and organizations that can be @-mentioned, and get the tag IDs needed to insert them into post text.
+     * Search for LinkedIn people and organizations that can be @-mentioned, and get the tag IDs needed to insert them into post text. LinkedIn only renders a mention when the display text matches the entity's name exactly (case sensitive), so a vanity slug never works. When a person is resolved from `url` but LinkedIn does not expose their name, the tag comes back with an empty `display` and `needsDisplayName: true` — pass `displayName` to set it. Note that a page can only mention its own followers.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.q

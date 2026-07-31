@@ -1,3 +1,10 @@
+## [2.61.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.61.0...v2.61.1) (2026-07-31)
+
+
+### Bug Fixes
+
+* linkedin display name ([f354cef](https://github.com/bundleglobal/bundlesocial-node/commit/f354cefd7d7660b2a2bf9f7cbeb9bc42d12bbcdf))
+
 # [2.61.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.60.0...v2.61.0) (2026-07-30)
 
 

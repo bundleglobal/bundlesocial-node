@@ -40158,7 +40158,13 @@ paths:
     get:
       description: >-
         Search for LinkedIn people and organizations that can be @-mentioned,
-        and get the tag IDs needed to insert them into post text.
+        and get the tag IDs needed to insert them into post text. LinkedIn only
+        renders a mention when the display text matches the entity's name
+        exactly (case sensitive), so a vanity slug never works. When a person is
+        resolved from `url` but LinkedIn does not expose their name, the tag
+        comes back with an empty `display` and `needsDisplayName: true` — pass
+        `displayName` to set it. Note that a page can only mention its own
+        followers.
       summary: Get Linkedin mentionable tags (people & organizations)
       tags:
         - misc
@@ -40217,11 +40223,23 @@ paths:
                           type: string
                         display:
                           type: string
+                          description: >-
+                            Text to render the mention with. Empty when LinkedIn
+                            did not give us the member's name — see
+                            needsDisplayName.
                         headline:
                           type: string
                         photoUrl:
                           type: string
                           format: uri
+                        needsDisplayName:
+                          type: boolean
+                          description: >-
+                            True when the member was resolved but their name was
+                            not. Supply the name yourself: LinkedIn only renders
+                            a mention when the text matches the member's name
+                            exactly (case sensitive), so a vanity slug never
+                            works.
                       required:
                         - kind
                         - urn

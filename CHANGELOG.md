@@ -1,3 +1,10 @@
+# [2.62.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.61.1...v2.62.0) (2026-08-11)
+
+
+### Features
+
+* multipart upload ([2c381fb](https://github.com/bundleglobal/bundlesocial-node/commit/2c381fb0a0ba2df686ed819b523db64bfdf2b80d))
+
 ## [2.61.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.61.0...v2.61.1) (2026-07-31)
 
 

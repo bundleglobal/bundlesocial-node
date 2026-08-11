@@ -1450,6 +1450,7 @@ export type UploadInitLargeUploadData = {
         teamId?: string | null;
         fileName: string;
         mimeType: 'image/jpg' | 'image/jpeg' | 'image/png' | 'image/gif' | 'video/mp4' | 'video/quicktime' | 'application/pdf';
+        fileSize?: number;
     };
 };
 
@@ -1488,6 +1489,99 @@ export type UploadFinalizeLargeUploadResponse = {
     ext?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
+};
+
+export type UploadInitMultipartUploadData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string | null;
+        fileName: string;
+        mimeType: 'image/jpg' | 'image/jpeg' | 'image/png' | 'image/gif' | 'video/mp4' | 'video/quicktime' | 'application/pdf';
+        fileSize: number;
+    };
+};
+
+export type UploadInitMultipartUploadResponse = {
+    uploadId: string;
+    path: string;
+    partSize: number;
+    parts: Array<{
+        partNumber: number;
+        url: string;
+    }>;
+};
+
+export type UploadSignMultipartPartsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string | null;
+        partNumbers: Array<(number)>;
+        path: string;
+        uploadId: string;
+    };
+};
+
+export type UploadSignMultipartPartsResponse = {
+    parts: Array<{
+        partNumber: number;
+        url: string;
+    }>;
+};
+
+export type UploadCompleteMultipartUploadData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string | null;
+        parts: Array<{
+            partNumber: number;
+            etag: string;
+        }>;
+        path: string;
+        uploadId: string;
+    };
+};
+
+export type UploadCompleteMultipartUploadResponse = {
+    id: string;
+    teamId?: string | null;
+    organizationId?: string | null;
+    iconUrl?: string | null;
+    thumbnailUrl?: string | null;
+    url?: string | null;
+    externalLink?: string | null;
+    iconPath?: string | null;
+    thumbnailPath?: string | null;
+    path?: string | null;
+    type: 'image' | 'video' | 'document';
+    width?: number | null;
+    height?: number | null;
+    fileSize?: number | null;
+    videoLength?: number | null;
+    mime?: string | null;
+    ext?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+};
+
+export type UploadAbortMultipartUploadData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string | null;
+        path: string;
+        uploadId: string;
+    };
+};
+
+export type UploadAbortMultipartUploadResponse = {
+    success: boolean;
 };
 
 export type PostGetReconnectSocialAccountCandidatesData = {
@@ -16497,6 +16591,273 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/multipart/init': {
+        post: {
+            req: UploadInitMultipartUploadData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    uploadId: string;
+                    path: string;
+                    partSize: number;
+                    parts: Array<{
+                        partNumber: number;
+                        url: string;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/multipart/sign': {
+        post: {
+            req: UploadSignMultipartPartsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    parts: Array<{
+                        partNumber: number;
+                        url: string;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/multipart/complete': {
+        post: {
+            req: UploadCompleteMultipartUploadData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId?: string | null;
+                    organizationId?: string | null;
+                    iconUrl?: string | null;
+                    thumbnailUrl?: string | null;
+                    url?: string | null;
+                    externalLink?: string | null;
+                    iconPath?: string | null;
+                    thumbnailPath?: string | null;
+                    path?: string | null;
+                    type: 'image' | 'video' | 'document';
+                    width?: number | null;
+                    height?: number | null;
+                    fileSize?: number | null;
+                    videoLength?: number | null;
+                    mime?: string | null;
+                    ext?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/upload/multipart/abort': {
+        post: {
+            req: UploadAbortMultipartUploadData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
                 };
                 /**
                  * 400

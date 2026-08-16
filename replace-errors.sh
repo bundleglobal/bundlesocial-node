@@ -10,6 +10,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   sed -i '' 's/422,/422: '"'"'422'"'"',/g' ./client/services.gen.ts
   sed -i '' 's/429,/429: '"'"'429'"'"',/g' ./client/services.gen.ts
   sed -i '' 's/500/500: '"'"'500'"'"',/g' ./client/services.gen.ts
+  sed -i '' 's/502/502: '"'"'502'"'"',/g' ./client/services.gen.ts
 else
   sed -i 's/400,/400: '"'"'400'"'"',/g' ./client/services.gen.ts
   sed -i 's/401,/401: '"'"'401'"'"',/g' ./client/services.gen.ts
@@ -19,4 +20,5 @@ else
   sed -i 's/422,/422: '"'"'422'"'"',/g' ./client/services.gen.ts
   sed -i 's/429,/429: '"'"'429'"'"',/g' ./client/services.gen.ts
   sed -i 's/500/500: '"'"'500'"'"',/g' ./client/services.gen.ts
+  sed -i 's/502/502: '"'"'502'"'"',/g' ./client/services.gen.ts
 fi

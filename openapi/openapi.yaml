@@ -3825,7 +3825,9 @@ paths:
     post:
       description: >-
         Generate OAuth URL for social account connection. Redirect user to this
-        URL to connect social account.
+        URL to connect social account. For Mastodon and Bluesky an unusable
+        `serverUrl` returns 400 with the reason, while a reachable-but-failing
+        instance returns 502.
       summary: Connect social account for team
       tags: &ref_2
         - socialAccount
@@ -3869,7 +3871,11 @@ paths:
                 serverUrl:
                   type: string
                   format: uri
-                  description: Mastodon or Bluesky only
+                  description: >-
+                    Mastodon or Bluesky only. Required for Mastodon (the user's
+                    instance, e.g. https://mastodon.social). Optional for
+                    Bluesky - omit it to use the default issuer
+                    https://bsky.social, or pass a custom PDS/entryway issuer.
                 disableAutoLogin:
                   default: false
                   type: boolean
@@ -4032,6 +4038,20 @@ paths:
                   - message
         '500':
           description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
           content:
             application/json:
               schema:
@@ -5318,7 +5338,11 @@ paths:
                 serverUrl:
                   type: string
                   format: uri
-                  description: Mastodon or Bluesky only
+                  description: >-
+                    Mastodon or Bluesky only. Required for Mastodon (the user's
+                    instance, e.g. https://mastodon.social). Optional for
+                    Bluesky - omit it to use the default issuer
+                    https://bsky.social, or pass a custom PDS/entryway issuer.
                 disableAutoLogin:
                   default: false
                   type: boolean

@@ -714,7 +714,7 @@ export type SocialAccountConnectData = {
          */
         redirectUrl: string;
         /**
-         * Mastodon or Bluesky only
+         * Mastodon or Bluesky only. Required for Mastodon (the user's instance, e.g. https://mastodon.social). Optional for Bluesky - omit it to use the default issuer https://bsky.social, or pass a custom PDS/entryway issuer.
          */
         serverUrl?: string;
         /**
@@ -965,7 +965,7 @@ export type SocialAccountCreatePortalLinkData = {
         redirectUrl?: string;
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT')>;
         /**
-         * Mastodon or Bluesky only
+         * Mastodon or Bluesky only. Required for Mastodon (the user's instance, e.g. https://mastodon.social). Optional for Bluesky - omit it to use the default issuer https://bsky.social, or pass a custom PDS/entryway issuer.
          */
         serverUrl?: string;
         /**
@@ -15092,6 +15092,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };

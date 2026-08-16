@@ -327,7 +327,7 @@ export class SocialAccountService {
     
     /**
      * Connect social account for team
-     * Generate OAuth URL for social account connection. Redirect user to this URL to connect social account.
+     * Generate OAuth URL for social account connection. Redirect user to this URL to connect social account. For Mastodon and Bluesky an unusable `serverUrl` returns 400 with the reason, while a reachable-but-failing instance returns 502.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -346,6 +346,7 @@ export class SocialAccountService {
                 404: '404',
                 429: '429',
                 500: '500',
+                502: '502',
             }
         });
     }
@@ -870,7 +871,7 @@ export class UploadService {
     
     /**
      * Complete multipart upload
-     * Assemble the uploaded parts into the final object and add it to your media library. Send every part with the ETag returned by its PUT. A 500: '500', is always retryable — whatever we have (your parts, or the assembled object) is kept, so retry this call rather than re-uploading. A 400 is final: either the part list was wrong, or the file itself was rejected (empty, wrong type, too large, no readable preview) and its bytes have been deleted. A 403 means quota or permissions and is raised before assembly, so your parts are still open — call abort yourself. Calling this again after it already succeeded returns the same upload instead of charging you twice.
+     * Assemble the uploaded parts into the final object and add it to your media library. Send every part with the ETag returned by its PUT. A 500 is always retryable — whatever we have (your parts, or the assembled object) is kept, so retry this call rather than re-uploading. A 400 is final: either the part list was wrong, or the file itself was rejected (empty, wrong type, too large, no readable preview) and its bytes have been deleted. A 403 means quota or permissions and is raised before assembly, so your parts are still open — call abort yourself. Calling this again after it already succeeded returns the same upload instead of charging you twice.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200

@@ -13336,7 +13336,7 @@ export type MiscTiktokGetCommercialMusicTrendingListResponse = Array<{
     /**
      * Track duration in seconds.
      */
-    duration: number;
+    duration?: number | null;
     /**
      * Thumbnail image URL for the track.
      */
@@ -13378,7 +13378,7 @@ export type MiscTiktokGetCommercialMusicTrendingListResponse = Array<{
         /**
          * Track duration in seconds.
          */
-        duration: number;
+        duration?: number | null;
         /**
          * Track clip ID that can be used as music_sound_id in publish endpoint.
          */
@@ -13392,7 +13392,7 @@ export type MiscTiktokGetCommercialMusicTrendingListResponse = Array<{
         /**
          * Track duration in seconds.
          */
-        duration: number;
+        duration?: number | null;
         /**
          * Track clip ID that can be used as music_sound_id in publish endpoint.
          */
@@ -13843,6 +13843,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -14053,6 +14060,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -14111,6 +14125,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -14175,6 +14196,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -14233,6 +14261,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -14308,6 +14343,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -14380,6 +14422,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -14608,6 +14657,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         patch: {
@@ -14673,6 +14729,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -14735,6 +14798,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -14967,6 +15037,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         post: {
@@ -15029,6 +15106,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -15200,6 +15284,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -15295,6 +15386,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -15396,6 +15494,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -15494,6 +15599,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -15551,6 +15663,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -15618,6 +15737,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -15729,6 +15855,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -15827,6 +15960,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -15922,6 +16062,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -16031,6 +16178,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -16116,6 +16270,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         post: {
@@ -16192,6 +16353,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -16265,6 +16433,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -16353,6 +16528,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -16426,6 +16608,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -16507,6 +16696,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -16565,6 +16761,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -16646,6 +16849,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -16712,6 +16922,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -16772,6 +16989,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -16853,6 +17077,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -16910,6 +17141,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -16981,6 +17219,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -17048,6 +17293,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -17893,6 +18145,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -18735,6 +18994,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         patch: {
@@ -19506,6 +19772,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -20254,6 +20527,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -21102,6 +21382,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         post: {
@@ -21873,6 +22160,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -22626,6 +22920,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -22740,6 +23041,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -23537,6 +23845,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -23644,6 +23959,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -24433,6 +24755,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -24520,6 +24849,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -24591,6 +24927,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -24666,6 +25009,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -24750,6 +25100,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         get: {
@@ -24821,6 +25178,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -24931,6 +25295,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -25038,6 +25409,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -25109,6 +25487,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -25391,6 +25776,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         patch: {
@@ -25668,6 +26060,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -25942,6 +26341,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -26227,6 +26633,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         post: {
@@ -26501,6 +26914,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -26783,6 +27203,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -26866,6 +27293,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -26985,6 +27419,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         post: {
@@ -27086,6 +27527,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -27193,6 +27641,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -27248,6 +27703,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -27356,6 +27818,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -27475,6 +27944,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -27530,6 +28006,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -27594,6 +28077,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -27649,6 +28139,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -27713,6 +28210,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -27768,6 +28272,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -27842,6 +28353,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -27909,6 +28427,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -27992,6 +28517,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -28049,6 +28581,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28122,6 +28661,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -28183,6 +28729,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -28238,6 +28791,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28302,6 +28862,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -28357,6 +28924,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28427,6 +29001,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28503,6 +29084,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -28558,6 +29146,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28618,6 +29213,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28682,6 +29284,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         patch: {
@@ -28738,6 +29347,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28799,6 +29415,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -28875,6 +29498,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         patch: {
@@ -28946,6 +29576,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -29007,6 +29644,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -29074,6 +29718,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -29138,6 +29789,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         patch: {
@@ -29197,6 +29855,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -29264,6 +29929,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         patch: {
@@ -29323,6 +29995,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -29394,6 +30073,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         post: {
@@ -29453,6 +30139,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -29518,6 +30211,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -29573,6 +30273,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -29655,6 +30362,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         get: {
@@ -29727,6 +30441,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -29796,6 +30517,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -29879,6 +30607,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -29951,6 +30686,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -30029,6 +30771,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -30102,6 +30851,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -30160,6 +30916,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -30230,6 +30993,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -30291,6 +31061,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -30346,6 +31123,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -30410,6 +31194,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -30465,6 +31256,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -30595,6 +31393,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -30680,6 +31485,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -30751,6 +31563,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -30808,6 +31627,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -30882,6 +31708,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -30964,6 +31797,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         get: {
@@ -31036,6 +31876,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -31105,6 +31952,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -31193,6 +32047,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -31273,6 +32134,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -31344,6 +32212,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -31427,6 +32302,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -31484,6 +32366,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -31548,6 +32437,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -31603,6 +32499,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -31667,6 +32570,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -31722,6 +32632,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -31786,6 +32703,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -31841,6 +32765,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -31905,6 +32836,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -31960,6 +32898,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -32024,6 +32969,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -32079,6 +33031,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -32143,6 +33102,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -32198,6 +33164,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -32261,6 +33234,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -32318,6 +33298,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -32381,6 +33368,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -32441,6 +33435,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -32459,7 +33460,7 @@ export type $OpenApiTs = {
                     /**
                      * Track duration in seconds.
                      */
-                    duration: number;
+                    duration?: number | null;
                     /**
                      * Thumbnail image URL for the track.
                      */
@@ -32501,7 +33502,7 @@ export type $OpenApiTs = {
                         /**
                          * Track duration in seconds.
                          */
-                        duration: number;
+                        duration?: number | null;
                         /**
                          * Track clip ID that can be used as music_sound_id in publish endpoint.
                          */
@@ -32515,7 +33516,7 @@ export type $OpenApiTs = {
                         /**
                          * Track duration in seconds.
                          */
-                        duration: number;
+                        duration?: number | null;
                         /**
                          * Track clip ID that can be used as music_sound_id in publish endpoint.
                          */
@@ -32566,6 +33567,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -32626,6 +33634,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -32713,6 +33728,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         get: {
@@ -32790,6 +33812,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -32864,6 +33893,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -32968,6 +34004,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
         delete: {
@@ -33023,6 +34066,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -33103,6 +34153,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -33175,6 +34232,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -33254,6 +34318,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -33329,6 +34400,13 @@ export type $OpenApiTs = {
                     statusCode?: number | null;
                     message: string;
                 };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
             };
         };
     };
@@ -33395,6 +34473,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -33468,6 +34553,13 @@ export type $OpenApiTs = {
                  * 500
                  */
                 500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
                     statusCode?: number | null;
                     message: string;
                 };

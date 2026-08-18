@@ -1,3 +1,10 @@
+## [2.62.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.0...v2.62.1) (2026-08-16)
+
+
+### Bug Fixes
+
+* mastodon server required ([e8e383d](https://github.com/bundleglobal/bundlesocial-node/commit/e8e383d4908d12762d807cb9de97b6519f8aef45))
+
 # [2.62.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.61.1...v2.62.0) (2026-08-11)
 
 

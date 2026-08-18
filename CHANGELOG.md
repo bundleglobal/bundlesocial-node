@@ -1,3 +1,10 @@
+## [2.62.2](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.1...v2.62.2) (2026-08-18)
+
+
+### Bug Fixes
+
+* 502 error status ([662d54a](https://github.com/bundleglobal/bundlesocial-node/commit/662d54a6a6c1fbf593482e78371f6dd6aebf872c))
+
 ## [2.62.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.0...v2.62.1) (2026-08-16)
 
 

@@ -48335,6 +48335,20 @@ paths:
                           type: string
                           format: date-time
                           nullable: true
+                        reviewReplyState:
+                          type: string
+                          enum:
+                            - REVIEW_REPLY_STATE_UNSPECIFIED
+                            - PENDING
+                            - REJECTED
+                            - APPROVED
+                          nullable: true
+                        reviewReplyPolicyViolation:
+                          type: string
+                          nullable: true
+                        reviewReplyUrl:
+                          type: string
+                          nullable: true
                         createTime:
                           type: string
                           format: date-time
@@ -48572,6 +48586,20 @@ paths:
                   reviewReplyUpdatedAt:
                     type: string
                     format: date-time
+                    nullable: true
+                  reviewReplyState:
+                    type: string
+                    enum:
+                      - REVIEW_REPLY_STATE_UNSPECIFIED
+                      - PENDING
+                      - REJECTED
+                      - APPROVED
+                    nullable: true
+                  reviewReplyPolicyViolation:
+                    type: string
+                    nullable: true
+                  reviewReplyUrl:
+                    type: string
                     nullable: true
                   createTime:
                     type: string
@@ -48811,6 +48839,20 @@ paths:
                     type: string
                     format: date-time
                     nullable: true
+                  reviewReplyState:
+                    type: string
+                    enum:
+                      - REVIEW_REPLY_STATE_UNSPECIFIED
+                      - PENDING
+                      - REJECTED
+                      - APPROVED
+                    nullable: true
+                  reviewReplyPolicyViolation:
+                    type: string
+                    nullable: true
+                  reviewReplyUrl:
+                    type: string
+                    nullable: true
                   createTime:
                     type: string
                     format: date-time
@@ -49042,6 +49084,20 @@ paths:
                   reviewReplyUpdatedAt:
                     type: string
                     format: date-time
+                    nullable: true
+                  reviewReplyState:
+                    type: string
+                    enum:
+                      - REVIEW_REPLY_STATE_UNSPECIFIED
+                      - PENDING
+                      - REJECTED
+                      - APPROVED
+                    nullable: true
+                  reviewReplyPolicyViolation:
+                    type: string
+                    nullable: true
+                  reviewReplyUrl:
+                    type: string
                     nullable: true
                   createTime:
                     type: string

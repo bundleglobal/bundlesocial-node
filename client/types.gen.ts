@@ -12402,6 +12402,9 @@ export type MiscGoogleBusinessGetReviewsResponse = {
         comment?: string | null;
         reviewReplyComment?: string | null;
         reviewReplyUpdatedAt?: string | null;
+        reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+        reviewReplyPolicyViolation?: string | null;
+        reviewReplyUrl?: string | null;
         createTime?: string | null;
         updateTime?: string | null;
         importedAt?: string | null;
@@ -12430,6 +12433,9 @@ export type MiscGoogleBusinessGetReviewByIdResponse = {
     comment?: string | null;
     reviewReplyComment?: string | null;
     reviewReplyUpdatedAt?: string | null;
+    reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+    reviewReplyPolicyViolation?: string | null;
+    reviewReplyUrl?: string | null;
     createTime?: string | null;
     updateTime?: string | null;
     importedAt?: string | null;
@@ -12460,6 +12466,9 @@ export type MiscGoogleBusinessReplyToReviewResponse = {
     comment?: string | null;
     reviewReplyComment?: string | null;
     reviewReplyUpdatedAt?: string | null;
+    reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+    reviewReplyPolicyViolation?: string | null;
+    reviewReplyUrl?: string | null;
     createTime?: string | null;
     updateTime?: string | null;
     importedAt?: string | null;
@@ -12489,6 +12498,9 @@ export type MiscGoogleBusinessDeleteReviewReplyResponse = {
     comment?: string | null;
     reviewReplyComment?: string | null;
     reviewReplyUpdatedAt?: string | null;
+    reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+    reviewReplyPolicyViolation?: string | null;
+    reviewReplyUrl?: string | null;
     createTime?: string | null;
     updateTime?: string | null;
     importedAt?: string | null;
@@ -30549,6 +30561,9 @@ export type $OpenApiTs = {
                         comment?: string | null;
                         reviewReplyComment?: string | null;
                         reviewReplyUpdatedAt?: string | null;
+                        reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+                        reviewReplyPolicyViolation?: string | null;
+                        reviewReplyUrl?: string | null;
                         createTime?: string | null;
                         updateTime?: string | null;
                         importedAt?: string | null;
@@ -30635,6 +30650,9 @@ export type $OpenApiTs = {
                     comment?: string | null;
                     reviewReplyComment?: string | null;
                     reviewReplyUpdatedAt?: string | null;
+                    reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+                    reviewReplyPolicyViolation?: string | null;
+                    reviewReplyUrl?: string | null;
                     createTime?: string | null;
                     updateTime?: string | null;
                     importedAt?: string | null;
@@ -30717,6 +30735,9 @@ export type $OpenApiTs = {
                     comment?: string | null;
                     reviewReplyComment?: string | null;
                     reviewReplyUpdatedAt?: string | null;
+                    reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+                    reviewReplyPolicyViolation?: string | null;
+                    reviewReplyUrl?: string | null;
                     createTime?: string | null;
                     updateTime?: string | null;
                     importedAt?: string | null;
@@ -30797,6 +30818,9 @@ export type $OpenApiTs = {
                     comment?: string | null;
                     reviewReplyComment?: string | null;
                     reviewReplyUpdatedAt?: string | null;
+                    reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
+                    reviewReplyPolicyViolation?: string | null;
+                    reviewReplyUrl?: string | null;
                     createTime?: string | null;
                     updateTime?: string | null;
                     importedAt?: string | null;

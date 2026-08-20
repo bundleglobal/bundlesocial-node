@@ -1,3 +1,10 @@
+## [2.62.3](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.2...v2.62.3) (2026-08-20)
+
+
+### Bug Fixes
+
+* gbp missing reply data ([1a7a864](https://github.com/bundleglobal/bundlesocial-node/commit/1a7a8643007b249ff5d24cec1d403eff0cd4d79d))
+
 ## [2.62.2](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.1...v2.62.2) (2026-08-18)
 
 

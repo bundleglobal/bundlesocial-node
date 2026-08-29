@@ -10650,6 +10650,23 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          mediaItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                altText:
+                                  type: string
+                                  maxLength: 1000
+                                  nullable: true
+                                  description: >-
+                                    Alternative text for the image, used by
+                                    screen readers. Applies to images/GIFs only.
+                              required:
+                                - uploadId
+                            nullable: true
                           replySettings:
                             type: string
                             enum:
@@ -10658,6 +10675,56 @@ paths:
                               - MENTIONED_USERS
                               - SUBSCRIBERS
                               - VERIFIED
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 25
+                                minItems: 2
+                                maxItems: 4
+                              durationMinutes:
+                                type: integer
+                                minimum: 5
+                                maximum: 10080
+                            required:
+                              - options
+                              - durationMinutes
+                            nullable: true
+                          quoteTweetId:
+                            type: string
+                            nullable: true
+                          replyToTweetId:
+                            type: string
+                            nullable: true
+                          subscribersOnly:
+                            type: boolean
+                            nullable: true
+                          thread:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  maxLength: 25000
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                            maxItems: 25
+                            nullable: true
+                          tweetStorm:
+                            type: boolean
+                            nullable: true
+                          tweetStormNumbering:
+                            type: boolean
                             nullable: true
                           isAiGenerated:
                             default: false
@@ -12329,6 +12396,9 @@ paths:
                         type: string
                         nullable: true
                       FACEBOOK:
+                        type: string
+                        nullable: true
+                      TWITTER:
                         type: string
                         nullable: true
                       THREADS:
@@ -12843,6 +12913,23 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          mediaItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                altText:
+                                  type: string
+                                  maxLength: 1000
+                                  nullable: true
+                                  description: >-
+                                    Alternative text for the image, used by
+                                    screen readers. Applies to images/GIFs only.
+                              required:
+                                - uploadId
+                            nullable: true
                           replySettings:
                             type: string
                             enum:
@@ -12851,6 +12938,56 @@ paths:
                               - MENTIONED_USERS
                               - SUBSCRIBERS
                               - VERIFIED
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 25
+                                minItems: 2
+                                maxItems: 4
+                              durationMinutes:
+                                type: integer
+                                minimum: 5
+                                maximum: 10080
+                            required:
+                              - options
+                              - durationMinutes
+                            nullable: true
+                          quoteTweetId:
+                            type: string
+                            nullable: true
+                          replyToTweetId:
+                            type: string
+                            nullable: true
+                          subscribersOnly:
+                            type: boolean
+                            nullable: true
+                          thread:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  maxLength: 25000
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                            maxItems: 25
+                            nullable: true
+                          tweetStorm:
+                            type: boolean
+                            nullable: true
+                          tweetStormNumbering:
+                            type: boolean
                             nullable: true
                           isAiGenerated:
                             default: false
@@ -14522,6 +14659,9 @@ paths:
                         type: string
                         nullable: true
                       FACEBOOK:
+                        type: string
+                        nullable: true
+                      TWITTER:
                         type: string
                         nullable: true
                       THREADS:
@@ -15039,6 +15179,23 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        mediaItems:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uploadId:
+                                type: string
+                              altText:
+                                type: string
+                                maxLength: 1000
+                                nullable: true
+                                description: >-
+                                  Alternative text for the image, used by screen
+                                  readers. Applies to images/GIFs only.
+                            required:
+                              - uploadId
+                          nullable: true
                         replySettings:
                           type: string
                           enum:
@@ -15047,6 +15204,56 @@ paths:
                             - MENTIONED_USERS
                             - SUBSCRIBERS
                             - VERIFIED
+                          nullable: true
+                        poll:
+                          type: object
+                          properties:
+                            options:
+                              type: array
+                              items:
+                                type: string
+                                minLength: 1
+                                maxLength: 25
+                              minItems: 2
+                              maxItems: 4
+                            durationMinutes:
+                              type: integer
+                              minimum: 5
+                              maximum: 10080
+                          required:
+                            - options
+                            - durationMinutes
+                          nullable: true
+                        quoteTweetId:
+                          type: string
+                          nullable: true
+                        replyToTweetId:
+                          type: string
+                          nullable: true
+                        subscribersOnly:
+                          type: boolean
+                          nullable: true
+                        thread:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                                maxLength: 25000
+                                nullable: true
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                          maxItems: 25
+                          nullable: true
+                        tweetStorm:
+                          type: boolean
+                          nullable: true
+                        tweetStormNumbering:
+                          type: boolean
                           nullable: true
                         isAiGenerated:
                           default: false
@@ -15971,6 +16178,10 @@ paths:
                       type: string
                       maxLength: 8000
                       nullable: true
+                    TWITTER:
+                      type: string
+                      maxLength: 25000
+                      nullable: true
                     THREADS:
                       type: string
                       maxLength: 500
@@ -16053,6 +16264,23 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          mediaItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                altText:
+                                  type: string
+                                  maxLength: 1000
+                                  nullable: true
+                                  description: >-
+                                    Alternative text for the image, used by
+                                    screen readers. Applies to images/GIFs only.
+                              required:
+                                - uploadId
+                            nullable: true
                           replySettings:
                             type: string
                             enum:
@@ -16061,6 +16289,56 @@ paths:
                               - MENTIONED_USERS
                               - SUBSCRIBERS
                               - VERIFIED
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 25
+                                minItems: 2
+                                maxItems: 4
+                              durationMinutes:
+                                type: integer
+                                minimum: 5
+                                maximum: 10080
+                            required:
+                              - options
+                              - durationMinutes
+                            nullable: true
+                          quoteTweetId:
+                            type: string
+                            nullable: true
+                          replyToTweetId:
+                            type: string
+                            nullable: true
+                          subscribersOnly:
+                            type: boolean
+                            nullable: true
+                          thread:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  maxLength: 25000
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                            maxItems: 25
+                            nullable: true
+                          tweetStorm:
+                            type: boolean
+                            nullable: true
+                          tweetStormNumbering:
+                            type: boolean
                             nullable: true
                           isAiGenerated:
                             default: false
@@ -17734,6 +18012,9 @@ paths:
                       FACEBOOK:
                         type: string
                         nullable: true
+                      TWITTER:
+                        type: string
+                        nullable: true
                       THREADS:
                         type: string
                         nullable: true
@@ -17982,6 +18263,23 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          mediaItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                altText:
+                                  type: string
+                                  maxLength: 1000
+                                  nullable: true
+                                  description: >-
+                                    Alternative text for the image, used by
+                                    screen readers. Applies to images/GIFs only.
+                              required:
+                                - uploadId
+                            nullable: true
                           replySettings:
                             type: string
                             enum:
@@ -17990,6 +18288,56 @@ paths:
                               - MENTIONED_USERS
                               - SUBSCRIBERS
                               - VERIFIED
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 25
+                                minItems: 2
+                                maxItems: 4
+                              durationMinutes:
+                                type: integer
+                                minimum: 5
+                                maximum: 10080
+                            required:
+                              - options
+                              - durationMinutes
+                            nullable: true
+                          quoteTweetId:
+                            type: string
+                            nullable: true
+                          replyToTweetId:
+                            type: string
+                            nullable: true
+                          subscribersOnly:
+                            type: boolean
+                            nullable: true
+                          thread:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  maxLength: 25000
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                            maxItems: 25
+                            nullable: true
+                          tweetStorm:
+                            type: boolean
+                            nullable: true
+                          tweetStormNumbering:
+                            type: boolean
                             nullable: true
                           isAiGenerated:
                             default: false
@@ -19951,6 +20299,24 @@ paths:
                                   items:
                                     type: string
                                   nullable: true
+                                mediaItems:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      uploadId:
+                                        type: string
+                                      altText:
+                                        type: string
+                                        maxLength: 1000
+                                        nullable: true
+                                        description: >-
+                                          Alternative text for the image, used by
+                                          screen readers. Applies to images/GIFs
+                                          only.
+                                    required:
+                                      - uploadId
+                                  nullable: true
                                 replySettings:
                                   type: string
                                   enum:
@@ -19959,6 +20325,56 @@ paths:
                                     - MENTIONED_USERS
                                     - SUBSCRIBERS
                                     - VERIFIED
+                                  nullable: true
+                                poll:
+                                  type: object
+                                  properties:
+                                    options:
+                                      type: array
+                                      items:
+                                        type: string
+                                        minLength: 1
+                                        maxLength: 25
+                                      minItems: 2
+                                      maxItems: 4
+                                    durationMinutes:
+                                      type: integer
+                                      minimum: 5
+                                      maximum: 10080
+                                  required:
+                                    - options
+                                    - durationMinutes
+                                  nullable: true
+                                quoteTweetId:
+                                  type: string
+                                  nullable: true
+                                replyToTweetId:
+                                  type: string
+                                  nullable: true
+                                subscribersOnly:
+                                  type: boolean
+                                  nullable: true
+                                thread:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      text:
+                                        type: string
+                                        maxLength: 25000
+                                        nullable: true
+                                      uploadIds:
+                                        type: array
+                                        items:
+                                          type: string
+                                        nullable: true
+                                  maxItems: 25
+                                  nullable: true
+                                tweetStorm:
+                                  type: boolean
+                                  nullable: true
+                                tweetStormNumbering:
+                                  type: boolean
                                   nullable: true
                                 isAiGenerated:
                                   default: false
@@ -21646,6 +22062,9 @@ paths:
                             FACEBOOK:
                               type: string
                               nullable: true
+                            TWITTER:
+                              type: string
+                              nullable: true
                             THREADS:
                               type: string
                               nullable: true
@@ -22165,6 +22584,23 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        mediaItems:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uploadId:
+                                type: string
+                              altText:
+                                type: string
+                                maxLength: 1000
+                                nullable: true
+                                description: >-
+                                  Alternative text for the image, used by screen
+                                  readers. Applies to images/GIFs only.
+                            required:
+                              - uploadId
+                          nullable: true
                         replySettings:
                           type: string
                           enum:
@@ -22173,6 +22609,56 @@ paths:
                             - MENTIONED_USERS
                             - SUBSCRIBERS
                             - VERIFIED
+                          nullable: true
+                        poll:
+                          type: object
+                          properties:
+                            options:
+                              type: array
+                              items:
+                                type: string
+                                minLength: 1
+                                maxLength: 25
+                              minItems: 2
+                              maxItems: 4
+                            durationMinutes:
+                              type: integer
+                              minimum: 5
+                              maximum: 10080
+                          required:
+                            - options
+                            - durationMinutes
+                          nullable: true
+                        quoteTweetId:
+                          type: string
+                          nullable: true
+                        replyToTweetId:
+                          type: string
+                          nullable: true
+                        subscribersOnly:
+                          type: boolean
+                          nullable: true
+                        thread:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                                maxLength: 25000
+                                nullable: true
+                              uploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                          maxItems: 25
+                          nullable: true
+                        tweetStorm:
+                          type: boolean
+                          nullable: true
+                        tweetStormNumbering:
+                          type: boolean
                           nullable: true
                         isAiGenerated:
                           default: false
@@ -23097,6 +23583,10 @@ paths:
                       type: string
                       maxLength: 8000
                       nullable: true
+                    TWITTER:
+                      type: string
+                      maxLength: 25000
+                      nullable: true
                     THREADS:
                       type: string
                       maxLength: 500
@@ -23186,6 +23676,23 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          mediaItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                altText:
+                                  type: string
+                                  maxLength: 1000
+                                  nullable: true
+                                  description: >-
+                                    Alternative text for the image, used by
+                                    screen readers. Applies to images/GIFs only.
+                              required:
+                                - uploadId
+                            nullable: true
                           replySettings:
                             type: string
                             enum:
@@ -23194,6 +23701,56 @@ paths:
                               - MENTIONED_USERS
                               - SUBSCRIBERS
                               - VERIFIED
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 25
+                                minItems: 2
+                                maxItems: 4
+                              durationMinutes:
+                                type: integer
+                                minimum: 5
+                                maximum: 10080
+                            required:
+                              - options
+                              - durationMinutes
+                            nullable: true
+                          quoteTweetId:
+                            type: string
+                            nullable: true
+                          replyToTweetId:
+                            type: string
+                            nullable: true
+                          subscribersOnly:
+                            type: boolean
+                            nullable: true
+                          thread:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  maxLength: 25000
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                            maxItems: 25
+                            nullable: true
+                          tweetStorm:
+                            type: boolean
+                            nullable: true
+                          tweetStormNumbering:
+                            type: boolean
                             nullable: true
                           isAiGenerated:
                             default: false
@@ -24867,6 +25424,9 @@ paths:
                       FACEBOOK:
                         type: string
                         nullable: true
+                      TWITTER:
+                        type: string
+                        nullable: true
                       THREADS:
                         type: string
                         nullable: true
@@ -25116,6 +25676,23 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          mediaItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                altText:
+                                  type: string
+                                  maxLength: 1000
+                                  nullable: true
+                                  description: >-
+                                    Alternative text for the image, used by
+                                    screen readers. Applies to images/GIFs only.
+                              required:
+                                - uploadId
+                            nullable: true
                           replySettings:
                             type: string
                             enum:
@@ -25124,6 +25701,56 @@ paths:
                               - MENTIONED_USERS
                               - SUBSCRIBERS
                               - VERIFIED
+                            nullable: true
+                          poll:
+                            type: object
+                            properties:
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 25
+                                minItems: 2
+                                maxItems: 4
+                              durationMinutes:
+                                type: integer
+                                minimum: 5
+                                maximum: 10080
+                            required:
+                              - options
+                              - durationMinutes
+                            nullable: true
+                          quoteTweetId:
+                            type: string
+                            nullable: true
+                          replyToTweetId:
+                            type: string
+                            nullable: true
+                          subscribersOnly:
+                            type: boolean
+                            nullable: true
+                          thread:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  maxLength: 25000
+                                  nullable: true
+                                uploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                            maxItems: 25
+                            nullable: true
+                          tweetStorm:
+                            type: boolean
+                            nullable: true
+                          tweetStormNumbering:
+                            type: boolean
                             nullable: true
                           isAiGenerated:
                             default: false
@@ -26927,6 +27554,441 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/billing/credits/balance:
+    get:
+      description: >-
+        Retrieve your organization's prepaid credit balance: settled funds,
+        in-flight holds, and the available amount metered X actions draw from.
+      summary: Get credit balance
+      tags: &ref_5
+        - credit
+      parameters: []
+      operationId: credit.getCreditBalance
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizationId:
+                    type: string
+                  currency:
+                    type: string
+                    enum:
+                      - usd
+                  balanceMicros:
+                    type: integer
+                  heldMicros:
+                    type: integer
+                  availableMicros:
+                    type: integer
+                  balanceCents:
+                    type: integer
+                  availableCents:
+                    type: integer
+                  lowBalanceThresholdMicros:
+                    type: integer
+                    nullable: true
+                  lowBalance:
+                    type: boolean
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                required:
+                  - organizationId
+                  - currency
+                  - balanceMicros
+                  - heldMicros
+                  - availableMicros
+                  - balanceCents
+                  - availableCents
+                  - lowBalanceThresholdMicros
+                  - lowBalance
+                  - updatedAt
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/billing/billable-usage/quote:
+    post:
+      description: >-
+        Estimate the credit cost of a metered X action (post publishing,
+        analytics reads, imports) before running it, and see whether your
+        current balance covers it.
+      summary: Quote a metered X action
+      tags: *ref_5
+      parameters: []
+      operationId: credit.quoteBillableUsage
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                  minLength: 1
+                text:
+                  default: ''
+                  type: string
+                texts:
+                  type: array
+                  items:
+                    type: string
+                action:
+                  type: string
+                  enum:
+                    - TWITTER_CONTENT_CREATE
+                    - TWITTER_CONTENT_CREATE_WITH_URL
+                    - TWITTER_CONTENT_MANAGE
+                    - TWITTER_INTERACTION_DELETE
+                    - TWITTER_POST_READ
+                    - TWITTER_USER_READ
+                altTextCount:
+                  type: integer
+                  minimum: 0
+                quantity:
+                  default: 1
+                  type: integer
+                  minimum: 1
+              required:
+                - teamId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  billable:
+                    type: boolean
+                  lines:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        action:
+                          type: string
+                          enum:
+                            - TWITTER_CONTENT_CREATE
+                            - TWITTER_CONTENT_CREATE_WITH_URL
+                            - TWITTER_CONTENT_MANAGE
+                            - TWITTER_INTERACTION_DELETE
+                            - TWITTER_POST_READ
+                            - TWITTER_USER_READ
+                        label:
+                          type: string
+                        unitAmountMicros:
+                          type: integer
+                        amountMicros:
+                          type: integer
+                        amountCents:
+                          type: integer
+                        currency:
+                          type: string
+                          enum:
+                            - usd
+                      required:
+                        - action
+                        - label
+                        - unitAmountMicros
+                        - amountMicros
+                        - amountCents
+                        - currency
+                  totalMicros:
+                    type: integer
+                  totalCents:
+                    type: integer
+                  currency:
+                    type: string
+                    enum:
+                      - usd
+                  availableMicros:
+                    type: integer
+                  availableCents:
+                    type: integer
+                  wouldExceedBalance:
+                    type: boolean
+                required:
+                  - billable
+                  - lines
+                  - totalMicros
+                  - totalCents
+                  - currency
+                  - availableMicros
+                  - availableCents
+                  - wouldExceedBalance
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/analytics/social-account:
     get:
       description: >-
@@ -26935,7 +27997,7 @@ paths:
         names are unified across platforms so you can chart accounts side by
         side.
       summary: Get Social Account Analytics
-      tags: &ref_5
+      tags: &ref_6
         - analytics
       parameters:
         - name: teamId
@@ -26961,6 +28023,7 @@ paths:
               - BLUESKY
               - GOOGLE_BUSINESS
               - SNAPCHAT
+              - TWITTER
       operationId: analytics.getSocialAccountAnalytics
       responses:
         '200':
@@ -27320,7 +28383,7 @@ paths:
         and views for a single published post. Metric names are unified across
         platforms for easier reporting.
       summary: Get Post Analytics
-      tags: *ref_5
+      tags: *ref_6
       parameters:
         - name: postId
           in: query
@@ -27344,6 +28407,7 @@ paths:
               - BLUESKY
               - GOOGLE_BUSINESS
               - SNAPCHAT
+              - TWITTER
             nullable: true
         - name: importedPostId
           in: query
@@ -27407,6 +28471,24 @@ paths:
                                 items:
                                   type: string
                                 nullable: true
+                              mediaItems:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    uploadId:
+                                      type: string
+                                    altText:
+                                      type: string
+                                      maxLength: 1000
+                                      nullable: true
+                                      description: >-
+                                        Alternative text for the image, used by
+                                        screen readers. Applies to images/GIFs
+                                        only.
+                                  required:
+                                    - uploadId
+                                nullable: true
                               replySettings:
                                 type: string
                                 enum:
@@ -27415,6 +28497,56 @@ paths:
                                   - MENTIONED_USERS
                                   - SUBSCRIBERS
                                   - VERIFIED
+                                nullable: true
+                              poll:
+                                type: object
+                                properties:
+                                  options:
+                                    type: array
+                                    items:
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 25
+                                    minItems: 2
+                                    maxItems: 4
+                                  durationMinutes:
+                                    type: integer
+                                    minimum: 5
+                                    maximum: 10080
+                                required:
+                                  - options
+                                  - durationMinutes
+                                nullable: true
+                              quoteTweetId:
+                                type: string
+                                nullable: true
+                              replyToTweetId:
+                                type: string
+                                nullable: true
+                              subscribersOnly:
+                                type: boolean
+                                nullable: true
+                              thread:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                      maxLength: 25000
+                                      nullable: true
+                                    uploadIds:
+                                      type: array
+                                      items:
+                                        type: string
+                                      nullable: true
+                                maxItems: 25
+                                nullable: true
+                              tweetStorm:
+                                type: boolean
+                                nullable: true
+                              tweetStormNumbering:
+                                type: boolean
                                 nullable: true
                               isAiGenerated:
                                 default: false
@@ -29372,7 +30504,7 @@ paths:
         platform, without bundle.social's normalization. Use this when you need
         a platform-specific metric that the normalized response does not expose.
       summary: Get Social Account Analytics Raw
-      tags: *ref_5
+      tags: *ref_6
       parameters:
         - name: teamId
           in: query
@@ -29397,6 +30529,7 @@ paths:
               - BLUESKY
               - GOOGLE_BUSINESS
               - SNAPCHAT
+              - TWITTER
       operationId: analytics.getSocialAccountAnalyticsRaw
       responses:
         '200':
@@ -29734,7 +30867,7 @@ paths:
         without bundle.social's normalization. Use this when you need a
         platform-specific metric that the normalized response does not expose.
       summary: Get Post Analytics Raw
-      tags: *ref_5
+      tags: *ref_6
       parameters:
         - name: postId
           in: query
@@ -29758,6 +30891,7 @@ paths:
               - BLUESKY
               - GOOGLE_BUSINESS
               - SNAPCHAT
+              - TWITTER
             nullable: true
         - name: importedPostId
           in: query
@@ -29821,6 +30955,24 @@ paths:
                                 items:
                                   type: string
                                 nullable: true
+                              mediaItems:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    uploadId:
+                                      type: string
+                                    altText:
+                                      type: string
+                                      maxLength: 1000
+                                      nullable: true
+                                      description: >-
+                                        Alternative text for the image, used by
+                                        screen readers. Applies to images/GIFs
+                                        only.
+                                  required:
+                                    - uploadId
+                                nullable: true
                               replySettings:
                                 type: string
                                 enum:
@@ -29829,6 +30981,56 @@ paths:
                                   - MENTIONED_USERS
                                   - SUBSCRIBERS
                                   - VERIFIED
+                                nullable: true
+                              poll:
+                                type: object
+                                properties:
+                                  options:
+                                    type: array
+                                    items:
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 25
+                                    minItems: 2
+                                    maxItems: 4
+                                  durationMinutes:
+                                    type: integer
+                                    minimum: 5
+                                    maximum: 10080
+                                required:
+                                  - options
+                                  - durationMinutes
+                                nullable: true
+                              quoteTweetId:
+                                type: string
+                                nullable: true
+                              replyToTweetId:
+                                type: string
+                                nullable: true
+                              subscribersOnly:
+                                type: boolean
+                                nullable: true
+                              thread:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                      maxLength: 25000
+                                      nullable: true
+                                    uploadIds:
+                                      type: array
+                                      items:
+                                        type: string
+                                      nullable: true
+                                maxItems: 25
+                                nullable: true
+                              tweetStorm:
+                                type: boolean
+                                nullable: true
+                              tweetStormNumbering:
+                                type: boolean
                                 nullable: true
                               isAiGenerated:
                                 default: false
@@ -31761,7 +32963,7 @@ paths:
         Retrieve analytics for multiple posts in a single request. Maximum 60
         posts per request, paginated with 20 per page.
       summary: Get Bulk Post Analytics
-      tags: *ref_5
+      tags: *ref_6
       parameters:
         - name: postIds
           in: query
@@ -31790,6 +32992,7 @@ paths:
               - BLUESKY
               - GOOGLE_BUSINESS
               - SNAPCHAT
+              - TWITTER
         - name: page
           in: query
           schema:
@@ -32045,7 +33248,7 @@ paths:
         instead of waiting for the scheduled refresh. Use sparingly, as it
         consumes platform rate limits.
       summary: Force refresh social account analytics
-      tags: *ref_5
+      tags: *ref_6
       parameters: []
       operationId: analytics.forceSocialAccountAnalytics
       requestBody:
@@ -32072,6 +33275,7 @@ paths:
                     - BLUESKY
                     - GOOGLE_BUSINESS
                     - SNAPCHAT
+                    - TWITTER
               required:
                 - teamId
                 - platformType
@@ -32276,7 +33480,7 @@ paths:
         of waiting for the scheduled refresh. Use sparingly, as it consumes
         platform rate limits.
       summary: Force refresh post analytics
-      tags: *ref_5
+      tags: *ref_6
       parameters: []
       operationId: analytics.forcePostAnalytics
       requestBody:
@@ -32304,6 +33508,7 @@ paths:
                     - BLUESKY
                     - GOOGLE_BUSINESS
                     - SNAPCHAT
+                    - TWITTER
                   nullable: true
                 importedPostId:
                   type: string
@@ -32511,7 +33716,7 @@ paths:
         published post on the social platform into bundle.social so you can read
         and reply to them through the API.
       summary: Start a new comment import for a post
-      tags: &ref_6
+      tags: &ref_7
         - comment
       parameters: []
       operationId: comment.importCreate
@@ -32540,6 +33745,7 @@ paths:
                     - THREADS
                     - MASTODON
                     - BLUESKY
+                    - TWITTER
               required:
                 - teamId
                 - socialAccountType
@@ -32578,6 +33784,7 @@ paths:
                       - THREADS
                       - MASTODON
                       - BLUESKY
+                      - TWITTER
                   status:
                     type: string
                     enum:
@@ -32776,7 +33983,7 @@ paths:
         List comment import jobs for a team so you can monitor which imports are
         queued, running, finished, or failed.
       summary: Get comment import list
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: teamId
           in: query
@@ -32856,6 +34063,7 @@ paths:
                             - THREADS
                             - MASTODON
                             - BLUESKY
+                            - TWITTER
                         status:
                           type: string
                           enum:
@@ -33043,7 +34251,7 @@ paths:
         List the comments pulled in by a comment import, with pagination. Use
         this to read audience replies and decide which ones need a response.
       summary: Get fetched comments for a post
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: teamId
           in: query
@@ -33072,6 +34280,7 @@ paths:
               - THREADS
               - MASTODON
               - BLUESKY
+              - TWITTER
         - name: socialAccountId
           in: query
           schema:
@@ -33131,6 +34340,7 @@ paths:
                             - THREADS
                             - MASTODON
                             - BLUESKY
+                            - TWITTER
                         externalId:
                           type: string
                         externalParentId:
@@ -33159,7 +34369,7 @@ paths:
                         repliesCount:
                           type: number
                         platformData:
-                          default: &ref_7 {}
+                          default: &ref_8 {}
                           type: object
                           properties:
                             canDelete:
@@ -33419,7 +34629,7 @@ paths:
         social platform. Use this to moderate and engage without leaving your
         own app.
       summary: Run an action on a fetched comment
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: commentId
           in: path
@@ -33496,6 +34706,7 @@ paths:
                           - THREADS
                           - MASTODON
                           - BLUESKY
+                          - TWITTER
                       externalId:
                         type: string
                       externalParentId:
@@ -33524,7 +34735,7 @@ paths:
                       repliesCount:
                         type: number
                       platformData:
-                        default: *ref_7
+                        default: *ref_8
                         type: object
                         properties:
                           canDelete:
@@ -33779,7 +34990,7 @@ paths:
     get:
       description: Check the status, progress, and result of a single comment import job.
       summary: Get comment import by ID
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: importId
           in: path
@@ -33822,6 +35033,7 @@ paths:
                       - THREADS
                       - MASTODON
                       - BLUESKY
+                      - TWITTER
                   status:
                     type: string
                     enum:
@@ -34007,7 +35219,7 @@ paths:
         Retrieve a single comment you created through bundle.social, including
         its publishing status and any error details.
       summary: Get comment
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: id
           in: path
@@ -34065,6 +35277,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -34148,6 +35367,9 @@ paths:
                   errors:
                     type: object
                     properties:
+                      TWITTER:
+                        type: string
+                        nullable: true
                       FACEBOOK:
                         type: string
                         nullable: true
@@ -34185,6 +35407,34 @@ paths:
                   errorsVerbose:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -34497,6 +35747,16 @@ paths:
                   externalData:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -34783,7 +36043,7 @@ paths:
         Change the content or scheduled time of a comment that has not published
         yet.
       summary: Update comment
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: id
           in: path
@@ -34827,6 +36087,7 @@ paths:
                       - YOUTUBE
                       - INSTAGRAM
                       - FACEBOOK
+                      - TWITTER
                       - THREADS
                       - LINKEDIN
                       - REDDIT
@@ -34838,6 +36099,13 @@ paths:
                 data:
                   type: object
                   properties:
+                    TWITTER:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                      nullable: true
                     FACEBOOK:
                       type: object
                       properties:
@@ -34969,6 +36237,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -35052,6 +36327,9 @@ paths:
                   errors:
                     type: object
                     properties:
+                      TWITTER:
+                        type: string
+                        nullable: true
                       FACEBOOK:
                         type: string
                         nullable: true
@@ -35089,6 +36367,34 @@ paths:
                   errorsVerbose:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -35401,6 +36707,16 @@ paths:
                   externalData:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -35687,7 +37003,7 @@ paths:
         Permanently delete a comment from bundle.social. Deleting a scheduled
         comment cancels it before it publishes.
       summary: Delete comment
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: id
           in: path
@@ -35745,6 +37061,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -35828,6 +37151,9 @@ paths:
                   errors:
                     type: object
                     properties:
+                      TWITTER:
+                        type: string
+                        nullable: true
                       FACEBOOK:
                         type: string
                         nullable: true
@@ -35865,6 +37191,34 @@ paths:
                   errorsVerbose:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -36177,6 +37531,16 @@ paths:
                   externalData:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -36465,7 +37829,7 @@ paths:
         pagination. Use it to track which scheduled comments published
         successfully.
       summary: Get comment list
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: teamId
           in: query
@@ -36522,6 +37886,7 @@ paths:
                 - YOUTUBE
                 - INSTAGRAM
                 - FACEBOOK
+                - TWITTER
                 - THREADS
                 - LINKEDIN
                 - REDDIT
@@ -36598,6 +37963,13 @@ paths:
                         data:
                           type: object
                           properties:
+                            TWITTER:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                  nullable: true
+                              nullable: true
                             FACEBOOK:
                               type: object
                               properties:
@@ -36681,6 +38053,9 @@ paths:
                         errors:
                           type: object
                           properties:
+                            TWITTER:
+                              type: string
+                              nullable: true
                             FACEBOOK:
                               type: string
                               nullable: true
@@ -36718,6 +38093,34 @@ paths:
                         errorsVerbose:
                           type: object
                           properties:
+                            TWITTER:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  nullable: true
+                                errorMessage:
+                                  type: string
+                                  nullable: true
+                                isTransient:
+                                  type: boolean
+                                  nullable: true
+                                retryability:
+                                  type: string
+                                  enum:
+                                    - retryable
+                                    - non_retryable
+                                    - unknown
+                                  nullable: true
+                                httpStatus:
+                                  type: number
+                                  nullable: true
+                                meta:
+                                  nullable: true
+                                userFacingMessage:
+                                  type: string
+                                  nullable: true
+                              nullable: true
                             FACEBOOK:
                               type: object
                               properties:
@@ -37030,6 +38433,16 @@ paths:
                         externalData:
                           type: object
                           properties:
+                            TWITTER:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  nullable: true
+                                permalink:
+                                  type: string
+                                  nullable: true
+                              nullable: true
                             FACEBOOK:
                               type: object
                               properties:
@@ -37322,7 +38735,7 @@ paths:
         schedule the first comment on Instagram or LinkedIn, or to respond to
         your audience programmatically.
       summary: Create comment
-      tags: *ref_6
+      tags: *ref_7
       parameters: []
       operationId: comment.create
       requestBody:
@@ -37363,6 +38776,7 @@ paths:
                       - YOUTUBE
                       - INSTAGRAM
                       - FACEBOOK
+                      - TWITTER
                       - THREADS
                       - LINKEDIN
                       - REDDIT
@@ -37374,6 +38788,13 @@ paths:
                 data:
                   type: object
                   properties:
+                    TWITTER:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          nullable: true
+                      nullable: true
                     FACEBOOK:
                       type: object
                       properties:
@@ -37507,6 +38928,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -37590,6 +39018,9 @@ paths:
                   errors:
                     type: object
                     properties:
+                      TWITTER:
+                        type: string
+                        nullable: true
                       FACEBOOK:
                         type: string
                         nullable: true
@@ -37627,6 +39058,34 @@ paths:
                   errorsVerbose:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -37939,6 +39398,16 @@ paths:
                   externalData:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -38226,7 +39695,7 @@ paths:
         Re-attempt publishing a comment that failed, for example after a token
         expired or a platform outage.
       summary: Retry comment
-      tags: *ref_6
+      tags: *ref_7
       parameters:
         - name: id
           in: path
@@ -38284,6 +39753,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -38367,6 +39843,9 @@ paths:
                   errors:
                     type: object
                     properties:
+                      TWITTER:
+                        type: string
+                        nullable: true
                       FACEBOOK:
                         type: string
                         nullable: true
@@ -38404,6 +39883,34 @@ paths:
                   errorsVerbose:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            nullable: true
+                          errorMessage:
+                            type: string
+                            nullable: true
+                          isTransient:
+                            type: boolean
+                            nullable: true
+                          retryability:
+                            type: string
+                            enum:
+                              - retryable
+                              - non_retryable
+                              - unknown
+                            nullable: true
+                          httpStatus:
+                            type: number
+                            nullable: true
+                          meta:
+                            nullable: true
+                          userFacingMessage:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -38716,6 +40223,16 @@ paths:
                   externalData:
                     type: object
                     properties:
+                      TWITTER:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            nullable: true
+                          permalink:
+                            type: string
+                            nullable: true
+                        nullable: true
                       FACEBOOK:
                         type: object
                         properties:
@@ -45282,7 +46799,7 @@ paths:
                   name:
                     type: string
                   attributes:
-                    default: &ref_8 []
+                    default: &ref_9 []
                     type: array
                     items:
                       type: object
@@ -45518,7 +47035,7 @@ paths:
                   name:
                     type: string
                   attributes:
-                    default: *ref_8
+                    default: *ref_9
                     type: array
                     items:
                       type: object
@@ -55633,7 +57150,9 @@ paths:
                   - message
   /api/v1/misc/twitter/tweet:
     delete:
-      description: Permanently delete a published Twitter/X tweet.
+      description: >-
+        Permanently delete a published Twitter/X tweet. X charges for deletes
+        ($0.01 per request).
       summary: Delete a Twitter/X tweet
       tags:
         - misc
@@ -55654,6 +57173,178 @@ paths:
               required:
                 - teamId
                 - postId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/twitter/comment:
+    delete:
+      description: >-
+        Permanently delete a published Twitter/X reply/comment. X charges for
+        deletes ($0.01 per request).
+      summary: Delete a Twitter/X comment
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.twitter.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in bundle.social
+              required:
+                - teamId
+                - commentId
       responses:
         '200':
           description: '200'
@@ -56460,7 +58151,7 @@ paths:
         published before it was connected to bundle.social, together with their
         analytics. Use it to get historical reporting from day one.
       summary: Start a new post history import
-      tags: &ref_9
+      tags: &ref_10
         - postImport
       parameters: []
       operationId: postImport.create
@@ -56486,6 +58177,7 @@ paths:
                     - REDDIT
                     - MASTODON
                     - BLUESKY
+                    - TWITTER
                 count:
                   type: integer
                   minimum: 1
@@ -56752,7 +58444,7 @@ paths:
         List post history import jobs for a team so you can monitor which
         backfills are queued, running, finished, or failed.
       summary: Get import status list
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: teamId
           in: query
@@ -56774,6 +58466,7 @@ paths:
               - REDDIT
               - MASTODON
               - BLUESKY
+              - TWITTER
       operationId: postImport.getStatus
       responses:
         '200':
@@ -57009,7 +58702,7 @@ paths:
         Check the status, progress, and result of a single post history import
         job.
       summary: Get import by ID
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: importId
           in: path
@@ -57245,7 +58938,7 @@ paths:
         and your remaining import capacity. Use it to report on performance from
         before the account was connected.
       summary: Get imported posts with analytics for a social account
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: teamId
           in: query
@@ -57268,6 +58961,7 @@ paths:
               - REDDIT
               - MASTODON
               - BLUESKY
+              - TWITTER
         - name: limit
           in: query
           schema:
@@ -57577,7 +59271,7 @@ paths:
         Permanently delete up to 100 imported historical posts and their
         analytics in one request, freeing import capacity.
       summary: Bulk delete imported posts and their analytics
-      tags: *ref_9
+      tags: *ref_10
       parameters: []
       operationId: postImport.deleteImportedPosts
       requestBody:
@@ -57751,7 +59445,7 @@ paths:
         Re-run a post history import that failed, for example after a token
         expired or the platform rate-limited the request.
       summary: Retry a failed import
-      tags: *ref_9
+      tags: *ref_10
       parameters:
         - name: importId
           in: path
@@ -57995,7 +59689,7 @@ paths:
     post:
       description: Upload CSV for async bulk post import.
       summary: Create post CSV import
-      tags: &ref_10
+      tags: &ref_11
         - postCSV
       parameters: []
       operationId: postCSV.create
@@ -58222,7 +59916,7 @@ paths:
         List your team's bulk CSV post imports with pagination, so you can see
         what was uploaded and when.
       summary: Get post CSV import history
-      tags: *ref_10
+      tags: *ref_11
       parameters:
         - name: offset
           in: query
@@ -58458,7 +60152,7 @@ paths:
     get:
       description: Retrieve a single CSV import with its summary counts and configuration.
       summary: Get post CSV import details
-      tags: *ref_10
+      tags: *ref_11
       parameters:
         - name: importId
           in: path
@@ -58679,7 +60373,7 @@ paths:
         Poll the progress of a bulk CSV post import, including how many rows are
         processed, succeeded, and failed.
       summary: Get post CSV import processing status
-      tags: *ref_10
+      tags: *ref_11
       parameters:
         - name: importId
           in: path
@@ -58879,7 +60573,7 @@ paths:
         rows created posts and which failed validation and why. Use it to report
         errors back to the person who uploaded the file.
       summary: Get post CSV import row results
-      tags: *ref_10
+      tags: *ref_11
       parameters:
         - name: importId
           in: path

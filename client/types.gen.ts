@@ -1645,7 +1645,27 @@ export type PostGetByReferenceKeyResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                /**
+                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                 */
+                altText?: string | null;
+            }> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            poll?: {
+                options: Array<(string)>;
+                durationMinutes: number;
+            } | null;
+            quoteTweetId?: string | null;
+            replyToTweetId?: string | null;
+            subscribersOnly?: boolean | null;
+            thread?: Array<{
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            }> | null;
+            tweetStorm?: boolean | null;
+            tweetStormNumbering?: boolean | null;
             /**
              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
              */
@@ -2332,6 +2352,7 @@ export type PostGetByReferenceKeyResponse = {
         YOUTUBE?: string | null;
         INSTAGRAM?: string | null;
         FACEBOOK?: string | null;
+        TWITTER?: string | null;
         THREADS?: string | null;
         LINKEDIN?: string | null;
         REDDIT?: string | null;
@@ -2435,7 +2456,27 @@ export type PostGetResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                /**
+                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                 */
+                altText?: string | null;
+            }> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            poll?: {
+                options: Array<(string)>;
+                durationMinutes: number;
+            } | null;
+            quoteTweetId?: string | null;
+            replyToTweetId?: string | null;
+            subscribersOnly?: boolean | null;
+            thread?: Array<{
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            }> | null;
+            tweetStorm?: boolean | null;
+            tweetStormNumbering?: boolean | null;
             /**
              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
              */
@@ -3122,6 +3163,7 @@ export type PostGetResponse = {
         YOUTUBE?: string | null;
         INSTAGRAM?: string | null;
         FACEBOOK?: string | null;
+        TWITTER?: string | null;
         THREADS?: string | null;
         LINKEDIN?: string | null;
         REDDIT?: string | null;
@@ -3223,7 +3265,27 @@ export type PostUpdateData = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    /**
+                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                     */
+                    altText?: string | null;
+                }> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                poll?: {
+                    options: Array<(string)>;
+                    durationMinutes: number;
+                } | null;
+                quoteTweetId?: string | null;
+                replyToTweetId?: string | null;
+                subscribersOnly?: boolean | null;
+                thread?: Array<{
+                    text?: string | null;
+                    uploadIds?: Array<(string)> | null;
+                }> | null;
+                tweetStorm?: boolean | null;
+                tweetStormNumbering?: boolean | null;
                 /**
                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                  */
@@ -3642,6 +3704,7 @@ export type PostUpdateData = {
             YOUTUBE?: string | null;
             INSTAGRAM?: string | null;
             FACEBOOK?: string | null;
+            TWITTER?: string | null;
             THREADS?: string | null;
             LINKEDIN?: string | null;
             REDDIT?: string | null;
@@ -3666,7 +3729,27 @@ export type PostUpdateResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                /**
+                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                 */
+                altText?: string | null;
+            }> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            poll?: {
+                options: Array<(string)>;
+                durationMinutes: number;
+            } | null;
+            quoteTweetId?: string | null;
+            replyToTweetId?: string | null;
+            subscribersOnly?: boolean | null;
+            thread?: Array<{
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            }> | null;
+            tweetStorm?: boolean | null;
+            tweetStormNumbering?: boolean | null;
             /**
              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
              */
@@ -4353,6 +4436,7 @@ export type PostUpdateResponse = {
         YOUTUBE?: string | null;
         INSTAGRAM?: string | null;
         FACEBOOK?: string | null;
+        TWITTER?: string | null;
         THREADS?: string | null;
         LINKEDIN?: string | null;
         REDDIT?: string | null;
@@ -4380,7 +4464,27 @@ export type PostDeleteResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                /**
+                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                 */
+                altText?: string | null;
+            }> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            poll?: {
+                options: Array<(string)>;
+                durationMinutes: number;
+            } | null;
+            quoteTweetId?: string | null;
+            replyToTweetId?: string | null;
+            subscribersOnly?: boolean | null;
+            thread?: Array<{
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            }> | null;
+            tweetStorm?: boolean | null;
+            tweetStormNumbering?: boolean | null;
             /**
              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
              */
@@ -5091,7 +5195,27 @@ export type PostGetListResponse = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    /**
+                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                     */
+                    altText?: string | null;
+                }> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                poll?: {
+                    options: Array<(string)>;
+                    durationMinutes: number;
+                } | null;
+                quoteTweetId?: string | null;
+                replyToTweetId?: string | null;
+                subscribersOnly?: boolean | null;
+                thread?: Array<{
+                    text?: string | null;
+                    uploadIds?: Array<(string)> | null;
+                }> | null;
+                tweetStorm?: boolean | null;
+                tweetStormNumbering?: boolean | null;
                 /**
                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                  */
@@ -5778,6 +5902,7 @@ export type PostGetListResponse = {
             YOUTUBE?: string | null;
             INSTAGRAM?: string | null;
             FACEBOOK?: string | null;
+            TWITTER?: string | null;
             THREADS?: string | null;
             LINKEDIN?: string | null;
             REDDIT?: string | null;
@@ -5881,7 +6006,27 @@ export type PostCreateData = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    /**
+                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                     */
+                    altText?: string | null;
+                }> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                poll?: {
+                    options: Array<(string)>;
+                    durationMinutes: number;
+                } | null;
+                quoteTweetId?: string | null;
+                replyToTweetId?: string | null;
+                subscribersOnly?: boolean | null;
+                thread?: Array<{
+                    text?: string | null;
+                    uploadIds?: Array<(string)> | null;
+                }> | null;
+                tweetStorm?: boolean | null;
+                tweetStormNumbering?: boolean | null;
                 /**
                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                  */
@@ -6300,6 +6445,7 @@ export type PostCreateData = {
             YOUTUBE?: string | null;
             INSTAGRAM?: string | null;
             FACEBOOK?: string | null;
+            TWITTER?: string | null;
             THREADS?: string | null;
             LINKEDIN?: string | null;
             REDDIT?: string | null;
@@ -6324,7 +6470,27 @@ export type PostCreateResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                /**
+                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                 */
+                altText?: string | null;
+            }> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            poll?: {
+                options: Array<(string)>;
+                durationMinutes: number;
+            } | null;
+            quoteTweetId?: string | null;
+            replyToTweetId?: string | null;
+            subscribersOnly?: boolean | null;
+            thread?: Array<{
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            }> | null;
+            tweetStorm?: boolean | null;
+            tweetStormNumbering?: boolean | null;
             /**
              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
              */
@@ -7011,6 +7177,7 @@ export type PostCreateResponse = {
         YOUTUBE?: string | null;
         INSTAGRAM?: string | null;
         FACEBOOK?: string | null;
+        TWITTER?: string | null;
         THREADS?: string | null;
         LINKEDIN?: string | null;
         REDDIT?: string | null;
@@ -7038,7 +7205,27 @@ export type PostRetryResponse = {
         TWITTER?: {
             text?: string | null;
             uploadIds?: Array<(string)> | null;
+            mediaItems?: Array<{
+                uploadId: string;
+                /**
+                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                 */
+                altText?: string | null;
+            }> | null;
             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+            poll?: {
+                options: Array<(string)>;
+                durationMinutes: number;
+            } | null;
+            quoteTweetId?: string | null;
+            replyToTweetId?: string | null;
+            subscribersOnly?: boolean | null;
+            thread?: Array<{
+                text?: string | null;
+                uploadIds?: Array<(string)> | null;
+            }> | null;
+            tweetStorm?: boolean | null;
+            tweetStormNumbering?: boolean | null;
             /**
              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
              */
@@ -7722,8 +7909,53 @@ export type PostRetryResponse = {
     deletedAt?: string | null;
 };
 
+export type CreditGetCreditBalanceResponse = {
+    organizationId: string;
+    currency: 'usd';
+    balanceMicros: number;
+    heldMicros: number;
+    availableMicros: number;
+    balanceCents: number;
+    availableCents: number;
+    lowBalanceThresholdMicros: number | null;
+    lowBalance: boolean;
+    updatedAt: string | null;
+};
+
+export type CreditQuoteBillableUsageData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        text?: string;
+        texts?: Array<(string)>;
+        action?: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ';
+        altTextCount?: number;
+        quantity?: number;
+    };
+};
+
+export type CreditQuoteBillableUsageResponse = {
+    billable: boolean;
+    lines: Array<{
+        action: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ';
+        label: string;
+        unitAmountMicros: number;
+        amountMicros: number;
+        amountCents: number;
+        currency: 'usd';
+    }>;
+    totalMicros: number;
+    totalCents: number;
+    currency: 'usd';
+    availableMicros: number;
+    availableCents: number;
+    wouldExceedBalance: boolean;
+};
+
 export type AnalyticsGetSocialAccountAnalyticsData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | 'TWITTER';
     teamId: string;
 };
 
@@ -7790,7 +8022,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
 
 export type AnalyticsGetPostAnalyticsData = {
     importedPostId?: string | null;
-    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | null;
+    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | 'TWITTER' | null;
     postId?: string | null;
 };
 
@@ -7808,7 +8040,27 @@ export type AnalyticsGetPostAnalyticsResponse = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    /**
+                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                     */
+                    altText?: string | null;
+                }> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                poll?: {
+                    options: Array<(string)>;
+                    durationMinutes: number;
+                } | null;
+                quoteTweetId?: string | null;
+                replyToTweetId?: string | null;
+                subscribersOnly?: boolean | null;
+                thread?: Array<{
+                    text?: string | null;
+                    uploadIds?: Array<(string)> | null;
+                }> | null;
+                tweetStorm?: boolean | null;
+                tweetStormNumbering?: boolean | null;
                 /**
                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                  */
@@ -8533,7 +8785,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
 };
 
 export type AnalyticsGetSocialAccountAnalyticsRawData = {
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | 'TWITTER';
     teamId: string;
 };
 
@@ -8593,7 +8845,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
 
 export type AnalyticsGetPostAnalyticsRawData = {
     importedPostId?: string | null;
-    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | null;
+    platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | 'TWITTER' | null;
     postId?: string | null;
 };
 
@@ -8611,7 +8863,27 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             TWITTER?: {
                 text?: string | null;
                 uploadIds?: Array<(string)> | null;
+                mediaItems?: Array<{
+                    uploadId: string;
+                    /**
+                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                     */
+                    altText?: string | null;
+                }> | null;
                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                poll?: {
+                    options: Array<(string)>;
+                    durationMinutes: number;
+                } | null;
+                quoteTweetId?: string | null;
+                replyToTweetId?: string | null;
+                subscribersOnly?: boolean | null;
+                thread?: Array<{
+                    text?: string | null;
+                    uploadIds?: Array<(string)> | null;
+                }> | null;
+                tweetStorm?: boolean | null;
+                tweetStormNumbering?: boolean | null;
                 /**
                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                  */
@@ -9330,7 +9602,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
 export type AnalyticsGetBulkPostAnalyticsData = {
     limit?: number;
     page?: number;
-    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+    platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | 'TWITTER';
     postIds: Array<(string)>;
 };
 
@@ -9371,7 +9643,7 @@ export type AnalyticsForceSocialAccountAnalyticsData = {
      */
     requestBody?: {
         teamId: string;
-        platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        platformType: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | 'TWITTER';
     };
 };
 
@@ -9399,7 +9671,7 @@ export type AnalyticsForcePostAnalyticsData = {
      */
     requestBody?: {
         postId?: string | null;
-        platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | null;
+        platformType?: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'REDDIT' | 'PINTEREST' | 'MASTODON' | 'LINKEDIN' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT' | 'TWITTER' | null;
         importedPostId?: string | null;
     };
 };
@@ -9431,7 +9703,7 @@ export type CommentImportCreateData = {
         teamId: string;
         postId?: string;
         importedPostId?: string;
-        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
     };
 };
 
@@ -9442,7 +9714,7 @@ export type CommentImportCreateResponse = {
     socialAccountId: string;
     postId?: string | null;
     importedPostId?: string | null;
-    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
     commentsImported: number;
     error?: string | null;
@@ -9470,7 +9742,7 @@ export type CommentImportGetListResponse = {
         socialAccountId: string;
         postId?: string | null;
         importedPostId?: string | null;
-        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
         status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
         commentsImported: number;
         error?: string | null;
@@ -9486,7 +9758,7 @@ export type CommentImportGetFetchedCommentsData = {
     importedPostId?: string;
     limit?: number | null;
     offset?: number | null;
-    platform?: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+    platform?: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
     postId?: string;
     socialAccountId?: string;
     teamId: string;
@@ -9501,7 +9773,7 @@ export type CommentImportGetFetchedCommentsResponse = {
         importedPostId?: string | null;
         socialAccountId: string;
         importId: string;
-        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
         externalId: string;
         externalParentId?: string | null;
         externalPostId?: string | null;
@@ -9566,7 +9838,7 @@ export type CommentImportActionFetchedCommentResponse = {
         importedPostId?: string | null;
         socialAccountId: string;
         importId: string;
-        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
         externalId: string;
         externalParentId?: string | null;
         externalPostId?: string | null;
@@ -9618,7 +9890,7 @@ export type CommentImportGetByIdResponse = {
     socialAccountId: string;
     postId?: string | null;
     importedPostId?: string | null;
-    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
     commentsImported: number;
     error?: string | null;
@@ -9646,6 +9918,9 @@ export type CommentGetResponse = {
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
+        TWITTER?: {
+            text?: string | null;
+        } | null;
         FACEBOOK?: {
             text?: string | null;
         } | null;
@@ -9682,6 +9957,7 @@ export type CommentGetResponse = {
     };
     error?: string | null;
     errors?: {
+        TWITTER?: string | null;
         FACEBOOK?: string | null;
         INSTAGRAM?: string | null;
         TIKTOK?: string | null;
@@ -9695,6 +9971,15 @@ export type CommentGetResponse = {
         BLUESKY?: string | null;
     } | null;
     errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
         FACEBOOK?: {
             code?: string | null;
             errorMessage?: string | null;
@@ -9796,6 +10081,10 @@ export type CommentGetResponse = {
         } | null;
     } | null;
     externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
         FACEBOOK?: {
             id?: string | null;
             permalink?: string | null;
@@ -9869,8 +10158,11 @@ export type CommentUpdateData = {
         fetchedParentCommentId?: string | null;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
         data?: {
+            TWITTER?: {
+                text?: string | null;
+            } | null;
             FACEBOOK?: {
                 text?: string | null;
             } | null;
@@ -9922,6 +10214,9 @@ export type CommentUpdateResponse = {
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
+        TWITTER?: {
+            text?: string | null;
+        } | null;
         FACEBOOK?: {
             text?: string | null;
         } | null;
@@ -9958,6 +10253,7 @@ export type CommentUpdateResponse = {
     };
     error?: string | null;
     errors?: {
+        TWITTER?: string | null;
         FACEBOOK?: string | null;
         INSTAGRAM?: string | null;
         TIKTOK?: string | null;
@@ -9971,6 +10267,15 @@ export type CommentUpdateResponse = {
         BLUESKY?: string | null;
     } | null;
     errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
         FACEBOOK?: {
             code?: string | null;
             errorMessage?: string | null;
@@ -10072,6 +10377,10 @@ export type CommentUpdateResponse = {
         } | null;
     } | null;
     externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
         FACEBOOK?: {
             id?: string | null;
             permalink?: string | null;
@@ -10149,6 +10458,9 @@ export type CommentDeleteResponse = {
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
+        TWITTER?: {
+            text?: string | null;
+        } | null;
         FACEBOOK?: {
             text?: string | null;
         } | null;
@@ -10185,6 +10497,7 @@ export type CommentDeleteResponse = {
     };
     error?: string | null;
     errors?: {
+        TWITTER?: string | null;
         FACEBOOK?: string | null;
         INSTAGRAM?: string | null;
         TIKTOK?: string | null;
@@ -10198,6 +10511,15 @@ export type CommentDeleteResponse = {
         BLUESKY?: string | null;
     } | null;
     errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
         FACEBOOK?: {
             code?: string | null;
             errorMessage?: string | null;
@@ -10299,6 +10621,10 @@ export type CommentDeleteResponse = {
         } | null;
     } | null;
     externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
         FACEBOOK?: {
             id?: string | null;
             permalink?: string | null;
@@ -10365,7 +10691,7 @@ export type CommentGetListData = {
     offset?: number | null;
     order?: 'ASC' | 'DESC';
     orderBy?: 'createdAt' | 'updatedAt' | 'deletedAt';
-    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')> | null;
+    platforms?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')> | null;
     postId?: string;
     q?: string;
     status?: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
@@ -10386,6 +10712,9 @@ export type CommentGetListResponse = {
         postedDate?: string | null;
         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
         data: {
+            TWITTER?: {
+                text?: string | null;
+            } | null;
             FACEBOOK?: {
                 text?: string | null;
             } | null;
@@ -10422,6 +10751,7 @@ export type CommentGetListResponse = {
         };
         error?: string | null;
         errors?: {
+            TWITTER?: string | null;
             FACEBOOK?: string | null;
             INSTAGRAM?: string | null;
             TIKTOK?: string | null;
@@ -10435,6 +10765,15 @@ export type CommentGetListResponse = {
             BLUESKY?: string | null;
         } | null;
         errorsVerbose?: {
+            TWITTER?: {
+                code?: string | null;
+                errorMessage?: string | null;
+                isTransient?: boolean | null;
+                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                httpStatus?: number | null;
+                meta?: unknown;
+                userFacingMessage?: string | null;
+            } | null;
             FACEBOOK?: {
                 code?: string | null;
                 errorMessage?: string | null;
@@ -10536,6 +10875,10 @@ export type CommentGetListResponse = {
             } | null;
         } | null;
         externalData?: {
+            TWITTER?: {
+                id?: string | null;
+                permalink?: string | null;
+            } | null;
             FACEBOOK?: {
                 id?: string | null;
                 permalink?: string | null;
@@ -10611,8 +10954,11 @@ export type CommentCreateData = {
         fetchedParentCommentId?: string | null;
         postDate?: string;
         status?: 'DRAFT' | 'SCHEDULED';
-        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
+        socialAccountTypes?: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY')>;
         data?: {
+            TWITTER?: {
+                text?: string | null;
+            } | null;
             FACEBOOK?: {
                 text?: string | null;
             } | null;
@@ -10664,6 +11010,9 @@ export type CommentCreateResponse = {
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
+        TWITTER?: {
+            text?: string | null;
+        } | null;
         FACEBOOK?: {
             text?: string | null;
         } | null;
@@ -10700,6 +11049,7 @@ export type CommentCreateResponse = {
     };
     error?: string | null;
     errors?: {
+        TWITTER?: string | null;
         FACEBOOK?: string | null;
         INSTAGRAM?: string | null;
         TIKTOK?: string | null;
@@ -10713,6 +11063,15 @@ export type CommentCreateResponse = {
         BLUESKY?: string | null;
     } | null;
     errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
         FACEBOOK?: {
             code?: string | null;
             errorMessage?: string | null;
@@ -10814,6 +11173,10 @@ export type CommentCreateResponse = {
         } | null;
     } | null;
     externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
         FACEBOOK?: {
             id?: string | null;
             permalink?: string | null;
@@ -10891,6 +11254,9 @@ export type CommentRetryResponse = {
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
+        TWITTER?: {
+            text?: string | null;
+        } | null;
         FACEBOOK?: {
             text?: string | null;
         } | null;
@@ -10927,6 +11293,7 @@ export type CommentRetryResponse = {
     };
     error?: string | null;
     errors?: {
+        TWITTER?: string | null;
         FACEBOOK?: string | null;
         INSTAGRAM?: string | null;
         TIKTOK?: string | null;
@@ -10940,6 +11307,15 @@ export type CommentRetryResponse = {
         BLUESKY?: string | null;
     } | null;
     errorsVerbose?: {
+        TWITTER?: {
+            code?: string | null;
+            errorMessage?: string | null;
+            isTransient?: boolean | null;
+            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+            httpStatus?: number | null;
+            meta?: unknown;
+            userFacingMessage?: string | null;
+        } | null;
         FACEBOOK?: {
             code?: string | null;
             errorMessage?: string | null;
@@ -11041,6 +11417,10 @@ export type CommentRetryResponse = {
         } | null;
     } | null;
     externalData?: {
+        TWITTER?: {
+            id?: string | null;
+            permalink?: string | null;
+        } | null;
         FACEBOOK?: {
             id?: string | null;
             permalink?: string | null;
@@ -13311,6 +13691,23 @@ export type MiscTwitterDeleteTweetResponse = {
     success: boolean;
 };
 
+export type MiscTwitterDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in bundle.social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscTwitterDeleteCommentResponse = {
+    success: boolean;
+};
+
 export type MiscDiscordDeleteMessageData = {
     /**
      * Body
@@ -13435,7 +13832,7 @@ export type PostImportCreateData = {
      */
     requestBody?: {
         teamId: string;
-        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY';
+        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
         count: number;
         withAnalytics?: boolean;
         importCarousels?: boolean;
@@ -13466,7 +13863,7 @@ export type PostImportCreateResponse = {
 };
 
 export type PostImportGetStatusData = {
-    socialAccountType?: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY';
+    socialAccountType?: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
     teamId: string;
 };
 
@@ -13521,7 +13918,7 @@ export type PostImportGetByIdResponse = {
 export type PostImportGetImportedPostsData = {
     limit?: number;
     offset?: number | null;
-    socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY';
+    socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
     teamId: string;
 };
 
@@ -17338,7 +17735,27 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                /**
+                                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                 */
+                                altText?: string | null;
+                            }> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            poll?: {
+                                options: Array<(string)>;
+                                durationMinutes: number;
+                            } | null;
+                            quoteTweetId?: string | null;
+                            replyToTweetId?: string | null;
+                            subscribersOnly?: boolean | null;
+                            thread?: Array<{
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            }> | null;
+                            tweetStorm?: boolean | null;
+                            tweetStormNumbering?: boolean | null;
                             /**
                              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                              */
@@ -18025,6 +18442,7 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         INSTAGRAM?: string | null;
                         FACEBOOK?: string | null;
+                        TWITTER?: string | null;
                         THREADS?: string | null;
                         LINKEDIN?: string | null;
                         REDDIT?: string | null;
@@ -18187,7 +18605,27 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                /**
+                                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                 */
+                                altText?: string | null;
+                            }> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            poll?: {
+                                options: Array<(string)>;
+                                durationMinutes: number;
+                            } | null;
+                            quoteTweetId?: string | null;
+                            replyToTweetId?: string | null;
+                            subscribersOnly?: boolean | null;
+                            thread?: Array<{
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            }> | null;
+                            tweetStorm?: boolean | null;
+                            tweetStormNumbering?: boolean | null;
                             /**
                              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                              */
@@ -18874,6 +19312,7 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         INSTAGRAM?: string | null;
                         FACEBOOK?: string | null;
+                        TWITTER?: string | null;
                         THREADS?: string | null;
                         LINKEDIN?: string | null;
                         REDDIT?: string | null;
@@ -19034,7 +19473,27 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                /**
+                                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                 */
+                                altText?: string | null;
+                            }> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            poll?: {
+                                options: Array<(string)>;
+                                durationMinutes: number;
+                            } | null;
+                            quoteTweetId?: string | null;
+                            replyToTweetId?: string | null;
+                            subscribersOnly?: boolean | null;
+                            thread?: Array<{
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            }> | null;
+                            tweetStorm?: boolean | null;
+                            tweetStormNumbering?: boolean | null;
                             /**
                              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                              */
@@ -19721,6 +20180,7 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         INSTAGRAM?: string | null;
                         FACEBOOK?: string | null;
+                        TWITTER?: string | null;
                         THREADS?: string | null;
                         LINKEDIN?: string | null;
                         REDDIT?: string | null;
@@ -19812,7 +20272,27 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                /**
+                                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                 */
+                                altText?: string | null;
+                            }> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            poll?: {
+                                options: Array<(string)>;
+                                durationMinutes: number;
+                            } | null;
+                            quoteTweetId?: string | null;
+                            replyToTweetId?: string | null;
+                            subscribersOnly?: boolean | null;
+                            thread?: Array<{
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            }> | null;
+                            tweetStorm?: boolean | null;
+                            tweetStormNumbering?: boolean | null;
                             /**
                              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                              */
@@ -20573,7 +21053,27 @@ export type $OpenApiTs = {
                             TWITTER?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    /**
+                                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                     */
+                                    altText?: string | null;
+                                }> | null;
                                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                                poll?: {
+                                    options: Array<(string)>;
+                                    durationMinutes: number;
+                                } | null;
+                                quoteTweetId?: string | null;
+                                replyToTweetId?: string | null;
+                                subscribersOnly?: boolean | null;
+                                thread?: Array<{
+                                    text?: string | null;
+                                    uploadIds?: Array<(string)> | null;
+                                }> | null;
+                                tweetStorm?: boolean | null;
+                                tweetStormNumbering?: boolean | null;
                                 /**
                                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                                  */
@@ -21260,6 +21760,7 @@ export type $OpenApiTs = {
                             YOUTUBE?: string | null;
                             INSTAGRAM?: string | null;
                             FACEBOOK?: string | null;
+                            TWITTER?: string | null;
                             THREADS?: string | null;
                             LINKEDIN?: string | null;
                             REDDIT?: string | null;
@@ -21422,7 +21923,27 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                /**
+                                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                 */
+                                altText?: string | null;
+                            }> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            poll?: {
+                                options: Array<(string)>;
+                                durationMinutes: number;
+                            } | null;
+                            quoteTweetId?: string | null;
+                            replyToTweetId?: string | null;
+                            subscribersOnly?: boolean | null;
+                            thread?: Array<{
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            }> | null;
+                            tweetStorm?: boolean | null;
+                            tweetStormNumbering?: boolean | null;
                             /**
                              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                              */
@@ -22109,6 +22630,7 @@ export type $OpenApiTs = {
                         YOUTUBE?: string | null;
                         INSTAGRAM?: string | null;
                         FACEBOOK?: string | null;
+                        TWITTER?: string | null;
                         THREADS?: string | null;
                         LINKEDIN?: string | null;
                         REDDIT?: string | null;
@@ -22202,7 +22724,27 @@ export type $OpenApiTs = {
                         TWITTER?: {
                             text?: string | null;
                             uploadIds?: Array<(string)> | null;
+                            mediaItems?: Array<{
+                                uploadId: string;
+                                /**
+                                 * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                 */
+                                altText?: string | null;
+                            }> | null;
                             replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                            poll?: {
+                                options: Array<(string)>;
+                                durationMinutes: number;
+                            } | null;
+                            quoteTweetId?: string | null;
+                            replyToTweetId?: string | null;
+                            subscribersOnly?: boolean | null;
+                            thread?: Array<{
+                                text?: string | null;
+                                uploadIds?: Array<(string)> | null;
+                            }> | null;
+                            tweetStorm?: boolean | null;
+                            tweetStormNumbering?: boolean | null;
                             /**
                              * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                              */
@@ -22942,6 +23484,162 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/billing/credits/balance': {
+        get: {
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    organizationId: string;
+                    currency: 'usd';
+                    balanceMicros: number;
+                    heldMicros: number;
+                    availableMicros: number;
+                    balanceCents: number;
+                    availableCents: number;
+                    lowBalanceThresholdMicros: number | null;
+                    lowBalance: boolean;
+                    updatedAt: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/billing/billable-usage/quote': {
+        post: {
+            req: CreditQuoteBillableUsageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    billable: boolean;
+                    lines: Array<{
+                        action: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ';
+                        label: string;
+                        unitAmountMicros: number;
+                        amountMicros: number;
+                        amountCents: number;
+                        currency: 'usd';
+                    }>;
+                    totalMicros: number;
+                    totalCents: number;
+                    currency: 'usd';
+                    availableMicros: number;
+                    availableCents: number;
+                    wouldExceedBalance: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
     '/api/v1/analytics/social-account': {
         get: {
             req: AnalyticsGetSocialAccountAnalyticsData;
@@ -23087,7 +23785,27 @@ export type $OpenApiTs = {
                             TWITTER?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    /**
+                                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                     */
+                                    altText?: string | null;
+                                }> | null;
                                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                                poll?: {
+                                    options: Array<(string)>;
+                                    durationMinutes: number;
+                                } | null;
+                                quoteTweetId?: string | null;
+                                replyToTweetId?: string | null;
+                                subscribersOnly?: boolean | null;
+                                thread?: Array<{
+                                    text?: string | null;
+                                    uploadIds?: Array<(string)> | null;
+                                }> | null;
+                                tweetStorm?: boolean | null;
+                                tweetStormNumbering?: boolean | null;
                                 /**
                                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                                  */
@@ -24005,7 +24723,27 @@ export type $OpenApiTs = {
                             TWITTER?: {
                                 text?: string | null;
                                 uploadIds?: Array<(string)> | null;
+                                mediaItems?: Array<{
+                                    uploadId: string;
+                                    /**
+                                     * Alternative text for the image, used by screen readers. Applies to images/GIFs only.
+                                     */
+                                    altText?: string | null;
+                                }> | null;
                                 replySettings?: 'EVERYONE' | 'FOLLOWING' | 'MENTIONED_USERS' | 'SUBSCRIBERS' | 'VERIFIED' | null;
+                                poll?: {
+                                    options: Array<(string)>;
+                                    durationMinutes: number;
+                                } | null;
+                                quoteTweetId?: string | null;
+                                replyToTweetId?: string | null;
+                                subscribersOnly?: boolean | null;
+                                thread?: Array<{
+                                    text?: string | null;
+                                    uploadIds?: Array<(string)> | null;
+                                }> | null;
+                                tweetStorm?: boolean | null;
+                                tweetStormNumbering?: boolean | null;
                                 /**
                                  * Set to true if the post contains AI-generated media. Adds X's 'made with AI' label.
                                  */
@@ -25048,7 +25786,7 @@ export type $OpenApiTs = {
                     socialAccountId: string;
                     postId?: string | null;
                     importedPostId?: string | null;
-                    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
                     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
                     commentsImported: number;
                     error?: string | null;
@@ -25135,7 +25873,7 @@ export type $OpenApiTs = {
                         socialAccountId: string;
                         postId?: string | null;
                         importedPostId?: string | null;
-                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
                         status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
                         commentsImported: number;
                         error?: string | null;
@@ -25219,7 +25957,7 @@ export type $OpenApiTs = {
                         importedPostId?: string | null;
                         socialAccountId: string;
                         importId: string;
-                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
                         externalId: string;
                         externalParentId?: string | null;
                         externalPostId?: string | null;
@@ -25334,7 +26072,7 @@ export type $OpenApiTs = {
                         importedPostId?: string | null;
                         socialAccountId: string;
                         importId: string;
-                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
                         externalId: string;
                         externalParentId?: string | null;
                         externalPostId?: string | null;
@@ -25445,7 +26183,7 @@ export type $OpenApiTs = {
                     socialAccountId: string;
                     postId?: string | null;
                     importedPostId?: string | null;
-                    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY';
+                    platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
                     status: 'PENDING' | 'FETCHING' | 'RETRYING' | 'COMPLETED' | 'SKIPPED' | 'FAILED' | 'RATE_LIMITED';
                     commentsImported: number;
                     error?: string | null;
@@ -25532,6 +26270,9 @@ export type $OpenApiTs = {
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
+                        TWITTER?: {
+                            text?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             text?: string | null;
                         } | null;
@@ -25568,6 +26309,7 @@ export type $OpenApiTs = {
                     };
                     error?: string | null;
                     errors?: {
+                        TWITTER?: string | null;
                         FACEBOOK?: string | null;
                         INSTAGRAM?: string | null;
                         TIKTOK?: string | null;
@@ -25581,6 +26323,15 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                     } | null;
                     errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             code?: string | null;
                             errorMessage?: string | null;
@@ -25682,6 +26433,10 @@ export type $OpenApiTs = {
                         } | null;
                     } | null;
                     externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             permalink?: string | null;
@@ -25816,6 +26571,9 @@ export type $OpenApiTs = {
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
+                        TWITTER?: {
+                            text?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             text?: string | null;
                         } | null;
@@ -25852,6 +26610,7 @@ export type $OpenApiTs = {
                     };
                     error?: string | null;
                     errors?: {
+                        TWITTER?: string | null;
                         FACEBOOK?: string | null;
                         INSTAGRAM?: string | null;
                         TIKTOK?: string | null;
@@ -25865,6 +26624,15 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                     } | null;
                     errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             code?: string | null;
                             errorMessage?: string | null;
@@ -25966,6 +26734,10 @@ export type $OpenApiTs = {
                         } | null;
                     } | null;
                     externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             permalink?: string | null;
@@ -26100,6 +26872,9 @@ export type $OpenApiTs = {
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
+                        TWITTER?: {
+                            text?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             text?: string | null;
                         } | null;
@@ -26136,6 +26911,7 @@ export type $OpenApiTs = {
                     };
                     error?: string | null;
                     errors?: {
+                        TWITTER?: string | null;
                         FACEBOOK?: string | null;
                         INSTAGRAM?: string | null;
                         TIKTOK?: string | null;
@@ -26149,6 +26925,15 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                     } | null;
                     errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             code?: string | null;
                             errorMessage?: string | null;
@@ -26250,6 +27035,10 @@ export type $OpenApiTs = {
                         } | null;
                     } | null;
                     externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             permalink?: string | null;
@@ -26387,6 +27176,9 @@ export type $OpenApiTs = {
                         postedDate?: string | null;
                         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                         data: {
+                            TWITTER?: {
+                                text?: string | null;
+                            } | null;
                             FACEBOOK?: {
                                 text?: string | null;
                             } | null;
@@ -26423,6 +27215,7 @@ export type $OpenApiTs = {
                         };
                         error?: string | null;
                         errors?: {
+                            TWITTER?: string | null;
                             FACEBOOK?: string | null;
                             INSTAGRAM?: string | null;
                             TIKTOK?: string | null;
@@ -26436,6 +27229,15 @@ export type $OpenApiTs = {
                             BLUESKY?: string | null;
                         } | null;
                         errorsVerbose?: {
+                            TWITTER?: {
+                                code?: string | null;
+                                errorMessage?: string | null;
+                                isTransient?: boolean | null;
+                                retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                                httpStatus?: number | null;
+                                meta?: unknown;
+                                userFacingMessage?: string | null;
+                            } | null;
                             FACEBOOK?: {
                                 code?: string | null;
                                 errorMessage?: string | null;
@@ -26537,6 +27339,10 @@ export type $OpenApiTs = {
                             } | null;
                         } | null;
                         externalData?: {
+                            TWITTER?: {
+                                id?: string | null;
+                                permalink?: string | null;
+                            } | null;
                             FACEBOOK?: {
                                 id?: string | null;
                                 permalink?: string | null;
@@ -26673,6 +27479,9 @@ export type $OpenApiTs = {
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
+                        TWITTER?: {
+                            text?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             text?: string | null;
                         } | null;
@@ -26709,6 +27518,7 @@ export type $OpenApiTs = {
                     };
                     error?: string | null;
                     errors?: {
+                        TWITTER?: string | null;
                         FACEBOOK?: string | null;
                         INSTAGRAM?: string | null;
                         TIKTOK?: string | null;
@@ -26722,6 +27532,15 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                     } | null;
                     errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             code?: string | null;
                             errorMessage?: string | null;
@@ -26823,6 +27642,10 @@ export type $OpenApiTs = {
                         } | null;
                     } | null;
                     externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             permalink?: string | null;
@@ -26959,6 +27782,9 @@ export type $OpenApiTs = {
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
+                        TWITTER?: {
+                            text?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             text?: string | null;
                         } | null;
@@ -26995,6 +27821,7 @@ export type $OpenApiTs = {
                     };
                     error?: string | null;
                     errors?: {
+                        TWITTER?: string | null;
                         FACEBOOK?: string | null;
                         INSTAGRAM?: string | null;
                         TIKTOK?: string | null;
@@ -27008,6 +27835,15 @@ export type $OpenApiTs = {
                         BLUESKY?: string | null;
                     } | null;
                     errorsVerbose?: {
+                        TWITTER?: {
+                            code?: string | null;
+                            errorMessage?: string | null;
+                            isTransient?: boolean | null;
+                            retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                            httpStatus?: number | null;
+                            meta?: unknown;
+                            userFacingMessage?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             code?: string | null;
                             errorMessage?: string | null;
@@ -27109,6 +27945,10 @@ export type $OpenApiTs = {
                         } | null;
                     } | null;
                     externalData?: {
+                        TWITTER?: {
+                            id?: string | null;
+                            permalink?: string | null;
+                        } | null;
                         FACEBOOK?: {
                             id?: string | null;
                             permalink?: string | null;
@@ -33338,6 +34178,73 @@ export type $OpenApiTs = {
     '/api/v1/misc/twitter/tweet': {
         delete: {
             req: MiscTwitterDeleteTweetData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/twitter/comment': {
+        delete: {
+            req: MiscTwitterDeleteCommentData;
             res: {
                 /**
                  * 200

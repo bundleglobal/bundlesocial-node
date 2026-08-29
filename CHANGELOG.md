@@ -1,3 +1,10 @@
+# [2.63.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.3...v2.63.0) (2026-08-29)
+
+
+### Features
+
+* additional twitter functions ([c8e45e1](https://github.com/bundleglobal/bundlesocial-node/commit/c8e45e11e652590db31025b878f593dd279053b2))
+
 ## [2.62.3](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.2...v2.62.3) (2026-08-20)
 
 

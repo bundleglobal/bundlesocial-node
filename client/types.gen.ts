@@ -1002,7 +1002,7 @@ export type SocialAccountCreatePortalLinkData = {
         hideUserName?: boolean;
         hideLanguageSwitcher?: boolean;
         showModalOnConnectSuccess?: boolean;
-        language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv' | 'de' | 'es' | 'it' | 'nl' | 'pt' | 'ru' | 'tr' | 'zh' | 'da' | 'th' | 'ko' | 'he';
+        language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv' | 'de' | 'es' | 'it' | 'nl' | 'pt' | 'ru' | 'tr' | 'zh' | 'da' | 'th' | 'ko' | 'he' | 'ar';
         maxSocialAccountsConnected?: number;
     };
 };
@@ -1725,6 +1725,10 @@ export type PostGetByReferenceKeyResponse = {
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
+            /**
+             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+             */
+            textFormatPresetId?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -2536,6 +2540,10 @@ export type PostGetResponse = {
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
+            /**
+             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+             */
+            textFormatPresetId?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -3345,6 +3353,10 @@ export type PostUpdateData = {
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
+                /**
+                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                 */
+                textFormatPresetId?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -3809,6 +3821,10 @@ export type PostUpdateResponse = {
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
+            /**
+             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+             */
+            textFormatPresetId?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -4544,6 +4560,10 @@ export type PostDeleteResponse = {
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
+            /**
+             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+             */
+            textFormatPresetId?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -5275,6 +5295,10 @@ export type PostGetListResponse = {
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
+                /**
+                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                 */
+                textFormatPresetId?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -6086,6 +6110,10 @@ export type PostCreateData = {
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
+                /**
+                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                 */
+                textFormatPresetId?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -6550,6 +6578,10 @@ export type PostCreateResponse = {
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
+            /**
+             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+             */
+            textFormatPresetId?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -7285,6 +7317,10 @@ export type PostRetryResponse = {
              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
              */
             nativeScheduleTime?: string | null;
+            /**
+             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+             */
+            textFormatPresetId?: string | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -8120,6 +8156,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
+                /**
+                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                 */
+                textFormatPresetId?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -8943,6 +8983,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                  */
                 nativeScheduleTime?: string | null;
+                /**
+                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                 */
+                textFormatPresetId?: string | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -13152,6 +13196,27 @@ export type MiscInstagramDeleteCommentData = {
 
 export type MiscInstagramDeleteCommentResponse = {
     success: boolean;
+};
+
+export type MiscFacebookGetTextFormatPresetsResponse = {
+    presets: Array<{
+        /**
+         * Value to pass as data.FACEBOOK.textFormatPresetId when creating a post.
+         */
+        id: string;
+        /**
+         * Name of the background, for showing in a picker.
+         */
+        label: string;
+        /**
+         * Whether the background is a flat color, a gradient, or an illustration.
+         */
+        kind: 'color' | 'gradient' | 'illustration';
+        /**
+         * CSS color or gradient the background renders. Absent for illustrations.
+         */
+        color?: string | null;
+    }>;
 };
 
 export type MiscFacebookGetTokenDebugData = {
@@ -17815,6 +17880,10 @@ export type $OpenApiTs = {
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
+                            /**
+                             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                             */
+                            textFormatPresetId?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -18685,6 +18754,10 @@ export type $OpenApiTs = {
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
+                            /**
+                             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                             */
+                            textFormatPresetId?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -19553,6 +19626,10 @@ export type $OpenApiTs = {
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
+                            /**
+                             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                             */
+                            textFormatPresetId?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -20352,6 +20429,10 @@ export type $OpenApiTs = {
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
+                            /**
+                             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                             */
+                            textFormatPresetId?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -21133,6 +21214,10 @@ export type $OpenApiTs = {
                                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                                  */
                                 nativeScheduleTime?: string | null;
+                                /**
+                                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                                 */
+                                textFormatPresetId?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -22003,6 +22088,10 @@ export type $OpenApiTs = {
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
+                            /**
+                             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                             */
+                            textFormatPresetId?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -22804,6 +22893,10 @@ export type $OpenApiTs = {
                              * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                              */
                             nativeScheduleTime?: string | null;
+                            /**
+                             * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                             */
+                            textFormatPresetId?: string | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -23865,6 +23958,10 @@ export type $OpenApiTs = {
                                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                                  */
                                 nativeScheduleTime?: string | null;
+                                /**
+                                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                                 */
+                                textFormatPresetId?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -24803,6 +24900,10 @@ export type $OpenApiTs = {
                                  * If passed, instead of publishing immediately, the post will be scheduled for the given date/time directly in Meta scheduler. Local date/time as ISO 8601 string max 30 days in the future.
                                  */
                                 nativeScheduleTime?: string | null;
+                                /**
+                                 * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
+                                 */
+                                textFormatPresetId?: string | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -32446,6 +32547,89 @@ export type $OpenApiTs = {
                  */
                 200: {
                     success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/text-format-presets': {
+        get: {
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    presets: Array<{
+                        /**
+                         * Value to pass as data.FACEBOOK.textFormatPresetId when creating a post.
+                         */
+                        id: string;
+                        /**
+                         * Name of the background, for showing in a picker.
+                         */
+                        label: string;
+                        /**
+                         * Whether the background is a flat color, a gradient, or an illustration.
+                         */
+                        kind: 'color' | 'gradient' | 'illustration';
+                        /**
+                         * CSS color or gradient the background renders. Absent for illustrations.
+                         */
+                        color?: string | null;
+                    }>;
                 };
                 /**
                  * 400

@@ -5649,6 +5649,7 @@ paths:
                     - th
                     - ko
                     - he
+                    - ar
                 maxSocialAccountsConnected:
                   type: number
               required:
@@ -10844,6 +10845,13 @@ paths:
                               post will be scheduled for the given date/time
                               directly in Meta scheduler. Local date/time as ISO
                               8601 string max 30 days in the future.
+                          textFormatPresetId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Facebook text background preset ID (colored
+                              status), e.g. 1679248482160767 for blue. Only
+                              available for type POST without video.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -13107,6 +13115,13 @@ paths:
                               post will be scheduled for the given date/time
                               directly in Meta scheduler. Local date/time as ISO
                               8601 string max 30 days in the future.
+                          textFormatPresetId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Facebook text background preset ID (colored
+                              status), e.g. 1679248482160767 for blue. Only
+                              available for type POST without video.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -15373,6 +15388,13 @@ paths:
                             post will be scheduled for the given date/time
                             directly in Meta scheduler. Local date/time as ISO
                             8601 string max 30 days in the future.
+                        textFormatPresetId:
+                          type: string
+                          nullable: true
+                          description: >-
+                            Facebook text background preset ID (colored status),
+                            e.g. 1679248482160767 for blue. Only available for
+                            type POST without video.
                       nullable: true
                     INSTAGRAM:
                       type: object
@@ -16458,6 +16480,13 @@ paths:
                               post will be scheduled for the given date/time
                               directly in Meta scheduler. Local date/time as ISO
                               8601 string max 30 days in the future.
+                          textFormatPresetId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Facebook text background preset ID (colored
+                              status), e.g. 1679248482160767 for blue. Only
+                              available for type POST without video.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -18457,6 +18486,13 @@ paths:
                               post will be scheduled for the given date/time
                               directly in Meta scheduler. Local date/time as ISO
                               8601 string max 30 days in the future.
+                          textFormatPresetId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Facebook text background preset ID (colored
+                              status), e.g. 1679248482160767 for blue. Only
+                              available for type POST without video.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -20498,6 +20534,13 @@ paths:
                                     the given date/time directly in Meta
                                     scheduler. Local date/time as ISO 8601
                                     string max 30 days in the future.
+                                textFormatPresetId:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    Facebook text background preset ID (colored
+                                    status), e.g. 1679248482160767 for blue.
+                                    Only available for type POST without video.
                               nullable: true
                             INSTAGRAM:
                               type: object
@@ -22778,6 +22821,13 @@ paths:
                             post will be scheduled for the given date/time
                             directly in Meta scheduler. Local date/time as ISO
                             8601 string max 30 days in the future.
+                        textFormatPresetId:
+                          type: string
+                          nullable: true
+                          description: >-
+                            Facebook text background preset ID (colored status),
+                            e.g. 1679248482160767 for blue. Only available for
+                            type POST without video.
                       nullable: true
                     INSTAGRAM:
                       type: object
@@ -23870,6 +23920,13 @@ paths:
                               post will be scheduled for the given date/time
                               directly in Meta scheduler. Local date/time as ISO
                               8601 string max 30 days in the future.
+                          textFormatPresetId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Facebook text background preset ID (colored
+                              status), e.g. 1679248482160767 for blue. Only
+                              available for type POST without video.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -25870,6 +25927,13 @@ paths:
                               post will be scheduled for the given date/time
                               directly in Meta scheduler. Local date/time as ISO
                               8601 string max 30 days in the future.
+                          textFormatPresetId:
+                            type: string
+                            nullable: true
+                            description: >-
+                              Facebook text background preset ID (colored
+                              status), e.g. 1679248482160767 for blue. Only
+                              available for type POST without video.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -28668,6 +28732,13 @@ paths:
                                   date/time directly in Meta scheduler. Local
                                   date/time as ISO 8601 string max 30 days in
                                   the future.
+                              textFormatPresetId:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Facebook text background preset ID (colored
+                                  status), e.g. 1679248482160767 for blue. Only
+                                  available for type POST without video.
                             nullable: true
                           INSTAGRAM:
                             type: object
@@ -30500,7 +30571,7 @@ paths:
   /api/v1/analytics/social-account/raw:
     get:
       description: >-
-        Retrieve profile-level analytics exactly as returned by the social
+        Retrieve social account analytics exactly as returned by the social
         platform, without bundle.social's normalization. Use this when you need
         a platform-specific metric that the normalized response does not expose.
       summary: Get Social Account Analytics Raw
@@ -31152,6 +31223,13 @@ paths:
                                   date/time directly in Meta scheduler. Local
                                   date/time as ISO 8601 string max 30 days in
                                   the future.
+                              textFormatPresetId:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Facebook text background preset ID (colored
+                                  status), e.g. 1679248482160767 for blue. Only
+                                  available for type POST without video.
                             nullable: true
                           INSTAGRAM:
                             type: object
@@ -33244,9 +33322,9 @@ paths:
   /api/v1/analytics/social-account/force:
     post:
       description: >-
-        Trigger an immediate fetch of fresh profile analytics from the platform
-        instead of waiting for the scheduled refresh. Use sparingly, as it
-        consumes platform rate limits.
+        Trigger an immediate fetch of fresh social account analytics from the
+        platform instead of waiting for the scheduled refresh. Use sparingly, as
+        it consumes platform rate limits.
       summary: Force refresh social account analytics
       tags: *ref_6
       parameters: []
@@ -52542,6 +52620,197 @@ paths:
                     type: boolean
                 required:
                   - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/facebook/text-format-presets:
+    get:
+      description: >-
+        Return the text background presets (colored statuses) that can be passed
+        as data.FACEBOOK.textFormatPresetId, grouped by whether each one renders
+        as a flat color, a gradient, or an illustration. Facebook exposes no
+        endpoint of its own for this, so read the list from here instead of
+        hardcoding IDs. Any other numeric ID is also accepted and passed
+        straight through to Facebook.
+      summary: List Facebook text background presets
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.facebook.getTextFormatPresets
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  presets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: >-
+                            Value to pass as data.FACEBOOK.textFormatPresetId
+                            when creating a post.
+                        label:
+                          type: string
+                          description: Name of the background, for showing in a picker.
+                        kind:
+                          type: string
+                          enum:
+                            - color
+                            - gradient
+                            - illustration
+                          description: >-
+                            Whether the background is a flat color, a gradient,
+                            or an illustration.
+                        color:
+                          type: string
+                          nullable: true
+                          description: >-
+                            CSS color or gradient the background renders. Absent
+                            for illustrations.
+                      required:
+                        - id
+                        - label
+                        - kind
+                required:
+                  - presets
         '400':
           description: '400'
           content:

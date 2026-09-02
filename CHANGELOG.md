@@ -1,3 +1,10 @@
+# [2.64.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.63.0...v2.64.0) (2026-09-02)
+
+
+### Features
+
+* arabic language and facebook background presets ([82983b7](https://github.com/bundleglobal/bundlesocial-node/commit/82983b733454fd7dc67b915f41ce37a8c36170bf))
+
 # [2.63.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.62.3...v2.63.0) (2026-08-29)
 
 

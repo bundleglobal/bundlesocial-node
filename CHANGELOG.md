@@ -1,3 +1,10 @@
+## [2.64.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.64.0...v2.64.1) (2026-09-07)
+
+
+### Bug Fixes
+
+* snapchat saved stories and gbp search keywords endpoint ([18119ce](https://github.com/bundleglobal/bundlesocial-node/commit/18119cec0c402704fb2c99c433f541059b49a8dd))
+
 # [2.64.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.63.0...v2.64.0) (2026-09-02)
 
 

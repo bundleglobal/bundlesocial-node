@@ -2075,9 +2075,10 @@ export type PostGetByReferenceKeyResponse = {
             alertType?: 'COVID_19' | null;
         } | null;
         SNAPCHAT?: {
-            type?: 'STORY' | 'SPOTLIGHT';
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
             uploadIds?: Array<(string)> | null;
             text?: string | null;
+            title?: string | null;
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
@@ -2340,9 +2341,15 @@ export type PostGetByReferenceKeyResponse = {
         SNAPCHAT?: {
             id?: string | null;
             mediaId?: string | null;
-            type?: 'STORY' | 'SPOTLIGHT' | null;
+            mediaIds?: Array<(string)> | null;
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
             profileId?: string | null;
             sourceUploadId?: string | null;
+            sourceUploadIds?: Array<(string)> | null;
+            /**
+             * When the media ids were uploaded; Snap expires them after 24h.
+             */
+            mediaUploadedAt?: string | null;
             permalink?: string | null;
             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
@@ -2890,9 +2897,10 @@ export type PostGetResponse = {
             alertType?: 'COVID_19' | null;
         } | null;
         SNAPCHAT?: {
-            type?: 'STORY' | 'SPOTLIGHT';
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
             uploadIds?: Array<(string)> | null;
             text?: string | null;
+            title?: string | null;
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
@@ -3155,9 +3163,15 @@ export type PostGetResponse = {
         SNAPCHAT?: {
             id?: string | null;
             mediaId?: string | null;
-            type?: 'STORY' | 'SPOTLIGHT' | null;
+            mediaIds?: Array<(string)> | null;
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
             profileId?: string | null;
             sourceUploadId?: string | null;
+            sourceUploadIds?: Array<(string)> | null;
+            /**
+             * When the media ids were uploaded; Snap expires them after 24h.
+             */
+            mediaUploadedAt?: string | null;
             permalink?: string | null;
             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
@@ -3703,9 +3717,10 @@ export type PostUpdateData = {
                 alertType?: 'COVID_19' | null;
             } | null;
             SNAPCHAT?: {
-                type?: 'STORY' | 'SPOTLIGHT';
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
+                title?: string | null;
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
@@ -4171,9 +4186,10 @@ export type PostUpdateResponse = {
             alertType?: 'COVID_19' | null;
         } | null;
         SNAPCHAT?: {
-            type?: 'STORY' | 'SPOTLIGHT';
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
             uploadIds?: Array<(string)> | null;
             text?: string | null;
+            title?: string | null;
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
@@ -4436,9 +4452,15 @@ export type PostUpdateResponse = {
         SNAPCHAT?: {
             id?: string | null;
             mediaId?: string | null;
-            type?: 'STORY' | 'SPOTLIGHT' | null;
+            mediaIds?: Array<(string)> | null;
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
             profileId?: string | null;
             sourceUploadId?: string | null;
+            sourceUploadIds?: Array<(string)> | null;
+            /**
+             * When the media ids were uploaded; Snap expires them after 24h.
+             */
+            mediaUploadedAt?: string | null;
             permalink?: string | null;
             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
@@ -4910,9 +4932,10 @@ export type PostDeleteResponse = {
             alertType?: 'COVID_19' | null;
         } | null;
         SNAPCHAT?: {
-            type?: 'STORY' | 'SPOTLIGHT';
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
             uploadIds?: Array<(string)> | null;
             text?: string | null;
+            title?: string | null;
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
@@ -5175,9 +5198,15 @@ export type PostDeleteResponse = {
         SNAPCHAT?: {
             id?: string | null;
             mediaId?: string | null;
-            type?: 'STORY' | 'SPOTLIGHT' | null;
+            mediaIds?: Array<(string)> | null;
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
             profileId?: string | null;
             sourceUploadId?: string | null;
+            sourceUploadIds?: Array<(string)> | null;
+            /**
+             * When the media ids were uploaded; Snap expires them after 24h.
+             */
+            mediaUploadedAt?: string | null;
             permalink?: string | null;
             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
@@ -5645,9 +5674,10 @@ export type PostGetListResponse = {
                 alertType?: 'COVID_19' | null;
             } | null;
             SNAPCHAT?: {
-                type?: 'STORY' | 'SPOTLIGHT';
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
+                title?: string | null;
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
@@ -5910,9 +5940,15 @@ export type PostGetListResponse = {
             SNAPCHAT?: {
                 id?: string | null;
                 mediaId?: string | null;
-                type?: 'STORY' | 'SPOTLIGHT' | null;
+                mediaIds?: Array<(string)> | null;
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                 profileId?: string | null;
                 sourceUploadId?: string | null;
+                sourceUploadIds?: Array<(string)> | null;
+                /**
+                 * When the media ids were uploaded; Snap expires them after 24h.
+                 */
+                mediaUploadedAt?: string | null;
                 permalink?: string | null;
                 status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
             } | null;
@@ -6460,9 +6496,10 @@ export type PostCreateData = {
                 alertType?: 'COVID_19' | null;
             } | null;
             SNAPCHAT?: {
-                type?: 'STORY' | 'SPOTLIGHT';
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
+                title?: string | null;
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
@@ -6928,9 +6965,10 @@ export type PostCreateResponse = {
             alertType?: 'COVID_19' | null;
         } | null;
         SNAPCHAT?: {
-            type?: 'STORY' | 'SPOTLIGHT';
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
             uploadIds?: Array<(string)> | null;
             text?: string | null;
+            title?: string | null;
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
@@ -7193,9 +7231,15 @@ export type PostCreateResponse = {
         SNAPCHAT?: {
             id?: string | null;
             mediaId?: string | null;
-            type?: 'STORY' | 'SPOTLIGHT' | null;
+            mediaIds?: Array<(string)> | null;
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
             profileId?: string | null;
             sourceUploadId?: string | null;
+            sourceUploadIds?: Array<(string)> | null;
+            /**
+             * When the media ids were uploaded; Snap expires them after 24h.
+             */
+            mediaUploadedAt?: string | null;
             permalink?: string | null;
             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
@@ -7667,9 +7711,10 @@ export type PostRetryResponse = {
             alertType?: 'COVID_19' | null;
         } | null;
         SNAPCHAT?: {
-            type?: 'STORY' | 'SPOTLIGHT';
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
             uploadIds?: Array<(string)> | null;
             text?: string | null;
+            title?: string | null;
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
@@ -7932,9 +7977,15 @@ export type PostRetryResponse = {
         SNAPCHAT?: {
             id?: string | null;
             mediaId?: string | null;
-            type?: 'STORY' | 'SPOTLIGHT' | null;
+            mediaIds?: Array<(string)> | null;
+            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
             profileId?: string | null;
             sourceUploadId?: string | null;
+            sourceUploadIds?: Array<(string)> | null;
+            /**
+             * When the media ids were uploaded; Snap expires them after 24h.
+             */
+            mediaUploadedAt?: string | null;
             permalink?: string | null;
             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
         } | null;
@@ -8506,9 +8557,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 alertType?: 'COVID_19' | null;
             } | null;
             SNAPCHAT?: {
-                type?: 'STORY' | 'SPOTLIGHT';
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
+                title?: string | null;
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
@@ -8771,9 +8823,15 @@ export type AnalyticsGetPostAnalyticsResponse = {
             SNAPCHAT?: {
                 id?: string | null;
                 mediaId?: string | null;
-                type?: 'STORY' | 'SPOTLIGHT' | null;
+                mediaIds?: Array<(string)> | null;
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                 profileId?: string | null;
                 sourceUploadId?: string | null;
+                sourceUploadIds?: Array<(string)> | null;
+                /**
+                 * When the media ids were uploaded; Snap expires them after 24h.
+                 */
+                mediaUploadedAt?: string | null;
                 permalink?: string | null;
                 status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
             } | null;
@@ -9333,9 +9391,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 alertType?: 'COVID_19' | null;
             } | null;
             SNAPCHAT?: {
-                type?: 'STORY' | 'SPOTLIGHT';
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                 uploadIds?: Array<(string)> | null;
                 text?: string | null;
+                title?: string | null;
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
@@ -9598,9 +9657,15 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
             SNAPCHAT?: {
                 id?: string | null;
                 mediaId?: string | null;
-                type?: 'STORY' | 'SPOTLIGHT' | null;
+                mediaIds?: Array<(string)> | null;
+                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                 profileId?: string | null;
                 sourceUploadId?: string | null;
+                sourceUploadIds?: Array<(string)> | null;
+                /**
+                 * When the media ids were uploaded; Snap expires them after 24h.
+                 */
+                mediaUploadedAt?: string | null;
                 permalink?: string | null;
                 status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
             } | null;
@@ -12565,6 +12630,63 @@ export type MiscGoogleBusinessListAvailableAttributesData = {
 export type MiscGoogleBusinessListAvailableAttributesResponse = {
     attributes?: Array<{
         [key: string]: unknown;
+    }>;
+    nextPageToken?: string;
+    lookup?: {
+        /**
+         * How the list was resolved. `category` means your `regionCode`/`languageCode` were applied; `location` means they could not be (the location has no primary category or no region code, which is common for service-area businesses) and the attributes are the location's defaults instead.
+         */
+        by: 'category' | 'location';
+        categoryName?: string;
+        regionCode?: string;
+        languageCode?: string;
+    };
+    [key: string]: unknown | string;
+};
+
+export type MiscGoogleBusinessListSearchKeywordsData = {
+    /**
+     * Month in `YYYY-MM` format, inclusive.
+     */
+    endMonth: string;
+    pageSize?: number;
+    pageToken?: string;
+    /**
+     * Month in `YYYY-MM` format, inclusive.
+     */
+    startMonth: string;
+    teamId: string;
+};
+
+export type MiscGoogleBusinessListSearchKeywordsResponse = {
+    /**
+     * The Google Business location the keywords belong to, as `locations/{locationId}`.
+     */
+    location: string;
+    range: {
+        /**
+         * Month in `YYYY-MM` format, inclusive.
+         */
+        startMonth: string;
+        /**
+         * Month in `YYYY-MM` format, inclusive.
+         */
+        endMonth: string;
+    };
+    searchKeywords?: Array<{
+        /**
+         * The lowercase query a customer typed to find the business.
+         */
+        searchKeyword: string;
+        /**
+         * Exact number of unique users, when Google discloses it. Null when `threshold` is returned instead.
+         */
+        value?: number | null;
+        /**
+         * Returned for low-volume keywords instead of `value`: the real count is below this number. Ignoring it drops the long tail.
+         */
+        threshold?: number | null;
+        [key: string]: unknown | string | number;
     }>;
     nextPageToken?: string;
     [key: string]: unknown | string;
@@ -18230,9 +18352,10 @@ export type $OpenApiTs = {
                             alertType?: 'COVID_19' | null;
                         } | null;
                         SNAPCHAT?: {
-                            type?: 'STORY' | 'SPOTLIGHT';
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
+                            title?: string | null;
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
@@ -18495,9 +18618,15 @@ export type $OpenApiTs = {
                         SNAPCHAT?: {
                             id?: string | null;
                             mediaId?: string | null;
-                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            mediaIds?: Array<(string)> | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                             profileId?: string | null;
                             sourceUploadId?: string | null;
+                            sourceUploadIds?: Array<(string)> | null;
+                            /**
+                             * When the media ids were uploaded; Snap expires them after 24h.
+                             */
+                            mediaUploadedAt?: string | null;
                             permalink?: string | null;
                             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
@@ -19104,9 +19233,10 @@ export type $OpenApiTs = {
                             alertType?: 'COVID_19' | null;
                         } | null;
                         SNAPCHAT?: {
-                            type?: 'STORY' | 'SPOTLIGHT';
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
+                            title?: string | null;
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
@@ -19369,9 +19499,15 @@ export type $OpenApiTs = {
                         SNAPCHAT?: {
                             id?: string | null;
                             mediaId?: string | null;
-                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            mediaIds?: Array<(string)> | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                             profileId?: string | null;
                             sourceUploadId?: string | null;
+                            sourceUploadIds?: Array<(string)> | null;
+                            /**
+                             * When the media ids were uploaded; Snap expires them after 24h.
+                             */
+                            mediaUploadedAt?: string | null;
                             permalink?: string | null;
                             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
@@ -19976,9 +20112,10 @@ export type $OpenApiTs = {
                             alertType?: 'COVID_19' | null;
                         } | null;
                         SNAPCHAT?: {
-                            type?: 'STORY' | 'SPOTLIGHT';
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
+                            title?: string | null;
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
@@ -20241,9 +20378,15 @@ export type $OpenApiTs = {
                         SNAPCHAT?: {
                             id?: string | null;
                             mediaId?: string | null;
-                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            mediaIds?: Array<(string)> | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                             profileId?: string | null;
                             sourceUploadId?: string | null;
+                            sourceUploadIds?: Array<(string)> | null;
+                            /**
+                             * When the media ids were uploaded; Snap expires them after 24h.
+                             */
+                            mediaUploadedAt?: string | null;
                             permalink?: string | null;
                             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
@@ -20779,9 +20922,10 @@ export type $OpenApiTs = {
                             alertType?: 'COVID_19' | null;
                         } | null;
                         SNAPCHAT?: {
-                            type?: 'STORY' | 'SPOTLIGHT';
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
+                            title?: string | null;
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
@@ -21044,9 +21188,15 @@ export type $OpenApiTs = {
                         SNAPCHAT?: {
                             id?: string | null;
                             mediaId?: string | null;
-                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            mediaIds?: Array<(string)> | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                             profileId?: string | null;
                             sourceUploadId?: string | null;
+                            sourceUploadIds?: Array<(string)> | null;
+                            /**
+                             * When the media ids were uploaded; Snap expires them after 24h.
+                             */
+                            mediaUploadedAt?: string | null;
                             permalink?: string | null;
                             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
@@ -21564,9 +21714,10 @@ export type $OpenApiTs = {
                                 alertType?: 'COVID_19' | null;
                             } | null;
                             SNAPCHAT?: {
-                                type?: 'STORY' | 'SPOTLIGHT';
+                                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                                 uploadIds?: Array<(string)> | null;
                                 text?: string | null;
+                                title?: string | null;
                                 description?: string | null;
                                 locale?: string | null;
                                 skipSaveToProfile?: boolean | null;
@@ -21829,9 +21980,15 @@ export type $OpenApiTs = {
                             SNAPCHAT?: {
                                 id?: string | null;
                                 mediaId?: string | null;
-                                type?: 'STORY' | 'SPOTLIGHT' | null;
+                                mediaIds?: Array<(string)> | null;
+                                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                                 profileId?: string | null;
                                 sourceUploadId?: string | null;
+                                sourceUploadIds?: Array<(string)> | null;
+                                /**
+                                 * When the media ids were uploaded; Snap expires them after 24h.
+                                 */
+                                mediaUploadedAt?: string | null;
                                 permalink?: string | null;
                                 status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                             } | null;
@@ -22438,9 +22595,10 @@ export type $OpenApiTs = {
                             alertType?: 'COVID_19' | null;
                         } | null;
                         SNAPCHAT?: {
-                            type?: 'STORY' | 'SPOTLIGHT';
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
+                            title?: string | null;
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
@@ -22703,9 +22861,15 @@ export type $OpenApiTs = {
                         SNAPCHAT?: {
                             id?: string | null;
                             mediaId?: string | null;
-                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            mediaIds?: Array<(string)> | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                             profileId?: string | null;
                             sourceUploadId?: string | null;
+                            sourceUploadIds?: Array<(string)> | null;
+                            /**
+                             * When the media ids were uploaded; Snap expires them after 24h.
+                             */
+                            mediaUploadedAt?: string | null;
                             permalink?: string | null;
                             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
@@ -23243,9 +23407,10 @@ export type $OpenApiTs = {
                             alertType?: 'COVID_19' | null;
                         } | null;
                         SNAPCHAT?: {
-                            type?: 'STORY' | 'SPOTLIGHT';
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                             uploadIds?: Array<(string)> | null;
                             text?: string | null;
+                            title?: string | null;
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
@@ -23508,9 +23673,15 @@ export type $OpenApiTs = {
                         SNAPCHAT?: {
                             id?: string | null;
                             mediaId?: string | null;
-                            type?: 'STORY' | 'SPOTLIGHT' | null;
+                            mediaIds?: Array<(string)> | null;
+                            type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                             profileId?: string | null;
                             sourceUploadId?: string | null;
+                            sourceUploadIds?: Array<(string)> | null;
+                            /**
+                             * When the media ids were uploaded; Snap expires them after 24h.
+                             */
+                            mediaUploadedAt?: string | null;
                             permalink?: string | null;
                             status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                         } | null;
@@ -24308,9 +24479,10 @@ export type $OpenApiTs = {
                                 alertType?: 'COVID_19' | null;
                             } | null;
                             SNAPCHAT?: {
-                                type?: 'STORY' | 'SPOTLIGHT';
+                                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                                 uploadIds?: Array<(string)> | null;
                                 text?: string | null;
+                                title?: string | null;
                                 description?: string | null;
                                 locale?: string | null;
                                 skipSaveToProfile?: boolean | null;
@@ -24573,9 +24745,15 @@ export type $OpenApiTs = {
                             SNAPCHAT?: {
                                 id?: string | null;
                                 mediaId?: string | null;
-                                type?: 'STORY' | 'SPOTLIGHT' | null;
+                                mediaIds?: Array<(string)> | null;
+                                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                                 profileId?: string | null;
                                 sourceUploadId?: string | null;
+                                sourceUploadIds?: Array<(string)> | null;
+                                /**
+                                 * When the media ids were uploaded; Snap expires them after 24h.
+                                 */
+                                mediaUploadedAt?: string | null;
                                 permalink?: string | null;
                                 status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                             } | null;
@@ -25250,9 +25428,10 @@ export type $OpenApiTs = {
                                 alertType?: 'COVID_19' | null;
                             } | null;
                             SNAPCHAT?: {
-                                type?: 'STORY' | 'SPOTLIGHT';
+                                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY';
                                 uploadIds?: Array<(string)> | null;
                                 text?: string | null;
+                                title?: string | null;
                                 description?: string | null;
                                 locale?: string | null;
                                 skipSaveToProfile?: boolean | null;
@@ -25515,9 +25694,15 @@ export type $OpenApiTs = {
                             SNAPCHAT?: {
                                 id?: string | null;
                                 mediaId?: string | null;
-                                type?: 'STORY' | 'SPOTLIGHT' | null;
+                                mediaIds?: Array<(string)> | null;
+                                type?: 'STORY' | 'SPOTLIGHT' | 'SAVED_STORY' | null;
                                 profileId?: string | null;
                                 sourceUploadId?: string | null;
+                                sourceUploadIds?: Array<(string)> | null;
+                                /**
+                                 * When the media ids were uploaded; Snap expires them after 24h.
+                                 */
+                                mediaUploadedAt?: string | null;
                                 permalink?: string | null;
                                 status?: 'MEDIA_UPLOADED' | 'MEDIA_PROCESSING' | 'PUBLISHED' | null;
                             } | null;
@@ -30549,6 +30734,112 @@ export type $OpenApiTs = {
                 200: {
                     attributes?: Array<{
                         [key: string]: unknown;
+                    }>;
+                    nextPageToken?: string;
+                    lookup?: {
+                        /**
+                         * How the list was resolved. `category` means your `regionCode`/`languageCode` were applied; `location` means they could not be (the location has no primary category or no region code, which is common for service-area businesses) and the attributes are the location's defaults instead.
+                         */
+                        by: 'category' | 'location';
+                        categoryName?: string;
+                        regionCode?: string;
+                        languageCode?: string;
+                    };
+                    [key: string]: unknown | string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/google-business/location/search-keywords': {
+        get: {
+            req: MiscGoogleBusinessListSearchKeywordsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    /**
+                     * The Google Business location the keywords belong to, as `locations/{locationId}`.
+                     */
+                    location: string;
+                    range: {
+                        /**
+                         * Month in `YYYY-MM` format, inclusive.
+                         */
+                        startMonth: string;
+                        /**
+                         * Month in `YYYY-MM` format, inclusive.
+                         */
+                        endMonth: string;
+                    };
+                    searchKeywords?: Array<{
+                        /**
+                         * The lowercase query a customer typed to find the business.
+                         */
+                        searchKeyword: string;
+                        /**
+                         * Exact number of unique users, when Google discloses it. Null when `threshold` is returned instead.
+                         */
+                        value?: number | null;
+                        /**
+                         * Returned for low-volume keywords instead of `value`: the real count is below this number. Ignoring it drops the long tail.
+                         */
+                        threshold?: number | null;
+                        [key: string]: unknown | string | number;
                     }>;
                     nextPageToken?: string;
                     [key: string]: unknown | string;

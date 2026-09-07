@@ -11626,12 +11626,16 @@ paths:
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                           uploadIds:
                             type: array
                             items:
                               type: string
                             nullable: true
                           text:
+                            type: string
+                            nullable: true
+                          title:
                             type: string
                             nullable: true
                           description:
@@ -12353,11 +12357,17 @@ paths:
                           mediaId:
                             type: string
                             nullable: true
+                          mediaIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
                           type:
                             type: string
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                             nullable: true
                           profileId:
                             type: string
@@ -12365,6 +12375,17 @@ paths:
                           sourceUploadId:
                             type: string
                             nullable: true
+                          sourceUploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          mediaUploadedAt:
+                            type: string
+                            nullable: true
+                            description: >-
+                              When the media ids were uploaded; Snap expires
+                              them after 24h.
                           permalink:
                             type: string
                             nullable: true
@@ -13896,12 +13917,16 @@ paths:
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                           uploadIds:
                             type: array
                             items:
                               type: string
                             nullable: true
                           text:
+                            type: string
+                            nullable: true
+                          title:
                             type: string
                             nullable: true
                           description:
@@ -14623,11 +14648,17 @@ paths:
                           mediaId:
                             type: string
                             nullable: true
+                          mediaIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
                           type:
                             type: string
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                             nullable: true
                           profileId:
                             type: string
@@ -14635,6 +14666,17 @@ paths:
                           sourceUploadId:
                             type: string
                             nullable: true
+                          sourceUploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          mediaUploadedAt:
+                            type: string
+                            nullable: true
+                            description: >-
+                              When the media ids were uploaded; Snap expires
+                              them after 24h.
                           permalink:
                             type: string
                             nullable: true
@@ -16162,12 +16204,16 @@ paths:
                           enum:
                             - STORY
                             - SPOTLIGHT
+                            - SAVED_STORY
                         uploadIds:
                           type: array
                           items:
                             type: string
                           nullable: true
                         text:
+                          type: string
+                          nullable: true
+                        title:
                           type: string
                           nullable: true
                         description:
@@ -17261,12 +17307,16 @@ paths:
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                           uploadIds:
                             type: array
                             items:
                               type: string
                             nullable: true
                           text:
+                            type: string
+                            nullable: true
+                          title:
                             type: string
                             nullable: true
                           description:
@@ -17988,11 +18038,17 @@ paths:
                           mediaId:
                             type: string
                             nullable: true
+                          mediaIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
                           type:
                             type: string
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                             nullable: true
                           profileId:
                             type: string
@@ -18000,6 +18056,17 @@ paths:
                           sourceUploadId:
                             type: string
                             nullable: true
+                          sourceUploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          mediaUploadedAt:
+                            type: string
+                            nullable: true
+                            description: >-
+                              When the media ids were uploaded; Snap expires
+                              them after 24h.
                           permalink:
                             type: string
                             nullable: true
@@ -19267,12 +19334,16 @@ paths:
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                           uploadIds:
                             type: array
                             items:
                               type: string
                             nullable: true
                           text:
+                            type: string
+                            nullable: true
+                          title:
                             type: string
                             nullable: true
                           description:
@@ -19994,11 +20065,17 @@ paths:
                           mediaId:
                             type: string
                             nullable: true
+                          mediaIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
                           type:
                             type: string
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                             nullable: true
                           profileId:
                             type: string
@@ -20006,6 +20083,17 @@ paths:
                           sourceUploadId:
                             type: string
                             nullable: true
+                          sourceUploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          mediaUploadedAt:
+                            type: string
+                            nullable: true
+                            description: >-
+                              When the media ids were uploaded; Snap expires
+                              them after 24h.
                           permalink:
                             type: string
                             nullable: true
@@ -21325,12 +21413,16 @@ paths:
                                   enum:
                                     - STORY
                                     - SPOTLIGHT
+                                    - SAVED_STORY
                                 uploadIds:
                                   type: array
                                   items:
                                     type: string
                                   nullable: true
                                 text:
+                                  type: string
+                                  nullable: true
+                                title:
                                   type: string
                                   nullable: true
                                 description:
@@ -22052,11 +22144,17 @@ paths:
                                 mediaId:
                                   type: string
                                   nullable: true
+                                mediaIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
                                 type:
                                   type: string
                                   enum:
                                     - STORY
                                     - SPOTLIGHT
+                                    - SAVED_STORY
                                   nullable: true
                                 profileId:
                                   type: string
@@ -22064,6 +22162,17 @@ paths:
                                 sourceUploadId:
                                   type: string
                                   nullable: true
+                                sourceUploadIds:
+                                  type: array
+                                  items:
+                                    type: string
+                                  nullable: true
+                                mediaUploadedAt:
+                                  type: string
+                                  nullable: true
+                                  description: >-
+                                    When the media ids were uploaded; Snap
+                                    expires them after 24h.
                                 permalink:
                                   type: string
                                   nullable: true
@@ -23595,12 +23704,16 @@ paths:
                           enum:
                             - STORY
                             - SPOTLIGHT
+                            - SAVED_STORY
                         uploadIds:
                           type: array
                           items:
                             type: string
                           nullable: true
                         text:
+                          type: string
+                          nullable: true
+                        title:
                           type: string
                           nullable: true
                         description:
@@ -24701,12 +24814,16 @@ paths:
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                           uploadIds:
                             type: array
                             items:
                               type: string
                             nullable: true
                           text:
+                            type: string
+                            nullable: true
+                          title:
                             type: string
                             nullable: true
                           description:
@@ -25428,11 +25545,17 @@ paths:
                           mediaId:
                             type: string
                             nullable: true
+                          mediaIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
                           type:
                             type: string
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                             nullable: true
                           profileId:
                             type: string
@@ -25440,6 +25563,17 @@ paths:
                           sourceUploadId:
                             type: string
                             nullable: true
+                          sourceUploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          mediaUploadedAt:
+                            type: string
+                            nullable: true
+                            description: >-
+                              When the media ids were uploaded; Snap expires
+                              them after 24h.
                           permalink:
                             type: string
                             nullable: true
@@ -26708,12 +26842,16 @@ paths:
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                           uploadIds:
                             type: array
                             items:
                               type: string
                             nullable: true
                           text:
+                            type: string
+                            nullable: true
+                          title:
                             type: string
                             nullable: true
                           description:
@@ -27435,11 +27573,17 @@ paths:
                           mediaId:
                             type: string
                             nullable: true
+                          mediaIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
                           type:
                             type: string
                             enum:
                               - STORY
                               - SPOTLIGHT
+                              - SAVED_STORY
                             nullable: true
                           profileId:
                             type: string
@@ -27447,6 +27591,17 @@ paths:
                           sourceUploadId:
                             type: string
                             nullable: true
+                          sourceUploadIds:
+                            type: array
+                            items:
+                              type: string
+                            nullable: true
+                          mediaUploadedAt:
+                            type: string
+                            nullable: true
+                            description: >-
+                              When the media ids were uploaded; Snap expires
+                              them after 24h.
                           permalink:
                             type: string
                             nullable: true
@@ -29522,12 +29677,16 @@ paths:
                                 enum:
                                   - STORY
                                   - SPOTLIGHT
+                                  - SAVED_STORY
                               uploadIds:
                                 type: array
                                 items:
                                   type: string
                                 nullable: true
                               text:
+                                type: string
+                                nullable: true
+                              title:
                                 type: string
                                 nullable: true
                               description:
@@ -30249,11 +30408,17 @@ paths:
                               mediaId:
                                 type: string
                                 nullable: true
+                              mediaIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
                               type:
                                 type: string
                                 enum:
                                   - STORY
                                   - SPOTLIGHT
+                                  - SAVED_STORY
                                 nullable: true
                               profileId:
                                 type: string
@@ -30261,6 +30426,17 @@ paths:
                               sourceUploadId:
                                 type: string
                                 nullable: true
+                              sourceUploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              mediaUploadedAt:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  When the media ids were uploaded; Snap expires
+                                  them after 24h.
                               permalink:
                                 type: string
                                 nullable: true
@@ -32013,12 +32189,16 @@ paths:
                                 enum:
                                   - STORY
                                   - SPOTLIGHT
+                                  - SAVED_STORY
                               uploadIds:
                                 type: array
                                 items:
                                   type: string
                                 nullable: true
                               text:
+                                type: string
+                                nullable: true
+                              title:
                                 type: string
                                 nullable: true
                               description:
@@ -32740,11 +32920,17 @@ paths:
                               mediaId:
                                 type: string
                                 nullable: true
+                              mediaIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
                               type:
                                 type: string
                                 enum:
                                   - STORY
                                   - SPOTLIGHT
+                                  - SAVED_STORY
                                 nullable: true
                               profileId:
                                 type: string
@@ -32752,6 +32938,17 @@ paths:
                               sourceUploadId:
                                 type: string
                                 nullable: true
+                              sourceUploadIds:
+                                type: array
+                                items:
+                                  type: string
+                                nullable: true
+                              mediaUploadedAt:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  When the media ids were uploaded; Snap expires
+                                  them after 24h.
                               permalink:
                                 type: string
                                 nullable: true
@@ -47092,6 +47289,7 @@ paths:
                           properties:
                             uri:
                               type: string
+                              minLength: 1
                           required:
                             - uri
                           additionalProperties: false
@@ -47286,7 +47484,12 @@ paths:
       description: >-
         List the attributes Google allows for your location's category and
         country. Check this before updating attributes, since the valid set
-        differs per business category.
+        differs per business category. `regionCode`/`languageCode` are honoured
+        by looking the attributes up through the location's primary category;
+        when that category or a region code cannot be resolved (common for
+        service-area businesses with no storefront address) the location's own
+        defaults are returned instead and `lookup.by` comes back as `location`,
+        meaning those two parameters were not applied.
       summary: List available Google Business attributes
       tags:
         - misc
@@ -47304,6 +47507,7 @@ paths:
           in: query
           schema:
             type: string
+            pattern: ^[A-Za-z]{2}$
         - name: pageSize
           in: query
           schema:
@@ -47332,6 +47536,270 @@ paths:
                       additionalProperties: true
                   nextPageToken:
                     type: string
+                  lookup:
+                    type: object
+                    properties:
+                      by:
+                        type: string
+                        enum:
+                          - category
+                          - location
+                        description: >-
+                          How the list was resolved. `category` means your
+                          `regionCode`/`languageCode` were applied; `location`
+                          means they could not be (the location has no primary
+                          category or no region code, which is common for
+                          service-area businesses) and the attributes are the
+                          location's defaults instead.
+                      categoryName:
+                        type: string
+                      regionCode:
+                        type: string
+                      languageCode:
+                        type: string
+                    required:
+                      - by
+                additionalProperties: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/google-business/location/search-keywords:
+    get:
+      description: >-
+        Monthly search keyword impressions for your selected location.
+        `startMonth`/`endMonth` are inclusive `YYYY-MM` values; counts are
+        aggregated across the whole range, so request a single month for a
+        per-month figure. Each keyword returns either an exact `value` or a
+        `threshold`, meaning the real count is below that number: low-volume
+        keywords are only ever reported as a threshold, so treat a null `value`
+        as suppressed rather than zero. Counts are unique users, not raw
+        impressions. Paginated with `pageToken`/`nextPageToken`, max `pageSize`
+        100.
+      summary: List the search terms customers used to find the location
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: startMonth
+          in: query
+          description: Month in `YYYY-MM` format, inclusive.
+          required: true
+          schema:
+            type: string
+            pattern: ^\d{4}-(0[1-9]|1[0-2])$
+        - name: endMonth
+          in: query
+          description: Month in `YYYY-MM` format, inclusive.
+          required: true
+          schema:
+            type: string
+            pattern: ^\d{4}-(0[1-9]|1[0-2])$
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      operationId: misc.google_business.listSearchKeywords
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    description: >-
+                      The Google Business location the keywords belong to, as
+                      `locations/{locationId}`.
+                  range:
+                    type: object
+                    properties:
+                      startMonth:
+                        type: string
+                        pattern: ^\d{4}-(0[1-9]|1[0-2])$
+                        description: Month in `YYYY-MM` format, inclusive.
+                      endMonth:
+                        type: string
+                        pattern: ^\d{4}-(0[1-9]|1[0-2])$
+                        description: Month in `YYYY-MM` format, inclusive.
+                    required:
+                      - startMonth
+                      - endMonth
+                  searchKeywords:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        searchKeyword:
+                          type: string
+                          description: >-
+                            The lowercase query a customer typed to find the
+                            business.
+                        value:
+                          type: number
+                          nullable: true
+                          description: >-
+                            Exact number of unique users, when Google discloses
+                            it. Null when `threshold` is returned instead.
+                        threshold:
+                          type: number
+                          nullable: true
+                          description: >-
+                            Returned for low-volume keywords instead of `value`:
+                            the real count is below this number. Ignoring it
+                            drops the long tail.
+                      required:
+                        - searchKeyword
+                      additionalProperties: true
+                  nextPageToken:
+                    type: string
+                required:
+                  - location
+                  - range
                 additionalProperties: true
         '400':
           description: '400'

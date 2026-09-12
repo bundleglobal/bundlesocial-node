@@ -118,6 +118,8 @@ export type OrganizationGetOrganizationResponse = {
     uploadsCompressionEnabled: boolean;
     analyticsInterval?: number | null;
     analyticsPostsInterval?: number | null;
+    forcedAccountAnalyticsDailyLimit?: number | null;
+    forcedPostAnalyticsDailyLimit?: number | null;
     showVerboseErrors: boolean;
     disconnectCheckEnabled: boolean;
     deleteAccountAfter: number;
@@ -353,6 +355,8 @@ export type TeamGetTeamResponse = {
         uploadsCompressionEnabled: boolean;
         analyticsInterval?: number | null;
         analyticsPostsInterval?: number | null;
+        forcedAccountAnalyticsDailyLimit?: number | null;
+        forcedPostAnalyticsDailyLimit?: number | null;
         showVerboseErrors: boolean;
         disconnectCheckEnabled: boolean;
         deleteAccountAfter: number;
@@ -393,8 +397,10 @@ export type TeamGetTeamResponse = {
         bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
+        providerPageId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
+        userEmail?: string | null;
         userId?: string | null;
         channels?: Array<{
             id: string;
@@ -413,6 +419,7 @@ export type TeamGetTeamResponse = {
                 allowVideos?: boolean | null;
                 allowGalleries?: boolean | null;
                 linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
             } | null;
         }> | null;
         mastodonServerId?: string | null;
@@ -567,6 +574,8 @@ export type TeamGetListResponse = {
             uploadsCompressionEnabled: boolean;
             analyticsInterval?: number | null;
             analyticsPostsInterval?: number | null;
+            forcedAccountAnalyticsDailyLimit?: number | null;
+            forcedPostAnalyticsDailyLimit?: number | null;
             showVerboseErrors: boolean;
             disconnectCheckEnabled: boolean;
             deleteAccountAfter: number;
@@ -607,8 +616,10 @@ export type TeamGetListResponse = {
             bio?: string | null;
             avatarUrl?: string | null;
             externalId?: string | null;
+            providerPageId?: string | null;
             userUsername?: string | null;
             userDisplayName?: string | null;
+            userEmail?: string | null;
             userId?: string | null;
             channels?: Array<{
                 id: string;
@@ -627,6 +638,7 @@ export type TeamGetListResponse = {
                     allowVideos?: boolean | null;
                     allowGalleries?: boolean | null;
                     linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
                 } | null;
             }> | null;
             mastodonServerId?: string | null;
@@ -766,8 +778,10 @@ export type SocialAccountDisconnectResponse = {
     bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
+    providerPageId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
+    userEmail?: string | null;
     userId?: string | null;
     channels?: Array<{
         id: string;
@@ -786,6 +800,7 @@ export type SocialAccountDisconnectResponse = {
             allowVideos?: boolean | null;
             allowGalleries?: boolean | null;
             linkFlairEnabled?: boolean | null;
+            facebookPageId?: string | null;
         } | null;
     }> | null;
     mastodonServerId?: string | null;
@@ -819,8 +834,10 @@ export type SocialAccountSetChannelResponse = {
     bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
+    providerPageId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
+    userEmail?: string | null;
     userId?: string | null;
     channels?: Array<{
         id: string;
@@ -839,6 +856,7 @@ export type SocialAccountSetChannelResponse = {
             allowVideos?: boolean | null;
             allowGalleries?: boolean | null;
             linkFlairEnabled?: boolean | null;
+            facebookPageId?: string | null;
         } | null;
     }> | null;
     mastodonServerId?: string | null;
@@ -871,8 +889,10 @@ export type SocialAccountUnsetChannelResponse = {
     bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
+    providerPageId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
+    userEmail?: string | null;
     userId?: string | null;
     channels?: Array<{
         id: string;
@@ -891,6 +911,7 @@ export type SocialAccountUnsetChannelResponse = {
             allowVideos?: boolean | null;
             allowGalleries?: boolean | null;
             linkFlairEnabled?: boolean | null;
+            facebookPageId?: string | null;
         } | null;
     }> | null;
     mastodonServerId?: string | null;
@@ -923,8 +944,10 @@ export type SocialAccountRefreshChannelsResponse = {
     bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
+    providerPageId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
+    userEmail?: string | null;
     userId?: string | null;
     channels?: Array<{
         id: string;
@@ -943,6 +966,7 @@ export type SocialAccountRefreshChannelsResponse = {
             allowVideos?: boolean | null;
             allowGalleries?: boolean | null;
             linkFlairEnabled?: boolean | null;
+            facebookPageId?: string | null;
         } | null;
     }> | null;
     mastodonServerId?: string | null;
@@ -1055,8 +1079,10 @@ export type SocialAccountProfileRefreshResponse = {
         bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
+        providerPageId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
+        userEmail?: string | null;
         userId?: string | null;
         channels?: Array<{
             id: string;
@@ -1075,6 +1101,7 @@ export type SocialAccountProfileRefreshResponse = {
                 allowVideos?: boolean | null;
                 allowGalleries?: boolean | null;
                 linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
             } | null;
         }> | null;
         mastodonServerId?: string | null;
@@ -1108,8 +1135,10 @@ export type SocialAccountGetByTypeResponse = {
     bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
+    providerPageId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
+    userEmail?: string | null;
     userId?: string | null;
     channels?: Array<{
         id: string;
@@ -1128,6 +1157,7 @@ export type SocialAccountGetByTypeResponse = {
             allowVideos?: boolean | null;
             allowGalleries?: boolean | null;
             linkFlairEnabled?: boolean | null;
+            facebookPageId?: string | null;
         } | null;
     }> | null;
     mastodonServerId?: string | null;
@@ -1165,8 +1195,10 @@ export type SocialAccountCopyResponse = Array<{
     bio?: string | null;
     avatarUrl?: string | null;
     externalId?: string | null;
+    providerPageId?: string | null;
     userUsername?: string | null;
     userDisplayName?: string | null;
+    userEmail?: string | null;
     userId?: string | null;
     channels?: Array<{
         id: string;
@@ -1185,6 +1217,7 @@ export type SocialAccountCopyResponse = Array<{
             allowVideos?: boolean | null;
             allowGalleries?: boolean | null;
             linkFlairEnabled?: boolean | null;
+            facebookPageId?: string | null;
         } | null;
     }> | null;
     mastodonServerId?: string | null;
@@ -1213,8 +1246,10 @@ export type SocialAccountGetAccountsToDeleteResponse = {
         bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
+        providerPageId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
+        userEmail?: string | null;
         userId?: string | null;
         channels?: Array<{
             id: string;
@@ -1233,6 +1268,7 @@ export type SocialAccountGetAccountsToDeleteResponse = {
                 allowVideos?: boolean | null;
                 allowGalleries?: boolean | null;
                 linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
             } | null;
         }> | null;
         mastodonServerId?: string | null;
@@ -1254,9 +1290,15 @@ export type SocialAccountGetAccountsToDeleteResponse = {
 };
 
 export type UploadGetListData = {
+    ids?: Array<(string)> | null;
+    includePosts?: boolean | 'true' | 'false' | null;
+    limit?: number | null;
+    offset?: number | null;
     status?: 'USED' | 'UNUSED' | null;
     teamId?: string | null;
     type?: 'image' | 'video' | 'document' | null;
+    types?: Array<('image' | 'video' | 'document')> | null;
+    urls?: Array<(string)> | null;
 };
 
 export type UploadGetListResponse = Array<{
@@ -1279,7 +1321,7 @@ export type UploadGetListResponse = Array<{
     ext?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
-    posts: Array<{
+    posts?: Array<{
         postId: string;
         uploadId: string;
         createdAt: string | null;
@@ -1375,7 +1417,7 @@ export type UploadGetResponse = {
     ext?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
-    posts: Array<{
+    posts?: Array<{
         postId: string;
         uploadId: string;
         createdAt: string | null;
@@ -2403,6 +2445,9 @@ export type PostGetByReferenceKeyResponse = {
     socialAccounts: Array<{
         postId: string;
         socialAccountId: string;
+        externalPostId?: string | null;
+        externalAlternatePostId?: string | null;
+        externalVideoId?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -2415,8 +2460,10 @@ export type PostGetByReferenceKeyResponse = {
             bio?: string | null;
             avatarUrl?: string | null;
             externalId?: string | null;
+            providerPageId?: string | null;
             userUsername?: string | null;
             userDisplayName?: string | null;
+            userEmail?: string | null;
             userId?: string | null;
             channels?: Array<{
                 id: string;
@@ -2435,6 +2482,7 @@ export type PostGetByReferenceKeyResponse = {
                     allowVideos?: boolean | null;
                     allowGalleries?: boolean | null;
                     linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
                 } | null;
             }> | null;
             mastodonServerId?: string | null;
@@ -3225,6 +3273,9 @@ export type PostGetResponse = {
     socialAccounts: Array<{
         postId: string;
         socialAccountId: string;
+        externalPostId?: string | null;
+        externalAlternatePostId?: string | null;
+        externalVideoId?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -3237,8 +3288,10 @@ export type PostGetResponse = {
             bio?: string | null;
             avatarUrl?: string | null;
             externalId?: string | null;
+            providerPageId?: string | null;
             userUsername?: string | null;
             userDisplayName?: string | null;
+            userEmail?: string | null;
             userId?: string | null;
             channels?: Array<{
                 id: string;
@@ -3257,6 +3310,7 @@ export type PostGetResponse = {
                     allowVideos?: boolean | null;
                     allowGalleries?: boolean | null;
                     linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
                 } | null;
             }> | null;
             mastodonServerId?: string | null;
@@ -6002,6 +6056,9 @@ export type PostGetListResponse = {
         socialAccounts: Array<{
             postId: string;
             socialAccountId: string;
+            externalPostId?: string | null;
+            externalAlternatePostId?: string | null;
+            externalVideoId?: string | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -6014,8 +6071,10 @@ export type PostGetListResponse = {
                 bio?: string | null;
                 avatarUrl?: string | null;
                 externalId?: string | null;
+                providerPageId?: string | null;
                 userUsername?: string | null;
                 userDisplayName?: string | null;
+                userEmail?: string | null;
                 userId?: string | null;
                 channels?: Array<{
                     id: string;
@@ -6034,6 +6093,7 @@ export type PostGetListResponse = {
                         allowVideos?: boolean | null;
                         allowGalleries?: boolean | null;
                         linkFlairEnabled?: boolean | null;
+                        facebookPageId?: string | null;
                     } | null;
                 }> | null;
                 mastodonServerId?: string | null;
@@ -8056,8 +8116,10 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
         bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
+        providerPageId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
+        userEmail?: string | null;
         userId?: string | null;
         channels?: Array<{
             id: string;
@@ -8076,6 +8138,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
                 allowVideos?: boolean | null;
                 allowGalleries?: boolean | null;
                 linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
             } | null;
         }> | null;
         mastodonServerId?: string | null;
@@ -8897,8 +8960,10 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
         bio?: string | null;
         avatarUrl?: string | null;
         externalId?: string | null;
+        providerPageId?: string | null;
         userUsername?: string | null;
         userDisplayName?: string | null;
+        userEmail?: string | null;
         userId?: string | null;
         channels?: Array<{
             id: string;
@@ -8917,6 +8982,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
                 allowVideos?: boolean | null;
                 allowGalleries?: boolean | null;
                 linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
             } | null;
         }> | null;
         mastodonServerId?: string | null;
@@ -9900,6 +9966,7 @@ export type CommentImportGetFetchedCommentsResponse = {
             canModerate?: boolean | null;
             hidden?: boolean | null;
             likedByMe?: boolean | null;
+            likedByAutomation?: boolean | null;
             reactionsCount?: number | null;
             reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
             owner?: boolean | null;
@@ -9911,6 +9978,8 @@ export type CommentImportGetFetchedCommentsResponse = {
             attachmentUrl?: string | null;
             cid?: string | null;
             origin?: 'platform' | 'bundle' | null;
+            source?: string | null;
+            mediaProductType?: string | null;
             bundleCommentId?: string | null;
             displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
             disabledReason?: string | null;
@@ -9965,6 +10034,7 @@ export type CommentImportActionFetchedCommentResponse = {
             canModerate?: boolean | null;
             hidden?: boolean | null;
             likedByMe?: boolean | null;
+            likedByAutomation?: boolean | null;
             reactionsCount?: number | null;
             reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
             owner?: boolean | null;
@@ -9976,6 +10046,8 @@ export type CommentImportActionFetchedCommentResponse = {
             attachmentUrl?: string | null;
             cid?: string | null;
             origin?: 'platform' | 'bundle' | null;
+            source?: string | null;
+            mediaProductType?: string | null;
             bundleCommentId?: string | null;
             displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
             disabledReason?: string | null;
@@ -10022,8 +10094,8 @@ export type CommentGetResponse = {
     importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
-    title: string;
-    postDate: string | null;
+    title?: string | null;
+    postDate?: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
@@ -10318,8 +10390,8 @@ export type CommentUpdateResponse = {
     importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
-    title: string;
-    postDate: string | null;
+    title?: string | null;
+    postDate?: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
@@ -10562,8 +10634,8 @@ export type CommentDeleteResponse = {
     importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
-    title: string;
-    postDate: string | null;
+    title?: string | null;
+    postDate?: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
@@ -10816,8 +10888,8 @@ export type CommentGetListResponse = {
         importedPostId?: string | null;
         internalParentCommentId?: string | null;
         fetchedParentCommentId?: string | null;
-        title: string;
-        postDate: string | null;
+        title?: string | null;
+        postDate?: string | null;
         postedDate?: string | null;
         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
         data: {
@@ -11114,8 +11186,8 @@ export type CommentCreateResponse = {
     importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
-    title: string;
-    postDate: string | null;
+    title?: string | null;
+    postDate?: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
@@ -11358,8 +11430,8 @@ export type CommentRetryResponse = {
     importedPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
-    title: string;
-    postDate: string | null;
+    title?: string | null;
+    postDate?: string | null;
     postedDate?: string | null;
     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
     data: {
@@ -14398,6 +14470,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -14410,6 +14489,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -14417,6 +14503,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -14424,6 +14517,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -14431,6 +14531,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -14438,6 +14545,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -14445,6 +14559,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -14505,6 +14626,8 @@ export type $OpenApiTs = {
                     uploadsCompressionEnabled: boolean;
                     analyticsInterval?: number | null;
                     analyticsPostsInterval?: number | null;
+                    forcedAccountAnalyticsDailyLimit?: number | null;
+                    forcedPostAnalyticsDailyLimit?: number | null;
                     showVerboseErrors: boolean;
                     disconnectCheckEnabled: boolean;
                     deleteAccountAfter: number;
@@ -14616,6 +14739,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -14628,6 +14758,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -14635,6 +14772,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -14648,6 +14792,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -14655,6 +14806,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -14662,6 +14820,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -14683,6 +14848,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -14695,6 +14867,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -14702,6 +14881,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -14709,6 +14895,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -14716,6 +14909,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -14723,6 +14923,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -14730,6 +14937,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -14751,6 +14965,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -14763,6 +14984,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -14770,6 +14998,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -14777,6 +15012,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -14784,6 +15026,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -14791,6 +15040,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -14798,6 +15054,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -14819,6 +15082,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -14831,6 +15101,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -14838,6 +15115,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -14845,6 +15129,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -14852,6 +15143,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -14859,6 +15157,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -14866,6 +15171,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -14898,6 +15210,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -14910,6 +15229,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -14917,6 +15243,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -14924,6 +15257,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -14931,6 +15271,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -14938,6 +15285,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -14945,6 +15299,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -14980,6 +15341,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -14992,6 +15360,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -14999,6 +15374,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15006,6 +15388,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15013,6 +15402,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15020,6 +15416,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15027,6 +15430,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15097,6 +15507,8 @@ export type $OpenApiTs = {
                         uploadsCompressionEnabled: boolean;
                         analyticsInterval?: number | null;
                         analyticsPostsInterval?: number | null;
+                        forcedAccountAnalyticsDailyLimit?: number | null;
+                        forcedPostAnalyticsDailyLimit?: number | null;
                         showVerboseErrors: boolean;
                         disconnectCheckEnabled: boolean;
                         deleteAccountAfter: number;
@@ -15137,8 +15549,10 @@ export type $OpenApiTs = {
                         bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
+                        providerPageId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
+                        userEmail?: string | null;
                         userId?: string | null;
                         channels?: Array<{
                             id: string;
@@ -15157,6 +15571,7 @@ export type $OpenApiTs = {
                                 allowVideos?: boolean | null;
                                 allowGalleries?: boolean | null;
                                 linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
                             } | null;
                         }> | null;
                         mastodonServerId?: string | null;
@@ -15213,6 +15628,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15225,6 +15647,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15232,6 +15661,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15245,6 +15681,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15252,6 +15695,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15259,6 +15709,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15284,6 +15741,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15296,6 +15760,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15303,6 +15774,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15310,6 +15788,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15317,6 +15802,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15324,6 +15816,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15331,6 +15830,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15356,6 +15862,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15368,6 +15881,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15375,6 +15895,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15382,6 +15909,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15389,6 +15923,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15396,6 +15937,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15403,6 +15951,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15474,6 +16029,8 @@ export type $OpenApiTs = {
                             uploadsCompressionEnabled: boolean;
                             analyticsInterval?: number | null;
                             analyticsPostsInterval?: number | null;
+                            forcedAccountAnalyticsDailyLimit?: number | null;
+                            forcedPostAnalyticsDailyLimit?: number | null;
                             showVerboseErrors: boolean;
                             disconnectCheckEnabled: boolean;
                             deleteAccountAfter: number;
@@ -15514,8 +16071,10 @@ export type $OpenApiTs = {
                             bio?: string | null;
                             avatarUrl?: string | null;
                             externalId?: string | null;
+                            providerPageId?: string | null;
                             userUsername?: string | null;
                             userDisplayName?: string | null;
+                            userEmail?: string | null;
                             userId?: string | null;
                             channels?: Array<{
                                 id: string;
@@ -15534,6 +16093,7 @@ export type $OpenApiTs = {
                                     allowVideos?: boolean | null;
                                     allowGalleries?: boolean | null;
                                     linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
                                 } | null;
                             }> | null;
                             mastodonServerId?: string | null;
@@ -15592,6 +16152,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15604,6 +16171,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15611,6 +16185,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15618,6 +16199,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15625,6 +16213,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15632,6 +16227,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15639,6 +16241,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15664,6 +16273,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15676,6 +16292,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15683,6 +16306,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15690,6 +16320,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15697,6 +16334,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15704,6 +16348,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15711,6 +16362,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15734,6 +16392,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15746,6 +16411,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15753,6 +16425,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15760,6 +16439,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15767,6 +16453,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15774,6 +16467,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15781,6 +16481,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15801,8 +16508,10 @@ export type $OpenApiTs = {
                     bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
+                    providerPageId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
+                    userEmail?: string | null;
                     userId?: string | null;
                     channels?: Array<{
                         id: string;
@@ -15821,6 +16530,7 @@ export type $OpenApiTs = {
                             allowVideos?: boolean | null;
                             allowGalleries?: boolean | null;
                             linkFlairEnabled?: boolean | null;
+                            facebookPageId?: string | null;
                         } | null;
                     }> | null;
                     mastodonServerId?: string | null;
@@ -15839,6 +16549,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15851,6 +16568,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15858,6 +16582,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15865,6 +16596,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15872,6 +16610,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15879,6 +16624,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15886,6 +16638,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -15906,8 +16665,10 @@ export type $OpenApiTs = {
                     bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
+                    providerPageId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
+                    userEmail?: string | null;
                     userId?: string | null;
                     channels?: Array<{
                         id: string;
@@ -15926,6 +16687,7 @@ export type $OpenApiTs = {
                             allowVideos?: boolean | null;
                             allowGalleries?: boolean | null;
                             linkFlairEnabled?: boolean | null;
+                            facebookPageId?: string | null;
                         } | null;
                     }> | null;
                     mastodonServerId?: string | null;
@@ -15944,6 +16706,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -15956,6 +16725,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -15963,6 +16739,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -15970,6 +16753,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -15977,6 +16767,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -15984,6 +16781,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -15991,6 +16795,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16011,8 +16822,10 @@ export type $OpenApiTs = {
                     bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
+                    providerPageId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
+                    userEmail?: string | null;
                     userId?: string | null;
                     channels?: Array<{
                         id: string;
@@ -16031,6 +16844,7 @@ export type $OpenApiTs = {
                             allowVideos?: boolean | null;
                             allowGalleries?: boolean | null;
                             linkFlairEnabled?: boolean | null;
+                            facebookPageId?: string | null;
                         } | null;
                     }> | null;
                     mastodonServerId?: string | null;
@@ -16049,6 +16863,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16061,6 +16882,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16068,6 +16896,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16075,6 +16910,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16082,6 +16924,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16089,6 +16938,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16096,6 +16952,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16116,8 +16979,10 @@ export type $OpenApiTs = {
                     bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
+                    providerPageId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
+                    userEmail?: string | null;
                     userId?: string | null;
                     channels?: Array<{
                         id: string;
@@ -16136,6 +17001,7 @@ export type $OpenApiTs = {
                             allowVideos?: boolean | null;
                             allowGalleries?: boolean | null;
                             linkFlairEnabled?: boolean | null;
+                            facebookPageId?: string | null;
                         } | null;
                     }> | null;
                     mastodonServerId?: string | null;
@@ -16154,6 +17020,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16166,6 +17039,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16173,6 +17053,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16180,6 +17067,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16187,6 +17081,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16194,6 +17095,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16201,6 +17109,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16221,6 +17136,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16233,6 +17155,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16240,6 +17169,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16247,6 +17183,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16254,6 +17197,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16261,6 +17211,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16268,6 +17225,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16295,6 +17259,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16307,6 +17278,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16314,6 +17292,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16321,6 +17306,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16328,6 +17320,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16335,6 +17334,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16342,6 +17348,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16366,8 +17379,10 @@ export type $OpenApiTs = {
                         bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
+                        providerPageId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
+                        userEmail?: string | null;
                         userId?: string | null;
                         channels?: Array<{
                             id: string;
@@ -16386,6 +17401,7 @@ export type $OpenApiTs = {
                                 allowVideos?: boolean | null;
                                 allowGalleries?: boolean | null;
                                 linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
                             } | null;
                         }> | null;
                         mastodonServerId?: string | null;
@@ -16410,6 +17426,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16422,6 +17445,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16429,6 +17459,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16436,6 +17473,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16443,6 +17487,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16450,6 +17501,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16457,6 +17515,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16477,8 +17542,10 @@ export type $OpenApiTs = {
                     bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
+                    providerPageId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
+                    userEmail?: string | null;
                     userId?: string | null;
                     channels?: Array<{
                         id: string;
@@ -16497,6 +17564,7 @@ export type $OpenApiTs = {
                             allowVideos?: boolean | null;
                             allowGalleries?: boolean | null;
                             linkFlairEnabled?: boolean | null;
+                            facebookPageId?: string | null;
                         } | null;
                     }> | null;
                     mastodonServerId?: string | null;
@@ -16515,6 +17583,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16527,6 +17602,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16534,6 +17616,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16541,6 +17630,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16548,6 +17644,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16555,6 +17658,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16562,6 +17672,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16582,8 +17699,10 @@ export type $OpenApiTs = {
                     bio?: string | null;
                     avatarUrl?: string | null;
                     externalId?: string | null;
+                    providerPageId?: string | null;
                     userUsername?: string | null;
                     userDisplayName?: string | null;
+                    userEmail?: string | null;
                     userId?: string | null;
                     channels?: Array<{
                         id: string;
@@ -16602,6 +17721,7 @@ export type $OpenApiTs = {
                             allowVideos?: boolean | null;
                             allowGalleries?: boolean | null;
                             linkFlairEnabled?: boolean | null;
+                            facebookPageId?: string | null;
                         } | null;
                     }> | null;
                     mastodonServerId?: string | null;
@@ -16620,6 +17740,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16632,6 +17759,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16639,6 +17773,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16646,6 +17787,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16653,6 +17801,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16660,6 +17815,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16667,6 +17829,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16688,8 +17857,10 @@ export type $OpenApiTs = {
                         bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
+                        providerPageId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
+                        userEmail?: string | null;
                         userId?: string | null;
                         channels?: Array<{
                             id: string;
@@ -16708,6 +17879,7 @@ export type $OpenApiTs = {
                                 allowVideos?: boolean | null;
                                 allowGalleries?: boolean | null;
                                 linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
                             } | null;
                         }> | null;
                         mastodonServerId?: string | null;
@@ -16733,6 +17905,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16745,6 +17924,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16752,6 +17938,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16759,6 +17952,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16766,6 +17966,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16773,6 +17980,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16780,6 +17994,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16811,7 +18032,7 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
-                    posts: Array<{
+                    posts?: Array<{
                         postId: string;
                         uploadId: string;
                         createdAt: string | null;
@@ -16825,6 +18046,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16837,6 +18065,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16844,6 +18079,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16851,6 +18093,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16858,6 +18107,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16865,6 +18121,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16872,6 +18135,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16908,6 +18178,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -16920,6 +18197,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -16927,6 +18211,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -16934,6 +18225,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -16941,6 +18239,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -16948,6 +18253,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -16955,6 +18267,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -16991,6 +18310,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17003,6 +18329,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17010,6 +18343,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17017,6 +18357,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17024,6 +18371,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17031,6 +18385,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17038,6 +18399,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17069,7 +18437,7 @@ export type $OpenApiTs = {
                     ext?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
-                    posts: Array<{
+                    posts?: Array<{
                         postId: string;
                         uploadId: string;
                         createdAt: string | null;
@@ -17083,6 +18451,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17095,6 +18470,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17102,6 +18484,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17109,6 +18498,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17116,6 +18512,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17123,6 +18526,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17130,6 +18540,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17166,6 +18583,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17178,6 +18602,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17185,6 +18616,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17192,6 +18630,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17199,6 +18644,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17206,6 +18658,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17213,6 +18672,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17251,6 +18717,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17263,6 +18736,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17270,6 +18750,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17277,6 +18764,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17284,6 +18778,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17291,6 +18792,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17298,6 +18806,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17319,6 +18834,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17331,6 +18853,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17338,6 +18867,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17345,6 +18881,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17352,6 +18895,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17359,6 +18909,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17366,6 +18923,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17404,6 +18968,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17416,6 +18987,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17423,6 +19001,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17430,6 +19015,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17437,6 +19029,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17444,6 +19043,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17451,6 +19057,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17477,6 +19090,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17489,6 +19109,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17496,6 +19123,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17503,6 +19137,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17510,6 +19151,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17517,6 +19165,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17524,6 +19179,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17547,6 +19209,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17559,6 +19228,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17566,6 +19242,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17573,6 +19256,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17580,6 +19270,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17587,6 +19284,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17594,6 +19298,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17632,6 +19343,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17644,6 +19362,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17651,6 +19376,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17658,6 +19390,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17665,6 +19404,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17672,6 +19418,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17679,6 +19432,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17699,6 +19459,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17711,6 +19478,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17718,6 +19492,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17725,6 +19506,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17732,6 +19520,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17739,6 +19534,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17746,6 +19548,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17774,6 +19583,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17786,6 +19602,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17793,6 +19616,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17800,6 +19630,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17807,6 +19644,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17814,6 +19658,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17821,6 +19672,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -17851,6 +19709,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -17863,6 +19728,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -17870,6 +19742,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -17877,6 +19756,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -17884,6 +19770,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -17891,6 +19784,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -17898,6 +19798,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -18680,6 +20587,9 @@ export type $OpenApiTs = {
                     socialAccounts: Array<{
                         postId: string;
                         socialAccountId: string;
+                        externalPostId?: string | null;
+                        externalAlternatePostId?: string | null;
+                        externalVideoId?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -18692,8 +20602,10 @@ export type $OpenApiTs = {
                             bio?: string | null;
                             avatarUrl?: string | null;
                             externalId?: string | null;
+                            providerPageId?: string | null;
                             userUsername?: string | null;
                             userDisplayName?: string | null;
+                            userEmail?: string | null;
                             userId?: string | null;
                             channels?: Array<{
                                 id: string;
@@ -18712,6 +20624,7 @@ export type $OpenApiTs = {
                                     allowVideos?: boolean | null;
                                     allowGalleries?: boolean | null;
                                     linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
                                 } | null;
                             }> | null;
                             mastodonServerId?: string | null;
@@ -18732,6 +20645,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -18744,6 +20664,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -18751,6 +20678,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -18758,6 +20692,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -18765,6 +20706,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -18772,6 +20720,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -18779,6 +20734,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -19561,6 +21523,9 @@ export type $OpenApiTs = {
                     socialAccounts: Array<{
                         postId: string;
                         socialAccountId: string;
+                        externalPostId?: string | null;
+                        externalAlternatePostId?: string | null;
+                        externalVideoId?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -19573,8 +21538,10 @@ export type $OpenApiTs = {
                             bio?: string | null;
                             avatarUrl?: string | null;
                             externalId?: string | null;
+                            providerPageId?: string | null;
                             userUsername?: string | null;
                             userDisplayName?: string | null;
+                            userEmail?: string | null;
                             userId?: string | null;
                             channels?: Array<{
                                 id: string;
@@ -19593,6 +21560,7 @@ export type $OpenApiTs = {
                                     allowVideos?: boolean | null;
                                     allowGalleries?: boolean | null;
                                     linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
                                 } | null;
                             }> | null;
                             mastodonServerId?: string | null;
@@ -19613,6 +21581,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -19625,6 +21600,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -19632,6 +21614,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -19639,6 +21628,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -19646,6 +21642,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -19653,6 +21656,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -19660,6 +21670,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -20416,6 +22433,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -20428,6 +22452,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -20435,6 +22466,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -20442,6 +22480,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 409
@@ -20449,6 +22494,13 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -20456,6 +22508,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -20463,6 +22522,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -20470,6 +22536,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -21212,6 +23285,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -21224,6 +23304,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -21231,6 +23318,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -21238,6 +23332,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -21245,6 +23346,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -21252,6 +23360,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -21259,6 +23374,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -22042,6 +24164,9 @@ export type $OpenApiTs = {
                         socialAccounts: Array<{
                             postId: string;
                             socialAccountId: string;
+                            externalPostId?: string | null;
+                            externalAlternatePostId?: string | null;
+                            externalVideoId?: string | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -22054,8 +24179,10 @@ export type $OpenApiTs = {
                                 bio?: string | null;
                                 avatarUrl?: string | null;
                                 externalId?: string | null;
+                                providerPageId?: string | null;
                                 userUsername?: string | null;
                                 userDisplayName?: string | null;
+                                userEmail?: string | null;
                                 userId?: string | null;
                                 channels?: Array<{
                                     id: string;
@@ -22074,6 +24201,7 @@ export type $OpenApiTs = {
                                         allowVideos?: boolean | null;
                                         allowGalleries?: boolean | null;
                                         linkFlairEnabled?: boolean | null;
+                                        facebookPageId?: string | null;
                                     } | null;
                                 }> | null;
                                 mastodonServerId?: string | null;
@@ -22096,6 +24224,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -22108,6 +24243,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -22115,6 +24257,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -22122,6 +24271,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -22129,6 +24285,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -22136,6 +24299,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -22143,6 +24313,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -22899,6 +25076,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -22911,6 +25095,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -22918,6 +25109,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -22925,6 +25123,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 409
@@ -22932,6 +25137,13 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -22939,6 +25151,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -22946,6 +25165,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -22953,6 +25179,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -23697,6 +25930,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -23709,6 +25949,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -23716,6 +25963,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -23723,6 +25977,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -23730,6 +25991,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -23737,6 +26005,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -23744,6 +26019,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -23772,6 +26054,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -23784,6 +26073,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -23791,6 +26087,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -23798,6 +26101,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -23805,6 +26115,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -23812,6 +26129,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -23819,6 +26143,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -23853,6 +26184,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -23865,6 +26203,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -23872,6 +26217,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -23879,6 +26231,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -23886,6 +26245,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -23893,6 +26259,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -23900,6 +26273,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -23921,8 +26301,10 @@ export type $OpenApiTs = {
                         bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
+                        providerPageId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
+                        userEmail?: string | null;
                         userId?: string | null;
                         channels?: Array<{
                             id: string;
@@ -23941,6 +26323,7 @@ export type $OpenApiTs = {
                                 allowVideos?: boolean | null;
                                 allowGalleries?: boolean | null;
                                 linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
                             } | null;
                         }> | null;
                         mastodonServerId?: string | null;
@@ -23977,6 +26360,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -23989,6 +26379,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -23996,6 +26393,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -24003,6 +26407,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -24010,6 +26421,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -24017,6 +26435,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -24024,6 +26449,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -24809,6 +27241,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24821,6 +27260,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -24828,6 +27274,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -24835,6 +27288,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -24842,6 +27302,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -24849,6 +27316,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -24856,6 +27330,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -24877,8 +27358,10 @@ export type $OpenApiTs = {
                         bio?: string | null;
                         avatarUrl?: string | null;
                         externalId?: string | null;
+                        providerPageId?: string | null;
                         userUsername?: string | null;
                         userDisplayName?: string | null;
+                        userEmail?: string | null;
                         userId?: string | null;
                         channels?: Array<{
                             id: string;
@@ -24897,6 +27380,7 @@ export type $OpenApiTs = {
                                 allowVideos?: boolean | null;
                                 allowGalleries?: boolean | null;
                                 linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
                             } | null;
                         }> | null;
                         mastodonServerId?: string | null;
@@ -24926,6 +27410,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24938,6 +27429,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -24945,6 +27443,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -24952,6 +27457,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -24959,6 +27471,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -24966,6 +27485,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -24973,6 +27499,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -25750,6 +28283,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25762,6 +28302,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -25769,6 +28316,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -25776,6 +28330,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -25783,6 +28344,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -25790,6 +28358,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -25797,6 +28372,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -25844,6 +28426,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25856,6 +28445,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -25863,6 +28459,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -25870,6 +28473,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -25877,6 +28487,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -25884,6 +28501,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -25891,6 +28515,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -25925,6 +28556,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25937,6 +28575,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -25944,6 +28589,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -25951,6 +28603,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -25958,6 +28617,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -25965,6 +28631,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -25972,6 +28645,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26007,6 +28687,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26019,6 +28706,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -26026,6 +28720,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -26033,6 +28734,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -26040,6 +28748,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -26047,6 +28762,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -26054,6 +28776,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26088,6 +28817,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26100,6 +28836,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -26107,6 +28850,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -26114,6 +28864,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 409
@@ -26121,6 +28878,13 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -26128,6 +28892,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -26135,6 +28906,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -26142,6 +28920,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26176,6 +28961,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26188,6 +28980,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -26195,6 +28994,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -26202,6 +29008,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -26209,6 +29022,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -26216,6 +29036,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -26223,6 +29050,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26261,6 +29095,7 @@ export type $OpenApiTs = {
                             canModerate?: boolean | null;
                             hidden?: boolean | null;
                             likedByMe?: boolean | null;
+                            likedByAutomation?: boolean | null;
                             reactionsCount?: number | null;
                             reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
                             owner?: boolean | null;
@@ -26272,6 +29107,8 @@ export type $OpenApiTs = {
                             attachmentUrl?: string | null;
                             cid?: string | null;
                             origin?: 'platform' | 'bundle' | null;
+                            source?: string | null;
+                            mediaProductType?: string | null;
                             bundleCommentId?: string | null;
                             displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
                             disabledReason?: string | null;
@@ -26290,6 +29127,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26302,6 +29146,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -26309,6 +29160,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -26316,6 +29174,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -26323,6 +29188,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -26330,6 +29202,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -26337,6 +29216,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26376,6 +29262,7 @@ export type $OpenApiTs = {
                             canModerate?: boolean | null;
                             hidden?: boolean | null;
                             likedByMe?: boolean | null;
+                            likedByAutomation?: boolean | null;
                             reactionsCount?: number | null;
                             reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
                             owner?: boolean | null;
@@ -26387,6 +29274,8 @@ export type $OpenApiTs = {
                             attachmentUrl?: string | null;
                             cid?: string | null;
                             origin?: 'platform' | 'bundle' | null;
+                            source?: string | null;
+                            mediaProductType?: string | null;
                             bundleCommentId?: string | null;
                             displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
                             disabledReason?: string | null;
@@ -26404,6 +29293,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26416,6 +29312,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -26423,6 +29326,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -26430,6 +29340,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -26437,6 +29354,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -26444,6 +29368,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -26451,6 +29382,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26485,6 +29423,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26497,6 +29442,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -26504,6 +29456,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -26511,6 +29470,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -26518,6 +29484,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -26525,6 +29498,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -26532,6 +29512,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26551,8 +29538,8 @@ export type $OpenApiTs = {
                     importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
-                    title: string;
-                    postDate: string | null;
+                    title?: string | null;
+                    postDate?: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
@@ -26788,6 +29775,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26800,6 +29794,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -26807,6 +29808,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -26814,6 +29822,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -26821,6 +29836,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -26828,6 +29850,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -26835,6 +29864,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -26852,8 +29888,8 @@ export type $OpenApiTs = {
                     importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
-                    title: string;
-                    postDate: string | null;
+                    title?: string | null;
+                    postDate?: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
@@ -27089,6 +30125,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27101,6 +30144,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -27108,6 +30158,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -27115,6 +30172,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -27122,6 +30186,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -27129,6 +30200,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -27136,6 +30214,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -27153,8 +30238,8 @@ export type $OpenApiTs = {
                     importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
-                    title: string;
-                    postDate: string | null;
+                    title?: string | null;
+                    postDate?: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
@@ -27390,6 +30475,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27402,6 +30494,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -27409,6 +30508,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -27416,6 +30522,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -27423,6 +30536,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -27430,6 +30550,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -27437,6 +30564,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -27457,8 +30591,8 @@ export type $OpenApiTs = {
                         importedPostId?: string | null;
                         internalParentCommentId?: string | null;
                         fetchedParentCommentId?: string | null;
-                        title: string;
-                        postDate: string | null;
+                        title?: string | null;
+                        postDate?: string | null;
                         postedDate?: string | null;
                         status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                         data: {
@@ -27696,6 +30830,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27708,6 +30849,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -27715,6 +30863,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -27722,6 +30877,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -27729,6 +30891,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -27736,6 +30905,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -27743,6 +30919,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -27760,8 +30943,8 @@ export type $OpenApiTs = {
                     importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
-                    title: string;
-                    postDate: string | null;
+                    title?: string | null;
+                    postDate?: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
@@ -27997,6 +31180,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28009,6 +31199,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28016,6 +31213,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28023,6 +31227,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28030,6 +31241,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28037,6 +31255,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28044,6 +31269,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -28063,8 +31295,8 @@ export type $OpenApiTs = {
                     importedPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
-                    title: string;
-                    postDate: string | null;
+                    title?: string | null;
+                    postDate?: string | null;
                     postedDate?: string | null;
                     status: 'DRAFT' | 'SCHEDULED' | 'POSTED' | 'ERROR' | 'DELETED' | 'PROCESSING' | 'RETRYING';
                     data: {
@@ -28300,6 +31532,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28312,6 +31551,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28319,6 +31565,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28326,6 +31579,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28333,6 +31593,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28340,6 +31607,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28347,6 +31621,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -28393,6 +31674,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28405,6 +31693,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28412,6 +31707,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28419,6 +31721,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28426,6 +31735,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28433,6 +31749,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28440,6 +31763,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -28516,6 +31846,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28528,6 +31865,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28535,6 +31879,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28542,6 +31893,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28549,6 +31907,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28556,6 +31921,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28563,6 +31935,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -28627,6 +32006,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28639,6 +32025,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28646,6 +32039,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28653,6 +32053,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28660,6 +32067,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28667,6 +32081,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28674,6 +32095,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -28738,6 +32166,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28750,6 +32185,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28757,6 +32199,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28764,6 +32213,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28771,6 +32227,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28778,6 +32241,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28785,6 +32255,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -28803,6 +32280,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28815,6 +32299,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28822,6 +32313,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28829,6 +32327,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28836,6 +32341,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28843,6 +32355,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28850,6 +32369,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -28918,6 +32444,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28930,6 +32463,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -28937,6 +32477,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -28944,6 +32491,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -28951,6 +32505,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -28958,6 +32519,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -28965,6 +32533,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29041,6 +32616,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29053,6 +32635,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29060,6 +32649,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29067,6 +32663,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29074,6 +32677,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29081,6 +32691,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29088,6 +32705,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29106,6 +32730,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29118,6 +32749,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29125,6 +32763,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29132,6 +32777,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29139,6 +32791,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29146,6 +32805,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29153,6 +32819,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29174,6 +32847,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29186,6 +32866,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29193,6 +32880,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29200,6 +32894,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29207,6 +32908,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29214,6 +32922,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29221,6 +32936,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29239,6 +32961,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29251,6 +32980,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29258,6 +32994,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29265,6 +33008,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29272,6 +33022,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29279,6 +33036,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29286,6 +33050,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29307,6 +33078,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29319,6 +33097,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29326,6 +33111,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29333,6 +33125,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29340,6 +33139,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29347,6 +33153,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29354,6 +33167,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29372,6 +33192,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29384,6 +33211,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29391,6 +33225,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29398,6 +33239,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29405,6 +33253,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29412,6 +33267,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29419,6 +33281,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29450,6 +33319,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29462,6 +33338,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29469,6 +33352,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29476,6 +33366,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29483,6 +33380,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29490,6 +33394,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29497,6 +33408,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29527,6 +33445,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29539,6 +33464,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29546,6 +33478,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29553,6 +33492,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29560,6 +33506,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29567,6 +33520,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29574,6 +33534,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29614,6 +33581,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29626,6 +33600,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29633,6 +33614,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29640,6 +33628,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29647,6 +33642,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29654,6 +33656,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29661,6 +33670,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29681,6 +33697,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29693,6 +33716,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29700,6 +33730,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29707,6 +33744,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29714,6 +33758,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29721,6 +33772,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29728,6 +33786,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29751,6 +33816,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29763,6 +33835,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29770,6 +33849,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29777,6 +33863,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 422
@@ -29784,6 +33877,13 @@ export type $OpenApiTs = {
                 422: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29791,6 +33891,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29798,6 +33905,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29805,6 +33919,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29826,6 +33947,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29838,6 +33966,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29845,6 +33980,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29852,6 +33994,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29859,6 +34008,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29866,6 +34022,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29873,6 +34036,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29891,6 +34061,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29903,6 +34080,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29910,6 +34094,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29917,6 +34108,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29924,6 +34122,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29931,6 +34136,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -29938,6 +34150,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -29959,6 +34178,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29971,6 +34197,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -29978,6 +34211,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -29985,6 +34225,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -29992,6 +34239,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -29999,6 +34253,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30006,6 +34267,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30024,6 +34292,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30036,6 +34311,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30043,6 +34325,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30050,6 +34339,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30057,6 +34353,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30064,6 +34367,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30071,6 +34381,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30101,6 +34418,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30113,6 +34437,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30120,6 +34451,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30127,6 +34465,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30134,6 +34479,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30141,6 +34493,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30148,6 +34507,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30181,6 +34547,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30193,6 +34566,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30200,6 +34580,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30207,6 +34594,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30214,6 +34608,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30221,6 +34622,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30228,6 +34636,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30246,6 +34661,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30258,6 +34680,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30265,6 +34694,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30272,6 +34708,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30279,6 +34722,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30286,6 +34736,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30293,6 +34750,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30313,6 +34777,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30325,6 +34796,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30332,6 +34810,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30339,6 +34824,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30346,6 +34838,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30353,6 +34852,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30360,6 +34866,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30381,6 +34894,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30393,6 +34913,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30400,6 +34927,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30407,6 +34941,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30414,6 +34955,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30421,6 +34969,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30428,6 +34983,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30447,6 +35009,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30459,6 +35028,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30466,6 +35042,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30473,6 +35056,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30480,6 +35070,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30487,6 +35084,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30494,6 +35098,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30515,6 +35126,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30527,6 +35145,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30534,6 +35159,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30541,6 +35173,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30548,6 +35187,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30555,6 +35201,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30562,6 +35215,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30595,6 +35255,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30607,6 +35274,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30614,6 +35288,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30621,6 +35302,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30628,6 +35316,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30635,6 +35330,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30642,6 +35344,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30673,6 +35382,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30685,6 +35401,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30692,6 +35415,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30699,6 +35429,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30706,6 +35443,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30713,6 +35457,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30720,6 +35471,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30753,6 +35511,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30765,6 +35530,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30772,6 +35544,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30779,6 +35558,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30786,6 +35572,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30793,6 +35586,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30800,6 +35600,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30850,6 +35657,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30862,6 +35676,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30869,6 +35690,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30876,6 +35704,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30883,6 +35718,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30890,6 +35732,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30897,6 +35746,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30921,6 +35777,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30933,6 +35796,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -30940,6 +35810,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -30947,6 +35824,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -30954,6 +35838,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -30961,6 +35852,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -30968,6 +35866,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -30992,6 +35897,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31004,6 +35916,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31011,6 +35930,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31018,6 +35944,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31025,6 +35958,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31032,6 +35972,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31039,6 +35986,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31061,6 +36015,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31073,6 +36034,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31080,6 +36048,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31087,6 +36062,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31094,6 +36076,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31101,6 +36090,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31108,6 +36104,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31132,6 +36135,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31144,6 +36154,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31151,6 +36168,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31158,6 +36182,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31165,6 +36196,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31172,6 +36210,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31179,6 +36224,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31201,6 +36253,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31213,6 +36272,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31220,6 +36286,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31227,6 +36300,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31234,6 +36314,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31241,6 +36328,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31248,6 +36342,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31276,6 +36377,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31288,6 +36396,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31295,6 +36410,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31302,6 +36424,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31309,6 +36438,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31316,6 +36452,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31323,6 +36466,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31345,6 +36495,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31357,6 +36514,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31364,6 +36528,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31371,6 +36542,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31378,6 +36556,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31385,6 +36570,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31392,6 +36584,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31414,6 +36613,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31426,6 +36632,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31433,6 +36646,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31440,6 +36660,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31447,6 +36674,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31454,6 +36688,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31461,6 +36702,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31479,6 +36727,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31491,6 +36746,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31498,6 +36760,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31505,6 +36774,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31512,6 +36788,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31519,6 +36802,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31526,6 +36816,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31558,6 +36855,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31570,6 +36874,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31577,6 +36888,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31584,6 +36902,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 409
@@ -31591,6 +36916,13 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31598,6 +36930,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31605,6 +36944,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31612,6 +36958,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31644,6 +36997,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31656,6 +37016,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31663,6 +37030,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31670,6 +37044,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31677,6 +37058,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31684,6 +37072,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31691,6 +37086,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31723,6 +37125,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31735,6 +37144,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31742,6 +37158,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31749,6 +37172,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31756,6 +37186,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31763,6 +37200,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31770,6 +37214,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31813,6 +37264,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31825,6 +37283,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31832,6 +37297,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31839,6 +37311,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31846,6 +37325,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31853,6 +37339,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31860,6 +37353,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31898,6 +37398,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31910,6 +37417,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -31917,6 +37431,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -31924,6 +37445,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -31931,6 +37459,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -31938,6 +37473,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -31945,6 +37487,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -31983,6 +37532,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31995,6 +37551,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32002,6 +37565,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32009,6 +37579,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32016,6 +37593,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32023,6 +37607,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32030,6 +37621,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32066,6 +37664,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32078,6 +37683,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32085,6 +37697,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32092,6 +37711,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32099,6 +37725,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32106,6 +37739,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32113,6 +37753,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32134,6 +37781,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32146,6 +37800,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32153,6 +37814,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32160,6 +37828,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32167,6 +37842,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32174,6 +37856,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32181,6 +37870,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32208,6 +37904,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32220,6 +37923,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32227,6 +37937,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32234,6 +37951,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32241,6 +37965,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32248,6 +37979,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32255,6 +37993,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32276,6 +38021,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32288,6 +38040,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32295,6 +38054,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32302,6 +38068,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32309,6 +38082,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32316,6 +38096,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32323,6 +38110,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32341,6 +38135,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32353,6 +38154,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32360,6 +38168,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32367,6 +38182,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32374,6 +38196,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32381,6 +38210,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32388,6 +38224,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32409,6 +38252,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32421,6 +38271,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32428,6 +38285,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32435,6 +38299,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32442,6 +38313,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32449,6 +38327,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32456,6 +38341,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32474,6 +38366,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32486,6 +38385,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32493,6 +38399,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32500,6 +38413,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32507,6 +38427,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32514,6 +38441,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32521,6 +38455,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32608,6 +38549,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32620,6 +38568,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32627,6 +38582,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32634,6 +38596,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32641,6 +38610,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32648,6 +38624,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32655,6 +38638,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32700,6 +38690,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32712,6 +38709,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32719,6 +38723,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32726,6 +38737,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32733,6 +38751,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32740,6 +38765,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32747,6 +38779,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32778,6 +38817,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32790,6 +38836,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32797,6 +38850,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32804,6 +38864,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32811,6 +38878,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32818,6 +38892,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32825,6 +38906,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32845,6 +38933,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32857,6 +38952,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32864,6 +38966,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32871,6 +38980,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32878,6 +38994,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32885,6 +39008,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32892,6 +39022,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -32928,6 +39065,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32940,6 +39084,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -32947,6 +39098,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -32954,6 +39112,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -32961,6 +39126,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -32968,6 +39140,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -32975,6 +39154,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33009,6 +39195,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33021,6 +39214,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33028,6 +39228,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33035,6 +39242,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33042,6 +39256,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33049,6 +39270,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33056,6 +39284,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33088,6 +39323,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33100,6 +39342,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33107,6 +39356,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33114,6 +39370,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 409
@@ -33121,6 +39384,13 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33128,6 +39398,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33135,6 +39412,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33142,6 +39426,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33174,6 +39465,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33186,6 +39484,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33193,6 +39498,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33200,6 +39512,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33207,6 +39526,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33214,6 +39540,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33221,6 +39554,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33253,6 +39593,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33265,6 +39612,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33272,6 +39626,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33279,6 +39640,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33286,6 +39654,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33293,6 +39668,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33300,6 +39682,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33345,6 +39734,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33357,6 +39753,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33364,6 +39767,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33371,6 +39781,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33378,6 +39795,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33385,6 +39809,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33392,6 +39823,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33432,6 +39870,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33444,6 +39889,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33451,6 +39903,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33458,6 +39917,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33465,6 +39931,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33472,6 +39945,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33479,6 +39959,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33513,6 +40000,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33525,6 +40019,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33532,6 +40033,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33539,6 +40047,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33546,6 +40061,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33553,6 +40075,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33560,6 +40089,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33600,6 +40136,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33612,6 +40155,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33619,6 +40169,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33626,6 +40183,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33633,6 +40197,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33640,6 +40211,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33647,6 +40225,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33667,6 +40252,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33679,6 +40271,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33686,6 +40285,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33693,6 +40299,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33700,6 +40313,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33707,6 +40327,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33714,6 +40341,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33735,6 +40369,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33747,6 +40388,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33754,6 +40402,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33761,6 +40416,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33768,6 +40430,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33775,6 +40444,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33782,6 +40458,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33800,6 +40483,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33812,6 +40502,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33819,6 +40516,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33826,6 +40530,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33833,6 +40544,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33840,6 +40558,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33847,6 +40572,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33868,6 +40600,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33880,6 +40619,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33887,6 +40633,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33894,6 +40647,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33901,6 +40661,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33908,6 +40675,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33915,6 +40689,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -33933,6 +40714,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33945,6 +40733,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -33952,6 +40747,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -33959,6 +40761,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -33966,6 +40775,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -33973,6 +40789,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -33980,6 +40803,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34001,6 +40831,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34013,6 +40850,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34020,6 +40864,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34027,6 +40878,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34034,6 +40892,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34041,6 +40906,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34048,6 +40920,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34066,6 +40945,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34078,6 +40964,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34085,6 +40978,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34092,6 +40992,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34099,6 +41006,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34106,6 +41020,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34113,6 +41034,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34134,6 +41062,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34146,6 +41081,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34153,6 +41095,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34160,6 +41109,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34167,6 +41123,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34174,6 +41137,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34181,6 +41151,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34199,6 +41176,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34211,6 +41195,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34218,6 +41209,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34225,6 +41223,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34232,6 +41237,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34239,6 +41251,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34246,6 +41265,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34267,6 +41293,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34279,6 +41312,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34286,6 +41326,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34293,6 +41340,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34300,6 +41354,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34307,6 +41368,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34314,6 +41382,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34332,6 +41407,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34344,6 +41426,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34351,6 +41440,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34358,6 +41454,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34365,6 +41468,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34372,6 +41482,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34379,6 +41496,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34400,6 +41524,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34412,6 +41543,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34419,6 +41557,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34426,6 +41571,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34433,6 +41585,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34440,6 +41599,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34447,6 +41613,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34465,6 +41638,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34477,6 +41657,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34484,6 +41671,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34491,6 +41685,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34498,6 +41699,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34505,6 +41713,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34512,6 +41727,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34532,6 +41754,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34544,6 +41773,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34551,6 +41787,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34558,6 +41801,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34565,6 +41815,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34572,6 +41829,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34579,6 +41843,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34599,6 +41870,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34611,6 +41889,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34618,6 +41903,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34625,6 +41917,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34632,6 +41931,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34639,6 +41945,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34646,6 +41959,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34666,6 +41986,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34678,6 +42005,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34685,6 +42019,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34692,6 +42033,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34699,6 +42047,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34706,6 +42061,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34713,6 +42075,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34733,6 +42102,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34745,6 +42121,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34752,6 +42135,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34759,6 +42149,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34766,6 +42163,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34773,6 +42177,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34780,6 +42191,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34800,6 +42218,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34812,6 +42237,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34819,6 +42251,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34826,6 +42265,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34833,6 +42279,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34840,6 +42293,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34847,6 +42307,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -34935,6 +42402,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34947,6 +42421,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -34954,6 +42435,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -34961,6 +42449,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -34968,6 +42463,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -34975,6 +42477,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -34982,6 +42491,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35002,6 +42518,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35014,6 +42537,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35021,6 +42551,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35028,6 +42565,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35035,6 +42579,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35042,6 +42593,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35049,6 +42607,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35086,6 +42651,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35098,6 +42670,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35105,6 +42684,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35112,6 +42698,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 409
@@ -35119,6 +42712,13 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35126,6 +42726,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35133,6 +42740,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35140,6 +42754,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35177,6 +42798,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35189,6 +42817,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35196,6 +42831,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35203,6 +42845,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35210,6 +42859,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35217,6 +42873,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35224,6 +42887,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35261,6 +42931,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35273,6 +42950,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35280,6 +42964,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35287,6 +42978,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35294,6 +42992,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35301,6 +43006,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35308,6 +43020,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35369,6 +43088,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35381,6 +43107,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35388,6 +43121,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35395,6 +43135,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35402,6 +43149,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35409,6 +43163,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35416,6 +43177,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35434,6 +43202,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35446,6 +43221,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35453,6 +43235,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35460,6 +43249,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35467,6 +43263,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35474,6 +43277,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35481,6 +43291,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35518,6 +43335,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35530,6 +43354,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35537,6 +43368,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35544,6 +43382,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35551,6 +43396,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35558,6 +43410,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35565,6 +43424,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35600,6 +43466,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35612,6 +43485,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35619,6 +43499,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35626,6 +43513,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35633,6 +43527,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35640,6 +43541,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35647,6 +43555,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35683,6 +43598,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35695,6 +43617,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35702,6 +43631,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35709,6 +43645,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35716,6 +43659,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35723,6 +43673,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35730,6 +43687,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35765,6 +43729,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35777,6 +43748,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35784,6 +43762,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35791,6 +43776,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35798,6 +43790,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35805,6 +43804,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35812,6 +43818,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35841,6 +43854,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35853,6 +43873,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35860,6 +43887,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35867,6 +43901,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35874,6 +43915,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35881,6 +43929,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35888,6 +43943,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };
@@ -35921,6 +43983,13 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35933,6 +44002,13 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 403
@@ -35940,6 +44016,13 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 404
@@ -35947,6 +44030,13 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 429
@@ -35954,6 +44044,13 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 500
@@ -35961,6 +44058,13 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
                 /**
                  * 502
@@ -35968,6 +44072,13 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    code?: string | null;
+                    errorMessage?: string | null;
+                    userFacingMessage?: string | null;
+                    isTransient?: boolean | null;
+                    retryability?: 'retryable' | 'non_retryable' | 'unknown' | null;
+                    httpStatus?: number | null;
+                    meta?: unknown;
                 };
             };
         };

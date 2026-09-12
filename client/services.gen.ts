@@ -640,7 +640,13 @@ export class UploadService {
      * @param data The data for the request.
      * @param data.teamId
      * @param data.type
+     * @param data.types
      * @param data.status
+     * @param data.ids
+     * @param data.urls
+     * @param data.limit
+     * @param data.offset
+     * @param data.includePosts
      * @returns unknown 200
      * @throws ApiError
      */
@@ -651,7 +657,13 @@ export class UploadService {
             query: {
                 teamId: data.teamId,
                 type: data.type,
-                status: data.status
+                types: data.types,
+                status: data.status,
+                ids: data.ids,
+                urls: data.urls,
+                limit: data.limit,
+                offset: data.offset,
+                includePosts: data.includePosts
             },
             errors: {
                 400: '400',

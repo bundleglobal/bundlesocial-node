@@ -1,3 +1,10 @@
+## [2.64.2](https://github.com/bundleglobal/bundlesocial-node/compare/v2.64.1...v2.64.2) (2026-09-13)
+
+
+### Bug Fixes
+
+* uploads filtering ([92cfc6f](https://github.com/bundleglobal/bundlesocial-node/commit/92cfc6f42b5f866768d01b9b10ef9dc158fcc9c3))
+
 ## [2.64.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.64.0...v2.64.1) (2026-09-07)
 
 

@@ -636,11 +636,17 @@ export class UploadService {
     
     /**
      * Get upload list
-     * List the media files in your team's library, filterable and including the posts each file is used in. Use it to reuse existing media instead of uploading duplicates.
+     * List the media files in your team's library, newest first. Each file carries `posts`, the links to the posts using it — pass `includePosts=false` to leave them out. Page with `limit` and `offset`. To check whether specific files already exist, filter by `ids` or `urls` instead of listing everything.
      * @param data The data for the request.
      * @param data.teamId
      * @param data.type
+     * @param data.types
      * @param data.status
+     * @param data.ids
+     * @param data.urls
+     * @param data.limit
+     * @param data.includePosts
+     * @param data.offset
      * @returns unknown 200
      * @throws ApiError
      */
@@ -651,7 +657,13 @@ export class UploadService {
             query: {
                 teamId: data.teamId,
                 type: data.type,
-                status: data.status
+                types: data.types,
+                status: data.status,
+                ids: data.ids,
+                urls: data.urls,
+                limit: data.limit,
+                includePosts: data.includePosts,
+                offset: data.offset
             },
             errors: {
                 400: '400',

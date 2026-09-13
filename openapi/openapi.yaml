@@ -536,6 +536,12 @@ paths:
                   analyticsPostsInterval:
                     type: number
                     nullable: true
+                  forcedAccountAnalyticsDailyLimit:
+                    type: number
+                    nullable: true
+                  forcedPostAnalyticsDailyLimit:
+                    type: number
+                    nullable: true
                   showVerboseErrors:
                     type: boolean
                   disconnectCheckEnabled:
@@ -2165,6 +2171,12 @@ paths:
                       analyticsPostsInterval:
                         type: number
                         nullable: true
+                      forcedAccountAnalyticsDailyLimit:
+                        type: number
+                        nullable: true
+                      forcedPostAnalyticsDailyLimit:
+                        type: number
+                        nullable: true
                       showVerboseErrors:
                         type: boolean
                       disconnectCheckEnabled:
@@ -2322,10 +2334,16 @@ paths:
                         externalId:
                           type: string
                           nullable: true
+                        providerPageId:
+                          type: string
+                          nullable: true
                         userUsername:
                           type: string
                           nullable: true
                         userDisplayName:
+                          type: string
+                          nullable: true
+                        userEmail:
                           type: string
                           nullable: true
                         userId:
@@ -2380,6 +2398,9 @@ paths:
                                     nullable: true
                                   linkFlairEnabled:
                                     type: boolean
+                                    nullable: true
+                                  facebookPageId:
+                                    type: string
                                     nullable: true
                                 nullable: true
                             required:
@@ -3252,6 +3273,12 @@ paths:
                             analyticsPostsInterval:
                               type: number
                               nullable: true
+                            forcedAccountAnalyticsDailyLimit:
+                              type: number
+                              nullable: true
+                            forcedPostAnalyticsDailyLimit:
+                              type: number
+                              nullable: true
                             showVerboseErrors:
                               type: boolean
                             disconnectCheckEnabled:
@@ -3409,10 +3436,16 @@ paths:
                               externalId:
                                 type: string
                                 nullable: true
+                              providerPageId:
+                                type: string
+                                nullable: true
                               userUsername:
                                 type: string
                                 nullable: true
                               userDisplayName:
+                                type: string
+                                nullable: true
+                              userEmail:
                                 type: string
                                 nullable: true
                               userId:
@@ -3467,6 +3500,9 @@ paths:
                                           nullable: true
                                         linkFlairEnabled:
                                           type: boolean
+                                          nullable: true
+                                        facebookPageId:
+                                          type: string
                                           nullable: true
                                       nullable: true
                                   required:
@@ -4314,10 +4350,16 @@ paths:
                   externalId:
                     type: string
                     nullable: true
+                  providerPageId:
+                    type: string
+                    nullable: true
                   userUsername:
                     type: string
                     nullable: true
                   userDisplayName:
+                    type: string
+                    nullable: true
+                  userEmail:
                     type: string
                     nullable: true
                   userId:
@@ -4372,6 +4414,9 @@ paths:
                               nullable: true
                             linkFlairEnabled:
                               type: boolean
+                              nullable: true
+                            facebookPageId:
+                              type: string
                               nullable: true
                           nullable: true
                       required:
@@ -4635,10 +4680,16 @@ paths:
                   externalId:
                     type: string
                     nullable: true
+                  providerPageId:
+                    type: string
+                    nullable: true
                   userUsername:
                     type: string
                     nullable: true
                   userDisplayName:
+                    type: string
+                    nullable: true
+                  userEmail:
                     type: string
                     nullable: true
                   userId:
@@ -4693,6 +4744,9 @@ paths:
                               nullable: true
                             linkFlairEnabled:
                               type: boolean
+                              nullable: true
+                            facebookPageId:
+                              type: string
                               nullable: true
                           nullable: true
                       required:
@@ -4951,10 +5005,16 @@ paths:
                   externalId:
                     type: string
                     nullable: true
+                  providerPageId:
+                    type: string
+                    nullable: true
                   userUsername:
                     type: string
                     nullable: true
                   userDisplayName:
+                    type: string
+                    nullable: true
+                  userEmail:
                     type: string
                     nullable: true
                   userId:
@@ -5009,6 +5069,9 @@ paths:
                               nullable: true
                             linkFlairEnabled:
                               type: boolean
+                              nullable: true
+                            facebookPageId:
+                              type: string
                               nullable: true
                           nullable: true
                       required:
@@ -5273,10 +5336,16 @@ paths:
                   externalId:
                     type: string
                     nullable: true
+                  providerPageId:
+                    type: string
+                    nullable: true
                   userUsername:
                     type: string
                     nullable: true
                   userDisplayName:
+                    type: string
+                    nullable: true
+                  userEmail:
                     type: string
                     nullable: true
                   userId:
@@ -5331,6 +5400,9 @@ paths:
                               nullable: true
                             linkFlairEnabled:
                               type: boolean
+                              nullable: true
+                            facebookPageId:
+                              type: string
                               nullable: true
                           nullable: true
                       required:
@@ -6107,10 +6179,16 @@ paths:
                       externalId:
                         type: string
                         nullable: true
+                      providerPageId:
+                        type: string
+                        nullable: true
                       userUsername:
                         type: string
                         nullable: true
                       userDisplayName:
+                        type: string
+                        nullable: true
+                      userEmail:
                         type: string
                         nullable: true
                       userId:
@@ -6165,6 +6243,9 @@ paths:
                                   nullable: true
                                 linkFlairEnabled:
                                   type: boolean
+                                  nullable: true
+                                facebookPageId:
+                                  type: string
                                   nullable: true
                               nullable: true
                           required:
@@ -6455,10 +6536,16 @@ paths:
                   externalId:
                     type: string
                     nullable: true
+                  providerPageId:
+                    type: string
+                    nullable: true
                   userUsername:
                     type: string
                     nullable: true
                   userDisplayName:
+                    type: string
+                    nullable: true
+                  userEmail:
                     type: string
                     nullable: true
                   userId:
@@ -6513,6 +6600,9 @@ paths:
                               nullable: true
                             linkFlairEnabled:
                               type: boolean
+                              nullable: true
+                            facebookPageId:
+                              type: string
                               nullable: true
                           nullable: true
                       required:
@@ -6798,10 +6888,16 @@ paths:
                     externalId:
                       type: string
                       nullable: true
+                    providerPageId:
+                      type: string
+                      nullable: true
                     userUsername:
                       type: string
                       nullable: true
                     userDisplayName:
+                      type: string
+                      nullable: true
+                    userEmail:
                       type: string
                       nullable: true
                     userId:
@@ -6856,6 +6952,9 @@ paths:
                                 nullable: true
                               linkFlairEnabled:
                                 type: boolean
+                                nullable: true
+                              facebookPageId:
+                                type: string
                                 nullable: true
                             nullable: true
                         required:
@@ -7114,10 +7213,16 @@ paths:
                         externalId:
                           type: string
                           nullable: true
+                        providerPageId:
+                          type: string
+                          nullable: true
                         userUsername:
                           type: string
                           nullable: true
                         userDisplayName:
+                          type: string
+                          nullable: true
+                        userEmail:
                           type: string
                           nullable: true
                         userId:
@@ -7172,6 +7277,9 @@ paths:
                                     nullable: true
                                   linkFlairEnabled:
                                     type: boolean
+                                    nullable: true
+                                  facebookPageId:
+                                    type: string
                                     nullable: true
                                 nullable: true
                             required:
@@ -7380,9 +7488,11 @@ paths:
   /api/v1/upload/:
     get:
       description: >-
-        List the media files in your team's library, filterable and including
-        the posts each file is used in. Use it to reuse existing media instead
-        of uploading duplicates.
+        List the media files in your team's library, newest first. Each file
+        carries `posts`, the links to the posts using it — pass
+        `includePosts=false` to leave them out. Page with `limit` and `offset`.
+        To check whether specific files already exist, filter by `ids` or `urls`
+        instead of listing everything.
       summary: Get upload list
       tags: &ref_3
         - upload
@@ -7401,6 +7511,18 @@ paths:
               - video
               - document
             nullable: true
+        - name: types
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - image
+                - video
+                - document
+            maxItems: 3
+            nullable: true
         - name: status
           in: query
           schema:
@@ -7408,6 +7530,49 @@ paths:
             enum:
               - USED
               - UNUSED
+            nullable: true
+        - name: ids
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            maxItems: 100
+            nullable: true
+        - name: urls
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            maxItems: 100
+            nullable: true
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            nullable: true
+        - name: includePosts
+          in: query
+          schema:
+            default: true
+            oneOf:
+              - type: boolean
+              - type: string
+                enum:
+                  - 'true'
+              - type: string
+                enum:
+                  - 'false'
+            nullable: true
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: integer
+            minimum: 0
             nullable: true
       operationId: upload.getList
       responses:
@@ -7516,7 +7681,6 @@ paths:
                     - type
                     - createdAt
                     - updatedAt
-                    - posts
         '400':
           description: '400'
           content:
@@ -8240,7 +8404,6 @@ paths:
                   - type
                   - createdAt
                   - updatedAt
-                  - posts
         '400':
           description: '400'
           content:
@@ -12561,6 +12724,15 @@ paths:
                           type: string
                         socialAccountId:
                           type: string
+                        externalPostId:
+                          type: string
+                          nullable: true
+                        externalAlternatePostId:
+                          type: string
+                          nullable: true
+                        externalVideoId:
+                          type: string
+                          nullable: true
                         createdAt:
                           type: string
                           format: date-time
@@ -12613,10 +12785,16 @@ paths:
                             externalId:
                               type: string
                               nullable: true
+                            providerPageId:
+                              type: string
+                              nullable: true
                             userUsername:
                               type: string
                               nullable: true
                             userDisplayName:
+                              type: string
+                              nullable: true
+                            userEmail:
                               type: string
                               nullable: true
                             userId:
@@ -12671,6 +12849,9 @@ paths:
                                         nullable: true
                                       linkFlairEnabled:
                                         type: boolean
+                                        nullable: true
+                                      facebookPageId:
+                                        type: string
                                         nullable: true
                                     nullable: true
                                 required:
@@ -14852,6 +15033,15 @@ paths:
                           type: string
                         socialAccountId:
                           type: string
+                        externalPostId:
+                          type: string
+                          nullable: true
+                        externalAlternatePostId:
+                          type: string
+                          nullable: true
+                        externalVideoId:
+                          type: string
+                          nullable: true
                         createdAt:
                           type: string
                           format: date-time
@@ -14904,10 +15094,16 @@ paths:
                             externalId:
                               type: string
                               nullable: true
+                            providerPageId:
+                              type: string
+                              nullable: true
                             userUsername:
                               type: string
                               nullable: true
                             userDisplayName:
+                              type: string
+                              nullable: true
+                            userEmail:
                               type: string
                               nullable: true
                             userId:
@@ -14962,6 +15158,9 @@ paths:
                                         nullable: true
                                       linkFlairEnabled:
                                         type: boolean
+                                        nullable: true
+                                      facebookPageId:
+                                        type: string
                                         nullable: true
                                     nullable: true
                                 required:
@@ -16232,7 +16431,7 @@ paths:
                   properties:
                     TIKTOK:
                       type: string
-                      maxLength: 150
+                      maxLength: 1200
                       nullable: true
                     YOUTUBE:
                       type: string
@@ -22348,6 +22547,15 @@ paths:
                                 type: string
                               socialAccountId:
                                 type: string
+                              externalPostId:
+                                type: string
+                                nullable: true
+                              externalAlternatePostId:
+                                type: string
+                                nullable: true
+                              externalVideoId:
+                                type: string
+                                nullable: true
                               createdAt:
                                 type: string
                                 format: date-time
@@ -22400,10 +22608,16 @@ paths:
                                   externalId:
                                     type: string
                                     nullable: true
+                                  providerPageId:
+                                    type: string
+                                    nullable: true
                                   userUsername:
                                     type: string
                                     nullable: true
                                   userDisplayName:
+                                    type: string
+                                    nullable: true
+                                  userEmail:
                                     type: string
                                     nullable: true
                                   userId:
@@ -22458,6 +22672,9 @@ paths:
                                               nullable: true
                                             linkFlairEnabled:
                                               type: boolean
+                                              nullable: true
+                                            facebookPageId:
+                                              type: string
                                               nullable: true
                                           nullable: true
                                       required:
@@ -23732,7 +23949,7 @@ paths:
                   properties:
                     TIKTOK:
                       type: string
-                      maxLength: 150
+                      maxLength: 1200
                       nullable: true
                     YOUTUBE:
                       type: string
@@ -28292,10 +28509,16 @@ paths:
                       externalId:
                         type: string
                         nullable: true
+                      providerPageId:
+                        type: string
+                        nullable: true
                       userUsername:
                         type: string
                         nullable: true
                       userDisplayName:
+                        type: string
+                        nullable: true
+                      userEmail:
                         type: string
                         nullable: true
                       userId:
@@ -28350,6 +28573,9 @@ paths:
                                   nullable: true
                                 linkFlairEnabled:
                                   type: boolean
+                                  nullable: true
+                                facebookPageId:
+                                  type: string
                                   nullable: true
                               nullable: true
                           required:
@@ -30826,10 +31052,16 @@ paths:
                       externalId:
                         type: string
                         nullable: true
+                      providerPageId:
+                        type: string
+                        nullable: true
                       userUsername:
                         type: string
                         nullable: true
                       userDisplayName:
+                        type: string
+                        nullable: true
+                      userEmail:
                         type: string
                         nullable: true
                       userId:
@@ -30884,6 +31116,9 @@ paths:
                                   nullable: true
                                 linkFlairEnabled:
                                   type: boolean
+                                  nullable: true
+                                facebookPageId:
+                                  type: string
                                   nullable: true
                               nullable: true
                           required:
@@ -34665,6 +34900,9 @@ paths:
                             likedByMe:
                               type: boolean
                               nullable: true
+                            likedByAutomation:
+                              type: boolean
+                              nullable: true
                             reactionsCount:
                               type: number
                               nullable: true
@@ -34707,6 +34945,12 @@ paths:
                               enum:
                                 - platform
                                 - bundle
+                              nullable: true
+                            source:
+                              type: string
+                              nullable: true
+                            mediaProductType:
+                              type: string
                               nullable: true
                             bundleCommentId:
                               type: string
@@ -35031,6 +35275,9 @@ paths:
                           likedByMe:
                             type: boolean
                             nullable: true
+                          likedByAutomation:
+                            type: boolean
+                            nullable: true
                           reactionsCount:
                             type: number
                             nullable: true
@@ -35073,6 +35320,12 @@ paths:
                             enum:
                               - platform
                               - bundle
+                            nullable: true
+                          source:
+                            type: string
+                            nullable: true
+                          mediaProductType:
+                            type: string
                             nullable: true
                           bundleCommentId:
                             type: string
@@ -35531,6 +35784,7 @@ paths:
                     nullable: true
                   title:
                     type: string
+                    nullable: true
                   postDate:
                     type: string
                     format: date-time
@@ -36172,8 +36426,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - title
-                  - postDate
                   - status
                   - data
                   - createdAt
@@ -36491,6 +36743,7 @@ paths:
                     nullable: true
                   title:
                     type: string
+                    nullable: true
                   postDate:
                     type: string
                     format: date-time
@@ -37132,8 +37385,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - title
-                  - postDate
                   - status
                   - data
                   - createdAt
@@ -37315,6 +37566,7 @@ paths:
                     nullable: true
                   title:
                     type: string
+                    nullable: true
                   postDate:
                     type: string
                     format: date-time
@@ -37956,8 +38208,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - title
-                  - postDate
                   - status
                   - data
                   - createdAt
@@ -38217,6 +38467,7 @@ paths:
                           nullable: true
                         title:
                           type: string
+                          nullable: true
                         postDate:
                           type: string
                           format: date-time
@@ -38858,8 +39109,6 @@ paths:
                       required:
                         - id
                         - teamId
-                        - title
-                        - postDate
                         - status
                         - data
                         - createdAt
@@ -39182,6 +39431,7 @@ paths:
                     nullable: true
                   title:
                     type: string
+                    nullable: true
                   postDate:
                     type: string
                     format: date-time
@@ -39823,8 +40073,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - title
-                  - postDate
                   - status
                   - data
                   - createdAt
@@ -40007,6 +40255,7 @@ paths:
                     nullable: true
                   title:
                     type: string
+                    nullable: true
                   postDate:
                     type: string
                     format: date-time
@@ -40648,8 +40897,6 @@ paths:
                 required:
                   - id
                   - teamId
-                  - title
-                  - postDate
                   - status
                   - data
                   - createdAt

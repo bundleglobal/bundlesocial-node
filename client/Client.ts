@@ -5,7 +5,9 @@ import { FetchHttpRequest } from './core/FetchHttpRequest';
 
 import { AnalyticsService } from './services.gen';
 import { AppService } from './services.gen';
+import { AutomationService } from './services.gen';
 import { CommentService } from './services.gen';
+import { ConversationService } from './services.gen';
 import { CreditService } from './services.gen';
 import { MiscService } from './services.gen';
 import { OrganizationService } from './services.gen';
@@ -22,7 +24,9 @@ export class Client {
 
 	public readonly analytics: AnalyticsService;
 	public readonly app: AppService;
+	public readonly automation: AutomationService;
 	public readonly comment: CommentService;
+	public readonly conversation: ConversationService;
 	public readonly credit: CreditService;
 	public readonly misc: MiscService;
 	public readonly organization: OrganizationService;
@@ -54,7 +58,9 @@ export class Client {
 
 		this.analytics = new AnalyticsService(this.request);
 		this.app = new AppService(this.request);
+		this.automation = new AutomationService(this.request);
 		this.comment = new CommentService(this.request);
+		this.conversation = new ConversationService(this.request);
 		this.credit = new CreditService(this.request);
 		this.misc = new MiscService(this.request);
 		this.organization = new OrganizationService(this.request);

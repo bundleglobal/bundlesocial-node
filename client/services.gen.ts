@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetCommentsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetDailyLimitsUsageData, OrganizationGetDailyLimitsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, UploadInitMultipartUploadData, UploadInitMultipartUploadResponse, UploadSignMultipartPartsData, UploadSignMultipartPartsResponse, UploadCompleteMultipartUploadData, UploadCompleteMultipartUploadResponse, UploadAbortMultipartUploadData, UploadAbortMultipartUploadResponse, PostGetReconnectSocialAccountCandidatesData, PostGetReconnectSocialAccountCandidatesResponse, PostReconnectSocialAccountData, PostReconnectSocialAccountResponse, PostGetByReferenceKeyData, PostGetByReferenceKeyResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, CreditGetCreditBalanceResponse, CreditQuoteBillableUsageData, CreditQuoteBillableUsageResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentImportCreateData, CommentImportCreateResponse, CommentImportGetListData, CommentImportGetListResponse, CommentImportGetFetchedCommentsData, CommentImportGetFetchedCommentsResponse, CommentImportActionFetchedCommentData, CommentImportActionFetchedCommentResponse, CommentImportGetByIdData, CommentImportGetByIdResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, CommentRetryData, CommentRetryResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeEditCommentData, MiscYoutubeEditCommentResponse, MiscYoutubeDeleteCommentData, MiscYoutubeDeleteCommentResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinResharePostData, MiscLinkedinResharePostResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscLinkedinEditCommentData, MiscLinkedinEditCommentResponse, MiscLinkedinDeleteCommentData, MiscLinkedinDeleteCommentResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListSearchKeywordsData, MiscGoogleBusinessListSearchKeywordsResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscRedditEditCommentData, MiscRedditEditCommentResponse, MiscRedditDeleteCommentData, MiscRedditDeleteCommentResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscInstagramSearchAudioData, MiscInstagramSearchAudioResponse, MiscInstagramDeleteCommentData, MiscInstagramDeleteCommentResponse, MiscFacebookGetTextFormatPresetsResponse, MiscFacebookGetTokenDebugData, MiscFacebookGetTokenDebugResponse, MiscFacebookImportRecommendationsData, MiscFacebookImportRecommendationsResponse, MiscFacebookGetRecommendationImportStatusData, MiscFacebookGetRecommendationImportStatusResponse, MiscFacebookGetRecommendationImportByIdData, MiscFacebookGetRecommendationImportByIdResponse, MiscFacebookGetRecommendationsData, MiscFacebookGetRecommendationsResponse, MiscFacebookGetRecommendationByIdData, MiscFacebookGetRecommendationByIdResponse, MiscFacebookGetRecommendationCommentsData, MiscFacebookGetRecommendationCommentsResponse, MiscFacebookReplyToRecommendationData, MiscFacebookReplyToRecommendationResponse, MiscFacebookReplyToRecommendationCommentData, MiscFacebookReplyToRecommendationCommentResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscFacebookEditCommentData, MiscFacebookEditCommentResponse, MiscFacebookDeleteCommentData, MiscFacebookDeleteCommentResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscMastodonEditCommentData, MiscMastodonEditCommentResponse, MiscMastodonDeleteCommentData, MiscMastodonDeleteCommentResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscBlueskyDeleteCommentData, MiscBlueskyDeleteCommentResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscTwitterDeleteCommentData, MiscTwitterDeleteCommentResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, MiscTiktokDeleteCommentData, MiscTiktokDeleteCommentResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetCommentsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetDailyLimitsUsageData, OrganizationGetDailyLimitsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountEnableMessagingData, SocialAccountEnableMessagingResponse, SocialAccountDisableMessagingData, SocialAccountDisableMessagingResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, UploadInitMultipartUploadData, UploadInitMultipartUploadResponse, UploadSignMultipartPartsData, UploadSignMultipartPartsResponse, UploadCompleteMultipartUploadData, UploadCompleteMultipartUploadResponse, UploadAbortMultipartUploadData, UploadAbortMultipartUploadResponse, PostGetReconnectSocialAccountCandidatesData, PostGetReconnectSocialAccountCandidatesResponse, PostReconnectSocialAccountData, PostReconnectSocialAccountResponse, PostGetByReferenceKeyData, PostGetByReferenceKeyResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, CreditGetCreditBalanceResponse, CreditQuoteBillableUsageData, CreditQuoteBillableUsageResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentImportCreateData, CommentImportCreateResponse, CommentImportGetListData, CommentImportGetListResponse, CommentImportGetFetchedCommentsData, CommentImportGetFetchedCommentsResponse, CommentImportActionFetchedCommentData, CommentImportActionFetchedCommentResponse, CommentImportGetByIdData, CommentImportGetByIdResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, CommentRetryData, CommentRetryResponse, ConversationGetListData, ConversationGetListResponse, ConversationGetData, ConversationGetResponse, ConversationUpdateData, ConversationUpdateResponse, ConversationGetMessagesData, ConversationGetMessagesResponse, ConversationSendMessageData, ConversationSendMessageResponse, ConversationReactMessageData, ConversationReactMessageResponse, ConversationMarkReadData, ConversationMarkReadResponse, ConversationPrivateReplyData, ConversationPrivateReplyResponse, ConversationArchiveData, ConversationArchiveResponse, ConversationOpenData, ConversationOpenResponse, AutomationGetFlowsData, AutomationGetFlowsResponse, AutomationCreateFlowData, AutomationCreateFlowResponse, AutomationCopyFlowsData, AutomationCopyFlowsResponse, AutomationGetFlowData, AutomationGetFlowResponse, AutomationUpdateFlowData, AutomationUpdateFlowResponse, AutomationDeleteFlowData, AutomationDeleteFlowResponse, AutomationPublishFlowData, AutomationPublishFlowResponse, AutomationPauseFlowData, AutomationPauseFlowResponse, AutomationActivateFlowData, AutomationActivateFlowResponse, AutomationArchiveFlowData, AutomationArchiveFlowResponse, AutomationGetFlowExecutionsData, AutomationGetFlowExecutionsResponse, AutomationGetExecutionData, AutomationGetExecutionResponse, AutomationTestFlowData, AutomationTestFlowResponse, AutomationGetProviderSettingsData, AutomationGetProviderSettingsResponse, AutomationUpsertProviderSettingData, AutomationUpsertProviderSettingResponse, AutomationSyncProviderSettingData, AutomationSyncProviderSettingResponse, AutomationSendRichMessageData, AutomationSendRichMessageResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeEditCommentData, MiscYoutubeEditCommentResponse, MiscYoutubeDeleteCommentData, MiscYoutubeDeleteCommentResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinResharePostData, MiscLinkedinResharePostResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscLinkedinEditCommentData, MiscLinkedinEditCommentResponse, MiscLinkedinDeleteCommentData, MiscLinkedinDeleteCommentResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListSearchKeywordsData, MiscGoogleBusinessListSearchKeywordsResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscRedditEditCommentData, MiscRedditEditCommentResponse, MiscRedditDeleteCommentData, MiscRedditDeleteCommentResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscInstagramSearchAudioData, MiscInstagramSearchAudioResponse, MiscInstagramDeleteCommentData, MiscInstagramDeleteCommentResponse, MiscFacebookGetTextFormatPresetsResponse, MiscFacebookGetTokenDebugData, MiscFacebookGetTokenDebugResponse, MiscFacebookImportRecommendationsData, MiscFacebookImportRecommendationsResponse, MiscFacebookGetRecommendationImportStatusData, MiscFacebookGetRecommendationImportStatusResponse, MiscFacebookGetRecommendationImportByIdData, MiscFacebookGetRecommendationImportByIdResponse, MiscFacebookGetRecommendationsData, MiscFacebookGetRecommendationsResponse, MiscFacebookGetRecommendationByIdData, MiscFacebookGetRecommendationByIdResponse, MiscFacebookGetRecommendationCommentsData, MiscFacebookGetRecommendationCommentsResponse, MiscFacebookReplyToRecommendationData, MiscFacebookReplyToRecommendationResponse, MiscFacebookReplyToRecommendationCommentData, MiscFacebookReplyToRecommendationCommentResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscFacebookEditCommentData, MiscFacebookEditCommentResponse, MiscFacebookDeleteCommentData, MiscFacebookDeleteCommentResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscMastodonEditCommentData, MiscMastodonEditCommentResponse, MiscMastodonDeleteCommentData, MiscMastodonDeleteCommentResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscBlueskyDeleteCommentData, MiscBlueskyDeleteCommentResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscTwitterDeleteCommentData, MiscTwitterDeleteCommentResponse, MiscTwitterRetweetData, MiscTwitterRetweetResponse, MiscTwitterUnretweetData, MiscTwitterUnretweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, MiscTiktokDeleteCommentData, MiscTiktokDeleteCommentResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -479,6 +479,58 @@ export class SocialAccountService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/v1/social-account/create-portal-link',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Enable DM messaging for a social account
+     * Subscribe the team's Facebook page or Instagram account to Meta DM webhooks and start processing its messages. Connecting or re-authorizing an account never does this on its own. Idempotent. Returns 404 when the organization has no access to messaging, 400 when the account lacks the messaging permissions (reconnect it), and 502 when Meta rejects the subscription; the account then stays DISABLED.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountEnableMessaging(data: SocialAccountEnableMessagingData = {}): CancelablePromise<SocialAccountEnableMessagingResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/social-account/messaging/enable',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Disable DM messaging for a social account
+     * Stop processing DMs for the account and narrow its Meta webhook subscription to what other features still need. Idempotent. Processing stops immediately; if Meta does not confirm the change the status is DISABLE_PENDING and the call returns 502, so it can be retried.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public socialAccountDisableMessaging(data: SocialAccountDisableMessagingData = {}): CancelablePromise<SocialAccountDisableMessagingResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/social-account/messaging/disable',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {
@@ -1846,6 +1898,844 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+            }
+        });
+    }
+    
+}
+
+export class ConversationService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Get conversations
+     * List conversations for a team, newest activity first. Filter by `socialAccountId`, `platform` and `status`. Paginate with `offset` (`limit` max 500, default 10) or by passing the previous response's `nextCursor` back as `cursor`; the two cannot be combined. `total` is returned on the first page only.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.platform
+     * @param data.socialAccountId
+     * @param data.status
+     * @param data.offset
+     * @param data.limit
+     * @param data.cursor
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationGetList(data: ConversationGetListData): CancelablePromise<ConversationGetListResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/conversations/',
+            query: {
+                teamId: data.teamId,
+                platform: data.platform,
+                socialAccountId: data.socialAccountId,
+                status: data.status,
+                offset: data.offset,
+                limit: data.limit,
+                cursor: data.cursor
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Get conversation
+     * Get a single conversation by id, including the participant, the linked social account and its unread and status flags.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationGet(data: ConversationGetData): CancelablePromise<ConversationGetResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/conversations/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Update conversation
+     * Set the status of a conversation. This is the general form of the archive and open endpoints, which move a conversation to one specific status.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationUpdate(data: ConversationUpdateData): CancelablePromise<ConversationUpdateResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/conversations/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Get conversation messages
+     * List the messages of a conversation. Pages walk backwards in time, while the messages inside a page are ordered oldest first, ready to render. Includes attachments, reactions and delivery state. Paginate with `offset` (`limit` max 500, default 10) or by passing the previous response's `nextCursor` back as `cursor`; the two cannot be combined. `total` is returned on the first page only.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.offset
+     * @param data.limit
+     * @param data.cursor
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationGetMessages(data: ConversationGetMessagesData): CancelablePromise<ConversationGetMessagesResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/conversations/{id}/messages',
+            path: {
+                id: data.id
+            },
+            query: {
+                offset: data.offset,
+                limit: data.limit,
+                cursor: data.cursor
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Send a conversation message
+     * Send a message to the participant of a conversation. The platform reply window must still be open. Returns 503 while messaging sending is temporarily disabled.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationSendMessage(data: ConversationSendMessageData): CancelablePromise<ConversationSendMessageResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/conversations/{id}/messages',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+            }
+        });
+    }
+    
+    /**
+     * React or unreact to a conversation message
+     * Add or remove a reaction on a message in a conversation. Returns 503 while messaging sending is temporarily disabled.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.messageId
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationReactMessage(data: ConversationReactMessageData): CancelablePromise<ConversationReactMessageResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/conversations/{id}/messages/{messageId}/reaction',
+            path: {
+                id: data.id,
+                messageId: data.messageId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+            }
+        });
+    }
+    
+    /**
+     * Mark conversation as read
+     * Clear the unread state of a conversation, optionally up to a specific message.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationMarkRead(data: ConversationMarkReadData): CancelablePromise<ConversationMarkReadResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/conversations/{id}/read',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Send a private reply to a fetched Meta comment
+     * Send a direct message in reply to a Facebook or Instagram comment we have already imported. Creates the conversation when none exists yet. Returns 503 while messaging sending is temporarily disabled.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationPrivateReply(data: ConversationPrivateReplyData = {}): CancelablePromise<ConversationPrivateReplyResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/conversations/private-reply',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+            }
+        });
+    }
+    
+    /**
+     * Archive conversation
+     * Move a conversation out of the active inbox. Incoming messages reopen it automatically.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationArchive(data: ConversationArchiveData): CancelablePromise<ConversationArchiveResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/conversations/{id}/archive',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Open conversation
+     * Move an archived or closed conversation back into the active inbox.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public conversationOpen(data: ConversationOpenData): CancelablePromise<ConversationOpenResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/conversations/{id}/open',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+}
+
+export class AutomationService {
+    constructor(public readonly httpRequest: BaseHttpRequest) { }
+    
+    /**
+     * Get automation flows
+     * List the automation flows of a team, newest first. Filter by `socialAccountId`, `status` and `platformScope`. Paginate with `offset` and `limit` (default 10). The response always carries the full `total`.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.status
+     * @param data.platformScope
+     * @param data.socialAccountId
+     * @param data.offset
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationGetFlows(data: AutomationGetFlowsData): CancelablePromise<AutomationGetFlowsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/automations',
+            query: {
+                teamId: data.teamId,
+                status: data.status,
+                platformScope: data.platformScope,
+                socialAccountId: data.socialAccountId,
+                offset: data.offset,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Create an automation flow
+     * Create an automation flow from a trigger and a list of steps. The flow starts as a draft and only runs once it is published.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 201
+     * @throws ApiError
+     */
+    public automationCreateFlow(data: AutomationCreateFlowData = {}): CancelablePromise<AutomationCreateFlowResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automations',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Copy automation flows between teams
+     * Duplicate one or more automation flows into another team. The copies are created as drafts so they can be re-pointed at that team's social accounts before going live.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 201
+     * @throws ApiError
+     */
+    public automationCopyFlows(data: AutomationCopyFlowsData = {}): CancelablePromise<AutomationCopyFlowsResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automations/copy',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Get an automation flow
+     * Get a single automation flow by id, including its trigger, its steps and its current status.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationGetFlow(data: AutomationGetFlowData): CancelablePromise<AutomationGetFlowResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/automations/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Update an automation flow
+     * Update the name, trigger or steps of an automation flow. Changes to a published flow take effect on the next matching event.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationUpdateFlow(data: AutomationUpdateFlowData): CancelablePromise<AutomationUpdateFlowResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/v1/automations/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Delete an automation flow
+     * Delete an automation flow. Past executions are kept for auditing and stay readable.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationDeleteFlow(data: AutomationDeleteFlowData): CancelablePromise<AutomationDeleteFlowResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/automations/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Publish an automation flow
+     * Validate a draft flow and make it live, so that matching events start triggering it. Returns 400 when the flow is not valid.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationPublishFlow(data: AutomationPublishFlowData): CancelablePromise<AutomationPublishFlowResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automations/{id}/publish',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Pause an automation flow
+     * Stop a live flow from triggering on new events while keeping its configuration intact.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationPauseFlow(data: AutomationPauseFlowData): CancelablePromise<AutomationPauseFlowResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automations/{id}/pause',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Activate an automation flow
+     * Resume a paused flow so that it triggers on new events again.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationActivateFlow(data: AutomationActivateFlowData): CancelablePromise<AutomationActivateFlowResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automations/{id}/activate',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Archive an automation flow
+     * Retire a flow without deleting it. Archived flows never trigger and are hidden from the default list.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationArchiveFlow(data: AutomationArchiveFlowData): CancelablePromise<AutomationArchiveFlowResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automations/{id}/archive',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Get automation flow executions
+     * List the runs of a single automation flow, newest first. Use it to see which events matched and how each run ended. Paginate with `offset` (`limit` max 500, default 10) or by passing the previous response's `nextCursor` back as `cursor`; the two cannot be combined. `total` is returned on the first page only.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.teamId
+     * @param data.flowVersionId
+     * @param data.triggerId
+     * @param data.socialAccountId
+     * @param data.platform
+     * @param data.status
+     * @param data.conversationId
+     * @param data.fetchedCommentId
+     * @param data.offset
+     * @param data.limit
+     * @param data.cursor
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationGetFlowExecutions(data: AutomationGetFlowExecutionsData): CancelablePromise<AutomationGetFlowExecutionsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/automations/{id}/executions',
+            path: {
+                id: data.id
+            },
+            query: {
+                teamId: data.teamId,
+                flowVersionId: data.flowVersionId,
+                triggerId: data.triggerId,
+                socialAccountId: data.socialAccountId,
+                platform: data.platform,
+                status: data.status,
+                conversationId: data.conversationId,
+                fetchedCommentId: data.fetchedCommentId,
+                offset: data.offset,
+                limit: data.limit,
+                cursor: data.cursor
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Get an automation execution
+     * Get a single automation run by id, including its input event, its per-step results and any error that stopped it.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationGetExecution(data: AutomationGetExecutionData): CancelablePromise<AutomationGetExecutionResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/automation-executions/{id}',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Run an automation flow test
+     * Run a flow once against a sample event and return the resulting execution. Steps that send a message really send it, so a test returns 503 while messaging sending is temporarily disabled.
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationTestFlow(data: AutomationTestFlowData): CancelablePromise<AutomationTestFlowResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automations/{id}/test',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+            }
+        });
+    }
+    
+    /**
+     * Get automation provider settings
+     * List the platform-side automation settings stored per social account, such as the Instagram icebreakers or persistent menu we manage for you. Paginate with `offset` and `limit` (default 10). The response always carries the full `total`.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.platform
+     * @param data.socialAccountId
+     * @param data.type
+     * @param data.status
+     * @param data.offset
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationGetProviderSettings(data: AutomationGetProviderSettingsData): CancelablePromise<AutomationGetProviderSettingsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/automation-provider-settings',
+            query: {
+                teamId: data.teamId,
+                platform: data.platform,
+                socialAccountId: data.socialAccountId,
+                type: data.type,
+                status: data.status,
+                offset: data.offset,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Create or update automation provider settings
+     * Create or replace the automation setting of a given type for a social account, and push it to the platform.
+     * @param data The data for the request.
+     * @param data.socialAccountId
+     * @param data.type
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationUpsertProviderSetting(data: AutomationUpsertProviderSettingData): CancelablePromise<AutomationUpsertProviderSettingResponse> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/api/v1/automation-provider-settings/{socialAccountId}/{type}',
+            path: {
+                socialAccountId: data.socialAccountId,
+                type: data.type
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Sync automation provider settings
+     * Re-push a stored automation setting to the platform, for example after a failed sync or a reconnected account.
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationSyncProviderSetting(data: AutomationSyncProviderSettingData): CancelablePromise<AutomationSyncProviderSettingResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automation-provider-settings/{id}/sync',
+            path: {
+                id: data.id
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Send a rich automation message to a conversation
+     * Send a rich message, such as a button or card template, into a conversation using the same renderer the automation steps use. Returns 503 while messaging sending is temporarily disabled.
+     * @param data The data for the request.
+     * @param data.conversationId
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public automationSendRichMessage(data: AutomationSendRichMessageData): CancelablePromise<AutomationSendRichMessageResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/automation-rich-messages/conversations/{conversationId}',
+            path: {
+                conversationId: data.conversationId
+            },
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
             }
         });
     }
@@ -4174,6 +5064,58 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/twitter/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Repost a Twitter/X post
+     * Repost (retweet) any X post from the connected account. X charges for reposts ($0.015 per request); your credits are charged once per post, per connected account, per UTC day, so reposting the same post again on the same day costs no extra credit. Reposting a post that is already reposted is a no-op on X's side.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscTwitterRetweet(data: MiscTwitterRetweetData = {}): CancelablePromise<MiscTwitterRetweetResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/v1/misc/twitter/retweet',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+            }
+        });
+    }
+    
+    /**
+     * Undo a Twitter/X repost
+     * Remove a repost (retweet) made by the connected account. X charges for this too ($0.01 per request); your credits are charged once per post, per connected account, per UTC day, the same way reposting is.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscTwitterUnretweet(data: MiscTwitterUnretweetData = {}): CancelablePromise<MiscTwitterUnretweetResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/twitter/retweet',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {

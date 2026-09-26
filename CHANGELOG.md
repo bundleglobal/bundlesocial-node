@@ -1,3 +1,10 @@
+# [2.65.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.64.2...v2.65.0) (2026-09-26)
+
+
+### Features
+
+* dms and automations - beta ([e081cfa](https://github.com/bundleglobal/bundlesocial-node/commit/e081cfa3a6521cb7f9d215db677a2c119de77f1a))
+
 ## [2.64.2](https://github.com/bundleglobal/bundlesocial-node/compare/v2.64.1...v2.64.2) (2026-09-13)
 
 

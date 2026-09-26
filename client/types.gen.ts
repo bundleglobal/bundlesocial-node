@@ -112,6 +112,8 @@ export type OrganizationGetOrganizationResponse = {
     monthlyImportLimitPerAccount?: number | null;
     commentImportLimitPerPost?: number | null;
     monthlyReviewImportLimitPerAccount?: number | null;
+    monthlyMessageLimitPerAccount?: number | null;
+    monthlyAutomationExecutionLimitPerAccount?: number | null;
     apiAccess: boolean;
     analyticsDisabled: boolean;
     analyticsPostsDisabled: boolean;
@@ -349,6 +351,8 @@ export type TeamGetTeamResponse = {
         monthlyImportLimitPerAccount?: number | null;
         commentImportLimitPerPost?: number | null;
         monthlyReviewImportLimitPerAccount?: number | null;
+        monthlyMessageLimitPerAccount?: number | null;
+        monthlyAutomationExecutionLimitPerAccount?: number | null;
         apiAccess: boolean;
         analyticsDisabled: boolean;
         analyticsPostsDisabled: boolean;
@@ -428,6 +432,9 @@ export type TeamGetTeamResponse = {
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -568,6 +575,8 @@ export type TeamGetListResponse = {
             monthlyImportLimitPerAccount?: number | null;
             commentImportLimitPerPost?: number | null;
             monthlyReviewImportLimitPerAccount?: number | null;
+            monthlyMessageLimitPerAccount?: number | null;
+            monthlyAutomationExecutionLimitPerAccount?: number | null;
             apiAccess: boolean;
             analyticsDisabled: boolean;
             analyticsPostsDisabled: boolean;
@@ -647,6 +656,9 @@ export type TeamGetListResponse = {
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
             deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -749,6 +761,10 @@ export type SocialAccountConnectData = {
          * Facebook and Instagram: include business_management, ads_management, ads_read scopes. YouTube: include the monetary analytics scope (enables revenue/monetization data).
          */
         withBusinessScope?: boolean;
+        /**
+         * Facebook and Instagram: include the Meta messaging (DM) scopes. Ignored unless messaging is enabled for your organization.
+         */
+        withMessagingScope?: boolean;
     };
 };
 
@@ -809,6 +825,9 @@ export type SocialAccountDisconnectResponse = {
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
+    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingStatusUpdatedAt?: string | null;
+    messagingLastError?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -865,6 +884,9 @@ export type SocialAccountSetChannelResponse = {
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
+    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingStatusUpdatedAt?: string | null;
+    messagingLastError?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -920,6 +942,9 @@ export type SocialAccountUnsetChannelResponse = {
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
+    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingStatusUpdatedAt?: string | null;
+    messagingLastError?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -975,6 +1000,9 @@ export type SocialAccountRefreshChannelsResponse = {
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
+    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingStatusUpdatedAt?: string | null;
+    messagingLastError?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -1013,6 +1041,10 @@ export type SocialAccountCreatePortalLinkData = {
          */
         withBusinessScope?: boolean;
         /**
+         * Optional. Facebook and Instagram only - request the Meta messaging (DM) scopes. Ignored unless messaging is enabled for your organization.
+         */
+        withMessagingScope?: boolean;
+        /**
          * Time in minutes, after which the link will expire. Minimum 5 minutes, maximum 48 hours.
          */
         expiresIn?: number;
@@ -1033,6 +1065,40 @@ export type SocialAccountCreatePortalLinkData = {
 
 export type SocialAccountCreatePortalLinkResponse = {
     url: string;
+};
+
+export type SocialAccountEnableMessagingData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        type: 'FACEBOOK' | 'INSTAGRAM';
+    };
+};
+
+export type SocialAccountEnableMessagingResponse = {
+    socialAccountId: string;
+    type: 'FACEBOOK' | 'INSTAGRAM';
+    messagingStatus: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingLastError: string | null;
+};
+
+export type SocialAccountDisableMessagingData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        type: 'FACEBOOK' | 'INSTAGRAM';
+    };
+};
+
+export type SocialAccountDisableMessagingResponse = {
+    socialAccountId: string;
+    type: 'FACEBOOK' | 'INSTAGRAM';
+    messagingStatus: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingLastError: string | null;
 };
 
 export type SocialAccountConnectionCheckData = {
@@ -1110,6 +1176,9 @@ export type SocialAccountProfileRefreshResponse = {
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -1166,6 +1235,9 @@ export type SocialAccountGetByTypeResponse = {
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
+    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingStatusUpdatedAt?: string | null;
+    messagingLastError?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -1226,6 +1298,9 @@ export type SocialAccountCopyResponse = Array<{
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
     deleteOn?: string | null;
+    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+    messagingStatusUpdatedAt?: string | null;
+    messagingLastError?: string | null;
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
@@ -1277,6 +1352,9 @@ export type SocialAccountGetAccountsToDeleteResponse = {
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -2124,6 +2202,7 @@ export type PostGetByReferenceKeyResponse = {
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
+            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
         } | null;
     };
     error?: string | null;
@@ -2491,6 +2570,9 @@ export type PostGetByReferenceKeyResponse = {
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
             deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -2952,6 +3034,7 @@ export type PostGetResponse = {
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
+            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
         } | null;
     };
     error?: string | null;
@@ -3319,6 +3402,9 @@ export type PostGetResponse = {
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
             deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
             createdAt: string | null;
             updatedAt: string | null;
             deletedAt?: string | null;
@@ -3778,6 +3864,7 @@ export type PostUpdateData = {
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
+                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
             } | null;
         };
         firstComment?: {
@@ -4247,6 +4334,7 @@ export type PostUpdateResponse = {
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
+            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
         } | null;
     };
     error?: string | null;
@@ -4993,6 +5081,7 @@ export type PostDeleteResponse = {
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
+            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
         } | null;
     };
     error?: string | null;
@@ -5735,6 +5824,7 @@ export type PostGetListResponse = {
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
+                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
             } | null;
         };
         error?: string | null;
@@ -6102,6 +6192,9 @@ export type PostGetListResponse = {
                 isTiktokBusinessAccount?: boolean | null;
                 disconnectedCheckTryAt?: string | null;
                 deleteOn?: string | null;
+                messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                messagingStatusUpdatedAt?: string | null;
+                messagingLastError?: string | null;
                 createdAt: string | null;
                 updatedAt: string | null;
                 deletedAt?: string | null;
@@ -6563,6 +6656,7 @@ export type PostCreateData = {
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
+                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
             } | null;
         };
         firstComment?: {
@@ -7032,6 +7126,7 @@ export type PostCreateResponse = {
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
+            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
         } | null;
     };
     error?: string | null;
@@ -7778,6 +7873,7 @@ export type PostRetryResponse = {
             description?: string | null;
             locale?: string | null;
             skipSaveToProfile?: boolean | null;
+            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
         } | null;
     };
     error?: string | null;
@@ -8077,7 +8173,7 @@ export type CreditQuoteBillableUsageData = {
         teamId: string;
         text?: string;
         texts?: Array<(string)>;
-        action?: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ';
+        action?: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ' | 'TWITTER_USER_INTERACTION_CREATE';
         altTextCount?: number;
         quantity?: number;
     };
@@ -8086,7 +8182,7 @@ export type CreditQuoteBillableUsageData = {
 export type CreditQuoteBillableUsageResponse = {
     billable: boolean;
     lines: Array<{
-        action: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ';
+        action: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ' | 'TWITTER_USER_INTERACTION_CREATE';
         label: string;
         unitAmountMicros: number;
         amountMicros: number;
@@ -8147,6 +8243,9 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -8627,6 +8726,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
+                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
             } | null;
         };
         error?: string | null;
@@ -8991,6 +9091,9 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
         deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
         createdAt: string | null;
         updatedAt: string | null;
         deletedAt?: string | null;
@@ -9464,6 +9567,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 description?: string | null;
                 locale?: string | null;
                 skipSaveToProfile?: boolean | null;
+                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
             } | null;
         };
         error?: string | null;
@@ -11660,6 +11764,8196 @@ export type CommentRetryResponse = {
     createdAt: string | null;
     updatedAt: string | null;
     deletedAt?: string | null;
+};
+
+export type ConversationGetListData = {
+    cursor?: string | null;
+    limit?: number | null;
+    offset?: number | null;
+    platform?: 'INSTAGRAM' | 'FACEBOOK';
+    socialAccountId?: string;
+    status?: 'OPEN' | 'ARCHIVED';
+    teamId: string;
+};
+
+export type ConversationGetListResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        externalConversationId?: string | null;
+        externalParticipantId: string;
+        participantUsername?: string | null;
+        participantDisplayName?: string | null;
+        participantAvatarUrl?: string | null;
+        status: 'OPEN' | 'ARCHIVED';
+        lastMessageAt?: string | null;
+        lastActivityAt: string | null;
+        lastMessagePreview?: string | null;
+        lastReadAt?: string | null;
+        unreadCount: number;
+        platformSeenAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            canReply?: boolean | null;
+            lastInboundAt?: string | null;
+            providerStateSync?: {
+                action: 'ARCHIVE' | 'OPEN';
+                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                reason?: string | null;
+                error?: string | null;
+                syncedAt?: string | null;
+            } | null;
+        };
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    }>;
+    total?: number;
+    nextCursor?: string | null;
+};
+
+export type ConversationGetData = {
+    id: string;
+};
+
+export type ConversationGetResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    /**
+     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+     */
+    platform: 'INSTAGRAM' | 'FACEBOOK';
+    externalConversationId?: string | null;
+    externalParticipantId: string;
+    participantUsername?: string | null;
+    participantDisplayName?: string | null;
+    participantAvatarUrl?: string | null;
+    status: 'OPEN' | 'ARCHIVED';
+    lastMessageAt?: string | null;
+    lastActivityAt: string | null;
+    lastMessagePreview?: string | null;
+    lastReadAt?: string | null;
+    unreadCount: number;
+    platformSeenAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    platformData?: {
+        canReply?: boolean | null;
+        lastInboundAt?: string | null;
+        providerStateSync?: {
+            action: 'ARCHIVE' | 'OPEN';
+            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+            reason?: string | null;
+            error?: string | null;
+            syncedAt?: string | null;
+        } | null;
+    };
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type ConversationUpdateData = {
+    id: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        status: 'OPEN' | 'ARCHIVED';
+    };
+};
+
+export type ConversationUpdateResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    /**
+     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+     */
+    platform: 'INSTAGRAM' | 'FACEBOOK';
+    externalConversationId?: string | null;
+    externalParticipantId: string;
+    participantUsername?: string | null;
+    participantDisplayName?: string | null;
+    participantAvatarUrl?: string | null;
+    status: 'OPEN' | 'ARCHIVED';
+    lastMessageAt?: string | null;
+    lastActivityAt: string | null;
+    lastMessagePreview?: string | null;
+    lastReadAt?: string | null;
+    unreadCount: number;
+    platformSeenAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    platformData?: {
+        canReply?: boolean | null;
+        lastInboundAt?: string | null;
+        providerStateSync?: {
+            action: 'ARCHIVE' | 'OPEN';
+            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+            reason?: string | null;
+            error?: string | null;
+            syncedAt?: string | null;
+        } | null;
+    };
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type ConversationGetMessagesData = {
+    cursor?: string | null;
+    id: string;
+    limit?: number | null;
+    offset?: number | null;
+};
+
+export type ConversationGetMessagesResponse = {
+    items: Array<{
+        id: string;
+        conversationId: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        direction: 'INBOUND' | 'OUTBOUND';
+        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+        externalMessageId?: string | null;
+        text?: string | null;
+        attachments?: Array<{
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+            url?: string | null;
+            externalId?: string | null;
+            mimeType?: string | null;
+            name?: string | null;
+            captionTrackUrl?: string | null;
+            captionLanguage?: string | null;
+            captionLabel?: string | null;
+        }>;
+        sentAt?: string | null;
+        failedAt?: string | null;
+        error?: string | null;
+        seenAt?: string | null;
+        replyTo?: {
+            externalMessageId?: string | null;
+            isSelfReply?: boolean | null;
+            messageId?: string | null;
+        } | null;
+        privateReplyContext?: {
+            fetchedCommentId: string;
+            externalCommentId?: string | null;
+            text?: string | null;
+            authorName?: string | null;
+            authorAvatarUrl?: string | null;
+            publishedAt?: string | null;
+            postId?: string | null;
+            externalPostId?: string | null;
+            postPermalink?: string | null;
+            postThumbnailUrl?: string | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            replyTo?: {
+                externalMessageId?: string | null;
+                isSelfReply?: boolean | null;
+            } | null;
+            reactions?: Array<{
+                senderId: string;
+                reaction?: string | null;
+                emoji?: string | null;
+                reactedAt?: string | null;
+            }>;
+            quickReplies?: Array<{
+                id?: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            } | null;
+            isEcho?: boolean | null;
+            isEdited?: boolean | null;
+            editedAt?: string | null;
+            isPostback?: boolean | null;
+            postbackPayload?: string | null;
+            isUnsent?: boolean | null;
+            unsentAt?: string | null;
+        };
+    }>;
+    total?: number;
+    nextCursor?: string | null;
+};
+
+export type ConversationSendMessageData = {
+    id: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        content: {
+            text?: string;
+            attachments?: Array<{
+                type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                url?: string | null;
+                externalId?: string | null;
+                mimeType?: string | null;
+                name?: string | null;
+                captionTrackUrl?: string | null;
+                captionLanguage?: string | null;
+                captionLabel?: string | null;
+            }>;
+            quickReplies?: Array<{
+                id?: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            };
+        };
+        replyToMessageId?: string;
+    };
+};
+
+export type ConversationSendMessageResponse = {
+    conversation: {
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        externalConversationId?: string | null;
+        externalParticipantId: string;
+        participantUsername?: string | null;
+        participantDisplayName?: string | null;
+        participantAvatarUrl?: string | null;
+        status: 'OPEN' | 'ARCHIVED';
+        lastMessageAt?: string | null;
+        lastActivityAt: string | null;
+        lastMessagePreview?: string | null;
+        lastReadAt?: string | null;
+        unreadCount: number;
+        platformSeenAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            canReply?: boolean | null;
+            lastInboundAt?: string | null;
+            providerStateSync?: {
+                action: 'ARCHIVE' | 'OPEN';
+                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                reason?: string | null;
+                error?: string | null;
+                syncedAt?: string | null;
+            } | null;
+        };
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    };
+    message: {
+        id: string;
+        conversationId: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        direction: 'INBOUND' | 'OUTBOUND';
+        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+        externalMessageId?: string | null;
+        text?: string | null;
+        attachments?: Array<{
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+            url?: string | null;
+            externalId?: string | null;
+            mimeType?: string | null;
+            name?: string | null;
+            captionTrackUrl?: string | null;
+            captionLanguage?: string | null;
+            captionLabel?: string | null;
+        }>;
+        sentAt?: string | null;
+        failedAt?: string | null;
+        error?: string | null;
+        seenAt?: string | null;
+        replyTo?: {
+            externalMessageId?: string | null;
+            isSelfReply?: boolean | null;
+            messageId?: string | null;
+        } | null;
+        privateReplyContext?: {
+            fetchedCommentId: string;
+            externalCommentId?: string | null;
+            text?: string | null;
+            authorName?: string | null;
+            authorAvatarUrl?: string | null;
+            publishedAt?: string | null;
+            postId?: string | null;
+            externalPostId?: string | null;
+            postPermalink?: string | null;
+            postThumbnailUrl?: string | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            replyTo?: {
+                externalMessageId?: string | null;
+                isSelfReply?: boolean | null;
+            } | null;
+            reactions?: Array<{
+                senderId: string;
+                reaction?: string | null;
+                emoji?: string | null;
+                reactedAt?: string | null;
+            }>;
+            quickReplies?: Array<{
+                id?: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            } | null;
+            isEcho?: boolean | null;
+            isEdited?: boolean | null;
+            editedAt?: string | null;
+            isPostback?: boolean | null;
+            postbackPayload?: string | null;
+            isUnsent?: boolean | null;
+            unsentAt?: string | null;
+        };
+    };
+    conflict?: boolean;
+};
+
+export type ConversationReactMessageData = {
+    id: string;
+    messageId: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        action: 'REACT' | 'UNREACT';
+        reaction?: 'love' | 'like' | 'dislike' | 'haha' | 'wow' | 'sad' | 'angry';
+    };
+};
+
+export type ConversationReactMessageResponse = {
+    conversation: {
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        externalConversationId?: string | null;
+        externalParticipantId: string;
+        participantUsername?: string | null;
+        participantDisplayName?: string | null;
+        participantAvatarUrl?: string | null;
+        status: 'OPEN' | 'ARCHIVED';
+        lastMessageAt?: string | null;
+        lastActivityAt: string | null;
+        lastMessagePreview?: string | null;
+        lastReadAt?: string | null;
+        unreadCount: number;
+        platformSeenAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            canReply?: boolean | null;
+            lastInboundAt?: string | null;
+            providerStateSync?: {
+                action: 'ARCHIVE' | 'OPEN';
+                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                reason?: string | null;
+                error?: string | null;
+                syncedAt?: string | null;
+            } | null;
+        };
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    };
+    message: {
+        id: string;
+        conversationId: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        direction: 'INBOUND' | 'OUTBOUND';
+        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+        externalMessageId?: string | null;
+        text?: string | null;
+        attachments?: Array<{
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+            url?: string | null;
+            externalId?: string | null;
+            mimeType?: string | null;
+            name?: string | null;
+            captionTrackUrl?: string | null;
+            captionLanguage?: string | null;
+            captionLabel?: string | null;
+        }>;
+        sentAt?: string | null;
+        failedAt?: string | null;
+        error?: string | null;
+        seenAt?: string | null;
+        replyTo?: {
+            externalMessageId?: string | null;
+            isSelfReply?: boolean | null;
+            messageId?: string | null;
+        } | null;
+        privateReplyContext?: {
+            fetchedCommentId: string;
+            externalCommentId?: string | null;
+            text?: string | null;
+            authorName?: string | null;
+            authorAvatarUrl?: string | null;
+            publishedAt?: string | null;
+            postId?: string | null;
+            externalPostId?: string | null;
+            postPermalink?: string | null;
+            postThumbnailUrl?: string | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            replyTo?: {
+                externalMessageId?: string | null;
+                isSelfReply?: boolean | null;
+            } | null;
+            reactions?: Array<{
+                senderId: string;
+                reaction?: string | null;
+                emoji?: string | null;
+                reactedAt?: string | null;
+            }>;
+            quickReplies?: Array<{
+                id?: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            } | null;
+            isEcho?: boolean | null;
+            isEdited?: boolean | null;
+            editedAt?: string | null;
+            isPostback?: boolean | null;
+            postbackPayload?: string | null;
+            isUnsent?: boolean | null;
+            unsentAt?: string | null;
+        };
+    };
+    conflict?: boolean;
+};
+
+export type ConversationMarkReadData = {
+    id: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        readAt?: string | null;
+    };
+};
+
+export type ConversationMarkReadResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    /**
+     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+     */
+    platform: 'INSTAGRAM' | 'FACEBOOK';
+    externalConversationId?: string | null;
+    externalParticipantId: string;
+    participantUsername?: string | null;
+    participantDisplayName?: string | null;
+    participantAvatarUrl?: string | null;
+    status: 'OPEN' | 'ARCHIVED';
+    lastMessageAt?: string | null;
+    lastActivityAt: string | null;
+    lastMessagePreview?: string | null;
+    lastReadAt?: string | null;
+    unreadCount: number;
+    platformSeenAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    platformData?: {
+        canReply?: boolean | null;
+        lastInboundAt?: string | null;
+        providerStateSync?: {
+            action: 'ARCHIVE' | 'OPEN';
+            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+            reason?: string | null;
+            error?: string | null;
+            syncedAt?: string | null;
+        } | null;
+    };
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type ConversationPrivateReplyData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        fetchedCommentId: string;
+        content: {
+            text: string;
+            attachments?: Array<{
+                type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                url?: string | null;
+                externalId?: string | null;
+                mimeType?: string | null;
+                name?: string | null;
+                captionTrackUrl?: string | null;
+                captionLanguage?: string | null;
+                captionLabel?: string | null;
+            }>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            };
+        };
+    };
+};
+
+export type ConversationPrivateReplyResponse = {
+    conversation: {
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        externalConversationId?: string | null;
+        externalParticipantId: string;
+        participantUsername?: string | null;
+        participantDisplayName?: string | null;
+        participantAvatarUrl?: string | null;
+        status: 'OPEN' | 'ARCHIVED';
+        lastMessageAt?: string | null;
+        lastActivityAt: string | null;
+        lastMessagePreview?: string | null;
+        lastReadAt?: string | null;
+        unreadCount: number;
+        platformSeenAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            canReply?: boolean | null;
+            lastInboundAt?: string | null;
+            providerStateSync?: {
+                action: 'ARCHIVE' | 'OPEN';
+                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                reason?: string | null;
+                error?: string | null;
+                syncedAt?: string | null;
+            } | null;
+        };
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    };
+    message: {
+        id: string;
+        conversationId: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        direction: 'INBOUND' | 'OUTBOUND';
+        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+        externalMessageId?: string | null;
+        text?: string | null;
+        attachments?: Array<{
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+            url?: string | null;
+            externalId?: string | null;
+            mimeType?: string | null;
+            name?: string | null;
+            captionTrackUrl?: string | null;
+            captionLanguage?: string | null;
+            captionLabel?: string | null;
+        }>;
+        sentAt?: string | null;
+        failedAt?: string | null;
+        error?: string | null;
+        seenAt?: string | null;
+        replyTo?: {
+            externalMessageId?: string | null;
+            isSelfReply?: boolean | null;
+            messageId?: string | null;
+        } | null;
+        privateReplyContext?: {
+            fetchedCommentId: string;
+            externalCommentId?: string | null;
+            text?: string | null;
+            authorName?: string | null;
+            authorAvatarUrl?: string | null;
+            publishedAt?: string | null;
+            postId?: string | null;
+            externalPostId?: string | null;
+            postPermalink?: string | null;
+            postThumbnailUrl?: string | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            replyTo?: {
+                externalMessageId?: string | null;
+                isSelfReply?: boolean | null;
+            } | null;
+            reactions?: Array<{
+                senderId: string;
+                reaction?: string | null;
+                emoji?: string | null;
+                reactedAt?: string | null;
+            }>;
+            quickReplies?: Array<{
+                id?: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            } | null;
+            isEcho?: boolean | null;
+            isEdited?: boolean | null;
+            editedAt?: string | null;
+            isPostback?: boolean | null;
+            postbackPayload?: string | null;
+            isUnsent?: boolean | null;
+            unsentAt?: string | null;
+        };
+    };
+    conflict?: boolean;
+};
+
+export type ConversationArchiveData = {
+    id: string;
+};
+
+export type ConversationArchiveResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    /**
+     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+     */
+    platform: 'INSTAGRAM' | 'FACEBOOK';
+    externalConversationId?: string | null;
+    externalParticipantId: string;
+    participantUsername?: string | null;
+    participantDisplayName?: string | null;
+    participantAvatarUrl?: string | null;
+    status: 'OPEN' | 'ARCHIVED';
+    lastMessageAt?: string | null;
+    lastActivityAt: string | null;
+    lastMessagePreview?: string | null;
+    lastReadAt?: string | null;
+    unreadCount: number;
+    platformSeenAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    platformData?: {
+        canReply?: boolean | null;
+        lastInboundAt?: string | null;
+        providerStateSync?: {
+            action: 'ARCHIVE' | 'OPEN';
+            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+            reason?: string | null;
+            error?: string | null;
+            syncedAt?: string | null;
+        } | null;
+    };
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type ConversationOpenData = {
+    id: string;
+};
+
+export type ConversationOpenResponse = {
+    id: string;
+    teamId: string;
+    socialAccountId: string;
+    /**
+     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+     */
+    platform: 'INSTAGRAM' | 'FACEBOOK';
+    externalConversationId?: string | null;
+    externalParticipantId: string;
+    participantUsername?: string | null;
+    participantDisplayName?: string | null;
+    participantAvatarUrl?: string | null;
+    status: 'OPEN' | 'ARCHIVED';
+    lastMessageAt?: string | null;
+    lastActivityAt: string | null;
+    lastMessagePreview?: string | null;
+    lastReadAt?: string | null;
+    unreadCount: number;
+    platformSeenAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    platformData?: {
+        canReply?: boolean | null;
+        lastInboundAt?: string | null;
+        providerStateSync?: {
+            action: 'ARCHIVE' | 'OPEN';
+            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+            reason?: string | null;
+            error?: string | null;
+            syncedAt?: string | null;
+        } | null;
+    };
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type AutomationGetFlowsData = {
+    limit?: number | null;
+    offset?: number | null;
+    platformScope?: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    socialAccountId?: string;
+    status?: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    teamId: string;
+};
+
+export type AutomationGetFlowsResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        name: string;
+        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+        createdByUserId?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        draftVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+        publishedVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+    }>;
+    total: number;
+};
+
+export type AutomationCreateFlowData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        name: string;
+        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+        definition?: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+    };
+};
+
+export type AutomationCreateFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationCopyFlowsData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        sourceTeamId: string;
+        targetTeamId: string;
+        flowId?: string;
+    };
+};
+
+export type AutomationCopyFlowsResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        name: string;
+        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+        createdByUserId?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        draftVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+        publishedVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+    }>;
+    total: number;
+};
+
+export type AutomationGetFlowData = {
+    id: string;
+};
+
+export type AutomationGetFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationUpdateFlowData = {
+    id: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        name?: string;
+        platformScope?: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+        definition?: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+    };
+};
+
+export type AutomationUpdateFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationDeleteFlowData = {
+    id: string;
+};
+
+export type AutomationDeleteFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationPublishFlowData = {
+    id: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        definition?: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+    };
+};
+
+export type AutomationPublishFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationPauseFlowData = {
+    id: string;
+};
+
+export type AutomationPauseFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationActivateFlowData = {
+    id: string;
+};
+
+export type AutomationActivateFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationArchiveFlowData = {
+    id: string;
+};
+
+export type AutomationArchiveFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    name: string;
+    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+    createdByUserId?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    deletedAt?: string | null;
+    draftVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    publishedVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+};
+
+export type AutomationGetFlowExecutionsData = {
+    conversationId?: string;
+    cursor?: string | null;
+    fetchedCommentId?: string;
+    flowVersionId?: string;
+    id: string;
+    limit?: number | null;
+    offset?: number | null;
+    platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+    socialAccountId?: string;
+    status?: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELED' | 'SKIPPED';
+    teamId: string;
+    triggerId?: string;
+};
+
+export type AutomationGetFlowExecutionsResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        flowId: string;
+        flowVersionId: string;
+        triggerId?: string | null;
+        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+        socialAccountId: string;
+        conversationId?: string | null;
+        conversationMessageId?: string | null;
+        fetchedCommentId?: string | null;
+        senderExternalId?: string | null;
+        currentStepId?: string | null;
+        status: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELED' | 'SKIPPED';
+        idempotencyKey: string;
+        input?: {
+            type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+            platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+            socialAccountId?: string | null;
+            postId?: string | null;
+            conversationId?: string | null;
+            conversationMessageId?: string | null;
+            fetchedCommentId?: string | null;
+            senderExternalId?: string | null;
+            externalMessageId?: string | null;
+            text?: string | null;
+            payload?: string | null;
+            [key: string]: (unknown | string | null) | undefined;
+        };
+        output?: {
+            [key: string]: (unknown | null) | undefined;
+        };
+        error?: {
+            code?: string | null;
+            message?: string | null;
+            retryable?: boolean | null;
+            [key: string]: (unknown | string | boolean | null) | undefined;
+        } | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        flow?: {
+            id: string;
+            teamId: string;
+            organizationId?: string | null;
+            name: string;
+            status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+            platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+            createdByUserId?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+            draftVersion?: {
+                id: string;
+                flowId: string;
+                version: number;
+                status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                definition: {
+                    trigger: {
+                        keywords?: Array<(string)>;
+                        matchMode?: 'ANY' | 'ALL';
+                        caseSensitive?: boolean;
+                        senderExternalIds?: Array<(string)>;
+                        payloads?: Array<(string)>;
+                        actionDelaySeconds?: number;
+                        id?: string;
+                        type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                        socialAccountId: string;
+                        postId?: string | null;
+                    };
+                    steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                };
+                publishedAt?: string | null;
+                publishedByUserId?: string | null;
+                createdAt: string | null;
+            };
+            publishedVersion?: {
+                id: string;
+                flowId: string;
+                version: number;
+                status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                definition: {
+                    trigger: {
+                        keywords?: Array<(string)>;
+                        matchMode?: 'ANY' | 'ALL';
+                        caseSensitive?: boolean;
+                        senderExternalIds?: Array<(string)>;
+                        payloads?: Array<(string)>;
+                        actionDelaySeconds?: number;
+                        id?: string;
+                        type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                        socialAccountId: string;
+                        postId?: string | null;
+                    };
+                    steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                };
+                publishedAt?: string | null;
+                publishedByUserId?: string | null;
+                createdAt: string | null;
+            };
+        };
+        flowVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+        steps?: Array<{
+            id: string;
+            executionId: string;
+            stepId?: string | null;
+            status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';
+            attemptCount: number;
+            input?: {
+                type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+                platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+                socialAccountId?: string | null;
+                postId?: string | null;
+                conversationId?: string | null;
+                conversationMessageId?: string | null;
+                fetchedCommentId?: string | null;
+                senderExternalId?: string | null;
+                externalMessageId?: string | null;
+                text?: string | null;
+                payload?: string | null;
+                [key: string]: (unknown | string | null) | undefined;
+            };
+            output?: {
+                [key: string]: (unknown | null) | undefined;
+            };
+            error?: {
+                code?: string | null;
+                message?: string | null;
+                retryable?: boolean | null;
+                [key: string]: (unknown | string | boolean | null) | undefined;
+            } | null;
+            startedAt?: string | null;
+            completedAt?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+        }>;
+        conversation?: {
+            id: string;
+            teamId: string;
+            socialAccountId: string;
+            /**
+             * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+             */
+            platform: 'INSTAGRAM' | 'FACEBOOK';
+            externalConversationId?: string | null;
+            externalParticipantId: string;
+            participantUsername?: string | null;
+            participantDisplayName?: string | null;
+            participantAvatarUrl?: string | null;
+            status: 'OPEN' | 'ARCHIVED';
+            lastMessageAt?: string | null;
+            lastActivityAt: string | null;
+            lastMessagePreview?: string | null;
+            lastReadAt?: string | null;
+            unreadCount: number;
+            platformSeenAt?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            platformData?: {
+                canReply?: boolean | null;
+                lastInboundAt?: string | null;
+                providerStateSync?: {
+                    action: 'ARCHIVE' | 'OPEN';
+                    status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                    reason?: string | null;
+                    error?: string | null;
+                    syncedAt?: string | null;
+                } | null;
+            };
+            socialAccount?: {
+                id: string;
+                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                teamId: string;
+                username?: string | null;
+                displayName?: string | null;
+                bio?: string | null;
+                avatarUrl?: string | null;
+                externalId?: string | null;
+                providerPageId?: string | null;
+                userUsername?: string | null;
+                userDisplayName?: string | null;
+                userEmail?: string | null;
+                userId?: string | null;
+                channels?: Array<{
+                    id: string;
+                    name?: string | null;
+                    username?: string | null;
+                    address?: string | null;
+                    avatarUrl?: string | null;
+                    webhook?: {
+                        id?: string | null;
+                        name?: string | null;
+                        avatar?: string | null;
+                        url?: string | null;
+                    } | null;
+                    metadata?: {
+                        allowImages?: boolean | null;
+                        allowVideos?: boolean | null;
+                        allowGalleries?: boolean | null;
+                        linkFlairEnabled?: boolean | null;
+                        facebookPageId?: string | null;
+                    } | null;
+                }> | null;
+                mastodonServerId?: string | null;
+                instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                isTiktokBusinessAccount?: boolean | null;
+                disconnectedCheckTryAt?: string | null;
+                deleteOn?: string | null;
+                messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                messagingStatusUpdatedAt?: string | null;
+                messagingLastError?: string | null;
+                createdAt: string | null;
+                updatedAt: string | null;
+                deletedAt?: string | null;
+            };
+        } | null;
+        conversationMessage?: {
+            id: string;
+            conversationId: string;
+            teamId: string;
+            socialAccountId: string;
+            /**
+             * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+             */
+            platform: 'INSTAGRAM' | 'FACEBOOK';
+            direction: 'INBOUND' | 'OUTBOUND';
+            status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+            source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+            externalMessageId?: string | null;
+            text?: string | null;
+            attachments?: Array<{
+                type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                url?: string | null;
+                externalId?: string | null;
+                mimeType?: string | null;
+                name?: string | null;
+                captionTrackUrl?: string | null;
+                captionLanguage?: string | null;
+                captionLabel?: string | null;
+            }>;
+            sentAt?: string | null;
+            failedAt?: string | null;
+            error?: string | null;
+            seenAt?: string | null;
+            replyTo?: {
+                externalMessageId?: string | null;
+                isSelfReply?: boolean | null;
+                messageId?: string | null;
+            } | null;
+            privateReplyContext?: {
+                fetchedCommentId: string;
+                externalCommentId?: string | null;
+                text?: string | null;
+                authorName?: string | null;
+                authorAvatarUrl?: string | null;
+                publishedAt?: string | null;
+                postId?: string | null;
+                externalPostId?: string | null;
+                postPermalink?: string | null;
+                postThumbnailUrl?: string | null;
+            } | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            platformData?: {
+                replyTo?: {
+                    externalMessageId?: string | null;
+                    isSelfReply?: boolean | null;
+                } | null;
+                reactions?: Array<{
+                    senderId: string;
+                    reaction?: string | null;
+                    emoji?: string | null;
+                    reactedAt?: string | null;
+                }>;
+                quickReplies?: Array<{
+                    id?: string;
+                    label: string;
+                    payload: string;
+                }>;
+                buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                carousel?: {
+                    cards: Array<{
+                        id?: string;
+                        title: string;
+                        subtitle?: string | null;
+                        imageUrl?: string | null;
+                        buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                    }>;
+                } | null;
+                isEcho?: boolean | null;
+                isEdited?: boolean | null;
+                editedAt?: string | null;
+                isPostback?: boolean | null;
+                postbackPayload?: string | null;
+                isUnsent?: boolean | null;
+                unsentAt?: string | null;
+            };
+        } | null;
+        fetchedComment?: {
+            id: string;
+            teamId: string;
+            organizationId?: string | null;
+            postId?: string | null;
+            importedPostId?: string | null;
+            socialAccountId: string;
+            importId: string;
+            platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+            externalId: string;
+            externalParentId?: string | null;
+            externalPostId?: string | null;
+            authorName?: string | null;
+            authorExternalId?: string | null;
+            authorProfileUrl?: string | null;
+            authorAvatarUrl?: string | null;
+            text?: string | null;
+            likesCount: number;
+            repliesCount: number;
+            platformData?: {
+                canDelete?: boolean | null;
+                canHide?: boolean | null;
+                canLike?: boolean | null;
+                canModerate?: boolean | null;
+                hidden?: boolean | null;
+                likedByMe?: boolean | null;
+                likedByAutomation?: boolean | null;
+                reactionsCount?: number | null;
+                reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+                owner?: boolean | null;
+                hideStatus?: string | null;
+                moderationStatus?: string | null;
+                approvalStatus?: string | null;
+                status?: string | null;
+                attachmentType?: string | null;
+                attachmentUrl?: string | null;
+                cid?: string | null;
+                origin?: 'platform' | 'bundle' | null;
+                source?: string | null;
+                mediaProductType?: string | null;
+                bundleCommentId?: string | null;
+                displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+                disabledReason?: string | null;
+                [key: string]: (unknown | boolean | number | string | null) | undefined;
+            };
+            publishedAt?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        } | null;
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    }>;
+    total?: number;
+    nextCursor?: string | null;
+};
+
+export type AutomationGetExecutionData = {
+    id: string;
+};
+
+export type AutomationGetExecutionResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    flowId: string;
+    flowVersionId: string;
+    triggerId?: string | null;
+    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+    socialAccountId: string;
+    conversationId?: string | null;
+    conversationMessageId?: string | null;
+    fetchedCommentId?: string | null;
+    senderExternalId?: string | null;
+    currentStepId?: string | null;
+    status: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELED' | 'SKIPPED';
+    idempotencyKey: string;
+    input?: {
+        type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+        platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+        socialAccountId?: string | null;
+        postId?: string | null;
+        conversationId?: string | null;
+        conversationMessageId?: string | null;
+        fetchedCommentId?: string | null;
+        senderExternalId?: string | null;
+        externalMessageId?: string | null;
+        text?: string | null;
+        payload?: string | null;
+        [key: string]: (unknown | string | null) | undefined;
+    };
+    output?: {
+        [key: string]: (unknown | null) | undefined;
+    };
+    error?: {
+        code?: string | null;
+        message?: string | null;
+        retryable?: boolean | null;
+        [key: string]: (unknown | string | boolean | null) | undefined;
+    } | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    flow?: {
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        name: string;
+        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+        createdByUserId?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        draftVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+        publishedVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+    };
+    flowVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    steps?: Array<{
+        id: string;
+        executionId: string;
+        stepId?: string | null;
+        status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';
+        attemptCount: number;
+        input?: {
+            type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+            platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+            socialAccountId?: string | null;
+            postId?: string | null;
+            conversationId?: string | null;
+            conversationMessageId?: string | null;
+            fetchedCommentId?: string | null;
+            senderExternalId?: string | null;
+            externalMessageId?: string | null;
+            text?: string | null;
+            payload?: string | null;
+            [key: string]: (unknown | string | null) | undefined;
+        };
+        output?: {
+            [key: string]: (unknown | null) | undefined;
+        };
+        error?: {
+            code?: string | null;
+            message?: string | null;
+            retryable?: boolean | null;
+            [key: string]: (unknown | string | boolean | null) | undefined;
+        } | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+    }>;
+    conversation?: {
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        externalConversationId?: string | null;
+        externalParticipantId: string;
+        participantUsername?: string | null;
+        participantDisplayName?: string | null;
+        participantAvatarUrl?: string | null;
+        status: 'OPEN' | 'ARCHIVED';
+        lastMessageAt?: string | null;
+        lastActivityAt: string | null;
+        lastMessagePreview?: string | null;
+        lastReadAt?: string | null;
+        unreadCount: number;
+        platformSeenAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            canReply?: boolean | null;
+            lastInboundAt?: string | null;
+            providerStateSync?: {
+                action: 'ARCHIVE' | 'OPEN';
+                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                reason?: string | null;
+                error?: string | null;
+                syncedAt?: string | null;
+            } | null;
+        };
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    } | null;
+    conversationMessage?: {
+        id: string;
+        conversationId: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        direction: 'INBOUND' | 'OUTBOUND';
+        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+        externalMessageId?: string | null;
+        text?: string | null;
+        attachments?: Array<{
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+            url?: string | null;
+            externalId?: string | null;
+            mimeType?: string | null;
+            name?: string | null;
+            captionTrackUrl?: string | null;
+            captionLanguage?: string | null;
+            captionLabel?: string | null;
+        }>;
+        sentAt?: string | null;
+        failedAt?: string | null;
+        error?: string | null;
+        seenAt?: string | null;
+        replyTo?: {
+            externalMessageId?: string | null;
+            isSelfReply?: boolean | null;
+            messageId?: string | null;
+        } | null;
+        privateReplyContext?: {
+            fetchedCommentId: string;
+            externalCommentId?: string | null;
+            text?: string | null;
+            authorName?: string | null;
+            authorAvatarUrl?: string | null;
+            publishedAt?: string | null;
+            postId?: string | null;
+            externalPostId?: string | null;
+            postPermalink?: string | null;
+            postThumbnailUrl?: string | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            replyTo?: {
+                externalMessageId?: string | null;
+                isSelfReply?: boolean | null;
+            } | null;
+            reactions?: Array<{
+                senderId: string;
+                reaction?: string | null;
+                emoji?: string | null;
+                reactedAt?: string | null;
+            }>;
+            quickReplies?: Array<{
+                id?: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            } | null;
+            isEcho?: boolean | null;
+            isEdited?: boolean | null;
+            editedAt?: string | null;
+            isPostback?: boolean | null;
+            postbackPayload?: string | null;
+            isUnsent?: boolean | null;
+            unsentAt?: string | null;
+        };
+    } | null;
+    fetchedComment?: {
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        postId?: string | null;
+        importedPostId?: string | null;
+        socialAccountId: string;
+        importId: string;
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+        externalId: string;
+        externalParentId?: string | null;
+        externalPostId?: string | null;
+        authorName?: string | null;
+        authorExternalId?: string | null;
+        authorProfileUrl?: string | null;
+        authorAvatarUrl?: string | null;
+        text?: string | null;
+        likesCount: number;
+        repliesCount: number;
+        platformData?: {
+            canDelete?: boolean | null;
+            canHide?: boolean | null;
+            canLike?: boolean | null;
+            canModerate?: boolean | null;
+            hidden?: boolean | null;
+            likedByMe?: boolean | null;
+            likedByAutomation?: boolean | null;
+            reactionsCount?: number | null;
+            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+            owner?: boolean | null;
+            hideStatus?: string | null;
+            moderationStatus?: string | null;
+            approvalStatus?: string | null;
+            status?: string | null;
+            attachmentType?: string | null;
+            attachmentUrl?: string | null;
+            cid?: string | null;
+            origin?: 'platform' | 'bundle' | null;
+            source?: string | null;
+            mediaProductType?: string | null;
+            bundleCommentId?: string | null;
+            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+            disabledReason?: string | null;
+            [key: string]: (unknown | boolean | number | string | null) | undefined;
+        };
+        publishedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    } | null;
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type AutomationTestFlowData = {
+    id: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        input?: {
+            type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+            platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+            socialAccountId?: string | null;
+            postId?: string | null;
+            conversationId?: string | null;
+            conversationMessageId?: string | null;
+            fetchedCommentId?: string | null;
+            senderExternalId?: string | null;
+            externalMessageId?: string | null;
+            text?: string | null;
+            payload?: string | null;
+            [key: string]: (unknown | string | null) | undefined;
+        };
+    };
+};
+
+export type AutomationTestFlowResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    flowId: string;
+    flowVersionId: string;
+    triggerId?: string | null;
+    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+    socialAccountId: string;
+    conversationId?: string | null;
+    conversationMessageId?: string | null;
+    fetchedCommentId?: string | null;
+    senderExternalId?: string | null;
+    currentStepId?: string | null;
+    status: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELED' | 'SKIPPED';
+    idempotencyKey: string;
+    input?: {
+        type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+        platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+        socialAccountId?: string | null;
+        postId?: string | null;
+        conversationId?: string | null;
+        conversationMessageId?: string | null;
+        fetchedCommentId?: string | null;
+        senderExternalId?: string | null;
+        externalMessageId?: string | null;
+        text?: string | null;
+        payload?: string | null;
+        [key: string]: (unknown | string | null) | undefined;
+    };
+    output?: {
+        [key: string]: (unknown | null) | undefined;
+    };
+    error?: {
+        code?: string | null;
+        message?: string | null;
+        retryable?: boolean | null;
+        [key: string]: (unknown | string | boolean | null) | undefined;
+    } | null;
+    startedAt?: string | null;
+    completedAt?: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    flow?: {
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        name: string;
+        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+        createdByUserId?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+        draftVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+        publishedVersion?: {
+            id: string;
+            flowId: string;
+            version: number;
+            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+            definition: {
+                trigger: {
+                    keywords?: Array<(string)>;
+                    matchMode?: 'ANY' | 'ALL';
+                    caseSensitive?: boolean;
+                    senderExternalIds?: Array<(string)>;
+                    payloads?: Array<(string)>;
+                    actionDelaySeconds?: number;
+                    id?: string;
+                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    postId?: string | null;
+                };
+                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+            };
+            publishedAt?: string | null;
+            publishedByUserId?: string | null;
+            createdAt: string | null;
+        };
+    };
+    flowVersion?: {
+        id: string;
+        flowId: string;
+        version: number;
+        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+        definition: {
+            trigger: {
+                keywords?: Array<(string)>;
+                matchMode?: 'ANY' | 'ALL';
+                caseSensitive?: boolean;
+                senderExternalIds?: Array<(string)>;
+                payloads?: Array<(string)>;
+                actionDelaySeconds?: number;
+                id?: string;
+                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                socialAccountId: string;
+                postId?: string | null;
+            };
+            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+        };
+        publishedAt?: string | null;
+        publishedByUserId?: string | null;
+        createdAt: string | null;
+    };
+    steps?: Array<{
+        id: string;
+        executionId: string;
+        stepId?: string | null;
+        status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';
+        attemptCount: number;
+        input?: {
+            type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+            platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+            socialAccountId?: string | null;
+            postId?: string | null;
+            conversationId?: string | null;
+            conversationMessageId?: string | null;
+            fetchedCommentId?: string | null;
+            senderExternalId?: string | null;
+            externalMessageId?: string | null;
+            text?: string | null;
+            payload?: string | null;
+            [key: string]: (unknown | string | null) | undefined;
+        };
+        output?: {
+            [key: string]: (unknown | null) | undefined;
+        };
+        error?: {
+            code?: string | null;
+            message?: string | null;
+            retryable?: boolean | null;
+            [key: string]: (unknown | string | boolean | null) | undefined;
+        } | null;
+        startedAt?: string | null;
+        completedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+    }>;
+    conversation?: {
+        id: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        externalConversationId?: string | null;
+        externalParticipantId: string;
+        participantUsername?: string | null;
+        participantDisplayName?: string | null;
+        participantAvatarUrl?: string | null;
+        status: 'OPEN' | 'ARCHIVED';
+        lastMessageAt?: string | null;
+        lastActivityAt: string | null;
+        lastMessagePreview?: string | null;
+        lastReadAt?: string | null;
+        unreadCount: number;
+        platformSeenAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            canReply?: boolean | null;
+            lastInboundAt?: string | null;
+            providerStateSync?: {
+                action: 'ARCHIVE' | 'OPEN';
+                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                reason?: string | null;
+                error?: string | null;
+                syncedAt?: string | null;
+            } | null;
+        };
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    } | null;
+    conversationMessage?: {
+        id: string;
+        conversationId: string;
+        teamId: string;
+        socialAccountId: string;
+        /**
+         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+         */
+        platform: 'INSTAGRAM' | 'FACEBOOK';
+        direction: 'INBOUND' | 'OUTBOUND';
+        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+        externalMessageId?: string | null;
+        text?: string | null;
+        attachments?: Array<{
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+            url?: string | null;
+            externalId?: string | null;
+            mimeType?: string | null;
+            name?: string | null;
+            captionTrackUrl?: string | null;
+            captionLanguage?: string | null;
+            captionLabel?: string | null;
+        }>;
+        sentAt?: string | null;
+        failedAt?: string | null;
+        error?: string | null;
+        seenAt?: string | null;
+        replyTo?: {
+            externalMessageId?: string | null;
+            isSelfReply?: boolean | null;
+            messageId?: string | null;
+        } | null;
+        privateReplyContext?: {
+            fetchedCommentId: string;
+            externalCommentId?: string | null;
+            text?: string | null;
+            authorName?: string | null;
+            authorAvatarUrl?: string | null;
+            publishedAt?: string | null;
+            postId?: string | null;
+            externalPostId?: string | null;
+            postPermalink?: string | null;
+            postThumbnailUrl?: string | null;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        platformData?: {
+            replyTo?: {
+                externalMessageId?: string | null;
+                isSelfReply?: boolean | null;
+            } | null;
+            reactions?: Array<{
+                senderId: string;
+                reaction?: string | null;
+                emoji?: string | null;
+                reactedAt?: string | null;
+            }>;
+            quickReplies?: Array<{
+                id?: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id?: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUrl?: string | null;
+                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            } | null;
+            isEcho?: boolean | null;
+            isEdited?: boolean | null;
+            editedAt?: string | null;
+            isPostback?: boolean | null;
+            postbackPayload?: string | null;
+            isUnsent?: boolean | null;
+            unsentAt?: string | null;
+        };
+    } | null;
+    fetchedComment?: {
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        postId?: string | null;
+        importedPostId?: string | null;
+        socialAccountId: string;
+        importId: string;
+        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+        externalId: string;
+        externalParentId?: string | null;
+        externalPostId?: string | null;
+        authorName?: string | null;
+        authorExternalId?: string | null;
+        authorProfileUrl?: string | null;
+        authorAvatarUrl?: string | null;
+        text?: string | null;
+        likesCount: number;
+        repliesCount: number;
+        platformData?: {
+            canDelete?: boolean | null;
+            canHide?: boolean | null;
+            canLike?: boolean | null;
+            canModerate?: boolean | null;
+            hidden?: boolean | null;
+            likedByMe?: boolean | null;
+            likedByAutomation?: boolean | null;
+            reactionsCount?: number | null;
+            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+            owner?: boolean | null;
+            hideStatus?: string | null;
+            moderationStatus?: string | null;
+            approvalStatus?: string | null;
+            status?: string | null;
+            attachmentType?: string | null;
+            attachmentUrl?: string | null;
+            cid?: string | null;
+            origin?: 'platform' | 'bundle' | null;
+            source?: string | null;
+            mediaProductType?: string | null;
+            bundleCommentId?: string | null;
+            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+            disabledReason?: string | null;
+            [key: string]: (unknown | boolean | number | string | null) | undefined;
+        };
+        publishedAt?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    } | null;
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type AutomationGetProviderSettingsData = {
+    limit?: number | null;
+    offset?: number | null;
+    platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+    socialAccountId?: string;
+    status?: 'DRAFT' | 'SYNCED' | 'SYNC_FAILED' | 'DISABLED';
+    teamId: string;
+    type?: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+};
+
+export type AutomationGetProviderSettingsResponse = {
+    items: Array<{
+        id: string;
+        teamId: string;
+        organizationId?: string | null;
+        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+        socialAccountId: string;
+        type: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+        status: 'DRAFT' | 'SYNCED' | 'SYNC_FAILED' | 'DISABLED';
+        config?: {
+    getStartedPayload?: string;
+    composerInputDisabled?: boolean;
+    items?: Array<({
+    title: string;
+    type: 'POSTBACK';
+    payload: string;
+    url?: string;
+} | {
+    title: string;
+    type: 'URL';
+    payload?: string;
+    url: string;
+})>;
+} | {
+    iceBreakers?: Array<{
+        question: string;
+        payload: string;
+    }>;
+};
+        providerResponse?: {
+            [key: string]: (unknown | null) | undefined;
+        } | null;
+        lastSyncedAt?: string | null;
+        lastSyncError?: {
+            code?: string | null;
+            message?: string | null;
+            retryable?: boolean | null;
+            [key: string]: (unknown | string | boolean | null) | undefined;
+        } | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        socialAccount?: {
+            id: string;
+            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+            teamId: string;
+            username?: string | null;
+            displayName?: string | null;
+            bio?: string | null;
+            avatarUrl?: string | null;
+            externalId?: string | null;
+            providerPageId?: string | null;
+            userUsername?: string | null;
+            userDisplayName?: string | null;
+            userEmail?: string | null;
+            userId?: string | null;
+            channels?: Array<{
+                id: string;
+                name?: string | null;
+                username?: string | null;
+                address?: string | null;
+                avatarUrl?: string | null;
+                webhook?: {
+                    id?: string | null;
+                    name?: string | null;
+                    avatar?: string | null;
+                    url?: string | null;
+                } | null;
+                metadata?: {
+                    allowImages?: boolean | null;
+                    allowVideos?: boolean | null;
+                    allowGalleries?: boolean | null;
+                    linkFlairEnabled?: boolean | null;
+                    facebookPageId?: string | null;
+                } | null;
+            }> | null;
+            mastodonServerId?: string | null;
+            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+            isTiktokBusinessAccount?: boolean | null;
+            disconnectedCheckTryAt?: string | null;
+            deleteOn?: string | null;
+            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+            messagingStatusUpdatedAt?: string | null;
+            messagingLastError?: string | null;
+            createdAt: string | null;
+            updatedAt: string | null;
+            deletedAt?: string | null;
+        };
+    }>;
+    total: number;
+};
+
+export type AutomationUpsertProviderSettingData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+        config?: {
+    getStartedPayload?: string;
+    composerInputDisabled?: boolean;
+    items?: Array<({
+    title: string;
+    type: 'POSTBACK';
+    payload: string;
+    url?: string;
+} | {
+    title: string;
+    type: 'URL';
+    payload?: string;
+    url: string;
+})>;
+} | {
+    iceBreakers?: Array<{
+        question: string;
+        payload: string;
+    }>;
+};
+        status?: 'DRAFT' | 'DISABLED';
+    };
+    socialAccountId: string;
+    type: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+};
+
+export type AutomationUpsertProviderSettingResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+    socialAccountId: string;
+    type: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+    status: 'DRAFT' | 'SYNCED' | 'SYNC_FAILED' | 'DISABLED';
+    config?: {
+    getStartedPayload?: string;
+    composerInputDisabled?: boolean;
+    items?: Array<({
+    title: string;
+    type: 'POSTBACK';
+    payload: string;
+    url?: string;
+} | {
+    title: string;
+    type: 'URL';
+    payload?: string;
+    url: string;
+})>;
+} | {
+    iceBreakers?: Array<{
+        question: string;
+        payload: string;
+    }>;
+};
+    providerResponse?: {
+        [key: string]: (unknown | null) | undefined;
+    } | null;
+    lastSyncedAt?: string | null;
+    lastSyncError?: {
+        code?: string | null;
+        message?: string | null;
+        retryable?: boolean | null;
+        [key: string]: (unknown | string | boolean | null) | undefined;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type AutomationSyncProviderSettingData = {
+    id: string;
+};
+
+export type AutomationSyncProviderSettingResponse = {
+    id: string;
+    teamId: string;
+    organizationId?: string | null;
+    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+    socialAccountId: string;
+    type: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+    status: 'DRAFT' | 'SYNCED' | 'SYNC_FAILED' | 'DISABLED';
+    config?: {
+    getStartedPayload?: string;
+    composerInputDisabled?: boolean;
+    items?: Array<({
+    title: string;
+    type: 'POSTBACK';
+    payload: string;
+    url?: string;
+} | {
+    title: string;
+    type: 'URL';
+    payload?: string;
+    url: string;
+})>;
+} | {
+    iceBreakers?: Array<{
+        question: string;
+        payload: string;
+    }>;
+};
+    providerResponse?: {
+        [key: string]: (unknown | null) | undefined;
+    } | null;
+    lastSyncedAt?: string | null;
+    lastSyncError?: {
+        code?: string | null;
+        message?: string | null;
+        retryable?: boolean | null;
+        [key: string]: (unknown | string | boolean | null) | undefined;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string | null;
+    socialAccount?: {
+        id: string;
+        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+        teamId: string;
+        username?: string | null;
+        displayName?: string | null;
+        bio?: string | null;
+        avatarUrl?: string | null;
+        externalId?: string | null;
+        providerPageId?: string | null;
+        userUsername?: string | null;
+        userDisplayName?: string | null;
+        userEmail?: string | null;
+        userId?: string | null;
+        channels?: Array<{
+            id: string;
+            name?: string | null;
+            username?: string | null;
+            address?: string | null;
+            avatarUrl?: string | null;
+            webhook?: {
+                id?: string | null;
+                name?: string | null;
+                avatar?: string | null;
+                url?: string | null;
+            } | null;
+            metadata?: {
+                allowImages?: boolean | null;
+                allowVideos?: boolean | null;
+                allowGalleries?: boolean | null;
+                linkFlairEnabled?: boolean | null;
+                facebookPageId?: string | null;
+            } | null;
+        }> | null;
+        mastodonServerId?: string | null;
+        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+        isTiktokBusinessAccount?: boolean | null;
+        disconnectedCheckTryAt?: string | null;
+        deleteOn?: string | null;
+        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+        messagingStatusUpdatedAt?: string | null;
+        messagingLastError?: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+        deletedAt?: string | null;
+    };
+};
+
+export type AutomationSendRichMessageData = {
+    conversationId: string;
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId?: string;
+        message: {
+            text?: string;
+            attachments?: Array<{
+                uploadId: string;
+                type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+            }>;
+            quickReplies?: Array<{
+                id: string;
+                label: string;
+                payload: string;
+            }>;
+            buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            carousel?: {
+                cards: Array<{
+                    id: string;
+                    title: string;
+                    subtitle?: string | null;
+                    imageUploadId?: string | null;
+                    buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                }>;
+            };
+        };
+    };
+};
+
+export type AutomationSendRichMessageResponse = {
+    conversationId: string;
+    messageId?: string | null;
+    externalMessageId?: string | null;
 };
 
 export type MiscYoutubeSetThumbnailData = {
@@ -13967,6 +22261,40 @@ export type MiscTwitterDeleteCommentResponse = {
     success: boolean;
 };
 
+export type MiscTwitterRetweetData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The numeric ID of the X post to repost (the last segment of its URL)
+         */
+        tweetId: string;
+    };
+};
+
+export type MiscTwitterRetweetResponse = {
+    success: boolean;
+};
+
+export type MiscTwitterUnretweetData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The numeric ID of the X post to repost (the last segment of its URL)
+         */
+        tweetId: string;
+    };
+};
+
+export type MiscTwitterUnretweetResponse = {
+    success: boolean;
+};
+
 export type MiscDiscordDeleteMessageData = {
     /**
      * Body
@@ -14571,6 +22899,8 @@ export type $OpenApiTs = {
                     monthlyImportLimitPerAccount?: number | null;
                     commentImportLimitPerPost?: number | null;
                     monthlyReviewImportLimitPerAccount?: number | null;
+                    monthlyMessageLimitPerAccount?: number | null;
+                    monthlyAutomationExecutionLimitPerAccount?: number | null;
                     apiAccess: boolean;
                     analyticsDisabled: boolean;
                     analyticsPostsDisabled: boolean;
@@ -15165,6 +23495,8 @@ export type $OpenApiTs = {
                         monthlyImportLimitPerAccount?: number | null;
                         commentImportLimitPerPost?: number | null;
                         monthlyReviewImportLimitPerAccount?: number | null;
+                        monthlyMessageLimitPerAccount?: number | null;
+                        monthlyAutomationExecutionLimitPerAccount?: number | null;
                         apiAccess: boolean;
                         analyticsDisabled: boolean;
                         analyticsPostsDisabled: boolean;
@@ -15244,6 +23576,9 @@ export type $OpenApiTs = {
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -15547,6 +23882,8 @@ export type $OpenApiTs = {
                             monthlyImportLimitPerAccount?: number | null;
                             commentImportLimitPerPost?: number | null;
                             monthlyReviewImportLimitPerAccount?: number | null;
+                            monthlyMessageLimitPerAccount?: number | null;
+                            monthlyAutomationExecutionLimitPerAccount?: number | null;
                             apiAccess: boolean;
                             analyticsDisabled: boolean;
                             analyticsPostsDisabled: boolean;
@@ -15626,6 +23963,9 @@ export type $OpenApiTs = {
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
                             deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -15916,6 +24256,9 @@ export type $OpenApiTs = {
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
+                    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingStatusUpdatedAt?: string | null;
+                    messagingLastError?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -16024,6 +24367,9 @@ export type $OpenApiTs = {
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
+                    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingStatusUpdatedAt?: string | null;
+                    messagingLastError?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -16132,6 +24478,9 @@ export type $OpenApiTs = {
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
+                    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingStatusUpdatedAt?: string | null;
+                    messagingLastError?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -16240,6 +24589,9 @@ export type $OpenApiTs = {
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
+                    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingStatusUpdatedAt?: string | null;
+                    messagingLastError?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -16310,6 +24662,146 @@ export type $OpenApiTs = {
                  */
                 200: {
                     url: string;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/messaging/enable': {
+        post: {
+            req: SocialAccountEnableMessagingData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    socialAccountId: string;
+                    type: 'FACEBOOK' | 'INSTAGRAM';
+                    messagingStatus: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingLastError: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/social-account/messaging/disable': {
+        post: {
+            req: SocialAccountDisableMessagingData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    socialAccountId: string;
+                    type: 'FACEBOOK' | 'INSTAGRAM';
+                    messagingStatus: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingLastError: string | null;
                 };
                 /**
                  * 400
@@ -16493,6 +24985,9 @@ export type $OpenApiTs = {
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -16607,6 +25102,9 @@ export type $OpenApiTs = {
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
+                    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingStatusUpdatedAt?: string | null;
+                    messagingLastError?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -16715,6 +25213,9 @@ export type $OpenApiTs = {
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
                     deleteOn?: string | null;
+                    messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                    messagingStatusUpdatedAt?: string | null;
+                    messagingLastError?: string | null;
                     createdAt: string | null;
                     updatedAt: string | null;
                     deletedAt?: string | null;
@@ -16824,6 +25325,9 @@ export type $OpenApiTs = {
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -18467,6 +26971,7 @@ export type $OpenApiTs = {
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
+                            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                         } | null;
                     };
                     error?: string | null;
@@ -18834,6 +27339,9 @@ export type $OpenApiTs = {
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
                             deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -19354,6 +27862,7 @@ export type $OpenApiTs = {
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
+                            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                         } | null;
                     };
                     error?: string | null;
@@ -19721,6 +28230,9 @@ export type $OpenApiTs = {
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
                             deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
                             createdAt: string | null;
                             updatedAt: string | null;
                             deletedAt?: string | null;
@@ -20239,6 +28751,7 @@ export type $OpenApiTs = {
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
+                            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                         } | null;
                     };
                     error?: string | null;
@@ -21049,6 +29562,7 @@ export type $OpenApiTs = {
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
+                            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                         } | null;
                     };
                     error?: string | null;
@@ -21841,6 +30355,7 @@ export type $OpenApiTs = {
                                 description?: string | null;
                                 locale?: string | null;
                                 skipSaveToProfile?: boolean | null;
+                                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                             } | null;
                         };
                         error?: string | null;
@@ -22208,6 +30723,9 @@ export type $OpenApiTs = {
                                 isTiktokBusinessAccount?: boolean | null;
                                 disconnectedCheckTryAt?: string | null;
                                 deleteOn?: string | null;
+                                messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                                messagingStatusUpdatedAt?: string | null;
+                                messagingLastError?: string | null;
                                 createdAt: string | null;
                                 updatedAt: string | null;
                                 deletedAt?: string | null;
@@ -22728,6 +31246,7 @@ export type $OpenApiTs = {
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
+                            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                         } | null;
                     };
                     error?: string | null;
@@ -23540,6 +32059,7 @@ export type $OpenApiTs = {
                             description?: string | null;
                             locale?: string | null;
                             skipSaveToProfile?: boolean | null;
+                            storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                         } | null;
                     };
                     error?: string | null;
@@ -23959,7 +32479,7 @@ export type $OpenApiTs = {
                 200: {
                     billable: boolean;
                     lines: Array<{
-                        action: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ';
+                        action: 'TWITTER_CONTENT_CREATE' | 'TWITTER_CONTENT_CREATE_WITH_URL' | 'TWITTER_CONTENT_MANAGE' | 'TWITTER_INTERACTION_DELETE' | 'TWITTER_POST_READ' | 'TWITTER_USER_READ' | 'TWITTER_USER_INTERACTION_CREATE';
                         label: string;
                         unitAmountMicros: number;
                         amountMicros: number;
@@ -24078,6 +32598,9 @@ export type $OpenApiTs = {
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -24615,6 +33138,7 @@ export type $OpenApiTs = {
                                 description?: string | null;
                                 locale?: string | null;
                                 skipSaveToProfile?: boolean | null;
+                                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                             } | null;
                         };
                         error?: string | null;
@@ -25037,6 +33561,9 @@ export type $OpenApiTs = {
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
                         deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
                         createdAt: string | null;
                         updatedAt: string | null;
                         deletedAt?: string | null;
@@ -25567,6 +34094,7 @@ export type $OpenApiTs = {
                                 description?: string | null;
                                 locale?: string | null;
                                 skipSaveToProfile?: boolean | null;
+                                storyDuration?: 'ONE_DAY' | 'TWO_DAYS' | 'THREE_DAYS' | 'ONE_WEEK' | null;
                             } | null;
                         };
                         error?: string | null;
@@ -28483,6 +37011,9077 @@ export type $OpenApiTs = {
                  * 502
                  */
                 502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/': {
+        get: {
+            req: ConversationGetListData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        externalConversationId?: string | null;
+                        externalParticipantId: string;
+                        participantUsername?: string | null;
+                        participantDisplayName?: string | null;
+                        participantAvatarUrl?: string | null;
+                        status: 'OPEN' | 'ARCHIVED';
+                        lastMessageAt?: string | null;
+                        lastActivityAt: string | null;
+                        lastMessagePreview?: string | null;
+                        lastReadAt?: string | null;
+                        unreadCount: number;
+                        platformSeenAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            canReply?: boolean | null;
+                            lastInboundAt?: string | null;
+                            providerStateSync?: {
+                                action: 'ARCHIVE' | 'OPEN';
+                                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                                reason?: string | null;
+                                error?: string | null;
+                                syncedAt?: string | null;
+                            } | null;
+                        };
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    }>;
+                    total?: number;
+                    nextCursor?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/{id}': {
+        get: {
+            req: ConversationGetData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    /**
+                     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                     */
+                    platform: 'INSTAGRAM' | 'FACEBOOK';
+                    externalConversationId?: string | null;
+                    externalParticipantId: string;
+                    participantUsername?: string | null;
+                    participantDisplayName?: string | null;
+                    participantAvatarUrl?: string | null;
+                    status: 'OPEN' | 'ARCHIVED';
+                    lastMessageAt?: string | null;
+                    lastActivityAt: string | null;
+                    lastMessagePreview?: string | null;
+                    lastReadAt?: string | null;
+                    unreadCount: number;
+                    platformSeenAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    platformData?: {
+                        canReply?: boolean | null;
+                        lastInboundAt?: string | null;
+                        providerStateSync?: {
+                            action: 'ARCHIVE' | 'OPEN';
+                            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                            reason?: string | null;
+                            error?: string | null;
+                            syncedAt?: string | null;
+                        } | null;
+                    };
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: ConversationUpdateData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    /**
+                     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                     */
+                    platform: 'INSTAGRAM' | 'FACEBOOK';
+                    externalConversationId?: string | null;
+                    externalParticipantId: string;
+                    participantUsername?: string | null;
+                    participantDisplayName?: string | null;
+                    participantAvatarUrl?: string | null;
+                    status: 'OPEN' | 'ARCHIVED';
+                    lastMessageAt?: string | null;
+                    lastActivityAt: string | null;
+                    lastMessagePreview?: string | null;
+                    lastReadAt?: string | null;
+                    unreadCount: number;
+                    platformSeenAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    platformData?: {
+                        canReply?: boolean | null;
+                        lastInboundAt?: string | null;
+                        providerStateSync?: {
+                            action: 'ARCHIVE' | 'OPEN';
+                            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                            reason?: string | null;
+                            error?: string | null;
+                            syncedAt?: string | null;
+                        } | null;
+                    };
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/{id}/messages': {
+        get: {
+            req: ConversationGetMessagesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        conversationId: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        direction: 'INBOUND' | 'OUTBOUND';
+                        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+                        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        attachments?: Array<{
+                            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                            url?: string | null;
+                            externalId?: string | null;
+                            mimeType?: string | null;
+                            name?: string | null;
+                            captionTrackUrl?: string | null;
+                            captionLanguage?: string | null;
+                            captionLabel?: string | null;
+                        }>;
+                        sentAt?: string | null;
+                        failedAt?: string | null;
+                        error?: string | null;
+                        seenAt?: string | null;
+                        replyTo?: {
+                            externalMessageId?: string | null;
+                            isSelfReply?: boolean | null;
+                            messageId?: string | null;
+                        } | null;
+                        privateReplyContext?: {
+                            fetchedCommentId: string;
+                            externalCommentId?: string | null;
+                            text?: string | null;
+                            authorName?: string | null;
+                            authorAvatarUrl?: string | null;
+                            publishedAt?: string | null;
+                            postId?: string | null;
+                            externalPostId?: string | null;
+                            postPermalink?: string | null;
+                            postThumbnailUrl?: string | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            replyTo?: {
+                                externalMessageId?: string | null;
+                                isSelfReply?: boolean | null;
+                            } | null;
+                            reactions?: Array<{
+                                senderId: string;
+                                reaction?: string | null;
+                                emoji?: string | null;
+                                reactedAt?: string | null;
+                            }>;
+                            quickReplies?: Array<{
+                                id?: string;
+                                label: string;
+                                payload: string;
+                            }>;
+                            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                            carousel?: {
+                                cards: Array<{
+                                    id?: string;
+                                    title: string;
+                                    subtitle?: string | null;
+                                    imageUrl?: string | null;
+                                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                }>;
+                            } | null;
+                            isEcho?: boolean | null;
+                            isEdited?: boolean | null;
+                            editedAt?: string | null;
+                            isPostback?: boolean | null;
+                            postbackPayload?: string | null;
+                            isUnsent?: boolean | null;
+                            unsentAt?: string | null;
+                        };
+                    }>;
+                    total?: number;
+                    nextCursor?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        post: {
+            req: ConversationSendMessageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    conversation: {
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        externalConversationId?: string | null;
+                        externalParticipantId: string;
+                        participantUsername?: string | null;
+                        participantDisplayName?: string | null;
+                        participantAvatarUrl?: string | null;
+                        status: 'OPEN' | 'ARCHIVED';
+                        lastMessageAt?: string | null;
+                        lastActivityAt: string | null;
+                        lastMessagePreview?: string | null;
+                        lastReadAt?: string | null;
+                        unreadCount: number;
+                        platformSeenAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            canReply?: boolean | null;
+                            lastInboundAt?: string | null;
+                            providerStateSync?: {
+                                action: 'ARCHIVE' | 'OPEN';
+                                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                                reason?: string | null;
+                                error?: string | null;
+                                syncedAt?: string | null;
+                            } | null;
+                        };
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    };
+                    message: {
+                        id: string;
+                        conversationId: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        direction: 'INBOUND' | 'OUTBOUND';
+                        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+                        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        attachments?: Array<{
+                            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                            url?: string | null;
+                            externalId?: string | null;
+                            mimeType?: string | null;
+                            name?: string | null;
+                            captionTrackUrl?: string | null;
+                            captionLanguage?: string | null;
+                            captionLabel?: string | null;
+                        }>;
+                        sentAt?: string | null;
+                        failedAt?: string | null;
+                        error?: string | null;
+                        seenAt?: string | null;
+                        replyTo?: {
+                            externalMessageId?: string | null;
+                            isSelfReply?: boolean | null;
+                            messageId?: string | null;
+                        } | null;
+                        privateReplyContext?: {
+                            fetchedCommentId: string;
+                            externalCommentId?: string | null;
+                            text?: string | null;
+                            authorName?: string | null;
+                            authorAvatarUrl?: string | null;
+                            publishedAt?: string | null;
+                            postId?: string | null;
+                            externalPostId?: string | null;
+                            postPermalink?: string | null;
+                            postThumbnailUrl?: string | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            replyTo?: {
+                                externalMessageId?: string | null;
+                                isSelfReply?: boolean | null;
+                            } | null;
+                            reactions?: Array<{
+                                senderId: string;
+                                reaction?: string | null;
+                                emoji?: string | null;
+                                reactedAt?: string | null;
+                            }>;
+                            quickReplies?: Array<{
+                                id?: string;
+                                label: string;
+                                payload: string;
+                            }>;
+                            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                            carousel?: {
+                                cards: Array<{
+                                    id?: string;
+                                    title: string;
+                                    subtitle?: string | null;
+                                    imageUrl?: string | null;
+                                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                }>;
+                            } | null;
+                            isEcho?: boolean | null;
+                            isEdited?: boolean | null;
+                            editedAt?: string | null;
+                            isPostback?: boolean | null;
+                            postbackPayload?: string | null;
+                            isUnsent?: boolean | null;
+                            unsentAt?: string | null;
+                        };
+                    };
+                    conflict?: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/{id}/messages/{messageId}/reaction': {
+        post: {
+            req: ConversationReactMessageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    conversation: {
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        externalConversationId?: string | null;
+                        externalParticipantId: string;
+                        participantUsername?: string | null;
+                        participantDisplayName?: string | null;
+                        participantAvatarUrl?: string | null;
+                        status: 'OPEN' | 'ARCHIVED';
+                        lastMessageAt?: string | null;
+                        lastActivityAt: string | null;
+                        lastMessagePreview?: string | null;
+                        lastReadAt?: string | null;
+                        unreadCount: number;
+                        platformSeenAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            canReply?: boolean | null;
+                            lastInboundAt?: string | null;
+                            providerStateSync?: {
+                                action: 'ARCHIVE' | 'OPEN';
+                                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                                reason?: string | null;
+                                error?: string | null;
+                                syncedAt?: string | null;
+                            } | null;
+                        };
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    };
+                    message: {
+                        id: string;
+                        conversationId: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        direction: 'INBOUND' | 'OUTBOUND';
+                        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+                        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        attachments?: Array<{
+                            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                            url?: string | null;
+                            externalId?: string | null;
+                            mimeType?: string | null;
+                            name?: string | null;
+                            captionTrackUrl?: string | null;
+                            captionLanguage?: string | null;
+                            captionLabel?: string | null;
+                        }>;
+                        sentAt?: string | null;
+                        failedAt?: string | null;
+                        error?: string | null;
+                        seenAt?: string | null;
+                        replyTo?: {
+                            externalMessageId?: string | null;
+                            isSelfReply?: boolean | null;
+                            messageId?: string | null;
+                        } | null;
+                        privateReplyContext?: {
+                            fetchedCommentId: string;
+                            externalCommentId?: string | null;
+                            text?: string | null;
+                            authorName?: string | null;
+                            authorAvatarUrl?: string | null;
+                            publishedAt?: string | null;
+                            postId?: string | null;
+                            externalPostId?: string | null;
+                            postPermalink?: string | null;
+                            postThumbnailUrl?: string | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            replyTo?: {
+                                externalMessageId?: string | null;
+                                isSelfReply?: boolean | null;
+                            } | null;
+                            reactions?: Array<{
+                                senderId: string;
+                                reaction?: string | null;
+                                emoji?: string | null;
+                                reactedAt?: string | null;
+                            }>;
+                            quickReplies?: Array<{
+                                id?: string;
+                                label: string;
+                                payload: string;
+                            }>;
+                            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                            carousel?: {
+                                cards: Array<{
+                                    id?: string;
+                                    title: string;
+                                    subtitle?: string | null;
+                                    imageUrl?: string | null;
+                                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                }>;
+                            } | null;
+                            isEcho?: boolean | null;
+                            isEdited?: boolean | null;
+                            editedAt?: string | null;
+                            isPostback?: boolean | null;
+                            postbackPayload?: string | null;
+                            isUnsent?: boolean | null;
+                            unsentAt?: string | null;
+                        };
+                    };
+                    conflict?: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/{id}/read': {
+        post: {
+            req: ConversationMarkReadData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    /**
+                     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                     */
+                    platform: 'INSTAGRAM' | 'FACEBOOK';
+                    externalConversationId?: string | null;
+                    externalParticipantId: string;
+                    participantUsername?: string | null;
+                    participantDisplayName?: string | null;
+                    participantAvatarUrl?: string | null;
+                    status: 'OPEN' | 'ARCHIVED';
+                    lastMessageAt?: string | null;
+                    lastActivityAt: string | null;
+                    lastMessagePreview?: string | null;
+                    lastReadAt?: string | null;
+                    unreadCount: number;
+                    platformSeenAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    platformData?: {
+                        canReply?: boolean | null;
+                        lastInboundAt?: string | null;
+                        providerStateSync?: {
+                            action: 'ARCHIVE' | 'OPEN';
+                            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                            reason?: string | null;
+                            error?: string | null;
+                            syncedAt?: string | null;
+                        } | null;
+                    };
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/private-reply': {
+        post: {
+            req: ConversationPrivateReplyData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    conversation: {
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        externalConversationId?: string | null;
+                        externalParticipantId: string;
+                        participantUsername?: string | null;
+                        participantDisplayName?: string | null;
+                        participantAvatarUrl?: string | null;
+                        status: 'OPEN' | 'ARCHIVED';
+                        lastMessageAt?: string | null;
+                        lastActivityAt: string | null;
+                        lastMessagePreview?: string | null;
+                        lastReadAt?: string | null;
+                        unreadCount: number;
+                        platformSeenAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            canReply?: boolean | null;
+                            lastInboundAt?: string | null;
+                            providerStateSync?: {
+                                action: 'ARCHIVE' | 'OPEN';
+                                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                                reason?: string | null;
+                                error?: string | null;
+                                syncedAt?: string | null;
+                            } | null;
+                        };
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    };
+                    message: {
+                        id: string;
+                        conversationId: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        direction: 'INBOUND' | 'OUTBOUND';
+                        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+                        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        attachments?: Array<{
+                            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                            url?: string | null;
+                            externalId?: string | null;
+                            mimeType?: string | null;
+                            name?: string | null;
+                            captionTrackUrl?: string | null;
+                            captionLanguage?: string | null;
+                            captionLabel?: string | null;
+                        }>;
+                        sentAt?: string | null;
+                        failedAt?: string | null;
+                        error?: string | null;
+                        seenAt?: string | null;
+                        replyTo?: {
+                            externalMessageId?: string | null;
+                            isSelfReply?: boolean | null;
+                            messageId?: string | null;
+                        } | null;
+                        privateReplyContext?: {
+                            fetchedCommentId: string;
+                            externalCommentId?: string | null;
+                            text?: string | null;
+                            authorName?: string | null;
+                            authorAvatarUrl?: string | null;
+                            publishedAt?: string | null;
+                            postId?: string | null;
+                            externalPostId?: string | null;
+                            postPermalink?: string | null;
+                            postThumbnailUrl?: string | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            replyTo?: {
+                                externalMessageId?: string | null;
+                                isSelfReply?: boolean | null;
+                            } | null;
+                            reactions?: Array<{
+                                senderId: string;
+                                reaction?: string | null;
+                                emoji?: string | null;
+                                reactedAt?: string | null;
+                            }>;
+                            quickReplies?: Array<{
+                                id?: string;
+                                label: string;
+                                payload: string;
+                            }>;
+                            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                            carousel?: {
+                                cards: Array<{
+                                    id?: string;
+                                    title: string;
+                                    subtitle?: string | null;
+                                    imageUrl?: string | null;
+                                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                }>;
+                            } | null;
+                            isEcho?: boolean | null;
+                            isEdited?: boolean | null;
+                            editedAt?: string | null;
+                            isPostback?: boolean | null;
+                            postbackPayload?: string | null;
+                            isUnsent?: boolean | null;
+                            unsentAt?: string | null;
+                        };
+                    };
+                    conflict?: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/{id}/archive': {
+        post: {
+            req: ConversationArchiveData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    /**
+                     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                     */
+                    platform: 'INSTAGRAM' | 'FACEBOOK';
+                    externalConversationId?: string | null;
+                    externalParticipantId: string;
+                    participantUsername?: string | null;
+                    participantDisplayName?: string | null;
+                    participantAvatarUrl?: string | null;
+                    status: 'OPEN' | 'ARCHIVED';
+                    lastMessageAt?: string | null;
+                    lastActivityAt: string | null;
+                    lastMessagePreview?: string | null;
+                    lastReadAt?: string | null;
+                    unreadCount: number;
+                    platformSeenAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    platformData?: {
+                        canReply?: boolean | null;
+                        lastInboundAt?: string | null;
+                        providerStateSync?: {
+                            action: 'ARCHIVE' | 'OPEN';
+                            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                            reason?: string | null;
+                            error?: string | null;
+                            syncedAt?: string | null;
+                        } | null;
+                    };
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/conversations/{id}/open': {
+        post: {
+            req: ConversationOpenData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    socialAccountId: string;
+                    /**
+                     * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                     */
+                    platform: 'INSTAGRAM' | 'FACEBOOK';
+                    externalConversationId?: string | null;
+                    externalParticipantId: string;
+                    participantUsername?: string | null;
+                    participantDisplayName?: string | null;
+                    participantAvatarUrl?: string | null;
+                    status: 'OPEN' | 'ARCHIVED';
+                    lastMessageAt?: string | null;
+                    lastActivityAt: string | null;
+                    lastMessagePreview?: string | null;
+                    lastReadAt?: string | null;
+                    unreadCount: number;
+                    platformSeenAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    platformData?: {
+                        canReply?: boolean | null;
+                        lastInboundAt?: string | null;
+                        providerStateSync?: {
+                            action: 'ARCHIVE' | 'OPEN';
+                            status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                            reason?: string | null;
+                            error?: string | null;
+                            syncedAt?: string | null;
+                        } | null;
+                    };
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations': {
+        get: {
+            req: AutomationGetFlowsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        name: string;
+                        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                        createdByUserId?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        draftVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                        publishedVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        post: {
+            req: AutomationCreateFlowData;
+            res: {
+                /**
+                 * 201
+                 */
+                201: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/copy': {
+        post: {
+            req: AutomationCopyFlowsData;
+            res: {
+                /**
+                 * 201
+                 */
+                201: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        name: string;
+                        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                        createdByUserId?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        draftVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                        publishedVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/{id}': {
+        get: {
+            req: AutomationGetFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        patch: {
+            req: AutomationUpdateFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: AutomationDeleteFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/{id}/publish': {
+        post: {
+            req: AutomationPublishFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/{id}/pause': {
+        post: {
+            req: AutomationPauseFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/{id}/activate': {
+        post: {
+            req: AutomationActivateFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/{id}/archive': {
+        post: {
+            req: AutomationArchiveFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    name: string;
+                    status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                    platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                    createdByUserId?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    deletedAt?: string | null;
+                    draftVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    publishedVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/{id}/executions': {
+        get: {
+            req: AutomationGetFlowExecutionsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        flowId: string;
+                        flowVersionId: string;
+                        triggerId?: string | null;
+                        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                        socialAccountId: string;
+                        conversationId?: string | null;
+                        conversationMessageId?: string | null;
+                        fetchedCommentId?: string | null;
+                        senderExternalId?: string | null;
+                        currentStepId?: string | null;
+                        status: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELED' | 'SKIPPED';
+                        idempotencyKey: string;
+                        input?: {
+                            type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+                            platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+                            socialAccountId?: string | null;
+                            postId?: string | null;
+                            conversationId?: string | null;
+                            conversationMessageId?: string | null;
+                            fetchedCommentId?: string | null;
+                            senderExternalId?: string | null;
+                            externalMessageId?: string | null;
+                            text?: string | null;
+                            payload?: string | null;
+                            [key: string]: (unknown | string | null) | undefined;
+                        };
+                        output?: {
+                            [key: string]: (unknown | null) | undefined;
+                        };
+                        error?: {
+                            code?: string | null;
+                            message?: string | null;
+                            retryable?: boolean | null;
+                            [key: string]: (unknown | string | boolean | null) | undefined;
+                        } | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        flow?: {
+                            id: string;
+                            teamId: string;
+                            organizationId?: string | null;
+                            name: string;
+                            status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                            platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                            createdByUserId?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                            draftVersion?: {
+                                id: string;
+                                flowId: string;
+                                version: number;
+                                status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                                definition: {
+                                    trigger: {
+                                        keywords?: Array<(string)>;
+                                        matchMode?: 'ANY' | 'ALL';
+                                        caseSensitive?: boolean;
+                                        senderExternalIds?: Array<(string)>;
+                                        payloads?: Array<(string)>;
+                                        actionDelaySeconds?: number;
+                                        id?: string;
+                                        type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                        socialAccountId: string;
+                                        postId?: string | null;
+                                    };
+                                    steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                                };
+                                publishedAt?: string | null;
+                                publishedByUserId?: string | null;
+                                createdAt: string | null;
+                            };
+                            publishedVersion?: {
+                                id: string;
+                                flowId: string;
+                                version: number;
+                                status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                                definition: {
+                                    trigger: {
+                                        keywords?: Array<(string)>;
+                                        matchMode?: 'ANY' | 'ALL';
+                                        caseSensitive?: boolean;
+                                        senderExternalIds?: Array<(string)>;
+                                        payloads?: Array<(string)>;
+                                        actionDelaySeconds?: number;
+                                        id?: string;
+                                        type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                        socialAccountId: string;
+                                        postId?: string | null;
+                                    };
+                                    steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                                };
+                                publishedAt?: string | null;
+                                publishedByUserId?: string | null;
+                                createdAt: string | null;
+                            };
+                        };
+                        flowVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                        steps?: Array<{
+                            id: string;
+                            executionId: string;
+                            stepId?: string | null;
+                            status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';
+                            attemptCount: number;
+                            input?: {
+                                type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+                                platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+                                socialAccountId?: string | null;
+                                postId?: string | null;
+                                conversationId?: string | null;
+                                conversationMessageId?: string | null;
+                                fetchedCommentId?: string | null;
+                                senderExternalId?: string | null;
+                                externalMessageId?: string | null;
+                                text?: string | null;
+                                payload?: string | null;
+                                [key: string]: (unknown | string | null) | undefined;
+                            };
+                            output?: {
+                                [key: string]: (unknown | null) | undefined;
+                            };
+                            error?: {
+                                code?: string | null;
+                                message?: string | null;
+                                retryable?: boolean | null;
+                                [key: string]: (unknown | string | boolean | null) | undefined;
+                            } | null;
+                            startedAt?: string | null;
+                            completedAt?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                        }>;
+                        conversation?: {
+                            id: string;
+                            teamId: string;
+                            socialAccountId: string;
+                            /**
+                             * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                             */
+                            platform: 'INSTAGRAM' | 'FACEBOOK';
+                            externalConversationId?: string | null;
+                            externalParticipantId: string;
+                            participantUsername?: string | null;
+                            participantDisplayName?: string | null;
+                            participantAvatarUrl?: string | null;
+                            status: 'OPEN' | 'ARCHIVED';
+                            lastMessageAt?: string | null;
+                            lastActivityAt: string | null;
+                            lastMessagePreview?: string | null;
+                            lastReadAt?: string | null;
+                            unreadCount: number;
+                            platformSeenAt?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            platformData?: {
+                                canReply?: boolean | null;
+                                lastInboundAt?: string | null;
+                                providerStateSync?: {
+                                    action: 'ARCHIVE' | 'OPEN';
+                                    status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                                    reason?: string | null;
+                                    error?: string | null;
+                                    syncedAt?: string | null;
+                                } | null;
+                            };
+                            socialAccount?: {
+                                id: string;
+                                type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                                teamId: string;
+                                username?: string | null;
+                                displayName?: string | null;
+                                bio?: string | null;
+                                avatarUrl?: string | null;
+                                externalId?: string | null;
+                                providerPageId?: string | null;
+                                userUsername?: string | null;
+                                userDisplayName?: string | null;
+                                userEmail?: string | null;
+                                userId?: string | null;
+                                channels?: Array<{
+                                    id: string;
+                                    name?: string | null;
+                                    username?: string | null;
+                                    address?: string | null;
+                                    avatarUrl?: string | null;
+                                    webhook?: {
+                                        id?: string | null;
+                                        name?: string | null;
+                                        avatar?: string | null;
+                                        url?: string | null;
+                                    } | null;
+                                    metadata?: {
+                                        allowImages?: boolean | null;
+                                        allowVideos?: boolean | null;
+                                        allowGalleries?: boolean | null;
+                                        linkFlairEnabled?: boolean | null;
+                                        facebookPageId?: string | null;
+                                    } | null;
+                                }> | null;
+                                mastodonServerId?: string | null;
+                                instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                                twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                                isTiktokBusinessAccount?: boolean | null;
+                                disconnectedCheckTryAt?: string | null;
+                                deleteOn?: string | null;
+                                messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                                messagingStatusUpdatedAt?: string | null;
+                                messagingLastError?: string | null;
+                                createdAt: string | null;
+                                updatedAt: string | null;
+                                deletedAt?: string | null;
+                            };
+                        } | null;
+                        conversationMessage?: {
+                            id: string;
+                            conversationId: string;
+                            teamId: string;
+                            socialAccountId: string;
+                            /**
+                             * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                             */
+                            platform: 'INSTAGRAM' | 'FACEBOOK';
+                            direction: 'INBOUND' | 'OUTBOUND';
+                            status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+                            source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+                            externalMessageId?: string | null;
+                            text?: string | null;
+                            attachments?: Array<{
+                                type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                                url?: string | null;
+                                externalId?: string | null;
+                                mimeType?: string | null;
+                                name?: string | null;
+                                captionTrackUrl?: string | null;
+                                captionLanguage?: string | null;
+                                captionLabel?: string | null;
+                            }>;
+                            sentAt?: string | null;
+                            failedAt?: string | null;
+                            error?: string | null;
+                            seenAt?: string | null;
+                            replyTo?: {
+                                externalMessageId?: string | null;
+                                isSelfReply?: boolean | null;
+                                messageId?: string | null;
+                            } | null;
+                            privateReplyContext?: {
+                                fetchedCommentId: string;
+                                externalCommentId?: string | null;
+                                text?: string | null;
+                                authorName?: string | null;
+                                authorAvatarUrl?: string | null;
+                                publishedAt?: string | null;
+                                postId?: string | null;
+                                externalPostId?: string | null;
+                                postPermalink?: string | null;
+                                postThumbnailUrl?: string | null;
+                            } | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            platformData?: {
+                                replyTo?: {
+                                    externalMessageId?: string | null;
+                                    isSelfReply?: boolean | null;
+                                } | null;
+                                reactions?: Array<{
+                                    senderId: string;
+                                    reaction?: string | null;
+                                    emoji?: string | null;
+                                    reactedAt?: string | null;
+                                }>;
+                                quickReplies?: Array<{
+                                    id?: string;
+                                    label: string;
+                                    payload: string;
+                                }>;
+                                buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                carousel?: {
+                                    cards: Array<{
+                                        id?: string;
+                                        title: string;
+                                        subtitle?: string | null;
+                                        imageUrl?: string | null;
+                                        buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                    }>;
+                                } | null;
+                                isEcho?: boolean | null;
+                                isEdited?: boolean | null;
+                                editedAt?: string | null;
+                                isPostback?: boolean | null;
+                                postbackPayload?: string | null;
+                                isUnsent?: boolean | null;
+                                unsentAt?: string | null;
+                            };
+                        } | null;
+                        fetchedComment?: {
+                            id: string;
+                            teamId: string;
+                            organizationId?: string | null;
+                            postId?: string | null;
+                            importedPostId?: string | null;
+                            socialAccountId: string;
+                            importId: string;
+                            platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+                            externalId: string;
+                            externalParentId?: string | null;
+                            externalPostId?: string | null;
+                            authorName?: string | null;
+                            authorExternalId?: string | null;
+                            authorProfileUrl?: string | null;
+                            authorAvatarUrl?: string | null;
+                            text?: string | null;
+                            likesCount: number;
+                            repliesCount: number;
+                            platformData?: {
+                                canDelete?: boolean | null;
+                                canHide?: boolean | null;
+                                canLike?: boolean | null;
+                                canModerate?: boolean | null;
+                                hidden?: boolean | null;
+                                likedByMe?: boolean | null;
+                                likedByAutomation?: boolean | null;
+                                reactionsCount?: number | null;
+                                reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+                                owner?: boolean | null;
+                                hideStatus?: string | null;
+                                moderationStatus?: string | null;
+                                approvalStatus?: string | null;
+                                status?: string | null;
+                                attachmentType?: string | null;
+                                attachmentUrl?: string | null;
+                                cid?: string | null;
+                                origin?: 'platform' | 'bundle' | null;
+                                source?: string | null;
+                                mediaProductType?: string | null;
+                                bundleCommentId?: string | null;
+                                displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+                                disabledReason?: string | null;
+                                [key: string]: (unknown | boolean | number | string | null) | undefined;
+                            };
+                            publishedAt?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        } | null;
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    }>;
+                    total?: number;
+                    nextCursor?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automation-executions/{id}': {
+        get: {
+            req: AutomationGetExecutionData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    flowId: string;
+                    flowVersionId: string;
+                    triggerId?: string | null;
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    conversationId?: string | null;
+                    conversationMessageId?: string | null;
+                    fetchedCommentId?: string | null;
+                    senderExternalId?: string | null;
+                    currentStepId?: string | null;
+                    status: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELED' | 'SKIPPED';
+                    idempotencyKey: string;
+                    input?: {
+                        type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+                        platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+                        socialAccountId?: string | null;
+                        postId?: string | null;
+                        conversationId?: string | null;
+                        conversationMessageId?: string | null;
+                        fetchedCommentId?: string | null;
+                        senderExternalId?: string | null;
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        payload?: string | null;
+                        [key: string]: (unknown | string | null) | undefined;
+                    };
+                    output?: {
+                        [key: string]: (unknown | null) | undefined;
+                    };
+                    error?: {
+                        code?: string | null;
+                        message?: string | null;
+                        retryable?: boolean | null;
+                        [key: string]: (unknown | string | boolean | null) | undefined;
+                    } | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    flow?: {
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        name: string;
+                        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                        createdByUserId?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        draftVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                        publishedVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                    };
+                    flowVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    steps?: Array<{
+                        id: string;
+                        executionId: string;
+                        stepId?: string | null;
+                        status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';
+                        attemptCount: number;
+                        input?: {
+                            type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+                            platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+                            socialAccountId?: string | null;
+                            postId?: string | null;
+                            conversationId?: string | null;
+                            conversationMessageId?: string | null;
+                            fetchedCommentId?: string | null;
+                            senderExternalId?: string | null;
+                            externalMessageId?: string | null;
+                            text?: string | null;
+                            payload?: string | null;
+                            [key: string]: (unknown | string | null) | undefined;
+                        };
+                        output?: {
+                            [key: string]: (unknown | null) | undefined;
+                        };
+                        error?: {
+                            code?: string | null;
+                            message?: string | null;
+                            retryable?: boolean | null;
+                            [key: string]: (unknown | string | boolean | null) | undefined;
+                        } | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                    }>;
+                    conversation?: {
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        externalConversationId?: string | null;
+                        externalParticipantId: string;
+                        participantUsername?: string | null;
+                        participantDisplayName?: string | null;
+                        participantAvatarUrl?: string | null;
+                        status: 'OPEN' | 'ARCHIVED';
+                        lastMessageAt?: string | null;
+                        lastActivityAt: string | null;
+                        lastMessagePreview?: string | null;
+                        lastReadAt?: string | null;
+                        unreadCount: number;
+                        platformSeenAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            canReply?: boolean | null;
+                            lastInboundAt?: string | null;
+                            providerStateSync?: {
+                                action: 'ARCHIVE' | 'OPEN';
+                                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                                reason?: string | null;
+                                error?: string | null;
+                                syncedAt?: string | null;
+                            } | null;
+                        };
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    } | null;
+                    conversationMessage?: {
+                        id: string;
+                        conversationId: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        direction: 'INBOUND' | 'OUTBOUND';
+                        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+                        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        attachments?: Array<{
+                            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                            url?: string | null;
+                            externalId?: string | null;
+                            mimeType?: string | null;
+                            name?: string | null;
+                            captionTrackUrl?: string | null;
+                            captionLanguage?: string | null;
+                            captionLabel?: string | null;
+                        }>;
+                        sentAt?: string | null;
+                        failedAt?: string | null;
+                        error?: string | null;
+                        seenAt?: string | null;
+                        replyTo?: {
+                            externalMessageId?: string | null;
+                            isSelfReply?: boolean | null;
+                            messageId?: string | null;
+                        } | null;
+                        privateReplyContext?: {
+                            fetchedCommentId: string;
+                            externalCommentId?: string | null;
+                            text?: string | null;
+                            authorName?: string | null;
+                            authorAvatarUrl?: string | null;
+                            publishedAt?: string | null;
+                            postId?: string | null;
+                            externalPostId?: string | null;
+                            postPermalink?: string | null;
+                            postThumbnailUrl?: string | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            replyTo?: {
+                                externalMessageId?: string | null;
+                                isSelfReply?: boolean | null;
+                            } | null;
+                            reactions?: Array<{
+                                senderId: string;
+                                reaction?: string | null;
+                                emoji?: string | null;
+                                reactedAt?: string | null;
+                            }>;
+                            quickReplies?: Array<{
+                                id?: string;
+                                label: string;
+                                payload: string;
+                            }>;
+                            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                            carousel?: {
+                                cards: Array<{
+                                    id?: string;
+                                    title: string;
+                                    subtitle?: string | null;
+                                    imageUrl?: string | null;
+                                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                }>;
+                            } | null;
+                            isEcho?: boolean | null;
+                            isEdited?: boolean | null;
+                            editedAt?: string | null;
+                            isPostback?: boolean | null;
+                            postbackPayload?: string | null;
+                            isUnsent?: boolean | null;
+                            unsentAt?: string | null;
+                        };
+                    } | null;
+                    fetchedComment?: {
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        postId?: string | null;
+                        importedPostId?: string | null;
+                        socialAccountId: string;
+                        importId: string;
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+                        externalId: string;
+                        externalParentId?: string | null;
+                        externalPostId?: string | null;
+                        authorName?: string | null;
+                        authorExternalId?: string | null;
+                        authorProfileUrl?: string | null;
+                        authorAvatarUrl?: string | null;
+                        text?: string | null;
+                        likesCount: number;
+                        repliesCount: number;
+                        platformData?: {
+                            canDelete?: boolean | null;
+                            canHide?: boolean | null;
+                            canLike?: boolean | null;
+                            canModerate?: boolean | null;
+                            hidden?: boolean | null;
+                            likedByMe?: boolean | null;
+                            likedByAutomation?: boolean | null;
+                            reactionsCount?: number | null;
+                            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+                            owner?: boolean | null;
+                            hideStatus?: string | null;
+                            moderationStatus?: string | null;
+                            approvalStatus?: string | null;
+                            status?: string | null;
+                            attachmentType?: string | null;
+                            attachmentUrl?: string | null;
+                            cid?: string | null;
+                            origin?: 'platform' | 'bundle' | null;
+                            source?: string | null;
+                            mediaProductType?: string | null;
+                            bundleCommentId?: string | null;
+                            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+                            disabledReason?: string | null;
+                            [key: string]: (unknown | boolean | number | string | null) | undefined;
+                        };
+                        publishedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    } | null;
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automations/{id}/test': {
+        post: {
+            req: AutomationTestFlowData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    flowId: string;
+                    flowVersionId: string;
+                    triggerId?: string | null;
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    conversationId?: string | null;
+                    conversationMessageId?: string | null;
+                    fetchedCommentId?: string | null;
+                    senderExternalId?: string | null;
+                    currentStepId?: string | null;
+                    status: 'QUEUED' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'CANCELED' | 'SKIPPED';
+                    idempotencyKey: string;
+                    input?: {
+                        type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+                        platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+                        socialAccountId?: string | null;
+                        postId?: string | null;
+                        conversationId?: string | null;
+                        conversationMessageId?: string | null;
+                        fetchedCommentId?: string | null;
+                        senderExternalId?: string | null;
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        payload?: string | null;
+                        [key: string]: (unknown | string | null) | undefined;
+                    };
+                    output?: {
+                        [key: string]: (unknown | null) | undefined;
+                    };
+                    error?: {
+                        code?: string | null;
+                        message?: string | null;
+                        retryable?: boolean | null;
+                        [key: string]: (unknown | string | boolean | null) | undefined;
+                    } | null;
+                    startedAt?: string | null;
+                    completedAt?: string | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    flow?: {
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        name: string;
+                        status: 'DRAFT' | 'ACTIVE' | 'PAUSED' | 'ARCHIVED';
+                        platformScope: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
+                        createdByUserId?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                        draftVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                        publishedVersion?: {
+                            id: string;
+                            flowId: string;
+                            version: number;
+                            status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                            definition: {
+                                trigger: {
+                                    keywords?: Array<(string)>;
+                                    matchMode?: 'ANY' | 'ALL';
+                                    caseSensitive?: boolean;
+                                    senderExternalIds?: Array<(string)>;
+                                    payloads?: Array<(string)>;
+                                    actionDelaySeconds?: number;
+                                    id?: string;
+                                    type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                    socialAccountId: string;
+                                    postId?: string | null;
+                                };
+                                steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                            };
+                            publishedAt?: string | null;
+                            publishedByUserId?: string | null;
+                            createdAt: string | null;
+                        };
+                    };
+                    flowVersion?: {
+                        id: string;
+                        flowId: string;
+                        version: number;
+                        status: 'DRAFT' | 'PUBLISHED' | 'RETIRED';
+                        definition: {
+                            trigger: {
+                                keywords?: Array<(string)>;
+                                matchMode?: 'ANY' | 'ALL';
+                                caseSensitive?: boolean;
+                                senderExternalIds?: Array<(string)>;
+                                payloads?: Array<(string)>;
+                                actionDelaySeconds?: number;
+                                id?: string;
+                                type: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST';
+                                platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                                socialAccountId: string;
+                                postId?: string | null;
+                            };
+                            steps: Array<({
+    id?: string;
+    type: 'CONDITION';
+    conditions: Array<{
+        id?: string;
+        field: 'TEXT' | 'PAYLOAD' | 'PLATFORM' | 'SENDER_ID';
+        operator: 'CONTAINS' | 'EQUALS' | 'MATCHES_ANY';
+        value: string;
+        caseSensitive?: boolean;
+    }>;
+} | {
+    id?: string;
+    type: 'SEND_MESSAGE';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PRIVATE_REPLY';
+    message: {
+        text?: string;
+        attachments?: Array<{
+            uploadId: string;
+            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE';
+        }>;
+        quickReplies?: Array<{
+            id: string;
+            label: string;
+            payload: string;
+        }>;
+        buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+        carousel?: {
+            cards: Array<{
+                id: string;
+                title: string;
+                subtitle?: string | null;
+                imageUploadId?: string | null;
+                buttons?: Array<({
+    id: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+            }>;
+        };
+    };
+} | {
+    id?: string;
+    type: 'SEND_PUBLIC_COMMENT_REPLY';
+    text: string;
+} | {
+    id?: string;
+    type: 'LIKE_COMMENT';
+} | {
+    id?: string;
+    type: 'ARCHIVE_CONVERSATION';
+} | {
+    id?: string;
+    type: 'OPEN_CONVERSATION';
+})>;
+                        };
+                        publishedAt?: string | null;
+                        publishedByUserId?: string | null;
+                        createdAt: string | null;
+                    };
+                    steps?: Array<{
+                        id: string;
+                        executionId: string;
+                        stepId?: string | null;
+                        status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';
+                        attemptCount: number;
+                        input?: {
+                            type?: 'COMMENT_CREATED' | 'DM_RECEIVED' | 'QUICK_REPLY_CLICKED' | 'BUTTON_CLICKED' | 'MANUAL_TEST' | null;
+                            platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK' | null;
+                            socialAccountId?: string | null;
+                            postId?: string | null;
+                            conversationId?: string | null;
+                            conversationMessageId?: string | null;
+                            fetchedCommentId?: string | null;
+                            senderExternalId?: string | null;
+                            externalMessageId?: string | null;
+                            text?: string | null;
+                            payload?: string | null;
+                            [key: string]: (unknown | string | null) | undefined;
+                        };
+                        output?: {
+                            [key: string]: (unknown | null) | undefined;
+                        };
+                        error?: {
+                            code?: string | null;
+                            message?: string | null;
+                            retryable?: boolean | null;
+                            [key: string]: (unknown | string | boolean | null) | undefined;
+                        } | null;
+                        startedAt?: string | null;
+                        completedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                    }>;
+                    conversation?: {
+                        id: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        externalConversationId?: string | null;
+                        externalParticipantId: string;
+                        participantUsername?: string | null;
+                        participantDisplayName?: string | null;
+                        participantAvatarUrl?: string | null;
+                        status: 'OPEN' | 'ARCHIVED';
+                        lastMessageAt?: string | null;
+                        lastActivityAt: string | null;
+                        lastMessagePreview?: string | null;
+                        lastReadAt?: string | null;
+                        unreadCount: number;
+                        platformSeenAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            canReply?: boolean | null;
+                            lastInboundAt?: string | null;
+                            providerStateSync?: {
+                                action: 'ARCHIVE' | 'OPEN';
+                                status: 'SYNCED' | 'SYNC_FAILED' | 'UNSUPPORTED';
+                                reason?: string | null;
+                                error?: string | null;
+                                syncedAt?: string | null;
+                            } | null;
+                        };
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    } | null;
+                    conversationMessage?: {
+                        id: string;
+                        conversationId: string;
+                        teamId: string;
+                        socialAccountId: string;
+                        /**
+                         * Messaging platform. Extensible: new platforms are added over time, so handle unknown values gracefully rather than switching exhaustively.
+                         */
+                        platform: 'INSTAGRAM' | 'FACEBOOK';
+                        direction: 'INBOUND' | 'OUTBOUND';
+                        status: 'PENDING' | 'SENT' | 'DELIVERED' | 'SEEN' | 'FAILED';
+                        source: 'PRIVATE_REPLY' | 'DM' | 'WEBHOOK' | 'API' | 'ECHO';
+                        externalMessageId?: string | null;
+                        text?: string | null;
+                        attachments?: Array<{
+                            type: 'IMAGE' | 'VIDEO' | 'AUDIO' | 'FILE' | 'POST' | 'UNKNOWN';
+                            url?: string | null;
+                            externalId?: string | null;
+                            mimeType?: string | null;
+                            name?: string | null;
+                            captionTrackUrl?: string | null;
+                            captionLanguage?: string | null;
+                            captionLabel?: string | null;
+                        }>;
+                        sentAt?: string | null;
+                        failedAt?: string | null;
+                        error?: string | null;
+                        seenAt?: string | null;
+                        replyTo?: {
+                            externalMessageId?: string | null;
+                            isSelfReply?: boolean | null;
+                            messageId?: string | null;
+                        } | null;
+                        privateReplyContext?: {
+                            fetchedCommentId: string;
+                            externalCommentId?: string | null;
+                            text?: string | null;
+                            authorName?: string | null;
+                            authorAvatarUrl?: string | null;
+                            publishedAt?: string | null;
+                            postId?: string | null;
+                            externalPostId?: string | null;
+                            postPermalink?: string | null;
+                            postThumbnailUrl?: string | null;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        platformData?: {
+                            replyTo?: {
+                                externalMessageId?: string | null;
+                                isSelfReply?: boolean | null;
+                            } | null;
+                            reactions?: Array<{
+                                senderId: string;
+                                reaction?: string | null;
+                                emoji?: string | null;
+                                reactedAt?: string | null;
+                            }>;
+                            quickReplies?: Array<{
+                                id?: string;
+                                label: string;
+                                payload: string;
+                            }>;
+                            buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                            carousel?: {
+                                cards: Array<{
+                                    id?: string;
+                                    title: string;
+                                    subtitle?: string | null;
+                                    imageUrl?: string | null;
+                                    buttons?: Array<({
+    id?: string;
+    type: 'POSTBACK';
+    label: string;
+    payload: string;
+} | {
+    id?: string;
+    type: 'URL';
+    label: string;
+    url: string;
+} | {
+    id?: string;
+    type: 'PHONE';
+    label: string;
+    phoneNumber: string;
+})>;
+                                }>;
+                            } | null;
+                            isEcho?: boolean | null;
+                            isEdited?: boolean | null;
+                            editedAt?: string | null;
+                            isPostback?: boolean | null;
+                            postbackPayload?: string | null;
+                            isUnsent?: boolean | null;
+                            unsentAt?: string | null;
+                        };
+                    } | null;
+                    fetchedComment?: {
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        postId?: string | null;
+                        importedPostId?: string | null;
+                        socialAccountId: string;
+                        importId: string;
+                        platform: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+                        externalId: string;
+                        externalParentId?: string | null;
+                        externalPostId?: string | null;
+                        authorName?: string | null;
+                        authorExternalId?: string | null;
+                        authorProfileUrl?: string | null;
+                        authorAvatarUrl?: string | null;
+                        text?: string | null;
+                        likesCount: number;
+                        repliesCount: number;
+                        platformData?: {
+                            canDelete?: boolean | null;
+                            canHide?: boolean | null;
+                            canLike?: boolean | null;
+                            canModerate?: boolean | null;
+                            hidden?: boolean | null;
+                            likedByMe?: boolean | null;
+                            likedByAutomation?: boolean | null;
+                            reactionsCount?: number | null;
+                            reactionType?: 'LIKE' | 'LOVE' | 'WOW' | 'HAHA' | 'SAD' | 'ANGRY' | null;
+                            owner?: boolean | null;
+                            hideStatus?: string | null;
+                            moderationStatus?: string | null;
+                            approvalStatus?: string | null;
+                            status?: string | null;
+                            attachmentType?: string | null;
+                            attachmentUrl?: string | null;
+                            cid?: string | null;
+                            origin?: 'platform' | 'bundle' | null;
+                            source?: string | null;
+                            mediaProductType?: string | null;
+                            bundleCommentId?: string | null;
+                            displayState?: 'active' | 'thread_deleted' | 'platform_missing' | null;
+                            disabledReason?: string | null;
+                            [key: string]: (unknown | boolean | number | string | null) | undefined;
+                        };
+                        publishedAt?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    } | null;
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automation-provider-settings': {
+        get: {
+            req: AutomationGetProviderSettingsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        teamId: string;
+                        organizationId?: string | null;
+                        platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                        socialAccountId: string;
+                        type: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+                        status: 'DRAFT' | 'SYNCED' | 'SYNC_FAILED' | 'DISABLED';
+                        config?: {
+    getStartedPayload?: string;
+    composerInputDisabled?: boolean;
+    items?: Array<({
+    title: string;
+    type: 'POSTBACK';
+    payload: string;
+    url?: string;
+} | {
+    title: string;
+    type: 'URL';
+    payload?: string;
+    url: string;
+})>;
+} | {
+    iceBreakers?: Array<{
+        question: string;
+        payload: string;
+    }>;
+};
+                        providerResponse?: {
+                            [key: string]: (unknown | null) | undefined;
+                        } | null;
+                        lastSyncedAt?: string | null;
+                        lastSyncError?: {
+                            code?: string | null;
+                            message?: string | null;
+                            retryable?: boolean | null;
+                            [key: string]: (unknown | string | boolean | null) | undefined;
+                        } | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        socialAccount?: {
+                            id: string;
+                            type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                            teamId: string;
+                            username?: string | null;
+                            displayName?: string | null;
+                            bio?: string | null;
+                            avatarUrl?: string | null;
+                            externalId?: string | null;
+                            providerPageId?: string | null;
+                            userUsername?: string | null;
+                            userDisplayName?: string | null;
+                            userEmail?: string | null;
+                            userId?: string | null;
+                            channels?: Array<{
+                                id: string;
+                                name?: string | null;
+                                username?: string | null;
+                                address?: string | null;
+                                avatarUrl?: string | null;
+                                webhook?: {
+                                    id?: string | null;
+                                    name?: string | null;
+                                    avatar?: string | null;
+                                    url?: string | null;
+                                } | null;
+                                metadata?: {
+                                    allowImages?: boolean | null;
+                                    allowVideos?: boolean | null;
+                                    allowGalleries?: boolean | null;
+                                    linkFlairEnabled?: boolean | null;
+                                    facebookPageId?: string | null;
+                                } | null;
+                            }> | null;
+                            mastodonServerId?: string | null;
+                            instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                            isTiktokBusinessAccount?: boolean | null;
+                            disconnectedCheckTryAt?: string | null;
+                            deleteOn?: string | null;
+                            messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                            messagingStatusUpdatedAt?: string | null;
+                            messagingLastError?: string | null;
+                            createdAt: string | null;
+                            updatedAt: string | null;
+                            deletedAt?: string | null;
+                        };
+                    }>;
+                    total: number;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automation-provider-settings/{socialAccountId}/{type}': {
+        put: {
+            req: AutomationUpsertProviderSettingData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    type: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+                    status: 'DRAFT' | 'SYNCED' | 'SYNC_FAILED' | 'DISABLED';
+                    config?: {
+    getStartedPayload?: string;
+    composerInputDisabled?: boolean;
+    items?: Array<({
+    title: string;
+    type: 'POSTBACK';
+    payload: string;
+    url?: string;
+} | {
+    title: string;
+    type: 'URL';
+    payload?: string;
+    url: string;
+})>;
+} | {
+    iceBreakers?: Array<{
+        question: string;
+        payload: string;
+    }>;
+};
+                    providerResponse?: {
+                        [key: string]: (unknown | null) | undefined;
+                    } | null;
+                    lastSyncedAt?: string | null;
+                    lastSyncError?: {
+                        code?: string | null;
+                        message?: string | null;
+                        retryable?: boolean | null;
+                        [key: string]: (unknown | string | boolean | null) | undefined;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automation-provider-settings/{id}/sync': {
+        post: {
+            req: AutomationSyncProviderSettingData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    id: string;
+                    teamId: string;
+                    organizationId?: string | null;
+                    platform: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                    socialAccountId: string;
+                    type: 'FACEBOOK_PERSISTENT_MENU' | 'INSTAGRAM_ICE_BREAKERS';
+                    status: 'DRAFT' | 'SYNCED' | 'SYNC_FAILED' | 'DISABLED';
+                    config?: {
+    getStartedPayload?: string;
+    composerInputDisabled?: boolean;
+    items?: Array<({
+    title: string;
+    type: 'POSTBACK';
+    payload: string;
+    url?: string;
+} | {
+    title: string;
+    type: 'URL';
+    payload?: string;
+    url: string;
+})>;
+} | {
+    iceBreakers?: Array<{
+        question: string;
+        payload: string;
+    }>;
+};
+                    providerResponse?: {
+                        [key: string]: (unknown | null) | undefined;
+                    } | null;
+                    lastSyncedAt?: string | null;
+                    lastSyncError?: {
+                        code?: string | null;
+                        message?: string | null;
+                        retryable?: boolean | null;
+                        [key: string]: (unknown | string | boolean | null) | undefined;
+                    } | null;
+                    createdAt: string | null;
+                    updatedAt: string | null;
+                    socialAccount?: {
+                        id: string;
+                        type: 'TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
+                        teamId: string;
+                        username?: string | null;
+                        displayName?: string | null;
+                        bio?: string | null;
+                        avatarUrl?: string | null;
+                        externalId?: string | null;
+                        providerPageId?: string | null;
+                        userUsername?: string | null;
+                        userDisplayName?: string | null;
+                        userEmail?: string | null;
+                        userId?: string | null;
+                        channels?: Array<{
+                            id: string;
+                            name?: string | null;
+                            username?: string | null;
+                            address?: string | null;
+                            avatarUrl?: string | null;
+                            webhook?: {
+                                id?: string | null;
+                                name?: string | null;
+                                avatar?: string | null;
+                                url?: string | null;
+                            } | null;
+                            metadata?: {
+                                allowImages?: boolean | null;
+                                allowVideos?: boolean | null;
+                                allowGalleries?: boolean | null;
+                                linkFlairEnabled?: boolean | null;
+                                facebookPageId?: string | null;
+                            } | null;
+                        }> | null;
+                        mastodonServerId?: string | null;
+                        instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
+                        isTiktokBusinessAccount?: boolean | null;
+                        disconnectedCheckTryAt?: string | null;
+                        deleteOn?: string | null;
+                        messagingStatus?: 'DISABLED' | 'ENABLED' | 'DISABLE_PENDING';
+                        messagingStatusUpdatedAt?: string | null;
+                        messagingLastError?: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                        deletedAt?: string | null;
+                    };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/automation-rich-messages/conversations/{conversationId}': {
+        post: {
+            req: AutomationSendRichMessageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    conversationId: string;
+                    messageId?: string | null;
+                    externalMessageId?: string | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
                     statusCode?: number | null;
                     message: string;
                 };
@@ -34858,6 +52457,138 @@ export type $OpenApiTs = {
     '/api/v1/misc/twitter/comment': {
         delete: {
             req: MiscTwitterDeleteCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/twitter/retweet': {
+        post: {
+            req: MiscTwitterRetweetData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscTwitterUnretweetData;
             res: {
                 /**
                  * 200

@@ -711,7 +711,6 @@ export type TeamCreateTeamData = {
     requestBody?: {
         name: string;
         avatarUrl?: string | null;
-        copyTeamId?: string | null;
     };
 };
 

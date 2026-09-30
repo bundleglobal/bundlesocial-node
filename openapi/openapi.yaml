@@ -3893,9 +3893,6 @@ paths:
                 avatarUrl:
                   type: string
                   nullable: true
-                copyTeamId:
-                  type: string
-                  nullable: true
               required:
                 - name
       responses:

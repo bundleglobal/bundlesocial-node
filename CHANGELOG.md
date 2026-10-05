@@ -1,3 +1,10 @@
+## [2.65.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.65.0...v2.65.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* remove copyTeamId and update descriptions ([b51c9d8](https://github.com/bundleglobal/bundlesocial-node/commit/b51c9d8a2b249cf2dce050bba9510d9a8417c9d7))
+
 # [2.65.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.64.2...v2.65.0) (2026-09-26)
 
 

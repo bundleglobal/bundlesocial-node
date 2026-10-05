@@ -711,7 +711,6 @@ export type TeamCreateTeamData = {
     requestBody?: {
         name: string;
         avatarUrl?: string | null;
-        copyTeamId?: string | null;
     };
 };
 
@@ -750,7 +749,7 @@ export type SocialAccountConnectData = {
          */
         tiktokForceLogin?: boolean;
         /**
-         * Optional. Instagram only. When true, direct Instagram connections on phones will try to force browser login to avoid the Instagram iOS app deep-link bug.
+         * Optional. Instagram direct OAuth only. When true, Instagram asks for a fresh login instead of reusing the account logged in on that browser. In the hosted portal it applies only on iPhone/iPad. Staying in the browser on iOS is the default for every connection and needs no flag.
          */
         forceBrowserOAuth?: boolean;
         /**
@@ -1029,7 +1028,7 @@ export type SocialAccountCreatePortalLinkData = {
          */
         tiktokForceLogin?: boolean;
         /**
-         * Optional. Instagram only. When true, direct Instagram connections on phones will try to force browser login to avoid the Instagram iOS app deep-link bug.
+         * Optional. Instagram direct OAuth only. When true, Instagram asks for a fresh login instead of reusing the account logged in on that browser. In the hosted portal it applies only on iPhone/iPad. Staying in the browser on iOS is the default for every connection and needs no flag.
          */
         forceBrowserOAuth?: boolean;
         /**

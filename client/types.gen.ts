@@ -21685,6 +21685,44 @@ export type MiscInstagramDeleteCommentResponse = {
     success: boolean;
 };
 
+export type MiscFacebookSearchPagesData = {
+    limit?: number;
+    /**
+     * Free-text query used to search Facebook Pages
+     */
+    q: string;
+    teamId: string;
+};
+
+export type MiscFacebookSearchPagesResponse = {
+    items: Array<{
+        /**
+         * Facebook Page ID to use in a Page mention token
+         */
+        pageId: string;
+        /**
+         * Facebook Page name
+         */
+        name: string;
+        /**
+         * Public Facebook Page link
+         */
+        link?: string | null;
+        /**
+         * Physical location metadata when the Page represents a place
+         */
+        location?: {
+            city?: string | null;
+            country?: string | null;
+            latitude?: number | null;
+            longitude?: number | null;
+            state?: string | null;
+            street?: string | null;
+            zip?: string | null;
+        } | null;
+    }>;
+};
+
 export type MiscFacebookGetTextFormatPresetsResponse = {
     presets: Array<{
         /**
@@ -50574,6 +50612,98 @@ export type $OpenApiTs = {
                  */
                 200: {
                     success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/facebook/pages': {
+        get: {
+            req: MiscFacebookSearchPagesData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        /**
+                         * Facebook Page ID to use in a Page mention token
+                         */
+                        pageId: string;
+                        /**
+                         * Facebook Page name
+                         */
+                        name: string;
+                        /**
+                         * Public Facebook Page link
+                         */
+                        link?: string | null;
+                        /**
+                         * Physical location metadata when the Page represents a place
+                         */
+                        location?: {
+                            city?: string | null;
+                            country?: string | null;
+                            latitude?: number | null;
+                            longitude?: number | null;
+                            state?: string | null;
+                            street?: string | null;
+                            zip?: string | null;
+                        } | null;
+                    }>;
                 };
                 /**
                  * 400

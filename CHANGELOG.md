@@ -1,3 +1,10 @@
+# [2.66.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.65.1...v2.66.0) (2026-10-06)
+
+
+### Features
+
+* facebook page search ([c231f0b](https://github.com/bundleglobal/bundlesocial-node/commit/c231f0bb598aef69e1247f94cf2cee84aa517f84))
+
 ## [2.65.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.65.0...v2.65.1) (2026-10-05)
 
 

@@ -216,6 +216,9 @@ export type OrganizationGetOrganizationResponse = {
             valid: boolean;
         };
     } | null;
+    /**
+     * Deprecated: will be removed on 2026-11-15. List teams with the paginated GET /api/v1/team instead.
+     */
     teams: Array<{
         id: string;
         name: string;
@@ -23040,6 +23043,9 @@ export type $OpenApiTs = {
                             valid: boolean;
                         };
                     } | null;
+                    /**
+                     * Deprecated: will be removed on 2026-11-15. List teams with the paginated GET /api/v1/team instead.
+                     */
                     teams: Array<{
                         id: string;
                         name: string;

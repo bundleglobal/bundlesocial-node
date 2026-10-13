@@ -413,9 +413,9 @@ paths:
   /api/v1/organization/:
     get:
       description: >-
-        Retrieve your organization's details, plan, and the teams it contains.
-        Use this as the entry point for discovering the team IDs you need for
-        other endpoints.
+        Retrieve your organization's details and plan. The `teams` field is
+        deprecated and will be removed on 2026-11-15: to discover team IDs, use
+        the paginated GET /api/v1/team.
       summary: Get organization
       tags: &ref_0
         - organization
@@ -924,6 +924,9 @@ paths:
                         - createdById
                         - createdAt
                         - updatedAt
+                    description: >-
+                      Deprecated: will be removed on 2026-11-15. List teams with
+                      the paginated GET /api/v1/team instead.
                 required:
                   - id
                   - createdById

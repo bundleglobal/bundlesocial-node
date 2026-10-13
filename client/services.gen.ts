@@ -36,7 +36,7 @@ export class OrganizationService {
     
     /**
      * Get organization
-     * Retrieve your organization's details, plan, and the teams it contains. Use this as the entry point for discovering the team IDs you need for other endpoints.
+     * Retrieve your organization's details and plan. The `teams` field is deprecated and will be removed on 2026-11-15: to discover team IDs, use the paginated GET /api/v1/team.
      * @returns unknown 200
      * @throws ApiError
      */

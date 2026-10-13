@@ -1,3 +1,10 @@
+# [2.67.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.66.1...v2.67.0) (2026-10-13)
+
+
+### Features
+
+* add onlyLatest option to post history import ([f4c7336](https://github.com/bundleglobal/bundlesocial-node/commit/f4c733615530480e258dce4a7087d3cba4dc551f))
+
 ## [2.66.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.66.0...v2.66.1) (2026-10-13)
 
 

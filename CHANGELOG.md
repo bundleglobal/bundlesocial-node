@@ -1,3 +1,10 @@
+## [2.66.1](https://github.com/bundleglobal/bundlesocial-node/compare/v2.66.0...v2.66.1) (2026-10-13)
+
+
+### Bug Fixes
+
+* mark organization teams as deprecated ([b7ce597](https://github.com/bundleglobal/bundlesocial-node/commit/b7ce597daf60e952ab51947a2dbc88808ae11eb5))
+
 # [2.66.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.65.1...v2.66.0) (2026-10-06)
 
 

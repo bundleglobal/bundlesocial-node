@@ -50,7 +50,6 @@ describe('Organization', () => {
 
           apiAccess: expect.any(Boolean),
 
-          teams: expect.arrayContaining([]),
           createdBy: expect.any(Object),
         });
       } catch (error) {
@@ -82,6 +81,25 @@ describe('Team', () => {
           createdBy: expect.any(Object),
           bots: expect.arrayContaining([]),
           socialAccounts: expect.arrayContaining([]),
+        });
+      } catch (error) {
+        if (error instanceof ApiError) {
+          console.error(error);
+        }
+        throw error;
+      }
+    });
+  });
+
+  describe('teamGetList', () => {
+    it('should return a paginated list of teams', async () => {
+      expect.assertions(1);
+      try {
+        const response = await bundlesocial.team.teamGetList({ offset: 0, limit: 10 });
+
+        expect(response).toMatchObject({
+          items: expect.arrayContaining([expect.objectContaining({ id: expect.any(String), name: expect.any(String) })]),
+          total: expect.any(Number),
         });
       } catch (error) {
         if (error instanceof ApiError) {

@@ -22463,6 +22463,7 @@ export type PostImportCreateData = {
         count: number;
         withAnalytics?: boolean;
         importCarousels?: boolean;
+        onlyLatest?: boolean;
         surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL';
         mediaType?: 'VIDEO' | 'IMAGE';
     };
@@ -22475,6 +22476,7 @@ export type PostImportCreateResponse = {
     requestedCount: number;
     withAnalytics: boolean;
     importCarousels: boolean;
+    onlyLatest: boolean;
     surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
     mediaType?: 'VIDEO' | 'IMAGE' | null;
     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
@@ -22502,6 +22504,7 @@ export type PostImportGetStatusResponse = {
         requestedCount: number;
         withAnalytics: boolean;
         importCarousels: boolean;
+        onlyLatest: boolean;
         surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
         mediaType?: 'VIDEO' | 'IMAGE' | null;
         status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
@@ -22528,6 +22531,7 @@ export type PostImportGetByIdResponse = {
     requestedCount: number;
     withAnalytics: boolean;
     importCarousels: boolean;
+    onlyLatest: boolean;
     surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
     mediaType?: 'VIDEO' | 'IMAGE' | null;
     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
@@ -22625,6 +22629,7 @@ export type PostImportRetryImportResponse = {
     requestedCount: number;
     withAnalytics: boolean;
     importCarousels: boolean;
+    onlyLatest: boolean;
     surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
     mediaType?: 'VIDEO' | 'IMAGE' | null;
     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
@@ -53071,6 +53076,7 @@ export type $OpenApiTs = {
                     requestedCount: number;
                     withAnalytics: boolean;
                     importCarousels: boolean;
+                    onlyLatest: boolean;
                     surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
                     mediaType?: 'VIDEO' | 'IMAGE' | null;
                     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
@@ -53161,6 +53167,7 @@ export type $OpenApiTs = {
                         requestedCount: number;
                         withAnalytics: boolean;
                         importCarousels: boolean;
+                        onlyLatest: boolean;
                         surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
                         mediaType?: 'VIDEO' | 'IMAGE' | null;
                         status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
@@ -53246,6 +53253,7 @@ export type $OpenApiTs = {
                     requestedCount: number;
                     withAnalytics: boolean;
                     importCarousels: boolean;
+                    onlyLatest: boolean;
                     surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
                     mediaType?: 'VIDEO' | 'IMAGE' | null;
                     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';
@@ -53503,6 +53511,7 @@ export type $OpenApiTs = {
                     requestedCount: number;
                     withAnalytics: boolean;
                     importCarousels: boolean;
+                    onlyLatest: boolean;
                     surface?: 'PROFILE_GRID' | 'NON_GRID' | 'STORY' | 'ALL' | null;
                     mediaType?: 'VIDEO' | 'IMAGE' | null;
                     status: 'PENDING' | 'FETCHING_POSTS' | 'FETCHING_ANALYTICS' | 'COMPLETED' | 'FAILED' | 'RATE_LIMITED';

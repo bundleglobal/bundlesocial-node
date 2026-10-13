@@ -97832,6 +97832,9 @@ paths:
                 importCarousels:
                   default: false
                   type: boolean
+                onlyLatest:
+                  default: false
+                  type: boolean
                 surface:
                   default: ALL
                   type: string
@@ -97868,6 +97871,8 @@ paths:
                   withAnalytics:
                     type: boolean
                   importCarousels:
+                    type: boolean
+                  onlyLatest:
                     type: boolean
                   surface:
                     type: string
@@ -97930,6 +97935,7 @@ paths:
                   - requestedCount
                   - withAnalytics
                   - importCarousels
+                  - onlyLatest
                   - status
                   - postsImported
                   - analyticsImported
@@ -98138,6 +98144,8 @@ paths:
                           type: boolean
                         importCarousels:
                           type: boolean
+                        onlyLatest:
+                          type: boolean
                         surface:
                           type: string
                           enum:
@@ -98199,6 +98207,7 @@ paths:
                         - requestedCount
                         - withAnalytics
                         - importCarousels
+                        - onlyLatest
                         - status
                         - postsImported
                         - analyticsImported
@@ -98375,6 +98384,8 @@ paths:
                     type: boolean
                   importCarousels:
                     type: boolean
+                  onlyLatest:
+                    type: boolean
                   surface:
                     type: string
                     enum:
@@ -98436,6 +98447,7 @@ paths:
                   - requestedCount
                   - withAnalytics
                   - importCarousels
+                  - onlyLatest
                   - status
                   - postsImported
                   - analyticsImported
@@ -99129,6 +99141,8 @@ paths:
                     type: boolean
                   importCarousels:
                     type: boolean
+                  onlyLatest:
+                    type: boolean
                   surface:
                     type: string
                     enum:
@@ -99190,6 +99204,7 @@ paths:
                   - requestedCount
                   - withAnalytics
                   - importCarousels
+                  - onlyLatest
                   - status
                   - postsImported
                   - analyticsImported

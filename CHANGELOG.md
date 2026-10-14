@@ -1,3 +1,10 @@
+# [2.68.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.67.0...v2.68.0) (2026-10-14)
+
+
+### Features
+
+* instagram reconnect ([c8bfc9a](https://github.com/bundleglobal/bundlesocial-node/commit/c8bfc9aa80070f0e35fe7f6339843d013edbb803))
+
 # [2.67.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.66.1...v2.67.0) (2026-10-13)
 
 

@@ -767,6 +767,10 @@ export type SocialAccountConnectData = {
          * Facebook and Instagram: include the Meta messaging (DM) scopes. Ignored unless messaging is enabled for your organization.
          */
         withMessagingScope?: boolean;
+        /**
+         * Re-authorize the account already connected to this team in place: tokens and permissions are refreshed while the account, its posts and scheduled destinations stay. The user must log in with the same account. Currently supported for Instagram connected with instagramConnectionMethod INSTAGRAM.
+         */
+        reconnect?: boolean;
     };
 };
 

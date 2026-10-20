@@ -1,6 +1,9 @@
 name: generate
 on:
   workflow_dispatch:
+  # Daily catch-up with the live API; a PR is opened only when the spec changed.
+  schedule:
+    - cron: '0 6 * * *'
   repository_dispatch:
     types: [generate]
 jobs:
@@ -14,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: .nvmrc
       - name: Install packages
         run: npm install
       - name: Generate client
@@ -22,18 +25,17 @@ jobs:
       - name: Set output variables
         id: vars
         run: |
-          echo ::set-output name=branch::generate-client-$(date +'%Y-%m-%d')
-          echo ::set-output name=commit_message::feat: generate client $(date +'%Y-%m-%d')
-          echo ::set-output name=title::Generated client $(date +'%Y-%m-%d')
-          echo ::set-output name=body::Generated client $(date +'%Y-%m-%d')
+          echo "commit_message=feat: generate client $(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "title=Generated client $(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "body=Generated client $(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: ${{ steps.vars.outputs.commit_message }}
           title: ${{ steps.vars.outputs.title }}
           body: ${{ steps.vars.outputs.body }}
-          branch: ${{ steps.vars.outputs.branch }}
+          branch: generate-client
           base: main
           labels: generate-client
           delete-branch: true

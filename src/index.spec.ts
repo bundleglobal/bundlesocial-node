@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { describe, expect, it } from 'vitest';
 import { ApiError, Bundlesocial, type PostCreateResponse, type UploadGetResponse } from '../dist';
 import 'dotenv/config';
 
@@ -162,7 +163,7 @@ describe('Social Account', () => {
 });
 
 
-type UploadMatcher = Partial<Record<keyof UploadGetResponse, jest.Expect | string | number>>;
+type UploadMatcher = Partial<Record<keyof UploadGetResponse, ReturnType<typeof expect.any> | string | number>>;
 const uploadMatcher: UploadMatcher = {
   id: expect.any(String),
   teamId: expect.any(String),
@@ -350,7 +351,7 @@ describe('Uploads', () => {
   });
 });
 
-type PostMatcher = Partial<Record<keyof PostCreateResponse, jest.Expect | string | number>>;
+type PostMatcher = Partial<Record<keyof PostCreateResponse, ReturnType<typeof expect.any> | string | number>>;
 const postMatcher: PostMatcher = {
   id: expect.any(String),
   teamId: expect.any(String),

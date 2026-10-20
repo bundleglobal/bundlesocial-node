@@ -18,23 +18,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+      # clean-install leaves the lockfile alone, so a PR only opens when the client itself changed.
       - name: Install packages
-        run: npm install
+        run: npm clean-install
       - name: Generate client
         run: npm run generate
-      - name: Set output variables
-        id: vars
-        run: |
-          echo "commit_message=feat: generate client $(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
-          echo "title=Generated client $(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
-          echo "body=Generated client $(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: ${{ steps.vars.outputs.commit_message }}
-          title: ${{ steps.vars.outputs.title }}
-          body: ${{ steps.vars.outputs.body }}
+          # One PR is kept up to date on the same branch, so the title carries no date.
+          # The feat: prefix makes semantic-release publish a minor version once it is merged.
+          commit-message: "feat: generate client from the bundle.social API"
+          title: "feat: generate client from the bundle.social API"
+          body: Regenerated from https://api.bundle.social/swagger-json.
           branch: generate-client
           base: main
           labels: generate-client

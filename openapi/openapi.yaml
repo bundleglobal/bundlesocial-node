@@ -23045,46 +23045,6 @@ paths:
                           type: string
                           format: date-time
                           nullable: true
-                        firstComment:
-                          type: object
-                          properties:
-                            TIKTOK:
-                              type: string
-                              nullable: true
-                            YOUTUBE:
-                              type: string
-                              nullable: true
-                            INSTAGRAM:
-                              type: string
-                              nullable: true
-                            FACEBOOK:
-                              type: string
-                              nullable: true
-                            TWITTER:
-                              type: string
-                              nullable: true
-                            THREADS:
-                              type: string
-                              nullable: true
-                            LINKEDIN:
-                              type: string
-                              nullable: true
-                            REDDIT:
-                              type: string
-                              nullable: true
-                            MASTODON:
-                              type: string
-                              nullable: true
-                            DISCORD:
-                              type: string
-                              nullable: true
-                            SLACK:
-                              type: string
-                              nullable: true
-                            BLUESKY:
-                              type: string
-                              nullable: true
-                          nullable: true
                         uploads:
                           type: array
                           items:

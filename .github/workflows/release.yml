@@ -10,6 +10,12 @@ permissions:
   id-token: write
   contents: read
 
+# Two pushes close together finish their tests together; the release that starts second waits and
+# then finds nothing left to release, instead of racing the first one to push the release commit.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     if: github.event.workflow_run.conclusion == 'success'

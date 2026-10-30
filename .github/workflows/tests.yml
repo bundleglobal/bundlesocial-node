@@ -6,10 +6,22 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     env:
       BUNDLE_SOCIAL_API_KEY: ${{ secrets.BUNDLE_SOCIAL_API_KEY }}
       BUNDLE_SOCIAL_TEAM_ID: ${{ secrets.BUNDLE_SOCIAL_TEAM_ID }}
     steps:
+      # Checks of a dispatched run are not shown on the pull request, a commit status is.
+      - name: Report pending status
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh api repos/${{ github.repository }}/statuses/${{ github.sha }}
+          -f state=pending -f context=tests
+          -f target_url=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Node.js
@@ -22,3 +34,11 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test
+      - name: Report status
+        if: always() && github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh api repos/${{ github.repository }}/statuses/${{ github.sha }}
+          -f state=${{ job.status == 'success' && 'success' || 'failure' }} -f context=tests
+          -f target_url=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

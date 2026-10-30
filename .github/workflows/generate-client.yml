@@ -50,7 +50,8 @@ jobs:
           base: main
           labels: ${{ steps.changes.outputs.breaking == 'true' && 'generate-client,breaking-change' || 'generate-client' }}
           delete-branch: true
-      # Pushes made with GITHUB_TOKEN start no workflows; a dispatch is the exception, and its checks show on the PR.
+      # Pushes made with GITHUB_TOKEN start no workflows; a dispatch is the exception.
+      # tests.yml reports the result on the PR as a commit status.
       - name: Run tests on the pull request
         if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
         env:

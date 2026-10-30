@@ -1,14 +1,19 @@
 name: generate
 on:
   workflow_dispatch:
-  # Daily catch-up with the live API; a PR is opened only when the spec changed.
-  schedule:
-    - cron: '0 6 * * *'
-  repository_dispatch:
-    types: [generate]
+    inputs:
+      title:
+        description: 'Release note for this change, for example "feat: DMs beta messaging". Empty = written from the API diff.'
+        required: false
+        type: string
 jobs:
   generate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      # Starts the tests on the generated branch, see the last step.
+      actions: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,16 +28,31 @@ jobs:
         run: npm clean-install
       - name: Generate client
         run: npm run generate
+      # The commit message lists what changed in the API, so the release notes say what users get.
+      - name: Describe API changes
+        id: changes
+        env:
+          # Lets the script see whether the generated PR is still open.
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ inputs.title }}
+        run: >-
+          node scripts/describe-api-changes.mjs --spec openapi/openapi.json --generated client
+          --branch generate-client --title "$TITLE"
       - name: Create pull request
+        id: pr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # One PR is kept up to date on the same branch, so the title carries no date.
-          # The feat: prefix makes semantic-release publish a minor version once it is merged.
-          commit-message: "feat: generate client from the bundle.social API"
-          title: "feat: generate client from the bundle.social API"
-          body: Regenerated from https://api.bundle.social/swagger-json.
+          commit-message: ${{ steps.changes.outputs.commit-message }}
+          title: ${{ steps.changes.outputs.title }}
+          body: ${{ steps.changes.outputs.body }}
           branch: generate-client
           base: main
-          labels: generate-client
+          labels: ${{ steps.changes.outputs.breaking == 'true' && 'generate-client,breaking-change' || 'generate-client' }}
           delete-branch: true
+      # Pushes made with GITHUB_TOKEN start no workflows; a dispatch is the exception, and its checks show on the PR.
+      - name: Run tests on the pull request
+        if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run tests.yml --repo ${{ github.repository }} --ref generate-client

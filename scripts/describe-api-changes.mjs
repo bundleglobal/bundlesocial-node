@@ -335,12 +335,14 @@ function main() {
 
 	const groups = describeChanges(oldSpec, newSpec);
 	const { type, subject, breaking } = buildMessage(groups, generatedChanged);
-	const manualTitle = args.title || previousManualTitle(git, args.branch, openPullRequestCount);
-	if (manualTitle && !CONVENTIONAL_TITLE.test(manualTitle)) {
+	const requestedTitle = args.title || previousManualTitle(git, args.branch, openPullRequestCount);
+	if (requestedTitle && !CONVENTIONAL_TITLE.test(requestedTitle)) {
 		throw new Error(
-			`"${manualTitle}" is not a conventional commit title, for example "feat: add DMs"`,
+			`"${requestedTitle}" is not a conventional commit title, for example "feat: add DMs"`,
 		);
 	}
+	// The same title is often given to every generated repo; one whose code did not change gets no release.
+	const manualTitle = generatedChanged ? requestedTitle : '';
 	const title = manualTitle || `${type}: ${subject}`;
 	const changes = formatChanges(groups);
 	// The commit body never says "BREAKING CHANGE", so a major release is always a deliberate edit.
@@ -351,7 +353,7 @@ function main() {
 		`Regenerated from https://api.bundle.social/swagger-json.`,
 		generatedChanged
 			? ''
-			: 'The generated code did not change, so merging this publishes no release.',
+			: `The generated code did not change, so merging this publishes no release${requestedTitle ? ` and the title "${requestedTitle}" was not used` : ''}.`,
 		// Kept off the start of a line: the commit parser reads a line starting with the keyword as a note.
 		breaking
 			? '> [!WARNING]\n> Some changes can break existing clients. To publish them as a major version, add a footer line with BREAKING CHANGE and a colon to the commit message when merging.'

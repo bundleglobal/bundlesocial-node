@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetCommentsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetDailyLimitsUsageData, OrganizationGetDailyLimitsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountEnableMessagingData, SocialAccountEnableMessagingResponse, SocialAccountDisableMessagingData, SocialAccountDisableMessagingResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, UploadInitMultipartUploadData, UploadInitMultipartUploadResponse, UploadSignMultipartPartsData, UploadSignMultipartPartsResponse, UploadCompleteMultipartUploadData, UploadCompleteMultipartUploadResponse, UploadAbortMultipartUploadData, UploadAbortMultipartUploadResponse, PostGetReconnectSocialAccountCandidatesData, PostGetReconnectSocialAccountCandidatesResponse, PostReconnectSocialAccountData, PostReconnectSocialAccountResponse, PostGetByReferenceKeyData, PostGetByReferenceKeyResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, CreditGetCreditBalanceResponse, CreditQuoteBillableUsageData, CreditQuoteBillableUsageResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentImportCreateData, CommentImportCreateResponse, CommentImportGetListData, CommentImportGetListResponse, CommentImportGetFetchedCommentsData, CommentImportGetFetchedCommentsResponse, CommentImportActionFetchedCommentData, CommentImportActionFetchedCommentResponse, CommentImportGetByIdData, CommentImportGetByIdResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, CommentRetryData, CommentRetryResponse, ConversationGetListData, ConversationGetListResponse, ConversationGetData, ConversationGetResponse, ConversationUpdateData, ConversationUpdateResponse, ConversationGetMessagesData, ConversationGetMessagesResponse, ConversationSendMessageData, ConversationSendMessageResponse, ConversationReactMessageData, ConversationReactMessageResponse, ConversationMarkReadData, ConversationMarkReadResponse, ConversationPrivateReplyData, ConversationPrivateReplyResponse, ConversationArchiveData, ConversationArchiveResponse, ConversationOpenData, ConversationOpenResponse, AutomationGetFlowsData, AutomationGetFlowsResponse, AutomationCreateFlowData, AutomationCreateFlowResponse, AutomationCopyFlowsData, AutomationCopyFlowsResponse, AutomationGetFlowData, AutomationGetFlowResponse, AutomationUpdateFlowData, AutomationUpdateFlowResponse, AutomationDeleteFlowData, AutomationDeleteFlowResponse, AutomationPublishFlowData, AutomationPublishFlowResponse, AutomationPauseFlowData, AutomationPauseFlowResponse, AutomationActivateFlowData, AutomationActivateFlowResponse, AutomationArchiveFlowData, AutomationArchiveFlowResponse, AutomationGetFlowExecutionsData, AutomationGetFlowExecutionsResponse, AutomationGetExecutionData, AutomationGetExecutionResponse, AutomationTestFlowData, AutomationTestFlowResponse, AutomationGetProviderSettingsData, AutomationGetProviderSettingsResponse, AutomationUpsertProviderSettingData, AutomationUpsertProviderSettingResponse, AutomationSyncProviderSettingData, AutomationSyncProviderSettingResponse, AutomationSendRichMessageData, AutomationSendRichMessageResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeEditCommentData, MiscYoutubeEditCommentResponse, MiscYoutubeDeleteCommentData, MiscYoutubeDeleteCommentResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinResharePostData, MiscLinkedinResharePostResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscLinkedinEditCommentData, MiscLinkedinEditCommentResponse, MiscLinkedinDeleteCommentData, MiscLinkedinDeleteCommentResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListSearchKeywordsData, MiscGoogleBusinessListSearchKeywordsResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscRedditEditCommentData, MiscRedditEditCommentResponse, MiscRedditDeleteCommentData, MiscRedditDeleteCommentResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscInstagramSearchAudioData, MiscInstagramSearchAudioResponse, MiscInstagramDeleteCommentData, MiscInstagramDeleteCommentResponse, MiscFacebookSearchPagesData, MiscFacebookSearchPagesResponse, MiscFacebookGetTextFormatPresetsResponse, MiscFacebookGetTokenDebugData, MiscFacebookGetTokenDebugResponse, MiscFacebookImportRecommendationsData, MiscFacebookImportRecommendationsResponse, MiscFacebookGetRecommendationImportStatusData, MiscFacebookGetRecommendationImportStatusResponse, MiscFacebookGetRecommendationImportByIdData, MiscFacebookGetRecommendationImportByIdResponse, MiscFacebookGetRecommendationsData, MiscFacebookGetRecommendationsResponse, MiscFacebookGetRecommendationByIdData, MiscFacebookGetRecommendationByIdResponse, MiscFacebookGetRecommendationCommentsData, MiscFacebookGetRecommendationCommentsResponse, MiscFacebookReplyToRecommendationData, MiscFacebookReplyToRecommendationResponse, MiscFacebookReplyToRecommendationCommentData, MiscFacebookReplyToRecommendationCommentResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscFacebookEditCommentData, MiscFacebookEditCommentResponse, MiscFacebookDeleteCommentData, MiscFacebookDeleteCommentResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscMastodonEditCommentData, MiscMastodonEditCommentResponse, MiscMastodonDeleteCommentData, MiscMastodonDeleteCommentResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscBlueskyDeleteCommentData, MiscBlueskyDeleteCommentResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscTwitterDeleteCommentData, MiscTwitterDeleteCommentResponse, MiscTwitterRetweetData, MiscTwitterRetweetResponse, MiscTwitterUnretweetData, MiscTwitterUnretweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, MiscTiktokDeleteCommentData, MiscTiktokDeleteCommentResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetCommentsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetDailyLimitsUsageData, OrganizationGetDailyLimitsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountEnableMessagingData, SocialAccountEnableMessagingResponse, SocialAccountDisableMessagingData, SocialAccountDisableMessagingResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, UploadInitMultipartUploadData, UploadInitMultipartUploadResponse, UploadSignMultipartPartsData, UploadSignMultipartPartsResponse, UploadCompleteMultipartUploadData, UploadCompleteMultipartUploadResponse, UploadAbortMultipartUploadData, UploadAbortMultipartUploadResponse, PostGetReconnectSocialAccountCandidatesData, PostGetReconnectSocialAccountCandidatesResponse, PostReconnectSocialAccountData, PostReconnectSocialAccountResponse, PostGetByReferenceKeyData, PostGetByReferenceKeyResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, CreditGetCreditBalanceResponse, CreditQuoteBillableUsageData, CreditQuoteBillableUsageResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentImportCreateData, CommentImportCreateResponse, CommentImportGetListData, CommentImportGetListResponse, CommentImportGetFetchedCommentsData, CommentImportGetFetchedCommentsResponse, CommentImportActionFetchedCommentData, CommentImportActionFetchedCommentResponse, CommentImportGetByIdData, CommentImportGetByIdResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, CommentRetryData, CommentRetryResponse, ConversationGetListData, ConversationGetListResponse, ConversationGetData, ConversationGetResponse, ConversationUpdateData, ConversationUpdateResponse, ConversationGetMessagesData, ConversationGetMessagesResponse, ConversationSendMessageData, ConversationSendMessageResponse, ConversationReactMessageData, ConversationReactMessageResponse, ConversationMarkReadData, ConversationMarkReadResponse, ConversationPrivateReplyData, ConversationPrivateReplyResponse, ConversationArchiveData, ConversationArchiveResponse, ConversationOpenData, ConversationOpenResponse, AutomationGetFlowsData, AutomationGetFlowsResponse, AutomationCreateFlowData, AutomationCreateFlowResponse, AutomationCopyFlowsData, AutomationCopyFlowsResponse, AutomationGetFlowData, AutomationGetFlowResponse, AutomationUpdateFlowData, AutomationUpdateFlowResponse, AutomationDeleteFlowData, AutomationDeleteFlowResponse, AutomationPublishFlowData, AutomationPublishFlowResponse, AutomationPauseFlowData, AutomationPauseFlowResponse, AutomationActivateFlowData, AutomationActivateFlowResponse, AutomationArchiveFlowData, AutomationArchiveFlowResponse, AutomationGetFlowExecutionsData, AutomationGetFlowExecutionsResponse, AutomationGetExecutionData, AutomationGetExecutionResponse, AutomationTestFlowData, AutomationTestFlowResponse, AutomationGetProviderSettingsData, AutomationGetProviderSettingsResponse, AutomationUpsertProviderSettingData, AutomationUpsertProviderSettingResponse, AutomationSyncProviderSettingData, AutomationSyncProviderSettingResponse, AutomationSendRichMessageData, AutomationSendRichMessageResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeEditCommentData, MiscYoutubeEditCommentResponse, MiscYoutubeDeleteCommentData, MiscYoutubeDeleteCommentResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinResharePostData, MiscLinkedinResharePostResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscLinkedinEditCommentData, MiscLinkedinEditCommentResponse, MiscLinkedinDeleteCommentData, MiscLinkedinDeleteCommentResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListSearchKeywordsData, MiscGoogleBusinessListSearchKeywordsResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscRedditEditCommentData, MiscRedditEditCommentResponse, MiscRedditDeleteCommentData, MiscRedditDeleteCommentResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscInstagramSearchAudioData, MiscInstagramSearchAudioResponse, MiscInstagramDeleteCommentData, MiscInstagramDeleteCommentResponse, MiscFacebookSearchPagesData, MiscFacebookSearchPagesResponse, MiscFacebookGetTextFormatPresetsResponse, MiscFacebookGetTokenDebugData, MiscFacebookGetTokenDebugResponse, MiscFacebookImportRecommendationsData, MiscFacebookImportRecommendationsResponse, MiscFacebookGetRecommendationImportStatusData, MiscFacebookGetRecommendationImportStatusResponse, MiscFacebookGetRecommendationImportByIdData, MiscFacebookGetRecommendationImportByIdResponse, MiscFacebookGetRecommendationsData, MiscFacebookGetRecommendationsResponse, MiscFacebookGetRecommendationByIdData, MiscFacebookGetRecommendationByIdResponse, MiscFacebookGetRecommendationCommentsData, MiscFacebookGetRecommendationCommentsResponse, MiscFacebookReplyToRecommendationData, MiscFacebookReplyToRecommendationResponse, MiscFacebookReplyToRecommendationCommentData, MiscFacebookReplyToRecommendationCommentResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscFacebookEditCommentData, MiscFacebookEditCommentResponse, MiscFacebookDeleteCommentData, MiscFacebookDeleteCommentResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscMastodonEditCommentData, MiscMastodonEditCommentResponse, MiscMastodonDeleteCommentData, MiscMastodonDeleteCommentResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscBlueskyDeleteCommentData, MiscBlueskyDeleteCommentResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscTwitterDeleteCommentData, MiscTwitterDeleteCommentResponse, MiscTwitterRetweetData, MiscTwitterRetweetResponse, MiscTwitterUnretweetData, MiscTwitterUnretweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, MiscTiktokDeleteCommentData, MiscTiktokDeleteCommentResponse, MiscTiktokGetPostSettingsData, MiscTiktokGetPostSettingsResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -25,6 +25,8 @@ export class AppService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -52,6 +54,8 @@ export class OrganizationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -74,6 +78,8 @@ export class OrganizationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -96,6 +102,8 @@ export class OrganizationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -118,6 +126,8 @@ export class OrganizationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -147,6 +157,8 @@ export class OrganizationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -182,6 +194,8 @@ export class OrganizationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -214,6 +228,8 @@ export class TeamService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -244,6 +260,8 @@ export class TeamService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -271,6 +289,8 @@ export class TeamService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -302,6 +322,8 @@ export class TeamService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -328,6 +350,8 @@ export class TeamService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -359,6 +383,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -385,6 +411,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -411,6 +439,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -437,6 +467,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -463,6 +495,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -489,13 +523,15 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
     
     /**
      * Enable DM messaging for a social account
-     * Subscribe the team's Facebook page or Instagram account to Meta DM webhooks and start processing its messages. Connecting or re-authorizing an account never does this on its own. Idempotent. Returns 404 when the organization has no access to messaging, 400 when the account lacks the messaging permissions (reconnect it), and 502 when Meta rejects the subscription; the account then stays DISABLED.
+     * Subscribe the team's Facebook page or Instagram account to Meta DM webhooks and start processing its messages. Connecting or re-authorizing an account never does this on its own. Idempotent. Returns 403 when the organization has not been granted Instagram and Facebook direct messages and automations (email contact@bundle.social to request it), 400 when the account lacks the messaging permissions (reconnect it), and 502 when Meta rejects the subscription; the account then stays DISABLED.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -515,6 +551,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -541,6 +579,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -567,6 +607,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -593,6 +635,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -622,6 +666,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -648,6 +694,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -677,6 +725,8 @@ export class SocialAccountService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -725,6 +775,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -751,6 +803,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -777,6 +831,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -804,6 +860,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -831,6 +889,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -857,6 +917,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -883,6 +945,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -909,6 +973,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -935,6 +1001,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -961,6 +1029,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -987,6 +1057,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1013,6 +1085,8 @@ export class UploadService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1051,6 +1125,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1077,6 +1153,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1104,6 +1182,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1131,6 +1211,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1162,6 +1244,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1189,6 +1273,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1234,6 +1320,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1261,6 +1349,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1288,6 +1378,8 @@ export class PostService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1315,6 +1407,8 @@ export class CreditService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1341,6 +1435,8 @@ export class CreditService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1375,6 +1471,8 @@ export class AnalyticsService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1406,6 +1504,8 @@ export class AnalyticsService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1435,6 +1535,8 @@ export class AnalyticsService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1466,6 +1568,8 @@ export class AnalyticsService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1499,6 +1603,8 @@ export class AnalyticsService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1525,6 +1631,8 @@ export class AnalyticsService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1551,6 +1659,8 @@ export class AnalyticsService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1583,6 +1693,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1620,6 +1732,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1659,6 +1773,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1689,6 +1805,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1716,6 +1834,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1743,6 +1863,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1773,6 +1895,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1800,6 +1924,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1845,6 +1971,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1871,6 +1999,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1898,6 +2028,8 @@ export class CommentService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1942,6 +2074,8 @@ export class ConversationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1969,6 +2103,8 @@ export class ConversationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -1999,6 +2135,8 @@ export class ConversationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2034,6 +2172,8 @@ export class ConversationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2065,6 +2205,7 @@ export class ConversationService {
                 500: '500',
                 502: '502',
                 503: '503',
+                504: '504',
             }
         });
     }
@@ -2098,6 +2239,7 @@ export class ConversationService {
                 500: '500',
                 502: '502',
                 503: '503',
+                504: '504',
             }
         });
     }
@@ -2128,6 +2270,8 @@ export class ConversationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2155,6 +2299,7 @@ export class ConversationService {
                 500: '500',
                 502: '502',
                 503: '503',
+                504: '504',
             }
         });
     }
@@ -2182,6 +2327,8 @@ export class ConversationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2209,6 +2356,8 @@ export class ConversationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2251,6 +2400,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2277,6 +2428,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2303,6 +2456,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2330,6 +2485,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2360,6 +2517,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2387,6 +2546,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2417,6 +2578,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2444,6 +2607,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2471,6 +2636,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2498,6 +2665,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2549,6 +2718,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2576,6 +2747,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2607,6 +2780,7 @@ export class AutomationService {
                 500: '500',
                 502: '502',
                 503: '503',
+                504: '504',
             }
         });
     }
@@ -2646,6 +2820,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2678,6 +2854,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2705,6 +2883,8 @@ export class AutomationService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2736,6 +2916,7 @@ export class AutomationService {
                 500: '500',
                 502: '502',
                 503: '503',
+                504: '504',
             }
         });
     }
@@ -2767,6 +2948,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2796,6 +2979,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2822,6 +3007,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2848,6 +3035,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2879,6 +3068,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2905,6 +3096,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2936,6 +3129,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2967,6 +3162,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -2993,6 +3190,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3019,6 +3218,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3045,6 +3246,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3071,6 +3274,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3100,6 +3305,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3127,6 +3334,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3162,6 +3371,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3188,6 +3399,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3215,6 +3428,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3241,6 +3456,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3267,6 +3484,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3293,6 +3512,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3319,6 +3540,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3345,6 +3568,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3376,6 +3601,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3402,6 +3629,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3428,6 +3657,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3457,6 +3688,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3483,6 +3716,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3509,6 +3744,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3536,6 +3773,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3562,6 +3801,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3597,6 +3838,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3632,6 +3875,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3673,6 +3918,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3700,6 +3947,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3726,6 +3975,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3755,6 +4006,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3781,6 +4034,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3812,6 +4067,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3838,6 +4095,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3864,6 +4123,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3890,6 +4151,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3917,6 +4180,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3944,6 +4209,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -3971,6 +4238,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4002,6 +4271,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4033,6 +4304,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4063,6 +4336,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4093,6 +4368,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4122,6 +4399,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4151,6 +4430,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4177,6 +4458,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4203,6 +4486,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4229,6 +4514,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4255,6 +4542,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4284,6 +4573,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4315,6 +4606,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4346,6 +4639,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4372,6 +4667,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4403,6 +4700,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4425,6 +4724,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4452,6 +4753,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4479,6 +4782,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4506,6 +4811,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4533,6 +4840,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4564,6 +4873,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4595,6 +4906,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4626,6 +4939,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4656,6 +4971,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4688,6 +5005,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4714,6 +5033,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4740,6 +5061,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4766,6 +5089,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4792,6 +5117,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4819,6 +5146,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4845,6 +5174,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4871,6 +5202,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4897,6 +5230,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4923,6 +5258,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4949,6 +5286,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -4975,6 +5314,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5001,6 +5342,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5027,6 +5370,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5053,6 +5398,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5079,6 +5426,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5105,6 +5454,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5131,6 +5482,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5157,6 +5510,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5183,6 +5538,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5214,6 +5571,8 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5240,6 +5599,37 @@ export class MiscService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
+     * Get the posting options of a TikTok account
+     * Returns the privacy levels, interaction settings (comments, duet, stitch) and maximum video duration the connected TikTok account allows, read live from TikTok. A value the account does not allow is not rejected when you create the post, it fails at publish time with TT:40002. Use it to build the options of your own composer, not as a check before every publish: each call counts against the account's TikTok rate limit.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscTiktokGetPostSettings(data: MiscTiktokGetPostSettingsData): CancelablePromise<MiscTiktokGetPostSettingsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/tiktok/post-settings',
+            query: {
+                teamId: data.teamId
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5272,6 +5662,8 @@ export class PostImportService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5301,6 +5693,8 @@ export class PostImportService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5328,6 +5722,8 @@ export class PostImportService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5361,6 +5757,8 @@ export class PostImportService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5387,6 +5785,8 @@ export class PostImportService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5417,6 +5817,8 @@ export class PostImportService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5448,6 +5850,8 @@ export class PostCsvService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5477,6 +5881,8 @@ export class PostCsvService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5504,6 +5910,8 @@ export class PostCsvService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5531,6 +5939,8 @@ export class PostCsvService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }
@@ -5566,6 +5976,8 @@ export class PostCsvService {
                 429: '429',
                 500: '500',
                 502: '502',
+                503: '503',
+                504: '504',
             }
         });
     }

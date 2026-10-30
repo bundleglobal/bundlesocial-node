@@ -1,3 +1,10 @@
+# [2.69.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.68.0...v2.69.0) (2026-10-30)
+
+
+### Features
+
+* TikTok posting options, Instagram story mentions and skipped tags ([#169](https://github.com/bundleglobal/bundlesocial-node/issues/169)) ([e05e485](https://github.com/bundleglobal/bundlesocial-node/commit/e05e485405e9a9fa0d0b08511f9f79587cbc38e2))
+
 # [2.68.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.67.0...v2.68.0) (2026-10-14)
 
 

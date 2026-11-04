@@ -1,3 +1,11 @@
+# [2.70.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.69.0...v2.70.0) (2026-11-04)
+
+
+### Features
+
+* Pinterest carousel Pins and Instagram follow status ([#170](https://github.com/bundleglobal/bundlesocial-node/issues/170)) ([0b501f8](https://github.com/bundleglobal/bundlesocial-node/commit/0b501f80d26cb93640e7c95acaaff2c6327973a7))
+* post.externally-deleted webhook event type [skip ci] ([92de1c7](https://github.com/bundleglobal/bundlesocial-node/commit/92de1c74cf1546daa53b3b46fbae3af38d2cf8d8))
+
 # [2.69.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.68.0...v2.69.0) (2026-10-30)
 
 

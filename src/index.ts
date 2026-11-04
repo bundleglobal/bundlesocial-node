@@ -1,8 +1,17 @@
-import { Client, type OpenAPIConfig, OpenAPI, PostGetResponse, CommentGetResponse, TeamGetTeamResponse } from '../client';
+import {
+  Client,
+  type OpenAPIConfig,
+  OpenAPI,
+  PostGetResponse,
+  CommentGetResponse,
+  TeamGetTeamResponse,
+  PostImportGetImportedPostsResponse,
+} from '../client';
 import crypto from 'crypto';
 
 export const webhookEventTypes = [
   "post.published",
+  "post.externally-deleted",
   "comment.published",
   "team.created",
   "team.updated",
@@ -14,8 +23,17 @@ export const webhookEventTypes = [
 
 export type WebhookEventType = typeof webhookEventTypes[number];
 
+type SocialAccount = TeamGetTeamResponse["socialAccounts"][number];
+
+/** The profile post that was deleted on the platform, plus where it belongs. */
+export type PostExternallyDeletedEventData = Omit<PostImportGetImportedPostsResponse["posts"][number], "analytics"> & {
+  teamId: string;
+  socialAccountType: SocialAccount["type"];
+};
+
 type WebhookEventMap = {
   "post.published": PostGetResponse;
+  "post.externally-deleted": PostExternallyDeletedEventData;
   "comment.published": CommentGetResponse;
   "team.created": TeamGetTeamResponse;
   "team.updated": TeamGetTeamResponse;

@@ -2219,6 +2219,265 @@ paths:
                     type: string
                 required:
                   - message
+  /api/v1/organization/usage/messages:
+    get:
+      description: >-
+        See how many direct messages and automation runs each Facebook,
+        Instagram and TikTok account has used this UTC calendar month against
+        its monthly limits, paginated with `offset`/`limit` and filterable by
+        team, platform or account. Messages counted: every message you sent,
+        including private replies to comments. Not counted: reactions, marking a
+        conversation as read, and inbound messages. Automation runs counted:
+        every run that was allowed to start, including manual test runs; skipped
+        and canceled runs are not counted. Limits reflect per-account and
+        organization overrides on top of the plan default.
+      summary: Get DM and automation run usage per social account (paginated)
+      tags: *ref_0
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            default: 0
+            type: integer
+            minimum: 0
+            nullable: true
+        - name: limit
+          in: query
+          schema:
+            default: 10
+            type: integer
+            minimum: 1
+            maximum: 100
+            nullable: true
+        - name: teamId
+          in: query
+          schema:
+            type: string
+        - name: socialAccountType
+          in: query
+          schema:
+            type: string
+            enum:
+              - INSTAGRAM
+              - FACEBOOK
+              - TIKTOK
+        - name: socialAccountId
+          in: query
+          schema:
+            type: string
+      operationId: organization.getMessagesUsage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                          enum:
+                            - INSTAGRAM
+                            - FACEBOOK
+                            - TIKTOK
+                        username:
+                          type: string
+                          nullable: true
+                        displayName:
+                          type: string
+                          nullable: true
+                        messagesUsed:
+                          type: number
+                        messagesLimit:
+                          type: number
+                        automationRunsUsed:
+                          type: number
+                        automationRunsLimit:
+                          type: number
+                      required:
+                        - id
+                        - type
+                        - username
+                        - displayName
+                        - messagesUsed
+                        - messagesLimit
+                        - automationRunsUsed
+                        - automationRunsLimit
+                  total:
+                    type: number
+                required:
+                  - items
+                  - total
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
   /api/v1/team/{id}:
     get:
       description: >-
@@ -12579,6 +12838,25 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          carouselItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                title:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                link:
+                                  type: string
+                                  nullable: true
+                              required:
+                                - uploadId
+                            nullable: true
                           thumbnail:
                             type: string
                             nullable: true
@@ -13081,6 +13359,18 @@ paths:
                             description: >-
                               Information about the commercial sound (track)
                               used for TikTok publishing.
+                          title:
+                            type: string
+                            nullable: true
+                            description: Title of the photo post (IMAGE only).
+                          locationId:
+                            type: string
+                            nullable: true
+                            description: TikTok location tag ID.
+                          locationName:
+                            type: string
+                            nullable: true
+                            description: Name of the TikTok location tag.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -13129,6 +13419,38 @@ paths:
                             description: >-
                               Set to true if the post is not allowed to be
                               reshared.
+                          poll:
+                            type: object
+                            properties:
+                              question:
+                                type: string
+                                minLength: 1
+                                maxLength: 140
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                minItems: 2
+                                maxItems: 4
+                              duration:
+                                default: THREE_DAYS
+                                type: string
+                                enum:
+                                  - ONE_DAY
+                                  - THREE_DAYS
+                                  - SEVEN_DAYS
+                                  - FOURTEEN_DAYS
+                            required:
+                              - question
+                              - options
+                            description: >-
+                              A poll (question up to 140 characters, 2-4 options
+                              up to 30 characters each). Cannot be combined with
+                              media or a link. Polls cannot be edited after
+                              publishing.
+                            nullable: true
                         required:
                           - text
                         nullable: true
@@ -14952,6 +15274,25 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          carouselItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                title:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                link:
+                                  type: string
+                                  nullable: true
+                              required:
+                                - uploadId
+                            nullable: true
                           thumbnail:
                             type: string
                             nullable: true
@@ -15454,6 +15795,18 @@ paths:
                             description: >-
                               Information about the commercial sound (track)
                               used for TikTok publishing.
+                          title:
+                            type: string
+                            nullable: true
+                            description: Title of the photo post (IMAGE only).
+                          locationId:
+                            type: string
+                            nullable: true
+                            description: TikTok location tag ID.
+                          locationName:
+                            type: string
+                            nullable: true
+                            description: Name of the TikTok location tag.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -15502,6 +15855,38 @@ paths:
                             description: >-
                               Set to true if the post is not allowed to be
                               reshared.
+                          poll:
+                            type: object
+                            properties:
+                              question:
+                                type: string
+                                minLength: 1
+                                maxLength: 140
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                minItems: 2
+                                maxItems: 4
+                              duration:
+                                default: THREE_DAYS
+                                type: string
+                                enum:
+                                  - ONE_DAY
+                                  - THREE_DAYS
+                                  - SEVEN_DAYS
+                                  - FOURTEEN_DAYS
+                            required:
+                              - question
+                              - options
+                            description: >-
+                              A poll (question up to 140 characters, 2-4 options
+                              up to 30 characters each). Cannot be combined with
+                              media or a link. Polls cannot be edited after
+                              publishing.
+                            nullable: true
                         required:
                           - text
                         nullable: true
@@ -17328,6 +17713,25 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        carouselItems:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uploadId:
+                                type: string
+                              title:
+                                type: string
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              link:
+                                type: string
+                                nullable: true
+                            required:
+                              - uploadId
+                          nullable: true
                         thumbnail:
                           type: string
                           nullable: true
@@ -17829,6 +18233,18 @@ paths:
                           description: >-
                             Information about the commercial sound (track) used
                             for TikTok publishing.
+                        title:
+                          type: string
+                          nullable: true
+                          description: Title of the photo post (IMAGE only).
+                        locationId:
+                          type: string
+                          nullable: true
+                          description: TikTok location tag ID.
+                        locationName:
+                          type: string
+                          nullable: true
+                          description: Name of the TikTok location tag.
                       nullable: true
                     LINKEDIN:
                       type: object
@@ -17877,6 +18293,38 @@ paths:
                           description: >-
                             Set to true if the post is not allowed to be
                             reshared.
+                        poll:
+                          type: object
+                          properties:
+                            question:
+                              type: string
+                              minLength: 1
+                              maxLength: 140
+                            options:
+                              type: array
+                              items:
+                                type: string
+                                minLength: 1
+                                maxLength: 30
+                              minItems: 2
+                              maxItems: 4
+                            duration:
+                              default: THREE_DAYS
+                              type: string
+                              enum:
+                                - ONE_DAY
+                                - THREE_DAYS
+                                - SEVEN_DAYS
+                                - FOURTEEN_DAYS
+                          required:
+                            - question
+                            - options
+                          description: >-
+                            A poll (question up to 140 characters, 2-4 options
+                            up to 30 characters each). Cannot be combined with
+                            media or a link. Polls cannot be edited after
+                            publishing.
+                          nullable: true
                       required:
                         - text
                       nullable: true
@@ -18432,6 +18880,25 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          carouselItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                title:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                link:
+                                  type: string
+                                  nullable: true
+                              required:
+                                - uploadId
+                            nullable: true
                           thumbnail:
                             type: string
                             nullable: true
@@ -18934,6 +19401,18 @@ paths:
                             description: >-
                               Information about the commercial sound (track)
                               used for TikTok publishing.
+                          title:
+                            type: string
+                            nullable: true
+                            description: Title of the photo post (IMAGE only).
+                          locationId:
+                            type: string
+                            nullable: true
+                            description: TikTok location tag ID.
+                          locationName:
+                            type: string
+                            nullable: true
+                            description: Name of the TikTok location tag.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -18982,6 +19461,38 @@ paths:
                             description: >-
                               Set to true if the post is not allowed to be
                               reshared.
+                          poll:
+                            type: object
+                            properties:
+                              question:
+                                type: string
+                                minLength: 1
+                                maxLength: 140
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                minItems: 2
+                                maxItems: 4
+                              duration:
+                                default: THREE_DAYS
+                                type: string
+                                enum:
+                                  - ONE_DAY
+                                  - THREE_DAYS
+                                  - SEVEN_DAYS
+                                  - FOURTEEN_DAYS
+                            required:
+                              - question
+                              - options
+                            description: >-
+                              A poll (question up to 140 characters, 2-4 options
+                              up to 30 characters each). Cannot be combined with
+                              media or a link. Polls cannot be edited after
+                              publishing.
+                            nullable: true
                         required:
                           - text
                         nullable: true
@@ -20509,6 +21020,25 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          carouselItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                title:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                link:
+                                  type: string
+                                  nullable: true
+                              required:
+                                - uploadId
+                            nullable: true
                           thumbnail:
                             type: string
                             nullable: true
@@ -21011,6 +21541,18 @@ paths:
                             description: >-
                               Information about the commercial sound (track)
                               used for TikTok publishing.
+                          title:
+                            type: string
+                            nullable: true
+                            description: Title of the photo post (IMAGE only).
+                          locationId:
+                            type: string
+                            nullable: true
+                            description: TikTok location tag ID.
+                          locationName:
+                            type: string
+                            nullable: true
+                            description: Name of the TikTok location tag.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -21059,6 +21601,38 @@ paths:
                             description: >-
                               Set to true if the post is not allowed to be
                               reshared.
+                          poll:
+                            type: object
+                            properties:
+                              question:
+                                type: string
+                                minLength: 1
+                                maxLength: 140
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                minItems: 2
+                                maxItems: 4
+                              duration:
+                                default: THREE_DAYS
+                                type: string
+                                enum:
+                                  - ONE_DAY
+                                  - THREE_DAYS
+                                  - SEVEN_DAYS
+                                  - FOURTEEN_DAYS
+                            required:
+                              - question
+                              - options
+                            description: >-
+                              A poll (question up to 140 characters, 2-4 options
+                              up to 30 characters each). Cannot be combined with
+                              media or a link. Polls cannot be edited after
+                              publishing.
+                            nullable: true
                         required:
                           - text
                         nullable: true
@@ -22625,6 +23199,25 @@ paths:
                                   items:
                                     type: string
                                   nullable: true
+                                carouselItems:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      uploadId:
+                                        type: string
+                                      title:
+                                        type: string
+                                        nullable: true
+                                      description:
+                                        type: string
+                                        nullable: true
+                                      link:
+                                        type: string
+                                        nullable: true
+                                    required:
+                                      - uploadId
+                                  nullable: true
                                 thumbnail:
                                   type: string
                                   nullable: true
@@ -23132,6 +23725,18 @@ paths:
                                   description: >-
                                     Information about the commercial sound
                                     (track) used for TikTok publishing.
+                                title:
+                                  type: string
+                                  nullable: true
+                                  description: Title of the photo post (IMAGE only).
+                                locationId:
+                                  type: string
+                                  nullable: true
+                                  description: TikTok location tag ID.
+                                locationName:
+                                  type: string
+                                  nullable: true
+                                  description: Name of the TikTok location tag.
                               nullable: true
                             LINKEDIN:
                               type: object
@@ -23182,6 +23787,38 @@ paths:
                                   description: >-
                                     Set to true if the post is not allowed to be
                                     reshared.
+                                poll:
+                                  type: object
+                                  properties:
+                                    question:
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 140
+                                    options:
+                                      type: array
+                                      items:
+                                        type: string
+                                        minLength: 1
+                                        maxLength: 30
+                                      minItems: 2
+                                      maxItems: 4
+                                    duration:
+                                      default: THREE_DAYS
+                                      type: string
+                                      enum:
+                                        - ONE_DAY
+                                        - THREE_DAYS
+                                        - SEVEN_DAYS
+                                        - FOURTEEN_DAYS
+                                  required:
+                                    - question
+                                    - options
+                                  description: >-
+                                    A poll (question up to 140 characters, 2-4
+                                    options up to 30 characters each). Cannot be
+                                    combined with media or a link. Polls cannot
+                                    be edited after publishing.
+                                  nullable: true
                               required:
                                 - text
                               nullable: true
@@ -24979,6 +25616,25 @@ paths:
                           items:
                             type: string
                           nullable: true
+                        carouselItems:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uploadId:
+                                type: string
+                              title:
+                                type: string
+                                nullable: true
+                              description:
+                                type: string
+                                nullable: true
+                              link:
+                                type: string
+                                nullable: true
+                            required:
+                              - uploadId
+                          nullable: true
                         thumbnail:
                           type: string
                           nullable: true
@@ -25480,6 +26136,18 @@ paths:
                           description: >-
                             Information about the commercial sound (track) used
                             for TikTok publishing.
+                        title:
+                          type: string
+                          nullable: true
+                          description: Title of the photo post (IMAGE only).
+                        locationId:
+                          type: string
+                          nullable: true
+                          description: TikTok location tag ID.
+                        locationName:
+                          type: string
+                          nullable: true
+                          description: Name of the TikTok location tag.
                       nullable: true
                     LINKEDIN:
                       type: object
@@ -25528,6 +26196,38 @@ paths:
                           description: >-
                             Set to true if the post is not allowed to be
                             reshared.
+                        poll:
+                          type: object
+                          properties:
+                            question:
+                              type: string
+                              minLength: 1
+                              maxLength: 140
+                            options:
+                              type: array
+                              items:
+                                type: string
+                                minLength: 1
+                                maxLength: 30
+                              minItems: 2
+                              maxItems: 4
+                            duration:
+                              default: THREE_DAYS
+                              type: string
+                              enum:
+                                - ONE_DAY
+                                - THREE_DAYS
+                                - SEVEN_DAYS
+                                - FOURTEEN_DAYS
+                          required:
+                            - question
+                            - options
+                          description: >-
+                            A poll (question up to 140 characters, 2-4 options
+                            up to 30 characters each). Cannot be combined with
+                            media or a link. Polls cannot be edited after
+                            publishing.
+                          nullable: true
                       required:
                         - text
                       nullable: true
@@ -26090,6 +26790,25 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          carouselItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                title:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                link:
+                                  type: string
+                                  nullable: true
+                              required:
+                                - uploadId
+                            nullable: true
                           thumbnail:
                             type: string
                             nullable: true
@@ -26592,6 +27311,18 @@ paths:
                             description: >-
                               Information about the commercial sound (track)
                               used for TikTok publishing.
+                          title:
+                            type: string
+                            nullable: true
+                            description: Title of the photo post (IMAGE only).
+                          locationId:
+                            type: string
+                            nullable: true
+                            description: TikTok location tag ID.
+                          locationName:
+                            type: string
+                            nullable: true
+                            description: Name of the TikTok location tag.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -26640,6 +27371,38 @@ paths:
                             description: >-
                               Set to true if the post is not allowed to be
                               reshared.
+                          poll:
+                            type: object
+                            properties:
+                              question:
+                                type: string
+                                minLength: 1
+                                maxLength: 140
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                minItems: 2
+                                maxItems: 4
+                              duration:
+                                default: THREE_DAYS
+                                type: string
+                                enum:
+                                  - ONE_DAY
+                                  - THREE_DAYS
+                                  - SEVEN_DAYS
+                                  - FOURTEEN_DAYS
+                            required:
+                              - question
+                              - options
+                            description: >-
+                              A poll (question up to 140 characters, 2-4 options
+                              up to 30 characters each). Cannot be combined with
+                              media or a link. Polls cannot be edited after
+                              publishing.
+                            nullable: true
                         required:
                           - text
                         nullable: true
@@ -28168,6 +28931,25 @@ paths:
                             items:
                               type: string
                             nullable: true
+                          carouselItems:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                uploadId:
+                                  type: string
+                                title:
+                                  type: string
+                                  nullable: true
+                                description:
+                                  type: string
+                                  nullable: true
+                                link:
+                                  type: string
+                                  nullable: true
+                              required:
+                                - uploadId
+                            nullable: true
                           thumbnail:
                             type: string
                             nullable: true
@@ -28670,6 +29452,18 @@ paths:
                             description: >-
                               Information about the commercial sound (track)
                               used for TikTok publishing.
+                          title:
+                            type: string
+                            nullable: true
+                            description: Title of the photo post (IMAGE only).
+                          locationId:
+                            type: string
+                            nullable: true
+                            description: TikTok location tag ID.
+                          locationName:
+                            type: string
+                            nullable: true
+                            description: Name of the TikTok location tag.
                         nullable: true
                       LINKEDIN:
                         type: object
@@ -28718,6 +29512,38 @@ paths:
                             description: >-
                               Set to true if the post is not allowed to be
                               reshared.
+                          poll:
+                            type: object
+                            properties:
+                              question:
+                                type: string
+                                minLength: 1
+                                maxLength: 140
+                              options:
+                                type: array
+                                items:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                minItems: 2
+                                maxItems: 4
+                              duration:
+                                default: THREE_DAYS
+                                type: string
+                                enum:
+                                  - ONE_DAY
+                                  - THREE_DAYS
+                                  - SEVEN_DAYS
+                                  - FOURTEEN_DAYS
+                            required:
+                              - question
+                              - options
+                            description: >-
+                              A poll (question up to 140 characters, 2-4 options
+                              up to 30 characters each). Cannot be combined with
+                              media or a link. Polls cannot be edited after
+                              publishing.
+                            nullable: true
                         required:
                           - text
                         nullable: true
@@ -31151,6 +31977,25 @@ paths:
                                 items:
                                   type: string
                                 nullable: true
+                              carouselItems:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    uploadId:
+                                      type: string
+                                    title:
+                                      type: string
+                                      nullable: true
+                                    description:
+                                      type: string
+                                      nullable: true
+                                    link:
+                                      type: string
+                                      nullable: true
+                                  required:
+                                    - uploadId
+                                nullable: true
                               thumbnail:
                                 type: string
                                 nullable: true
@@ -31656,6 +32501,18 @@ paths:
                                 description: >-
                                   Information about the commercial sound (track)
                                   used for TikTok publishing.
+                              title:
+                                type: string
+                                nullable: true
+                                description: Title of the photo post (IMAGE only).
+                              locationId:
+                                type: string
+                                nullable: true
+                                description: TikTok location tag ID.
+                              locationName:
+                                type: string
+                                nullable: true
+                                description: Name of the TikTok location tag.
                             nullable: true
                           LINKEDIN:
                             type: object
@@ -31706,6 +32563,38 @@ paths:
                                 description: >-
                                   Set to true if the post is not allowed to be
                                   reshared.
+                              poll:
+                                type: object
+                                properties:
+                                  question:
+                                    type: string
+                                    minLength: 1
+                                    maxLength: 140
+                                  options:
+                                    type: array
+                                    items:
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 30
+                                    minItems: 2
+                                    maxItems: 4
+                                  duration:
+                                    default: THREE_DAYS
+                                    type: string
+                                    enum:
+                                      - ONE_DAY
+                                      - THREE_DAYS
+                                      - SEVEN_DAYS
+                                      - FOURTEEN_DAYS
+                                required:
+                                  - question
+                                  - options
+                                description: >-
+                                  A poll (question up to 140 characters, 2-4
+                                  options up to 30 characters each). Cannot be
+                                  combined with media or a link. Polls cannot be
+                                  edited after publishing.
+                                nullable: true
                             required:
                               - text
                             nullable: true
@@ -33764,6 +34653,25 @@ paths:
                                 items:
                                   type: string
                                 nullable: true
+                              carouselItems:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    uploadId:
+                                      type: string
+                                    title:
+                                      type: string
+                                      nullable: true
+                                    description:
+                                      type: string
+                                      nullable: true
+                                    link:
+                                      type: string
+                                      nullable: true
+                                  required:
+                                    - uploadId
+                                nullable: true
                               thumbnail:
                                 type: string
                                 nullable: true
@@ -34269,6 +35177,18 @@ paths:
                                 description: >-
                                   Information about the commercial sound (track)
                                   used for TikTok publishing.
+                              title:
+                                type: string
+                                nullable: true
+                                description: Title of the photo post (IMAGE only).
+                              locationId:
+                                type: string
+                                nullable: true
+                                description: TikTok location tag ID.
+                              locationName:
+                                type: string
+                                nullable: true
+                                description: Name of the TikTok location tag.
                             nullable: true
                           LINKEDIN:
                             type: object
@@ -34319,6 +35239,38 @@ paths:
                                 description: >-
                                   Set to true if the post is not allowed to be
                                   reshared.
+                              poll:
+                                type: object
+                                properties:
+                                  question:
+                                    type: string
+                                    minLength: 1
+                                    maxLength: 140
+                                  options:
+                                    type: array
+                                    items:
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 30
+                                    minItems: 2
+                                    maxItems: 4
+                                  duration:
+                                    default: THREE_DAYS
+                                    type: string
+                                    enum:
+                                      - ONE_DAY
+                                      - THREE_DAYS
+                                      - SEVEN_DAYS
+                                      - FOURTEEN_DAYS
+                                required:
+                                  - question
+                                  - options
+                                description: >-
+                                  A poll (question up to 140 characters, 2-4
+                                  options up to 30 characters each). Cannot be
+                                  combined with media or a link. Polls cannot be
+                                  edited after publishing.
+                                nullable: true
                             required:
                               - text
                             nullable: true
@@ -43875,6 +44827,12 @@ paths:
                                 - action
                                 - status
                               nullable: true
+                            participantFollowsBusiness:
+                              type: boolean
+                              nullable: true
+                            businessFollowsParticipant:
+                              type: boolean
+                              nullable: true
                         socialAccount:
                           type: object
                           properties:
@@ -44351,6 +45309,12 @@ paths:
                         required:
                           - action
                           - status
+                        nullable: true
+                      participantFollowsBusiness:
+                        type: boolean
+                        nullable: true
+                      businessFollowsParticipant:
+                        type: boolean
                         nullable: true
                   socialAccount:
                     type: object
@@ -44835,6 +45799,12 @@ paths:
                         required:
                           - action
                           - status
+                        nullable: true
+                      participantFollowsBusiness:
+                        type: boolean
+                        nullable: true
+                      businessFollowsParticipant:
+                        type: boolean
                         nullable: true
                   socialAccount:
                     type: object
@@ -46211,6 +47181,12 @@ paths:
                               - action
                               - status
                             nullable: true
+                          participantFollowsBusiness:
+                            type: boolean
+                            nullable: true
+                          businessFollowsParticipant:
+                            type: boolean
+                            nullable: true
                       socialAccount:
                         type: object
                         properties:
@@ -47151,6 +48127,12 @@ paths:
                               - action
                               - status
                             nullable: true
+                          participantFollowsBusiness:
+                            type: boolean
+                            nullable: true
+                          businessFollowsParticipant:
+                            type: boolean
+                            nullable: true
                       socialAccount:
                         type: object
                         properties:
@@ -48070,6 +49052,12 @@ paths:
                           - action
                           - status
                         nullable: true
+                      participantFollowsBusiness:
+                        type: boolean
+                        nullable: true
+                      businessFollowsParticipant:
+                        type: boolean
+                        nullable: true
                   socialAccount:
                     type: object
                     properties:
@@ -48704,6 +49692,12 @@ paths:
                             required:
                               - action
                               - status
+                            nullable: true
+                          participantFollowsBusiness:
+                            type: boolean
+                            nullable: true
+                          businessFollowsParticipant:
+                            type: boolean
                             nullable: true
                       socialAccount:
                         type: object
@@ -49613,6 +50607,12 @@ paths:
                           - action
                           - status
                         nullable: true
+                      participantFollowsBusiness:
+                        type: boolean
+                        nullable: true
+                      businessFollowsParticipant:
+                        type: boolean
+                        nullable: true
                   socialAccount:
                     type: object
                     properties:
@@ -50080,6 +51080,12 @@ paths:
                         required:
                           - action
                           - status
+                        nullable: true
+                      participantFollowsBusiness:
+                        type: boolean
+                        nullable: true
+                      businessFollowsParticipant:
+                        type: boolean
                         nullable: true
                   socialAccount:
                     type: object
@@ -71246,6 +72252,12 @@ paths:
                                     - action
                                     - status
                                   nullable: true
+                                participantFollowsBusiness:
+                                  type: boolean
+                                  nullable: true
+                                businessFollowsParticipant:
+                                  type: boolean
+                                  nullable: true
                             socialAccount:
                               type: object
                               properties:
@@ -74900,6 +75912,12 @@ paths:
                             required:
                               - action
                               - status
+                            nullable: true
+                          participantFollowsBusiness:
+                            type: boolean
+                            nullable: true
+                          businessFollowsParticipant:
+                            type: boolean
                             nullable: true
                       socialAccount:
                         type: object
@@ -78605,6 +79623,12 @@ paths:
                             required:
                               - action
                               - status
+                            nullable: true
+                          participantFollowsBusiness:
+                            type: boolean
+                            nullable: true
+                          businessFollowsParticipant:
+                            type: boolean
                             nullable: true
                       socialAccount:
                         type: object
@@ -102347,6 +103371,223 @@ paths:
                     type: boolean
                 required:
                   - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                required:
+                  - message
+  /api/v1/misc/tiktok/locations:
+    get:
+      description: >-
+        Searches location tags available to the connected TikTok account (up to
+        20 results). Pass `locationId` and `name` as data.TIKTOK.locationId and
+        data.TIKTOK.locationName to show the location on a video or photo post.
+      summary: Search TikTok location tags
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: q
+          in: query
+          description: Free-text query used to search TikTok location tags.
+          required: true
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 100
+      operationId: misc.tiktok.searchLocations
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        locationId:
+                          type: string
+                          description: Location tag ID to pass as data.TIKTOK.locationId.
+                        name:
+                          type: string
+                          description: Location name to pass as data.TIKTOK.locationName.
+                        address:
+                          type: string
+                          nullable: true
+                          description: >-
+                            Extra location details. Can be a country, a region,
+                            a city or a full street address.
+                      required:
+                        - locationId
+                        - name
+                required:
+                  - items
         '400':
           description: '400'
           content:

@@ -297,6 +297,28 @@ export type OrganizationGetImportsUsageResponse = {
     };
 };
 
+export type OrganizationGetMessagesUsageData = {
+    limit?: number | null;
+    offset?: number | null;
+    socialAccountId?: string;
+    socialAccountType?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+    teamId?: string;
+};
+
+export type OrganizationGetMessagesUsageResponse = {
+    items: Array<{
+        id: string;
+        type: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+        username: string | null;
+        displayName: string | null;
+        messagesUsed: number;
+        messagesLimit: number;
+        automationRunsUsed: number;
+        automationRunsLimit: number;
+    }>;
+    total: number;
+};
+
 export type TeamGetTeamData = {
     id: string;
 };
@@ -1802,6 +1824,12 @@ export type PostGetByReferenceKeyResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                title?: string | null;
+                description?: string | null;
+                link?: string | null;
+            }> | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -2026,6 +2054,18 @@ export type PostGetByReferenceKeyResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Title of the photo post (IMAGE only).
+             */
+            title?: string | null;
+            /**
+             * TikTok location tag ID.
+             */
+            locationId?: string | null;
+            /**
+             * Name of the TikTok location tag.
+             */
+            locationName?: string | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -2051,6 +2091,14 @@ export type PostGetByReferenceKeyResponse = {
              * Set to true if the post is not allowed to be reshared.
              */
             disableReshare?: boolean | null;
+            /**
+             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+             */
+            poll?: {
+                question: string;
+                options: Array<(string)>;
+                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+            } | null;
         } | null;
         YOUTUBE?: {
             type?: 'VIDEO' | 'SHORT';
@@ -2642,6 +2690,12 @@ export type PostGetResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                title?: string | null;
+                description?: string | null;
+                link?: string | null;
+            }> | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -2866,6 +2920,18 @@ export type PostGetResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Title of the photo post (IMAGE only).
+             */
+            title?: string | null;
+            /**
+             * TikTok location tag ID.
+             */
+            locationId?: string | null;
+            /**
+             * Name of the TikTok location tag.
+             */
+            locationName?: string | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -2891,6 +2957,14 @@ export type PostGetResponse = {
              * Set to true if the post is not allowed to be reshared.
              */
             disableReshare?: boolean | null;
+            /**
+             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+             */
+            poll?: {
+                question: string;
+                options: Array<(string)>;
+                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+            } | null;
         } | null;
         YOUTUBE?: {
             type?: 'VIDEO' | 'SHORT';
@@ -3480,6 +3554,12 @@ export type PostUpdateData = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    title?: string | null;
+                    description?: string | null;
+                    link?: string | null;
+                }> | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -3704,6 +3784,18 @@ export type PostUpdateData = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Title of the photo post (IMAGE only).
+                 */
+                title?: string | null;
+                /**
+                 * TikTok location tag ID.
+                 */
+                locationId?: string | null;
+                /**
+                 * Name of the TikTok location tag.
+                 */
+                locationName?: string | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -3729,6 +3821,14 @@ export type PostUpdateData = {
                  * Set to true if the post is not allowed to be reshared.
                  */
                 disableReshare?: boolean | null;
+                /**
+                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                 */
+                poll?: {
+                    question: string;
+                    options: Array<(string)>;
+                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                } | null;
             } | null;
             YOUTUBE?: {
                 type?: 'VIDEO' | 'SHORT';
@@ -3950,6 +4050,12 @@ export type PostUpdateResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                title?: string | null;
+                description?: string | null;
+                link?: string | null;
+            }> | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -4174,6 +4280,18 @@ export type PostUpdateResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Title of the photo post (IMAGE only).
+             */
+            title?: string | null;
+            /**
+             * TikTok location tag ID.
+             */
+            locationId?: string | null;
+            /**
+             * Name of the TikTok location tag.
+             */
+            locationName?: string | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -4199,6 +4317,14 @@ export type PostUpdateResponse = {
              * Set to true if the post is not allowed to be reshared.
              */
             disableReshare?: boolean | null;
+            /**
+             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+             */
+            poll?: {
+                question: string;
+                options: Array<(string)>;
+                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+            } | null;
         } | null;
         YOUTUBE?: {
             type?: 'VIDEO' | 'SHORT';
@@ -4705,6 +4831,12 @@ export type PostDeleteResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                title?: string | null;
+                description?: string | null;
+                link?: string | null;
+            }> | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -4929,6 +5061,18 @@ export type PostDeleteResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Title of the photo post (IMAGE only).
+             */
+            title?: string | null;
+            /**
+             * TikTok location tag ID.
+             */
+            locationId?: string | null;
+            /**
+             * Name of the TikTok location tag.
+             */
+            locationName?: string | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -4954,6 +5098,14 @@ export type PostDeleteResponse = {
              * Set to true if the post is not allowed to be reshared.
              */
             disableReshare?: boolean | null;
+            /**
+             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+             */
+            poll?: {
+                question: string;
+                options: Array<(string)>;
+                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+            } | null;
         } | null;
         YOUTUBE?: {
             type?: 'VIDEO' | 'SHORT';
@@ -5456,6 +5608,12 @@ export type PostGetListResponse = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    title?: string | null;
+                    description?: string | null;
+                    link?: string | null;
+                }> | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -5680,6 +5838,18 @@ export type PostGetListResponse = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Title of the photo post (IMAGE only).
+                 */
+                title?: string | null;
+                /**
+                 * TikTok location tag ID.
+                 */
+                locationId?: string | null;
+                /**
+                 * Name of the TikTok location tag.
+                 */
+                locationName?: string | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -5705,6 +5875,14 @@ export type PostGetListResponse = {
                  * Set to true if the post is not allowed to be reshared.
                  */
                 disableReshare?: boolean | null;
+                /**
+                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                 */
+                poll?: {
+                    question: string;
+                    options: Array<(string)>;
+                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                } | null;
             } | null;
             YOUTUBE?: {
                 type?: 'VIDEO' | 'SHORT';
@@ -6282,6 +6460,12 @@ export type PostCreateData = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    title?: string | null;
+                    description?: string | null;
+                    link?: string | null;
+                }> | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -6506,6 +6690,18 @@ export type PostCreateData = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Title of the photo post (IMAGE only).
+                 */
+                title?: string | null;
+                /**
+                 * TikTok location tag ID.
+                 */
+                locationId?: string | null;
+                /**
+                 * Name of the TikTok location tag.
+                 */
+                locationName?: string | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -6531,6 +6727,14 @@ export type PostCreateData = {
                  * Set to true if the post is not allowed to be reshared.
                  */
                 disableReshare?: boolean | null;
+                /**
+                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                 */
+                poll?: {
+                    question: string;
+                    options: Array<(string)>;
+                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                } | null;
             } | null;
             YOUTUBE?: {
                 type?: 'VIDEO' | 'SHORT';
@@ -6752,6 +6956,12 @@ export type PostCreateResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                title?: string | null;
+                description?: string | null;
+                link?: string | null;
+            }> | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -6976,6 +7186,18 @@ export type PostCreateResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Title of the photo post (IMAGE only).
+             */
+            title?: string | null;
+            /**
+             * TikTok location tag ID.
+             */
+            locationId?: string | null;
+            /**
+             * Name of the TikTok location tag.
+             */
+            locationName?: string | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -7001,6 +7223,14 @@ export type PostCreateResponse = {
              * Set to true if the post is not allowed to be reshared.
              */
             disableReshare?: boolean | null;
+            /**
+             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+             */
+            poll?: {
+                question: string;
+                options: Array<(string)>;
+                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+            } | null;
         } | null;
         YOUTUBE?: {
             type?: 'VIDEO' | 'SHORT';
@@ -7507,6 +7737,12 @@ export type PostRetryResponse = {
             description?: string | null;
             boardName: string;
             uploadIds?: Array<(string)> | null;
+            carouselItems?: Array<{
+                uploadId: string;
+                title?: string | null;
+                description?: string | null;
+                link?: string | null;
+            }> | null;
             /**
              * The URL to image uploaded on bundle.social.
              */
@@ -7731,6 +7967,18 @@ export type PostRetryResponse = {
                  */
                 videoOriginalSoundVolume?: number | null;
             } | null;
+            /**
+             * Title of the photo post (IMAGE only).
+             */
+            title?: string | null;
+            /**
+             * TikTok location tag ID.
+             */
+            locationId?: string | null;
+            /**
+             * Name of the TikTok location tag.
+             */
+            locationName?: string | null;
         } | null;
         LINKEDIN?: {
             text: string;
@@ -7756,6 +8004,14 @@ export type PostRetryResponse = {
              * Set to true if the post is not allowed to be reshared.
              */
             disableReshare?: boolean | null;
+            /**
+             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+             */
+            poll?: {
+                question: string;
+                options: Array<(string)>;
+                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+            } | null;
         } | null;
         YOUTUBE?: {
             type?: 'VIDEO' | 'SHORT';
@@ -8368,6 +8624,12 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    title?: string | null;
+                    description?: string | null;
+                    link?: string | null;
+                }> | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -8592,6 +8854,18 @@ export type AnalyticsGetPostAnalyticsResponse = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Title of the photo post (IMAGE only).
+                 */
+                title?: string | null;
+                /**
+                 * TikTok location tag ID.
+                 */
+                locationId?: string | null;
+                /**
+                 * Name of the TikTok location tag.
+                 */
+                locationName?: string | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -8617,6 +8891,14 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * Set to true if the post is not allowed to be reshared.
                  */
                 disableReshare?: boolean | null;
+                /**
+                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                 */
+                poll?: {
+                    question: string;
+                    options: Array<(string)>;
+                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                } | null;
             } | null;
             YOUTUBE?: {
                 type?: 'VIDEO' | 'SHORT';
@@ -9217,6 +9499,12 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 description?: string | null;
                 boardName: string;
                 uploadIds?: Array<(string)> | null;
+                carouselItems?: Array<{
+                    uploadId: string;
+                    title?: string | null;
+                    description?: string | null;
+                    link?: string | null;
+                }> | null;
                 /**
                  * The URL to image uploaded on bundle.social.
                  */
@@ -9441,6 +9729,18 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                      */
                     videoOriginalSoundVolume?: number | null;
                 } | null;
+                /**
+                 * Title of the photo post (IMAGE only).
+                 */
+                title?: string | null;
+                /**
+                 * TikTok location tag ID.
+                 */
+                locationId?: string | null;
+                /**
+                 * Name of the TikTok location tag.
+                 */
+                locationName?: string | null;
             } | null;
             LINKEDIN?: {
                 text: string;
@@ -9466,6 +9766,14 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * Set to true if the post is not allowed to be reshared.
                  */
                 disableReshare?: boolean | null;
+                /**
+                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                 */
+                poll?: {
+                    question: string;
+                    options: Array<(string)>;
+                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                } | null;
             } | null;
             YOUTUBE?: {
                 type?: 'VIDEO' | 'SHORT';
@@ -11873,6 +12181,8 @@ export type ConversationGetListResponse = {
                 error?: string | null;
                 syncedAt?: string | null;
             } | null;
+            participantFollowsBusiness?: boolean | null;
+            businessFollowsParticipant?: boolean | null;
         };
         socialAccount?: {
             id: string;
@@ -11962,6 +12272,8 @@ export type ConversationGetResponse = {
             error?: string | null;
             syncedAt?: string | null;
         } | null;
+        participantFollowsBusiness?: boolean | null;
+        businessFollowsParticipant?: boolean | null;
     };
     socialAccount?: {
         id: string;
@@ -12054,6 +12366,8 @@ export type ConversationUpdateResponse = {
             error?: string | null;
             syncedAt?: string | null;
         } | null;
+        participantFollowsBusiness?: boolean | null;
+        businessFollowsParticipant?: boolean | null;
     };
     socialAccount?: {
         id: string;
@@ -12334,6 +12648,8 @@ export type ConversationSendMessageResponse = {
                 error?: string | null;
                 syncedAt?: string | null;
             } | null;
+            participantFollowsBusiness?: boolean | null;
+            businessFollowsParticipant?: boolean | null;
         };
         socialAccount?: {
             id: string;
@@ -12548,6 +12864,8 @@ export type ConversationReactMessageResponse = {
                 error?: string | null;
                 syncedAt?: string | null;
             } | null;
+            participantFollowsBusiness?: boolean | null;
+            businessFollowsParticipant?: boolean | null;
         };
         socialAccount?: {
             id: string;
@@ -12759,6 +13077,8 @@ export type ConversationMarkReadResponse = {
             error?: string | null;
             syncedAt?: string | null;
         } | null;
+        participantFollowsBusiness?: boolean | null;
+        businessFollowsParticipant?: boolean | null;
     };
     socialAccount?: {
         id: string;
@@ -12889,6 +13209,8 @@ export type ConversationPrivateReplyResponse = {
                 error?: string | null;
                 syncedAt?: string | null;
             } | null;
+            participantFollowsBusiness?: boolean | null;
+            businessFollowsParticipant?: boolean | null;
         };
         socialAccount?: {
             id: string;
@@ -13094,6 +13416,8 @@ export type ConversationArchiveResponse = {
             error?: string | null;
             syncedAt?: string | null;
         } | null;
+        participantFollowsBusiness?: boolean | null;
+        businessFollowsParticipant?: boolean | null;
     };
     socialAccount?: {
         id: string;
@@ -13180,6 +13504,8 @@ export type ConversationOpenResponse = {
             error?: string | null;
             syncedAt?: string | null;
         } | null;
+        participantFollowsBusiness?: boolean | null;
+        businessFollowsParticipant?: boolean | null;
     };
     socialAccount?: {
         id: string;
@@ -17659,6 +17985,8 @@ export type AutomationGetFlowExecutionsResponse = {
                     error?: string | null;
                     syncedAt?: string | null;
                 } | null;
+                participantFollowsBusiness?: boolean | null;
+                businessFollowsParticipant?: boolean | null;
             };
             socialAccount?: {
                 id: string;
@@ -18526,6 +18854,8 @@ export type AutomationGetExecutionResponse = {
                 error?: string | null;
                 syncedAt?: string | null;
             } | null;
+            participantFollowsBusiness?: boolean | null;
+            businessFollowsParticipant?: boolean | null;
         };
         socialAccount?: {
             id: string;
@@ -19409,6 +19739,8 @@ export type AutomationTestFlowResponse = {
                 error?: string | null;
                 syncedAt?: string | null;
             } | null;
+            participantFollowsBusiness?: boolean | null;
+            businessFollowsParticipant?: boolean | null;
         };
         socialAccount?: {
             id: string;
@@ -22453,6 +22785,31 @@ export type MiscDiscordDeleteMessageResponse = {
     success: boolean;
 };
 
+export type MiscTiktokSearchLocationsData = {
+    /**
+     * Free-text query used to search TikTok location tags.
+     */
+    q: string;
+    teamId: string;
+};
+
+export type MiscTiktokSearchLocationsResponse = {
+    items: Array<{
+        /**
+         * Location tag ID to pass as data.TIKTOK.locationId.
+         */
+        locationId: string;
+        /**
+         * Location name to pass as data.TIKTOK.locationName.
+         */
+        name: string;
+        /**
+         * Extra location details. Can be a country, a region, a city or a full street address.
+         */
+        address?: string | null;
+    }>;
+};
+
 export type MiscTiktokGetCommercialMusicTrendingListData = {
     /**
      * Timeframe for popular tracks ranking.
@@ -23637,6 +23994,97 @@ export type $OpenApiTs = {
                         total: number;
                         totalPages: number;
                     };
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/organization/usage/messages': {
+        get: {
+            req: OrganizationGetMessagesUsageData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        type: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
+                        username: string | null;
+                        displayName: string | null;
+                        messagesUsed: number;
+                        messagesLimit: number;
+                        automationRunsUsed: number;
+                        automationRunsLimit: number;
+                    }>;
+                    total: number;
                 };
                 /**
                  * 400
@@ -27287,6 +27735,12 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                title?: string | null;
+                                description?: string | null;
+                                link?: string | null;
+                            }> | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -27511,6 +27965,18 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Title of the photo post (IMAGE only).
+                             */
+                            title?: string | null;
+                            /**
+                             * TikTok location tag ID.
+                             */
+                            locationId?: string | null;
+                            /**
+                             * Name of the TikTok location tag.
+                             */
+                            locationName?: string | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -27536,6 +28002,14 @@ export type $OpenApiTs = {
                              * Set to true if the post is not allowed to be reshared.
                              */
                             disableReshare?: boolean | null;
+                            /**
+                             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                             */
+                            poll?: {
+                                question: string;
+                                options: Array<(string)>;
+                                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                            } | null;
                         } | null;
                         YOUTUBE?: {
                             type?: 'VIDEO' | 'SHORT';
@@ -28200,6 +28674,12 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                title?: string | null;
+                                description?: string | null;
+                                link?: string | null;
+                            }> | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -28424,6 +28904,18 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Title of the photo post (IMAGE only).
+                             */
+                            title?: string | null;
+                            /**
+                             * TikTok location tag ID.
+                             */
+                            locationId?: string | null;
+                            /**
+                             * Name of the TikTok location tag.
+                             */
+                            locationName?: string | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -28449,6 +28941,14 @@ export type $OpenApiTs = {
                              * Set to true if the post is not allowed to be reshared.
                              */
                             disableReshare?: boolean | null;
+                            /**
+                             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                             */
+                            poll?: {
+                                question: string;
+                                options: Array<(string)>;
+                                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                            } | null;
                         } | null;
                         YOUTUBE?: {
                             type?: 'VIDEO' | 'SHORT';
@@ -29111,6 +29611,12 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                title?: string | null;
+                                description?: string | null;
+                                link?: string | null;
+                            }> | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -29335,6 +29841,18 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Title of the photo post (IMAGE only).
+                             */
+                            title?: string | null;
+                            /**
+                             * TikTok location tag ID.
+                             */
+                            locationId?: string | null;
+                            /**
+                             * Name of the TikTok location tag.
+                             */
+                            locationName?: string | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -29360,6 +29878,14 @@ export type $OpenApiTs = {
                              * Set to true if the post is not allowed to be reshared.
                              */
                             disableReshare?: boolean | null;
+                            /**
+                             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                             */
+                            poll?: {
+                                question: string;
+                                options: Array<(string)>;
+                                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                            } | null;
                         } | null;
                         YOUTUBE?: {
                             type?: 'VIDEO' | 'SHORT';
@@ -29944,6 +30470,12 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                title?: string | null;
+                                description?: string | null;
+                                link?: string | null;
+                            }> | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -30168,6 +30700,18 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Title of the photo post (IMAGE only).
+                             */
+                            title?: string | null;
+                            /**
+                             * TikTok location tag ID.
+                             */
+                            locationId?: string | null;
+                            /**
+                             * Name of the TikTok location tag.
+                             */
+                            locationName?: string | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -30193,6 +30737,14 @@ export type $OpenApiTs = {
                              * Set to true if the post is not allowed to be reshared.
                              */
                             disableReshare?: boolean | null;
+                            /**
+                             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                             */
+                            poll?: {
+                                question: string;
+                                options: Array<(string)>;
+                                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                            } | null;
                         } | null;
                         YOUTUBE?: {
                             type?: 'VIDEO' | 'SHORT';
@@ -30759,6 +31311,12 @@ export type $OpenApiTs = {
                                 description?: string | null;
                                 boardName: string;
                                 uploadIds?: Array<(string)> | null;
+                                carouselItems?: Array<{
+                                    uploadId: string;
+                                    title?: string | null;
+                                    description?: string | null;
+                                    link?: string | null;
+                                }> | null;
                                 /**
                                  * The URL to image uploaded on bundle.social.
                                  */
@@ -30983,6 +31541,18 @@ export type $OpenApiTs = {
                                      */
                                     videoOriginalSoundVolume?: number | null;
                                 } | null;
+                                /**
+                                 * Title of the photo post (IMAGE only).
+                                 */
+                                title?: string | null;
+                                /**
+                                 * TikTok location tag ID.
+                                 */
+                                locationId?: string | null;
+                                /**
+                                 * Name of the TikTok location tag.
+                                 */
+                                locationName?: string | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -31008,6 +31578,14 @@ export type $OpenApiTs = {
                                  * Set to true if the post is not allowed to be reshared.
                                  */
                                 disableReshare?: boolean | null;
+                                /**
+                                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                                 */
+                                poll?: {
+                                    question: string;
+                                    options: Array<(string)>;
+                                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                                } | null;
                             } | null;
                             YOUTUBE?: {
                                 type?: 'VIDEO' | 'SHORT';
@@ -31658,6 +32236,12 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                title?: string | null;
+                                description?: string | null;
+                                link?: string | null;
+                            }> | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -31882,6 +32466,18 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Title of the photo post (IMAGE only).
+                             */
+                            title?: string | null;
+                            /**
+                             * TikTok location tag ID.
+                             */
+                            locationId?: string | null;
+                            /**
+                             * Name of the TikTok location tag.
+                             */
+                            locationName?: string | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -31907,6 +32503,14 @@ export type $OpenApiTs = {
                              * Set to true if the post is not allowed to be reshared.
                              */
                             disableReshare?: boolean | null;
+                            /**
+                             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                             */
+                            poll?: {
+                                question: string;
+                                options: Array<(string)>;
+                                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                            } | null;
                         } | null;
                         YOUTUBE?: {
                             type?: 'VIDEO' | 'SHORT';
@@ -32493,6 +33097,12 @@ export type $OpenApiTs = {
                             description?: string | null;
                             boardName: string;
                             uploadIds?: Array<(string)> | null;
+                            carouselItems?: Array<{
+                                uploadId: string;
+                                title?: string | null;
+                                description?: string | null;
+                                link?: string | null;
+                            }> | null;
                             /**
                              * The URL to image uploaded on bundle.social.
                              */
@@ -32717,6 +33327,18 @@ export type $OpenApiTs = {
                                  */
                                 videoOriginalSoundVolume?: number | null;
                             } | null;
+                            /**
+                             * Title of the photo post (IMAGE only).
+                             */
+                            title?: string | null;
+                            /**
+                             * TikTok location tag ID.
+                             */
+                            locationId?: string | null;
+                            /**
+                             * Name of the TikTok location tag.
+                             */
+                            locationName?: string | null;
                         } | null;
                         LINKEDIN?: {
                             text: string;
@@ -32742,6 +33364,14 @@ export type $OpenApiTs = {
                              * Set to true if the post is not allowed to be reshared.
                              */
                             disableReshare?: boolean | null;
+                            /**
+                             * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                             */
+                            poll?: {
+                                question: string;
+                                options: Array<(string)>;
+                                duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                            } | null;
                         } | null;
                         YOUTUBE?: {
                             type?: 'VIDEO' | 'SHORT';
@@ -33636,6 +34266,12 @@ export type $OpenApiTs = {
                                 description?: string | null;
                                 boardName: string;
                                 uploadIds?: Array<(string)> | null;
+                                carouselItems?: Array<{
+                                    uploadId: string;
+                                    title?: string | null;
+                                    description?: string | null;
+                                    link?: string | null;
+                                }> | null;
                                 /**
                                  * The URL to image uploaded on bundle.social.
                                  */
@@ -33860,6 +34496,18 @@ export type $OpenApiTs = {
                                      */
                                     videoOriginalSoundVolume?: number | null;
                                 } | null;
+                                /**
+                                 * Title of the photo post (IMAGE only).
+                                 */
+                                title?: string | null;
+                                /**
+                                 * TikTok location tag ID.
+                                 */
+                                locationId?: string | null;
+                                /**
+                                 * Name of the TikTok location tag.
+                                 */
+                                locationName?: string | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -33885,6 +34533,14 @@ export type $OpenApiTs = {
                                  * Set to true if the post is not allowed to be reshared.
                                  */
                                 disableReshare?: boolean | null;
+                                /**
+                                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                                 */
+                                poll?: {
+                                    question: string;
+                                    options: Array<(string)>;
+                                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                                } | null;
                             } | null;
                             YOUTUBE?: {
                                 type?: 'VIDEO' | 'SHORT';
@@ -34628,6 +35284,12 @@ export type $OpenApiTs = {
                                 description?: string | null;
                                 boardName: string;
                                 uploadIds?: Array<(string)> | null;
+                                carouselItems?: Array<{
+                                    uploadId: string;
+                                    title?: string | null;
+                                    description?: string | null;
+                                    link?: string | null;
+                                }> | null;
                                 /**
                                  * The URL to image uploaded on bundle.social.
                                  */
@@ -34852,6 +35514,18 @@ export type $OpenApiTs = {
                                      */
                                     videoOriginalSoundVolume?: number | null;
                                 } | null;
+                                /**
+                                 * Title of the photo post (IMAGE only).
+                                 */
+                                title?: string | null;
+                                /**
+                                 * TikTok location tag ID.
+                                 */
+                                locationId?: string | null;
+                                /**
+                                 * Name of the TikTok location tag.
+                                 */
+                                locationName?: string | null;
                             } | null;
                             LINKEDIN?: {
                                 text: string;
@@ -34877,6 +35551,14 @@ export type $OpenApiTs = {
                                  * Set to true if the post is not allowed to be reshared.
                                  */
                                 disableReshare?: boolean | null;
+                                /**
+                                 * A poll (question up to 140 characters, 2-4 options up to 30 characters each). Cannot be combined with media or a link. Polls cannot be edited after publishing.
+                                 */
+                                poll?: {
+                                    question: string;
+                                    options: Array<(string)>;
+                                    duration?: 'ONE_DAY' | 'THREE_DAYS' | 'SEVEN_DAYS' | 'FOURTEEN_DAYS';
+                                } | null;
                             } | null;
                             YOUTUBE?: {
                                 type?: 'VIDEO' | 'SHORT';
@@ -38215,6 +38897,8 @@ export type $OpenApiTs = {
                                 error?: string | null;
                                 syncedAt?: string | null;
                             } | null;
+                            participantFollowsBusiness?: boolean | null;
+                            businessFollowsParticipant?: boolean | null;
                         };
                         socialAccount?: {
                             id: string;
@@ -38377,6 +39061,8 @@ export type $OpenApiTs = {
                             error?: string | null;
                             syncedAt?: string | null;
                         } | null;
+                        participantFollowsBusiness?: boolean | null;
+                        businessFollowsParticipant?: boolean | null;
                     };
                     socialAccount?: {
                         id: string;
@@ -38534,6 +39220,8 @@ export type $OpenApiTs = {
                             error?: string | null;
                             syncedAt?: string | null;
                         } | null;
+                        participantFollowsBusiness?: boolean | null;
+                        businessFollowsParticipant?: boolean | null;
                     };
                     socialAccount?: {
                         id: string;
@@ -38891,6 +39579,8 @@ export type $OpenApiTs = {
                                 error?: string | null;
                                 syncedAt?: string | null;
                             } | null;
+                            participantFollowsBusiness?: boolean | null;
+                            businessFollowsParticipant?: boolean | null;
                         };
                         socialAccount?: {
                             id: string;
@@ -39170,6 +39860,8 @@ export type $OpenApiTs = {
                                 error?: string | null;
                                 syncedAt?: string | null;
                             } | null;
+                            participantFollowsBusiness?: boolean | null;
+                            businessFollowsParticipant?: boolean | null;
                         };
                         socialAccount?: {
                             id: string;
@@ -39448,6 +40140,8 @@ export type $OpenApiTs = {
                             error?: string | null;
                             syncedAt?: string | null;
                         } | null;
+                        participantFollowsBusiness?: boolean | null;
+                        businessFollowsParticipant?: boolean | null;
                     };
                     socialAccount?: {
                         id: string;
@@ -39608,6 +40302,8 @@ export type $OpenApiTs = {
                                 error?: string | null;
                                 syncedAt?: string | null;
                             } | null;
+                            participantFollowsBusiness?: boolean | null;
+                            businessFollowsParticipant?: boolean | null;
                         };
                         socialAccount?: {
                             id: string;
@@ -39886,6 +40582,8 @@ export type $OpenApiTs = {
                             error?: string | null;
                             syncedAt?: string | null;
                         } | null;
+                        participantFollowsBusiness?: boolean | null;
+                        businessFollowsParticipant?: boolean | null;
                     };
                     socialAccount?: {
                         id: string;
@@ -40045,6 +40743,8 @@ export type $OpenApiTs = {
                             error?: string | null;
                             syncedAt?: string | null;
                         } | null;
+                        participantFollowsBusiness?: boolean | null;
+                        businessFollowsParticipant?: boolean | null;
                     };
                     socialAccount?: {
                         id: string;
@@ -44832,6 +45532,8 @@ export type $OpenApiTs = {
                                     error?: string | null;
                                     syncedAt?: string | null;
                                 } | null;
+                                participantFollowsBusiness?: boolean | null;
+                                businessFollowsParticipant?: boolean | null;
                             };
                             socialAccount?: {
                                 id: string;
@@ -45772,6 +46474,8 @@ export type $OpenApiTs = {
                                 error?: string | null;
                                 syncedAt?: string | null;
                             } | null;
+                            participantFollowsBusiness?: boolean | null;
+                            businessFollowsParticipant?: boolean | null;
                         };
                         socialAccount?: {
                             id: string;
@@ -46709,6 +47413,8 @@ export type $OpenApiTs = {
                                 error?: string | null;
                                 syncedAt?: string | null;
                             } | null;
+                            participantFollowsBusiness?: boolean | null;
+                            businessFollowsParticipant?: boolean | null;
                         };
                         socialAccount?: {
                             id: string;
@@ -55512,6 +56218,100 @@ export type $OpenApiTs = {
                  */
                 200: {
                     success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/tiktok/locations': {
+        get: {
+            req: MiscTiktokSearchLocationsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        /**
+                         * Location tag ID to pass as data.TIKTOK.locationId.
+                         */
+                        locationId: string;
+                        /**
+                         * Location name to pass as data.TIKTOK.locationName.
+                         */
+                        name: string;
+                        /**
+                         * Extra location details. Can be a country, a region, a city or a full street address.
+                         */
+                        address?: string | null;
+                    }>;
                 };
                 /**
                  * 400

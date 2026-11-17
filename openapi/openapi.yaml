@@ -3687,13 +3687,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
-            type: number
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
         - name: search
           in: query
@@ -12262,13 +12266,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
-            type: number
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: post.getReconnectSocialAccountCandidates
       responses:
@@ -23181,13 +23189,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
-            type: number
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: post.getList
       responses:
@@ -38101,13 +38113,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 20.
           schema:
-            default: 10
-            type: number
+            default: 20
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: comment.importGetList
       responses:
@@ -38404,13 +38420,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 50.
           schema:
-            default: 10
-            type: number
+            default: 50
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: comment.importGetFetchedComments
       responses:
@@ -42197,13 +42217,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
-            type: number
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: comment.getList
       responses:
@@ -44937,11 +44961,12 @@ paths:
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
             type: integer
             minimum: 1
-            maximum: 500
+            maximum: 1000
             nullable: true
         - name: cursor
           in: query
@@ -46433,11 +46458,12 @@ paths:
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
             type: integer
             minimum: 1
-            maximum: 500
+            maximum: 1000
             nullable: true
         - name: cursor
           in: query
@@ -51765,13 +51791,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
-            type: number
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: automation.getFlows
       responses:
@@ -70039,11 +70069,12 @@ paths:
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
             type: integer
             minimum: 1
-            maximum: 500
+            maximum: 1000
             nullable: true
         - name: cursor
           in: query
@@ -81151,13 +81182,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 10.
           schema:
             default: 10
-            type: number
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: automation.getProviderSettings
       responses:
@@ -94073,19 +94108,21 @@ paths:
           required: true
           schema:
             type: string
-        - name: limit
-          in: query
-          schema:
-            default: 50
-            type: number
-            minimum: 1
-            maximum: 100
         - name: offset
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
             minimum: 0
+            nullable: true
+        - name: limit
+          in: query
+          description: Page size, up to 1000. Default 50.
+          schema:
+            default: 50
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: misc.google_business.getReviews
       responses:
@@ -98835,19 +98872,21 @@ paths:
           required: true
           schema:
             type: string
-        - name: limit
-          in: query
-          schema:
-            default: 50
-            type: number
-            minimum: 1
-            maximum: 100
         - name: offset
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
             minimum: 0
+            nullable: true
+        - name: limit
+          in: query
+          description: Page size, up to 1000. Default 50.
+          schema:
+            default: 50
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: misc.facebook.getRecommendations
       responses:
@@ -106815,19 +106854,21 @@ paths:
               - MASTODON
               - BLUESKY
               - TWITTER
-        - name: limit
-          in: query
-          schema:
-            default: 50
-            type: number
-            minimum: 1
-            maximum: 100
         - name: offset
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
             minimum: 0
+            nullable: true
+        - name: limit
+          in: query
+          description: Page size, up to 1000. Default 50.
+          schema:
+            default: 50
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: postImport.getImportedPosts
       responses:
@@ -107890,13 +107931,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 20.
           schema:
-            default: 10
-            type: number
+            default: 20
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: postCSV.getList
       responses:
@@ -108643,13 +108688,17 @@ paths:
           in: query
           schema:
             default: 0
-            type: number
+            type: integer
+            minimum: 0
             nullable: true
         - name: limit
           in: query
+          description: Page size, up to 1000. Default 50.
           schema:
-            default: 10
-            type: number
+            default: 50
+            type: integer
+            minimum: 1
+            maximum: 1000
             nullable: true
       operationId: postCSV.getRows
       responses:

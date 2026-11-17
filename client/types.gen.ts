@@ -542,6 +542,9 @@ export type TeamDeleteTeamResponse = {
 };
 
 export type TeamGetListData = {
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     search?: string | null;
@@ -1751,6 +1754,9 @@ export type UploadAbortMultipartUploadResponse = {
 };
 
 export type PostGetReconnectSocialAccountCandidatesData = {
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     teamId: string;
@@ -5592,6 +5598,9 @@ export type PostDeleteResponse = {
 };
 
 export type PostGetListData = {
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     order?: 'ASC' | 'DESC' | null;
@@ -10448,6 +10457,9 @@ export type CommentImportCreateResponse = {
 
 export type CommentImportGetListData = {
     importedPostId?: string;
+    /**
+     * Page size, up to 1000. Default 20.
+     */
     limit?: number | null;
     offset?: number | null;
     postId?: string;
@@ -10477,6 +10489,9 @@ export type CommentImportGetListResponse = {
 
 export type CommentImportGetFetchedCommentsData = {
     importedPostId?: string;
+    /**
+     * Page size, up to 1000. Default 50.
+     */
     limit?: number | null;
     offset?: number | null;
     platform?: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'TIKTOK' | 'REDDIT' | 'THREADS' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
@@ -11414,6 +11429,9 @@ export type CommentDeleteResponse = {
 
 export type CommentGetListData = {
     importedPostId?: string;
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     order?: 'ASC' | 'DESC';
@@ -12210,6 +12228,9 @@ export type CommentRetryResponse = {
 
 export type ConversationGetListData = {
     cursor?: string | null;
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     platform?: 'INSTAGRAM' | 'FACEBOOK';
@@ -12494,6 +12515,9 @@ export type ConversationUpdateResponse = {
 export type ConversationGetMessagesData = {
     cursor?: string | null;
     id: string;
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
 };
@@ -13636,6 +13660,9 @@ export type ConversationOpenResponse = {
 };
 
 export type AutomationGetFlowsData = {
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     platformScope?: 'INSTAGRAM' | 'FACEBOOK' | 'BOTH' | 'TIKTOK';
@@ -17459,6 +17486,9 @@ export type AutomationGetFlowExecutionsData = {
     fetchedCommentId?: string;
     flowVersionId?: string;
     id: string;
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
@@ -20092,6 +20122,9 @@ export type AutomationTestFlowResponse = {
 };
 
 export type AutomationGetProviderSettingsData = {
+    /**
+     * Page size, up to 1000. Default 10.
+     */
     limit?: number | null;
     offset?: number | null;
     platform?: 'INSTAGRAM' | 'FACEBOOK' | 'TIKTOK';
@@ -21850,7 +21883,10 @@ export type MiscGoogleBusinessGetReviewImportByIdResponse = {
 };
 
 export type MiscGoogleBusinessGetReviewsData = {
-    limit?: number;
+    /**
+     * Page size, up to 1000. Default 50.
+     */
+    limit?: number | null;
     offset?: number | null;
     teamId: string;
 };
@@ -22393,7 +22429,10 @@ export type MiscFacebookGetRecommendationImportByIdResponse = {
 };
 
 export type MiscFacebookGetRecommendationsData = {
-    limit?: number;
+    /**
+     * Page size, up to 1000. Default 50.
+     */
+    limit?: number | null;
     offset?: number | null;
     teamId: string;
 };
@@ -23310,7 +23349,10 @@ export type PostImportGetByIdResponse = {
 };
 
 export type PostImportGetImportedPostsData = {
-    limit?: number;
+    /**
+     * Page size, up to 1000. Default 50.
+     */
+    limit?: number | null;
     offset?: number | null;
     socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
     teamId: string;
@@ -23436,6 +23478,9 @@ export type PostCsvCreateResponse = {
 };
 
 export type PostCsvGetListData = {
+    /**
+     * Page size, up to 1000. Default 20.
+     */
     limit?: number | null;
     offset?: number | null;
 };
@@ -23504,6 +23549,9 @@ export type PostCsvGetStatusResponse = {
 
 export type PostCsvGetRowsData = {
     importId: string;
+    /**
+     * Page size, up to 1000. Default 50.
+     */
     limit?: number | null;
     offset?: number | null;
     status?: 'SUCCESS' | 'FAILED';

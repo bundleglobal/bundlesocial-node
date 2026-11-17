@@ -337,7 +337,7 @@ export class TeamService {
      * List the teams in your organization with pagination. Use this to discover team IDs, which are required by most publishing and analytics endpoints.
      * @param data The data for the request.
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @param data.search
      * @returns unknown 200
      * @throws ApiError
@@ -1140,7 +1140,7 @@ export class PostService {
      * @param data.teamId
      * @param data.type
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -1329,7 +1329,7 @@ export class PostService {
      * @param data.postDateFrom
      * @param data.postDateTo
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -1745,7 +1745,7 @@ export class CommentService {
      * @param data.importedPostId
      * @param data.status
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 20.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -1785,7 +1785,7 @@ export class CommentService {
      * @param data.platform
      * @param data.socialAccountId
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 50.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -1980,7 +1980,7 @@ export class CommentService {
      * @param data.q
      * @param data.platforms
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -2085,7 +2085,7 @@ export class ConversationService {
      * @param data.socialAccountId
      * @param data.status
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @param data.cursor
      * @returns unknown 200
      * @throws ApiError
@@ -2184,7 +2184,7 @@ export class ConversationService {
      * @param data The data for the request.
      * @param data.id
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @param data.cursor
      * @returns unknown 200
      * @throws ApiError
@@ -2413,7 +2413,7 @@ export class AutomationService {
      * @param data.platformScope
      * @param data.socialAccountId
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -2722,7 +2722,7 @@ export class AutomationService {
      * @param data.conversationId
      * @param data.fetchedCommentId
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @param data.cursor
      * @returns unknown 200
      * @throws ApiError
@@ -2832,7 +2832,7 @@ export class AutomationService {
      * @param data.type
      * @param data.status
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 10.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -4286,8 +4286,8 @@ export class MiscService {
      * List the Google Reviews pulled in by an import, with paging and your remaining import capacity. Use it to build a review inbox or monitor rating trends.
      * @param data The data for the request.
      * @param data.teamId
-     * @param data.limit
      * @param data.offset
+     * @param data.limit Page size, up to 1000. Default 50.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -4297,8 +4297,8 @@ export class MiscService {
             url: '/api/v1/misc/google-business/reviews',
             query: {
                 teamId: data.teamId,
-                limit: data.limit,
-                offset: data.offset
+                offset: data.offset,
+                limit: data.limit
             },
             errors: {
                 400: '400',
@@ -4888,8 +4888,8 @@ export class MiscService {
      * List the Facebook Page recommendations pulled in by an import, with paging and your remaining import capacity. Use it to build a reputation-management inbox.
      * @param data The data for the request.
      * @param data.teamId
-     * @param data.limit
      * @param data.offset
+     * @param data.limit Page size, up to 1000. Default 50.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -4899,8 +4899,8 @@ export class MiscService {
             url: '/api/v1/misc/facebook/recommendations',
             query: {
                 teamId: data.teamId,
-                limit: data.limit,
-                offset: data.offset
+                offset: data.offset,
+                limit: data.limit
             },
             errors: {
                 400: '400',
@@ -5919,8 +5919,8 @@ export class PostImportService {
      * @param data The data for the request.
      * @param data.teamId
      * @param data.socialAccountType
-     * @param data.limit
      * @param data.offset
+     * @param data.limit Page size, up to 1000. Default 50.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -5931,8 +5931,8 @@ export class PostImportService {
             query: {
                 teamId: data.teamId,
                 socialAccountType: data.socialAccountType,
-                limit: data.limit,
-                offset: data.offset
+                offset: data.offset,
+                limit: data.limit
             },
             errors: {
                 400: '400',
@@ -6046,7 +6046,7 @@ export class PostCsvService {
      * List your team's bulk CSV post imports with pagination, so you can see what was uploaded and when.
      * @param data The data for the request.
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 20.
      * @returns unknown 200
      * @throws ApiError
      */
@@ -6137,7 +6137,7 @@ export class PostCsvService {
      * @param data.importId
      * @param data.status
      * @param data.offset
-     * @param data.limit
+     * @param data.limit Page size, up to 1000. Default 50.
      * @returns unknown 200
      * @throws ApiError
      */

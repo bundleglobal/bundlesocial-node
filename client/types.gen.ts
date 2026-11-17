@@ -453,6 +453,7 @@ export type TeamGetTeamResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -677,6 +678,7 @@ export type TeamGetListResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -782,6 +784,10 @@ export type SocialAccountConnectData = {
          */
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
         /**
+         * Snapchat only. PERSONAL (default) connects the login's own Public Profile. BUSINESS lists the Public Profiles of the login's Snap Business organizations; pick one with set-channel.
+         */
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS';
+        /**
          * Facebook and Instagram: include business_management, ads_management, ads_read scopes. YouTube: include the monetary analytics scope (enables revenue/monetization data).
          */
         withBusinessScope?: boolean;
@@ -849,6 +855,7 @@ export type SocialAccountDisconnectResponse = {
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
@@ -866,7 +873,7 @@ export type SocialAccountSetChannelData = {
      * Body
      */
     requestBody?: {
-        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS';
+        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
         channelId: string;
     };
@@ -908,6 +915,7 @@ export type SocialAccountSetChannelResponse = {
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
@@ -925,7 +933,7 @@ export type SocialAccountUnsetChannelData = {
      * Body
      */
     requestBody?: {
-        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS';
+        type: 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
     };
 };
@@ -966,6 +974,7 @@ export type SocialAccountUnsetChannelResponse = {
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
@@ -983,7 +992,7 @@ export type SocialAccountRefreshChannelsData = {
      * Body
      */
     requestBody?: {
-        type: 'DISCORD' | 'SLACK' | 'REDDIT' | 'PINTEREST' | 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS';
+        type: 'DISCORD' | 'SLACK' | 'REDDIT' | 'PINTEREST' | 'FACEBOOK' | 'INSTAGRAM' | 'LINKEDIN' | 'YOUTUBE' | 'GOOGLE_BUSINESS' | 'SNAPCHAT';
         teamId: string;
     };
 };
@@ -1024,6 +1033,7 @@ export type SocialAccountRefreshChannelsResponse = {
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
@@ -1065,6 +1075,10 @@ export type SocialAccountCreatePortalLinkData = {
          */
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM';
         /**
+         * Snapchat only - connection method. When omitted, the portal lets the user choose.
+         */
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS';
+        /**
          * Optional. Facebook and Instagram only - when provided, portal skips business scope selection modal for Facebook login paths.
          */
         withBusinessScope?: boolean;
@@ -1086,7 +1100,7 @@ export type SocialAccountCreatePortalLinkData = {
         hideUserName?: boolean;
         hideLanguageSwitcher?: boolean;
         showModalOnConnectSuccess?: boolean;
-        language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv' | 'de' | 'es' | 'it' | 'nl' | 'pt' | 'ru' | 'tr' | 'zh' | 'da' | 'th' | 'ko' | 'he' | 'ar';
+        language?: 'en' | 'pl' | 'fr' | 'hi' | 'sv' | 'de' | 'es' | 'it' | 'nl' | 'pt' | 'ru' | 'tr' | 'zh' | 'da' | 'no' | 'th' | 'ko' | 'he' | 'ar';
         maxSocialAccountsConnected?: number;
     };
 };
@@ -1200,6 +1214,7 @@ export type SocialAccountProfileRefreshResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -1259,6 +1274,7 @@ export type SocialAccountGetByTypeResponse = {
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
@@ -1279,7 +1295,7 @@ export type SocialAccountCopyData = {
         fromTeamId: string;
         toTeamId: string;
         /**
-         * If you set that to true, selected page will not be transferred automatically. The user will have to select the page themselves again. This only applies to Facebook, Instagram, Linkedin and Youtube.
+         * If you set that to true, selected page will not be transferred automatically. The user will have to select the page themselves again. This only applies to Facebook, Instagram, Linkedin, Youtube, Google Business and Snapchat connected with the BUSINESS method.
          */
         resetChannel?: boolean;
         socialAccountTypes: Array<('TIKTOK' | 'YOUTUBE' | 'INSTAGRAM' | 'FACEBOOK' | 'TWITTER' | 'THREADS' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'DISCORD' | 'SLACK' | 'BLUESKY' | 'GOOGLE_BUSINESS' | 'SNAPCHAT')>;
@@ -1322,6 +1338,7 @@ export type SocialAccountCopyResponse = Array<{
     }> | null;
     mastodonServerId?: string | null;
     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
     isTiktokBusinessAccount?: boolean | null;
     disconnectedCheckTryAt?: string | null;
@@ -1376,6 +1393,7 @@ export type SocialAccountGetAccountsToDeleteResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -1981,6 +1999,7 @@ export type PostGetByReferenceKeyResponse = {
             allowlistedCountryCodes?: Array<(string)> | null;
             crosspostToInstagramStory?: boolean | null;
             crosspostToInstagramStoryDarkMode?: boolean | null;
+            isGhostPost?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -2481,6 +2500,10 @@ export type PostGetByReferenceKeyResponse = {
             permalink?: string | null;
             thumbnail?: string | null;
             /**
+             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+             */
+            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+            /**
              * YouTube resumable upload session URI for retry handling
              */
             sessionUri?: string | null;
@@ -2628,6 +2651,7 @@ export type PostGetByReferenceKeyResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -2847,6 +2871,7 @@ export type PostGetResponse = {
             allowlistedCountryCodes?: Array<(string)> | null;
             crosspostToInstagramStory?: boolean | null;
             crosspostToInstagramStoryDarkMode?: boolean | null;
+            isGhostPost?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -3347,6 +3372,10 @@ export type PostGetResponse = {
             permalink?: string | null;
             thumbnail?: string | null;
             /**
+             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+             */
+            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+            /**
              * YouTube resumable upload session URI for retry handling
              */
             sessionUri?: string | null;
@@ -3494,6 +3523,7 @@ export type PostGetResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -3711,6 +3741,7 @@ export type PostUpdateData = {
                 allowlistedCountryCodes?: Array<(string)> | null;
                 crosspostToInstagramStory?: boolean | null;
                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                isGhostPost?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -4207,6 +4238,7 @@ export type PostUpdateResponse = {
             allowlistedCountryCodes?: Array<(string)> | null;
             crosspostToInstagramStory?: boolean | null;
             crosspostToInstagramStoryDarkMode?: boolean | null;
+            isGhostPost?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -4706,6 +4738,10 @@ export type PostUpdateResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+             */
+            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
             /**
              * YouTube resumable upload session URI for retry handling
              */
@@ -4988,6 +5024,7 @@ export type PostDeleteResponse = {
             allowlistedCountryCodes?: Array<(string)> | null;
             crosspostToInstagramStory?: boolean | null;
             crosspostToInstagramStoryDarkMode?: boolean | null;
+            isGhostPost?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -5488,6 +5525,10 @@ export type PostDeleteResponse = {
             permalink?: string | null;
             thumbnail?: string | null;
             /**
+             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+             */
+            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+            /**
              * YouTube resumable upload session URI for retry handling
              */
             sessionUri?: string | null;
@@ -5765,6 +5806,7 @@ export type PostGetListResponse = {
                 allowlistedCountryCodes?: Array<(string)> | null;
                 crosspostToInstagramStory?: boolean | null;
                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                isGhostPost?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -6265,6 +6307,10 @@ export type PostGetListResponse = {
                 permalink?: string | null;
                 thumbnail?: string | null;
                 /**
+                 * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                 */
+                thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                /**
                  * YouTube resumable upload session URI for retry handling
                  */
                 sessionUri?: string | null;
@@ -6398,6 +6444,7 @@ export type PostGetListResponse = {
                 }> | null;
                 mastodonServerId?: string | null;
                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                 isTiktokBusinessAccount?: boolean | null;
                 disconnectedCheckTryAt?: string | null;
@@ -6617,6 +6664,7 @@ export type PostCreateData = {
                 allowlistedCountryCodes?: Array<(string)> | null;
                 crosspostToInstagramStory?: boolean | null;
                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                isGhostPost?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -7113,6 +7161,7 @@ export type PostCreateResponse = {
             allowlistedCountryCodes?: Array<(string)> | null;
             crosspostToInstagramStory?: boolean | null;
             crosspostToInstagramStoryDarkMode?: boolean | null;
+            isGhostPost?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -7612,6 +7661,10 @@ export type PostCreateResponse = {
             id?: string | null;
             permalink?: string | null;
             thumbnail?: string | null;
+            /**
+             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+             */
+            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
             /**
              * YouTube resumable upload session URI for retry handling
              */
@@ -7894,6 +7947,7 @@ export type PostRetryResponse = {
             allowlistedCountryCodes?: Array<(string)> | null;
             crosspostToInstagramStory?: boolean | null;
             crosspostToInstagramStoryDarkMode?: boolean | null;
+            isGhostPost?: boolean | null;
         } | null;
         TIKTOK?: {
             type?: 'VIDEO' | 'IMAGE';
@@ -8394,6 +8448,10 @@ export type PostRetryResponse = {
             permalink?: string | null;
             thumbnail?: string | null;
             /**
+             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+             */
+            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+            /**
              * YouTube resumable upload session URI for retry handling
              */
             sessionUri?: string | null;
@@ -8543,6 +8601,7 @@ export type AnalyticsGetSocialAccountAnalyticsResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -8781,6 +8840,7 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 allowlistedCountryCodes?: Array<(string)> | null;
                 crosspostToInstagramStory?: boolean | null;
                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                isGhostPost?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -9281,6 +9341,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 permalink?: string | null;
                 thumbnail?: string | null;
                 /**
+                 * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                 */
+                thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                /**
                  * YouTube resumable upload session URI for retry handling
                  */
                 sessionUri?: string | null;
@@ -9425,6 +9489,7 @@ export type AnalyticsGetSocialAccountAnalyticsRawResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -9656,6 +9721,7 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 allowlistedCountryCodes?: Array<(string)> | null;
                 crosspostToInstagramStory?: boolean | null;
                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                isGhostPost?: boolean | null;
             } | null;
             TIKTOK?: {
                 type?: 'VIDEO' | 'IMAGE';
@@ -10155,6 +10221,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 id?: string | null;
                 permalink?: string | null;
                 thumbnail?: string | null;
+                /**
+                 * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                 */
+                thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
                 /**
                  * YouTube resumable upload session URI for retry handling
                  */
@@ -12220,6 +12290,7 @@ export type ConversationGetListResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -12311,6 +12382,7 @@ export type ConversationGetResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -12405,6 +12477,7 @@ export type ConversationUpdateResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -12687,6 +12760,7 @@ export type ConversationSendMessageResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -12903,6 +12977,7 @@ export type ConversationReactMessageResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -13116,6 +13191,7 @@ export type ConversationMarkReadResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -13248,6 +13324,7 @@ export type ConversationPrivateReplyResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -13455,6 +13532,7 @@ export type ConversationArchiveResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -13543,6 +13621,7 @@ export type ConversationOpenResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -18024,6 +18103,7 @@ export type AutomationGetFlowExecutionsResponse = {
                 }> | null;
                 mastodonServerId?: string | null;
                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                 isTiktokBusinessAccount?: boolean | null;
                 disconnectedCheckTryAt?: string | null;
@@ -18239,6 +18319,7 @@ export type AutomationGetFlowExecutionsResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -18893,6 +18974,7 @@ export type AutomationGetExecutionResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -19108,6 +19190,7 @@ export type AutomationGetExecutionResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -19778,6 +19861,7 @@ export type AutomationTestFlowResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -19993,6 +20077,7 @@ export type AutomationTestFlowResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -20093,6 +20178,7 @@ export type AutomationGetProviderSettingsResponse = {
             }> | null;
             mastodonServerId?: string | null;
             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
             isTiktokBusinessAccount?: boolean | null;
             disconnectedCheckTryAt?: string | null;
@@ -20217,6 +20303,7 @@ export type AutomationUpsertProviderSettingResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -20310,6 +20397,7 @@ export type AutomationSyncProviderSettingResponse = {
         }> | null;
         mastodonServerId?: string | null;
         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
         isTiktokBusinessAccount?: boolean | null;
         disconnectedCheckTryAt?: string | null;
@@ -20429,6 +20517,11 @@ export type MiscYoutubeSetThumbnailResponse = {
             width?: number;
             height?: number;
         };
+        shortsAspectRatio?: {
+            url: string;
+            width?: number;
+            height?: number;
+        };
     }>;
 };
 
@@ -20478,6 +20571,11 @@ export type MiscYoutubeGetChannelPlaylistResponse = {
                     height?: number;
                 };
                 maxres?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                shortsAspectRatio?: {
                     url?: string;
                     width?: number;
                     height?: number;
@@ -20551,6 +20649,11 @@ export type MiscYoutubeCreateNewChannelPlaylistResponse = {
                 width?: number;
                 height?: number;
             };
+            shortsAspectRatio?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
         };
         localized?: {
             title?: string;
@@ -20616,6 +20719,11 @@ export type MiscYoutubeUpdateChannelPlaylistResponse = {
                 height?: number;
             };
             maxres?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
+            shortsAspectRatio?: {
                 url?: string;
                 width?: number;
                 height?: number;
@@ -20689,6 +20797,11 @@ export type MiscYoutubeAddVideoToPlaylistResponse = {
                 width?: number;
                 height?: number;
             };
+            shortsAspectRatio?: {
+                url?: string;
+                width?: number;
+                height?: number;
+            };
         };
         playlistId?: string;
         position?: number;
@@ -20752,6 +20865,11 @@ export type MiscYoutubeGetVideosFromPlaylistResponse = {
                     height?: number;
                 };
                 maxres?: {
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                };
+                shortsAspectRatio?: {
                     url?: string;
                     width?: number;
                     height?: number;
@@ -21752,6 +21870,7 @@ export type MiscGoogleBusinessGetReviewsResponse = {
         reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
         reviewReplyPolicyViolation?: string | null;
         reviewReplyUrl?: string | null;
+        reviewReplyStateCheckedAt?: string | null;
         createTime?: string | null;
         updateTime?: string | null;
         importedAt?: string | null;
@@ -21783,6 +21902,7 @@ export type MiscGoogleBusinessGetReviewByIdResponse = {
     reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
     reviewReplyPolicyViolation?: string | null;
     reviewReplyUrl?: string | null;
+    reviewReplyStateCheckedAt?: string | null;
     createTime?: string | null;
     updateTime?: string | null;
     importedAt?: string | null;
@@ -21816,6 +21936,7 @@ export type MiscGoogleBusinessReplyToReviewResponse = {
     reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
     reviewReplyPolicyViolation?: string | null;
     reviewReplyUrl?: string | null;
+    reviewReplyStateCheckedAt?: string | null;
     createTime?: string | null;
     updateTime?: string | null;
     importedAt?: string | null;
@@ -21848,6 +21969,7 @@ export type MiscGoogleBusinessDeleteReviewReplyResponse = {
     reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
     reviewReplyPolicyViolation?: string | null;
     reviewReplyUrl?: string | null;
+    reviewReplyStateCheckedAt?: string | null;
     createTime?: string | null;
     updateTime?: string | null;
     importedAt?: string | null;
@@ -22936,6 +23058,162 @@ export type MiscTiktokGetPostSettingsResponse = {
      * Longest video, in seconds, this account can publish. Longer videos fail at publish time.
      */
     maxVideoPostDurationSec?: number | null;
+};
+
+export type MiscTiktokGetAdAuthorizationData = {
+    /**
+     * The TikTok post ID (item_id) of a public post on the team's TikTok account, for posts published outside bundle.social. Pass this or `postId`.
+     */
+    platformPostId?: string;
+    /**
+     * The ID of a post in bundle.social published to TikTok. Pass this or `platformPostId`.
+     */
+    postId?: string;
+    teamId: string;
+};
+
+export type MiscTiktokGetAdAuthorizationResponse = {
+    /**
+     * The TikTok post ID (item_id).
+     */
+    platformPostId: string;
+    /**
+     * Spark Ads authorization code. The advertiser adds it to their TikTok ad account to run this post as a Spark Ad.
+     */
+    authCode: string;
+    /**
+     * When the code becomes valid, ISO 8601 in UTC.
+     */
+    startsAt: string | null;
+    /**
+     * When the code expires, ISO 8601 in UTC.
+     */
+    expiresAt: string | null;
+    /**
+     * Validity period of the code in days.
+     */
+    authorizationDays: number | null;
+    /**
+     * NOT_USED, IN_USE or EXPIRED. Always set by the status endpoint; usually null on enable and extend.
+     */
+    status: 'NOT_USED' | 'IN_USE' | 'EXPIRED' | null;
+};
+
+export type MiscTiktokEnableAdAuthorizationData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of a post in bundle.social published to TikTok. Pass this or `platformPostId`.
+         */
+        postId?: string;
+        /**
+         * The TikTok post ID (item_id) of a public post on the team's TikTok account, for posts published outside bundle.social. Pass this or `postId`.
+         */
+        platformPostId?: string;
+        /**
+         * How long the authorization code stays valid, in days: 7, 30, 60, 180 or 365. Default 30.
+         */
+        authorizationDays?: 7 | 30 | 60 | 180 | 365;
+    };
+};
+
+export type MiscTiktokEnableAdAuthorizationResponse = {
+    /**
+     * The TikTok post ID (item_id).
+     */
+    platformPostId: string;
+    /**
+     * Spark Ads authorization code. The advertiser adds it to their TikTok ad account to run this post as a Spark Ad.
+     */
+    authCode: string;
+    /**
+     * When the code becomes valid, ISO 8601 in UTC.
+     */
+    startsAt: string | null;
+    /**
+     * When the code expires, ISO 8601 in UTC.
+     */
+    expiresAt: string | null;
+    /**
+     * Validity period of the code in days.
+     */
+    authorizationDays: number | null;
+    /**
+     * NOT_USED, IN_USE or EXPIRED. Always set by the status endpoint; usually null on enable and extend.
+     */
+    status: 'NOT_USED' | 'IN_USE' | 'EXPIRED' | null;
+};
+
+export type MiscTiktokDisableAdAuthorizationData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of a post in bundle.social published to TikTok. Pass this or `platformPostId`.
+         */
+        postId?: string;
+        /**
+         * The TikTok post ID (item_id) of a public post on the team's TikTok account, for posts published outside bundle.social. Pass this or `postId`.
+         */
+        platformPostId?: string;
+    };
+};
+
+export type MiscTiktokDisableAdAuthorizationResponse = {
+    success: boolean;
+};
+
+export type MiscTiktokExtendAdAuthorizationData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of a post in bundle.social published to TikTok. Pass this or `platformPostId`.
+         */
+        postId?: string;
+        /**
+         * The TikTok post ID (item_id) of a public post on the team's TikTok account, for posts published outside bundle.social. Pass this or `postId`.
+         */
+        platformPostId?: string;
+        /**
+         * Days added to the current validity period (7, 30, 60, 180 or 365, default 30). If the code was deleted, the validity period of the new code.
+         */
+        authorizationDays?: 7 | 30 | 60 | 180 | 365;
+    };
+};
+
+export type MiscTiktokExtendAdAuthorizationResponse = {
+    /**
+     * The TikTok post ID (item_id).
+     */
+    platformPostId: string;
+    /**
+     * Spark Ads authorization code. The advertiser adds it to their TikTok ad account to run this post as a Spark Ad.
+     */
+    authCode: string;
+    /**
+     * When the code becomes valid, ISO 8601 in UTC.
+     */
+    startsAt: string | null;
+    /**
+     * When the code expires, ISO 8601 in UTC.
+     */
+    expiresAt: string | null;
+    /**
+     * Validity period of the code in days.
+     */
+    authorizationDays: number | null;
+    /**
+     * NOT_USED, IN_USE or EXPIRED. Always set by the status endpoint; usually null on enable and extend.
+     */
+    status: 'NOT_USED' | 'IN_USE' | 'EXPIRED' | null;
 };
 
 export type PostImportCreateData = {
@@ -24294,6 +24572,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -24723,6 +25002,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -25058,6 +25338,7 @@ export type $OpenApiTs = {
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
@@ -25183,6 +25464,7 @@ export type $OpenApiTs = {
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
@@ -25308,6 +25590,7 @@ export type $OpenApiTs = {
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
@@ -25433,6 +25716,7 @@ export type $OpenApiTs = {
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
@@ -25899,6 +26183,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -26030,6 +26315,7 @@ export type $OpenApiTs = {
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
@@ -26155,6 +26441,7 @@ export type $OpenApiTs = {
                     }> | null;
                     mastodonServerId?: string | null;
                     instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                    snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                     twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                     isTiktokBusinessAccount?: boolean | null;
                     disconnectedCheckTryAt?: string | null;
@@ -26281,6 +26568,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -27892,6 +28180,7 @@ export type $OpenApiTs = {
                             allowlistedCountryCodes?: Array<(string)> | null;
                             crosspostToInstagramStory?: boolean | null;
                             crosspostToInstagramStoryDarkMode?: boolean | null;
+                            isGhostPost?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -28392,6 +28681,10 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                             thumbnail?: string | null;
                             /**
+                             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                             */
+                            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                            /**
                              * YouTube resumable upload session URI for retry handling
                              */
                             sessionUri?: string | null;
@@ -28539,6 +28832,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -28831,6 +29125,7 @@ export type $OpenApiTs = {
                             allowlistedCountryCodes?: Array<(string)> | null;
                             crosspostToInstagramStory?: boolean | null;
                             crosspostToInstagramStoryDarkMode?: boolean | null;
+                            isGhostPost?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -29331,6 +29626,10 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                             thumbnail?: string | null;
                             /**
+                             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                             */
+                            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                            /**
                              * YouTube resumable upload session URI for retry handling
                              */
                             sessionUri?: string | null;
@@ -29478,6 +29777,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -29768,6 +30068,7 @@ export type $OpenApiTs = {
                             allowlistedCountryCodes?: Array<(string)> | null;
                             crosspostToInstagramStory?: boolean | null;
                             crosspostToInstagramStoryDarkMode?: boolean | null;
+                            isGhostPost?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -30267,6 +30568,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                             */
+                            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
                             /**
                              * YouTube resumable upload session URI for retry handling
                              */
@@ -30627,6 +30932,7 @@ export type $OpenApiTs = {
                             allowlistedCountryCodes?: Array<(string)> | null;
                             crosspostToInstagramStory?: boolean | null;
                             crosspostToInstagramStoryDarkMode?: boolean | null;
+                            isGhostPost?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -31127,6 +31433,10 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                             thumbnail?: string | null;
                             /**
+                             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                             */
+                            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                            /**
                              * YouTube resumable upload session URI for retry handling
                              */
                             sessionUri?: string | null;
@@ -31468,6 +31778,7 @@ export type $OpenApiTs = {
                                 allowlistedCountryCodes?: Array<(string)> | null;
                                 crosspostToInstagramStory?: boolean | null;
                                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                                isGhostPost?: boolean | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -31968,6 +32279,10 @@ export type $OpenApiTs = {
                                 permalink?: string | null;
                                 thumbnail?: string | null;
                                 /**
+                                 * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                                 */
+                                thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                                /**
                                  * YouTube resumable upload session URI for retry handling
                                  */
                                 sessionUri?: string | null;
@@ -32101,6 +32416,7 @@ export type $OpenApiTs = {
                                 }> | null;
                                 mastodonServerId?: string | null;
                                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                                snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                                 isTiktokBusinessAccount?: boolean | null;
                                 disconnectedCheckTryAt?: string | null;
@@ -32393,6 +32709,7 @@ export type $OpenApiTs = {
                             allowlistedCountryCodes?: Array<(string)> | null;
                             crosspostToInstagramStory?: boolean | null;
                             crosspostToInstagramStoryDarkMode?: boolean | null;
+                            isGhostPost?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -32892,6 +33209,10 @@ export type $OpenApiTs = {
                             id?: string | null;
                             permalink?: string | null;
                             thumbnail?: string | null;
+                            /**
+                             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                             */
+                            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
                             /**
                              * YouTube resumable upload session URI for retry handling
                              */
@@ -33254,6 +33575,7 @@ export type $OpenApiTs = {
                             allowlistedCountryCodes?: Array<(string)> | null;
                             crosspostToInstagramStory?: boolean | null;
                             crosspostToInstagramStoryDarkMode?: boolean | null;
+                            isGhostPost?: boolean | null;
                         } | null;
                         TIKTOK?: {
                             type?: 'VIDEO' | 'IMAGE';
@@ -33754,6 +34076,10 @@ export type $OpenApiTs = {
                             permalink?: string | null;
                             thumbnail?: string | null;
                             /**
+                             * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                             */
+                            thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                            /**
                              * YouTube resumable upload session URI for retry handling
                              */
                             sessionUri?: string | null;
@@ -34114,6 +34440,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -34423,6 +34750,7 @@ export type $OpenApiTs = {
                                 allowlistedCountryCodes?: Array<(string)> | null;
                                 crosspostToInstagramStory?: boolean | null;
                                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                                isGhostPost?: boolean | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -34923,6 +35251,10 @@ export type $OpenApiTs = {
                                 permalink?: string | null;
                                 thumbnail?: string | null;
                                 /**
+                                 * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                                 */
+                                thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
+                                /**
                                  * YouTube resumable upload session URI for retry handling
                                  */
                                 sessionUri?: string | null;
@@ -35139,6 +35471,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -35441,6 +35774,7 @@ export type $OpenApiTs = {
                                 allowlistedCountryCodes?: Array<(string)> | null;
                                 crosspostToInstagramStory?: boolean | null;
                                 crosspostToInstagramStoryDarkMode?: boolean | null;
+                                isGhostPost?: boolean | null;
                             } | null;
                             TIKTOK?: {
                                 type?: 'VIDEO' | 'IMAGE';
@@ -35940,6 +36274,10 @@ export type $OpenApiTs = {
                                 id?: string | null;
                                 permalink?: string | null;
                                 thumbnail?: string | null;
+                                /**
+                                 * Custom thumbnail state. Shorts stay PENDING until YouTube finishes processing the video.
+                                 */
+                                thumbnailStatus?: 'PENDING' | 'APPLIED' | 'FAILED' | null;
                                 /**
                                  * YouTube resumable upload session URI for retry handling
                                  */
@@ -38936,6 +39274,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -39100,6 +39439,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -39259,6 +39599,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -39618,6 +39959,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -39899,6 +40241,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -40179,6 +40522,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -40341,6 +40685,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -40621,6 +40966,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -40782,6 +41128,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -45571,6 +45918,7 @@ export type $OpenApiTs = {
                                 }> | null;
                                 mastodonServerId?: string | null;
                                 instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                                snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                                 twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                                 isTiktokBusinessAccount?: boolean | null;
                                 disconnectedCheckTryAt?: string | null;
@@ -45786,6 +46134,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -46513,6 +46862,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -46728,6 +47078,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -47452,6 +47803,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -47667,6 +48019,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -47834,6 +48187,7 @@ export type $OpenApiTs = {
                             }> | null;
                             mastodonServerId?: string | null;
                             instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                            snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                             twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                             isTiktokBusinessAccount?: boolean | null;
                             disconnectedCheckTryAt?: string | null;
@@ -48002,6 +48356,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -48168,6 +48523,7 @@ export type $OpenApiTs = {
                         }> | null;
                         mastodonServerId?: string | null;
                         instagramConnectionMethod?: 'FACEBOOK' | 'INSTAGRAM' | null;
+                        snapchatConnectionMethod?: 'PERSONAL' | 'BUSINESS' | null;
                         twitterSubType?: 'none' | 'basic' | 'premium' | 'premium_plus' | null;
                         isTiktokBusinessAccount?: boolean | null;
                         disconnectedCheckTryAt?: string | null;
@@ -48368,6 +48724,11 @@ export type $OpenApiTs = {
                             width?: number;
                             height?: number;
                         };
+                        shortsAspectRatio?: {
+                            url: string;
+                            width?: number;
+                            height?: number;
+                        };
                     }>;
                 };
                 /**
@@ -48489,6 +48850,11 @@ export type $OpenApiTs = {
                                     height?: number;
                                 };
                                 maxres?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                shortsAspectRatio?: {
                                     url?: string;
                                     width?: number;
                                     height?: number;
@@ -48619,6 +48985,11 @@ export type $OpenApiTs = {
                                 width?: number;
                                 height?: number;
                             };
+                            shortsAspectRatio?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
                         };
                         localized?: {
                             title?: string;
@@ -48740,6 +49111,11 @@ export type $OpenApiTs = {
                                 height?: number;
                             };
                             maxres?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
+                            shortsAspectRatio?: {
                                 url?: string;
                                 width?: number;
                                 height?: number;
@@ -48950,6 +49326,11 @@ export type $OpenApiTs = {
                                 width?: number;
                                 height?: number;
                             };
+                            shortsAspectRatio?: {
+                                url?: string;
+                                width?: number;
+                                height?: number;
+                            };
                         };
                         playlistId?: string;
                         position?: number;
@@ -49082,6 +49463,11 @@ export type $OpenApiTs = {
                                     height?: number;
                                 };
                                 maxres?: {
+                                    url?: string;
+                                    width?: number;
+                                    height?: number;
+                                };
+                                shortsAspectRatio?: {
                                     url?: string;
                                     width?: number;
                                     height?: number;
@@ -52395,6 +52781,7 @@ export type $OpenApiTs = {
                         reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
                         reviewReplyPolicyViolation?: string | null;
                         reviewReplyUrl?: string | null;
+                        reviewReplyStateCheckedAt?: string | null;
                         createTime?: string | null;
                         updateTime?: string | null;
                         importedAt?: string | null;
@@ -52498,6 +52885,7 @@ export type $OpenApiTs = {
                     reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
                     reviewReplyPolicyViolation?: string | null;
                     reviewReplyUrl?: string | null;
+                    reviewReplyStateCheckedAt?: string | null;
                     createTime?: string | null;
                     updateTime?: string | null;
                     importedAt?: string | null;
@@ -52597,6 +52985,7 @@ export type $OpenApiTs = {
                     reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
                     reviewReplyPolicyViolation?: string | null;
                     reviewReplyUrl?: string | null;
+                    reviewReplyStateCheckedAt?: string | null;
                     createTime?: string | null;
                     updateTime?: string | null;
                     importedAt?: string | null;
@@ -52694,6 +53083,7 @@ export type $OpenApiTs = {
                     reviewReplyState?: 'REVIEW_REPLY_STATE_UNSPECIFIED' | 'PENDING' | 'REJECTED' | 'APPROVED' | null;
                     reviewReplyPolicyViolation?: string | null;
                     reviewReplyUrl?: string | null;
+                    reviewReplyStateCheckedAt?: string | null;
                     createTime?: string | null;
                     updateTime?: string | null;
                     importedAt?: string | null;
@@ -56642,6 +57032,395 @@ export type $OpenApiTs = {
                      * Longest video, in seconds, this account can publish. Longer videos fail at publish time.
                      */
                     maxVideoPostDurationSec?: number | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/tiktok/ad-authorization': {
+        get: {
+            req: MiscTiktokGetAdAuthorizationData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    /**
+                     * The TikTok post ID (item_id).
+                     */
+                    platformPostId: string;
+                    /**
+                     * Spark Ads authorization code. The advertiser adds it to their TikTok ad account to run this post as a Spark Ad.
+                     */
+                    authCode: string;
+                    /**
+                     * When the code becomes valid, ISO 8601 in UTC.
+                     */
+                    startsAt: string | null;
+                    /**
+                     * When the code expires, ISO 8601 in UTC.
+                     */
+                    expiresAt: string | null;
+                    /**
+                     * Validity period of the code in days.
+                     */
+                    authorizationDays: number | null;
+                    /**
+                     * NOT_USED, IN_USE or EXPIRED. Always set by the status endpoint; usually null on enable and extend.
+                     */
+                    status: 'NOT_USED' | 'IN_USE' | 'EXPIRED' | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        post: {
+            req: MiscTiktokEnableAdAuthorizationData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    /**
+                     * The TikTok post ID (item_id).
+                     */
+                    platformPostId: string;
+                    /**
+                     * Spark Ads authorization code. The advertiser adds it to their TikTok ad account to run this post as a Spark Ad.
+                     */
+                    authCode: string;
+                    /**
+                     * When the code becomes valid, ISO 8601 in UTC.
+                     */
+                    startsAt: string | null;
+                    /**
+                     * When the code expires, ISO 8601 in UTC.
+                     */
+                    expiresAt: string | null;
+                    /**
+                     * Validity period of the code in days.
+                     */
+                    authorizationDays: number | null;
+                    /**
+                     * NOT_USED, IN_USE or EXPIRED. Always set by the status endpoint; usually null on enable and extend.
+                     */
+                    status: 'NOT_USED' | 'IN_USE' | 'EXPIRED' | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+        delete: {
+            req: MiscTiktokDisableAdAuthorizationData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/tiktok/ad-authorization/extend': {
+        post: {
+            req: MiscTiktokExtendAdAuthorizationData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    /**
+                     * The TikTok post ID (item_id).
+                     */
+                    platformPostId: string;
+                    /**
+                     * Spark Ads authorization code. The advertiser adds it to their TikTok ad account to run this post as a Spark Ad.
+                     */
+                    authCode: string;
+                    /**
+                     * When the code becomes valid, ISO 8601 in UTC.
+                     */
+                    startsAt: string | null;
+                    /**
+                     * When the code expires, ISO 8601 in UTC.
+                     */
+                    expiresAt: string | null;
+                    /**
+                     * Validity period of the code in days.
+                     */
+                    authorizationDays: number | null;
+                    /**
+                     * NOT_USED, IN_USE or EXPIRED. Always set by the status endpoint; usually null on enable and extend.
+                     */
+                    status: 'NOT_USED' | 'IN_USE' | 'EXPIRED' | null;
                 };
                 /**
                  * 400

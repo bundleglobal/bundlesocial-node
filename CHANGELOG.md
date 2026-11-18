@@ -1,3 +1,10 @@
+# [2.71.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.70.0...v2.71.0) (2026-11-18)
+
+
+### Features
+
+* TikTok ad authorization, Threads ghost posts and Snapchat Business profiles ([#171](https://github.com/bundleglobal/bundlesocial-node/issues/171)) ([78cfbf0](https://github.com/bundleglobal/bundlesocial-node/commit/78cfbf09d6fe5df38e6de6d847c2fec2948b5a0d))
+
 # [2.70.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.69.0...v2.70.0) (2026-11-04)
 
 

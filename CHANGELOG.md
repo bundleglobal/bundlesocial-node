@@ -1,3 +1,10 @@
+# [2.72.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.71.0...v2.72.0) (2026-11-24)
+
+
+### Features
+
+* YouTube embeddable, Instagram post delete, Snapchat history import, error type ([#172](https://github.com/bundleglobal/bundlesocial-node/issues/172)) ([1df818c](https://github.com/bundleglobal/bundlesocial-node/commit/1df818ce9381ba9656ea60eefef7b7bf22976f76))
+
 # [2.71.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.70.0...v2.71.0) (2026-11-18)
 
 

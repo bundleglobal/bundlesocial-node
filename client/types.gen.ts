@@ -216,19 +216,6 @@ export type OrganizationGetOrganizationResponse = {
             valid: boolean;
         };
     } | null;
-    /**
-     * Deprecated: will be removed on 2026-11-15. List teams with the paginated GET /api/v1/team instead.
-     */
-    teams: Array<{
-        id: string;
-        name: string;
-        avatarUrl?: string | null;
-        organizationId: string;
-        createdById: string;
-        createdAt: string | null;
-        updatedAt: string | null;
-        deletedAt?: string | null;
-    }>;
 };
 
 export type OrganizationGetPostsUsageResponse = {
@@ -2155,6 +2142,10 @@ export type PostGetByReferenceKeyResponse = {
              * Set to true if video has paid product placement
              */
             hasPaidProductPlacement?: boolean | null;
+            /**
+             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+             */
+            embeddable?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -3027,6 +3018,10 @@ export type PostGetResponse = {
              * Set to true if video has paid product placement
              */
             hasPaidProductPlacement?: boolean | null;
+            /**
+             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+             */
+            embeddable?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -3897,6 +3892,10 @@ export type PostUpdateData = {
                  * Set to true if video has paid product placement
                  */
                 hasPaidProductPlacement?: boolean | null;
+                /**
+                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                 */
+                embeddable?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -4394,6 +4393,10 @@ export type PostUpdateResponse = {
              * Set to true if video has paid product placement
              */
             hasPaidProductPlacement?: boolean | null;
+            /**
+             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+             */
+            embeddable?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -5180,6 +5183,10 @@ export type PostDeleteResponse = {
              * Set to true if video has paid product placement
              */
             hasPaidProductPlacement?: boolean | null;
+            /**
+             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+             */
+            embeddable?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -5965,6 +5972,10 @@ export type PostGetListResponse = {
                  * Set to true if video has paid product placement
                  */
                 hasPaidProductPlacement?: boolean | null;
+                /**
+                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                 */
+                embeddable?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -6823,6 +6834,10 @@ export type PostCreateData = {
                  * Set to true if video has paid product placement
                  */
                 hasPaidProductPlacement?: boolean | null;
+                /**
+                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                 */
+                embeddable?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -7320,6 +7335,10 @@ export type PostCreateResponse = {
              * Set to true if video has paid product placement
              */
             hasPaidProductPlacement?: boolean | null;
+            /**
+             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+             */
+            embeddable?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -8106,6 +8125,10 @@ export type PostRetryResponse = {
              * Set to true if video has paid product placement
              */
             hasPaidProductPlacement?: boolean | null;
+            /**
+             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+             */
+            embeddable?: boolean | null;
         } | null;
         REDDIT?: {
             /**
@@ -8999,6 +9022,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * Set to true if video has paid product placement
                  */
                 hasPaidProductPlacement?: boolean | null;
+                /**
+                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                 */
+                embeddable?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -9880,6 +9907,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * Set to true if video has paid product placement
                  */
                 hasPaidProductPlacement?: boolean | null;
+                /**
+                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                 */
+                embeddable?: boolean | null;
             } | null;
             REDDIT?: {
                 /**
@@ -20965,6 +20996,10 @@ export type MiscYoutubeEditVideoData = {
          */
         privacyStatus?: 'public' | 'unlisted' | 'private';
         /**
+         * Whether other websites can embed the video
+         */
+        embeddable?: boolean;
+        /**
          * BCP-47 language code for the video's title and description, e.g. "en" or "pl".
          */
         defaultLanguage?: string;
@@ -22262,6 +22297,23 @@ export type MiscInstagramSearchAudioResponse = {
     }>;
 };
 
+export type MiscInstagramDeletePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in bundle.social
+         */
+        postId: string;
+    };
+};
+
+export type MiscInstagramDeletePostResponse = {
+    success: boolean;
+};
+
 export type MiscInstagramDeleteCommentData = {
     /**
      * Body
@@ -23261,7 +23313,7 @@ export type PostImportCreateData = {
      */
     requestBody?: {
         teamId: string;
-        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+        socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER' | 'SNAPCHAT';
         count: number;
         withAnalytics?: boolean;
         importCarousels?: boolean;
@@ -23294,7 +23346,7 @@ export type PostImportCreateResponse = {
 };
 
 export type PostImportGetStatusData = {
-    socialAccountType?: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+    socialAccountType?: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER' | 'SNAPCHAT';
     teamId: string;
 };
 
@@ -23354,7 +23406,7 @@ export type PostImportGetImportedPostsData = {
      */
     limit?: number | null;
     offset?: number | null;
-    socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER';
+    socialAccountType: 'FACEBOOK' | 'INSTAGRAM' | 'THREADS' | 'TIKTOK' | 'YOUTUBE' | 'LINKEDIN' | 'PINTEREST' | 'REDDIT' | 'MASTODON' | 'BLUESKY' | 'TWITTER' | 'SNAPCHAT';
     teamId: string;
 };
 
@@ -23654,6 +23706,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -23666,6 +23722,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -23673,6 +23733,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -23680,6 +23744,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -23687,6 +23755,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -23694,6 +23766,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -23701,6 +23777,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -23708,6 +23788,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -23715,6 +23799,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -23873,19 +23961,6 @@ export type $OpenApiTs = {
                             valid: boolean;
                         };
                     } | null;
-                    /**
-                     * Deprecated: will be removed on 2026-11-15. List teams with the paginated GET /api/v1/team instead.
-                     */
-                    teams: Array<{
-                        id: string;
-                        name: string;
-                        avatarUrl?: string | null;
-                        organizationId: string;
-                        createdById: string;
-                        createdAt: string | null;
-                        updatedAt: string | null;
-                        deletedAt?: string | null;
-                    }>;
                 };
                 /**
                  * 400
@@ -23893,6 +23968,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -23905,6 +23984,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -23912,6 +23995,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -23925,6 +24012,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -23932,6 +24023,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -23939,6 +24034,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -23946,6 +24045,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -23953,6 +24056,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -23974,6 +24081,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -23986,6 +24097,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -23993,6 +24108,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24000,6 +24119,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24007,6 +24130,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24014,6 +24141,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24021,6 +24152,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24028,6 +24163,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24035,6 +24174,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24056,6 +24199,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24068,6 +24215,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24075,6 +24226,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24082,6 +24237,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24089,6 +24248,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24096,6 +24259,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24103,6 +24270,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24110,6 +24281,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24117,6 +24292,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24138,6 +24317,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24150,6 +24333,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24157,6 +24344,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24164,6 +24355,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24171,6 +24366,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24178,6 +24377,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24185,6 +24388,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24192,6 +24399,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24199,6 +24410,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24231,6 +24446,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24243,6 +24462,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24250,6 +24473,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24257,6 +24484,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24264,6 +24495,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24271,6 +24506,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24278,6 +24517,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24285,6 +24528,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24292,6 +24539,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24327,6 +24578,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24339,6 +24594,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24346,6 +24605,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24353,6 +24616,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24360,6 +24627,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24367,6 +24638,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24374,6 +24649,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24381,6 +24660,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24388,6 +24671,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24418,6 +24705,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24430,6 +24721,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24437,6 +24732,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24444,6 +24743,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24451,6 +24754,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24458,6 +24765,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24465,6 +24776,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24472,6 +24787,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24479,6 +24798,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24676,6 +24999,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24688,6 +25015,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24695,6 +25026,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24708,6 +25043,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24715,6 +25054,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24722,6 +25065,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24729,6 +25076,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24736,6 +25087,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24761,6 +25116,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24773,6 +25132,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24780,6 +25143,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24787,6 +25154,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24794,6 +25165,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24801,6 +25176,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24808,6 +25187,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24815,6 +25198,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24822,6 +25209,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -24847,6 +25238,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -24859,6 +25254,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -24866,6 +25265,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -24873,6 +25276,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -24880,6 +25287,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -24887,6 +25298,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -24894,6 +25309,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -24901,6 +25320,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -24908,6 +25331,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25108,6 +25535,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25120,6 +25551,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25127,6 +25562,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25134,6 +25573,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25141,6 +25584,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25148,6 +25595,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25155,6 +25606,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25162,6 +25617,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25169,6 +25628,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25194,6 +25657,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25206,6 +25673,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25213,6 +25684,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25220,6 +25695,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25227,6 +25706,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25234,6 +25717,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25241,6 +25728,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25248,6 +25739,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25255,6 +25750,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25278,6 +25777,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25290,6 +25793,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25297,6 +25804,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25304,6 +25815,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25311,6 +25826,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25318,6 +25837,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25325,6 +25848,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25332,6 +25859,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25339,6 +25870,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25404,6 +25939,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25416,6 +25955,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25423,6 +25966,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25430,6 +25977,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25437,6 +25988,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25444,6 +25999,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25451,6 +26010,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25458,6 +26021,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25465,6 +26032,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25530,6 +26101,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25542,6 +26117,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25549,6 +26128,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25556,6 +26139,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25563,6 +26150,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25570,6 +26161,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25577,6 +26172,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25584,6 +26183,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25591,6 +26194,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25656,6 +26263,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25668,6 +26279,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25675,6 +26290,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25682,6 +26301,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25689,6 +26312,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25696,6 +26323,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25703,6 +26334,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25710,6 +26345,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25717,6 +26356,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25782,6 +26425,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25794,6 +26441,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25801,6 +26452,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25808,6 +26463,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25815,6 +26474,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25822,6 +26485,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25829,6 +26496,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25836,6 +26507,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25843,6 +26518,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25863,6 +26542,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25875,6 +26558,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25882,6 +26569,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25889,6 +26580,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25896,6 +26591,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25903,6 +26602,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25910,6 +26613,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -25917,6 +26624,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -25924,6 +26635,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -25947,6 +26662,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -25959,6 +26678,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -25966,6 +26689,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -25973,6 +26700,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -25980,6 +26711,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -25987,6 +26722,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -25994,6 +26733,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26001,6 +26744,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26008,6 +26755,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26031,6 +26782,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26043,6 +26798,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26050,6 +26809,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26057,6 +26820,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26064,6 +26831,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26071,6 +26842,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26078,6 +26853,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26085,6 +26864,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26092,6 +26875,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26119,6 +26906,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26131,6 +26922,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26138,6 +26933,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26145,6 +26944,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26152,6 +26955,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26159,6 +26966,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26166,6 +26977,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26173,6 +26988,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26180,6 +26999,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26255,6 +27078,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26267,6 +27094,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26274,6 +27105,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26281,6 +27116,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26288,6 +27127,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26295,6 +27138,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26302,6 +27149,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26309,6 +27160,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26316,6 +27171,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26381,6 +27240,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26393,6 +27256,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26400,6 +27267,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26407,6 +27278,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26414,6 +27289,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26421,6 +27300,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26428,6 +27311,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26435,6 +27322,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26442,6 +27333,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26507,6 +27402,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26519,6 +27418,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26526,6 +27429,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26533,6 +27440,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26540,6 +27451,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26547,6 +27462,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26554,6 +27473,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26561,6 +27484,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26568,6 +27495,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26641,6 +27572,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26653,6 +27588,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26660,6 +27599,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26667,6 +27610,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26674,6 +27621,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26681,6 +27632,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26688,6 +27643,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26695,6 +27654,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26702,6 +27665,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26747,6 +27714,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26759,6 +27730,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26766,6 +27741,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26773,6 +27752,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26780,6 +27763,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26787,6 +27774,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26794,6 +27785,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26801,6 +27796,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26808,6 +27807,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26844,6 +27847,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26856,6 +27863,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26863,6 +27874,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26870,6 +27885,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26877,6 +27896,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26884,6 +27907,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26891,6 +27918,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26898,6 +27929,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -26905,6 +27940,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -26941,6 +27980,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -26953,6 +27996,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -26960,6 +28007,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -26967,6 +28018,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -26974,6 +28029,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -26981,6 +28040,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -26988,6 +28051,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -26995,6 +28062,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27002,6 +28073,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27047,6 +28122,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27059,6 +28138,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27066,6 +28149,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27073,6 +28160,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27080,6 +28171,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27087,6 +28182,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27094,6 +28193,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27101,6 +28204,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27108,6 +28215,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27144,6 +28255,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27156,6 +28271,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27163,6 +28282,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27170,6 +28293,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27177,6 +28304,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27184,6 +28315,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27191,6 +28326,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27198,6 +28337,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27205,6 +28348,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27243,6 +28390,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27255,6 +28406,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27262,6 +28417,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27269,6 +28428,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27276,6 +28439,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27283,6 +28450,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27290,6 +28461,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27297,6 +28472,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27304,6 +28483,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27325,6 +28508,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27337,6 +28524,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27344,6 +28535,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27351,6 +28546,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27358,6 +28557,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27365,6 +28568,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27372,6 +28579,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27379,6 +28590,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27386,6 +28601,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27424,6 +28643,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27436,6 +28659,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27443,6 +28670,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27450,6 +28681,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27457,6 +28692,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27464,6 +28703,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27471,6 +28714,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27478,6 +28725,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27485,6 +28736,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27511,6 +28766,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27523,6 +28782,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27530,6 +28793,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27537,6 +28804,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27544,6 +28815,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27551,6 +28826,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27558,6 +28837,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27565,6 +28848,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27572,6 +28859,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27595,6 +28886,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27607,6 +28902,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27614,6 +28913,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27621,6 +28924,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27628,6 +28935,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27635,6 +28946,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27642,6 +28957,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27649,6 +28968,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27656,6 +28979,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27694,6 +29021,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27706,6 +29037,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27713,6 +29048,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27720,6 +29059,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27727,6 +29070,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27734,6 +29081,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27741,6 +29092,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27748,6 +29103,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27755,6 +29114,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27775,6 +29138,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27787,6 +29154,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27794,6 +29165,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27801,6 +29176,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27808,6 +29187,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27815,6 +29198,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27822,6 +29209,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27829,6 +29220,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27836,6 +29231,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27864,6 +29263,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27876,6 +29279,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27883,6 +29290,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27890,6 +29301,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27897,6 +29312,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27904,6 +29323,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -27911,6 +29334,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -27918,6 +29345,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -27925,6 +29356,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -27955,6 +29390,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -27967,6 +29406,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -27974,6 +29417,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -27981,6 +29428,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -27988,6 +29439,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -27995,6 +29450,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -28002,6 +29461,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -28009,6 +29472,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -28016,6 +29483,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -28378,6 +29849,10 @@ export type $OpenApiTs = {
                              * Set to true if video has paid product placement
                              */
                             hasPaidProductPlacement?: boolean | null;
+                            /**
+                             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                             */
+                            embeddable?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -28900,6 +30375,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -28912,6 +30391,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -28919,6 +30402,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -28926,6 +30413,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -28933,6 +30424,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -28940,6 +30435,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -28947,6 +30446,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -28954,6 +30457,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -28961,6 +30468,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -29323,6 +30834,10 @@ export type $OpenApiTs = {
                              * Set to true if video has paid product placement
                              */
                             hasPaidProductPlacement?: boolean | null;
+                            /**
+                             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                             */
+                            embeddable?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -29845,6 +31360,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -29857,6 +31376,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -29864,6 +31387,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -29871,6 +31398,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -29878,6 +31409,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -29885,6 +31420,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -29892,6 +31431,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -29899,6 +31442,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -29906,6 +31453,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -30266,6 +31817,10 @@ export type $OpenApiTs = {
                              * Set to true if video has paid product placement
                              */
                             hasPaidProductPlacement?: boolean | null;
+                            /**
+                             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                             */
+                            embeddable?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -30702,6 +32257,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -30714,6 +32273,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -30721,6 +32284,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -30728,6 +32295,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 409
@@ -30735,6 +32306,10 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -30742,6 +32317,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -30749,6 +32328,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -30756,6 +32339,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -30763,6 +32350,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -30770,6 +32361,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -31130,6 +32725,10 @@ export type $OpenApiTs = {
                              * Set to true if video has paid product placement
                              */
                             hasPaidProductPlacement?: boolean | null;
+                            /**
+                             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                             */
+                            embeddable?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -31552,6 +33151,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -31564,6 +33167,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -31571,6 +33178,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -31578,6 +33189,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -31585,6 +33200,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -31592,6 +33211,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -31599,6 +33222,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -31606,6 +33233,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -31613,6 +33244,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -31976,6 +33611,10 @@ export type $OpenApiTs = {
                                  * Set to true if video has paid product placement
                                  */
                                 hasPaidProductPlacement?: boolean | null;
+                                /**
+                                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                                 */
+                                embeddable?: boolean | null;
                             } | null;
                             REDDIT?: {
                                 /**
@@ -32486,6 +34125,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -32498,6 +34141,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -32505,6 +34152,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -32512,6 +34163,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -32519,6 +34174,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -32526,6 +34185,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -32533,6 +34196,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -32540,6 +34207,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -32547,6 +34218,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -32907,6 +34582,10 @@ export type $OpenApiTs = {
                              * Set to true if video has paid product placement
                              */
                             hasPaidProductPlacement?: boolean | null;
+                            /**
+                             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                             */
+                            embeddable?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -33343,6 +35022,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -33355,6 +35038,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -33362,6 +35049,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -33369,6 +35060,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 409
@@ -33376,6 +35071,10 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -33383,6 +35082,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -33390,6 +35093,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -33397,6 +35104,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -33404,6 +35115,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -33411,6 +35126,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -33773,6 +35492,10 @@ export type $OpenApiTs = {
                              * Set to true if video has paid product placement
                              */
                             hasPaidProductPlacement?: boolean | null;
+                            /**
+                             * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                             */
+                            embeddable?: boolean | null;
                         } | null;
                         REDDIT?: {
                             /**
@@ -34195,6 +35918,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34207,6 +35934,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -34214,6 +35945,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -34221,6 +35956,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -34228,6 +35967,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -34235,6 +35978,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -34242,6 +35989,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -34249,6 +36000,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -34256,6 +36011,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -34284,6 +36043,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34296,6 +36059,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -34303,6 +36070,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -34310,6 +36081,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -34317,6 +36092,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -34324,6 +36103,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -34331,6 +36114,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -34338,6 +36125,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -34345,6 +36136,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -34379,6 +36174,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34391,6 +36190,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -34398,6 +36201,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -34405,6 +36212,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -34412,6 +36223,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -34419,6 +36234,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -34426,6 +36245,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -34433,6 +36256,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -34440,6 +36267,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -34524,6 +36355,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -34536,6 +36371,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -34543,6 +36382,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -34550,6 +36393,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -34557,6 +36404,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -34564,6 +36415,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -34571,6 +36426,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -34578,6 +36437,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -34585,6 +36448,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -34948,6 +36815,10 @@ export type $OpenApiTs = {
                                  * Set to true if video has paid product placement
                                  */
                                 hasPaidProductPlacement?: boolean | null;
+                                /**
+                                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                                 */
+                                embeddable?: boolean | null;
                             } | null;
                             REDDIT?: {
                                 /**
@@ -35410,6 +37281,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35422,6 +37297,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -35429,6 +37308,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -35436,6 +37319,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -35443,6 +37330,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -35450,6 +37341,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -35457,6 +37352,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -35464,6 +37363,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -35471,6 +37374,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -35548,6 +37455,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -35560,6 +37471,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -35567,6 +37482,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -35574,6 +37493,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -35581,6 +37504,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -35588,6 +37515,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -35595,6 +37526,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -35602,6 +37537,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -35609,6 +37548,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -35972,6 +37915,10 @@ export type $OpenApiTs = {
                                  * Set to true if video has paid product placement
                                  */
                                 hasPaidProductPlacement?: boolean | null;
+                                /**
+                                 * Whether other websites can embed the video. When omitted, YouTube's own default applies.
+                                 */
+                                embeddable?: boolean | null;
                             } | null;
                             REDDIT?: {
                                 /**
@@ -36426,6 +38373,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -36438,6 +38389,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -36445,6 +38400,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -36452,6 +38411,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -36459,6 +38422,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -36466,6 +38433,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -36473,6 +38444,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -36480,6 +38455,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -36487,6 +38466,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -36534,6 +38517,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -36546,6 +38533,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -36553,6 +38544,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -36560,6 +38555,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -36567,6 +38566,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -36574,6 +38577,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -36581,6 +38588,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -36588,6 +38599,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -36595,6 +38610,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -36629,6 +38648,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -36641,6 +38664,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -36648,6 +38675,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -36655,6 +38686,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -36662,6 +38697,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -36669,6 +38708,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -36676,6 +38719,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -36683,6 +38730,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -36690,6 +38741,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -36725,6 +38780,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -36737,6 +38796,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -36744,6 +38807,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -36751,6 +38818,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -36758,6 +38829,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -36765,6 +38840,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -36772,6 +38851,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -36779,6 +38862,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -36786,6 +38873,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -36820,6 +38911,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -36832,6 +38927,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -36839,6 +38938,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -36846,6 +38949,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 409
@@ -36853,6 +38960,10 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -36860,6 +38971,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -36867,6 +38982,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -36874,6 +38993,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -36881,6 +39004,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -36888,6 +39015,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -36922,6 +39053,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -36934,6 +39069,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -36941,6 +39080,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -36948,6 +39091,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -36955,6 +39102,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -36962,6 +39113,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -36969,6 +39124,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -36976,6 +39135,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -36983,6 +39146,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -37053,6 +39220,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -37065,6 +39236,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -37072,6 +39247,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -37079,6 +39258,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -37086,6 +39269,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -37093,6 +39280,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -37100,6 +39291,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -37107,6 +39302,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -37114,6 +39313,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -37184,6 +39387,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -37196,6 +39403,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -37203,6 +39414,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -37210,6 +39425,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -37217,6 +39436,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -37224,6 +39447,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -37231,6 +39458,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -37238,6 +39469,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -37245,6 +39480,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -37279,6 +39518,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -37291,6 +39534,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -37298,6 +39545,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -37305,6 +39556,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -37312,6 +39567,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -37319,6 +39578,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -37326,6 +39589,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -37333,6 +39600,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -37340,6 +39611,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -37596,6 +39871,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -37608,6 +39887,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -37615,6 +39898,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -37622,6 +39909,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -37629,6 +39920,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -37636,6 +39931,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -37643,6 +39942,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -37650,6 +39953,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -37657,6 +39964,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -37911,6 +40222,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -37923,6 +40238,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -37930,6 +40249,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -37937,6 +40260,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -37944,6 +40271,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -37951,6 +40282,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -37958,6 +40293,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -37965,6 +40304,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -37972,6 +40315,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -38226,6 +40573,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -38238,6 +40589,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -38245,6 +40600,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -38252,6 +40611,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -38259,6 +40622,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -38266,6 +40633,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -38273,6 +40644,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -38280,6 +40655,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -38287,6 +40666,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -38546,6 +40929,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -38558,6 +40945,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -38565,6 +40956,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -38572,6 +40967,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -38579,6 +40978,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -38586,6 +40989,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -38593,6 +41000,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -38600,6 +41011,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -38607,6 +41022,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -38861,6 +41280,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -38873,6 +41296,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -38880,6 +41307,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -38887,6 +41318,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -38894,6 +41329,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -38901,6 +41340,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -38908,6 +41351,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -38915,6 +41362,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -38922,6 +41373,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -39178,6 +41633,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -39190,6 +41649,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -39197,6 +41660,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -39204,6 +41671,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -39211,6 +41682,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -39218,6 +41693,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -39225,6 +41704,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -39232,6 +41715,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -39239,6 +41726,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -39344,6 +41835,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -39356,6 +41851,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -39363,6 +41862,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -39370,6 +41873,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -39377,6 +41884,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -39384,6 +41895,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -39391,6 +41906,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -39398,6 +41917,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -39405,6 +41928,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -39506,6 +42033,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -39518,6 +42049,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -39525,6 +42060,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -39532,6 +42071,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -39539,6 +42082,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -39546,6 +42093,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -39553,6 +42104,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -39560,6 +42115,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -39567,6 +42126,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -39666,6 +42229,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -39678,6 +42245,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -39685,6 +42256,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -39692,6 +42267,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -39699,6 +42278,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -39706,6 +42289,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -39713,6 +42300,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -39720,6 +42311,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -39727,6 +42322,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -39865,6 +42464,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -39877,6 +42480,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -39884,6 +42491,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -39891,6 +42502,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -39898,6 +42513,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -39905,6 +42524,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -39912,6 +42535,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -39919,6 +42546,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -39926,6 +42557,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -40145,6 +42780,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -40157,6 +42796,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -40164,6 +42807,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -40171,6 +42818,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -40178,6 +42829,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -40185,6 +42840,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -40192,6 +42851,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -40199,6 +42862,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -40206,6 +42873,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -40427,6 +43098,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -40439,6 +43114,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -40446,6 +43125,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -40453,6 +43136,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -40460,6 +43147,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -40467,6 +43158,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -40474,6 +43169,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -40481,6 +43180,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -40488,6 +43191,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -40589,6 +43296,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -40601,6 +43312,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -40608,6 +43323,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -40615,6 +43334,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -40622,6 +43345,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -40629,6 +43356,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -40636,6 +43367,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -40643,6 +43378,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -40650,6 +43389,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -40871,6 +43614,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -40883,6 +43630,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -40890,6 +43641,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -40897,6 +43652,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -40904,6 +43663,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -40911,6 +43674,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -40918,6 +43685,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -40925,6 +43696,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -40932,6 +43707,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -41033,6 +43812,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -41045,6 +43828,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -41052,6 +43839,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -41059,6 +43850,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -41066,6 +43861,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -41073,6 +43872,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -41080,6 +43883,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -41087,6 +43894,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -41094,6 +43905,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -41195,6 +44010,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -41207,6 +44026,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -41214,6 +44037,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -41221,6 +44048,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -41228,6 +44059,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -41235,6 +44070,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -41242,6 +44081,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -41249,6 +44092,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -41256,6 +44103,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -41604,6 +44455,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -41616,6 +44471,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -41623,6 +44482,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -41630,6 +44493,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -41637,6 +44504,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -41644,6 +44515,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -41651,6 +44526,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -41658,6 +44537,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -41665,6 +44548,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -42008,6 +44895,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -42020,6 +44911,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -42027,6 +44922,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -42034,6 +44933,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -42041,6 +44944,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -42048,6 +44955,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -42055,6 +44966,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -42062,6 +44977,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -42069,6 +44988,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -42421,6 +45344,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -42433,6 +45360,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -42440,6 +45371,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -42447,6 +45382,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -42454,6 +45393,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -42461,6 +45404,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -42468,6 +45415,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -42475,6 +45426,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -42482,6 +45437,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -42827,6 +45786,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -42839,6 +45802,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -42846,6 +45813,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -42853,6 +45824,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -42860,6 +45835,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -42867,6 +45846,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -42874,6 +45857,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -42881,6 +45868,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -42888,6 +45879,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -43231,6 +46226,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -43243,6 +46242,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -43250,6 +46253,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -43257,6 +46264,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -43264,6 +46275,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -43271,6 +46286,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -43278,6 +46297,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -43285,6 +46308,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -43292,6 +46319,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -43635,6 +46666,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -43647,6 +46682,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -43654,6 +46693,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -43661,6 +46704,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -43668,6 +46715,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -43675,6 +46726,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -43682,6 +46737,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -43689,6 +46748,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -43696,6 +46759,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -44041,6 +47108,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -44053,6 +47124,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -44060,6 +47135,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -44067,6 +47146,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -44074,6 +47157,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -44081,6 +47168,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -44088,6 +47179,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -44095,6 +47190,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -44102,6 +47201,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -44447,6 +47550,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -44459,6 +47566,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -44466,6 +47577,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -44473,6 +47588,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -44480,6 +47599,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -44487,6 +47610,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -44494,6 +47621,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -44501,6 +47632,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -44508,6 +47643,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -44853,6 +47992,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -44865,6 +48008,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -44872,6 +48019,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -44879,6 +48030,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -44886,6 +48041,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -44893,6 +48052,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -44900,6 +48063,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -44907,6 +48074,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -44914,6 +48085,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -45259,6 +48434,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -45271,6 +48450,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -45278,6 +48461,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -45285,6 +48472,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -45292,6 +48483,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -45299,6 +48494,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -45306,6 +48505,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -45313,6 +48516,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -45320,6 +48527,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -46204,6 +49415,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -46216,6 +49431,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -46223,6 +49442,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -46230,6 +49453,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -46237,6 +49464,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -46244,6 +49475,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -46251,6 +49486,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -46258,6 +49497,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -46265,6 +49508,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -47145,6 +50392,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -47157,6 +50408,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -47164,6 +50419,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -47171,6 +50430,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -47178,6 +50441,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -47185,6 +50452,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -47192,6 +50463,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -47199,6 +50474,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -47206,6 +50485,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -48086,6 +51369,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -48098,6 +51385,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -48105,6 +51396,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -48112,6 +51407,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -48119,6 +51418,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -48126,6 +51429,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -48133,6 +51440,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -48140,6 +51451,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -48147,6 +51462,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -48256,6 +51575,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -48268,6 +51591,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -48275,6 +51602,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -48282,6 +51613,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -48289,6 +51624,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -48296,6 +51635,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -48303,6 +51646,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -48310,6 +51657,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -48317,6 +51668,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -48423,6 +51778,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -48435,6 +51794,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -48442,6 +51805,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -48449,6 +51816,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -48456,6 +51827,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -48463,6 +51838,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -48470,6 +51849,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -48477,6 +51860,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -48484,6 +51871,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -48590,6 +51981,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -48602,6 +51997,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -48609,6 +52008,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -48616,6 +52019,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -48623,6 +52030,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -48630,6 +52041,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -48637,6 +52052,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -48644,6 +52063,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -48651,6 +52074,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -48673,6 +52100,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -48685,6 +52116,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -48692,6 +52127,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -48699,6 +52138,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -48706,6 +52149,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -48713,6 +52160,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -48720,6 +52171,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -48727,6 +52182,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -48734,6 +52193,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -48785,6 +52248,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -48797,6 +52264,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -48804,6 +52275,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -48811,6 +52286,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -48818,6 +52297,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -48825,6 +52308,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -48832,6 +52319,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -48839,6 +52330,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -48846,6 +52341,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -48927,6 +52426,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -48939,6 +52442,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -48946,6 +52453,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -48953,6 +52464,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -48960,6 +52475,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -48967,6 +52486,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -48974,6 +52497,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -48981,6 +52508,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -48988,6 +52519,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49057,6 +52592,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49069,6 +52608,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49076,6 +52619,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49083,6 +52630,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49090,6 +52641,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49097,6 +52652,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49104,6 +52663,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49111,6 +52674,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49118,6 +52685,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49187,6 +52758,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49199,6 +52774,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49206,6 +52785,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49213,6 +52796,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49220,6 +52807,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49227,6 +52818,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49234,6 +52829,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49241,6 +52840,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49248,6 +52851,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49266,6 +52873,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49278,6 +52889,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49285,6 +52900,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49292,6 +52911,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49299,6 +52922,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49306,6 +52933,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49313,6 +52944,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49320,6 +52955,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49327,6 +52966,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49400,6 +53043,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49412,6 +53059,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49419,6 +53070,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49426,6 +53081,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49433,6 +53092,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49440,6 +53103,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49447,6 +53114,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49454,6 +53125,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49461,6 +53136,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49542,6 +53221,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49554,6 +53237,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49561,6 +53248,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49568,6 +53259,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49575,6 +53270,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49582,6 +53281,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49589,6 +53292,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49596,6 +53303,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49603,6 +53314,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49621,6 +53336,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49633,6 +53352,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49640,6 +53363,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49647,6 +53374,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49654,6 +53385,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49661,6 +53396,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49668,6 +53407,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49675,6 +53418,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49682,6 +53429,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49703,6 +53454,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49715,6 +53470,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49722,6 +53481,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49729,6 +53492,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49736,6 +53503,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49743,6 +53514,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49750,6 +53525,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49757,6 +53536,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49764,6 +53547,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49782,6 +53569,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49794,6 +53585,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49801,6 +53596,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49808,6 +53607,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49815,6 +53618,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49822,6 +53629,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49829,6 +53640,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49836,6 +53651,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49843,6 +53662,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49864,6 +53687,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49876,6 +53703,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49883,6 +53714,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49890,6 +53725,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49897,6 +53736,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49904,6 +53747,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49911,6 +53758,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49918,6 +53769,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -49925,6 +53780,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -49943,6 +53802,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -49955,6 +53818,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -49962,6 +53829,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -49969,6 +53840,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -49976,6 +53851,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -49983,6 +53862,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -49990,6 +53873,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -49997,6 +53884,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50004,6 +53895,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50035,6 +53930,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50047,6 +53946,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50054,6 +53957,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50061,6 +53968,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50068,6 +53979,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50075,6 +53990,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50082,6 +54001,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50089,6 +54012,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50096,6 +54023,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50126,6 +54057,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50138,6 +54073,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50145,6 +54084,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50152,6 +54095,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50159,6 +54106,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50166,6 +54117,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50173,6 +54128,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50180,6 +54139,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50187,6 +54150,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50227,6 +54194,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50239,6 +54210,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50246,6 +54221,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50253,6 +54232,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50260,6 +54243,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50267,6 +54254,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50274,6 +54265,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50281,6 +54276,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50288,6 +54287,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50308,6 +54311,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50320,6 +54327,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50327,6 +54338,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50334,6 +54349,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50341,6 +54360,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50348,6 +54371,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50355,6 +54382,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50362,6 +54393,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50369,6 +54404,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50392,6 +54431,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50404,6 +54447,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50411,6 +54458,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50418,6 +54469,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 422
@@ -50425,6 +54480,10 @@ export type $OpenApiTs = {
                 422: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50432,6 +54491,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50439,6 +54502,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50446,6 +54513,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50453,6 +54524,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50460,6 +54535,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50481,6 +54560,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50493,6 +54576,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50500,6 +54587,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50507,6 +54598,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50514,6 +54609,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50521,6 +54620,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50528,6 +54631,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50535,6 +54642,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50542,6 +54653,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50560,6 +54675,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50572,6 +54691,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50579,6 +54702,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50586,6 +54713,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50593,6 +54724,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50600,6 +54735,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50607,6 +54746,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50614,6 +54757,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50621,6 +54768,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50642,6 +54793,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50654,6 +54809,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50661,6 +54820,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50668,6 +54831,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50675,6 +54842,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50682,6 +54853,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50689,6 +54864,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50696,6 +54875,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50703,6 +54886,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50721,6 +54908,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50733,6 +54924,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50740,6 +54935,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50747,6 +54946,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50754,6 +54957,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50761,6 +54968,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50768,6 +54979,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50775,6 +54990,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50782,6 +55001,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50812,6 +55035,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50824,6 +55051,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50831,6 +55062,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50838,6 +55073,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50845,6 +55084,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50852,6 +55095,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50859,6 +55106,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50866,6 +55117,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50873,6 +55128,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50906,6 +55165,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50918,6 +55181,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -50925,6 +55192,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -50932,6 +55203,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -50939,6 +55214,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -50946,6 +55225,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -50953,6 +55236,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -50960,6 +55247,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -50967,6 +55258,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -50985,6 +55280,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -50997,6 +55296,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51004,6 +55307,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51011,6 +55318,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51018,6 +55329,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51025,6 +55340,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51032,6 +55351,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51039,6 +55362,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51046,6 +55373,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51066,6 +55397,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51078,6 +55413,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51085,6 +55424,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51092,6 +55435,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51099,6 +55446,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51106,6 +55457,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51113,6 +55468,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51120,6 +55479,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51127,6 +55490,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51148,6 +55515,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51160,6 +55531,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51167,6 +55542,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51174,6 +55553,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51181,6 +55564,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51188,6 +55575,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51195,6 +55586,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51202,6 +55597,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51209,6 +55608,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51228,6 +55631,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51240,6 +55647,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51247,6 +55658,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51254,6 +55669,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51261,6 +55680,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51268,6 +55691,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51275,6 +55702,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51282,6 +55713,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51289,6 +55724,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51310,6 +55749,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51322,6 +55765,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51329,6 +55776,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51336,6 +55787,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51343,6 +55798,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51350,6 +55809,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51357,6 +55820,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51364,6 +55831,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51371,6 +55842,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51404,6 +55879,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51416,6 +55895,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51423,6 +55906,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51430,6 +55917,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51437,6 +55928,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51444,6 +55939,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51451,6 +55950,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51458,6 +55961,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51465,6 +55972,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51496,6 +56007,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51508,6 +56023,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51515,6 +56034,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51522,6 +56045,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51529,6 +56056,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51536,6 +56067,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51543,6 +56078,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51550,6 +56089,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51557,6 +56100,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51590,6 +56137,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51602,6 +56153,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51609,6 +56164,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51616,6 +56175,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51623,6 +56186,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51630,6 +56197,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51637,6 +56208,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51644,6 +56219,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51651,6 +56230,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51701,6 +56284,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51713,6 +56300,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51720,6 +56311,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51727,6 +56322,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51734,6 +56333,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51741,6 +56344,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51748,6 +56355,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51755,6 +56366,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51762,6 +56377,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51786,6 +56405,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51798,6 +56421,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51805,6 +56432,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51812,6 +56443,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51819,6 +56454,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51826,6 +56465,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51833,6 +56476,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51840,6 +56487,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51847,6 +56498,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51871,6 +56526,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51883,6 +56542,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51890,6 +56553,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51897,6 +56564,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51904,6 +56575,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51911,6 +56586,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -51918,6 +56597,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -51925,6 +56608,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -51932,6 +56619,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -51954,6 +56645,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -51966,6 +56661,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -51973,6 +56672,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -51980,6 +56683,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -51987,6 +56694,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -51994,6 +56705,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52001,6 +56716,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52008,6 +56727,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52015,6 +56738,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52039,6 +56766,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52051,6 +56782,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52058,6 +56793,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52065,6 +56804,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52072,6 +56815,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52079,6 +56826,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52086,6 +56837,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52093,6 +56848,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52100,6 +56859,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52122,6 +56885,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52134,6 +56901,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52141,6 +56912,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52148,6 +56923,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52155,6 +56934,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52162,6 +56945,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52169,6 +56956,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52176,6 +56967,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52183,6 +56978,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52211,6 +57010,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52223,6 +57026,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52230,6 +57037,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52237,6 +57048,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52244,6 +57059,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52251,6 +57070,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52258,6 +57081,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52265,6 +57092,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52272,6 +57103,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52294,6 +57129,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52306,6 +57145,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52313,6 +57156,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52320,6 +57167,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52327,6 +57178,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52334,6 +57189,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52341,6 +57200,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52348,6 +57211,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52355,6 +57222,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52377,6 +57248,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52389,6 +57264,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52396,6 +57275,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52403,6 +57286,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52410,6 +57297,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52417,6 +57308,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52424,6 +57319,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52431,6 +57330,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52438,6 +57341,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52456,6 +57363,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52468,6 +57379,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52475,6 +57390,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52482,6 +57401,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52489,6 +57412,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52496,6 +57423,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52503,6 +57434,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52510,6 +57445,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52517,6 +57456,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52549,6 +57492,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52561,6 +57508,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52568,6 +57519,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52575,6 +57530,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 409
@@ -52582,6 +57541,10 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52589,6 +57552,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52596,6 +57563,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52603,6 +57574,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52610,6 +57585,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52617,6 +57596,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52649,6 +57632,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52661,6 +57648,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52668,6 +57659,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52675,6 +57670,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52682,6 +57681,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52689,6 +57692,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52696,6 +57703,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52703,6 +57714,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52710,6 +57725,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52742,6 +57761,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52754,6 +57777,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52761,6 +57788,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52768,6 +57799,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52775,6 +57810,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52782,6 +57821,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52789,6 +57832,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52796,6 +57843,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52803,6 +57854,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52847,6 +57902,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52859,6 +57918,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52866,6 +57929,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52873,6 +57940,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52880,6 +57951,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52887,6 +57962,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52894,6 +57973,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -52901,6 +57984,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -52908,6 +57995,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -52947,6 +58038,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -52959,6 +58054,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -52966,6 +58065,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -52973,6 +58076,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -52980,6 +58087,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -52987,6 +58098,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -52994,6 +58109,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53001,6 +58120,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53008,6 +58131,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53047,6 +58174,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53059,6 +58190,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53066,6 +58201,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53073,6 +58212,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53080,6 +58223,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53087,6 +58234,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53094,6 +58245,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53101,6 +58256,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53108,6 +58267,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53145,6 +58308,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53157,6 +58324,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53164,6 +58335,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53171,6 +58346,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53178,6 +58357,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53185,6 +58368,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53192,6 +58379,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53199,6 +58390,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53206,6 +58401,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53227,6 +58426,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53239,6 +58442,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53246,6 +58453,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53253,6 +58464,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53260,6 +58475,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53267,6 +58486,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53274,6 +58497,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53281,6 +58508,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53288,6 +58519,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53315,6 +58550,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53327,6 +58566,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53334,6 +58577,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53341,6 +58588,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53348,6 +58599,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53355,6 +58610,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53362,6 +58621,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53369,6 +58632,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53376,6 +58643,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53397,6 +58668,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53409,6 +58684,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53416,6 +58695,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53423,6 +58706,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53430,6 +58717,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53437,6 +58728,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53444,6 +58739,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53451,6 +58750,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53458,6 +58761,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53476,6 +58783,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53488,6 +58799,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53495,6 +58810,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53502,6 +58821,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53509,6 +58832,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53516,6 +58843,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53523,6 +58854,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53530,6 +58865,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53537,6 +58876,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53558,6 +58901,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53570,6 +58917,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53577,6 +58928,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53584,6 +58939,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53591,6 +58950,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53598,6 +58961,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53605,6 +58972,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53612,6 +58983,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53619,6 +58994,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53637,6 +59016,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53649,6 +59032,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53656,6 +59043,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53663,6 +59054,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53670,6 +59065,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53677,6 +59076,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53684,6 +59087,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53691,6 +59098,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53698,6 +59109,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53785,6 +59200,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53797,6 +59216,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53804,6 +59227,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53811,6 +59238,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53818,6 +59249,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53825,6 +59260,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53832,6 +59271,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53839,6 +59282,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53846,6 +59293,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53891,6 +59342,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53903,6 +59358,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -53910,6 +59369,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -53917,6 +59380,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -53924,6 +59391,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -53931,6 +59402,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -53938,6 +59413,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -53945,6 +59424,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -53952,6 +59435,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -53983,6 +59470,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -53995,6 +59486,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54002,6 +59497,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54009,6 +59508,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54016,6 +59519,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54023,6 +59530,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54030,6 +59541,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54037,6 +59552,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54044,6 +59563,127 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/instagram/post': {
+        delete: {
+            req: MiscInstagramDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54064,6 +59704,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54076,6 +59720,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54083,6 +59731,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54090,6 +59742,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54097,6 +59753,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54104,6 +59764,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54111,6 +59775,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54118,6 +59786,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54125,6 +59797,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54170,6 +59846,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54182,6 +59862,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54189,6 +59873,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54196,6 +59884,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54203,6 +59895,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54210,6 +59906,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54217,6 +59917,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54224,6 +59928,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54231,6 +59939,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54267,6 +59979,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54279,6 +59995,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54286,6 +60006,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54293,6 +60017,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54300,6 +60028,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54307,6 +60039,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54314,6 +60050,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54321,6 +60061,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54328,6 +60072,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54362,6 +60110,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54374,6 +60126,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54381,6 +60137,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54388,6 +60148,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54395,6 +60159,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54402,6 +60170,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54409,6 +60181,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54416,6 +60192,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54423,6 +60203,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54455,6 +60239,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54467,6 +60255,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54474,6 +60266,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54481,6 +60277,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 409
@@ -54488,6 +60288,10 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54495,6 +60299,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54502,6 +60310,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54509,6 +60321,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54516,6 +60332,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54523,6 +60343,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54555,6 +60379,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54567,6 +60395,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54574,6 +60406,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54581,6 +60417,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54588,6 +60428,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54595,6 +60439,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54602,6 +60450,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54609,6 +60461,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54616,6 +60472,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54648,6 +60508,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54660,6 +60524,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54667,6 +60535,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54674,6 +60546,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54681,6 +60557,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54688,6 +60568,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54695,6 +60579,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54702,6 +60590,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54709,6 +60601,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54754,6 +60650,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54766,6 +60666,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54773,6 +60677,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54780,6 +60688,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54787,6 +60699,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54794,6 +60710,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54801,6 +60721,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54808,6 +60732,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54815,6 +60743,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54855,6 +60787,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54867,6 +60803,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54874,6 +60814,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54881,6 +60825,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54888,6 +60836,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54895,6 +60847,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54902,6 +60858,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -54909,6 +60869,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -54916,6 +60880,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -54950,6 +60918,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -54962,6 +60934,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -54969,6 +60945,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -54976,6 +60956,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -54983,6 +60967,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -54990,6 +60978,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -54997,6 +60989,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55004,6 +61000,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55011,6 +61011,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55051,6 +61055,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55063,6 +61071,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55070,6 +61082,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55077,6 +61093,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55084,6 +61104,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55091,6 +61115,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55098,6 +61126,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55105,6 +61137,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55112,6 +61148,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55132,6 +61172,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55144,6 +61188,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55151,6 +61199,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55158,6 +61210,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55165,6 +61221,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55172,6 +61232,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55179,6 +61243,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55186,6 +61254,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55193,6 +61265,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55214,6 +61290,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55226,6 +61306,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55233,6 +61317,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55240,6 +61328,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55247,6 +61339,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55254,6 +61350,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55261,6 +61361,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55268,6 +61372,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55275,6 +61383,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55293,6 +61405,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55305,6 +61421,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55312,6 +61432,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55319,6 +61443,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55326,6 +61454,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55333,6 +61465,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55340,6 +61476,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55347,6 +61487,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55354,6 +61498,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55375,6 +61523,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55387,6 +61539,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55394,6 +61550,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55401,6 +61561,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55408,6 +61572,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55415,6 +61583,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55422,6 +61594,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55429,6 +61605,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55436,6 +61616,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55454,6 +61638,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55466,6 +61654,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55473,6 +61665,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55480,6 +61676,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55487,6 +61687,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55494,6 +61698,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55501,6 +61709,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55508,6 +61720,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55515,6 +61731,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55536,6 +61756,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55548,6 +61772,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55555,6 +61783,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55562,6 +61794,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55569,6 +61805,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55576,6 +61816,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55583,6 +61827,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55590,6 +61838,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55597,6 +61849,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55615,6 +61871,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55627,6 +61887,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55634,6 +61898,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55641,6 +61909,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55648,6 +61920,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55655,6 +61931,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55662,6 +61942,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55669,6 +61953,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55676,6 +61964,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55697,6 +61989,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55709,6 +62005,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55716,6 +62016,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55723,6 +62027,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55730,6 +62038,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55737,6 +62049,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55744,6 +62060,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55751,6 +62071,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55758,6 +62082,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55776,6 +62104,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55788,6 +62120,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55795,6 +62131,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55802,6 +62142,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55809,6 +62153,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55816,6 +62164,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55823,6 +62175,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55830,6 +62186,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55837,6 +62197,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55858,6 +62222,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55870,6 +62238,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55877,6 +62249,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55884,6 +62260,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55891,6 +62271,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55898,6 +62282,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55905,6 +62293,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55912,6 +62304,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55919,6 +62315,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -55937,6 +62337,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -55949,6 +62353,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -55956,6 +62364,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -55963,6 +62375,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -55970,6 +62386,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -55977,6 +62397,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -55984,6 +62408,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -55991,6 +62419,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -55998,6 +62430,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56019,6 +62455,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56031,6 +62471,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56038,6 +62482,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56045,6 +62493,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56052,6 +62504,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56059,6 +62515,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56066,6 +62526,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56073,6 +62537,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56080,6 +62548,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56098,6 +62570,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56110,6 +62586,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56117,6 +62597,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56124,6 +62608,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56131,6 +62619,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56138,6 +62630,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56145,6 +62641,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56152,6 +62652,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56159,6 +62663,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56179,6 +62687,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56191,6 +62703,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56198,6 +62714,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56205,6 +62725,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56212,6 +62736,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56219,6 +62747,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56226,6 +62758,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56233,6 +62769,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56240,6 +62780,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56260,6 +62804,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56272,6 +62820,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56279,6 +62831,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56286,6 +62842,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56293,6 +62853,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56300,6 +62864,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56307,6 +62875,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56314,6 +62886,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56321,6 +62897,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56341,6 +62921,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56353,6 +62937,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56360,6 +62948,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56367,6 +62959,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56374,6 +62970,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56381,6 +62981,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56388,6 +62992,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56395,6 +63003,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56402,6 +63014,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56422,6 +63038,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56434,6 +63054,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56441,6 +63065,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56448,6 +63076,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56455,6 +63087,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56462,6 +63098,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56469,6 +63109,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56476,6 +63120,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56483,6 +63131,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56503,6 +63155,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56515,6 +63171,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56522,6 +63182,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56529,6 +63193,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56536,6 +63204,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56543,6 +63215,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56550,6 +63226,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56557,6 +63237,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56564,6 +63248,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56582,6 +63270,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56594,6 +63286,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56601,6 +63297,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56608,6 +63308,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56615,6 +63319,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56622,6 +63330,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56629,6 +63341,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56636,6 +63352,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56643,6 +63363,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56663,6 +63387,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56675,6 +63403,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56682,6 +63414,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56689,6 +63425,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56696,6 +63436,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56703,6 +63447,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56710,6 +63458,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56717,6 +63469,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56724,6 +63480,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56757,6 +63517,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56769,6 +63533,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56776,6 +63544,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56783,6 +63555,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56790,6 +63566,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56797,6 +63577,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56804,6 +63588,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56811,6 +63599,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56818,6 +63610,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56906,6 +63702,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56918,6 +63718,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -56925,6 +63729,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -56932,6 +63740,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -56939,6 +63751,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -56946,6 +63762,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -56953,6 +63773,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -56960,6 +63784,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -56967,6 +63795,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -56987,6 +63819,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -56999,6 +63835,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57006,6 +63846,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57013,6 +63857,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57020,6 +63868,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57027,6 +63879,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57034,6 +63890,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57041,6 +63901,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57048,6 +63912,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57087,6 +63955,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57099,6 +63971,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57106,6 +63982,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57113,6 +63993,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57120,6 +64004,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57127,6 +64015,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57134,6 +64026,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57141,6 +64037,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57148,6 +64048,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57191,6 +64095,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57203,6 +64111,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57210,6 +64122,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57217,6 +64133,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57224,6 +64144,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57231,6 +64155,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57238,6 +64166,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57245,6 +64177,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57252,6 +64188,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57293,6 +64233,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57305,6 +64249,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57312,6 +64260,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57319,6 +64271,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57326,6 +64282,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57333,6 +64293,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57340,6 +64304,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57347,6 +64315,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57354,6 +64326,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57372,6 +64348,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57384,6 +64364,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57391,6 +64375,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57398,6 +64386,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57405,6 +64397,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57412,6 +64408,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57419,6 +64419,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57426,6 +64430,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57433,6 +64441,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57476,6 +64488,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57488,6 +64504,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57495,6 +64515,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57502,6 +64526,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57509,6 +64537,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57516,6 +64548,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57523,6 +64559,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57530,6 +64570,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57537,6 +64581,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57575,6 +64623,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57587,6 +64639,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57594,6 +64650,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57601,6 +64661,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 409
@@ -57608,6 +64672,10 @@ export type $OpenApiTs = {
                 409: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57615,6 +64683,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57622,6 +64694,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57629,6 +64705,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57636,6 +64716,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57643,6 +64727,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57681,6 +64769,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57693,6 +64785,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57700,6 +64796,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57707,6 +64807,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57714,6 +64818,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57721,6 +64829,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57728,6 +64840,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57735,6 +64851,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57742,6 +64862,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57780,6 +64904,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57792,6 +64920,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57799,6 +64931,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57806,6 +64942,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57813,6 +64953,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57820,6 +64964,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57827,6 +64975,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57834,6 +64986,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57841,6 +64997,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57902,6 +65062,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57914,6 +65078,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -57921,6 +65089,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -57928,6 +65100,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -57935,6 +65111,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -57942,6 +65122,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -57949,6 +65133,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -57956,6 +65144,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -57963,6 +65155,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -57981,6 +65177,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -57993,6 +65193,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -58000,6 +65204,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -58007,6 +65215,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -58014,6 +65226,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -58021,6 +65237,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -58028,6 +65248,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -58035,6 +65259,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -58042,6 +65270,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -58080,6 +65312,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -58092,6 +65328,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -58099,6 +65339,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -58106,6 +65350,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -58113,6 +65361,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -58120,6 +65372,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -58127,6 +65383,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -58134,6 +65394,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -58141,6 +65405,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -58176,6 +65444,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -58188,6 +65460,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -58195,6 +65471,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -58202,6 +65482,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -58209,6 +65493,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -58216,6 +65504,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -58223,6 +65515,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -58230,6 +65526,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -58237,6 +65537,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -58273,6 +65577,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -58285,6 +65593,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -58292,6 +65604,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -58299,6 +65615,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -58306,6 +65626,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -58313,6 +65637,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -58320,6 +65648,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -58327,6 +65659,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -58334,6 +65670,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -58369,6 +65709,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -58381,6 +65725,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -58388,6 +65736,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -58395,6 +65747,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -58402,6 +65758,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -58409,6 +65769,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -58416,6 +65780,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -58423,6 +65791,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -58430,6 +65802,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -58459,6 +65835,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -58471,6 +65851,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -58478,6 +65862,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -58485,6 +65873,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -58492,6 +65884,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -58499,6 +65895,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -58506,6 +65906,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -58513,6 +65917,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -58520,6 +65928,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };
@@ -58553,6 +65965,10 @@ export type $OpenApiTs = {
                 400: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                     issues?: Array<{
                         code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
                         message: string;
@@ -58565,6 +65981,10 @@ export type $OpenApiTs = {
                 401: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 403
@@ -58572,6 +65992,10 @@ export type $OpenApiTs = {
                 403: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 404
@@ -58579,6 +66003,10 @@ export type $OpenApiTs = {
                 404: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 429
@@ -58586,6 +66014,10 @@ export type $OpenApiTs = {
                 429: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 500
@@ -58593,6 +66025,10 @@ export type $OpenApiTs = {
                 500: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 502
@@ -58600,6 +66036,10 @@ export type $OpenApiTs = {
                 502: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 503
@@ -58607,6 +66047,10 @@ export type $OpenApiTs = {
                 503: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
                 /**
                  * 504
@@ -58614,6 +66058,10 @@ export type $OpenApiTs = {
                 504: {
                     statusCode?: number | null;
                     message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
                 };
             };
         };

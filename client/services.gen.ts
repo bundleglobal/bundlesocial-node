@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetCommentsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetDailyLimitsUsageData, OrganizationGetDailyLimitsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, OrganizationGetMessagesUsageData, OrganizationGetMessagesUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountEnableMessagingData, SocialAccountEnableMessagingResponse, SocialAccountDisableMessagingData, SocialAccountDisableMessagingResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, UploadInitMultipartUploadData, UploadInitMultipartUploadResponse, UploadSignMultipartPartsData, UploadSignMultipartPartsResponse, UploadCompleteMultipartUploadData, UploadCompleteMultipartUploadResponse, UploadAbortMultipartUploadData, UploadAbortMultipartUploadResponse, PostGetReconnectSocialAccountCandidatesData, PostGetReconnectSocialAccountCandidatesResponse, PostReconnectSocialAccountData, PostReconnectSocialAccountResponse, PostGetByReferenceKeyData, PostGetByReferenceKeyResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, CreditGetCreditBalanceResponse, CreditQuoteBillableUsageData, CreditQuoteBillableUsageResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentImportCreateData, CommentImportCreateResponse, CommentImportGetListData, CommentImportGetListResponse, CommentImportGetFetchedCommentsData, CommentImportGetFetchedCommentsResponse, CommentImportActionFetchedCommentData, CommentImportActionFetchedCommentResponse, CommentImportGetByIdData, CommentImportGetByIdResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, CommentRetryData, CommentRetryResponse, ConversationGetListData, ConversationGetListResponse, ConversationGetData, ConversationGetResponse, ConversationUpdateData, ConversationUpdateResponse, ConversationGetMessagesData, ConversationGetMessagesResponse, ConversationSendMessageData, ConversationSendMessageResponse, ConversationReactMessageData, ConversationReactMessageResponse, ConversationMarkReadData, ConversationMarkReadResponse, ConversationPrivateReplyData, ConversationPrivateReplyResponse, ConversationArchiveData, ConversationArchiveResponse, ConversationOpenData, ConversationOpenResponse, AutomationGetFlowsData, AutomationGetFlowsResponse, AutomationCreateFlowData, AutomationCreateFlowResponse, AutomationCopyFlowsData, AutomationCopyFlowsResponse, AutomationGetFlowData, AutomationGetFlowResponse, AutomationUpdateFlowData, AutomationUpdateFlowResponse, AutomationDeleteFlowData, AutomationDeleteFlowResponse, AutomationPublishFlowData, AutomationPublishFlowResponse, AutomationPauseFlowData, AutomationPauseFlowResponse, AutomationActivateFlowData, AutomationActivateFlowResponse, AutomationArchiveFlowData, AutomationArchiveFlowResponse, AutomationGetFlowExecutionsData, AutomationGetFlowExecutionsResponse, AutomationGetExecutionData, AutomationGetExecutionResponse, AutomationTestFlowData, AutomationTestFlowResponse, AutomationGetProviderSettingsData, AutomationGetProviderSettingsResponse, AutomationUpsertProviderSettingData, AutomationUpsertProviderSettingResponse, AutomationSyncProviderSettingData, AutomationSyncProviderSettingResponse, AutomationSendRichMessageData, AutomationSendRichMessageResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeEditCommentData, MiscYoutubeEditCommentResponse, MiscYoutubeDeleteCommentData, MiscYoutubeDeleteCommentResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinResharePostData, MiscLinkedinResharePostResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscLinkedinEditCommentData, MiscLinkedinEditCommentResponse, MiscLinkedinDeleteCommentData, MiscLinkedinDeleteCommentResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListSearchKeywordsData, MiscGoogleBusinessListSearchKeywordsResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscRedditEditCommentData, MiscRedditEditCommentResponse, MiscRedditDeleteCommentData, MiscRedditDeleteCommentResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscInstagramSearchAudioData, MiscInstagramSearchAudioResponse, MiscInstagramDeletePostData, MiscInstagramDeletePostResponse, MiscInstagramDeleteCommentData, MiscInstagramDeleteCommentResponse, MiscFacebookSearchPagesData, MiscFacebookSearchPagesResponse, MiscFacebookGetTextFormatPresetsResponse, MiscFacebookGetTokenDebugData, MiscFacebookGetTokenDebugResponse, MiscFacebookImportRecommendationsData, MiscFacebookImportRecommendationsResponse, MiscFacebookGetRecommendationImportStatusData, MiscFacebookGetRecommendationImportStatusResponse, MiscFacebookGetRecommendationImportByIdData, MiscFacebookGetRecommendationImportByIdResponse, MiscFacebookGetRecommendationsData, MiscFacebookGetRecommendationsResponse, MiscFacebookGetRecommendationByIdData, MiscFacebookGetRecommendationByIdResponse, MiscFacebookGetRecommendationCommentsData, MiscFacebookGetRecommendationCommentsResponse, MiscFacebookReplyToRecommendationData, MiscFacebookReplyToRecommendationResponse, MiscFacebookReplyToRecommendationCommentData, MiscFacebookReplyToRecommendationCommentResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscFacebookEditCommentData, MiscFacebookEditCommentResponse, MiscFacebookDeleteCommentData, MiscFacebookDeleteCommentResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscMastodonEditCommentData, MiscMastodonEditCommentResponse, MiscMastodonDeleteCommentData, MiscMastodonDeleteCommentResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscBlueskyDeleteCommentData, MiscBlueskyDeleteCommentResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscTwitterDeleteCommentData, MiscTwitterDeleteCommentResponse, MiscTwitterRetweetData, MiscTwitterRetweetResponse, MiscTwitterUnretweetData, MiscTwitterUnretweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokSearchLocationsData, MiscTiktokSearchLocationsResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, MiscTiktokDeleteCommentData, MiscTiktokDeleteCommentResponse, MiscTiktokGetPostSettingsData, MiscTiktokGetPostSettingsResponse, MiscTiktokGetAdAuthorizationData, MiscTiktokGetAdAuthorizationResponse, MiscTiktokEnableAdAuthorizationData, MiscTiktokEnableAdAuthorizationResponse, MiscTiktokDisableAdAuthorizationData, MiscTiktokDisableAdAuthorizationResponse, MiscTiktokExtendAdAuthorizationData, MiscTiktokExtendAdAuthorizationResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
+import type { AppGetHealthResponse, OrganizationGetOrganizationResponse, OrganizationGetPostsUsageResponse, OrganizationGetCommentsUsageResponse, OrganizationGetUploadsUsageResponse, OrganizationGetDailyLimitsUsageData, OrganizationGetDailyLimitsUsageResponse, OrganizationGetImportsUsageData, OrganizationGetImportsUsageResponse, OrganizationGetMessagesUsageData, OrganizationGetMessagesUsageResponse, TeamGetTeamData, TeamGetTeamResponse, TeamUpdateTeamData, TeamUpdateTeamResponse, TeamDeleteTeamData, TeamDeleteTeamResponse, TeamGetListData, TeamGetListResponse, TeamCreateTeamData, TeamCreateTeamResponse, SocialAccountConnectData, SocialAccountConnectResponse, SocialAccountDisconnectData, SocialAccountDisconnectResponse, SocialAccountSetChannelData, SocialAccountSetChannelResponse, SocialAccountUnsetChannelData, SocialAccountUnsetChannelResponse, SocialAccountRefreshChannelsData, SocialAccountRefreshChannelsResponse, SocialAccountCreatePortalLinkData, SocialAccountCreatePortalLinkResponse, SocialAccountEnableMessagingData, SocialAccountEnableMessagingResponse, SocialAccountDisableMessagingData, SocialAccountDisableMessagingResponse, SocialAccountConnectionCheckData, SocialAccountConnectionCheckResponse, SocialAccountProfileRefreshData, SocialAccountProfileRefreshResponse, SocialAccountGetByTypeData, SocialAccountGetByTypeResponse, SocialAccountCopyData, SocialAccountCopyResponse, SocialAccountGetAccountsToDeleteData, SocialAccountGetAccountsToDeleteResponse, UploadGetListData, UploadGetListResponse, UploadCreateData, UploadCreateResponse, UploadDeleteManyData, UploadDeleteManyResponse, UploadGetData, UploadGetResponse, UploadDeleteData, UploadDeleteResponse, UploadCreateFromUrlData, UploadCreateFromUrlResponse, UploadInitLargeUploadData, UploadInitLargeUploadResponse, UploadFinalizeLargeUploadData, UploadFinalizeLargeUploadResponse, UploadInitMultipartUploadData, UploadInitMultipartUploadResponse, UploadSignMultipartPartsData, UploadSignMultipartPartsResponse, UploadCompleteMultipartUploadData, UploadCompleteMultipartUploadResponse, UploadAbortMultipartUploadData, UploadAbortMultipartUploadResponse, PostGetReconnectSocialAccountCandidatesData, PostGetReconnectSocialAccountCandidatesResponse, PostReconnectSocialAccountData, PostReconnectSocialAccountResponse, PostGetByReferenceKeyData, PostGetByReferenceKeyResponse, PostGetData, PostGetResponse, PostUpdateData, PostUpdateResponse, PostDeleteData, PostDeleteResponse, PostGetListData, PostGetListResponse, PostCreateData, PostCreateResponse, PostRetryData, PostRetryResponse, CreditGetCreditBalanceResponse, CreditQuoteBillableUsageData, CreditQuoteBillableUsageResponse, AnalyticsGetSocialAccountAnalyticsData, AnalyticsGetSocialAccountAnalyticsResponse, AnalyticsGetPostAnalyticsData, AnalyticsGetPostAnalyticsResponse, AnalyticsGetSocialAccountAnalyticsRawData, AnalyticsGetSocialAccountAnalyticsRawResponse, AnalyticsGetPostAnalyticsRawData, AnalyticsGetPostAnalyticsRawResponse, AnalyticsGetBulkPostAnalyticsData, AnalyticsGetBulkPostAnalyticsResponse, AnalyticsForceSocialAccountAnalyticsData, AnalyticsForceSocialAccountAnalyticsResponse, AnalyticsForcePostAnalyticsData, AnalyticsForcePostAnalyticsResponse, CommentImportCreateData, CommentImportCreateResponse, CommentImportGetListData, CommentImportGetListResponse, CommentImportGetFetchedCommentsData, CommentImportGetFetchedCommentsResponse, CommentImportActionFetchedCommentData, CommentImportActionFetchedCommentResponse, CommentImportGetByIdData, CommentImportGetByIdResponse, CommentDiscoverThreadsData, CommentDiscoverThreadsResponse, CommentDiscoverThreadsMentionsData, CommentDiscoverThreadsMentionsResponse, CommentGetData, CommentGetResponse, CommentUpdateData, CommentUpdateResponse, CommentDeleteData, CommentDeleteResponse, CommentGetListData, CommentGetListResponse, CommentCreateData, CommentCreateResponse, CommentRetryData, CommentRetryResponse, ConversationGetListData, ConversationGetListResponse, ConversationGetData, ConversationGetResponse, ConversationUpdateData, ConversationUpdateResponse, ConversationGetMessagesData, ConversationGetMessagesResponse, ConversationSendMessageData, ConversationSendMessageResponse, ConversationReactMessageData, ConversationReactMessageResponse, ConversationMarkReadData, ConversationMarkReadResponse, ConversationPrivateReplyData, ConversationPrivateReplyResponse, ConversationArchiveData, ConversationArchiveResponse, ConversationOpenData, ConversationOpenResponse, AutomationGetFlowsData, AutomationGetFlowsResponse, AutomationCreateFlowData, AutomationCreateFlowResponse, AutomationCopyFlowsData, AutomationCopyFlowsResponse, AutomationGetFlowData, AutomationGetFlowResponse, AutomationUpdateFlowData, AutomationUpdateFlowResponse, AutomationDeleteFlowData, AutomationDeleteFlowResponse, AutomationPublishFlowData, AutomationPublishFlowResponse, AutomationPauseFlowData, AutomationPauseFlowResponse, AutomationActivateFlowData, AutomationActivateFlowResponse, AutomationArchiveFlowData, AutomationArchiveFlowResponse, AutomationGetFlowExecutionsData, AutomationGetFlowExecutionsResponse, AutomationGetExecutionData, AutomationGetExecutionResponse, AutomationTestFlowData, AutomationTestFlowResponse, AutomationGetProviderSettingsData, AutomationGetProviderSettingsResponse, AutomationUpsertProviderSettingData, AutomationUpsertProviderSettingResponse, AutomationSyncProviderSettingData, AutomationSyncProviderSettingResponse, AutomationSendRichMessageData, AutomationSendRichMessageResponse, MiscYoutubeSetThumbnailData, MiscYoutubeSetThumbnailResponse, MiscYoutubeGetChannelPlaylistData, MiscYoutubeGetChannelPlaylistResponse, MiscYoutubeCreateNewChannelPlaylistData, MiscYoutubeCreateNewChannelPlaylistResponse, MiscYoutubeUpdateChannelPlaylistData, MiscYoutubeUpdateChannelPlaylistResponse, MiscYoutubeDeleteChannelPlaylistData, MiscYoutubeDeleteChannelPlaylistResponse, MiscYoutubeAddVideoToPlaylistData, MiscYoutubeAddVideoToPlaylistResponse, MiscYoutubeGetVideosFromPlaylistData, MiscYoutubeGetVideosFromPlaylistResponse, MiscYoutubeDeleteVideoFromPlaylistData, MiscYoutubeDeleteVideoFromPlaylistResponse, MiscYoutubeEditVideoData, MiscYoutubeEditVideoResponse, MiscYoutubeDeleteVideoData, MiscYoutubeDeleteVideoResponse, MiscYoutubeEditCommentData, MiscYoutubeEditCommentResponse, MiscYoutubeDeleteCommentData, MiscYoutubeDeleteCommentResponse, MiscYoutubeGetVideoCategoriesData, MiscYoutubeGetVideoCategoriesResponse, MiscYoutubeGetRegionsData, MiscYoutubeGetRegionsResponse, MiscLinkedinGetTagsData, MiscLinkedinGetTagsResponse, MiscLinkedinBuildCommentaryData, MiscLinkedinBuildCommentaryResponse, MiscLinkedinResharePostData, MiscLinkedinResharePostResponse, MiscLinkedinEditPostData, MiscLinkedinEditPostResponse, MiscLinkedinDeletePostData, MiscLinkedinDeletePostResponse, MiscLinkedinEditCommentData, MiscLinkedinEditCommentResponse, MiscLinkedinDeleteCommentData, MiscLinkedinDeleteCommentResponse, MiscGoogleBusinessAddMediaData, MiscGoogleBusinessAddMediaResponse, MiscGoogleBusinessListMediaData, MiscGoogleBusinessListMediaResponse, MiscGoogleBusinessDeleteMediaData, MiscGoogleBusinessDeleteMediaResponse, MiscGoogleBusinessDeletePostData, MiscGoogleBusinessDeletePostResponse, MiscGoogleBusinessGetLocationData, MiscGoogleBusinessGetLocationResponse, MiscGoogleBusinessUpdateLocationData, MiscGoogleBusinessUpdateLocationResponse, MiscGoogleBusinessUpdateHoursData, MiscGoogleBusinessUpdateHoursResponse, MiscGoogleBusinessGetAttributesData, MiscGoogleBusinessGetAttributesResponse, MiscGoogleBusinessUpdateAttributesData, MiscGoogleBusinessUpdateAttributesResponse, MiscGoogleBusinessListAvailableAttributesData, MiscGoogleBusinessListAvailableAttributesResponse, MiscGoogleBusinessListSearchKeywordsData, MiscGoogleBusinessListSearchKeywordsResponse, MiscGoogleBusinessListCategoriesData, MiscGoogleBusinessListCategoriesResponse, MiscGoogleBusinessGetServiceListData, MiscGoogleBusinessGetServiceListResponse, MiscGoogleBusinessUpdateServiceListData, MiscGoogleBusinessUpdateServiceListResponse, MiscGoogleBusinessGetFoodMenusData, MiscGoogleBusinessGetFoodMenusResponse, MiscGoogleBusinessUpdateFoodMenusData, MiscGoogleBusinessUpdateFoodMenusResponse, MiscGoogleBusinessListPlaceActionLinksData, MiscGoogleBusinessListPlaceActionLinksResponse, MiscGoogleBusinessCreatePlaceActionLinkData, MiscGoogleBusinessCreatePlaceActionLinkResponse, MiscGoogleBusinessUpdatePlaceActionLinkData, MiscGoogleBusinessUpdatePlaceActionLinkResponse, MiscGoogleBusinessDeletePlaceActionLinkData, MiscGoogleBusinessDeletePlaceActionLinkResponse, MiscGoogleBusinessImportReviewsData, MiscGoogleBusinessImportReviewsResponse, MiscGoogleBusinessGetReviewImportStatusData, MiscGoogleBusinessGetReviewImportStatusResponse, MiscGoogleBusinessGetReviewImportByIdData, MiscGoogleBusinessGetReviewImportByIdResponse, MiscGoogleBusinessGetReviewsData, MiscGoogleBusinessGetReviewsResponse, MiscGoogleBusinessGetReviewByIdData, MiscGoogleBusinessGetReviewByIdResponse, MiscGoogleBusinessReplyToReviewData, MiscGoogleBusinessReplyToReviewResponse, MiscGoogleBusinessDeleteReviewReplyData, MiscGoogleBusinessDeleteReviewReplyResponse, MiscRedditGetPostRequirementsData, MiscRedditGetPostRequirementsResponse, MiscRedditGetSubredditFlairsData, MiscRedditGetSubredditFlairsResponse, MiscRedditEditPostData, MiscRedditEditPostResponse, MiscRedditDeletePostData, MiscRedditDeletePostResponse, MiscRedditEditCommentData, MiscRedditEditCommentResponse, MiscRedditDeleteCommentData, MiscRedditDeleteCommentResponse, MiscInstagramBusinessDiscoveryData, MiscInstagramBusinessDiscoveryResponse, MiscInstagramSearchLocationsData, MiscInstagramSearchLocationsResponse, MiscInstagramSearchAudioData, MiscInstagramSearchAudioResponse, MiscInstagramDeletePostData, MiscInstagramDeletePostResponse, MiscInstagramDeleteCommentData, MiscInstagramDeleteCommentResponse, MiscFacebookSearchPagesData, MiscFacebookSearchPagesResponse, MiscFacebookGetTextFormatPresetsResponse, MiscFacebookGetTokenDebugData, MiscFacebookGetTokenDebugResponse, MiscFacebookImportRecommendationsData, MiscFacebookImportRecommendationsResponse, MiscFacebookGetRecommendationImportStatusData, MiscFacebookGetRecommendationImportStatusResponse, MiscFacebookGetRecommendationImportByIdData, MiscFacebookGetRecommendationImportByIdResponse, MiscFacebookGetRecommendationsData, MiscFacebookGetRecommendationsResponse, MiscFacebookGetRecommendationByIdData, MiscFacebookGetRecommendationByIdResponse, MiscFacebookGetRecommendationCommentsData, MiscFacebookGetRecommendationCommentsResponse, MiscFacebookReplyToRecommendationData, MiscFacebookReplyToRecommendationResponse, MiscFacebookReplyToRecommendationCommentData, MiscFacebookReplyToRecommendationCommentResponse, MiscFacebookEditPostData, MiscFacebookEditPostResponse, MiscFacebookDeletePostData, MiscFacebookDeletePostResponse, MiscFacebookEditCommentData, MiscFacebookEditCommentResponse, MiscFacebookDeleteCommentData, MiscFacebookDeleteCommentResponse, MiscPinterestEditPinData, MiscPinterestEditPinResponse, MiscPinterestDeletePinData, MiscPinterestDeletePinResponse, MiscMastodonEditStatusData, MiscMastodonEditStatusResponse, MiscMastodonDeleteStatusData, MiscMastodonDeleteStatusResponse, MiscMastodonEditCommentData, MiscMastodonEditCommentResponse, MiscMastodonDeleteCommentData, MiscMastodonDeleteCommentResponse, MiscThreadsSearchLocationsData, MiscThreadsSearchLocationsResponse, MiscThreadsGetProfileData, MiscThreadsGetProfileResponse, MiscThreadsGetTrendingTopicsData, MiscThreadsGetTrendingTopicsResponse, MiscThreadsDeletePostData, MiscThreadsDeletePostResponse, MiscThreadsDeleteCommentData, MiscThreadsDeleteCommentResponse, MiscSlackEditMessageData, MiscSlackEditMessageResponse, MiscSlackDeleteMessageData, MiscSlackDeleteMessageResponse, MiscBlueskyDeletePostData, MiscBlueskyDeletePostResponse, MiscBlueskyDeleteCommentData, MiscBlueskyDeleteCommentResponse, MiscTwitterDeleteTweetData, MiscTwitterDeleteTweetResponse, MiscTwitterDeleteCommentData, MiscTwitterDeleteCommentResponse, MiscTwitterRetweetData, MiscTwitterRetweetResponse, MiscTwitterUnretweetData, MiscTwitterUnretweetResponse, MiscDiscordDeleteMessageData, MiscDiscordDeleteMessageResponse, MiscTiktokSearchLocationsData, MiscTiktokSearchLocationsResponse, MiscTiktokGetCommercialMusicTrendingListData, MiscTiktokGetCommercialMusicTrendingListResponse, MiscTiktokDeleteCommentData, MiscTiktokDeleteCommentResponse, MiscTiktokGetPostSettingsData, MiscTiktokGetPostSettingsResponse, MiscTiktokGetAdAuthorizationData, MiscTiktokGetAdAuthorizationResponse, MiscTiktokEnableAdAuthorizationData, MiscTiktokEnableAdAuthorizationResponse, MiscTiktokDisableAdAuthorizationData, MiscTiktokDisableAdAuthorizationResponse, MiscTiktokExtendAdAuthorizationData, MiscTiktokExtendAdAuthorizationResponse, PostImportCreateData, PostImportCreateResponse, PostImportGetStatusData, PostImportGetStatusResponse, PostImportGetByIdData, PostImportGetByIdResponse, PostImportGetImportedPostsData, PostImportGetImportedPostsResponse, PostImportDeleteImportedPostsData, PostImportDeleteImportedPostsResponse, PostImportRetryImportData, PostImportRetryImportResponse, PostCsvCreateData, PostCsvCreateResponse, PostCsvGetListData, PostCsvGetListResponse, PostCsvGetByIdData, PostCsvGetByIdResponse, PostCsvGetStatusData, PostCsvGetStatusResponse, PostCsvGetRowsData, PostCsvGetRowsResponse } from './types.gen';
 
 export class AppService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -1878,6 +1878,82 @@ export class CommentService {
     }
     
     /**
+     * Search public Threads posts to reply to
+     * Search public Threads posts by keyword or topic tag with the team's connected Threads account. Each result has an `id` you pass as `discoveredPostId` to `POST /comment` to publish a reply under that post. Meta only allows replies to posts the account found through search recently, so a result can be replied to for 7 days after it was last returned. Meta caps search at 2,200 queries per account per 24 hours; searches with no results do not count.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.q
+     * @param data.searchType
+     * @param data.searchMode
+     * @param data.mediaType
+     * @param data.since
+     * @param data.until
+     * @param data.limit
+     * @param data.authorUsername
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentDiscoverThreads(data: CommentDiscoverThreadsData): CancelablePromise<CommentDiscoverThreadsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/comment/discover/threads',
+            query: {
+                teamId: data.teamId,
+                q: data.q,
+                searchType: data.searchType,
+                searchMode: data.searchMode,
+                mediaType: data.mediaType,
+                since: data.since,
+                until: data.until,
+                limit: data.limit,
+                authorUsername: data.authorUsername
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
+     * List Threads posts that mention the account
+     * Lists public Threads posts in which other accounts tagged the team's connected Threads account, newest first. Each result has an `id` you pass as `discoveredPostId` to `POST /comment` to reply under that post. Returns 403 when the account has not granted mentions access: disconnect and reconnect it.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.limit
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public commentDiscoverThreadsMentions(data: CommentDiscoverThreadsMentionsData): CancelablePromise<CommentDiscoverThreadsMentionsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/comment/discover/threads/mentions',
+            query: {
+                teamId: data.teamId,
+                limit: data.limit
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
      * Get comment
      * Retrieve a single comment you created through bundle.social, including its publishing status and any error details.
      * @param data The data for the request.
@@ -2016,7 +2092,7 @@ export class CommentService {
     
     /**
      * Create comment
-     * Publish a comment or a reply on one of your published posts. Use it to schedule the first comment on Instagram or LinkedIn, or to respond to your audience programmatically.
+     * Publish a comment or a reply on one of your published posts. Use it to schedule the first comment on Instagram or LinkedIn, or to respond to your audience programmatically. On Threads you can also reply to a public post found with `GET /comment/discover/threads` by passing its `discoveredPostId`.
      * @param data The data for the request.
      * @param data.requestBody Body
      * @returns unknown 200
@@ -5341,6 +5417,159 @@ export class MiscService {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/v1/misc/mastodon/comment',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
+     * Search Threads locations
+     * Searches locations by text or by latitude and longitude. Pass `locationId` and `name` as data.THREADS.locationId and data.THREADS.locationName to tag the location on a post. Returns 403 when the connected Threads account has not granted the permission: disconnect and reconnect it.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.q Free-text query, e.g. a place or a city.
+     * @param data.latitude Search around a point. Needs `longitude`.
+     * @param data.longitude Search around a point. Needs `latitude`.
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscThreadsSearchLocations(data: MiscThreadsSearchLocationsData): CancelablePromise<MiscThreadsSearchLocationsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/threads/locations',
+            query: {
+                teamId: data.teamId,
+                q: data.q,
+                latitude: data.latitude,
+                longitude: data.longitude
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
+     * Look up a public Threads profile
+     * Returns the public profile and 7-day engagement counts of a Threads account by its exact username. Threads only returns public profiles with at least 100 followers, and allows 1,000 lookups per account per 24 hours. Returns 403 when the connected Threads account has not granted the permission: disconnect and reconnect it.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.username Exact Threads username, without the @ sign.
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscThreadsGetProfile(data: MiscThreadsGetProfileData): CancelablePromise<MiscThreadsGetProfileResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/threads/profile',
+            query: {
+                teamId: data.teamId,
+                username: data.username
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
+     * Get trending Threads topics
+     * Returns the topics trending on Threads in the United States or Japan. Trends change at most once an hour. Search a trend's title with GET /comment/discover/threads to find posts about it.
+     * @param data The data for the request.
+     * @param data.teamId
+     * @param data.countryCode
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscThreadsGetTrendingTopics(data: MiscThreadsGetTrendingTopicsData): CancelablePromise<MiscThreadsGetTrendingTopicsResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/v1/misc/threads/trending',
+            query: {
+                teamId: data.teamId,
+                countryCode: data.countryCode
+            },
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Threads post
+     * Permanently delete a published Threads post. Threads allows 100 deletes per account per day. Returns 403 when the connected Threads account has not granted the permission: disconnect and reconnect it.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscThreadsDeletePost(data: MiscThreadsDeletePostData = {}): CancelablePromise<MiscThreadsDeletePostResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/threads/post',
+            body: data.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: '400',
+                401: '401',
+                403: '403',
+                404: '404',
+                429: '429',
+                500: '500',
+                502: '502',
+                503: '503',
+                504: '504',
+            }
+        });
+    }
+    
+    /**
+     * Delete a Threads reply
+     * Permanently delete a reply published through Bundle on Threads. Threads allows 100 deletes per account per day. Returns 403 when the connected Threads account has not granted the permission: disconnect and reconnect it.
+     * @param data The data for the request.
+     * @param data.requestBody Body
+     * @returns unknown 200
+     * @throws ApiError
+     */
+    public miscThreadsDeleteComment(data: MiscThreadsDeleteCommentData = {}): CancelablePromise<MiscThreadsDeleteCommentResponse> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/v1/misc/threads/comment',
             body: data.requestBody,
             mediaType: 'application/json',
             errors: {

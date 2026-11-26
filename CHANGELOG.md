@@ -1,3 +1,10 @@
+# [2.73.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.72.0...v2.73.0) (2026-11-26)
+
+
+### Features
+
+* Threads location tagging, search, mentions and delete; Facebook Reels isAiGenerated ([#173](https://github.com/bundleglobal/bundlesocial-node/issues/173)) ([c1aa290](https://github.com/bundleglobal/bundlesocial-node/commit/c1aa290449deb25743ba727fa9f6bea827e478d4))
+
 # [2.72.0](https://github.com/bundleglobal/bundlesocial-node/compare/v2.71.0...v2.72.0) (2026-11-24)
 
 

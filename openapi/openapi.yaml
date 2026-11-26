@@ -15158,6 +15158,14 @@ paths:
                               Facebook text background preset ID (colored
                               status), e.g. 1679248482160767 for blue. Only
                               available for type POST without video.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video was created or edited
+                              with AI. Adds Facebook's AI disclosure. Only for
+                              type REEL.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -15372,6 +15380,12 @@ paths:
                               - mentioned_only
                               - parent_post_author_only
                               - followers_only
+                            nullable: true
+                          locationId:
+                            type: string
+                            nullable: true
+                          locationName:
+                            type: string
                             nullable: true
                           linkAttachment:
                             type: string
@@ -17673,6 +17687,14 @@ paths:
                               Facebook text background preset ID (colored
                               status), e.g. 1679248482160767 for blue. Only
                               available for type POST without video.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video was created or edited
+                              with AI. Adds Facebook's AI disclosure. Only for
+                              type REEL.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -17887,6 +17909,12 @@ paths:
                               - mentioned_only
                               - parent_post_author_only
                               - followers_only
+                            nullable: true
+                          locationId:
+                            type: string
+                            nullable: true
+                          locationName:
+                            type: string
                             nullable: true
                           linkAttachment:
                             type: string
@@ -20191,6 +20219,14 @@ paths:
                             Facebook text background preset ID (colored status),
                             e.g. 1679248482160767 for blue. Only available for
                             type POST without video.
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the video was created or edited with
+                            AI. Adds Facebook's AI disclosure. Only for type
+                            REEL.
                       nullable: true
                     INSTAGRAM:
                       type: object
@@ -20405,6 +20441,12 @@ paths:
                             - mentioned_only
                             - parent_post_author_only
                             - followers_only
+                          nullable: true
+                        locationId:
+                          type: string
+                          nullable: true
+                        locationName:
+                          type: string
                           nullable: true
                         linkAttachment:
                           type: string
@@ -21367,6 +21409,14 @@ paths:
                               Facebook text background preset ID (colored
                               status), e.g. 1679248482160767 for blue. Only
                               available for type POST without video.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video was created or edited
+                              with AI. Adds Facebook's AI disclosure. Only for
+                              type REEL.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -21581,6 +21631,12 @@ paths:
                               - mentioned_only
                               - parent_post_author_only
                               - followers_only
+                            nullable: true
+                          locationId:
+                            type: string
+                            nullable: true
+                          locationName:
+                            type: string
                             nullable: true
                           linkAttachment:
                             type: string
@@ -23586,6 +23642,14 @@ paths:
                               Facebook text background preset ID (colored
                               status), e.g. 1679248482160767 for blue. Only
                               available for type POST without video.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video was created or edited
+                              with AI. Adds Facebook's AI disclosure. Only for
+                              type REEL.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -23800,6 +23864,12 @@ paths:
                               - mentioned_only
                               - parent_post_author_only
                               - followers_only
+                            nullable: true
+                          locationId:
+                            type: string
+                            nullable: true
+                          locationName:
+                            type: string
                             nullable: true
                           linkAttachment:
                             type: string
@@ -25845,6 +25915,14 @@ paths:
                                     Facebook text background preset ID (colored
                                     status), e.g. 1679248482160767 for blue.
                                     Only available for type POST without video.
+                                isAiGenerated:
+                                  default: false
+                                  type: boolean
+                                  nullable: true
+                                  description: >-
+                                    Set to true if the video was created or
+                                    edited with AI. Adds Facebook's AI
+                                    disclosure. Only for type REEL.
                               nullable: true
                             INSTAGRAM:
                               type: object
@@ -26060,6 +26138,12 @@ paths:
                                     - mentioned_only
                                     - parent_post_author_only
                                     - followers_only
+                                  nullable: true
+                                locationId:
+                                  type: string
+                                  nullable: true
+                                locationName:
+                                  type: string
                                   nullable: true
                                 linkAttachment:
                                   type: string
@@ -28338,6 +28422,14 @@ paths:
                             Facebook text background preset ID (colored status),
                             e.g. 1679248482160767 for blue. Only available for
                             type POST without video.
+                        isAiGenerated:
+                          default: false
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            Set to true if the video was created or edited with
+                            AI. Adds Facebook's AI disclosure. Only for type
+                            REEL.
                       nullable: true
                     INSTAGRAM:
                       type: object
@@ -28552,6 +28644,12 @@ paths:
                             - mentioned_only
                             - parent_post_author_only
                             - followers_only
+                          nullable: true
+                        locationId:
+                          type: string
+                          nullable: true
+                        locationName:
+                          type: string
                           nullable: true
                         linkAttachment:
                           type: string
@@ -29521,6 +29619,14 @@ paths:
                               Facebook text background preset ID (colored
                               status), e.g. 1679248482160767 for blue. Only
                               available for type POST without video.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video was created or edited
+                              with AI. Adds Facebook's AI disclosure. Only for
+                              type REEL.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -29735,6 +29841,12 @@ paths:
                               - mentioned_only
                               - parent_post_author_only
                               - followers_only
+                            nullable: true
+                          locationId:
+                            type: string
+                            nullable: true
+                          locationName:
+                            type: string
                             nullable: true
                           linkAttachment:
                             type: string
@@ -31741,6 +31853,14 @@ paths:
                               Facebook text background preset ID (colored
                               status), e.g. 1679248482160767 for blue. Only
                               available for type POST without video.
+                          isAiGenerated:
+                            default: false
+                            type: boolean
+                            nullable: true
+                            description: >-
+                              Set to true if the video was created or edited
+                              with AI. Adds Facebook's AI disclosure. Only for
+                              type REEL.
                         nullable: true
                       INSTAGRAM:
                         type: object
@@ -31955,6 +32075,12 @@ paths:
                               - mentioned_only
                               - parent_post_author_only
                               - followers_only
+                            nullable: true
+                          locationId:
+                            type: string
+                            nullable: true
+                          locationName:
+                            type: string
                             nullable: true
                           linkAttachment:
                             type: string
@@ -35030,6 +35156,14 @@ paths:
                                   Facebook text background preset ID (colored
                                   status), e.g. 1679248482160767 for blue. Only
                                   available for type POST without video.
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the video was created or edited
+                                  with AI. Adds Facebook's AI disclosure. Only
+                                  for type REEL.
                             nullable: true
                           INSTAGRAM:
                             type: object
@@ -35245,6 +35379,12 @@ paths:
                                   - mentioned_only
                                   - parent_post_author_only
                                   - followers_only
+                                nullable: true
+                              locationId:
+                                type: string
+                                nullable: true
+                              locationName:
+                                type: string
                                 nullable: true
                               linkAttachment:
                                 type: string
@@ -37839,6 +37979,14 @@ paths:
                                   Facebook text background preset ID (colored
                                   status), e.g. 1679248482160767 for blue. Only
                                   available for type POST without video.
+                              isAiGenerated:
+                                default: false
+                                type: boolean
+                                nullable: true
+                                description: >-
+                                  Set to true if the video was created or edited
+                                  with AI. Adds Facebook's AI disclosure. Only
+                                  for type REEL.
                             nullable: true
                           INSTAGRAM:
                             type: object
@@ -38054,6 +38202,12 @@ paths:
                                   - mentioned_only
                                   - parent_post_author_only
                                   - followers_only
+                                nullable: true
+                              locationId:
+                                type: string
+                                nullable: true
+                              locationName:
+                                type: string
                                 nullable: true
                               linkAttachment:
                                 type: string
@@ -42776,6 +42930,693 @@ paths:
                       values: RECONNECT_REQUIRED.
                 required:
                   - message
+  /api/v1/comment/discover/threads:
+    get:
+      description: >-
+        Search public Threads posts by keyword or topic tag with the team's
+        connected Threads account. Each result has an `id` you pass as
+        `discoveredPostId` to `POST /comment` to publish a reply under that
+        post. Meta only allows replies to posts the account found through search
+        recently, so a result can be replied to for 7 days after it was last
+        returned. Meta caps search at 2,200 queries per account per 24 hours;
+        searches with no results do not count.
+      summary: Search public Threads posts to reply to
+      tags: *ref_7
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 500
+        - name: searchType
+          in: query
+          schema:
+            type: string
+            enum:
+              - TOP
+              - RECENT
+        - name: searchMode
+          in: query
+          schema:
+            type: string
+            enum:
+              - KEYWORD
+              - TAG
+        - name: mediaType
+          in: query
+          schema:
+            type: string
+            enum:
+              - TEXT
+              - IMAGE
+              - VIDEO
+        - name: since
+          in: query
+          schema:
+            type: string
+            format: date-time
+            nullable: true
+        - name: until
+          in: query
+          schema:
+            type: string
+            format: date-time
+            nullable: true
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: authorUsername
+          in: query
+          schema:
+            type: string
+            pattern: ^[A-Za-z0-9._]+$
+            maxLength: 100
+      operationId: comment.discoverThreads
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        platform:
+                          type: string
+                          enum:
+                            - THREADS
+                        source:
+                          type: string
+                          enum:
+                            - KEYWORD_SEARCH
+                            - MENTION
+                        externalId:
+                          type: string
+                        username:
+                          type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        mediaType:
+                          type: string
+                          nullable: true
+                        permalink:
+                          type: string
+                          nullable: true
+                        publishedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        hasReplies:
+                          type: boolean
+                          nullable: true
+                        isReply:
+                          type: boolean
+                          nullable: true
+                        isQuotePost:
+                          type: boolean
+                          nullable: true
+                        query:
+                          type: string
+                          nullable: true
+                        lastSearchedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - socialAccountId
+                        - platform
+                        - source
+                        - externalId
+                        - lastSearchedAt
+                        - createdAt
+                        - updatedAt
+                required:
+                  - items
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+  /api/v1/comment/discover/threads/mentions:
+    get:
+      description: >-
+        Lists public Threads posts in which other accounts tagged the team's
+        connected Threads account, newest first. Each result has an `id` you
+        pass as `discoveredPostId` to `POST /comment` to reply under that post.
+        Returns 403 when the account has not granted mentions access: disconnect
+        and reconnect it.
+      summary: List Threads posts that mention the account
+      tags: *ref_7
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+      operationId: comment.discoverThreadsMentions
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        socialAccountId:
+                          type: string
+                        platform:
+                          type: string
+                          enum:
+                            - THREADS
+                        source:
+                          type: string
+                          enum:
+                            - KEYWORD_SEARCH
+                            - MENTION
+                        externalId:
+                          type: string
+                        username:
+                          type: string
+                          nullable: true
+                        text:
+                          type: string
+                          nullable: true
+                        mediaType:
+                          type: string
+                          nullable: true
+                        permalink:
+                          type: string
+                          nullable: true
+                        publishedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        hasReplies:
+                          type: boolean
+                          nullable: true
+                        isReply:
+                          type: boolean
+                          nullable: true
+                        isQuotePost:
+                          type: boolean
+                          nullable: true
+                        query:
+                          type: string
+                          nullable: true
+                        lastSearchedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        createdAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                      required:
+                        - id
+                        - socialAccountId
+                        - platform
+                        - source
+                        - externalId
+                        - lastSearchedAt
+                        - createdAt
+                        - updatedAt
+                required:
+                  - items
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
   /api/v1/comment/{id}:
     get:
       description: >-
@@ -42809,6 +43650,9 @@ paths:
                     type: string
                     nullable: true
                   importedPostId:
+                    type: string
+                    nullable: true
+                  discoveredPostId:
                     type: string
                     nullable: true
                   internalParentCommentId:
@@ -43852,6 +44696,9 @@ paths:
                   importedPostId:
                     type: string
                     nullable: true
+                  discoveredPostId:
+                    type: string
+                    nullable: true
                   internalParentCommentId:
                     type: string
                     nullable: true
@@ -44755,6 +45602,9 @@ paths:
                     type: string
                     nullable: true
                   importedPostId:
+                    type: string
+                    nullable: true
+                  discoveredPostId:
                     type: string
                     nullable: true
                   internalParentCommentId:
@@ -45744,6 +46594,9 @@ paths:
                         importedPostId:
                           type: string
                           nullable: true
+                        discoveredPostId:
+                          type: string
+                          nullable: true
                         internalParentCommentId:
                           type: string
                           nullable: true
@@ -46624,7 +47477,9 @@ paths:
       description: >-
         Publish a comment or a reply on one of your published posts. Use it to
         schedule the first comment on Instagram or LinkedIn, or to respond to
-        your audience programmatically.
+        your audience programmatically. On Threads you can also reply to a
+        public post found with `GET /comment/discover/threads` by passing its
+        `discoveredPostId`.
       summary: Create comment
       tags: *ref_7
       parameters: []
@@ -46644,6 +47499,8 @@ paths:
                 internalPostId:
                   type: string
                 importedPostId:
+                  type: string
+                discoveredPostId:
                   type: string
                 internalParentCommentId:
                   type: string
@@ -46788,6 +47645,9 @@ paths:
                     type: string
                     nullable: true
                   importedPostId:
+                    type: string
+                    nullable: true
+                  discoveredPostId:
                     type: string
                     nullable: true
                   internalParentCommentId:
@@ -47694,6 +48554,9 @@ paths:
                     type: string
                     nullable: true
                   importedPostId:
+                    type: string
+                    nullable: true
+                  discoveredPostId:
                     type: string
                     nullable: true
                   internalParentCommentId:
@@ -111598,6 +112461,1369 @@ paths:
         - misc
       parameters: []
       operationId: misc.mastodon.deleteComment
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                commentId:
+                  type: string
+                  description: The ID of the comment in bundle.social
+              required:
+                - teamId
+                - commentId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+  /api/v1/misc/threads/locations:
+    get:
+      description: >-
+        Searches locations by text or by latitude and longitude. Pass
+        `locationId` and `name` as data.THREADS.locationId and
+        data.THREADS.locationName to tag the location on a post. Returns 403
+        when the connected Threads account has not granted the permission:
+        disconnect and reconnect it.
+      summary: Search Threads locations
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: q
+          in: query
+          description: Free-text query, e.g. a place or a city.
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 100
+        - name: latitude
+          in: query
+          description: Search around a point. Needs `longitude`.
+          schema:
+            type: number
+            minimum: -90
+            maximum: 90
+            nullable: true
+        - name: longitude
+          in: query
+          description: Search around a point. Needs `latitude`.
+          schema:
+            type: number
+            minimum: -180
+            maximum: 180
+            nullable: true
+      operationId: misc.threads.searchLocations
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        locationId:
+                          type: string
+                          description: Location ID to pass as data.THREADS.locationId.
+                        name:
+                          type: string
+                          description: Location name to pass as data.THREADS.locationName.
+                        address:
+                          type: string
+                          nullable: true
+                        city:
+                          type: string
+                          nullable: true
+                        country:
+                          type: string
+                          nullable: true
+                        postalCode:
+                          type: string
+                          nullable: true
+                        latitude:
+                          type: number
+                          nullable: true
+                        longitude:
+                          type: number
+                          nullable: true
+                      required:
+                        - locationId
+                        - name
+                required:
+                  - items
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+  /api/v1/misc/threads/profile:
+    get:
+      description: >-
+        Returns the public profile and 7-day engagement counts of a Threads
+        account by its exact username. Threads only returns public profiles with
+        at least 100 followers, and allows 1,000 lookups per account per 24
+        hours. Returns 403 when the connected Threads account has not granted
+        the permission: disconnect and reconnect it.
+      summary: Look up a public Threads profile
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: username
+          in: query
+          description: Exact Threads username, without the @ sign.
+          required: true
+          schema:
+            type: string
+            pattern: ^[A-Za-z0-9._]+$
+            maxLength: 100
+      operationId: misc.threads.getProfile
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  name:
+                    type: string
+                    nullable: true
+                  profilePictureUrl:
+                    type: string
+                    nullable: true
+                  biography:
+                    type: string
+                    nullable: true
+                  isVerified:
+                    type: boolean
+                    nullable: true
+                  followerCount:
+                    type: number
+                    nullable: true
+                  likesCount:
+                    type: number
+                    nullable: true
+                  quotesCount:
+                    type: number
+                    nullable: true
+                  repliesCount:
+                    type: number
+                    nullable: true
+                  repostsCount:
+                    type: number
+                    nullable: true
+                  viewsCount:
+                    type: number
+                    nullable: true
+                required:
+                  - username
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+  /api/v1/misc/threads/trending:
+    get:
+      description: >-
+        Returns the topics trending on Threads in the United States or Japan.
+        Trends change at most once an hour. Search a trend's title with GET
+        /comment/discover/threads to find posts about it.
+      summary: Get trending Threads topics
+      tags:
+        - misc
+      parameters:
+        - name: teamId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: countryCode
+          in: query
+          schema:
+            default: US
+            type: string
+            enum:
+              - US
+              - JP
+      operationId: misc.threads.getTrendingTopics
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        trendId:
+                          type: string
+                        title:
+                          type: string
+                        description:
+                          type: string
+                          nullable: true
+                          description: Not available for Japan.
+                      required:
+                        - trendId
+                        - title
+                required:
+                  - items
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+  /api/v1/misc/threads/post:
+    delete:
+      description: >-
+        Permanently delete a published Threads post. Threads allows 100 deletes
+        per account per day. Returns 403 when the connected Threads account has
+        not granted the permission: disconnect and reconnect it.
+      summary: Delete a Threads post
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.threads.deletePost
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: string
+                postId:
+                  type: string
+                  description: The ID of the post in bundle.social
+              required:
+                - teamId
+                - postId
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          enum:
+                            - invalid_type
+                            - invalid_literal
+                            - custom
+                            - invalid_union
+                            - invalid_union_discriminator
+                            - invalid_enum_value
+                            - unrecognized_keys
+                            - invalid_arguments
+                            - invalid_return_type
+                            - invalid_date
+                            - invalid_string
+                            - too_small
+                            - too_big
+                            - invalid_intersection_types
+                            - not_multiple_of
+                            - not_finite
+                          nullable: true
+                        message:
+                          type: string
+                        path:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                          nullable: true
+                      required:
+                        - message
+                    nullable: true
+                required:
+                  - message
+        '401':
+          description: '401'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '403':
+          description: '403'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '404':
+          description: '404'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '429':
+          description: '429'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '500':
+          description: '500'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '502':
+          description: '502'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '503':
+          description: '503'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+        '504':
+          description: '504'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    nullable: true
+                  message:
+                    type: string
+                  type:
+                    type: string
+                    nullable: true
+                    description: >-
+                      Machine-readable error type on some 4xx responses. Current
+                      values: RECONNECT_REQUIRED.
+                required:
+                  - message
+  /api/v1/misc/threads/comment:
+    delete:
+      description: >-
+        Permanently delete a reply published through Bundle on Threads. Threads
+        allows 100 deletes per account per day. Returns 403 when the connected
+        Threads account has not granted the permission: disconnect and reconnect
+        it.
+      summary: Delete a Threads reply
+      tags:
+        - misc
+      parameters: []
+      operationId: misc.threads.deleteComment
       requestBody:
         description: Body
         content:

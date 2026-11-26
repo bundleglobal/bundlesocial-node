@@ -1894,6 +1894,10 @@ export type PostGetByReferenceKeyResponse = {
              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
              */
             textFormatPresetId?: string | null;
+            /**
+             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -1978,6 +1982,8 @@ export type PostGetByReferenceKeyResponse = {
             }> | null;
             topicTag?: string | null;
             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            locationId?: string | null;
+            locationName?: string | null;
             linkAttachment?: string | null;
             poll?: {
                 optionA: string;
@@ -2770,6 +2776,10 @@ export type PostGetResponse = {
              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
              */
             textFormatPresetId?: string | null;
+            /**
+             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -2854,6 +2864,8 @@ export type PostGetResponse = {
             }> | null;
             topicTag?: string | null;
             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            locationId?: string | null;
+            locationName?: string | null;
             linkAttachment?: string | null;
             poll?: {
                 optionA: string;
@@ -3644,6 +3656,10 @@ export type PostUpdateData = {
                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                  */
                 textFormatPresetId?: string | null;
+                /**
+                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -3728,6 +3744,8 @@ export type PostUpdateData = {
                 }> | null;
                 topicTag?: string | null;
                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                locationId?: string | null;
+                locationName?: string | null;
                 linkAttachment?: string | null;
                 poll?: {
                     optionA: string;
@@ -4145,6 +4163,10 @@ export type PostUpdateResponse = {
              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
              */
             textFormatPresetId?: string | null;
+            /**
+             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -4229,6 +4251,8 @@ export type PostUpdateResponse = {
             }> | null;
             topicTag?: string | null;
             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            locationId?: string | null;
+            locationName?: string | null;
             linkAttachment?: string | null;
             poll?: {
                 optionA: string;
@@ -4935,6 +4959,10 @@ export type PostDeleteResponse = {
              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
              */
             textFormatPresetId?: string | null;
+            /**
+             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -5019,6 +5047,8 @@ export type PostDeleteResponse = {
             }> | null;
             topicTag?: string | null;
             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            locationId?: string | null;
+            locationName?: string | null;
             linkAttachment?: string | null;
             poll?: {
                 optionA: string;
@@ -5724,6 +5754,10 @@ export type PostGetListResponse = {
                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                  */
                 textFormatPresetId?: string | null;
+                /**
+                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -5808,6 +5842,8 @@ export type PostGetListResponse = {
                 }> | null;
                 topicTag?: string | null;
                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                locationId?: string | null;
+                locationName?: string | null;
                 linkAttachment?: string | null;
                 poll?: {
                     optionA: string;
@@ -6586,6 +6622,10 @@ export type PostCreateData = {
                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                  */
                 textFormatPresetId?: string | null;
+                /**
+                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -6670,6 +6710,8 @@ export type PostCreateData = {
                 }> | null;
                 topicTag?: string | null;
                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                locationId?: string | null;
+                locationName?: string | null;
                 linkAttachment?: string | null;
                 poll?: {
                     optionA: string;
@@ -7087,6 +7129,10 @@ export type PostCreateResponse = {
              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
              */
             textFormatPresetId?: string | null;
+            /**
+             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -7171,6 +7217,8 @@ export type PostCreateResponse = {
             }> | null;
             topicTag?: string | null;
             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            locationId?: string | null;
+            locationName?: string | null;
             linkAttachment?: string | null;
             poll?: {
                 optionA: string;
@@ -7877,6 +7925,10 @@ export type PostRetryResponse = {
              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
              */
             textFormatPresetId?: string | null;
+            /**
+             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+             */
+            isAiGenerated?: boolean | null;
         } | null;
         INSTAGRAM?: {
             type?: 'POST' | 'REEL' | 'STORY';
@@ -7961,6 +8013,8 @@ export type PostRetryResponse = {
             }> | null;
             topicTag?: string | null;
             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+            locationId?: string | null;
+            locationName?: string | null;
             linkAttachment?: string | null;
             poll?: {
                 optionA: string;
@@ -8774,6 +8828,10 @@ export type AnalyticsGetPostAnalyticsResponse = {
                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                  */
                 textFormatPresetId?: string | null;
+                /**
+                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -8858,6 +8916,8 @@ export type AnalyticsGetPostAnalyticsResponse = {
                 }> | null;
                 topicTag?: string | null;
                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                locationId?: string | null;
+                locationName?: string | null;
                 linkAttachment?: string | null;
                 poll?: {
                     optionA: string;
@@ -9659,6 +9719,10 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                  */
                 textFormatPresetId?: string | null;
+                /**
+                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                 */
+                isAiGenerated?: boolean | null;
             } | null;
             INSTAGRAM?: {
                 type?: 'POST' | 'REEL' | 'STORY';
@@ -9743,6 +9807,8 @@ export type AnalyticsGetPostAnalyticsRawResponse = {
                 }> | null;
                 topicTag?: string | null;
                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                locationId?: string | null;
+                locationName?: string | null;
                 linkAttachment?: string | null;
                 poll?: {
                     optionA: string;
@@ -10674,6 +10740,67 @@ export type CommentImportGetByIdResponse = {
     updatedAt: string | null;
 };
 
+export type CommentDiscoverThreadsData = {
+    authorUsername?: string;
+    limit?: number;
+    mediaType?: 'TEXT' | 'IMAGE' | 'VIDEO';
+    q: string;
+    searchMode?: 'KEYWORD' | 'TAG';
+    searchType?: 'TOP' | 'RECENT';
+    since?: string | null;
+    teamId: string;
+    until?: string | null;
+};
+
+export type CommentDiscoverThreadsResponse = {
+    items: Array<{
+        id: string;
+        socialAccountId: string;
+        platform: 'THREADS';
+        source: 'KEYWORD_SEARCH' | 'MENTION';
+        externalId: string;
+        username?: string | null;
+        text?: string | null;
+        mediaType?: string | null;
+        permalink?: string | null;
+        publishedAt?: string | null;
+        hasReplies?: boolean | null;
+        isReply?: boolean | null;
+        isQuotePost?: boolean | null;
+        query?: string | null;
+        lastSearchedAt: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+    }>;
+};
+
+export type CommentDiscoverThreadsMentionsData = {
+    limit?: number;
+    teamId: string;
+};
+
+export type CommentDiscoverThreadsMentionsResponse = {
+    items: Array<{
+        id: string;
+        socialAccountId: string;
+        platform: 'THREADS';
+        source: 'KEYWORD_SEARCH' | 'MENTION';
+        externalId: string;
+        username?: string | null;
+        text?: string | null;
+        mediaType?: string | null;
+        permalink?: string | null;
+        publishedAt?: string | null;
+        hasReplies?: boolean | null;
+        isReply?: boolean | null;
+        isQuotePost?: boolean | null;
+        query?: string | null;
+        lastSearchedAt: string | null;
+        createdAt: string | null;
+        updatedAt: string | null;
+    }>;
+};
+
 export type CommentGetData = {
     id: string;
 };
@@ -10684,6 +10811,7 @@ export type CommentGetResponse = {
     organizationId?: string | null;
     internalPostId?: string | null;
     importedPostId?: string | null;
+    discoveredPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title?: string | null;
@@ -10980,6 +11108,7 @@ export type CommentUpdateResponse = {
     organizationId?: string | null;
     internalPostId?: string | null;
     importedPostId?: string | null;
+    discoveredPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title?: string | null;
@@ -11224,6 +11353,7 @@ export type CommentDeleteResponse = {
     organizationId?: string | null;
     internalPostId?: string | null;
     importedPostId?: string | null;
+    discoveredPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title?: string | null;
@@ -11481,6 +11611,7 @@ export type CommentGetListResponse = {
         organizationId?: string | null;
         internalPostId?: string | null;
         importedPostId?: string | null;
+        discoveredPostId?: string | null;
         internalParentCommentId?: string | null;
         fetchedParentCommentId?: string | null;
         title?: string | null;
@@ -11726,6 +11857,7 @@ export type CommentCreateData = {
         title?: string;
         internalPostId?: string;
         importedPostId?: string;
+        discoveredPostId?: string;
         internalParentCommentId?: string | null;
         fetchedParentCommentId?: string | null;
         postDate?: string;
@@ -11779,6 +11911,7 @@ export type CommentCreateResponse = {
     organizationId?: string | null;
     internalPostId?: string | null;
     importedPostId?: string | null;
+    discoveredPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title?: string | null;
@@ -12023,6 +12156,7 @@ export type CommentRetryResponse = {
     organizationId?: string | null;
     internalPostId?: string | null;
     importedPostId?: string | null;
+    discoveredPostId?: string | null;
     internalParentCommentId?: string | null;
     fetchedParentCommentId?: string | null;
     title?: string | null;
@@ -22840,6 +22974,113 @@ export type MiscMastodonDeleteCommentResponse = {
     success: boolean;
 };
 
+export type MiscThreadsSearchLocationsData = {
+    /**
+     * Search around a point. Needs `longitude`.
+     */
+    latitude?: number | null;
+    /**
+     * Search around a point. Needs `latitude`.
+     */
+    longitude?: number | null;
+    /**
+     * Free-text query, e.g. a place or a city.
+     */
+    q?: string;
+    teamId: string;
+};
+
+export type MiscThreadsSearchLocationsResponse = {
+    items: Array<{
+        /**
+         * Location ID to pass as data.THREADS.locationId.
+         */
+        locationId: string;
+        /**
+         * Location name to pass as data.THREADS.locationName.
+         */
+        name: string;
+        address?: string | null;
+        city?: string | null;
+        country?: string | null;
+        postalCode?: string | null;
+        latitude?: number | null;
+        longitude?: number | null;
+    }>;
+};
+
+export type MiscThreadsGetProfileData = {
+    teamId: string;
+    /**
+     * Exact Threads username, without the @ sign.
+     */
+    username: string;
+};
+
+export type MiscThreadsGetProfileResponse = {
+    username: string;
+    name?: string | null;
+    profilePictureUrl?: string | null;
+    biography?: string | null;
+    isVerified?: boolean | null;
+    followerCount?: number | null;
+    likesCount?: number | null;
+    quotesCount?: number | null;
+    repliesCount?: number | null;
+    repostsCount?: number | null;
+    viewsCount?: number | null;
+};
+
+export type MiscThreadsGetTrendingTopicsData = {
+    countryCode?: 'US' | 'JP';
+    teamId: string;
+};
+
+export type MiscThreadsGetTrendingTopicsResponse = {
+    items: Array<{
+        trendId: string;
+        title: string;
+        /**
+         * Not available for Japan.
+         */
+        description?: string | null;
+    }>;
+};
+
+export type MiscThreadsDeletePostData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the post in bundle.social
+         */
+        postId: string;
+    };
+};
+
+export type MiscThreadsDeletePostResponse = {
+    success: boolean;
+};
+
+export type MiscThreadsDeleteCommentData = {
+    /**
+     * Body
+     */
+    requestBody?: {
+        teamId: string;
+        /**
+         * The ID of the comment in bundle.social
+         */
+        commentId: string;
+    };
+};
+
+export type MiscThreadsDeleteCommentResponse = {
+    success: boolean;
+};
+
 export type MiscSlackEditMessageData = {
     /**
      * Body
@@ -29601,6 +29842,10 @@ export type $OpenApiTs = {
                              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                              */
                             textFormatPresetId?: string | null;
+                            /**
+                             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -29685,6 +29930,8 @@ export type $OpenApiTs = {
                             }> | null;
                             topicTag?: string | null;
                             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            locationId?: string | null;
+                            locationName?: string | null;
                             linkAttachment?: string | null;
                             poll?: {
                                 optionA: string;
@@ -30586,6 +30833,10 @@ export type $OpenApiTs = {
                              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                              */
                             textFormatPresetId?: string | null;
+                            /**
+                             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -30670,6 +30921,8 @@ export type $OpenApiTs = {
                             }> | null;
                             topicTag?: string | null;
                             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            locationId?: string | null;
+                            locationName?: string | null;
                             linkAttachment?: string | null;
                             poll?: {
                                 optionA: string;
@@ -31569,6 +31822,10 @@ export type $OpenApiTs = {
                              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                              */
                             textFormatPresetId?: string | null;
+                            /**
+                             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -31653,6 +31910,8 @@ export type $OpenApiTs = {
                             }> | null;
                             topicTag?: string | null;
                             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            locationId?: string | null;
+                            locationName?: string | null;
                             linkAttachment?: string | null;
                             poll?: {
                                 optionA: string;
@@ -32477,6 +32736,10 @@ export type $OpenApiTs = {
                              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                              */
                             textFormatPresetId?: string | null;
+                            /**
+                             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -32561,6 +32824,8 @@ export type $OpenApiTs = {
                             }> | null;
                             topicTag?: string | null;
                             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            locationId?: string | null;
+                            locationName?: string | null;
                             linkAttachment?: string | null;
                             poll?: {
                                 optionA: string;
@@ -33363,6 +33628,10 @@ export type $OpenApiTs = {
                                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                                  */
                                 textFormatPresetId?: string | null;
+                                /**
+                                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -33447,6 +33716,8 @@ export type $OpenApiTs = {
                                 }> | null;
                                 topicTag?: string | null;
                                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                                locationId?: string | null;
+                                locationName?: string | null;
                                 linkAttachment?: string | null;
                                 poll?: {
                                     optionA: string;
@@ -34334,6 +34605,10 @@ export type $OpenApiTs = {
                              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                              */
                             textFormatPresetId?: string | null;
+                            /**
+                             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -34418,6 +34693,8 @@ export type $OpenApiTs = {
                             }> | null;
                             topicTag?: string | null;
                             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            locationId?: string | null;
+                            locationName?: string | null;
                             linkAttachment?: string | null;
                             poll?: {
                                 optionA: string;
@@ -35244,6 +35521,10 @@ export type $OpenApiTs = {
                              * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                              */
                             textFormatPresetId?: string | null;
+                            /**
+                             * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                             */
+                            isAiGenerated?: boolean | null;
                         } | null;
                         INSTAGRAM?: {
                             type?: 'POST' | 'REEL' | 'STORY';
@@ -35328,6 +35609,8 @@ export type $OpenApiTs = {
                             }> | null;
                             topicTag?: string | null;
                             replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                            locationId?: string | null;
+                            locationName?: string | null;
                             linkAttachment?: string | null;
                             poll?: {
                                 optionA: string;
@@ -36567,6 +36850,10 @@ export type $OpenApiTs = {
                                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                                  */
                                 textFormatPresetId?: string | null;
+                                /**
+                                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -36651,6 +36938,8 @@ export type $OpenApiTs = {
                                 }> | null;
                                 topicTag?: string | null;
                                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                                locationId?: string | null;
+                                locationName?: string | null;
                                 linkAttachment?: string | null;
                                 poll?: {
                                     optionA: string;
@@ -37667,6 +37956,10 @@ export type $OpenApiTs = {
                                  * Facebook text background preset ID (colored status), e.g. 1679248482160767 for blue. Only available for type POST without video.
                                  */
                                 textFormatPresetId?: string | null;
+                                /**
+                                 * Set to true if the video was created or edited with AI. Adds Facebook's AI disclosure. Only for type REEL.
+                                 */
+                                isAiGenerated?: boolean | null;
                             } | null;
                             INSTAGRAM?: {
                                 type?: 'POST' | 'REEL' | 'STORY';
@@ -37751,6 +38044,8 @@ export type $OpenApiTs = {
                                 }> | null;
                                 topicTag?: string | null;
                                 replyControl?: 'everyone' | 'accounts_you_follow' | 'mentioned_only' | 'parent_post_author_only' | 'followers_only' | null;
+                                locationId?: string | null;
+                                locationName?: string | null;
                                 linkAttachment?: string | null;
                                 poll?: {
                                     optionA: string;
@@ -39619,6 +39914,276 @@ export type $OpenApiTs = {
             };
         };
     };
+    '/api/v1/comment/discover/threads': {
+        get: {
+            req: CommentDiscoverThreadsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        socialAccountId: string;
+                        platform: 'THREADS';
+                        source: 'KEYWORD_SEARCH' | 'MENTION';
+                        externalId: string;
+                        username?: string | null;
+                        text?: string | null;
+                        mediaType?: string | null;
+                        permalink?: string | null;
+                        publishedAt?: string | null;
+                        hasReplies?: boolean | null;
+                        isReply?: boolean | null;
+                        isQuotePost?: boolean | null;
+                        query?: string | null;
+                        lastSearchedAt: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
+    '/api/v1/comment/discover/threads/mentions': {
+        get: {
+            req: CommentDiscoverThreadsMentionsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        id: string;
+                        socialAccountId: string;
+                        platform: 'THREADS';
+                        source: 'KEYWORD_SEARCH' | 'MENTION';
+                        externalId: string;
+                        username?: string | null;
+                        text?: string | null;
+                        mediaType?: string | null;
+                        permalink?: string | null;
+                        publishedAt?: string | null;
+                        hasReplies?: boolean | null;
+                        isReply?: boolean | null;
+                        isQuotePost?: boolean | null;
+                        query?: string | null;
+                        lastSearchedAt: string | null;
+                        createdAt: string | null;
+                        updatedAt: string | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
     '/api/v1/comment/{id}': {
         get: {
             req: CommentGetData;
@@ -39632,6 +40197,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId?: string | null;
                     importedPostId?: string | null;
+                    discoveredPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title?: string | null;
@@ -39983,6 +40549,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId?: string | null;
                     importedPostId?: string | null;
+                    discoveredPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title?: string | null;
@@ -40334,6 +40901,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId?: string | null;
                     importedPostId?: string | null;
+                    discoveredPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title?: string | null;
@@ -40688,6 +41256,7 @@ export type $OpenApiTs = {
                         organizationId?: string | null;
                         internalPostId?: string | null;
                         importedPostId?: string | null;
+                        discoveredPostId?: string | null;
                         internalParentCommentId?: string | null;
                         fetchedParentCommentId?: string | null;
                         title?: string | null;
@@ -41041,6 +41610,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId?: string | null;
                     importedPostId?: string | null;
+                    discoveredPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title?: string | null;
@@ -41394,6 +41964,7 @@ export type $OpenApiTs = {
                     organizationId?: string | null;
                     internalPostId?: string | null;
                     importedPostId?: string | null;
+                    discoveredPostId?: string | null;
                     internalParentCommentId?: string | null;
                     fetchedParentCommentId?: string | null;
                     title?: string | null;
@@ -62324,6 +62895,623 @@ export type $OpenApiTs = {
         };
         delete: {
             req: MiscMastodonDeleteCommentData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/threads/locations': {
+        get: {
+            req: MiscThreadsSearchLocationsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        /**
+                         * Location ID to pass as data.THREADS.locationId.
+                         */
+                        locationId: string;
+                        /**
+                         * Location name to pass as data.THREADS.locationName.
+                         */
+                        name: string;
+                        address?: string | null;
+                        city?: string | null;
+                        country?: string | null;
+                        postalCode?: string | null;
+                        latitude?: number | null;
+                        longitude?: number | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/threads/profile': {
+        get: {
+            req: MiscThreadsGetProfileData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    username: string;
+                    name?: string | null;
+                    profilePictureUrl?: string | null;
+                    biography?: string | null;
+                    isVerified?: boolean | null;
+                    followerCount?: number | null;
+                    likesCount?: number | null;
+                    quotesCount?: number | null;
+                    repliesCount?: number | null;
+                    repostsCount?: number | null;
+                    viewsCount?: number | null;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/threads/trending': {
+        get: {
+            req: MiscThreadsGetTrendingTopicsData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    items: Array<{
+                        trendId: string;
+                        title: string;
+                        /**
+                         * Not available for Japan.
+                         */
+                        description?: string | null;
+                    }>;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/threads/post': {
+        delete: {
+            req: MiscThreadsDeletePostData;
+            res: {
+                /**
+                 * 200
+                 */
+                200: {
+                    success: boolean;
+                };
+                /**
+                 * 400
+                 */
+                400: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                    issues?: Array<{
+                        code?: 'invalid_type' | 'invalid_literal' | 'custom' | 'invalid_union' | 'invalid_union_discriminator' | 'invalid_enum_value' | 'unrecognized_keys' | 'invalid_arguments' | 'invalid_return_type' | 'invalid_date' | 'invalid_string' | 'too_small' | 'too_big' | 'invalid_intersection_types' | 'not_multiple_of' | 'not_finite' | null;
+                        message: string;
+                        path?: Array<(string | number)> | null;
+                    }> | null;
+                };
+                /**
+                 * 401
+                 */
+                401: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 403
+                 */
+                403: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 404
+                 */
+                404: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 429
+                 */
+                429: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 500
+                 */
+                500: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 502
+                 */
+                502: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 503
+                 */
+                503: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+                /**
+                 * 504
+                 */
+                504: {
+                    statusCode?: number | null;
+                    message: string;
+                    /**
+                     * Machine-readable error type on some 4xx responses. Current values: RECONNECT_REQUIRED.
+                     */
+                    type?: string | null;
+                };
+            };
+        };
+    };
+    '/api/v1/misc/threads/comment': {
+        delete: {
+            req: MiscThreadsDeleteCommentData;
             res: {
                 /**
                  * 200
